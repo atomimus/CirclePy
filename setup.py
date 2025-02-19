@@ -13,7 +13,8 @@ setup(
     include_package_data=True,
     install_requires=[
         "requests", 
-        "aiohttp"  
+        "aiohttp",
+        "pillow"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
