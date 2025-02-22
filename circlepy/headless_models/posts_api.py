@@ -6,7 +6,7 @@ import mimetypes
 import requests
 from PIL import Image
 from .base_api_client import BaseAPIClient
-from .helper import tiptap
+from .helper.tiptap import markdown_to_tiptap
 
 class PostsAPI(BaseAPIClient):
 
@@ -112,7 +112,7 @@ class PostsAPI(BaseAPIClient):
             raise ValueError("Community URL is required for image uploads")
         
         if markdown:
-            tiptap_body = tiptap.markdown_to_tiptap(markdown)
+            tiptap_body = markdown_to_tiptap(markdown)
             for image_path in image_paths:
                 upload_response = self._direct_upload_file(image_path)
                 image_tap = {"type": "image",
