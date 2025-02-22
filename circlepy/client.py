@@ -1,12 +1,12 @@
 
-from .models import SpaceAPI
-from .models import PostAPI
-from .models import LikesAPI
-from .models import CommentAPI
-from .models import CommentLikesAPI
-from .models import MemberAPI
+from .client_models import SpaceAPI
+from .client_models import PostAPI
+from .client_models import LikesAPI
+from .client_models import CommentAPI
+from .client_models import CommentLikesAPI
+from .client_models import MemberAPI
 
-base_url = "https://app.circle.so/api/v1"
+base_url = "https://app.circle.so"
 
 class CircleClient:
     def __init__(self, api_key,community_id=None):
