@@ -20,7 +20,12 @@ class BaseAPIClient:
         url = f"{self.auth.base_url}{endpoint}"
         headers = self._get_headers()
         response = requests.request(method, url, headers=headers, **kwargs)
-        response.raise_for_status()
+        if response.status_code == 401:
+            self.auth.refresh_access_token()
+            return self._request(method, endpoint, **kwargs)
+        elif response.status_code not in [200, 201, 204]:
+            return response.json()
+        response.raise_for_status()            
         return response.json()
 
     def get(self, endpoint, params=None):
