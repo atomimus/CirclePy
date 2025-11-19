@@ -124,7 +124,11 @@ def markdown_to_tiptap(markdown_text):
         elif node.t == "code_block":
             language = node.info if node.info else None
             attrs = {"language": language} if language else {}
-            code_text = node.literal.rstrip("\r\n")
+            code_text = node.literal
+            if code_text.endswith("\r\n"):
+                code_text = code_text[:-2]
+            elif code_text.endswith("\n") or code_text.endswith("\r"):
+                code_text = code_text[:-1]
             content = [{"type": "text", "text": code_text}]
             return {"type": "codeBlock", "attrs": attrs, "content": content}
 
