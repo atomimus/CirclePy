@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="circlepy",  
-    version="0.3.4", 
+    version="0.3.5", 
     author="Waleed Salah Aldin",
     author_email="waleed9salah@gmail.com",
     description="Circle.so API made easy with async support for efficient Python integration.",

@@ -124,7 +124,8 @@ def markdown_to_tiptap(markdown_text):
         elif node.t == "code_block":
             language = node.info if node.info else None
             attrs = {"language": language} if language else {}
-            content = [{"type": "text", "text": node.literal}]
+            code_text = node.literal.rstrip("\r\n")
+            content = [{"type": "text", "text": code_text}]
             return {"type": "codeBlock", "attrs": attrs, "content": content}
 
         elif node.t == "thematic_break":

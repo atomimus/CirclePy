@@ -110,6 +110,7 @@ class PostsAPI(BaseAPIClient):
             raise ValueError("Provide either tiptap_body, body, or markdown")
         if image_paths and not self.auth.community_url:
             raise ValueError("Community URL is required for image uploads")
+        image_paths = image_paths or []
         
         if markdown:
             tiptap_body = markdown_to_tiptap(markdown)
