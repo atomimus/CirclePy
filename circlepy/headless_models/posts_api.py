@@ -114,6 +114,8 @@ class PostsAPI(BaseAPIClient):
         
         if markdown:
             tiptap_body = markdown_to_tiptap(markdown)
+            if body is None:
+                body = markdown
             for image_path in image_paths:
                 upload_response = self._direct_upload_file(image_path)
                 image_tap = {"type": "image",
