@@ -3,6 +3,7 @@ import uuid
 import base64
 import hashlib
 import mimetypes
+import warnings
 import requests
 from PIL import Image
 from .base_api_client import BaseAPIClient
@@ -105,12 +106,16 @@ class PostsAPI(BaseAPIClient):
         return self.post(endpoint, data=payload)
     
     def create_post(self, space_id, name, slug, body=None, tiptap_body=None, markdown=None, image_paths=None,
-                    is_liking_enabled=True, is_comments_enabled=True):
+                    topics=None, is_liking_enabled=True, is_comments_enabled=True):
         if tiptap_body is None and body is None and markdown is None:
             raise ValueError("Provide either tiptap_body, body, or markdown")
         if image_paths and not self.auth.community_url:
             raise ValueError("Community URL is required for image uploads")
         image_paths = image_paths or []
+
+        if topics and image_paths:
+            warnings.warn("Topics cannot be set when creating posts with images; ignoring provided topics.")
+            topics = None
         
         if markdown:
             tiptap_body = markdown_to_tiptap(markdown)
@@ -139,6 +144,8 @@ class PostsAPI(BaseAPIClient):
             "is_liking_enabled": is_liking_enabled,
             "is_comments_enabled": is_comments_enabled
         }
+        if topics:
+            payload["topics"] = topics
         endpoint = f"/spaces/{space_id}/posts"
         return self.post(endpoint, data=payload)
     
