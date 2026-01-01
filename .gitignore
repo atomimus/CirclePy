@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+coverage-matrix.md
 # C extensions
 *.so
 *tmp*.py

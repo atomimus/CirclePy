@@ -104,6 +104,34 @@ class PostsAPI(BaseAPIClient):
 
         endpoint = f"/spaces/{space_id}/images/posts"
         return self.post(endpoint, data=payload)
+
+    def update_image_post(
+        self,
+        space_id,
+        image_post_id,
+        payload=None,
+        slug=None,
+        tiptap_body=None,
+        is_liking_enabled=None,
+        is_comments_enabled=None,
+        gallery_attributes=None,
+    ):
+        if payload is None:
+            payload = {}
+            if slug is not None:
+                payload["slug"] = slug
+            if tiptap_body is not None:
+                payload["tiptap_body"] = tiptap_body
+            if is_liking_enabled is not None:
+                payload["is_liking_enabled"] = is_liking_enabled
+            if is_comments_enabled is not None:
+                payload["is_comments_enabled"] = is_comments_enabled
+            if gallery_attributes is not None:
+                payload["gallery_attributes"] = gallery_attributes
+            if not payload:
+                raise ValueError("Provide payload or at least one field to update")
+        endpoint = f"/spaces/{space_id}/images/posts/{image_post_id}"
+        return self._request("PUT", endpoint, json=payload)
     
     def create_post(self, space_id, name, slug, body=None, tiptap_body=None, markdown=None, image_paths=None,
                     topics=None, is_liking_enabled=True, is_comments_enabled=True):
