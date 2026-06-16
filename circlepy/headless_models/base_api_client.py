@@ -19,6 +19,7 @@ class BaseAPIClient:
     def _request(self, method, endpoint, **kwargs):
         url = f"{self.auth.base_url}{endpoint}"
         headers = self._get_headers()
+        kwargs.update(self.auth._request_options())
         response = requests.request(method, url, headers=headers, **kwargs)
         if endpoint == "/cookies" and method == "POST" and response.status_code == 200:
             return {

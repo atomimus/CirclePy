@@ -2,17 +2,33 @@ import requests
 from datetime import datetime
 
 class Auth:
-    def __init__(self, api_key, community_url, auth_base_url, base_url):
+    def __init__(self, api_key, community_url, auth_base_url, base_url, proxy=None):
         self.api_key = api_key
         self.auth_base_url = auth_base_url
         self.base_url = base_url
         self.community_url = community_url
+        self.proxies = self._normalize_proxy(proxy)
         self.access_token = None
         self.refresh_token = None
         self.access_token_expires_at = None
         self.refresh_token_expires_at = None
         self.community_member_id = None
         self.community_id = None
+
+    def _normalize_proxy(self, proxy):
+        if not proxy:
+            return None
+        if isinstance(proxy, str):
+            return {
+                "http": proxy,
+                "https": proxy
+            }
+        return proxy
+
+    def _request_options(self):
+        if not self.proxies:
+            return {}
+        return {"proxies": self.proxies}
 
     def authenticate(self, email=None, community_member_id=None, sso_id=None):
         """
@@ -36,7 +52,8 @@ class Auth:
         response = requests.post(
             f'{self.auth_base_url}/auth_token',
             headers=headers,
-            json=params
+            json=params,
+            **self._request_options()
         )
         if response.status_code == 401:
             raise Exception("Authentication failed. Please check your API KEY.")
@@ -72,7 +89,7 @@ class Auth:
             "refresh_token": self.refresh_token
         }
 
-        response = requests.patch(url, headers=headers, json=payload)
+        response = requests.patch(url, headers=headers, json=payload, **self._request_options())
 
         if response.status_code == 200:
             data = response.json()
@@ -110,7 +127,7 @@ class Auth:
             "access_token": self.access_token
         }
 
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.post(url, headers=headers, json=payload, **self._request_options())
 
         if response.status_code == 204:
             self.access_token = None
@@ -145,7 +162,7 @@ class Auth:
             "refresh_token": self.refresh_token
         }
 
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.post(url, headers=headers, json=payload, **self._request_options())
 
         if response.status_code == 204:
             self.refresh_token = None

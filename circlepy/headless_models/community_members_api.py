@@ -47,7 +47,7 @@ class CommunityMembersAPI(BaseAPIClient):
 
         headers["Content-MD5"] = checksum
 
-        response = requests.put(upload_url, headers=headers, data=file_data)
+        response = requests.put(upload_url, headers=headers, data=file_data, **self.auth._request_options())
 
         if response.status_code not in [200, 201, 204]:
             print("Upload Failed:", response.text)
