@@ -142,6 +142,7 @@ def code_routes():
     for folder, default_family, prefix in (
         ("client_models", "admin-v1", "/api/v1"),
         ("headless_models", "headless-client-v1", "/api/headless/v1"),
+        ("admin_v2", "admin-v2", "/api/admin/v2"),
     ):
         for path in sorted((ROOT / "circlepy" / folder).glob("*.py")):
             if path.name in ("__init__.py", "base_api_client.py"):

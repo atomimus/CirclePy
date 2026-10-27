@@ -2430,9 +2430,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityLeadsAPI.delete",
+          "line": 124,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityLeadsAPI.delete",
+          "line": 119,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2452,9 +2465,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityMembersAPI.deactivate",
+          "line": 55,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityMembersAPI.deactivate",
+          "line": 56,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2628,9 +2654,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncInvitationLinksAPI.delete",
+          "line": 186,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "InvitationLinksAPI.delete",
+          "line": 173,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3068,9 +3107,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunitiesAPI.get",
+          "line": 11,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunitiesAPI.get",
+          "line": 10,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3156,9 +3208,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityMembersAPI.list_members",
+          "line": 21,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityMembersAPI.list_members",
+          "line": 21,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3178,9 +3243,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityMembersAPI.search",
+          "line": 38,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityMembersAPI.search",
+          "line": 39,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3200,9 +3278,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityMembersAPI.get",
+          "line": 33,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityMembersAPI.get",
+          "line": 33,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3266,9 +3357,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncContactNotesAPI.list_notes",
+          "line": 138,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "ContactNotesAPI.list_notes",
+          "line": 133,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3640,9 +3744,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncInvitationLinksAPI.list_links",
+          "line": 167,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "InvitationLinksAPI.list_links",
+          "line": 154,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4476,9 +4593,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncInvitationLinksAPI.revoke",
+          "line": 191,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "InvitationLinksAPI.revoke",
+          "line": 178,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4630,9 +4760,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityLeadsAPI.create",
+          "line": 119,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityLeadsAPI.create",
+          "line": 115,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4762,9 +4905,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityMembersAPI.create",
+          "line": 43,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityMembersAPI.create",
+          "line": 45,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4828,9 +4984,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncContactNotesAPI.create",
+          "line": 131,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "ContactNotesAPI.create",
+          "line": 125,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5070,9 +5239,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncInvitationLinksAPI.create",
+          "line": 174,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "InvitationLinksAPI.create",
+          "line": 161,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5576,9 +5758,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunitiesAPI.update",
+          "line": 14,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunitiesAPI.update",
+          "line": 14,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5598,9 +5793,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityMembersAPI.update",
+          "line": 48,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityMembersAPI.update",
+          "line": 48,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5620,9 +5828,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityMembersAPI.ban_member",
+          "line": 65,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityMembersAPI.ban_member",
+          "line": 68,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5642,9 +5863,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncCommunityMembersAPI.delete_member",
+          "line": 60,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "CommunityMembersAPI.delete_member",
+          "line": 62,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5796,9 +6030,22 @@
         }
       ],
       "task_id": 15,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_members.py",
+          "symbol": "AsyncInvitationLinksAPI.update",
+          "line": 179,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/members.py",
+          "symbol": "InvitationLinksAPI.update",
+          "line": 165,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },

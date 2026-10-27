@@ -138,6 +138,11 @@ vulnerability is ignored; the audit honors the file's platform markers.
 An advisory-service outage is an unresolved check, not a clean audit. This check
 does not replace the scoped security review in Task 29.
 
+Admin v2 community/member/invitation changes also require
+`python tools/check_admin_v2_members_contract.py`, which checks all 19 owned
+operations and every documented request field against frozen schemas and
+independent synthetic fixtures. See `docs/admin-v2-members.md` for migration.
+
 ## Direct main workflow and CI
 
 Inspect status, fetch `origin/main`, and verify prerequisite history before work.

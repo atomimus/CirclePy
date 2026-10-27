@@ -1,0 +1,1032 @@
+[
+  {
+    "case_id": "communities.get",
+    "resource": "communities",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/community",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 11,
+      "name": "Synthetic Community",
+      "locale": "en",
+      "slug": "synthetic",
+      "allow_signups_to_public_community": false,
+      "community_switcher_enabled": false,
+      "custom_cta_for_share_links": false,
+      "locked_post_cta_heading": "",
+      "locked_post_cta_body": "",
+      "locked_post_cta_button_text": "",
+      "locked_post_cta_button_url": "https://example.invalid/signup",
+      "custom_tos_enabled": false,
+      "custom_tos": "https://example.invalid/tos",
+      "default_search_sorting": "alphabetical",
+      "is_private": false,
+      "private_signup_link_label": "",
+      "private_signup_link_url": "https://example.invalid/signup",
+      "logo": "synthetic-signed-logo",
+      "reply_to_email": "support@example.test",
+      "white_label": false,
+      "default_existing_member_space_id": 31,
+      "default_logged_out_space_id": 32,
+      "default_new_member_space_id": 33,
+      "weekly_digest_enabled": false,
+      "digest_subject": "",
+      "digest_intro": "",
+      "digests_hide_posts": false,
+      "digests_hide_comments": false,
+      "digests_hide_stats": false,
+      "digests_hide_members": false,
+      "prefs": {
+        "brand_color": {
+          "dark": "#000000",
+          "light": "#ffffff"
+        },
+        "brand_text_color": {
+          "dark": "#ffffff",
+          "light": "#000000"
+        }
+      },
+      "community_setting": {
+        "ios_app_enabled": false,
+        "show_ios_app_banner": false,
+        "deactivate_account_enabled": false,
+        "allow_profile_search_indexing": false,
+        "truncate_post_body_in_email_notifications": false,
+        "hide_emails_on_member_profiles": false,
+        "allow_members_to_go_live": false,
+        "enforce_otp_for_signup": false,
+        "community_activity_notifications_email_enabled": false,
+        "community_activity_notifications_in_app_enabled": false,
+        "desktop_app_community_visibility_enabled": false,
+        "default_logged_out_redirect_type": "Site::Page",
+        "default_logged_out_redirect_id": 34,
+        "allow_moderator_csv_download": false,
+        "member_media_uploads_enabled": false,
+        "default_space_ids": []
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "communities.update",
+    "resource": "communities",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/community",
+    "args": [
+      {
+        "community": {
+          "name": "Synthetic Community",
+          "locale": "en",
+          "slug": "synthetic",
+          "allow_signups_to_public_community": false,
+          "community_switcher_enabled": false,
+          "custom_cta_for_share_links": false,
+          "locked_post_cta_heading": "",
+          "locked_post_cta_body": "",
+          "locked_post_cta_button_text": "",
+          "locked_post_cta_button_url": "https://example.invalid/signup",
+          "custom_tos_enabled": false,
+          "custom_tos": "https://example.invalid/tos",
+          "default_search_sorting": "alphabetical",
+          "is_private": false,
+          "private_signup_link_label": "",
+          "private_signup_link_url": "https://example.invalid/signup",
+          "logo": "synthetic-signed-logo",
+          "reply_to_email": "support@example.test",
+          "white_label": false,
+          "default_existing_member_space_id": 31,
+          "default_logged_out_space_id": 32,
+          "default_new_member_space_id": 33,
+          "weekly_digest_enabled": false,
+          "digest_subject": "",
+          "digest_intro": "",
+          "digests_hide_posts": false,
+          "digests_hide_comments": false,
+          "digests_hide_stats": false,
+          "digests_hide_members": false,
+          "prefs": {
+            "brand_color": {
+              "dark": "#000000",
+              "light": "#ffffff"
+            },
+            "brand_text_color": {
+              "dark": "#ffffff",
+              "light": "#000000"
+            }
+          }
+        },
+        "community_setting": {
+          "ios_app_enabled": false,
+          "show_ios_app_banner": false,
+          "deactivate_account_enabled": false,
+          "allow_profile_search_indexing": false,
+          "truncate_post_body_in_email_notifications": false,
+          "hide_emails_on_member_profiles": false,
+          "allow_members_to_go_live": false,
+          "enforce_otp_for_signup": false,
+          "community_activity_notifications_email_enabled": false,
+          "community_activity_notifications_in_app_enabled": false,
+          "desktop_app_community_visibility_enabled": false,
+          "default_logged_out_redirect_type": "Site::Page",
+          "default_logged_out_redirect_id": 34,
+          "allow_moderator_csv_download": false,
+          "member_media_uploads_enabled": false,
+          "default_space_ids": []
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "community": {
+        "name": "Synthetic Community",
+        "locale": "en",
+        "slug": "synthetic",
+        "allow_signups_to_public_community": false,
+        "community_switcher_enabled": false,
+        "custom_cta_for_share_links": false,
+        "locked_post_cta_heading": "",
+        "locked_post_cta_body": "",
+        "locked_post_cta_button_text": "",
+        "locked_post_cta_button_url": "https://example.invalid/signup",
+        "custom_tos_enabled": false,
+        "custom_tos": "https://example.invalid/tos",
+        "default_search_sorting": "alphabetical",
+        "is_private": false,
+        "private_signup_link_label": "",
+        "private_signup_link_url": "https://example.invalid/signup",
+        "logo": "synthetic-signed-logo",
+        "reply_to_email": "support@example.test",
+        "white_label": false,
+        "default_existing_member_space_id": 31,
+        "default_logged_out_space_id": 32,
+        "default_new_member_space_id": 33,
+        "weekly_digest_enabled": false,
+        "digest_subject": "",
+        "digest_intro": "",
+        "digests_hide_posts": false,
+        "digests_hide_comments": false,
+        "digests_hide_stats": false,
+        "digests_hide_members": false,
+        "prefs": {
+          "brand_color": {
+            "dark": "#000000",
+            "light": "#ffffff"
+          },
+          "brand_text_color": {
+            "dark": "#ffffff",
+            "light": "#000000"
+          }
+        }
+      },
+      "community_setting": {
+        "ios_app_enabled": false,
+        "show_ios_app_banner": false,
+        "deactivate_account_enabled": false,
+        "allow_profile_search_indexing": false,
+        "truncate_post_body_in_email_notifications": false,
+        "hide_emails_on_member_profiles": false,
+        "allow_members_to_go_live": false,
+        "enforce_otp_for_signup": false,
+        "community_activity_notifications_email_enabled": false,
+        "community_activity_notifications_in_app_enabled": false,
+        "desktop_app_community_visibility_enabled": false,
+        "default_logged_out_redirect_type": "Site::Page",
+        "default_logged_out_redirect_id": 34,
+        "allow_moderator_csv_download": false,
+        "member_media_uploads_enabled": false,
+        "default_space_ids": []
+      }
+    },
+    "response": {
+      "id": 11,
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "community_members.list_members",
+    "resource": "community_members",
+    "name": "list_members",
+    "method": "GET",
+    "path": "/api/admin/v2/community_members",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "status": "inactive",
+      "member_tag_ids": [
+        41,
+        42
+      ]
+    },
+    "query": "page=2&per_page=4&status=inactive&member_tag_ids=41%2C42",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 21,
+          "name": "Synthetic Member",
+          "email": "member@example.test",
+          "profile_confirmed_at": null,
+          "member_since": null,
+          "member_since_overridden": false,
+          "active": false,
+          "profile_fields": [
+            {
+              "key": "profile_field_1",
+              "community_member_profile_field": {
+                "text": "",
+                "community_member_choices": []
+              }
+            }
+          ],
+          "flattened_profile_fields": {
+            "profile_field_1": ""
+          },
+          "future": {
+            "enabled": false,
+            "count": 0,
+            "nullable": null
+          }
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      403
+    ]
+  },
+  {
+    "case_id": "community_members.get",
+    "resource": "community_members",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/community_members/21",
+    "args": [
+      21
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 21,
+      "name": "Synthetic Member",
+      "email": "member@example.test",
+      "profile_confirmed_at": null,
+      "member_since": null,
+      "member_since_overridden": false,
+      "active": false,
+      "profile_fields": [
+        {
+          "key": "profile_field_1",
+          "community_member_profile_field": {
+            "text": "",
+            "community_member_choices": []
+          }
+        }
+      ],
+      "flattened_profile_fields": {
+        "profile_field_1": ""
+      },
+      "future": {
+        "enabled": false,
+        "count": 0,
+        "nullable": null
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "community_members.search",
+    "resource": "community_members",
+    "name": "search",
+    "method": "GET",
+    "path": "/api/admin/v2/community_members/search",
+    "args": [
+      "member@example.test"
+    ],
+    "kwargs": {},
+    "query": "email=member%40example.test",
+    "body": null,
+    "response": {
+      "id": 21,
+      "name": "Synthetic Member",
+      "email": "member@example.test",
+      "profile_confirmed_at": null,
+      "member_since": null,
+      "member_since_overridden": false,
+      "active": false,
+      "profile_fields": [
+        {
+          "key": "profile_field_1",
+          "community_member_profile_field": {
+            "text": "",
+            "community_member_choices": []
+          }
+        }
+      ],
+      "flattened_profile_fields": {
+        "profile_field_1": ""
+      },
+      "future": {
+        "enabled": false,
+        "count": 0,
+        "nullable": null
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "community_members.create",
+    "resource": "community_members",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/community_members",
+    "args": [
+      {
+        "email": "member@example.test",
+        "password": "Synthetic!7",
+        "skip_invitation": false,
+        "avatar": "synthetic-signed-avatar",
+        "name": "Synthetic Member",
+        "headline": "",
+        "is_flagged": false,
+        "preferences": {
+          "messaging_enabled_by_admin": false
+        },
+        "space_ids": [],
+        "space_group_ids": [
+          32
+        ],
+        "member_tag_ids": [
+          41,
+          42
+        ],
+        "community_member_profile_fields": {
+          "profile_field_1": "",
+          "profile_field_2": "Synthetic"
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "email": "member@example.test",
+      "password": "Synthetic!7",
+      "skip_invitation": false,
+      "avatar": "synthetic-signed-avatar",
+      "name": "Synthetic Member",
+      "headline": "",
+      "is_flagged": false,
+      "preferences": {
+        "messaging_enabled_by_admin": false
+      },
+      "space_ids": [],
+      "space_group_ids": [
+        32
+      ],
+      "member_tag_ids": [
+        41,
+        42
+      ],
+      "community_member_profile_fields": {
+        "profile_field_1": "",
+        "profile_field_2": "Synthetic"
+      }
+    },
+    "response": {
+      "message": "Synthetic created",
+      "community_member": {
+        "id": 21,
+        "name": "Synthetic Member",
+        "email": "member@example.test",
+        "profile_confirmed_at": null,
+        "member_since": null,
+        "member_since_overridden": false,
+        "active": false,
+        "profile_fields": [
+          {
+            "key": "profile_field_1",
+            "community_member_profile_field": {
+              "text": "",
+              "community_member_choices": []
+            }
+          }
+        ],
+        "flattened_profile_fields": {
+          "profile_field_1": ""
+        },
+        "future": {
+          "enabled": false,
+          "count": 0,
+          "nullable": null
+        }
+      },
+      "future": false
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      403
+    ]
+  },
+  {
+    "case_id": "community_members.update",
+    "resource": "community_members",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/community_members/21",
+    "args": [
+      21,
+      {
+        "avatar": "synthetic-signed-avatar",
+        "name": "Synthetic Member",
+        "headline": "",
+        "is_flagged": false,
+        "preferences": {
+          "messaging_enabled_by_admin": false,
+          "visible_in_member_directory": false,
+          "make_my_email_public": false,
+          "messaging_enabled": false
+        },
+        "space_ids": [],
+        "space_group_ids": [
+          32
+        ],
+        "member_tag_ids": [
+          41,
+          42
+        ],
+        "community_member_profile_fields": {
+          "profile_field_1": "",
+          "profile_field_2": "Synthetic"
+        },
+        "member_since": "2020-01-01T00:00:00Z"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "avatar": "synthetic-signed-avatar",
+      "name": "Synthetic Member",
+      "headline": "",
+      "is_flagged": false,
+      "preferences": {
+        "messaging_enabled_by_admin": false,
+        "visible_in_member_directory": false,
+        "make_my_email_public": false,
+        "messaging_enabled": false
+      },
+      "space_ids": [],
+      "space_group_ids": [
+        32
+      ],
+      "member_tag_ids": [
+        41,
+        42
+      ],
+      "community_member_profile_fields": {
+        "profile_field_1": "",
+        "profile_field_2": "Synthetic"
+      },
+      "member_since": "2020-01-01T00:00:00Z"
+    },
+    "response": {
+      "id": 21,
+      "name": "Synthetic Member",
+      "email": "member@example.test",
+      "profile_confirmed_at": null,
+      "member_since": null,
+      "member_since_overridden": false,
+      "active": false,
+      "profile_fields": [
+        {
+          "key": "profile_field_1",
+          "community_member_profile_field": {
+            "text": "",
+            "community_member_choices": []
+          }
+        }
+      ],
+      "flattened_profile_fields": {
+        "profile_field_1": ""
+      },
+      "future": {
+        "enabled": false,
+        "count": 0,
+        "nullable": null
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      403,
+      404
+    ]
+  },
+  {
+    "case_id": "community_members.deactivate",
+    "resource": "community_members",
+    "name": "deactivate",
+    "method": "DELETE",
+    "path": "/api/admin/v2/community_members/21",
+    "args": [
+      21
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "message": "Synthetic success",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      403,
+      404
+    ]
+  },
+  {
+    "case_id": "community_members.delete_member",
+    "resource": "community_members",
+    "name": "delete_member",
+    "method": "PUT",
+    "path": "/api/admin/v2/community_members/21/delete_member",
+    "args": [
+      21
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "message": "Synthetic success",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      400,
+      401,
+      404
+    ]
+  },
+  {
+    "case_id": "community_members.ban_member",
+    "resource": "community_members",
+    "name": "ban_member",
+    "method": "PUT",
+    "path": "/api/admin/v2/community_members/21/ban_member",
+    "args": [
+      21
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "message": "Synthetic success",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      404,
+      400
+    ]
+  },
+  {
+    "case_id": "community_leads.create",
+    "resource": "community_leads",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/community_leads",
+    "args": [
+      {
+        "email": "lead@example.test",
+        "name": "Synthetic Lead",
+        "member_tag_ids": []
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "email": "lead@example.test",
+      "name": "Synthetic Lead",
+      "member_tag_ids": []
+    },
+    "response": {
+      "id": 61,
+      "type": "CommunityLead",
+      "email": "lead@example.test",
+      "sqid": "synthetic-sqid",
+      "future": null
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "community_leads.delete",
+    "resource": "community_leads",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/community_leads/61",
+    "args": [
+      61
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "message": "Synthetic success",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "contact_notes.create",
+    "resource": "contact_notes",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/contacts/synthetic-sqid/contact_notes",
+    "args": [
+      "synthetic-sqid",
+      {
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic internal note",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Synthetic internal note",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "response": {
+      "id": 71,
+      "contact_id": 61,
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Synthetic internal note",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "policies": {
+        "can_edit": false,
+        "can_destroy": false
+      },
+      "future": null
+    },
+    "success_status": 201,
+    "error_statuses": [
+      401,
+      404,
+      422,
+      403
+    ]
+  },
+  {
+    "case_id": "contact_notes.list_notes",
+    "resource": "contact_notes",
+    "name": "list_notes",
+    "method": "GET",
+    "path": "/api/admin/v2/contacts/synthetic-sqid/contact_notes",
+    "args": [
+      "synthetic-sqid"
+    ],
+    "kwargs": {
+      "page": 2
+    },
+    "query": "page=2",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 71,
+          "tiptap_body": null,
+          "policies": {
+            "can_edit": false
+          }
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "invitation_links.list_links",
+    "resource": "invitation_links",
+    "name": "list_links",
+    "method": "GET",
+    "path": "/api/admin/v2/invitation_links",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "name": "",
+      "status": "revoked"
+    },
+    "query": "page=2&per_page=4&name=&status=revoked",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 81,
+          "active": false,
+          "member_tag_ids": [
+            "41"
+          ],
+          "access_group_ids": [],
+          "redirect_space_id": null,
+          "paywall": null,
+          "future": null
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      400,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "invitation_links.create",
+    "resource": "invitation_links",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/invitation_links",
+    "args": [
+      {
+        "name": "Synthetic Link",
+        "redirect_space_id": 31,
+        "access_group_ids": [],
+        "member_tag_ids": [
+          41
+        ],
+        "paywall": {
+          "paywall_id": 51,
+          "paywall_price_id": 52,
+          "paywall_trial_days": 7,
+          "paywall_coupon_code": ""
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "Synthetic Link",
+      "redirect_space_id": 31,
+      "access_group_ids": [],
+      "member_tag_ids": [
+        41
+      ],
+      "paywall": {
+        "paywall_id": 51,
+        "paywall_price_id": 52,
+        "paywall_trial_days": 7,
+        "paywall_coupon_code": ""
+      }
+    },
+    "response": {
+      "id": 81,
+      "name": "Synthetic Link",
+      "redirect_space_id": 31,
+      "access_group_ids": [],
+      "member_tag_ids": [
+        41
+      ],
+      "paywall": {
+        "paywall_id": 51,
+        "paywall_price_id": 52,
+        "paywall_trial_days": 7,
+        "paywall_coupon_code": ""
+      },
+      "future": false
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "invitation_links.update",
+    "resource": "invitation_links",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/invitation_links/81",
+    "args": [
+      81,
+      {
+        "name": "Synthetic Link",
+        "redirect_space_id": 31,
+        "access_group_ids": [],
+        "member_tag_ids": [
+          41
+        ],
+        "paywall": {
+          "paywall_id": 51,
+          "paywall_price_id": 52,
+          "paywall_trial_days": 7,
+          "paywall_coupon_code": ""
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "Synthetic Link",
+      "redirect_space_id": 31,
+      "access_group_ids": [],
+      "member_tag_ids": [
+        41
+      ],
+      "paywall": {
+        "paywall_id": 51,
+        "paywall_price_id": 52,
+        "paywall_trial_days": 7,
+        "paywall_coupon_code": ""
+      }
+    },
+    "response": {
+      "id": 81,
+      "name": "Synthetic Link",
+      "redirect_space_id": 31,
+      "access_group_ids": [],
+      "member_tag_ids": [
+        41
+      ],
+      "paywall": {
+        "paywall_id": 51,
+        "paywall_price_id": 52,
+        "paywall_trial_days": 7,
+        "paywall_coupon_code": ""
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      400,
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "invitation_links.delete",
+    "resource": "invitation_links",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/invitation_links/81",
+    "args": [
+      81
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "message": "Synthetic success",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "invitation_links.revoke",
+    "resource": "invitation_links",
+    "name": "revoke",
+    "method": "PATCH",
+    "path": "/api/admin/v2/invitation_links/81/revoke",
+    "args": [
+      81
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "message": "Synthetic success",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ]
+  }
+]

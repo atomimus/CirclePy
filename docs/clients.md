@@ -29,8 +29,11 @@ Admin v2, Data and both Headless facades expose a family-scoped
 `request(method, endpoint, *, params=None, json=None)` returning decoded JSON or
 `None` for an empty success. Paths stay within the configured API root; pass
 query fields through `params`. Absolute URLs and path traversal are rejected.
-Admin v2 plural resources and Data resources are added by their respective
-implementation tasks. Both Headless facades expose explicit plural resources
+Both Admin v2 facades expose `.communities`, `.community_members`, `.community_leads`,
+`.contact_notes` and `.invitation_links`, covering all 19 operations in those tags.
+See [Admin v2 methods, fields and v1 migration](admin-v2-members.md). Remaining
+Admin v2 and named Data resources belong to their implementation tasks.
+Both Headless facades expose explicit plural resources
 for every frozen Member operation. No methods are generated at runtime.
 
 Both Headless facades also expose `.uploads` for direct metadata creation and

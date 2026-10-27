@@ -18,6 +18,11 @@ notifications](docs/admin-v1-learning.md), completing all 73 Admin v1 and three
 public routes with sync/native async methods. The guide records upstream example
 inconsistencies, GET JSON bodies and notification token isolation.
 
+`AdminV2Client` and `AsyncAdminV2Client` use a separate Admin V2 token with Bearer
+authentication. Their explicit community, member, lead, contact-note and invitation-link
+resources cover all 19 operations in those tags, including bounded pagination.
+See [Admin v2 methods, complete fields and v1 migration](docs/admin-v2-members.md).
+
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`
 (`sso_id` remains a compatibility spelling). See [client lifecycle and token

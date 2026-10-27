@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "freeze_id": "circlepy-v1-2026-10-27",
+  "frozen_sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+  "meaning": "Frozen tag-owned mapping; synthetic request contracts are not live Circle validation.",
+  "drift": [
+    {
+      "path": "/api/admin/v2/community",
+      "method": "PUT",
+      "field": "community.locale",
+      "change": "Current official schema adds de; forwarded transparently, frozen bytes preserved.",
+      "current_sha256": "43b834c26737e5a6ce6b5fc7dadf2a0b5a5bc8b2fc429818fd61cda8749feec4"
+    }
+  ],
+  "operations": [
+    {
+      "task_id": 15,
+      "method": "GET",
+      "path": "/api/admin/v2/community",
+      "tag": "Communities",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community/get",
+      "entry_point": "communities.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "PUT",
+      "path": "/api/admin/v2/community",
+      "tag": "Communities",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community/put",
+      "entry_point": "communities.update",
+      "query_fields": [],
+      "json_fields": [
+        "community",
+        "community.allow_signups_to_public_community",
+        "community.community_switcher_enabled",
+        "community.custom_cta_for_share_links",
+        "community.custom_tos",
+        "community.custom_tos_enabled",
+        "community.default_existing_member_space_id",
+        "community.default_logged_out_space_id",
+        "community.default_new_member_space_id",
+        "community.default_search_sorting",
+        "community.digest_intro",
+        "community.digest_subject",
+        "community.digests_hide_comments",
+        "community.digests_hide_members",
+        "community.digests_hide_posts",
+        "community.digests_hide_stats",
+        "community.is_private",
+        "community.locale",
+        "community.locked_post_cta_body",
+        "community.locked_post_cta_button_text",
+        "community.locked_post_cta_button_url",
+        "community.locked_post_cta_heading",
+        "community.logo",
+        "community.name",
+        "community.prefs",
+        "community.prefs.brand_color",
+        "community.prefs.brand_color.dark",
+        "community.prefs.brand_color.light",
+        "community.prefs.brand_text_color",
+        "community.prefs.brand_text_color.dark",
+        "community.prefs.brand_text_color.light",
+        "community.private_signup_link_label",
+        "community.private_signup_link_url",
+        "community.reply_to_email",
+        "community.slug",
+        "community.weekly_digest_enabled",
+        "community.white_label",
+        "community_setting",
+        "community_setting.allow_members_to_go_live",
+        "community_setting.allow_moderator_csv_download",
+        "community_setting.allow_profile_search_indexing",
+        "community_setting.community_activity_notifications_email_enabled",
+        "community_setting.community_activity_notifications_in_app_enabled",
+        "community_setting.deactivate_account_enabled",
+        "community_setting.default_logged_out_redirect_id",
+        "community_setting.default_logged_out_redirect_type",
+        "community_setting.default_space_ids",
+        "community_setting.desktop_app_community_visibility_enabled",
+        "community_setting.enforce_otp_for_signup",
+        "community_setting.hide_emails_on_member_profiles",
+        "community_setting.ios_app_enabled",
+        "community_setting.member_media_uploads_enabled",
+        "community_setting.show_ios_app_banner",
+        "community_setting.truncate_post_body_in_email_notifications"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "GET",
+      "path": "/api/admin/v2/community_members",
+      "tag": "Community Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_members/get",
+      "entry_point": "community_members.list_members",
+      "query_fields": [
+        "page",
+        "per_page",
+        "status",
+        "member_tag_ids"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "GET",
+      "path": "/api/admin/v2/community_members/{id}",
+      "tag": "Community Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_members~1{id}/get",
+      "entry_point": "community_members.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "GET",
+      "path": "/api/admin/v2/community_members/search",
+      "tag": "Community Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_members~1search/get",
+      "entry_point": "community_members.search",
+      "query_fields": [
+        "email"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "POST",
+      "path": "/api/admin/v2/community_members",
+      "tag": "Community Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_members/post",
+      "entry_point": "community_members.create",
+      "query_fields": [],
+      "json_fields": [
+        "avatar",
+        "community_member_profile_fields",
+        "email",
+        "headline",
+        "is_flagged",
+        "member_tag_ids",
+        "name",
+        "password",
+        "preferences",
+        "preferences.messaging_enabled_by_admin",
+        "skip_invitation",
+        "space_group_ids",
+        "space_ids"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "PUT",
+      "path": "/api/admin/v2/community_members/{id}",
+      "tag": "Community Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_members~1{id}/put",
+      "entry_point": "community_members.update",
+      "query_fields": [],
+      "json_fields": [
+        "avatar",
+        "community_member_profile_fields",
+        "headline",
+        "is_flagged",
+        "member_since",
+        "member_tag_ids",
+        "name",
+        "preferences",
+        "preferences.make_my_email_public",
+        "preferences.messaging_enabled",
+        "preferences.messaging_enabled_by_admin",
+        "preferences.visible_in_member_directory",
+        "space_group_ids",
+        "space_ids"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "403",
+        "404"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "DELETE",
+      "path": "/api/admin/v2/community_members/{id}",
+      "tag": "Community Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_members~1{id}/delete",
+      "entry_point": "community_members.deactivate",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "422",
+        "403",
+        "404"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "PUT",
+      "path": "/api/admin/v2/community_members/{id}/delete_member",
+      "tag": "Community Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_members~1{id}~1delete_member/put",
+      "entry_point": "community_members.delete_member",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "400",
+        "401",
+        "404"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "PUT",
+      "path": "/api/admin/v2/community_members/{id}/ban_member",
+      "tag": "Community Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_members~1{id}~1ban_member/put",
+      "entry_point": "community_members.ban_member",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "404",
+        "400"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "POST",
+      "path": "/api/admin/v2/community_leads",
+      "tag": "Community Leads",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_leads/post",
+      "entry_point": "community_leads.create",
+      "query_fields": [],
+      "json_fields": [
+        "email",
+        "member_tag_ids",
+        "name"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "DELETE",
+      "path": "/api/admin/v2/community_leads/{id}",
+      "tag": "Community Leads",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_leads~1{id}/delete",
+      "entry_point": "community_leads.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "POST",
+      "path": "/api/admin/v2/contacts/{contact_id}/contact_notes",
+      "tag": "Contact Notes",
+      "source_pointer": "/paths/~1api~1admin~1v2~1contacts~1{contact_id}~1contact_notes/post",
+      "entry_point": "contact_notes.create",
+      "query_fields": [],
+      "json_fields": [
+        "tiptap_body",
+        "tiptap_body.body"
+      ],
+      "response_statuses": [
+        "201",
+        "401",
+        "404",
+        "422",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "GET",
+      "path": "/api/admin/v2/contacts/{contact_id}/contact_notes",
+      "tag": "Contact Notes",
+      "source_pointer": "/paths/~1api~1admin~1v2~1contacts~1{contact_id}~1contact_notes/get",
+      "entry_point": "contact_notes.list_notes",
+      "query_fields": [
+        "page"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "GET",
+      "path": "/api/admin/v2/invitation_links",
+      "tag": "Invitation Links",
+      "source_pointer": "/paths/~1api~1admin~1v2~1invitation_links/get",
+      "entry_point": "invitation_links.list_links",
+      "query_fields": [
+        "page",
+        "per_page",
+        "name",
+        "status"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "400",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "POST",
+      "path": "/api/admin/v2/invitation_links",
+      "tag": "Invitation Links",
+      "source_pointer": "/paths/~1api~1admin~1v2~1invitation_links/post",
+      "entry_point": "invitation_links.create",
+      "query_fields": [],
+      "json_fields": [
+        "access_group_ids",
+        "member_tag_ids",
+        "name",
+        "paywall",
+        "paywall.paywall_coupon_code",
+        "paywall.paywall_id",
+        "paywall.paywall_price_id",
+        "paywall.paywall_trial_days",
+        "redirect_space_id"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "PUT",
+      "path": "/api/admin/v2/invitation_links/{id}",
+      "tag": "Invitation Links",
+      "source_pointer": "/paths/~1api~1admin~1v2~1invitation_links~1{id}/put",
+      "entry_point": "invitation_links.update",
+      "query_fields": [],
+      "json_fields": [
+        "access_group_ids",
+        "member_tag_ids",
+        "name",
+        "paywall",
+        "paywall.paywall_coupon_code",
+        "paywall.paywall_id",
+        "paywall.paywall_price_id",
+        "paywall.paywall_trial_days",
+        "redirect_space_id"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "400",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "DELETE",
+      "path": "/api/admin/v2/invitation_links/{id}",
+      "tag": "Invitation Links",
+      "source_pointer": "/paths/~1api~1admin~1v2~1invitation_links~1{id}/delete",
+      "entry_point": "invitation_links.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 15,
+      "method": "PATCH",
+      "path": "/api/admin/v2/invitation_links/{id}/revoke",
+      "tag": "Invitation Links",
+      "source_pointer": "/paths/~1api~1admin~1v2~1invitation_links~1{id}~1revoke/patch",
+      "entry_point": "invitation_links.revoke",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-members.json",
+      "tests": "tests/test_admin_v2_members.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    }
+  ]
+}
