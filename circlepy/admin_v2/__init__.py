@@ -77,7 +77,20 @@ from .async_billing import (
     AsyncPaymentMethodSettingsAPI, AsyncTaxSettingsAPI,
 )
 
+from .paywalls import (
+    PaywallAffiliatePayoutsAPI, PaywallAffiliatesAPI, PaywallCouponsAPI,
+    PaywallGroupsAPI, PaywallsAPI,
+)
+from .async_paywalls import (
+    AsyncPaywallAffiliatePayoutsAPI, AsyncPaywallAffiliatesAPI, AsyncPaywallCouponsAPI,
+    AsyncPaywallGroupsAPI, AsyncPaywallsAPI,
+)
+
 __all__ = [
+    "PaywallAffiliatePayoutsAPI", "PaywallAffiliatesAPI", "PaywallCouponsAPI",
+    "PaywallGroupsAPI", "PaywallsAPI", "AsyncPaywallAffiliatePayoutsAPI",
+    "AsyncPaywallAffiliatesAPI", "AsyncPaywallCouponsAPI", "AsyncPaywallGroupsAPI",
+    "AsyncPaywallsAPI",
     "CommunityMemberChargesAPI", "CommunityMemberSubscriptionsAPI",
     "PaymentMethodSettingsAPI", "TaxSettingsAPI",
     "AsyncCommunityMemberChargesAPI", "AsyncCommunityMemberSubscriptionsAPI",

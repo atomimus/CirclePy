@@ -113,7 +113,9 @@ class AdminV2Client(_SyncAPIClient):
                                ChatPreferencesAPI, ChatRoomMessageImportsAPI, MessagesAPI,
                                FlaggedContentsAPI, FormsAPI, GamificationAPI, WorkflowsAPI,
                                CommunityMemberChargesAPI, CommunityMemberSubscriptionsAPI,
-                               PaymentMethodSettingsAPI, TaxSettingsAPI)
+                               PaymentMethodSettingsAPI, TaxSettingsAPI,
+                               PaywallAffiliatePayoutsAPI, PaywallAffiliatesAPI,
+                               PaywallCouponsAPI, PaywallGroupsAPI, PaywallsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -164,6 +166,11 @@ class AdminV2Client(_SyncAPIClient):
         self.community_member_subscriptions = CommunityMemberSubscriptionsAPI(self)
         self.payment_method_settings = PaymentMethodSettingsAPI(self)
         self.tax_settings = TaxSettingsAPI(self)
+        self.paywall_affiliate_payouts = PaywallAffiliatePayoutsAPI(self)
+        self.paywall_affiliates = PaywallAffiliatesAPI(self)
+        self.paywall_coupons = PaywallCouponsAPI(self)
+        self.paywall_groups = PaywallGroupsAPI(self)
+        self.paywalls = PaywallsAPI(self)
 
 
 class AsyncAdminV2Client(_AsyncAPIClient):
@@ -190,7 +197,9 @@ class AsyncAdminV2Client(_AsyncAPIClient):
                                AsyncChatPreferencesAPI, AsyncChatRoomMessageImportsAPI, AsyncMessagesAPI,
                                AsyncFlaggedContentsAPI, AsyncFormsAPI, AsyncGamificationAPI, AsyncWorkflowsAPI,
                                AsyncCommunityMemberChargesAPI, AsyncCommunityMemberSubscriptionsAPI,
-                               AsyncPaymentMethodSettingsAPI, AsyncTaxSettingsAPI)
+                               AsyncPaymentMethodSettingsAPI, AsyncTaxSettingsAPI,
+                               AsyncPaywallAffiliatePayoutsAPI, AsyncPaywallAffiliatesAPI,
+                               AsyncPaywallCouponsAPI, AsyncPaywallGroupsAPI, AsyncPaywallsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -241,3 +250,8 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.community_member_subscriptions = AsyncCommunityMemberSubscriptionsAPI(self)
         self.payment_method_settings = AsyncPaymentMethodSettingsAPI(self)
         self.tax_settings = AsyncTaxSettingsAPI(self)
+        self.paywall_affiliate_payouts = AsyncPaywallAffiliatePayoutsAPI(self)
+        self.paywall_affiliates = AsyncPaywallAffiliatesAPI(self)
+        self.paywall_coupons = AsyncPaywallCouponsAPI(self)
+        self.paywall_groups = AsyncPaywallGroupsAPI(self)
+        self.paywalls = AsyncPaywallsAPI(self)

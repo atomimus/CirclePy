@@ -26,3 +26,4 @@ prune docs/v1-release
 global-exclude *.py[cod] .env .env.* .pypirc
 include docs/admin-v2-operations.md
 include docs/admin-v2-billing.md
+include docs/admin-v2-paywalls.md

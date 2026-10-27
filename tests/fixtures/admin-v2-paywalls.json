@@ -1,0 +1,685 @@
+[
+  {
+    "case_id": "paywall_affiliate_payouts.export",
+    "resource": "paywall_affiliate_payouts",
+    "name": "export",
+    "method": "POST",
+    "path": "/api/admin/v2/paywall_affiliate_payouts/export",
+    "args": [
+      {
+        "community_member_ids": [
+          41,
+          42
+        ]
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "community_member_ids": [
+        41,
+        42
+      ]
+    },
+    "response": {
+      "id": 81,
+      "relation": "Paywalls::Affiliates::Payout",
+      "community_member_ids": [
+        41,
+        42
+      ],
+      "created_at": "2026-10-28T01:02:03+02:00",
+      "future": null
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {},
+      {
+        "community_member_ids": []
+      },
+      {
+        "community_member_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "paywall_affiliate_payouts.mark_paid",
+    "resource": "paywall_affiliate_payouts",
+    "name": "mark_paid",
+    "method": "POST",
+    "path": "/api/admin/v2/paywall_affiliate_payouts/mark_paid",
+    "args": [
+      {
+        "community_member_ids": [
+          41,
+          42
+        ]
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "community_member_ids": [
+        41,
+        42
+      ]
+    },
+    "response": {
+      "expected": 2,
+      "processed": 1,
+      "future": false
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {},
+      {
+        "community_member_ids": []
+      },
+      {
+        "community_member_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "paywall_affiliate_payouts.start",
+    "resource": "paywall_affiliate_payouts",
+    "name": "start",
+    "method": "POST",
+    "path": "/api/admin/v2/paywall_affiliate_payouts/start",
+    "args": [
+      {
+        "community_member_ids": [
+          41,
+          42
+        ]
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "community_member_ids": [
+        41,
+        42
+      ]
+    },
+    "response": {
+      "processing": 0,
+      "future": []
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {},
+      {
+        "community_member_ids": []
+      },
+      {
+        "community_member_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "paywall_affiliates.list_affiliates",
+    "resource": "paywall_affiliates",
+    "name": "list_affiliates",
+    "method": "GET",
+    "path": "/api/admin/v2/paywall_affiliates",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 100,
+      "filters": {
+        "status": "enrolled",
+        "campaign_id": 51,
+        "name_or_email": "sdk@example.test",
+        "code": "SDK"
+      }
+    },
+    "query": "page=2&per_page=100&filters%5Bstatus%5D=enrolled&filters%5Bcampaign_id%5D=51&filters%5Bname_or_email%5D=sdk%40example.test&filters%5Bcode%5D=SDK",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 100,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 31,
+          "status": "disabled",
+          "code": "sdk-only",
+          "enrolled_at": null,
+          "invited_at": "2026-10-28T01:02:03+02:00",
+          "community_member": {
+            "id": 41,
+            "name": "SDK Synthetic",
+            "email": "sdk@example.test"
+          },
+          "future": null
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "paywall_affiliates.invite",
+    "resource": "paywall_affiliates",
+    "name": "invite",
+    "method": "POST",
+    "path": "/api/admin/v2/paywall_affiliates/invite",
+    "args": [
+      {
+        "existing_member_ids": [
+          44,
+          41,
+          43,
+          42
+        ]
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "existing_member_ids": [
+        44,
+        41,
+        43,
+        42
+      ]
+    },
+    "response": {
+      "results": [
+        {
+          "community_member_id": 41,
+          "status": "invited"
+        },
+        {
+          "community_member_id": 42,
+          "status": "reinvited"
+        },
+        {
+          "community_member_id": 43,
+          "status": "already_active"
+        },
+        {
+          "community_member_id": 44,
+          "status": "failed",
+          "error": "Synthetic failure"
+        }
+      ],
+      "summary": {
+        "invited": 1,
+        "reinvited": 1,
+        "already_active": 1,
+        "failed": 1
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {
+        "existing_member_ids": []
+      },
+      {
+        "existing_member_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "paywall_affiliates.update",
+    "resource": "paywall_affiliates",
+    "name": "update",
+    "method": "PATCH",
+    "path": "/api/admin/v2/paywall_affiliates/31",
+    "args": [
+      31,
+      {
+        "status": "disabled"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "status": "disabled"
+    },
+    "response": {
+      "id": 31,
+      "status": "disabled",
+      "code": "sdk-only",
+      "enrolled_at": null,
+      "invited_at": "2026-10-28T01:02:03+02:00",
+      "community_member": {
+        "id": 41,
+        "name": "SDK Synthetic",
+        "email": "sdk@example.test"
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      404,
+      401,
+      403
+    ],
+    "request_variants": [
+      {
+        "status": "enrolled"
+      },
+      {
+        "status": "invited"
+      },
+      {}
+    ]
+  },
+  {
+    "case_id": "paywall_coupons.delete",
+    "resource": "paywall_coupons",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/paywall_coupons/91",
+    "args": [
+      91
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Coupon deleted",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "paywall_groups.create",
+    "resource": "paywall_groups",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/paywall_groups",
+    "args": [
+      {
+        "name": "SDK Group",
+        "currency_id": 1
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Group",
+      "currency_id": 1
+    },
+    "response": {
+      "id": 61,
+      "name": "SDK Group",
+      "currency_id": 1,
+      "created_at": "2026-10-28T01:02:03+02:00",
+      "updated_at": "2026-10-28T01:02:03+02:00",
+      "future": false
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "paywall_groups.update",
+    "resource": "paywall_groups",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/paywall_groups/61",
+    "args": [
+      61,
+      {
+        "name": "SDK Group",
+        "currency_id": 1
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Group",
+      "currency_id": 1
+    },
+    "response": {
+      "id": 61,
+      "name": "SDK Group",
+      "currency_id": 1,
+      "created_at": "2026-10-28T01:02:03+02:00",
+      "updated_at": "2026-10-28T01:02:03+02:00",
+      "future": false
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      404,
+      401,
+      403
+    ],
+    "request_variants": [
+      {},
+      {
+        "name": ""
+      },
+      {
+        "currency_id": 2
+      }
+    ]
+  },
+  {
+    "case_id": "paywalls.search",
+    "resource": "paywalls",
+    "name": "search",
+    "method": "GET",
+    "path": "/api/admin/v2/paywalls/search",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 100,
+      "name": "SDK Paywall",
+      "status": "draft,active,inactive",
+      "currency": "usd,jpy",
+      "paywall_id": "71,73",
+      "exclude_paywall_id": "74,75",
+      "subscription_group_id": "61,62",
+      "exclude_subscription_group_id": "63,64",
+      "sort": "title",
+      "direction": "asc"
+    },
+    "query": "page=2&per_page=100&name=SDK+Paywall&status=draft%2Cactive%2Cinactive&currency=usd%2Cjpy&paywall_id=71%2C73&exclude_paywall_id=74%2C75&subscription_group_id=61%2C62&exclude_subscription_group_id=63%2C64&sort=title&direction=asc",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 100,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 71,
+          "name": null,
+          "display_name": "SDK Paywall",
+          "status": "inactive",
+          "currency": null,
+          "paywall_group_id": null,
+          "subscription_group": null,
+          "access_groups_enabled": false,
+          "created_at": "2026-10-28T01:02:03+02:00",
+          "prices": [
+            {
+              "id": 72,
+              "name": null,
+              "status": "active",
+              "price_type": "installments",
+              "amount_in_cents": 9007199254740993,
+              "interval": null,
+              "interval_count": null,
+              "recurring": false,
+              "upfront_payment_amount_in_cents": 0,
+              "display_name": "Synthetic",
+              "future": null
+            }
+          ],
+          "future": []
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "paywalls.delete",
+    "resource": "paywalls",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/paywalls/71",
+    "args": [
+      71
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Paywall was deleted.",
+      "future": false
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      422,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "paywalls.archive",
+    "resource": "paywalls",
+    "name": "archive",
+    "method": "PUT",
+    "path": "/api/admin/v2/paywalls/71/archive",
+    "args": [
+      71
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Paywall was archived.",
+      "future": false
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      422,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "paywalls.publish",
+    "resource": "paywalls",
+    "name": "publish",
+    "method": "PUT",
+    "path": "/api/admin/v2/paywalls/71/publish",
+    "args": [
+      71
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Paywall was published.",
+      "future": false
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      422,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "paywalls.unarchive",
+    "resource": "paywalls",
+    "name": "unarchive",
+    "method": "PUT",
+    "path": "/api/admin/v2/paywalls/71/unarchive",
+    "args": [
+      71
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Paywall was unarchived.",
+      "future": false
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      422,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "paywalls.sync_member_access",
+    "resource": "paywalls",
+    "name": "sync_member_access",
+    "method": "POST",
+    "path": "/api/admin/v2/paywalls/71/member_access_syncs",
+    "args": [
+      71
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 101,
+      "status": "pending",
+      "created_at": "2026-10-28T01:02:03+02:00",
+      "future": null
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      401,
+      404,
+      403
+    ],
+    "request_variants": []
+  }
+]

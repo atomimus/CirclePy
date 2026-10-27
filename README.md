@@ -52,6 +52,10 @@ Both Admin v2 clients expose `.community_member_charges`,
 `.community_member_subscriptions`, `.payment_method_settings` and `.tax_settings`
 for all 11 [billing operations](docs/admin-v2-billing.md). These preserve integer
 currency subunits, calendar billing dates and complete export acknowledgments.
+Both now expose the 15 [paywall, affiliate and payout operations](docs/admin-v2-paywalls.md),
+with explicit state changes, JSON payout scopes and single-attempt financial calls.
+The [complete Admin v2 inventory](api/specs/admin-v2-inventory.json) reconciles
+all 172 frozen operations across every tag and owner with public sync/async methods.
 Refunds, cancellation options, trial changes, tax updates and emailed exports
 require explicit calls; all financial requests remain single-attempt.
 

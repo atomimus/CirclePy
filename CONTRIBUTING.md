@@ -247,3 +247,10 @@ export POSTs, error context and sync/native async parity. Every financial call
 stays single-attempt under timeout, disconnect, 429 and 5xx, with billing query
 redaction. The 32 functions in `docs/admin-v2-billing.md` run offline and in clean
 installed-artifact checks. Never exercise real financial effects as a test.
+
+Task 24 adds `python tools/check_admin_v2_paywalls_contract.py` for all 15 paywall,
+affiliate and payout operations and the complete 172-operation Admin v2 inventory.
+It reconciles every frozen tag/owner with explicit public sync/native async methods
+and independent synthetic contracts. State transitions, JSON payout scopes,
+no-replay behavior and all 34 guide functions run offline and in clean artifact
+installs. See `docs/admin-v2-paywalls.md` for provider limits and exact signatures.

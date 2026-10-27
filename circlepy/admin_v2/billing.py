@@ -17,7 +17,7 @@ class _BillingLogFilter(logging.Filter):
     def filter(self, record):
         message = record.getMessage()
         cleaned = re.sub(
-            r"(/(?:community_member_charges|community_member_subscriptions|payment_method_setting|tax_setting))(?=[/?\s\"'])(?:[/?][^\s\"']*)?",
+            r"(/(?:community_member_charges|community_member_subscriptions|payment_method_setting|tax_setting|paywall_affiliate_payouts|paywall_affiliates|paywall_coupons|paywall_groups|paywalls))(?=[/?\s\"'])(?:[/?][^\s\"']*)?",
             r"\1/[redacted]",
             message,
         )

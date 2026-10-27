@@ -1,0 +1,360 @@
+{
+  "task_id": 24,
+  "family": "admin-v2",
+  "frozen_sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+  "operations": [
+    {
+      "task_id": 24,
+      "method": "POST",
+      "path": "/api/admin/v2/paywall_affiliate_payouts/export",
+      "tag": "Paywall Affiliate Payouts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywall_affiliate_payouts~1export/post",
+      "entry_point": "paywall_affiliate_payouts.export",
+      "query_fields": [],
+      "json_fields": [
+        "community_member_ids"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "POST",
+      "path": "/api/admin/v2/paywall_affiliate_payouts/mark_paid",
+      "tag": "Paywall Affiliate Payouts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywall_affiliate_payouts~1mark_paid/post",
+      "entry_point": "paywall_affiliate_payouts.mark_paid",
+      "query_fields": [],
+      "json_fields": [
+        "community_member_ids"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "POST",
+      "path": "/api/admin/v2/paywall_affiliate_payouts/start",
+      "tag": "Paywall Affiliate Payouts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywall_affiliate_payouts~1start/post",
+      "entry_point": "paywall_affiliate_payouts.start",
+      "query_fields": [],
+      "json_fields": [
+        "community_member_ids"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "GET",
+      "path": "/api/admin/v2/paywall_affiliates",
+      "tag": "Paywall Affiliates",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywall_affiliates/get",
+      "entry_point": "paywall_affiliates.list_affiliates",
+      "query_fields": [
+        "page",
+        "per_page",
+        "filters"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "POST",
+      "path": "/api/admin/v2/paywall_affiliates/invite",
+      "tag": "Paywall Affiliates",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywall_affiliates~1invite/post",
+      "entry_point": "paywall_affiliates.invite",
+      "query_fields": [],
+      "json_fields": [
+        "existing_member_ids"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "PATCH",
+      "path": "/api/admin/v2/paywall_affiliates/{id}",
+      "tag": "Paywall Affiliates",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywall_affiliates~1{id}/patch",
+      "entry_point": "paywall_affiliates.update",
+      "query_fields": [],
+      "json_fields": [
+        "status"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "DELETE",
+      "path": "/api/admin/v2/paywall_coupons/{id}",
+      "tag": "Paywall Coupons",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywall_coupons~1{id}/delete",
+      "entry_point": "paywall_coupons.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "POST",
+      "path": "/api/admin/v2/paywall_groups",
+      "tag": "Paywall Groups",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywall_groups/post",
+      "entry_point": "paywall_groups.create",
+      "query_fields": [],
+      "json_fields": [
+        "currency_id",
+        "name"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "PUT",
+      "path": "/api/admin/v2/paywall_groups/{id}",
+      "tag": "Paywall Groups",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywall_groups~1{id}/put",
+      "entry_point": "paywall_groups.update",
+      "query_fields": [],
+      "json_fields": [
+        "currency_id",
+        "name"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "GET",
+      "path": "/api/admin/v2/paywalls/search",
+      "tag": "Paywalls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywalls~1search/get",
+      "entry_point": "paywalls.search",
+      "query_fields": [
+        "page",
+        "per_page",
+        "name",
+        "status",
+        "currency",
+        "paywall_id",
+        "exclude_paywall_id",
+        "subscription_group_id",
+        "exclude_subscription_group_id",
+        "sort",
+        "direction"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "DELETE",
+      "path": "/api/admin/v2/paywalls/{id}",
+      "tag": "Paywalls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywalls~1{id}/delete",
+      "entry_point": "paywalls.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "422",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "PUT",
+      "path": "/api/admin/v2/paywalls/{id}/archive",
+      "tag": "Paywalls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywalls~1{id}~1archive/put",
+      "entry_point": "paywalls.archive",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "422",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "POST",
+      "path": "/api/admin/v2/paywalls/{paywall_id}/member_access_syncs",
+      "tag": "Paywalls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywalls~1{paywall_id}~1member_access_syncs/post",
+      "entry_point": "paywalls.sync_member_access",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "404",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "PUT",
+      "path": "/api/admin/v2/paywalls/{id}/publish",
+      "tag": "Paywalls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywalls~1{id}~1publish/put",
+      "entry_point": "paywalls.publish",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "422",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 24,
+      "method": "PUT",
+      "path": "/api/admin/v2/paywalls/{id}/unarchive",
+      "tag": "Paywalls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1paywalls~1{id}~1unarchive/put",
+      "entry_point": "paywalls.unarchive",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "422",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-paywalls.json",
+      "tests": "tests/test_admin_v2_paywalls.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    }
+  ]
+}

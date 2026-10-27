@@ -30,8 +30,8 @@ Admin v2 and both Headless facades expose a family-scoped
 query fields through `params`. Absolute URLs and path traversal are rejected.
 Both Admin v2 facades expose `.communities`, `.community_members`, `.community_leads`,
 `.contact_notes` and `.invitation_links`, covering all 19 operations in those tags.
-See [Admin v2 methods, fields and v1 migration](admin-v2-members.md). Remaining
-Admin v2 resources belong to their implementation tasks.
+See [Admin v2 methods, fields and v1 migration](admin-v2-members.md). The guides
+below cover the complete frozen Admin v2 surface.
 Both also expose the eight [space/group/access resources](admin-v2-access.md)
 and `.posts`, `.comments`, `.uploads`, `.embeds`, `.post_followers` for all 19
 [content/media operations](admin-v2-content.md), including documented basic-post
@@ -59,6 +59,13 @@ Both expose `.community_member_charges`, `.community_member_subscriptions`,
 iteration. Amounts remain integer subunits, dates retain their documented form,
 and financial requests never retry automatically. Refunds, cancellations,
 billing changes, tax updates and emailed exports are explicit calls.
+Both also expose `.paywalls`, `.paywall_groups`, `.paywall_coupons`,
+`.paywall_affiliates` and `.paywall_affiliate_payouts` for the 15
+[paywall and payout operations](admin-v2-paywalls.md). Publish/archive/unarchive,
+member-access jobs, affiliate invitations/status updates and payout actions are
+explicit and single-attempt. The [complete inventory](../api/specs/admin-v2-inventory.json)
+reconciles every tag/owner and all 172 frozen Admin v2 operations with public
+sync/native async methods; live provider effects remain separately unverified.
 
 Both Headless facades expose explicit plural resources
 for every frozen Member operation. No methods are generated at runtime.

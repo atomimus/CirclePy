@@ -271,15 +271,17 @@ community ID injection, implicit client switch or result projection occurs.
 V2 methods do not reproduce v1 query-based membership options or Headless nested
 profile-record/choice updates. V1 `skip_invitation=True` defaults are not applied
 to v2. Existing-account password behavior follows the v2 documentation above.
-Other legacy operations retain their own guides and must wait for the matching
-v2 resource task before migrating. Generic `client.request(...)` remains usable
+Other legacy operations retain their own guides; use the matching v2 resource
+guide when migrating. Generic `client.request(...)` remains usable
 within the selected family; it does not validate a caller-built endpoint's schema.
 
-The agreed implementation package is `circlepy.admin_v2`, with explicit plural
-attributes registered in the two client constructors. The following table reserves
-the remaining tag-based layout; Task 16's resources are documented in
+The implementation package is `circlepy.admin_v2`, with explicit plural
+attributes registered in the two client constructors. All 172 frozen Admin v2
+operations are implemented and reconciled in the
+[complete inventory](../api/specs/admin-v2-inventory.json).
+Task 16's resources are documented in
 [spaces, groups and access](admin-v2-access.md).
-Owning tasks will define their exact methods from the frozen/current schemas.
+The table maps each owner's implemented resources to the frozen/current schemas.
 
 | Owner | Resource names |
 |---|---|
@@ -292,11 +294,11 @@ Owning tasks will define their exact methods from the frozen/current schemas.
 | 21, implemented | `profile_fields`, `page_profile_fields`, `advanced_search`, `locations`, `connect_settings`, `filter_kit_configuration`, `filter_kit_controls` ([profile/filter guide](admin-v2-profiles.md)) |
 | 22 | `messages`, `chat_preferences`, `chat_room_message_imports`, `forms`, `workflows`, `flagged_contents`, `gamification` |
 | 23 | `community_member_charges`, `community_member_subscriptions`, `payment_method_settings`, `tax_settings` |
-| 24 | `paywalls`, `paywall_groups`, `paywall_coupons`, `paywall_affiliates`, `paywall_affiliate_payouts` |
+| 24, implemented | `paywalls`, `paywall_groups`, `paywall_coupons`, `paywall_affiliates`, `paywall_affiliate_payouts` ([paywall guide](admin-v2-paywalls.md)) |
 
 The machine-readable [operation map](../api/specs/admin-v2-members-coverage.json)
 reconciles all 19 frozen tag-owned operations, request fields, error statuses and
-offline sync/async contracts. The six frozen snapshots and all 357 operation owners
+offline sync/async contracts. The five frozen snapshots and all 354 operation owners
 are preserved. Live upstream hashes differ, so global `--verify-live` is not a
 passing gate. Event invitation-description drift remains with the event task.
 

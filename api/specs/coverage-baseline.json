@@ -2853,9 +2853,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallCouponsAPI.delete",
+          "line": 73,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallCouponsAPI.delete",
+          "line": 86,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2875,9 +2888,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallsAPI.delete",
+          "line": 136,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallsAPI.delete",
+          "line": 145,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4659,9 +4685,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallAffiliatesAPI.list_affiliates",
+          "line": 36,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallAffiliatesAPI.list_affiliates",
+          "line": 53,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4681,9 +4720,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallsAPI.search",
+          "line": 94,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallsAPI.search",
+          "line": 107,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5718,9 +5770,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallAffiliatesAPI.update",
+          "line": 65,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallAffiliatesAPI.update",
+          "line": 78,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6720,9 +6785,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallAffiliatePayoutsAPI.export",
+          "line": 14,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallAffiliatePayoutsAPI.export",
+          "line": 31,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6742,9 +6820,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallAffiliatePayoutsAPI.mark_paid",
+          "line": 28,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallAffiliatePayoutsAPI.mark_paid",
+          "line": 45,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6764,9 +6855,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallAffiliatePayoutsAPI.start",
+          "line": 21,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallAffiliatePayoutsAPI.start",
+          "line": 38,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6786,9 +6890,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallAffiliatesAPI.invite",
+          "line": 61,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallAffiliatesAPI.invite",
+          "line": 74,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6808,9 +6925,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallGroupsAPI.create",
+          "line": 78,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallGroupsAPI.create",
+          "line": 91,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6830,9 +6960,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallsAPI.sync_member_access",
+          "line": 151,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallsAPI.sync_member_access",
+          "line": 160,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -7762,9 +7905,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallGroupsAPI.update",
+          "line": 82,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallGroupsAPI.update",
+          "line": 95,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -7784,9 +7940,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallsAPI.archive",
+          "line": 140,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallsAPI.archive",
+          "line": 149,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -7806,9 +7975,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallsAPI.publish",
+          "line": 143,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallsAPI.publish",
+          "line": 152,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -7828,9 +8010,22 @@
         }
       ],
       "task_id": 24,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_paywalls.py",
+          "symbol": "AsyncPaywallsAPI.unarchive",
+          "line": 147,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/paywalls.py",
+          "symbol": "PaywallsAPI.unarchive",
+          "line": 156,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
