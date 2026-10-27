@@ -1,0 +1,499 @@
+{
+  "schema_version": 1,
+  "task_id": 20,
+  "source": "api/specs/admin-v2.yaml",
+  "frozen_sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+  "operations": [
+    {
+      "task_id": 20,
+      "method": "POST",
+      "path": "/api/admin/v2/community_segments",
+      "tag": "Community Segments",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_segments/post",
+      "entry_point": "community_segments.create",
+      "query_fields": [],
+      "json_fields": [
+        "community_segment_consumer_attributes",
+        "community_segment_consumer_attributes.consumer_id",
+        "community_segment_consumer_attributes.consumer_type",
+        "rules",
+        "rules.rule_type",
+        "rules.rules",
+        "rules.rules[].community_member_id",
+        "rules.rules[].email",
+        "rules.rules[].filter_type",
+        "rules.rules[].id",
+        "rules.rules[].key",
+        "rules.rules[].value",
+        "title",
+        "visible"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "GET",
+      "path": "/api/admin/v2/community_segments",
+      "tag": "Community Segments",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_segments/get",
+      "entry_point": "community_segments.list_segments",
+      "query_fields": [
+        "page",
+        "per_page",
+        "title"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "DELETE",
+      "path": "/api/admin/v2/community_segments/{id}",
+      "tag": "Community Segments",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_segments~1{id}/delete",
+      "entry_point": "community_segments.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "PUT",
+      "path": "/api/admin/v2/community_segments/{id}",
+      "tag": "Community Segments",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_segments~1{id}/put",
+      "entry_point": "community_segments.update",
+      "query_fields": [],
+      "json_fields": [
+        "community_segment_consumer_attributes",
+        "community_segment_consumer_attributes.consumer_id",
+        "community_segment_consumer_attributes.consumer_type",
+        "rules",
+        "rules.rule_type",
+        "rules.rules",
+        "rules.rules[].community_member_id",
+        "rules.rules[].email",
+        "rules.rules[].filter_type",
+        "rules.rules[].id",
+        "rules.rules[].key",
+        "rules.rules[].value",
+        "title",
+        "visible"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "POST",
+      "path": "/api/admin/v2/community_segments/{id}/duplicate",
+      "tag": "Community Segments",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_segments~1{id}~1duplicate/post",
+      "entry_point": "community_segments.duplicate",
+      "query_fields": [
+        "title"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "POST",
+      "path": "/api/admin/v2/member_tags",
+      "tag": "Member Tags",
+      "source_pointer": "/paths/~1api~1admin~1v2~1member_tags/post",
+      "entry_point": "member_tags.create",
+      "query_fields": [],
+      "json_fields": [
+        "color",
+        "custom_emoji",
+        "custom_emoji.emoji",
+        "custom_emoji.emoji_type",
+        "custom_emoji.identifier",
+        "custom_emoji.signed_id",
+        "display_format",
+        "display_locations",
+        "display_locations.member_directory",
+        "display_locations.post_bio",
+        "display_locations.profile_page",
+        "emoji",
+        "is_background_enabled",
+        "is_public",
+        "name"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "GET",
+      "path": "/api/admin/v2/member_tags",
+      "tag": "Member Tags",
+      "source_pointer": "/paths/~1api~1admin~1v2~1member_tags/get",
+      "entry_point": "member_tags.list_tags",
+      "query_fields": [
+        "page",
+        "per_page",
+        "name",
+        "is_public",
+        "sort"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "DELETE",
+      "path": "/api/admin/v2/member_tags/{id}",
+      "tag": "Member Tags",
+      "source_pointer": "/paths/~1api~1admin~1v2~1member_tags~1{id}/delete",
+      "entry_point": "member_tags.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "GET",
+      "path": "/api/admin/v2/member_tags/{id}",
+      "tag": "Member Tags",
+      "source_pointer": "/paths/~1api~1admin~1v2~1member_tags~1{id}/get",
+      "entry_point": "member_tags.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "PUT",
+      "path": "/api/admin/v2/member_tags/{id}",
+      "tag": "Member Tags",
+      "source_pointer": "/paths/~1api~1admin~1v2~1member_tags~1{id}/put",
+      "entry_point": "member_tags.update",
+      "query_fields": [],
+      "json_fields": [
+        "color",
+        "custom_emoji",
+        "custom_emoji.emoji",
+        "custom_emoji.emoji_type",
+        "custom_emoji.identifier",
+        "custom_emoji.signed_id",
+        "display_format",
+        "display_locations",
+        "display_locations.member_directory",
+        "display_locations.post_bio",
+        "display_locations.profile_page",
+        "emoji",
+        "is_background_enabled",
+        "is_public",
+        "name"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "POST",
+      "path": "/api/admin/v2/tagged_members",
+      "tag": "Tagged Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1tagged_members/post",
+      "entry_point": "tagged_members.create",
+      "query_fields": [],
+      "json_fields": [
+        "member_tag_id",
+        "user_email"
+      ],
+      "response_statuses": [
+        "201",
+        "403",
+        "404"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "DELETE",
+      "path": "/api/admin/v2/tagged_members",
+      "tag": "Tagged Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1tagged_members/delete",
+      "entry_point": "tagged_members.delete",
+      "query_fields": [
+        "user_email",
+        "member_tag_id"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "GET",
+      "path": "/api/admin/v2/tagged_members",
+      "tag": "Tagged Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1tagged_members/get",
+      "entry_point": "tagged_members.list_members",
+      "query_fields": [
+        "page",
+        "per_page",
+        "member_tag_ids"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "GET",
+      "path": "/api/admin/v2/tagged_members/{id}",
+      "tag": "Tagged Members",
+      "source_pointer": "/paths/~1api~1admin~1v2~1tagged_members~1{id}/get",
+      "entry_point": "tagged_members.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "POST",
+      "path": "/api/admin/v2/topics",
+      "tag": "Topics",
+      "source_pointer": "/paths/~1api~1admin~1v2~1topics/post",
+      "entry_point": "topics.create",
+      "query_fields": [],
+      "json_fields": [
+        "admin_only",
+        "name",
+        "space_ids"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "GET",
+      "path": "/api/admin/v2/topics",
+      "tag": "Topics",
+      "source_pointer": "/paths/~1api~1admin~1v2~1topics/get",
+      "entry_point": "topics.list_topics",
+      "query_fields": [
+        "page",
+        "per_page",
+        "name",
+        "sort"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "DELETE",
+      "path": "/api/admin/v2/topics/{id}",
+      "tag": "Topics",
+      "source_pointer": "/paths/~1api~1admin~1v2~1topics~1{id}/delete",
+      "entry_point": "topics.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "GET",
+      "path": "/api/admin/v2/topics/{id}",
+      "tag": "Topics",
+      "source_pointer": "/paths/~1api~1admin~1v2~1topics~1{id}/get",
+      "entry_point": "topics.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 20,
+      "method": "PUT",
+      "path": "/api/admin/v2/topics/{id}",
+      "tag": "Topics",
+      "source_pointer": "/paths/~1api~1admin~1v2~1topics~1{id}/put",
+      "entry_point": "topics.update",
+      "query_fields": [],
+      "json_fields": [
+        "admin_only",
+        "name",
+        "space_ids"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-organization.json",
+      "tests": "tests/test_admin_v2_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    }
+  ]
+}

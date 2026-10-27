@@ -35,6 +35,9 @@ progress updates, with matching sync/async methods and bounded pagination.
 Both cover all 11 [event, attendee and live transcript operations](docs/admin-v2-events.md),
 including recurrence settings, offset timestamps, event duplication, administrative
 RSVPs and complete raw VTT responses.
+Both cover all 19 [tag, topic and segment operations](docs/admin-v2-organization.md),
+including member tagging/removal, appearance settings, typed segment rules,
+selected-member arrays and segment duplication, with bounded pagination.
 
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`

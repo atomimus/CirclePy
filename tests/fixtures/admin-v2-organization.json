@@ -1,0 +1,1186 @@
+[
+  {
+    "case_id": "member_tags.create",
+    "resource": "member_tags",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/member_tags",
+    "args": [
+      {
+        "name": "SDK Cohort 20",
+        "color": "#0ce806",
+        "display_format": "icon",
+        "emoji": "🤩",
+        "is_background_enabled": false,
+        "is_public": false,
+        "display_locations": {
+          "member_directory": false,
+          "post_bio": false,
+          "profile_page": true
+        },
+        "custom_emoji": {
+          "emoji_type": "shapes",
+          "identifier": "shape-circle-cyan"
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Cohort 20",
+      "color": "#0ce806",
+      "display_format": "icon",
+      "emoji": "🤩",
+      "is_background_enabled": false,
+      "is_public": false,
+      "display_locations": {
+        "member_directory": false,
+        "post_bio": false,
+        "profile_page": true
+      },
+      "custom_emoji": {
+        "emoji_type": "shapes",
+        "identifier": "shape-circle-cyan"
+      }
+    },
+    "success_status": 201,
+    "response": {
+      "name": "SDK Cohort 20",
+      "color": "#0ce806",
+      "display_format": "icon",
+      "emoji": "🤩",
+      "is_background_enabled": false,
+      "is_public": false,
+      "display_locations": {
+        "member_directory": false,
+        "post_bio": false,
+        "profile_page": true
+      },
+      "custom_emoji": {
+        "emoji_type": "shapes",
+        "identifier": "shape-circle-cyan"
+      },
+      "id": 21,
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "tagged_members_count": 0,
+      "custom_emoji_url": null,
+      "custom_emoji_dark_url": null,
+      "future": {
+        "blank": "",
+        "zero": 0
+      }
+    },
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {
+        "name": "SDK Cohort 20",
+        "color": "#0ce806",
+        "display_format": "icon",
+        "emoji": "🤩",
+        "is_background_enabled": false,
+        "is_public": false,
+        "display_locations": {
+          "member_directory": false,
+          "post_bio": false,
+          "profile_page": true
+        },
+        "custom_emoji": {
+          "emoji_type": "emoji",
+          "emoji": "🤩"
+        }
+      },
+      {
+        "name": "SDK Cohort 20",
+        "color": "#0ce806",
+        "display_format": "icon",
+        "emoji": "🤩",
+        "is_background_enabled": false,
+        "is_public": false,
+        "display_locations": {
+          "member_directory": false,
+          "post_bio": false,
+          "profile_page": true
+        },
+        "custom_emoji": {
+          "emoji_type": "custom",
+          "signed_id": "synthetic-uploaded-blob"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "member_tags.update",
+    "resource": "member_tags",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/member_tags/21",
+    "args": [
+      21,
+      {
+        "name": "SDK Cohort 20",
+        "color": "#0ce806",
+        "display_format": "icon",
+        "emoji": "🤩",
+        "is_background_enabled": false,
+        "is_public": false,
+        "display_locations": {
+          "member_directory": false,
+          "post_bio": false,
+          "profile_page": true
+        },
+        "custom_emoji": {
+          "emoji_type": "shapes",
+          "identifier": "shape-circle-cyan"
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Cohort 20",
+      "color": "#0ce806",
+      "display_format": "icon",
+      "emoji": "🤩",
+      "is_background_enabled": false,
+      "is_public": false,
+      "display_locations": {
+        "member_directory": false,
+        "post_bio": false,
+        "profile_page": true
+      },
+      "custom_emoji": {
+        "emoji_type": "shapes",
+        "identifier": "shape-circle-cyan"
+      }
+    },
+    "success_status": 200,
+    "response": {
+      "name": "SDK Cohort 20",
+      "color": "#0ce806",
+      "display_format": "icon",
+      "emoji": "🤩",
+      "is_background_enabled": false,
+      "is_public": false,
+      "display_locations": {
+        "member_directory": false,
+        "post_bio": false,
+        "profile_page": true
+      },
+      "custom_emoji": {
+        "emoji_type": "shapes",
+        "identifier": "shape-circle-cyan"
+      },
+      "id": 21,
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "tagged_members_count": 0,
+      "custom_emoji_url": null,
+      "custom_emoji_dark_url": null,
+      "future": {
+        "blank": "",
+        "zero": 0
+      }
+    },
+    "error_statuses": [
+      422,
+      404,
+      401,
+      403
+    ],
+    "request_variants": [
+      {
+        "name": "SDK Cohort 20",
+        "color": "#0ce806",
+        "display_format": "icon",
+        "emoji": "🤩",
+        "is_background_enabled": false,
+        "is_public": false,
+        "display_locations": {
+          "member_directory": false,
+          "post_bio": false,
+          "profile_page": true
+        },
+        "custom_emoji": {
+          "emoji_type": "emoji",
+          "emoji": "🤩"
+        }
+      },
+      {
+        "name": "SDK Cohort 20",
+        "color": "#0ce806",
+        "display_format": "icon",
+        "emoji": "🤩",
+        "is_background_enabled": false,
+        "is_public": false,
+        "display_locations": {
+          "member_directory": false,
+          "post_bio": false,
+          "profile_page": true
+        },
+        "custom_emoji": {
+          "emoji_type": "custom",
+          "signed_id": "synthetic-uploaded-blob"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "member_tags.get",
+    "resource": "member_tags",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/member_tags/21",
+    "args": [
+      21
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "name": "SDK Cohort 20",
+      "color": "#0ce806",
+      "display_format": "icon",
+      "emoji": "🤩",
+      "is_background_enabled": false,
+      "is_public": false,
+      "display_locations": {
+        "member_directory": false,
+        "post_bio": false,
+        "profile_page": true
+      },
+      "custom_emoji": {
+        "emoji_type": "shapes",
+        "identifier": "shape-circle-cyan"
+      },
+      "id": 21,
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "tagged_members_count": 0,
+      "custom_emoji_url": null,
+      "custom_emoji_dark_url": null,
+      "future": {
+        "blank": "",
+        "zero": 0
+      }
+    },
+    "error_statuses": [
+      404,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "member_tags.delete",
+    "resource": "member_tags",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/member_tags/21",
+    "args": [
+      21
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "success": true,
+      "message": "Synthetic acknowledgment",
+      "future": null
+    },
+    "error_statuses": [
+      404,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "member_tags.list_tags",
+    "resource": "member_tags",
+    "name": "list_tags",
+    "method": "GET",
+    "path": "/api/admin/v2/member_tags",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "name": "SDK Cohort 20",
+      "is_public": false,
+      "sort": "alphabetical_desc"
+    },
+    "query": "page=2&per_page=4&name=SDK+Cohort+20&is_public=false&sort=alphabetical_desc",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "count": 1,
+      "page_count": 1,
+      "has_next_page": false,
+      "records": [
+        {
+          "name": "SDK Cohort 20",
+          "color": "#0ce806",
+          "display_format": "icon",
+          "emoji": "🤩",
+          "is_background_enabled": false,
+          "is_public": false,
+          "display_locations": {
+            "member_directory": false,
+            "post_bio": false,
+            "profile_page": true
+          },
+          "custom_emoji": {
+            "emoji_type": "shapes",
+            "identifier": "shape-circle-cyan"
+          },
+          "id": 21,
+          "created_at": "2026-10-27T09:00:00Z",
+          "updated_at": "2026-10-27T09:00:00Z",
+          "tagged_members_count": 0,
+          "custom_emoji_url": null,
+          "custom_emoji_dark_url": null,
+          "future": {
+            "blank": "",
+            "zero": 0
+          }
+        }
+      ],
+      "future": {
+        "empty": [],
+        "zero": 0
+      }
+    },
+    "error_statuses": [
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "tagged_members.create",
+    "resource": "tagged_members",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/tagged_members",
+    "args": [
+      {
+        "member_tag_id": 21,
+        "user_email": "one@example.test"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "member_tag_id": 21,
+      "user_email": "one@example.test"
+    },
+    "success_status": 201,
+    "response": {
+      "message": "Synthetic tagged acknowledgment",
+      "future": false
+    },
+    "error_statuses": [
+      403,
+      404
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "tagged_members.delete",
+    "resource": "tagged_members",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/tagged_members",
+    "args": [
+      "one@example.test",
+      21
+    ],
+    "kwargs": {},
+    "query": "user_email=one%40example.test&member_tag_id=21",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "message": "Synthetic untag acknowledgment",
+      "future": []
+    },
+    "error_statuses": [
+      404,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "tagged_members.get",
+    "resource": "tagged_members",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/tagged_members/81",
+    "args": [
+      "81"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "id": 81,
+      "member_tag_id": 21,
+      "member_tag_name": "SDK Cohort 20",
+      "member_tag_emoji": null,
+      "user_id": 11,
+      "user_email": "one@example.test",
+      "lead_id": null,
+      "lead_email": null,
+      "community_member_id": 31,
+      "contact_id": 91,
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "future": []
+    },
+    "error_statuses": [
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "tagged_members.list_members",
+    "resource": "tagged_members",
+    "name": "list_members",
+    "method": "GET",
+    "path": "/api/admin/v2/tagged_members",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "member_tag_ids": [
+        21,
+        22
+      ]
+    },
+    "query": "page=2&per_page=4&member_tag_ids=21%2C22",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "count": 1,
+      "page_count": 1,
+      "has_next_page": false,
+      "records": [
+        {
+          "id": 81,
+          "member_tag_id": 21,
+          "member_tag_name": "SDK Cohort 20",
+          "member_tag_emoji": null,
+          "user_id": 11,
+          "user_email": "one@example.test",
+          "lead_id": null,
+          "lead_email": null,
+          "community_member_id": 31,
+          "contact_id": 91,
+          "created_at": "2026-10-27T09:00:00Z",
+          "updated_at": "2026-10-27T09:00:00Z",
+          "future": []
+        }
+      ],
+      "future": {
+        "empty": [],
+        "zero": 0
+      }
+    },
+    "error_statuses": [
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "topics.create",
+    "resource": "topics",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/topics",
+    "args": [
+      {
+        "name": "SDK Cohort 20",
+        "admin_only": false,
+        "space_ids": [
+          51,
+          52
+        ]
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Cohort 20",
+      "admin_only": false,
+      "space_ids": [
+        51,
+        52
+      ]
+    },
+    "success_status": 201,
+    "response": {
+      "name": "SDK Cohort 20",
+      "admin_only": false,
+      "space_ids": [
+        51,
+        52
+      ],
+      "id": 41,
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "author": {
+        "first_name": null,
+        "last_name": "Fixture",
+        "avatar_url": null,
+        "id": 11,
+        "name": "Synthetic Author"
+      },
+      "future": false
+    },
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "topics.update",
+    "resource": "topics",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/topics/41",
+    "args": [
+      41,
+      {
+        "name": "SDK Cohort 20",
+        "admin_only": false,
+        "space_ids": [
+          51,
+          52
+        ]
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Cohort 20",
+      "admin_only": false,
+      "space_ids": [
+        51,
+        52
+      ]
+    },
+    "success_status": 200,
+    "response": {
+      "name": "SDK Cohort 20",
+      "admin_only": false,
+      "space_ids": [
+        51,
+        52
+      ],
+      "id": 41,
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "author": {
+        "first_name": null,
+        "last_name": "Fixture",
+        "avatar_url": null,
+        "id": 11,
+        "name": "Synthetic Author"
+      },
+      "future": false
+    },
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "topics.get",
+    "resource": "topics",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/topics/41",
+    "args": [
+      41
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "name": "SDK Cohort 20",
+      "admin_only": false,
+      "space_ids": [
+        51,
+        52
+      ],
+      "id": 41,
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "author": {
+        "first_name": null,
+        "last_name": "Fixture",
+        "avatar_url": null,
+        "id": 11,
+        "name": "Synthetic Author"
+      },
+      "future": false
+    },
+    "error_statuses": [
+      404,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "topics.delete",
+    "resource": "topics",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/topics/41",
+    "args": [
+      41
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "success": true,
+      "message": "Synthetic acknowledgment",
+      "future": null
+    },
+    "error_statuses": [
+      404,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "topics.list_topics",
+    "resource": "topics",
+    "name": "list_topics",
+    "method": "GET",
+    "path": "/api/admin/v2/topics",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "name": "SDK Cohort 20",
+      "sort": "newest"
+    },
+    "query": "page=2&per_page=4&name=SDK+Cohort+20&sort=newest",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "count": 1,
+      "page_count": 1,
+      "has_next_page": false,
+      "records": [
+        {
+          "name": "SDK Cohort 20",
+          "admin_only": false,
+          "space_ids": [
+            51,
+            52
+          ],
+          "id": 41,
+          "created_at": "2026-10-27T09:00:00Z",
+          "updated_at": "2026-10-27T09:00:00Z",
+          "author": {
+            "first_name": null,
+            "last_name": "Fixture",
+            "avatar_url": null,
+            "id": 11,
+            "name": "Synthetic Author"
+          },
+          "future": false
+        }
+      ],
+      "future": {
+        "empty": [],
+        "zero": 0
+      }
+    },
+    "error_statuses": [
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "community_segments.create",
+    "resource": "community_segments",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/community_segments",
+    "args": [
+      {
+        "title": "SDK Cohort 20",
+        "visible": false,
+        "rules": {
+          "rule_type": "custom_filters",
+          "rules": [
+            {
+              "key": "role",
+              "value": "member",
+              "id": "role",
+              "filter_type": "is"
+            },
+            {
+              "key": "is_flagged",
+              "value": false,
+              "id": "flag",
+              "filter_type": "is_not"
+            }
+          ]
+        },
+        "community_segment_consumer_attributes": {
+          "consumer_id": "61",
+          "consumer_type": "synthetic-consumer"
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "title": "SDK Cohort 20",
+      "visible": false,
+      "rules": {
+        "rule_type": "custom_filters",
+        "rules": [
+          {
+            "key": "role",
+            "value": "member",
+            "id": "role",
+            "filter_type": "is"
+          },
+          {
+            "key": "is_flagged",
+            "value": false,
+            "id": "flag",
+            "filter_type": "is_not"
+          }
+        ]
+      },
+      "community_segment_consumer_attributes": {
+        "consumer_id": "61",
+        "consumer_type": "synthetic-consumer"
+      }
+    },
+    "success_status": 201,
+    "response": {
+      "id": 61,
+      "title": "SDK Cohort 20",
+      "rules": {
+        "rule_type": "custom_filters",
+        "rules": [
+          {
+            "key": "role",
+            "value": "member",
+            "id": "role",
+            "filter_type": "is"
+          },
+          {
+            "key": "is_flagged",
+            "value": false,
+            "id": "flag",
+            "filter_type": "is_not"
+          }
+        ]
+      },
+      "visible": false,
+      "audience_count": 0,
+      "created_by": {
+        "id": 11,
+        "name": "Synthetic Author",
+        "email": "admin@example.test",
+        "avatar_url": null,
+        "public_uid": "fixture-11"
+      },
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "future": {
+        "empty": [],
+        "unset": null
+      }
+    },
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {
+        "title": "SDK Cohort 20",
+        "visible": false,
+        "rules": {
+          "rule_type": "selected_members",
+          "rules": [
+            {
+              "email": "one@example.test",
+              "community_member_id": 31
+            },
+            {
+              "email": "two@example.test",
+              "community_member_id": 32
+            }
+          ]
+        },
+        "community_segment_consumer_attributes": {
+          "consumer_id": "61",
+          "consumer_type": "synthetic-consumer"
+        }
+      },
+      {
+        "title": "SDK Cohort 20",
+        "visible": false,
+        "rules": {
+          "rule_type": "all_contacts",
+          "rules": []
+        },
+        "community_segment_consumer_attributes": {
+          "consumer_id": "61",
+          "consumer_type": "synthetic-consumer"
+        }
+      },
+      {
+        "title": "SDK Cohort 20",
+        "visible": false,
+        "rules": {
+          "rule_type": "all_members",
+          "rules": []
+        },
+        "community_segment_consumer_attributes": {
+          "consumer_id": "61",
+          "consumer_type": "synthetic-consumer"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "community_segments.update",
+    "resource": "community_segments",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/community_segments/61",
+    "args": [
+      "61",
+      {
+        "title": "SDK Cohort 20",
+        "visible": false,
+        "rules": {
+          "rule_type": "custom_filters",
+          "rules": [
+            {
+              "key": "role",
+              "value": "member",
+              "id": "role",
+              "filter_type": "is"
+            },
+            {
+              "key": "is_flagged",
+              "value": false,
+              "id": "flag",
+              "filter_type": "is_not"
+            }
+          ]
+        },
+        "community_segment_consumer_attributes": {
+          "consumer_id": "61",
+          "consumer_type": "synthetic-consumer"
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "title": "SDK Cohort 20",
+      "visible": false,
+      "rules": {
+        "rule_type": "custom_filters",
+        "rules": [
+          {
+            "key": "role",
+            "value": "member",
+            "id": "role",
+            "filter_type": "is"
+          },
+          {
+            "key": "is_flagged",
+            "value": false,
+            "id": "flag",
+            "filter_type": "is_not"
+          }
+        ]
+      },
+      "community_segment_consumer_attributes": {
+        "consumer_id": "61",
+        "consumer_type": "synthetic-consumer"
+      }
+    },
+    "success_status": 200,
+    "response": {
+      "id": 61,
+      "title": "SDK Cohort 20",
+      "rules": {
+        "rule_type": "custom_filters",
+        "rules": [
+          {
+            "key": "role",
+            "value": "member",
+            "id": "role",
+            "filter_type": "is"
+          },
+          {
+            "key": "is_flagged",
+            "value": false,
+            "id": "flag",
+            "filter_type": "is_not"
+          }
+        ]
+      },
+      "visible": false,
+      "audience_count": 0,
+      "created_by": {
+        "id": 11,
+        "name": "Synthetic Author",
+        "email": "admin@example.test",
+        "avatar_url": null,
+        "public_uid": "fixture-11"
+      },
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "future": {
+        "empty": [],
+        "unset": null
+      }
+    },
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {
+        "title": "SDK Cohort 20",
+        "visible": false,
+        "rules": {
+          "rule_type": "selected_members",
+          "rules": [
+            {
+              "email": "one@example.test",
+              "community_member_id": 31
+            },
+            {
+              "email": "two@example.test",
+              "community_member_id": 32
+            }
+          ]
+        },
+        "community_segment_consumer_attributes": {
+          "consumer_id": "61",
+          "consumer_type": "synthetic-consumer"
+        }
+      },
+      {
+        "title": "SDK Cohort 20",
+        "visible": false,
+        "rules": {
+          "rule_type": "all_contacts",
+          "rules": []
+        },
+        "community_segment_consumer_attributes": {
+          "consumer_id": "61",
+          "consumer_type": "synthetic-consumer"
+        }
+      },
+      {
+        "title": "SDK Cohort 20",
+        "visible": false,
+        "rules": {
+          "rule_type": "all_members",
+          "rules": []
+        },
+        "community_segment_consumer_attributes": {
+          "consumer_id": "61",
+          "consumer_type": "synthetic-consumer"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "community_segments.delete",
+    "resource": "community_segments",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/community_segments/61",
+    "args": [
+      "61"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "success": true,
+      "message": "Synthetic acknowledgment",
+      "future": null
+    },
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "community_segments.duplicate",
+    "resource": "community_segments",
+    "name": "duplicate",
+    "method": "POST",
+    "path": "/api/admin/v2/community_segments/61/duplicate",
+    "args": [
+      "61"
+    ],
+    "kwargs": {
+      "title": "SDK Cohort 20 Copy"
+    },
+    "query": "title=SDK+Cohort+20+Copy",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "id": 62,
+      "title": "SDK Cohort 20 Copy",
+      "rules": {
+        "rule_type": "custom_filters",
+        "rules": [
+          {
+            "key": "role",
+            "value": "member",
+            "id": "role",
+            "filter_type": "is"
+          },
+          {
+            "key": "is_flagged",
+            "value": false,
+            "id": "flag",
+            "filter_type": "is_not"
+          }
+        ]
+      },
+      "visible": false,
+      "audience_count": 0,
+      "created_by": {
+        "id": 11,
+        "name": "Synthetic Author",
+        "email": "admin@example.test",
+        "avatar_url": null,
+        "public_uid": "fixture-11"
+      },
+      "created_at": "2026-10-27T09:00:00Z",
+      "updated_at": "2026-10-27T09:00:00Z",
+      "future": {
+        "empty": [],
+        "unset": null
+      }
+    },
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "community_segments.list_segments",
+    "resource": "community_segments",
+    "name": "list_segments",
+    "method": "GET",
+    "path": "/api/admin/v2/community_segments",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "title": "SDK Cohort 20"
+    },
+    "query": "page=2&per_page=4&title=SDK+Cohort+20",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "count": 1,
+      "page_count": 1,
+      "has_next_page": false,
+      "records": [
+        {
+          "id": 61,
+          "title": "SDK Cohort 20",
+          "rules": {
+            "rule_type": "custom_filters",
+            "rules": [
+              {
+                "key": "role",
+                "value": "member",
+                "id": "role",
+                "filter_type": "is"
+              },
+              {
+                "key": "is_flagged",
+                "value": false,
+                "id": "flag",
+                "filter_type": "is_not"
+              }
+            ]
+          },
+          "visible": false,
+          "audience_count": 0,
+          "created_by": {
+            "id": 11,
+            "name": "Synthetic Author",
+            "email": "admin@example.test",
+            "avatar_url": null,
+            "public_uid": "fixture-11"
+          },
+          "created_at": "2026-10-27T09:00:00Z",
+          "updated_at": "2026-10-27T09:00:00Z",
+          "future": {
+            "empty": [],
+            "unset": null
+          }
+        }
+      ],
+      "future": {
+        "empty": [],
+        "zero": 0
+      }
+    },
+    "error_statuses": [
+      401,
+      403
+    ],
+    "request_variants": []
+  }
+]

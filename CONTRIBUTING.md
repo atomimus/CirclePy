@@ -78,6 +78,7 @@ python tools/check_admin_v2_access_contract.py
 python tools/check_admin_v2_content_contract.py
 python tools/check_admin_v2_courses_contract.py
 python tools/check_admin_v2_events_contract.py
+python tools/check_admin_v2_organization_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build
@@ -167,6 +168,11 @@ Admin v2 event, attendee and live changes also require
 `python tools/check_admin_v2_events_contract.py`, covering all 11 owned operations,
 full nested event settings, date filters, duplication identifiers, RSVPs and VTT.
 See `docs/admin-v2-events.md` for recurrence, timezone and transcript examples.
+
+Admin v2 tag, topic and segment changes also require
+`python tools/check_admin_v2_organization_contract.py`, covering all 19 operations,
+typed nested rules, selected-member arrays, appearance settings and duplication.
+See `docs/admin-v2-organization.md` for tested cohort and segment examples.
 
 ## Direct main workflow and CI
 

@@ -46,8 +46,14 @@ from .async_courses import (
 )
 from .events import EventsAPI, EventAttendeesAPI, LiveAPI
 from .async_events import AsyncEventsAPI, AsyncEventAttendeesAPI, AsyncLiveAPI
+from .organization import MemberTagsAPI, TaggedMembersAPI, TopicsAPI, CommunitySegmentsAPI
+from .async_organization import (
+    AsyncMemberTagsAPI, AsyncTaggedMembersAPI, AsyncTopicsAPI, AsyncCommunitySegmentsAPI,
+)
 
 __all__ = [
+    "MemberTagsAPI", "TaggedMembersAPI", "TopicsAPI", "CommunitySegmentsAPI",
+    "AsyncMemberTagsAPI", "AsyncTaggedMembersAPI", "AsyncTopicsAPI", "AsyncCommunitySegmentsAPI",
     "EventsAPI", "EventAttendeesAPI", "LiveAPI",
     "AsyncEventsAPI", "AsyncEventAttendeesAPI", "AsyncLiveAPI",
     "CourseSectionsAPI", "CourseLessonsAPI", "CourseLessonProgressAPI",

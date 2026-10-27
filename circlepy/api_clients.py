@@ -106,7 +106,8 @@ class AdminV2Client(_SyncAPIClient):
                                SpaceGroupMembersAPI, SpaceMembersAPI, SpacesAPI,
                                PostsAPI, CommentsAPI, UploadsAPI, EmbedsAPI, PostFollowersAPI,
                                CourseSectionsAPI, CourseLessonsAPI, CourseLessonProgressAPI,
-                               EventsAPI, EventAttendeesAPI, LiveAPI)
+                               EventsAPI, EventAttendeesAPI, LiveAPI, MemberTagsAPI,
+                               TaggedMembersAPI, TopicsAPI, CommunitySegmentsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -135,6 +136,10 @@ class AdminV2Client(_SyncAPIClient):
         self.events = EventsAPI(self)
         self.event_attendees = EventAttendeesAPI(self)
         self.live = LiveAPI(self)
+        self.member_tags = MemberTagsAPI(self)
+        self.tagged_members = TaggedMembersAPI(self)
+        self.topics = TopicsAPI(self)
+        self.community_segments = CommunitySegmentsAPI(self)
 
 
 class AsyncAdminV2Client(_AsyncAPIClient):
@@ -152,7 +157,9 @@ class AsyncAdminV2Client(_AsyncAPIClient):
                                AsyncPostsAPI, AsyncCommentsAPI, AsyncUploadsAPI,
                                AsyncEmbedsAPI, AsyncPostFollowersAPI, AsyncCourseSectionsAPI,
                                AsyncCourseLessonsAPI, AsyncCourseLessonProgressAPI,
-                               AsyncEventsAPI, AsyncEventAttendeesAPI, AsyncLiveAPI)
+                               AsyncEventsAPI, AsyncEventAttendeesAPI, AsyncLiveAPI,
+                               AsyncMemberTagsAPI, AsyncTaggedMembersAPI,
+                               AsyncTopicsAPI, AsyncCommunitySegmentsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -181,3 +188,7 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.events = AsyncEventsAPI(self)
         self.event_attendees = AsyncEventAttendeesAPI(self)
         self.live = AsyncLiveAPI(self)
+        self.member_tags = AsyncMemberTagsAPI(self)
+        self.tagged_members = AsyncTaggedMembersAPI(self)
+        self.topics = AsyncTopicsAPI(self)
+        self.community_segments = AsyncCommunitySegmentsAPI(self)
