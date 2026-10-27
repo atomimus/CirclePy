@@ -1,0 +1,491 @@
+{
+  "task_id": 22,
+  "family": "admin-v2",
+  "frozen_sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+  "operations": [
+    {
+      "task_id": 22,
+      "method": "PUT",
+      "path": "/api/admin/v2/chat_preferences",
+      "tag": "Chat Preferences",
+      "source_pointer": "/paths/~1api~1admin~1v2~1chat_preferences/put",
+      "entry_point": "chat_preferences.update",
+      "query_fields": [],
+      "json_fields": [
+        "group_messaging_enabled",
+        "member_to_member_messaging_enabled",
+        "messaging_enabled",
+        "voice_messages_enabled"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "403",
+        "401"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "POST",
+      "path": "/api/admin/v2/chat_room_message_imports",
+      "tag": "Chat Room Message Imports",
+      "source_pointer": "/paths/~1api~1admin~1v2~1chat_room_message_imports/post",
+      "entry_point": "chat_room_message_imports.create",
+      "query_fields": [],
+      "json_fields": [
+        "chat_room_uuid",
+        "parent_message_id",
+        "rich_text_body",
+        "sent_at",
+        "user_email"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "POST",
+      "path": "/api/admin/v2/flagged_contents",
+      "tag": "Flagged Contents",
+      "source_pointer": "/paths/~1api~1admin~1v2~1flagged_contents/post",
+      "entry_point": "flagged_contents.report",
+      "query_fields": [],
+      "json_fields": [
+        "flagged_content",
+        "flagged_content.content_id",
+        "flagged_content.content_type",
+        "flagged_content.reported_reason_body",
+        "flagged_content.reported_reason_type"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "GET",
+      "path": "/api/admin/v2/flagged_contents",
+      "tag": "Flagged Contents",
+      "source_pointer": "/paths/~1api~1admin~1v2~1flagged_contents/get",
+      "entry_point": "flagged_contents.list_contents",
+      "query_fields": [
+        "page",
+        "per_page",
+        "status"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "DELETE",
+      "path": "/api/admin/v2/forms/{id}",
+      "tag": "Forms",
+      "source_pointer": "/paths/~1api~1admin~1v2~1forms~1{id}/delete",
+      "entry_point": "forms.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "GET",
+      "path": "/api/admin/v2/forms/{id}",
+      "tag": "Forms",
+      "source_pointer": "/paths/~1api~1admin~1v2~1forms~1{id}/get",
+      "entry_point": "forms.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "PUT",
+      "path": "/api/admin/v2/forms/{id}",
+      "tag": "Forms",
+      "source_pointer": "/paths/~1api~1admin~1v2~1forms~1{id}/put",
+      "entry_point": "forms.update",
+      "query_fields": [],
+      "json_fields": [
+        "after_submission_action",
+        "elements",
+        "elements[].attributes",
+        "elements[].children",
+        "elements[].id",
+        "elements[].parent_element_id",
+        "elements[].position",
+        "elements[].type",
+        "embed_display_format",
+        "embed_styles",
+        "embed_styles.button",
+        "embed_styles.button.backgroundColor",
+        "embed_styles.button.color",
+        "embed_styles.form",
+        "embed_styles.form.backgroundColor",
+        "embed_styles.form.color",
+        "name",
+        "popup_delay",
+        "popup_frequency",
+        "redirect_url",
+        "standalone_page_styles",
+        "standalone_page_styles.button",
+        "standalone_page_styles.button.backgroundColor",
+        "standalone_page_styles.button.color",
+        "standalone_page_styles.form",
+        "standalone_page_styles.form.backgroundColor",
+        "standalone_page_styles.form.color",
+        "status",
+        "thank_you_page_body",
+        "thank_you_page_title"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "POST",
+      "path": "/api/admin/v2/forms/{id}/duplicate",
+      "tag": "Forms",
+      "source_pointer": "/paths/~1api~1admin~1v2~1forms~1{id}~1duplicate/post",
+      "entry_point": "forms.duplicate",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "201",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "GET",
+      "path": "/api/admin/v2/forms",
+      "tag": "Forms",
+      "source_pointer": "/paths/~1api~1admin~1v2~1forms/get",
+      "entry_point": "forms.list_forms",
+      "query_fields": [
+        "page",
+        "per_page",
+        "name"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "POST",
+      "path": "/api/admin/v2/forms/{form_id}/submissions",
+      "tag": "Forms",
+      "source_pointer": "/paths/~1api~1admin~1v2~1forms~1{form_id}~1submissions/post",
+      "entry_point": "forms.create_submission",
+      "query_fields": [],
+      "json_fields": [
+        "elements",
+        "elements[].id",
+        "elements[].value",
+        "elements[].value_json",
+        "submission_on_behalf_of"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "GET",
+      "path": "/api/admin/v2/forms/{form_id}/submissions",
+      "tag": "Forms",
+      "source_pointer": "/paths/~1api~1admin~1v2~1forms~1{form_id}~1submissions/get",
+      "entry_point": "forms.list_submissions",
+      "query_fields": [
+        "page",
+        "per_page"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "GET",
+      "path": "/api/admin/v2/gamification/leaderboard",
+      "tag": "Gamification",
+      "source_pointer": "/paths/~1api~1admin~1v2~1gamification~1leaderboard/get",
+      "entry_point": "gamification.get_leaderboard",
+      "query_fields": [
+        "period"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "POST",
+      "path": "/api/admin/v2/messages",
+      "tag": "Messages",
+      "source_pointer": "/paths/~1api~1admin~1v2~1messages/post",
+      "entry_point": "messages.create",
+      "query_fields": [],
+      "json_fields": [
+        "chat_room_uuid",
+        "parent_message_id",
+        "rich_text_body",
+        "rich_text_body.attachments",
+        "rich_text_body.body",
+        "rich_text_body.body.content",
+        "rich_text_body.body.content[].content",
+        "rich_text_body.body.content[].content[].attrs",
+        "rich_text_body.body.content[].content[].attrs.href",
+        "rich_text_body.body.content[].content[].attrs.sgid",
+        "rich_text_body.body.content[].content[].attrs.target",
+        "rich_text_body.body.content[].content[].circle_ios_fallback_text",
+        "rich_text_body.body.content[].content[].marks",
+        "rich_text_body.body.content[].content[].marks[].attrs",
+        "rich_text_body.body.content[].content[].marks[].attrs.href",
+        "rich_text_body.body.content[].content[].marks[].attrs.target",
+        "rich_text_body.body.content[].content[].marks[].type",
+        "rich_text_body.body.content[].content[].text",
+        "rich_text_body.body.content[].content[].type",
+        "rich_text_body.body.content[].type",
+        "rich_text_body.body.type",
+        "rich_text_body.circle_ios_fallback_text",
+        "rich_text_body.community_members",
+        "rich_text_body.entities",
+        "rich_text_body.format",
+        "rich_text_body.group_mentions",
+        "rich_text_body.inline_attachments",
+        "rich_text_body.polls",
+        "rich_text_body.sgids_to_object_map",
+        "user_email",
+        "user_emails"
+      ],
+      "response_statuses": [
+        "200",
+        "401",
+        "422",
+        "404"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "PUT",
+      "path": "/api/admin/v2/workflows/{id}/activate",
+      "tag": "Workflows",
+      "source_pointer": "/paths/~1api~1admin~1v2~1workflows~1{id}~1activate/put",
+      "entry_point": "workflows.activate",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "422",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "PUT",
+      "path": "/api/admin/v2/workflows/{id}/deactivate",
+      "tag": "Workflows",
+      "source_pointer": "/paths/~1api~1admin~1v2~1workflows~1{id}~1deactivate/put",
+      "entry_point": "workflows.deactivate",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "422",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "POST",
+      "path": "/api/admin/v2/workflows/{id}/duplicate",
+      "tag": "Workflows",
+      "source_pointer": "/paths/~1api~1admin~1v2~1workflows~1{id}~1duplicate/post",
+      "entry_point": "workflows.duplicate",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "201",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "GET",
+      "path": "/api/admin/v2/workflows",
+      "tag": "Workflows",
+      "source_pointer": "/paths/~1api~1admin~1v2~1workflows/get",
+      "entry_point": "workflows.list_workflows",
+      "query_fields": [
+        "query",
+        "status",
+        "workflow_type",
+        "page",
+        "per_page"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 22,
+      "method": "GET",
+      "path": "/api/admin/v2/workflows/{id}",
+      "tag": "Workflows",
+      "source_pointer": "/paths/~1api~1admin~1v2~1workflows~1{id}/get",
+      "entry_point": "workflows.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-operations.json",
+      "tests": "tests/test_admin_v2_operations.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    }
+  ]
+}

@@ -59,7 +59,24 @@ from .async_profiles import (
     AsyncLocationsAPI, AsyncPageProfileFieldsAPI, AsyncProfileFieldsAPI, AsyncConnectSettingsAPI,
 )
 
+from .operations import (
+    ChatPreferencesAPI, ChatRoomMessageImportsAPI, MessagesAPI,
+    FlaggedContentsAPI, FormsAPI, GamificationAPI, WorkflowsAPI,
+)
+from .async_operations import (
+    AsyncChatPreferencesAPI, AsyncChatRoomMessageImportsAPI, AsyncMessagesAPI,
+    AsyncFlaggedContentsAPI, AsyncFormsAPI, AsyncGamificationAPI, AsyncWorkflowsAPI,
+)
+
 __all__ = [
+    "ChatPreferencesAPI", "AsyncChatPreferencesAPI",
+    "ChatRoomMessageImportsAPI", "AsyncChatRoomMessageImportsAPI",
+    "MessagesAPI", "AsyncMessagesAPI",
+    "FlaggedContentsAPI", "AsyncFlaggedContentsAPI",
+    "FormsAPI", "AsyncFormsAPI",
+    "GamificationAPI", "AsyncGamificationAPI",
+    "WorkflowsAPI", "AsyncWorkflowsAPI",
+
     "AdvancedSearchAPI", "FilterKitConfigurationAPI", "FilterKitControlsAPI", "LocationsAPI",
     "PageProfileFieldsAPI", "ProfileFieldsAPI", "ConnectSettingsAPI",
     "AsyncAdvancedSearchAPI", "AsyncFilterKitConfigurationAPI", "AsyncFilterKitControlsAPI",

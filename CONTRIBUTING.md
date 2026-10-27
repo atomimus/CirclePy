@@ -80,6 +80,7 @@ python tools/check_admin_v2_courses_contract.py
 python tools/check_admin_v2_events_contract.py
 python tools/check_admin_v2_organization_contract.py
 python tools/check_admin_v2_profiles_contract.py
+python tools/check_admin_v2_operations_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build
@@ -232,3 +233,9 @@ is retained. No new copyright holder or date is inferred.
 Development tasks commit and push directly to `main` after their required checks.
 The ignored `docs/v1-release/` folder contains local release planning files.
 Keep it local; never force-add it to Git or include it in distributions.
+
+Task 22 adds `python tools/check_admin_v2_operations_contract.py` for all 18
+Admin v2 messaging, import, form, submission, moderation, leaderboard and workflow
+operations. Its independent fixtures cover nested bodies, answers, errors and
+sync/native async parity, with the upstream missing import-response definition
+recorded explicitly. See `docs/admin-v2-operations.md` for executable examples.

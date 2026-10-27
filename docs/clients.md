@@ -47,6 +47,12 @@ Both expose `.profile_fields`, `.page_profile_fields`, `.advanced_search`,
 `.connect_settings` for all 17 [profile, filter and discovery operations](admin-v2-profiles.md).
 These preserve nested directory configuration and Circle's member interaction
 settings, with matching native async methods and documented pagination.
+Both Admin v2 clients expose `.chat_preferences`, `.chat_room_message_imports`,
+`.messages`, `.flagged_contents`, `.forms`, `.gamification` and `.workflows` for all
+18 [messaging, form, moderation and workflow operations](admin-v2-operations.md).
+These include historical imports, nested form updates and submissions, explicit
+workflow state changes and four bounded iterator pairs. Mutations are single-attempt.
+
 Both Headless facades expose explicit plural resources
 for every frozen Member operation. No methods are generated at runtime.
 

@@ -42,6 +42,12 @@ Both cover all 17 [profile, filter, discovery and Circle Connect operations](doc
 including custom field choices and archive/restore, directory controls, complete
 filter configuration, deep search queries and member interaction settings.
 
+Both Admin v2 clients expose `.chat_preferences`, `.chat_room_message_imports`,
+`.messages`, `.flagged_contents`, `.forms`, `.gamification` and `.workflows` for all
+18 [messaging, form, moderation and workflow operations](docs/admin-v2-operations.md).
+These include historical imports, nested form updates and submissions, explicit
+workflow state changes and four bounded iterator pairs. Mutations are single-attempt.
+
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`
 (`sso_id` remains a compatibility spelling). See [client lifecycle and token
@@ -50,6 +56,7 @@ current resource coverage.
 
 Both Headless clients expose direct [uploads and rich-text helpers](docs/media.md)
 with bounded file processing, native async I/O and content-preserving Markdown.
+
 Both also expose complete [member profiles, directory search and spaces](docs/members.md),
 including signup custom fields/timezone and field/choice record preservation.
 Both expose [HTTP messaging, notifications, search, bookmarks and cookies](docs/messaging.md),

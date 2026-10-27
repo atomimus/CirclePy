@@ -109,7 +109,9 @@ class AdminV2Client(_SyncAPIClient):
                                EventsAPI, EventAttendeesAPI, LiveAPI, MemberTagsAPI,
                                TaggedMembersAPI, TopicsAPI, CommunitySegmentsAPI,
                                AdvancedSearchAPI, FilterKitConfigurationAPI, FilterKitControlsAPI,
-                               LocationsAPI, PageProfileFieldsAPI, ProfileFieldsAPI, ConnectSettingsAPI)
+                               LocationsAPI, PageProfileFieldsAPI, ProfileFieldsAPI, ConnectSettingsAPI,
+                               ChatPreferencesAPI, ChatRoomMessageImportsAPI, MessagesAPI,
+                               FlaggedContentsAPI, FormsAPI, GamificationAPI, WorkflowsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -149,6 +151,13 @@ class AdminV2Client(_SyncAPIClient):
         self.page_profile_fields = PageProfileFieldsAPI(self)
         self.profile_fields = ProfileFieldsAPI(self)
         self.connect_settings = ConnectSettingsAPI(self)
+        self.chat_preferences = ChatPreferencesAPI(self)
+        self.chat_room_message_imports = ChatRoomMessageImportsAPI(self)
+        self.messages = MessagesAPI(self)
+        self.flagged_contents = FlaggedContentsAPI(self)
+        self.forms = FormsAPI(self)
+        self.gamification = GamificationAPI(self)
+        self.workflows = WorkflowsAPI(self)
 
 
 class AsyncAdminV2Client(_AsyncAPIClient):
@@ -171,7 +180,9 @@ class AsyncAdminV2Client(_AsyncAPIClient):
                                AsyncTopicsAPI, AsyncCommunitySegmentsAPI,
                                AsyncAdvancedSearchAPI, AsyncFilterKitConfigurationAPI,
                                AsyncFilterKitControlsAPI, AsyncLocationsAPI,
-                               AsyncPageProfileFieldsAPI, AsyncProfileFieldsAPI, AsyncConnectSettingsAPI)
+                               AsyncPageProfileFieldsAPI, AsyncProfileFieldsAPI, AsyncConnectSettingsAPI,
+                               AsyncChatPreferencesAPI, AsyncChatRoomMessageImportsAPI, AsyncMessagesAPI,
+                               AsyncFlaggedContentsAPI, AsyncFormsAPI, AsyncGamificationAPI, AsyncWorkflowsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -211,3 +222,10 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.page_profile_fields = AsyncPageProfileFieldsAPI(self)
         self.profile_fields = AsyncProfileFieldsAPI(self)
         self.connect_settings = AsyncConnectSettingsAPI(self)
+        self.chat_preferences = AsyncChatPreferencesAPI(self)
+        self.chat_room_message_imports = AsyncChatRoomMessageImportsAPI(self)
+        self.messages = AsyncMessagesAPI(self)
+        self.flagged_contents = AsyncFlaggedContentsAPI(self)
+        self.forms = AsyncFormsAPI(self)
+        self.gamification = AsyncGamificationAPI(self)
+        self.workflows = AsyncWorkflowsAPI(self)
