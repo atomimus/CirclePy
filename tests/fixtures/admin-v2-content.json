@@ -1,0 +1,2508 @@
+[
+  {
+    "case_id": "comments.create",
+    "resource": "comments",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/comments",
+    "args": [
+      {
+        "body": "<p>Comment</p>",
+        "post_id": 61,
+        "parent_comment_id": 101,
+        "created_at": "2026-10-27T00:00:00Z",
+        "updated_at": "2026-10-27T00:00:00Z",
+        "skip_notifications": false
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "body": "<p>Comment</p>",
+      "post_id": 61,
+      "parent_comment_id": 101,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "skip_notifications": false
+    },
+    "response": {
+      "id": 101,
+      "parent_comment_id": null,
+      "flagged_for_approval_at": null,
+      "unresolved_flagged_reports_count": 0,
+      "created_at": "2026-10-27T00:00:00Z",
+      "body": {
+        "id": null,
+        "name": "body",
+        "body": "<p>Comment</p>",
+        "record_type": "Comment",
+        "record_id": 101,
+        "created_at": null,
+        "updated_at": null
+      },
+      "user": {
+        "id": 21,
+        "name": "Synthetic author",
+        "avatar_url": null,
+        "email": "author@example.test"
+      },
+      "post": {
+        "id": 61,
+        "name": "SDK Synthetic Post",
+        "slug": "sdk-post"
+      },
+      "space": {
+        "id": 51,
+        "name": "SDK",
+        "slug": "sdk"
+      },
+      "replies_count": 1,
+      "replies": [
+        {
+          "id": 102,
+          "parent_comment_id": 101,
+          "flagged_for_approval_at": null,
+          "unresolved_flagged_reports_count": 0,
+          "created_at": "2026-10-27T00:00:00Z",
+          "body": {
+            "id": null,
+            "name": "body",
+            "body": "<p>Comment</p>",
+            "record_type": "Comment",
+            "record_id": 101,
+            "created_at": null,
+            "updated_at": null
+          },
+          "user": {
+            "id": 21,
+            "name": "Synthetic author",
+            "avatar_url": null,
+            "email": "author@example.test"
+          },
+          "post": {
+            "id": 61,
+            "name": "SDK Synthetic Post",
+            "slug": "sdk-post"
+          },
+          "space": {
+            "id": 51,
+            "name": "SDK",
+            "slug": "sdk"
+          },
+          "replies_count": 0,
+          "replies": [],
+          "url": "https://community.example.test/c/sdk/sdk-post#comment_wrapper_101",
+          "community_id": 1,
+          "likes_count": 0,
+          "user_posts_count": 0,
+          "user_comments_count": 0,
+          "user_likes_count": 0,
+          "author_type": "CommunityMember",
+          "future": null,
+          "reactions": [
+            {
+              "type": "heart",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "url": "https://community.example.test/c/sdk/sdk-post#comment_wrapper_101",
+      "community_id": 1,
+      "likes_count": 0,
+      "user_posts_count": 0,
+      "user_comments_count": 0,
+      "user_likes_count": 0,
+      "author_type": "CommunityMember",
+      "future": null,
+      "reactions": [
+        {
+          "type": "heart",
+          "count": 0
+        }
+      ]
+    },
+    "success_status": 201,
+    "error_statuses": [
+      404
+    ]
+  },
+  {
+    "case_id": "comments.list_comments",
+    "resource": "comments",
+    "name": "list_comments",
+    "method": "GET",
+    "path": "/api/admin/v2/comments",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "space_id": 51,
+      "post_id": 61,
+      "search_text": ""
+    },
+    "query": "page=2&per_page=4&space_id=51&post_id=61&search_text=",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 101,
+          "parent_comment_id": null,
+          "flagged_for_approval_at": null,
+          "unresolved_flagged_reports_count": 0,
+          "created_at": "2026-10-27T00:00:00Z",
+          "body": {
+            "id": null,
+            "name": "body",
+            "body": "<p>Comment</p>",
+            "record_type": "Comment",
+            "record_id": 101,
+            "created_at": null,
+            "updated_at": null
+          },
+          "user": {
+            "id": 21,
+            "name": "Synthetic author",
+            "avatar_url": null,
+            "email": "author@example.test"
+          },
+          "post": {
+            "id": 61,
+            "name": "SDK Synthetic Post",
+            "slug": "sdk-post"
+          },
+          "space": {
+            "id": 51,
+            "name": "SDK",
+            "slug": "sdk"
+          },
+          "replies_count": 1,
+          "replies": [
+            {
+              "id": 102,
+              "parent_comment_id": 101,
+              "flagged_for_approval_at": null,
+              "unresolved_flagged_reports_count": 0,
+              "created_at": "2026-10-27T00:00:00Z",
+              "body": {
+                "id": null,
+                "name": "body",
+                "body": "<p>Comment</p>",
+                "record_type": "Comment",
+                "record_id": 101,
+                "created_at": null,
+                "updated_at": null
+              },
+              "user": {
+                "id": 21,
+                "name": "Synthetic author",
+                "avatar_url": null,
+                "email": "author@example.test"
+              },
+              "post": {
+                "id": 61,
+                "name": "SDK Synthetic Post",
+                "slug": "sdk-post"
+              },
+              "space": {
+                "id": 51,
+                "name": "SDK",
+                "slug": "sdk"
+              },
+              "replies_count": 0,
+              "replies": [],
+              "url": "https://community.example.test/c/sdk/sdk-post#comment_wrapper_101",
+              "community_id": 1,
+              "likes_count": 0,
+              "user_posts_count": 0,
+              "user_comments_count": 0,
+              "user_likes_count": 0,
+              "author_type": "CommunityMember",
+              "future": null,
+              "reactions": [
+                {
+                  "type": "heart",
+                  "count": 0
+                }
+              ]
+            }
+          ],
+          "url": "https://community.example.test/c/sdk/sdk-post#comment_wrapper_101",
+          "community_id": 1,
+          "likes_count": 0,
+          "user_posts_count": 0,
+          "user_comments_count": 0,
+          "user_likes_count": 0,
+          "author_type": "CommunityMember",
+          "future": null,
+          "reactions": [
+            {
+              "type": "heart",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": []
+  },
+  {
+    "case_id": "comments.delete",
+    "resource": "comments",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/comments/101",
+    "args": [
+      "101"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "message": "Comment deleted."
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422
+    ]
+  },
+  {
+    "case_id": "comments.get",
+    "resource": "comments",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/comments/101",
+    "args": [
+      "101"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 101,
+      "parent_comment_id": null,
+      "flagged_for_approval_at": null,
+      "unresolved_flagged_reports_count": 0,
+      "created_at": "2026-10-27T00:00:00Z",
+      "body": {
+        "id": null,
+        "name": "body",
+        "body": "<p>Comment</p>",
+        "record_type": "Comment",
+        "record_id": 101,
+        "created_at": null,
+        "updated_at": null
+      },
+      "user": {
+        "id": 21,
+        "name": "Synthetic author",
+        "avatar_url": null,
+        "email": "author@example.test"
+      },
+      "post": {
+        "id": 61,
+        "name": "SDK Synthetic Post",
+        "slug": "sdk-post"
+      },
+      "space": {
+        "id": 51,
+        "name": "SDK",
+        "slug": "sdk"
+      },
+      "replies_count": 1,
+      "replies": [
+        {
+          "id": 102,
+          "parent_comment_id": 101,
+          "flagged_for_approval_at": null,
+          "unresolved_flagged_reports_count": 0,
+          "created_at": "2026-10-27T00:00:00Z",
+          "body": {
+            "id": null,
+            "name": "body",
+            "body": "<p>Comment</p>",
+            "record_type": "Comment",
+            "record_id": 101,
+            "created_at": null,
+            "updated_at": null
+          },
+          "user": {
+            "id": 21,
+            "name": "Synthetic author",
+            "avatar_url": null,
+            "email": "author@example.test"
+          },
+          "post": {
+            "id": 61,
+            "name": "SDK Synthetic Post",
+            "slug": "sdk-post"
+          },
+          "space": {
+            "id": 51,
+            "name": "SDK",
+            "slug": "sdk"
+          },
+          "replies_count": 0,
+          "replies": [],
+          "url": "https://community.example.test/c/sdk/sdk-post#comment_wrapper_101",
+          "community_id": 1,
+          "likes_count": 0,
+          "user_posts_count": 0,
+          "user_comments_count": 0,
+          "user_likes_count": 0,
+          "author_type": "CommunityMember",
+          "future": null,
+          "reactions": [
+            {
+              "type": "heart",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "url": "https://community.example.test/c/sdk/sdk-post#comment_wrapper_101",
+      "community_id": 1,
+      "likes_count": 0,
+      "user_posts_count": 0,
+      "user_comments_count": 0,
+      "user_likes_count": 0,
+      "author_type": "CommunityMember",
+      "future": null,
+      "reactions": [
+        {
+          "type": "heart",
+          "count": 0
+        }
+      ]
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404
+    ]
+  },
+  {
+    "case_id": "uploads.create_direct_upload",
+    "resource": "uploads",
+    "name": "create_direct_upload",
+    "method": "POST",
+    "path": "/api/admin/v2/direct_uploads",
+    "args": [
+      {
+        "blob": {
+          "key": "uploads/test/example.txt",
+          "filename": "example.txt",
+          "content_type": "text/plain",
+          "byte_size": 3,
+          "checksum": "kAFQmDzST7DWlj99KOF/cg=="
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "blob": {
+        "key": "uploads/test/example.txt",
+        "filename": "example.txt",
+        "content_type": "text/plain",
+        "byte_size": 3,
+        "checksum": "kAFQmDzST7DWlj99KOF/cg=="
+      }
+    },
+    "response": {
+      "id": 1,
+      "key": "provider-key",
+      "filename": "example.txt",
+      "content_type": "text/plain",
+      "metadata": {
+        "identified": false
+      },
+      "byte_size": 3,
+      "checksum": "kAFQmDzST7DWlj99KOF/cg==",
+      "created_at": "2026-10-27T00:00:00Z",
+      "community_id": 2,
+      "community_member_id": 3,
+      "service_name": "local-fixture",
+      "signed_id": "synthetic-signed-id",
+      "attachable_sgid": "synthetic-attachable-sgid",
+      "direct_upload": {
+        "url": "STORAGE_URL",
+        "headers": {
+          "Content-Type": "text/plain",
+          "Content-MD5": "kAFQmDzST7DWlj99KOF/cg==",
+          "X-Storage-Test": "retained"
+        }
+      },
+      "url": "https://example.invalid/example.txt",
+      "future": {
+        "zero": 0,
+        "null": null
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "embeds.create",
+    "resource": "embeds",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/embeds",
+    "args": [
+      {
+        "url": "https://video.example.test/sdk"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "url": "https://video.example.test/sdk"
+    },
+    "response": {
+      "id": 111,
+      "url": "https://video.example.test/sdk",
+      "sgid": "synthetic-embed-sgid",
+      "type": "embed",
+      "embed_type": "video",
+      "embed_provider": "iframely",
+      "circle_embed_url": "https://community.example.test/embeds/synthetic-embed-sgid",
+      "html": "<div>Embed HTML</div>",
+      "title": "Synthetic video",
+      "width": 640,
+      "height": 480,
+      "version": null,
+      "author_url": null,
+      "author_name": null,
+      "description": null,
+      "provider_url": null,
+      "provider_name": null,
+      "thumbnail_url": null,
+      "thumbnail_width": null,
+      "thumbnail_height": null,
+      "future": null
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "embeds.get",
+    "resource": "embeds",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/embeds/synthetic-embed-sgid",
+    "args": [
+      "synthetic-embed-sgid"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 111,
+      "url": "https://video.example.test/sdk",
+      "sgid": "synthetic-embed-sgid",
+      "type": "embed",
+      "embed_type": "video",
+      "embed_provider": "iframely",
+      "circle_embed_url": "https://community.example.test/embeds/synthetic-embed-sgid",
+      "html": "<div>Embed HTML</div>",
+      "title": "Synthetic video",
+      "width": 640,
+      "height": 480,
+      "version": null,
+      "author_url": null,
+      "author_name": null,
+      "description": null,
+      "provider_url": null,
+      "provider_name": null,
+      "thumbnail_url": null,
+      "thumbnail_width": null,
+      "thumbnail_height": null,
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "posts.create_image",
+    "resource": "posts",
+    "name": "create_image",
+    "method": "POST",
+    "path": "/api/admin/v2/spaces/51/images/posts",
+    "args": [
+      51,
+      {
+        "slug": "sdk-gallery",
+        "status": "draft",
+        "is_liking_enabled": false,
+        "is_comments_enabled": false,
+        "topics": [],
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا 🌍",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid"
+                    }
+                  }
+                ],
+                "text": null,
+                "marks": []
+              },
+              {
+                "type": "embed",
+                "attrs": {
+                  "sgid": "synthetic-embed-sgid"
+                }
+              },
+              {
+                "type": "image",
+                "attrs": {
+                  "signed_id": "synthetic-inline-id",
+                  "width": "100%",
+                  "alignment": "center"
+                }
+              },
+              {
+                "type": "file",
+                "attrs": {
+                  "sgid": "synthetic-file-sgid",
+                  "future": false
+                }
+              },
+              {
+                "type": "poll",
+                "attrs": {
+                  "options": []
+                }
+              }
+            ]
+          },
+          "attachments": [
+            "synthetic-file-id"
+          ],
+          "inline_attachments": [
+            {
+              "signed_id": "synthetic-inline-id",
+              "width": 0
+            }
+          ],
+          "sgids_to_object_map": {
+            "synthetic-embed-sgid": {
+              "html": "<div>embed</div>",
+              "future": null
+            }
+          },
+          "sgid_to_object_map": {},
+          "circle_ios_fallback_text": "مرحبا 🌍",
+          "format": "tiptap",
+          "community_members": [],
+          "entities": [],
+          "group_mentions": [],
+          "polls": []
+        },
+        "gallery_attributes": {
+          "images_attributes": [
+            {
+              "id": 71,
+              "image": "synthetic-gallery-id",
+              "width": 640,
+              "height": 480
+            }
+          ],
+          "downloadable_images": false
+        },
+        "user_email": "author@example.test",
+        "user_id": 21,
+        "is_pinned": false
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "slug": "sdk-gallery",
+      "status": "draft",
+      "is_liking_enabled": false,
+      "is_comments_enabled": false,
+      "topics": [],
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 🌍",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ],
+              "text": null,
+              "marks": []
+            },
+            {
+              "type": "embed",
+              "attrs": {
+                "sgid": "synthetic-embed-sgid"
+              }
+            },
+            {
+              "type": "image",
+              "attrs": {
+                "signed_id": "synthetic-inline-id",
+                "width": "100%",
+                "alignment": "center"
+              }
+            },
+            {
+              "type": "file",
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "future": false
+              }
+            },
+            {
+              "type": "poll",
+              "attrs": {
+                "options": []
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-file-id"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline-id",
+            "width": 0
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-embed-sgid": {
+            "html": "<div>embed</div>",
+            "future": null
+          }
+        },
+        "sgid_to_object_map": {},
+        "circle_ios_fallback_text": "مرحبا 🌍",
+        "format": "tiptap",
+        "community_members": [],
+        "entities": [],
+        "group_mentions": [],
+        "polls": []
+      },
+      "gallery_attributes": {
+        "images_attributes": [
+          {
+            "id": 71,
+            "image": "synthetic-gallery-id",
+            "width": 640,
+            "height": 480
+          }
+        ],
+        "downloadable_images": false
+      },
+      "user_email": "author@example.test",
+      "user_id": 21,
+      "is_pinned": false
+    },
+    "response": {
+      "message": "Created",
+      "post": {
+        "id": 61,
+        "status": "scheduled",
+        "name": "SDK Synthetic Post",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا 🌍",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "embed",
+                "attrs": {
+                  "sgid": "synthetic-embed-sgid"
+                }
+              },
+              {
+                "type": "image",
+                "attrs": {
+                  "signed_id": "synthetic-inline-id",
+                  "width": "100%",
+                  "alignment": "center"
+                }
+              },
+              {
+                "type": "file",
+                "attrs": {
+                  "sgid": "synthetic-file-sgid",
+                  "future": false
+                }
+              },
+              {
+                "type": "poll",
+                "attrs": {
+                  "options": []
+                }
+              }
+            ]
+          },
+          "attachments": [
+            "synthetic-file-id"
+          ],
+          "inline_attachments": [
+            {
+              "signed_id": "synthetic-inline-id",
+              "width": 0
+            }
+          ],
+          "sgids_to_object_map": {
+            "synthetic-embed-sgid": {
+              "html": "<div>embed</div>",
+              "future": null
+            }
+          },
+          "sgid_to_object_map": {},
+          "circle_ios_fallback_text": "مرحبا 🌍",
+          "format": "tiptap",
+          "community_members": [],
+          "entities": [],
+          "group_mentions": [],
+          "polls": []
+        },
+        "body": {
+          "id": 81,
+          "name": "body",
+          "body": "<p>مرحبا</p>",
+          "record_type": "Post",
+          "record_id": 61,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z"
+        },
+        "slug": "sdk-post",
+        "url": "https://community.example.test/c/sdk/sdk-post",
+        "space_name": "SDK",
+        "space_slug": "sdk",
+        "space_id": 51,
+        "user_id": 21,
+        "user_email": "author@example.test",
+        "user_name": "Synthetic author",
+        "comments_count": 0,
+        "community_id": 1,
+        "hide_meta_info": false,
+        "user_avatar_url": null,
+        "published_at": "2026-11-01T10:00:00Z",
+        "created_at": "2026-10-27T00:00:00Z",
+        "updated_at": "2026-10-27T00:00:00Z",
+        "cover_image": "synthetic-cover-id",
+        "cover_image_url": "https://cdn.example.test/cover.jpg",
+        "cardview_thumbnail": null,
+        "cardview_thumbnail_url": null,
+        "is_comments_enabled": false,
+        "is_comments_closed": false,
+        "is_liking_enabled": false,
+        "flagged_for_approval_at": null,
+        "unresolved_flagged_reports_count": 0,
+        "custom_html": null,
+        "likes_count": 0,
+        "topics": [],
+        "member_posts_count": 0,
+        "member_comments_count": 0,
+        "member_likes_count": 0,
+        "reactions": [
+          {
+            "type": "love",
+            "count": 0
+          }
+        ],
+        "future": null,
+        "gallery": {
+          "id": 91,
+          "downloadable_images": false,
+          "images": [
+            {
+              "id": 71,
+              "signed_id": "synthetic-gallery-id",
+              "original_url": "https://cdn.example.test/original.jpg",
+              "url": "https://cdn.example.test/optimized.jpg",
+              "filename": "synthetic.jpg",
+              "width": 640,
+              "height": 480,
+              "exif": {
+                "rotation": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "posts.list_image_posts",
+    "resource": "posts",
+    "name": "list_image_posts",
+    "method": "GET",
+    "path": "/api/admin/v2/spaces/51/images/posts",
+    "args": [
+      51
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4
+    },
+    "query": "page=2&per_page=4",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 61,
+          "status": "scheduled",
+          "name": "SDK Synthetic Post",
+          "tiptap_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا 🌍",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mention",
+                      "attrs": {
+                        "sgid": "synthetic-member-sgid"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "embed",
+                  "attrs": {
+                    "sgid": "synthetic-embed-sgid"
+                  }
+                },
+                {
+                  "type": "image",
+                  "attrs": {
+                    "signed_id": "synthetic-inline-id",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                },
+                {
+                  "type": "file",
+                  "attrs": {
+                    "sgid": "synthetic-file-sgid",
+                    "future": false
+                  }
+                },
+                {
+                  "type": "poll",
+                  "attrs": {
+                    "options": []
+                  }
+                }
+              ]
+            },
+            "attachments": [
+              "synthetic-file-id"
+            ],
+            "inline_attachments": [
+              {
+                "signed_id": "synthetic-inline-id",
+                "width": 0
+              }
+            ],
+            "sgids_to_object_map": {
+              "synthetic-embed-sgid": {
+                "html": "<div>embed</div>",
+                "future": null
+              }
+            },
+            "sgid_to_object_map": {},
+            "circle_ios_fallback_text": "مرحبا 🌍",
+            "format": "tiptap",
+            "community_members": [],
+            "entities": [],
+            "group_mentions": [],
+            "polls": []
+          },
+          "body": {
+            "id": 81,
+            "name": "body",
+            "body": "<p>مرحبا</p>",
+            "record_type": "Post",
+            "record_id": 61,
+            "created_at": "2026-10-27T00:00:00Z",
+            "updated_at": "2026-10-27T00:00:00Z"
+          },
+          "slug": "sdk-post",
+          "url": "https://community.example.test/c/sdk/sdk-post",
+          "space_name": "SDK",
+          "space_slug": "sdk",
+          "space_id": 51,
+          "user_id": 21,
+          "user_email": "author@example.test",
+          "user_name": "Synthetic author",
+          "comments_count": 0,
+          "community_id": 1,
+          "hide_meta_info": false,
+          "user_avatar_url": null,
+          "published_at": "2026-11-01T10:00:00Z",
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z",
+          "cover_image": "synthetic-cover-id",
+          "cover_image_url": "https://cdn.example.test/cover.jpg",
+          "cardview_thumbnail": null,
+          "cardview_thumbnail_url": null,
+          "is_comments_enabled": false,
+          "is_comments_closed": false,
+          "is_liking_enabled": false,
+          "flagged_for_approval_at": null,
+          "unresolved_flagged_reports_count": 0,
+          "custom_html": null,
+          "likes_count": 0,
+          "topics": [],
+          "member_posts_count": 0,
+          "member_comments_count": 0,
+          "member_likes_count": 0,
+          "reactions": [
+            {
+              "type": "love",
+              "count": 0
+            }
+          ],
+          "future": null,
+          "gallery": {
+            "id": 91,
+            "downloadable_images": false,
+            "images": [
+              {
+                "id": 71,
+                "signed_id": "synthetic-gallery-id",
+                "original_url": "https://cdn.example.test/original.jpg",
+                "url": "https://cdn.example.test/optimized.jpg",
+                "filename": "synthetic.jpg",
+                "width": 640,
+                "height": 480,
+                "exif": {
+                  "rotation": 0
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "posts.delete_image",
+    "resource": "posts",
+    "name": "delete_image",
+    "method": "DELETE",
+    "path": "/api/admin/v2/spaces/51/images/posts/61",
+    "args": [
+      51,
+      61
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Deleted"
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404
+    ]
+  },
+  {
+    "case_id": "posts.get_image",
+    "resource": "posts",
+    "name": "get_image",
+    "method": "GET",
+    "path": "/api/admin/v2/spaces/51/images/posts/61",
+    "args": [
+      51,
+      61
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 61,
+      "status": "scheduled",
+      "name": "SDK Synthetic Post",
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 🌍",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "embed",
+              "attrs": {
+                "sgid": "synthetic-embed-sgid"
+              }
+            },
+            {
+              "type": "image",
+              "attrs": {
+                "signed_id": "synthetic-inline-id",
+                "width": "100%",
+                "alignment": "center"
+              }
+            },
+            {
+              "type": "file",
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "future": false
+              }
+            },
+            {
+              "type": "poll",
+              "attrs": {
+                "options": []
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-file-id"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline-id",
+            "width": 0
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-embed-sgid": {
+            "html": "<div>embed</div>",
+            "future": null
+          }
+        },
+        "sgid_to_object_map": {},
+        "circle_ios_fallback_text": "مرحبا 🌍",
+        "format": "tiptap",
+        "community_members": [],
+        "entities": [],
+        "group_mentions": [],
+        "polls": []
+      },
+      "body": {
+        "id": 81,
+        "name": "body",
+        "body": "<p>مرحبا</p>",
+        "record_type": "Post",
+        "record_id": 61,
+        "created_at": "2026-10-27T00:00:00Z",
+        "updated_at": "2026-10-27T00:00:00Z"
+      },
+      "slug": "sdk-post",
+      "url": "https://community.example.test/c/sdk/sdk-post",
+      "space_name": "SDK",
+      "space_slug": "sdk",
+      "space_id": 51,
+      "user_id": 21,
+      "user_email": "author@example.test",
+      "user_name": "Synthetic author",
+      "comments_count": 0,
+      "community_id": 1,
+      "hide_meta_info": false,
+      "user_avatar_url": null,
+      "published_at": "2026-11-01T10:00:00Z",
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "cover_image": "synthetic-cover-id",
+      "cover_image_url": "https://cdn.example.test/cover.jpg",
+      "cardview_thumbnail": null,
+      "cardview_thumbnail_url": null,
+      "is_comments_enabled": false,
+      "is_comments_closed": false,
+      "is_liking_enabled": false,
+      "flagged_for_approval_at": null,
+      "unresolved_flagged_reports_count": 0,
+      "custom_html": null,
+      "likes_count": 0,
+      "topics": [],
+      "member_posts_count": 0,
+      "member_comments_count": 0,
+      "member_likes_count": 0,
+      "reactions": [
+        {
+          "type": "love",
+          "count": 0
+        }
+      ],
+      "future": null,
+      "gallery": {
+        "id": 91,
+        "downloadable_images": false,
+        "images": [
+          {
+            "id": 71,
+            "signed_id": "synthetic-gallery-id",
+            "original_url": "https://cdn.example.test/original.jpg",
+            "url": "https://cdn.example.test/optimized.jpg",
+            "filename": "synthetic.jpg",
+            "width": 640,
+            "height": 480,
+            "exif": {
+              "rotation": 0
+            }
+          }
+        ]
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "posts.duplicate_image",
+    "resource": "posts",
+    "name": "duplicate_image",
+    "method": "POST",
+    "path": "/api/admin/v2/spaces/51/images/posts/61/duplicate",
+    "args": [
+      51,
+      61,
+      {
+        "post": {
+          "send_notifications": false
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "post": {
+        "send_notifications": false
+      }
+    },
+    "response": {
+      "message": "Duplicated",
+      "post": {
+        "id": 61,
+        "status": "scheduled",
+        "name": "SDK Synthetic Post",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا 🌍",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "embed",
+                "attrs": {
+                  "sgid": "synthetic-embed-sgid"
+                }
+              },
+              {
+                "type": "image",
+                "attrs": {
+                  "signed_id": "synthetic-inline-id",
+                  "width": "100%",
+                  "alignment": "center"
+                }
+              },
+              {
+                "type": "file",
+                "attrs": {
+                  "sgid": "synthetic-file-sgid",
+                  "future": false
+                }
+              },
+              {
+                "type": "poll",
+                "attrs": {
+                  "options": []
+                }
+              }
+            ]
+          },
+          "attachments": [
+            "synthetic-file-id"
+          ],
+          "inline_attachments": [
+            {
+              "signed_id": "synthetic-inline-id",
+              "width": 0
+            }
+          ],
+          "sgids_to_object_map": {
+            "synthetic-embed-sgid": {
+              "html": "<div>embed</div>",
+              "future": null
+            }
+          },
+          "sgid_to_object_map": {},
+          "circle_ios_fallback_text": "مرحبا 🌍",
+          "format": "tiptap",
+          "community_members": [],
+          "entities": [],
+          "group_mentions": [],
+          "polls": []
+        },
+        "body": {
+          "id": 81,
+          "name": "body",
+          "body": "<p>مرحبا</p>",
+          "record_type": "Post",
+          "record_id": 61,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z"
+        },
+        "slug": "sdk-post",
+        "url": "https://community.example.test/c/sdk/sdk-post",
+        "space_name": "SDK",
+        "space_slug": "sdk",
+        "space_id": 51,
+        "user_id": 21,
+        "user_email": "author@example.test",
+        "user_name": "Synthetic author",
+        "comments_count": 0,
+        "community_id": 1,
+        "hide_meta_info": false,
+        "user_avatar_url": null,
+        "published_at": "2026-11-01T10:00:00Z",
+        "created_at": "2026-10-27T00:00:00Z",
+        "updated_at": "2026-10-27T00:00:00Z",
+        "cover_image": "synthetic-cover-id",
+        "cover_image_url": "https://cdn.example.test/cover.jpg",
+        "cardview_thumbnail": null,
+        "cardview_thumbnail_url": null,
+        "is_comments_enabled": false,
+        "is_comments_closed": false,
+        "is_liking_enabled": false,
+        "flagged_for_approval_at": null,
+        "unresolved_flagged_reports_count": 0,
+        "custom_html": null,
+        "likes_count": 0,
+        "topics": [],
+        "member_posts_count": 0,
+        "member_comments_count": 0,
+        "member_likes_count": 0,
+        "reactions": [
+          {
+            "type": "love",
+            "count": 0
+          }
+        ],
+        "future": null,
+        "gallery": {
+          "id": 91,
+          "downloadable_images": false,
+          "images": [
+            {
+              "id": 71,
+              "signed_id": "synthetic-gallery-id",
+              "original_url": "https://cdn.example.test/original.jpg",
+              "url": "https://cdn.example.test/optimized.jpg",
+              "filename": "synthetic.jpg",
+              "width": 640,
+              "height": 480,
+              "exif": {
+                "rotation": 0
+              }
+            }
+          ]
+        }
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      400,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "post_followers.remove",
+    "resource": "post_followers",
+    "name": "remove",
+    "method": "DELETE",
+    "path": "/api/admin/v2/posts/61/post_followers",
+    "args": [
+      61,
+      21
+    ],
+    "kwargs": {},
+    "query": "community_member_id=21",
+    "body": null,
+    "response": null,
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      422
+    ]
+  },
+  {
+    "case_id": "posts.create",
+    "resource": "posts",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/posts",
+    "args": [
+      {
+        "space_id": 51,
+        "status": "scheduled",
+        "name": "SDK Synthetic Post",
+        "slug": "sdk-post",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا 🌍",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid"
+                    }
+                  }
+                ],
+                "text": null,
+                "marks": []
+              },
+              {
+                "type": "embed",
+                "attrs": {
+                  "sgid": "synthetic-embed-sgid"
+                }
+              },
+              {
+                "type": "image",
+                "attrs": {
+                  "signed_id": "synthetic-inline-id",
+                  "width": "100%",
+                  "alignment": "center"
+                }
+              },
+              {
+                "type": "file",
+                "attrs": {
+                  "sgid": "synthetic-file-sgid",
+                  "future": false
+                }
+              },
+              {
+                "type": "poll",
+                "attrs": {
+                  "options": []
+                }
+              }
+            ]
+          },
+          "attachments": [
+            "synthetic-file-id"
+          ],
+          "inline_attachments": [
+            {
+              "signed_id": "synthetic-inline-id",
+              "width": 0
+            }
+          ],
+          "sgids_to_object_map": {
+            "synthetic-embed-sgid": {
+              "html": "<div>embed</div>",
+              "future": null
+            }
+          },
+          "sgid_to_object_map": {},
+          "circle_ios_fallback_text": "مرحبا 🌍",
+          "format": "tiptap",
+          "community_members": [],
+          "entities": [],
+          "group_mentions": [],
+          "polls": []
+        },
+        "cover_image": "synthetic-cover-id",
+        "internal_custom_html": "",
+        "is_truncation_disabled": false,
+        "is_comments_closed": false,
+        "is_comments_enabled": false,
+        "is_liking_enabled": false,
+        "hide_meta_info": false,
+        "hide_from_featured_areas": false,
+        "meta_title": "",
+        "meta_description": "",
+        "opengraph_title": "",
+        "opengraph_description": "",
+        "published_at": "2026-11-01T12:00:00+02:00",
+        "created_at": "2026-10-27T00:00:00Z",
+        "topics": [],
+        "skip_notifications": false,
+        "is_pinned": false,
+        "user_email": "author@example.test",
+        "user_id": 21
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "space_id": 51,
+      "status": "scheduled",
+      "name": "SDK Synthetic Post",
+      "slug": "sdk-post",
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 🌍",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ],
+              "text": null,
+              "marks": []
+            },
+            {
+              "type": "embed",
+              "attrs": {
+                "sgid": "synthetic-embed-sgid"
+              }
+            },
+            {
+              "type": "image",
+              "attrs": {
+                "signed_id": "synthetic-inline-id",
+                "width": "100%",
+                "alignment": "center"
+              }
+            },
+            {
+              "type": "file",
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "future": false
+              }
+            },
+            {
+              "type": "poll",
+              "attrs": {
+                "options": []
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-file-id"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline-id",
+            "width": 0
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-embed-sgid": {
+            "html": "<div>embed</div>",
+            "future": null
+          }
+        },
+        "sgid_to_object_map": {},
+        "circle_ios_fallback_text": "مرحبا 🌍",
+        "format": "tiptap",
+        "community_members": [],
+        "entities": [],
+        "group_mentions": [],
+        "polls": []
+      },
+      "cover_image": "synthetic-cover-id",
+      "internal_custom_html": "",
+      "is_truncation_disabled": false,
+      "is_comments_closed": false,
+      "is_comments_enabled": false,
+      "is_liking_enabled": false,
+      "hide_meta_info": false,
+      "hide_from_featured_areas": false,
+      "meta_title": "",
+      "meta_description": "",
+      "opengraph_title": "",
+      "opengraph_description": "",
+      "published_at": "2026-11-01T12:00:00+02:00",
+      "created_at": "2026-10-27T00:00:00Z",
+      "topics": [],
+      "skip_notifications": false,
+      "is_pinned": false,
+      "user_email": "author@example.test",
+      "user_id": 21
+    },
+    "response": {
+      "message": "Created",
+      "post": {
+        "id": 61,
+        "status": "scheduled",
+        "name": "SDK Synthetic Post",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا 🌍",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "embed",
+                "attrs": {
+                  "sgid": "synthetic-embed-sgid"
+                }
+              },
+              {
+                "type": "image",
+                "attrs": {
+                  "signed_id": "synthetic-inline-id",
+                  "width": "100%",
+                  "alignment": "center"
+                }
+              },
+              {
+                "type": "file",
+                "attrs": {
+                  "sgid": "synthetic-file-sgid",
+                  "future": false
+                }
+              },
+              {
+                "type": "poll",
+                "attrs": {
+                  "options": []
+                }
+              }
+            ]
+          },
+          "attachments": [
+            "synthetic-file-id"
+          ],
+          "inline_attachments": [
+            {
+              "signed_id": "synthetic-inline-id",
+              "width": 0
+            }
+          ],
+          "sgids_to_object_map": {
+            "synthetic-embed-sgid": {
+              "html": "<div>embed</div>",
+              "future": null
+            }
+          },
+          "sgid_to_object_map": {},
+          "circle_ios_fallback_text": "مرحبا 🌍",
+          "format": "tiptap",
+          "community_members": [],
+          "entities": [],
+          "group_mentions": [],
+          "polls": []
+        },
+        "body": {
+          "id": 81,
+          "name": "body",
+          "body": "<p>مرحبا</p>",
+          "record_type": "Post",
+          "record_id": 61,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z"
+        },
+        "slug": "sdk-post",
+        "url": "https://community.example.test/c/sdk/sdk-post",
+        "space_name": "SDK",
+        "space_slug": "sdk",
+        "space_id": 51,
+        "user_id": 21,
+        "user_email": "author@example.test",
+        "user_name": "Synthetic author",
+        "comments_count": 0,
+        "community_id": 1,
+        "hide_meta_info": false,
+        "user_avatar_url": null,
+        "published_at": "2026-11-01T10:00:00Z",
+        "created_at": "2026-10-27T00:00:00Z",
+        "updated_at": "2026-10-27T00:00:00Z",
+        "cover_image": "synthetic-cover-id",
+        "cover_image_url": "https://cdn.example.test/cover.jpg",
+        "cardview_thumbnail": null,
+        "cardview_thumbnail_url": null,
+        "is_comments_enabled": false,
+        "is_comments_closed": false,
+        "is_liking_enabled": false,
+        "flagged_for_approval_at": null,
+        "unresolved_flagged_reports_count": 0,
+        "custom_html": null,
+        "likes_count": 0,
+        "topics": [],
+        "member_posts_count": 0,
+        "member_comments_count": 0,
+        "member_likes_count": 0,
+        "reactions": [
+          {
+            "type": "love",
+            "count": 0
+          }
+        ],
+        "future": null
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "posts.list_posts",
+    "resource": "posts",
+    "name": "list_posts",
+    "method": "GET",
+    "path": "/api/admin/v2/posts",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "space_id": 51,
+      "space_group_id": 31,
+      "status": "all",
+      "search_text": "",
+      "sort": "latest_updated"
+    },
+    "query": "page=2&per_page=4&space_id=51&space_group_id=31&status=all&search_text=&sort=latest_updated",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 61,
+          "status": "scheduled",
+          "name": "SDK Synthetic Post",
+          "tiptap_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا 🌍",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mention",
+                      "attrs": {
+                        "sgid": "synthetic-member-sgid"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "embed",
+                  "attrs": {
+                    "sgid": "synthetic-embed-sgid"
+                  }
+                },
+                {
+                  "type": "image",
+                  "attrs": {
+                    "signed_id": "synthetic-inline-id",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                },
+                {
+                  "type": "file",
+                  "attrs": {
+                    "sgid": "synthetic-file-sgid",
+                    "future": false
+                  }
+                },
+                {
+                  "type": "poll",
+                  "attrs": {
+                    "options": []
+                  }
+                }
+              ]
+            },
+            "attachments": [
+              "synthetic-file-id"
+            ],
+            "inline_attachments": [
+              {
+                "signed_id": "synthetic-inline-id",
+                "width": 0
+              }
+            ],
+            "sgids_to_object_map": {
+              "synthetic-embed-sgid": {
+                "html": "<div>embed</div>",
+                "future": null
+              }
+            },
+            "sgid_to_object_map": {},
+            "circle_ios_fallback_text": "مرحبا 🌍",
+            "format": "tiptap",
+            "community_members": [],
+            "entities": [],
+            "group_mentions": [],
+            "polls": []
+          },
+          "body": {
+            "id": 81,
+            "name": "body",
+            "body": "<p>مرحبا</p>",
+            "record_type": "Post",
+            "record_id": 61,
+            "created_at": "2026-10-27T00:00:00Z",
+            "updated_at": "2026-10-27T00:00:00Z"
+          },
+          "slug": "sdk-post",
+          "url": "https://community.example.test/c/sdk/sdk-post",
+          "space_name": "SDK",
+          "space_slug": "sdk",
+          "space_id": 51,
+          "user_id": 21,
+          "user_email": "author@example.test",
+          "user_name": "Synthetic author",
+          "comments_count": 0,
+          "community_id": 1,
+          "hide_meta_info": false,
+          "user_avatar_url": null,
+          "published_at": "2026-11-01T10:00:00Z",
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z",
+          "cover_image": "synthetic-cover-id",
+          "cover_image_url": "https://cdn.example.test/cover.jpg",
+          "cardview_thumbnail": null,
+          "cardview_thumbnail_url": null,
+          "is_comments_enabled": false,
+          "is_comments_closed": false,
+          "is_liking_enabled": false,
+          "flagged_for_approval_at": null,
+          "unresolved_flagged_reports_count": 0,
+          "custom_html": null,
+          "likes_count": 0,
+          "topics": [],
+          "member_posts_count": 0,
+          "member_comments_count": 0,
+          "member_likes_count": 0,
+          "reactions": [
+            {
+              "type": "love",
+              "count": 0
+            }
+          ],
+          "future": null
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": []
+  },
+  {
+    "case_id": "posts.delete",
+    "resource": "posts",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/posts/61",
+    "args": [
+      "61"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Deleted"
+    },
+    "success_status": 200,
+    "error_statuses": []
+  },
+  {
+    "case_id": "posts.get",
+    "resource": "posts",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/posts/61",
+    "args": [
+      61
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 61,
+      "status": "scheduled",
+      "name": "SDK Synthetic Post",
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 🌍",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "embed",
+              "attrs": {
+                "sgid": "synthetic-embed-sgid"
+              }
+            },
+            {
+              "type": "image",
+              "attrs": {
+                "signed_id": "synthetic-inline-id",
+                "width": "100%",
+                "alignment": "center"
+              }
+            },
+            {
+              "type": "file",
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "future": false
+              }
+            },
+            {
+              "type": "poll",
+              "attrs": {
+                "options": []
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-file-id"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline-id",
+            "width": 0
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-embed-sgid": {
+            "html": "<div>embed</div>",
+            "future": null
+          }
+        },
+        "sgid_to_object_map": {},
+        "circle_ios_fallback_text": "مرحبا 🌍",
+        "format": "tiptap",
+        "community_members": [],
+        "entities": [],
+        "group_mentions": [],
+        "polls": []
+      },
+      "body": {
+        "id": 81,
+        "name": "body",
+        "body": "<p>مرحبا</p>",
+        "record_type": "Post",
+        "record_id": 61,
+        "created_at": "2026-10-27T00:00:00Z",
+        "updated_at": "2026-10-27T00:00:00Z"
+      },
+      "slug": "sdk-post",
+      "url": "https://community.example.test/c/sdk/sdk-post",
+      "space_name": "SDK",
+      "space_slug": "sdk",
+      "space_id": 51,
+      "user_id": 21,
+      "user_email": "author@example.test",
+      "user_name": "Synthetic author",
+      "comments_count": 0,
+      "community_id": 1,
+      "hide_meta_info": false,
+      "user_avatar_url": null,
+      "published_at": "2026-11-01T10:00:00Z",
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "cover_image": "synthetic-cover-id",
+      "cover_image_url": "https://cdn.example.test/cover.jpg",
+      "cardview_thumbnail": null,
+      "cardview_thumbnail_url": null,
+      "is_comments_enabled": false,
+      "is_comments_closed": false,
+      "is_liking_enabled": false,
+      "flagged_for_approval_at": null,
+      "unresolved_flagged_reports_count": 0,
+      "custom_html": null,
+      "likes_count": 0,
+      "topics": [],
+      "member_posts_count": 0,
+      "member_comments_count": 0,
+      "member_likes_count": 0,
+      "reactions": [
+        {
+          "type": "love",
+          "count": 0
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404
+    ]
+  },
+  {
+    "case_id": "posts.update",
+    "resource": "posts",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/posts/61",
+    "args": [
+      "61",
+      {
+        "name": "SDK Synthetic Post",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا 🌍",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid"
+                    }
+                  }
+                ],
+                "text": null,
+                "marks": []
+              },
+              {
+                "type": "embed",
+                "attrs": {
+                  "sgid": "synthetic-embed-sgid"
+                }
+              },
+              {
+                "type": "image",
+                "attrs": {
+                  "signed_id": "synthetic-inline-id",
+                  "width": "100%",
+                  "alignment": "center"
+                }
+              },
+              {
+                "type": "file",
+                "attrs": {
+                  "sgid": "synthetic-file-sgid",
+                  "future": false
+                }
+              },
+              {
+                "type": "poll",
+                "attrs": {
+                  "options": []
+                }
+              }
+            ]
+          },
+          "attachments": [
+            "synthetic-file-id"
+          ],
+          "inline_attachments": [
+            {
+              "signed_id": "synthetic-inline-id",
+              "width": 0
+            }
+          ],
+          "sgids_to_object_map": {
+            "synthetic-embed-sgid": {
+              "html": "<div>embed</div>",
+              "future": null
+            }
+          },
+          "sgid_to_object_map": {},
+          "circle_ios_fallback_text": "مرحبا 🌍",
+          "format": "tiptap",
+          "community_members": [],
+          "entities": [],
+          "group_mentions": [],
+          "polls": []
+        },
+        "cover_image": "synthetic-cover-id",
+        "internal_custom_html": "",
+        "is_truncation_disabled": false,
+        "is_comments_closed": false,
+        "is_comments_enabled": false,
+        "is_liking_enabled": false,
+        "hide_meta_info": false,
+        "hide_from_featured_areas": false,
+        "meta_title": "",
+        "meta_description": "",
+        "opengraph_title": "",
+        "opengraph_description": "",
+        "published_at": "2026-11-01T12:00:00+02:00",
+        "topics": [],
+        "skip_notifications": false,
+        "is_pinned": false
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Synthetic Post",
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 🌍",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ],
+              "text": null,
+              "marks": []
+            },
+            {
+              "type": "embed",
+              "attrs": {
+                "sgid": "synthetic-embed-sgid"
+              }
+            },
+            {
+              "type": "image",
+              "attrs": {
+                "signed_id": "synthetic-inline-id",
+                "width": "100%",
+                "alignment": "center"
+              }
+            },
+            {
+              "type": "file",
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "future": false
+              }
+            },
+            {
+              "type": "poll",
+              "attrs": {
+                "options": []
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-file-id"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline-id",
+            "width": 0
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-embed-sgid": {
+            "html": "<div>embed</div>",
+            "future": null
+          }
+        },
+        "sgid_to_object_map": {},
+        "circle_ios_fallback_text": "مرحبا 🌍",
+        "format": "tiptap",
+        "community_members": [],
+        "entities": [],
+        "group_mentions": [],
+        "polls": []
+      },
+      "cover_image": "synthetic-cover-id",
+      "internal_custom_html": "",
+      "is_truncation_disabled": false,
+      "is_comments_closed": false,
+      "is_comments_enabled": false,
+      "is_liking_enabled": false,
+      "hide_meta_info": false,
+      "hide_from_featured_areas": false,
+      "meta_title": "",
+      "meta_description": "",
+      "opengraph_title": "",
+      "opengraph_description": "",
+      "published_at": "2026-11-01T12:00:00+02:00",
+      "topics": [],
+      "skip_notifications": false,
+      "is_pinned": false
+    },
+    "response": {
+      "message": "Updated",
+      "post": {
+        "id": 61,
+        "status": "scheduled",
+        "name": "SDK Synthetic Post",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا 🌍",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "embed",
+                "attrs": {
+                  "sgid": "synthetic-embed-sgid"
+                }
+              },
+              {
+                "type": "image",
+                "attrs": {
+                  "signed_id": "synthetic-inline-id",
+                  "width": "100%",
+                  "alignment": "center"
+                }
+              },
+              {
+                "type": "file",
+                "attrs": {
+                  "sgid": "synthetic-file-sgid",
+                  "future": false
+                }
+              },
+              {
+                "type": "poll",
+                "attrs": {
+                  "options": []
+                }
+              }
+            ]
+          },
+          "attachments": [
+            "synthetic-file-id"
+          ],
+          "inline_attachments": [
+            {
+              "signed_id": "synthetic-inline-id",
+              "width": 0
+            }
+          ],
+          "sgids_to_object_map": {
+            "synthetic-embed-sgid": {
+              "html": "<div>embed</div>",
+              "future": null
+            }
+          },
+          "sgid_to_object_map": {},
+          "circle_ios_fallback_text": "مرحبا 🌍",
+          "format": "tiptap",
+          "community_members": [],
+          "entities": [],
+          "group_mentions": [],
+          "polls": []
+        },
+        "body": {
+          "id": 81,
+          "name": "body",
+          "body": "<p>مرحبا</p>",
+          "record_type": "Post",
+          "record_id": 61,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z"
+        },
+        "slug": "sdk-post",
+        "url": "https://community.example.test/c/sdk/sdk-post",
+        "space_name": "SDK",
+        "space_slug": "sdk",
+        "space_id": 51,
+        "user_id": 21,
+        "user_email": "author@example.test",
+        "user_name": "Synthetic author",
+        "comments_count": 0,
+        "community_id": 1,
+        "hide_meta_info": false,
+        "user_avatar_url": null,
+        "published_at": "2026-11-01T10:00:00Z",
+        "created_at": "2026-10-27T00:00:00Z",
+        "updated_at": "2026-10-27T00:00:00Z",
+        "cover_image": "synthetic-cover-id",
+        "cover_image_url": "https://cdn.example.test/cover.jpg",
+        "cardview_thumbnail": null,
+        "cardview_thumbnail_url": null,
+        "is_comments_enabled": false,
+        "is_comments_closed": false,
+        "is_liking_enabled": false,
+        "flagged_for_approval_at": null,
+        "unresolved_flagged_reports_count": 0,
+        "custom_html": null,
+        "likes_count": 0,
+        "topics": [],
+        "member_posts_count": 0,
+        "member_comments_count": 0,
+        "member_likes_count": 0,
+        "reactions": [
+          {
+            "type": "love",
+            "count": 0
+          }
+        ],
+        "future": null
+      }
+    },
+    "success_status": 200,
+    "error_statuses": []
+  },
+  {
+    "case_id": "posts.get_summary",
+    "resource": "posts",
+    "name": "get_summary",
+    "method": "GET",
+    "path": "/api/admin/v2/posts/61/summary",
+    "args": [
+      61
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "overview": null,
+      "content": "Synthetic summary",
+      "future": {
+        "contributors": []
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401
+    ]
+  }
+]

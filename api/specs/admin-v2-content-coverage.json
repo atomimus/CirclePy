@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "freeze_id": "circlepy-v1-2026-10-27",
+  "frozen_sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+  "meaning": "Frozen tag-owned mapping; synthetic request contracts are not live Circle validation.",
+  "drift": [],
+  "operations": [
+    {
+      "task_id": 17,
+      "method": "POST",
+      "path": "/api/admin/v2/comments",
+      "tag": "Comments",
+      "source_pointer": "/paths/~1api~1admin~1v2~1comments/post",
+      "entry_point": "comments.create",
+      "query_fields": [],
+      "json_fields": [
+        "body",
+        "created_at",
+        "parent_comment_id",
+        "post_id",
+        "skip_notifications",
+        "updated_at"
+      ],
+      "response_statuses": [
+        "201",
+        "404"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "GET",
+      "path": "/api/admin/v2/comments",
+      "tag": "Comments",
+      "source_pointer": "/paths/~1api~1admin~1v2~1comments/get",
+      "entry_point": "comments.list_comments",
+      "query_fields": [
+        "page",
+        "per_page",
+        "space_id",
+        "post_id",
+        "search_text"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "DELETE",
+      "path": "/api/admin/v2/comments/{id}",
+      "tag": "Comments",
+      "source_pointer": "/paths/~1api~1admin~1v2~1comments~1{id}/delete",
+      "entry_point": "comments.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "422"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "GET",
+      "path": "/api/admin/v2/comments/{id}",
+      "tag": "Comments",
+      "source_pointer": "/paths/~1api~1admin~1v2~1comments~1{id}/get",
+      "entry_point": "comments.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "POST",
+      "path": "/api/admin/v2/direct_uploads",
+      "tag": "Direct Uploads",
+      "source_pointer": "/paths/~1api~1admin~1v2~1direct_uploads/post",
+      "entry_point": "uploads.create_direct_upload",
+      "query_fields": [],
+      "json_fields": [
+        "blob",
+        "blob.byte_size",
+        "blob.checksum",
+        "blob.content_type",
+        "blob.filename",
+        "blob.key"
+      ],
+      "response_statuses": [
+        "404",
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "POST",
+      "path": "/api/admin/v2/embeds",
+      "tag": "Embeds",
+      "source_pointer": "/paths/~1api~1admin~1v2~1embeds/post",
+      "entry_point": "embeds.create",
+      "query_fields": [],
+      "json_fields": [
+        "url"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "GET",
+      "path": "/api/admin/v2/embeds/{sgid}",
+      "tag": "Embeds",
+      "source_pointer": "/paths/~1api~1admin~1v2~1embeds~1{sgid}/get",
+      "entry_point": "embeds.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "POST",
+      "path": "/api/admin/v2/spaces/{space_id}/images/posts",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{space_id}~1images~1posts/post",
+      "entry_point": "posts.create_image",
+      "query_fields": [],
+      "json_fields": [
+        "gallery_attributes",
+        "gallery_attributes.downloadable_images",
+        "gallery_attributes.images_attributes",
+        "gallery_attributes.images_attributes[].height",
+        "gallery_attributes.images_attributes[].id",
+        "gallery_attributes.images_attributes[].image",
+        "gallery_attributes.images_attributes[].width",
+        "is_comments_enabled",
+        "is_liking_enabled",
+        "is_pinned",
+        "slug",
+        "status",
+        "tiptap_body",
+        "tiptap_body.body",
+        "topics",
+        "user_email",
+        "user_id"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "GET",
+      "path": "/api/admin/v2/spaces/{space_id}/images/posts",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{space_id}~1images~1posts/get",
+      "entry_point": "posts.list_image_posts",
+      "query_fields": [
+        "page",
+        "per_page"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "DELETE",
+      "path": "/api/admin/v2/spaces/{space_id}/images/posts/{id}",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{space_id}~1images~1posts~1{id}/delete",
+      "entry_point": "posts.delete_image",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "GET",
+      "path": "/api/admin/v2/spaces/{space_id}/images/posts/{id}",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{space_id}~1images~1posts~1{id}/get",
+      "entry_point": "posts.get_image",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "POST",
+      "path": "/api/admin/v2/spaces/{space_id}/images/posts/{id}/duplicate",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{space_id}~1images~1posts~1{id}~1duplicate/post",
+      "entry_point": "posts.duplicate_image",
+      "query_fields": [],
+      "json_fields": [
+        "post",
+        "post.send_notifications"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "400",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "DELETE",
+      "path": "/api/admin/v2/posts/{post_id}/post_followers",
+      "tag": "Post Followers",
+      "source_pointer": "/paths/~1api~1admin~1v2~1posts~1{post_id}~1post_followers/delete",
+      "entry_point": "post_followers.remove",
+      "query_fields": [
+        "community_member_id"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "422"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "POST",
+      "path": "/api/admin/v2/posts",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1posts/post",
+      "entry_point": "posts.create",
+      "query_fields": [],
+      "json_fields": [
+        "cover_image",
+        "created_at",
+        "hide_from_featured_areas",
+        "hide_meta_info",
+        "internal_custom_html",
+        "is_comments_closed",
+        "is_comments_enabled",
+        "is_liking_enabled",
+        "is_pinned",
+        "is_truncation_disabled",
+        "meta_description",
+        "meta_title",
+        "name",
+        "opengraph_description",
+        "opengraph_title",
+        "published_at",
+        "skip_notifications",
+        "slug",
+        "space_id",
+        "status",
+        "tiptap_body",
+        "tiptap_body.body",
+        "tiptap_body.body.content",
+        "tiptap_body.body.content[].attrs",
+        "tiptap_body.body.content[].marks",
+        "tiptap_body.body.content[].text",
+        "tiptap_body.body.content[].type",
+        "tiptap_body.body.type",
+        "topics",
+        "user_email",
+        "user_id"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "GET",
+      "path": "/api/admin/v2/posts",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1posts/get",
+      "entry_point": "posts.list_posts",
+      "query_fields": [
+        "page",
+        "per_page",
+        "space_id",
+        "space_group_id",
+        "status",
+        "search_text",
+        "sort"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "DELETE",
+      "path": "/api/admin/v2/posts/{id}",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1posts~1{id}/delete",
+      "entry_point": "posts.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "GET",
+      "path": "/api/admin/v2/posts/{id}",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1posts~1{id}/get",
+      "entry_point": "posts.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "PUT",
+      "path": "/api/admin/v2/posts/{id}",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1posts~1{id}/put",
+      "entry_point": "posts.update",
+      "query_fields": [],
+      "json_fields": [
+        "cover_image",
+        "hide_from_featured_areas",
+        "hide_meta_info",
+        "internal_custom_html",
+        "is_comments_closed",
+        "is_comments_enabled",
+        "is_liking_enabled",
+        "is_pinned",
+        "is_truncation_disabled",
+        "meta_description",
+        "meta_title",
+        "name",
+        "opengraph_description",
+        "opengraph_title",
+        "published_at",
+        "skip_notifications",
+        "tiptap_body",
+        "tiptap_body.body",
+        "tiptap_body.body.content",
+        "tiptap_body.body.content[].attrs",
+        "tiptap_body.body.content[].marks",
+        "tiptap_body.body.content[].text",
+        "tiptap_body.body.content[].type",
+        "tiptap_body.body.type",
+        "topics"
+      ],
+      "response_statuses": [
+        "200"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 17,
+      "method": "GET",
+      "path": "/api/admin/v2/posts/{post_id}/summary",
+      "tag": "Posts",
+      "source_pointer": "/paths/~1api~1admin~1v2~1posts~1{post_id}~1summary/get",
+      "entry_point": "posts.get_summary",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-content.json",
+      "tests": "tests/test_admin_v2_content.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    }
+  ]
+}

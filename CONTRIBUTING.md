@@ -75,6 +75,7 @@ python tools/check_admin_v1_organization_contract.py
 python tools/check_admin_v1_learning_contract.py
 python tools/check_admin_v2_members_contract.py
 python tools/check_admin_v2_access_contract.py
+python tools/check_admin_v2_content_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build
@@ -149,6 +150,11 @@ Admin v2 space/group/access changes also require
 `python tools/check_admin_v2_access_contract.py`, covering all 31 owned operations,
 complete payloads, array query encoding, membership identifiers and 12 official
 space examples. See `docs/admin-v2-access.md` for their separate access semantics.
+
+Admin v2 content/media changes also require
+`python tools/check_admin_v2_content_contract.py`, covering all 19 owned operations,
+nested rich-text/gallery fields, uploads, summaries and documented errors.
+See `docs/admin-v2-content.md` for fields and supported administrative editing.
 
 ## Direct main workflow and CI
 

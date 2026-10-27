@@ -285,7 +285,7 @@ Owning tasks will define their exact methods from the frozen/current schemas.
 |---|---|
 | 15, implemented | `communities`, `community_members`, `community_leads`, `contact_notes`, `invitation_links` |
 | 16, implemented | `spaces`, `space_groups`, `space_group_members`, `space_members`, `community_member_spaces`, `access_groups`, `access_group_members`, `community_member_access_groups` |
-| 17 | `posts`, `comments`, `post_followers`, `embeds`, `direct_uploads` |
+| 17 | `posts`, `comments`, `post_followers`, `embeds`, `uploads` (implemented; [content guide](admin-v2-content.md)) |
 | 18 | `course_sections`, `course_lessons`, `course_lesson_progress` |
 | 19 | `events`, `event_attendees`, `live` |
 | 20 | `member_tags`, `tagged_members`, `topics`, `community_segments` |

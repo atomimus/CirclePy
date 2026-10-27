@@ -33,6 +33,10 @@ Both Admin v2 facades expose `.communities`, `.community_members`, `.community_l
 `.contact_notes` and `.invitation_links`, covering all 19 operations in those tags.
 See [Admin v2 methods, fields and v1 migration](admin-v2-members.md). Remaining
 Admin v2 and named Data resources belong to their implementation tasks.
+Both also expose the eight [space/group/access resources](admin-v2-access.md)
+and `.posts`, `.comments`, `.uploads`, `.embeds`, `.post_followers` for all 19
+[content/media operations](admin-v2-content.md), including documented basic-post
+updates, full gallery metadata, shared uploads and bounded pagination.
 Both Headless facades expose explicit plural resources
 for every frozen Member operation. No methods are generated at runtime.
 

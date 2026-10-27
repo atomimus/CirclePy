@@ -103,7 +103,8 @@ class AdminV2Client(_SyncAPIClient):
                                ContactNotesAPI, InvitationLinksAPI, AccessGroupsAPI,
                                AccessGroupMembersAPI, CommunityMemberSpacesAPI,
                                CommunityMemberAccessGroupsAPI, SpaceGroupsAPI,
-                               SpaceGroupMembersAPI, SpaceMembersAPI, SpacesAPI)
+                               SpaceGroupMembersAPI, SpaceMembersAPI, SpacesAPI,
+                               PostsAPI, CommentsAPI, UploadsAPI, EmbedsAPI, PostFollowersAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -121,6 +122,11 @@ class AdminV2Client(_SyncAPIClient):
         self.space_group_members = SpaceGroupMembersAPI(self)
         self.space_members = SpaceMembersAPI(self)
         self.spaces = SpacesAPI(self)
+        self.posts = PostsAPI(self)
+        self.comments = CommentsAPI(self)
+        self.uploads = UploadsAPI(self)
+        self.embeds = EmbedsAPI(self)
+        self.post_followers = PostFollowersAPI(self)
 
 
 class AsyncAdminV2Client(_AsyncAPIClient):
@@ -134,7 +140,9 @@ class AsyncAdminV2Client(_AsyncAPIClient):
                                AsyncInvitationLinksAPI, AsyncAccessGroupsAPI,
                                AsyncAccessGroupMembersAPI, AsyncCommunityMemberSpacesAPI,
                                AsyncCommunityMemberAccessGroupsAPI, AsyncSpaceGroupsAPI,
-                               AsyncSpaceGroupMembersAPI, AsyncSpaceMembersAPI, AsyncSpacesAPI)
+                               AsyncSpaceGroupMembersAPI, AsyncSpaceMembersAPI, AsyncSpacesAPI,
+                               AsyncPostsAPI, AsyncCommentsAPI, AsyncUploadsAPI,
+                               AsyncEmbedsAPI, AsyncPostFollowersAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -152,6 +160,11 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.space_group_members = AsyncSpaceGroupMembersAPI(self)
         self.space_members = AsyncSpaceMembersAPI(self)
         self.spaces = AsyncSpacesAPI(self)
+        self.posts = AsyncPostsAPI(self)
+        self.comments = AsyncCommentsAPI(self)
+        self.uploads = AsyncUploadsAPI(self)
+        self.embeds = AsyncEmbedsAPI(self)
+        self.post_followers = AsyncPostFollowersAPI(self)
 
 
 class DataClient(_SyncAPIClient):

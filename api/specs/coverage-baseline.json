@@ -2434,9 +2434,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncCommentsAPI.delete",
+          "line": 182,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "CommentsAPI.delete",
+          "line": 167,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2781,9 +2794,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.delete",
+          "line": 24,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.delete",
+          "line": 23,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2803,9 +2829,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostFollowersAPI.remove",
+          "line": 288,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostFollowersAPI.remove",
+          "line": 268,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2987,9 +3026,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.delete_image",
+          "line": 126,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.delete_image",
+          "line": 119,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3180,9 +3232,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncCommentsAPI.list_comments",
+          "line": 193,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "CommentsAPI.list_comments",
+          "line": 178,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3202,9 +3267,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncCommentsAPI.get",
+          "line": 179,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "CommentsAPI.get",
+          "line": 164,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3623,9 +3701,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncEmbedsAPI.get",
+          "line": 283,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "EmbedsAPI.get",
+          "line": 262,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4120,9 +4211,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.list_posts",
+          "line": 40,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.list_posts",
+          "line": 40,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4142,9 +4246,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.get",
+          "line": 15,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.get",
+          "line": 14,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4164,9 +4281,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.get_summary",
+          "line": 27,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.get_summary",
+          "line": 27,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4545,9 +4675,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.list_image_posts",
+          "line": 138,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.list_image_posts",
+          "line": 132,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4567,9 +4710,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.get_image",
+          "line": 121,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.get_image",
+          "line": 114,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5050,9 +5206,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncCommentsAPI.create",
+          "line": 176,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "CommentsAPI.create",
+          "line": 161,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5375,9 +5544,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncUploadsAPI.create_direct_upload",
+          "line": 263,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "UploadsAPI.create_direct_upload",
+          "line": 241,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5397,9 +5579,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncEmbedsAPI.create",
+          "line": 280,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "EmbedsAPI.create",
+          "line": 259,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5762,9 +5957,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.create",
+          "line": 12,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.create",
+          "line": 11,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5968,9 +6176,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.create_image",
+          "line": 114,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.create_image",
+          "line": 107,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5990,9 +6211,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.duplicate_image",
+          "line": 131,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.duplicate_image",
+          "line": 125,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6552,9 +6786,22 @@
         }
       ],
       "task_id": 17,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_content.py",
+          "symbol": "AsyncPostsAPI.update",
+          "line": 19,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/content.py",
+          "symbol": "PostsAPI.update",
+          "line": 18,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },

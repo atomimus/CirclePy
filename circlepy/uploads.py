@@ -71,11 +71,13 @@ class _Snapshot:
             elif position is not None:
                 source.seek(position)
 
-    def payload(self, key: str | None, metadata: dict[str, Any] | None) -> dict[str, Any]:
+    def payload(self, key: str | None, metadata: dict[str, Any] | None,
+                include_metadata: bool = True) -> dict[str, Any]:
         self.key = f'uploads/{uuid.uuid4().hex}/{self.filename}' if key is None else key
         blob = dict(key=self.key, filename=self.filename, content_type=self.content_type,
-                    byte_size=self.byte_size, checksum=self.checksum,
-                    metadata={'identified': True} if metadata is None else deepcopy(metadata))
+                    byte_size=self.byte_size, checksum=self.checksum)
+        if include_metadata:
+            blob['metadata'] = {'identified': True} if metadata is None else deepcopy(metadata)
         return {'blob': blob}
 
     def result(self, data: dict[str, Any]) -> dict[str, Any]:
@@ -112,12 +114,12 @@ def _storage(data: Any, transport: SyncTransport | AsyncTransport) -> tuple[str,
 
 def upload_file(resource: Any, file: Any, *, filename: str | None = None,
                 content_type: str | None = None, metadata: dict[str, Any] | None = None,
-                key: str | None = None) -> dict[str, Any]:
+                key: str | None = None, include_metadata: bool = True) -> dict[str, Any]:
     resource._transport._url('/direct_uploads')  # Closed clients fail before file I/O.
     snapshot = _Snapshot()
     try:
         snapshot.prepare(file, filename, content_type, Event())
-        data = resource.create_direct_upload(snapshot.payload(key, metadata))
+        data = resource.create_direct_upload(snapshot.payload(key, metadata, include_metadata))
         url, headers, root, options = _storage(data, resource._transport)
         with SyncTransport(root, **options) as storage:
             storage.request('PUT', url, headers=headers, data=snapshot.stream)
@@ -192,7 +194,7 @@ class _AsyncFileBody:
 
 async def async_upload_file(resource: Any, file: Any, *, filename: str | None = None,
                             content_type: str | None = None, metadata: dict[str, Any] | None = None,
-                            key: str | None = None) -> dict[str, Any]:
+                            key: str | None = None, include_metadata: bool = True) -> dict[str, Any]:
     resource._transport._url('/direct_uploads')
     snapshot, stop = _Snapshot(), Event()
     preparation = asyncio.create_task(asyncio.to_thread(snapshot.prepare, file, filename, content_type, stop))
@@ -211,7 +213,7 @@ async def async_upload_file(resource: Any, file: Any, *, filename: str | None = 
             if not preparation.cancelled():
                 preparation.exception()
             raise
-        data = await resource.create_direct_upload(snapshot.payload(key, metadata))
+        data = await resource.create_direct_upload(snapshot.payload(key, metadata, include_metadata))
         url, headers, root, options = _storage(data, resource._transport)
         # Content-Length is framing; all storage application headers stay intact.
         if not any(k.lower() == 'content-length' for k in headers):

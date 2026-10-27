@@ -180,12 +180,12 @@ support. The SDK performs no hidden fallback or destructive delete/recreate.
 
 There is no documented Member API update alternative for a basic post as of
 October 27, 2026. Use `update_image_post` only for image posts. An application
-with a separately authorized Admin v2 token can evaluate the documented Admin v2
-PUT `/api/admin/v2/posts/{id}` through `AdminV2Client.request("PUT", "/posts/42",
-json=payload)`; its schema and permissions differ, and its TipTap update is
-documented to apply only when a post already has a TipTap body. Do not use a
-Member JWT as an Admin token. See the separate
-[Admin v2 schema](https://api-headless.circle.so/api/admin/v2/swagger.yaml).
+with a separately authorized Admin v2 token can use
+`AdminV2Client.posts.update(post_id, payload)` or its native async counterpart.
+The documented PUT `/api/admin/v2/posts/{id}` uses its own schema and permissions;
+its TipTap update applies only when a post already has a TipTap body. Do not use a
+Member JWT as an Admin token. The [Admin v2 content guide](admin-v2-content.md)
+includes an executable migration example that checks that provider limitation.
 
 The [content coverage record](../api/specs/content-coverage.json) maps all 25
 documented operations to independent wire fixtures and explicit sync/async

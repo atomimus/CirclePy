@@ -34,8 +34,16 @@ from .async_access import (
     AsyncSpaceMembersAPI,
     AsyncSpacesAPI,
 )
+from .content import PostsAPI, CommentsAPI, UploadsAPI, EmbedsAPI, PostFollowersAPI
+from .async_content import (
+    AsyncPostsAPI, AsyncCommentsAPI, AsyncUploadsAPI, AsyncEmbedsAPI,
+    AsyncPostFollowersAPI,
+)
 
 __all__ = [
+    "PostsAPI", "CommentsAPI", "UploadsAPI", "EmbedsAPI", "PostFollowersAPI",
+    "AsyncPostsAPI", "AsyncCommentsAPI", "AsyncUploadsAPI", "AsyncEmbedsAPI",
+    "AsyncPostFollowersAPI",
     "CommunitiesAPI",
     "CommunityMembersAPI",
     "CommunityLeadsAPI",
