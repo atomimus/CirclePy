@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "freeze_id": "circlepy-v1-2026-10-27",
+  "frozen_sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+  "meaning": "Frozen tag-owned mapping; synthetic request contracts are not live Circle validation.",
+  "drift": [],
+  "operations": [
+    {
+      "task_id": 18,
+      "method": "PUT",
+      "path": "/api/admin/v2/course_lesson_progress",
+      "tag": "Course Lesson Progress",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_lesson_progress/put",
+      "entry_point": "course_lesson_progress.update",
+      "query_fields": [],
+      "json_fields": [
+        "lesson_id",
+        "member_email",
+        "status"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "400",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "POST",
+      "path": "/api/admin/v2/course_lessons",
+      "tag": "Course Lessons",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_lessons/post",
+      "entry_point": "course_lessons.create",
+      "query_fields": [],
+      "json_fields": [
+        "body_html",
+        "featured_media",
+        "is_comments_enabled",
+        "is_featured_media_download_enabled",
+        "is_featured_media_enabled",
+        "name",
+        "rich_text_body",
+        "rich_text_body.body",
+        "rich_text_body.body.content",
+        "rich_text_body.body.content[].attrs",
+        "rich_text_body.body.content[].marks",
+        "rich_text_body.body.content[].text",
+        "rich_text_body.body.content[].type",
+        "rich_text_body.body.type",
+        "section_id",
+        "status",
+        "thumbnail"
+      ],
+      "response_statuses": [
+        "201",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "GET",
+      "path": "/api/admin/v2/course_lessons",
+      "tag": "Course Lessons",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_lessons/get",
+      "entry_point": "course_lessons.list_lessons",
+      "query_fields": [
+        "page",
+        "per_page",
+        "section_id",
+        "space_id",
+        "status",
+        "sort"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "DELETE",
+      "path": "/api/admin/v2/course_lessons/{id}",
+      "tag": "Course Lessons",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_lessons~1{id}/delete",
+      "entry_point": "course_lessons.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "GET",
+      "path": "/api/admin/v2/course_lessons/{id}",
+      "tag": "Course Lessons",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_lessons~1{id}/get",
+      "entry_point": "course_lessons.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "PATCH",
+      "path": "/api/admin/v2/course_lessons/{id}",
+      "tag": "Course Lessons",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_lessons~1{id}/patch",
+      "entry_point": "course_lessons.update",
+      "query_fields": [],
+      "json_fields": [
+        "body_html",
+        "featured_media",
+        "is_comments_enabled",
+        "is_featured_media_download_enabled",
+        "is_featured_media_enabled",
+        "name",
+        "rich_text_body",
+        "rich_text_body.body",
+        "rich_text_body.body.content",
+        "rich_text_body.body.content[].attrs",
+        "rich_text_body.body.content[].marks",
+        "rich_text_body.body.content[].text",
+        "rich_text_body.body.content[].type",
+        "rich_text_body.body.type",
+        "status",
+        "thumbnail"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "PUT",
+      "path": "/api/admin/v2/course_lessons/reorder",
+      "tag": "Course Lessons",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_lessons~1reorder/put",
+      "entry_point": "course_lessons.reorder",
+      "query_fields": [],
+      "json_fields": [
+        "new_order",
+        "new_order[].lesson_ids",
+        "new_order[].section_id",
+        "space_id"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "POST",
+      "path": "/api/admin/v2/course_sections",
+      "tag": "Course Sections",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_sections/post",
+      "entry_point": "course_sections.create",
+      "query_fields": [],
+      "json_fields": [
+        "name",
+        "space_id"
+      ],
+      "response_statuses": [
+        "201",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "GET",
+      "path": "/api/admin/v2/course_sections",
+      "tag": "Course Sections",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_sections/get",
+      "entry_point": "course_sections.list_sections",
+      "query_fields": [
+        "page",
+        "per_page",
+        "space_id",
+        "sort"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "DELETE",
+      "path": "/api/admin/v2/course_sections/{id}",
+      "tag": "Course Sections",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_sections~1{id}/delete",
+      "entry_point": "course_sections.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "GET",
+      "path": "/api/admin/v2/course_sections/{id}",
+      "tag": "Course Sections",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_sections~1{id}/get",
+      "entry_point": "course_sections.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 18,
+      "method": "PUT",
+      "path": "/api/admin/v2/course_sections/{id}",
+      "tag": "Course Sections",
+      "source_pointer": "/paths/~1api~1admin~1v2~1course_sections~1{id}/put",
+      "entry_point": "course_sections.update",
+      "query_fields": [],
+      "json_fields": [
+        "name"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-courses.json",
+      "tests": "tests/test_admin_v2_courses.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    }
+  ]
+}

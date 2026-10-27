@@ -2561,9 +2561,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseLessonsAPI.delete",
+          "line": 69,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseLessonsAPI.delete",
+          "line": 65,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2583,9 +2596,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseSectionsAPI.delete",
+          "line": 22,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseSectionsAPI.delete",
+          "line": 20,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3613,9 +3639,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseLessonsAPI.list_lessons",
+          "line": 81,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseLessonsAPI.list_lessons",
+          "line": 77,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3635,9 +3674,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseLessonsAPI.get",
+          "line": 61,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseLessonsAPI.get",
+          "line": 57,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3657,9 +3709,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseSectionsAPI.list_sections",
+          "line": 27,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseSectionsAPI.list_sections",
+          "line": 25,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3679,9 +3744,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseSectionsAPI.get",
+          "line": 14,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseSectionsAPI.get",
+          "line": 12,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4991,9 +5069,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseLessonsAPI.update",
+          "line": 64,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseLessonsAPI.update",
+          "line": 60,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5500,9 +5591,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseLessonsAPI.create",
+          "line": 58,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseLessonsAPI.create",
+          "line": 54,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5522,9 +5626,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseSectionsAPI.create",
+          "line": 11,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseSectionsAPI.create",
+          "line": 9,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6531,9 +6648,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseLessonProgressAPI.update",
+          "line": 120,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseLessonProgressAPI.update",
+          "line": 114,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6553,9 +6683,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseLessonsAPI.reorder",
+          "line": 73,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseLessonsAPI.reorder",
+          "line": 69,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6575,9 +6718,22 @@
         }
       ],
       "task_id": 18,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_courses.py",
+          "symbol": "AsyncCourseSectionsAPI.update",
+          "line": 17,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/courses.py",
+          "symbol": "CourseSectionsAPI.update",
+          "line": 15,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },

@@ -40,7 +40,14 @@ from .async_content import (
     AsyncPostFollowersAPI,
 )
 
+from .courses import CourseSectionsAPI, CourseLessonsAPI, CourseLessonProgressAPI
+from .async_courses import (
+    AsyncCourseSectionsAPI, AsyncCourseLessonsAPI, AsyncCourseLessonProgressAPI,
+)
+
 __all__ = [
+    "CourseSectionsAPI", "CourseLessonsAPI", "CourseLessonProgressAPI",
+    "AsyncCourseSectionsAPI", "AsyncCourseLessonsAPI", "AsyncCourseLessonProgressAPI",
     "PostsAPI", "CommentsAPI", "UploadsAPI", "EmbedsAPI", "PostFollowersAPI",
     "AsyncPostsAPI", "AsyncCommentsAPI", "AsyncUploadsAPI", "AsyncEmbedsAPI",
     "AsyncPostFollowersAPI",

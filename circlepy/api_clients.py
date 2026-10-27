@@ -104,7 +104,8 @@ class AdminV2Client(_SyncAPIClient):
                                AccessGroupMembersAPI, CommunityMemberSpacesAPI,
                                CommunityMemberAccessGroupsAPI, SpaceGroupsAPI,
                                SpaceGroupMembersAPI, SpaceMembersAPI, SpacesAPI,
-                               PostsAPI, CommentsAPI, UploadsAPI, EmbedsAPI, PostFollowersAPI)
+                               PostsAPI, CommentsAPI, UploadsAPI, EmbedsAPI, PostFollowersAPI,
+                               CourseSectionsAPI, CourseLessonsAPI, CourseLessonProgressAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -127,6 +128,9 @@ class AdminV2Client(_SyncAPIClient):
         self.uploads = UploadsAPI(self)
         self.embeds = EmbedsAPI(self)
         self.post_followers = PostFollowersAPI(self)
+        self.course_sections = CourseSectionsAPI(self)
+        self.course_lessons = CourseLessonsAPI(self)
+        self.course_lesson_progress = CourseLessonProgressAPI(self)
 
 
 class AsyncAdminV2Client(_AsyncAPIClient):
@@ -142,7 +146,8 @@ class AsyncAdminV2Client(_AsyncAPIClient):
                                AsyncCommunityMemberAccessGroupsAPI, AsyncSpaceGroupsAPI,
                                AsyncSpaceGroupMembersAPI, AsyncSpaceMembersAPI, AsyncSpacesAPI,
                                AsyncPostsAPI, AsyncCommentsAPI, AsyncUploadsAPI,
-                               AsyncEmbedsAPI, AsyncPostFollowersAPI)
+                               AsyncEmbedsAPI, AsyncPostFollowersAPI, AsyncCourseSectionsAPI,
+                               AsyncCourseLessonsAPI, AsyncCourseLessonProgressAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -165,6 +170,9 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.uploads = AsyncUploadsAPI(self)
         self.embeds = AsyncEmbedsAPI(self)
         self.post_followers = AsyncPostFollowersAPI(self)
+        self.course_sections = AsyncCourseSectionsAPI(self)
+        self.course_lessons = AsyncCourseLessonsAPI(self)
+        self.course_lesson_progress = AsyncCourseLessonProgressAPI(self)
 
 
 class DataClient(_SyncAPIClient):

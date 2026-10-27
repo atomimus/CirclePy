@@ -76,6 +76,7 @@ python tools/check_admin_v1_learning_contract.py
 python tools/check_admin_v2_members_contract.py
 python tools/check_admin_v2_access_contract.py
 python tools/check_admin_v2_content_contract.py
+python tools/check_admin_v2_courses_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build
@@ -155,6 +156,11 @@ Admin v2 content/media changes also require
 `python tools/check_admin_v2_content_contract.py`, covering all 19 owned operations,
 nested rich-text/gallery fields, uploads, summaries and documented errors.
 See `docs/admin-v2-content.md` for fields and supported administrative editing.
+
+Admin v2 course changes also require
+`python tools/check_admin_v2_courses_contract.py`, covering all 12 owned operations,
+full ordering arrays, lesson rich text/media, progress and documented errors.
+See `docs/admin-v2-courses.md` for fields and tested construction examples.
 
 ## Direct main workflow and CI
 

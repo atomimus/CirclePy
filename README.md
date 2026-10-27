@@ -29,6 +29,9 @@ Both cover all 19 [content and media operations](docs/admin-v2-content.md),
 including basic-post editing, image galleries/duplication, comments, direct
 uploads, embeds and post summaries. The guide explains the existing-TipTap
 requirement for administrative content updates and the separate v2 credential.
+Both cover all 12 [course administration operations](docs/admin-v2-courses.md),
+including section/lesson construction, full course reordering, media and member
+progress updates, with matching sync/async methods and bounded pagination.
 
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`

@@ -40,3 +40,9 @@ come from v1 Postman request entries and saved originalRequest examples, with
 synthetic values only. Responses exercise preservation without claiming a schema
 or live provider success. Blank contact query placeholders are superseded by
 the populated saved JSON request.
+
+`admin-v2-courses.json` records all 12 frozen course section/lesson/progress
+operations independently of SDK methods. It covers complete nested rich text,
+signed media IDs, final ordering arrays, progress outcomes and opaque response
+extensions. These contracts prove offline wire behavior; actual Circle course
+state, validation and rendering require separate sandbox evidence.

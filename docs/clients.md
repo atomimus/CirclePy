@@ -37,6 +37,9 @@ Both also expose the eight [space/group/access resources](admin-v2-access.md)
 and `.posts`, `.comments`, `.uploads`, `.embeds`, `.post_followers` for all 19
 [content/media operations](admin-v2-content.md), including documented basic-post
 updates, full gallery metadata, shared uploads and bounded pagination.
+Both expose `.course_sections`, `.course_lessons`, `.course_lesson_progress`
+for all 12 [course administration operations](admin-v2-courses.md), including
+PATCH lesson editing, PUT course reordering and progress updates by member email.
 Both Headless facades expose explicit plural resources
 for every frozen Member operation. No methods are generated at runtime.
 

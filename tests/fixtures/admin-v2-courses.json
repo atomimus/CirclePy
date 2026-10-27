@@ -1,0 +1,1006 @@
+[
+  {
+    "case_id": "course_lesson_progress.update",
+    "resource": "course_lesson_progress",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/course_lesson_progress",
+    "args": [
+      {
+        "lesson_id": 81,
+        "member_email": "learner@example.test",
+        "status": "completed"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "lesson_id": 81,
+      "member_email": "learner@example.test",
+      "status": "completed"
+    },
+    "response": {
+      "success": true,
+      "message": "Synthetic course result",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      400,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_lessons.create",
+    "resource": "course_lessons",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/course_lessons",
+    "args": [
+      {
+        "section_id": 71,
+        "name": "SDK Fixture Lesson",
+        "status": "draft",
+        "body_html": "",
+        "is_comments_enabled": false,
+        "is_featured_media_enabled": true,
+        "is_featured_media_download_enabled": false,
+        "thumbnail": "synthetic-thumbnail-id",
+        "featured_media": "synthetic-media-id",
+        "rich_text_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "text": null,
+                "marks": [],
+                "attrs": {},
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Lesson العربية",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "file",
+                "text": null,
+                "marks": [],
+                "attrs": {
+                  "sgid": "synthetic-file-sgid",
+                  "filename": "lesson.txt"
+                }
+              }
+            ]
+          },
+          "attachments": [
+            "synthetic-attachment-id"
+          ],
+          "sgids_to_object_map": {
+            "synthetic-file-sgid": {
+              "future": false
+            }
+          },
+          "future": null
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "section_id": 71,
+      "name": "SDK Fixture Lesson",
+      "status": "draft",
+      "body_html": "",
+      "is_comments_enabled": false,
+      "is_featured_media_enabled": true,
+      "is_featured_media_download_enabled": false,
+      "thumbnail": "synthetic-thumbnail-id",
+      "featured_media": "synthetic-media-id",
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": null,
+              "marks": [],
+              "attrs": {},
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Lesson العربية",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "file",
+              "text": null,
+              "marks": [],
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "filename": "lesson.txt"
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-attachment-id"
+        ],
+        "sgids_to_object_map": {
+          "synthetic-file-sgid": {
+            "future": false
+          }
+        },
+        "future": null
+      }
+    },
+    "response": {
+      "id": 81,
+      "name": "SDK Fixture Lesson",
+      "status": "draft",
+      "section_id": 71,
+      "space_id": 51,
+      "created_at": "2026-10-27T08:00:00Z",
+      "updated_at": "2026-10-27T08:00:00Z",
+      "body_html": "",
+      "is_comments_enabled": false,
+      "is_featured_media_enabled": true,
+      "is_featured_media_download_enabled": false,
+      "thumbnail": {
+        "id": 91,
+        "url": "https://media.example.test/thumbnail.png",
+        "width": 640,
+        "height": 480,
+        "future": null
+      },
+      "featured_media": {
+        "id": 92,
+        "filename": "lesson.mp4",
+        "content_type": "video/mp4",
+        "byte_size": 0,
+        "duration": 0,
+        "chapters": [],
+        "preview": {
+          "url": null
+        },
+        "thumbnails": [],
+        "metadata": {
+          "downloadable": false
+        }
+      },
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": null,
+              "marks": [],
+              "attrs": {},
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Lesson العربية",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "file",
+              "text": null,
+              "marks": [],
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "filename": "lesson.txt"
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-attachment-id"
+        ],
+        "sgids_to_object_map": {
+          "synthetic-file-sgid": {
+            "future": false
+          }
+        },
+        "future": null
+      },
+      "files": [
+        {
+          "id": 93,
+          "filename": "lesson.txt",
+          "byte_size": 0,
+          "metadata": {
+            "future": []
+          }
+        }
+      ],
+      "progress": {
+        "status": "incomplete",
+        "completed_at": null
+      },
+      "future": {
+        "zero": 0,
+        "empty": []
+      }
+    },
+    "success_status": 201,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_lessons.list_lessons",
+    "resource": "course_lessons",
+    "name": "list_lessons",
+    "method": "GET",
+    "path": "/api/admin/v2/course_lessons",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "section_id": 71,
+      "space_id": 51,
+      "status": "draft",
+      "sort": "oldest"
+    },
+    "query": "page=2&per_page=4&section_id=71&space_id=51&status=draft&sort=oldest",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 81,
+          "name": "SDK Fixture Lesson",
+          "status": "draft",
+          "section_id": 71,
+          "space_id": 51,
+          "created_at": "2026-10-27T08:00:00Z",
+          "updated_at": "2026-10-27T08:00:00Z",
+          "body_html": "",
+          "is_comments_enabled": false,
+          "is_featured_media_enabled": true,
+          "is_featured_media_download_enabled": false,
+          "thumbnail": {
+            "id": 91,
+            "url": "https://media.example.test/thumbnail.png",
+            "width": 640,
+            "height": 480,
+            "future": null
+          },
+          "featured_media": {
+            "id": 92,
+            "filename": "lesson.mp4",
+            "content_type": "video/mp4",
+            "byte_size": 0,
+            "duration": 0,
+            "chapters": [],
+            "preview": {
+              "url": null
+            },
+            "thumbnails": [],
+            "metadata": {
+              "downloadable": false
+            }
+          },
+          "rich_text_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": null,
+                  "marks": [],
+                  "attrs": {},
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Lesson العربية",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mention",
+                      "attrs": {
+                        "sgid": "synthetic-member-sgid"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "file",
+                  "text": null,
+                  "marks": [],
+                  "attrs": {
+                    "sgid": "synthetic-file-sgid",
+                    "filename": "lesson.txt"
+                  }
+                }
+              ]
+            },
+            "attachments": [
+              "synthetic-attachment-id"
+            ],
+            "sgids_to_object_map": {
+              "synthetic-file-sgid": {
+                "future": false
+              }
+            },
+            "future": null
+          },
+          "files": [
+            {
+              "id": 93,
+              "filename": "lesson.txt",
+              "byte_size": 0,
+              "metadata": {
+                "future": []
+              }
+            }
+          ],
+          "progress": {
+            "status": "incomplete",
+            "completed_at": null
+          },
+          "future": {
+            "zero": 0,
+            "empty": []
+          }
+        }
+      ],
+      "has_next_page": false,
+      "future": false
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_lessons.delete",
+    "resource": "course_lessons",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/course_lessons/81",
+    "args": [
+      81
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic course result",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_lessons.get",
+    "resource": "course_lessons",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/course_lessons/81",
+    "args": [
+      81
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 81,
+      "name": "SDK Fixture Lesson",
+      "status": "draft",
+      "section_id": 71,
+      "space_id": 51,
+      "created_at": "2026-10-27T08:00:00Z",
+      "updated_at": "2026-10-27T08:00:00Z",
+      "body_html": "",
+      "is_comments_enabled": false,
+      "is_featured_media_enabled": true,
+      "is_featured_media_download_enabled": false,
+      "thumbnail": {
+        "id": 91,
+        "url": "https://media.example.test/thumbnail.png",
+        "width": 640,
+        "height": 480,
+        "future": null
+      },
+      "featured_media": {
+        "id": 92,
+        "filename": "lesson.mp4",
+        "content_type": "video/mp4",
+        "byte_size": 0,
+        "duration": 0,
+        "chapters": [],
+        "preview": {
+          "url": null
+        },
+        "thumbnails": [],
+        "metadata": {
+          "downloadable": false
+        }
+      },
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": null,
+              "marks": [],
+              "attrs": {},
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Lesson العربية",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "file",
+              "text": null,
+              "marks": [],
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "filename": "lesson.txt"
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-attachment-id"
+        ],
+        "sgids_to_object_map": {
+          "synthetic-file-sgid": {
+            "future": false
+          }
+        },
+        "future": null
+      },
+      "files": [
+        {
+          "id": 93,
+          "filename": "lesson.txt",
+          "byte_size": 0,
+          "metadata": {
+            "future": []
+          }
+        }
+      ],
+      "progress": {
+        "status": "incomplete",
+        "completed_at": null
+      },
+      "future": {
+        "zero": 0,
+        "empty": []
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_lessons.update",
+    "resource": "course_lessons",
+    "name": "update",
+    "method": "PATCH",
+    "path": "/api/admin/v2/course_lessons/81",
+    "args": [
+      81,
+      {
+        "name": "SDK Fixture Lesson",
+        "status": "draft",
+        "body_html": "",
+        "is_comments_enabled": false,
+        "is_featured_media_enabled": true,
+        "is_featured_media_download_enabled": false,
+        "thumbnail": "synthetic-thumbnail-id",
+        "featured_media": "synthetic-media-id",
+        "rich_text_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "text": null,
+                "marks": [],
+                "attrs": {},
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Lesson العربية",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "file",
+                "text": null,
+                "marks": [],
+                "attrs": {
+                  "sgid": "synthetic-file-sgid",
+                  "filename": "lesson.txt"
+                }
+              }
+            ]
+          },
+          "attachments": [
+            "synthetic-attachment-id"
+          ],
+          "sgids_to_object_map": {
+            "synthetic-file-sgid": {
+              "future": false
+            }
+          },
+          "future": null
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Fixture Lesson",
+      "status": "draft",
+      "body_html": "",
+      "is_comments_enabled": false,
+      "is_featured_media_enabled": true,
+      "is_featured_media_download_enabled": false,
+      "thumbnail": "synthetic-thumbnail-id",
+      "featured_media": "synthetic-media-id",
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": null,
+              "marks": [],
+              "attrs": {},
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Lesson العربية",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "file",
+              "text": null,
+              "marks": [],
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "filename": "lesson.txt"
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-attachment-id"
+        ],
+        "sgids_to_object_map": {
+          "synthetic-file-sgid": {
+            "future": false
+          }
+        },
+        "future": null
+      }
+    },
+    "response": {
+      "id": 81,
+      "name": "SDK Fixture Lesson",
+      "status": "draft",
+      "section_id": 71,
+      "space_id": 51,
+      "created_at": "2026-10-27T08:00:00Z",
+      "updated_at": "2026-10-27T08:00:00Z",
+      "body_html": "",
+      "is_comments_enabled": false,
+      "is_featured_media_enabled": true,
+      "is_featured_media_download_enabled": false,
+      "thumbnail": {
+        "id": 91,
+        "url": "https://media.example.test/thumbnail.png",
+        "width": 640,
+        "height": 480,
+        "future": null
+      },
+      "featured_media": {
+        "id": 92,
+        "filename": "lesson.mp4",
+        "content_type": "video/mp4",
+        "byte_size": 0,
+        "duration": 0,
+        "chapters": [],
+        "preview": {
+          "url": null
+        },
+        "thumbnails": [],
+        "metadata": {
+          "downloadable": false
+        }
+      },
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": null,
+              "marks": [],
+              "attrs": {},
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Lesson العربية",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "file",
+              "text": null,
+              "marks": [],
+              "attrs": {
+                "sgid": "synthetic-file-sgid",
+                "filename": "lesson.txt"
+              }
+            }
+          ]
+        },
+        "attachments": [
+          "synthetic-attachment-id"
+        ],
+        "sgids_to_object_map": {
+          "synthetic-file-sgid": {
+            "future": false
+          }
+        },
+        "future": null
+      },
+      "files": [
+        {
+          "id": 93,
+          "filename": "lesson.txt",
+          "byte_size": 0,
+          "metadata": {
+            "future": []
+          }
+        }
+      ],
+      "progress": {
+        "status": "incomplete",
+        "completed_at": null
+      },
+      "future": {
+        "zero": 0,
+        "empty": []
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_lessons.reorder",
+    "resource": "course_lessons",
+    "name": "reorder",
+    "method": "PUT",
+    "path": "/api/admin/v2/course_lessons/reorder",
+    "args": [
+      {
+        "space_id": 51,
+        "new_order": [
+          {
+            "section_id": 72,
+            "lesson_ids": [
+              83,
+              81
+            ]
+          },
+          {
+            "section_id": 71,
+            "lesson_ids": [
+              82
+            ]
+          },
+          {
+            "section_id": 73,
+            "lesson_ids": []
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "space_id": 51,
+      "new_order": [
+        {
+          "section_id": 72,
+          "lesson_ids": [
+            83,
+            81
+          ]
+        },
+        {
+          "section_id": 71,
+          "lesson_ids": [
+            82
+          ]
+        },
+        {
+          "section_id": 73,
+          "lesson_ids": []
+        }
+      ]
+    },
+    "response": {
+      "success": true,
+      "message": "Synthetic course result",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_sections.create",
+    "resource": "course_sections",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/course_sections",
+    "args": [
+      {
+        "name": "SDK Fixture Section",
+        "space_id": 51
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Fixture Section",
+      "space_id": 51
+    },
+    "response": {
+      "id": 71,
+      "name": "SDK Fixture Section",
+      "space_id": 51,
+      "created_at": "2026-10-27T08:00:00Z",
+      "updated_at": "2026-10-27T08:00:00Z",
+      "future": null
+    },
+    "success_status": 201,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_sections.list_sections",
+    "resource": "course_sections",
+    "name": "list_sections",
+    "method": "GET",
+    "path": "/api/admin/v2/course_sections",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "space_id": 51,
+      "sort": "oldest"
+    },
+    "query": "page=2&per_page=4&space_id=51&sort=oldest",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 71,
+          "name": "SDK Fixture Section",
+          "space_id": 51,
+          "created_at": "2026-10-27T08:00:00Z",
+          "updated_at": "2026-10-27T08:00:00Z",
+          "future": null
+        }
+      ],
+      "has_next_page": false,
+      "future": false
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_sections.delete",
+    "resource": "course_sections",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/course_sections/71",
+    "args": [
+      71
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": null,
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_sections.get",
+    "resource": "course_sections",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/course_sections/71",
+    "args": [
+      71
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 71,
+      "name": "SDK Fixture Section",
+      "space_id": 51,
+      "created_at": "2026-10-27T08:00:00Z",
+      "updated_at": "2026-10-27T08:00:00Z",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "course_sections.update",
+    "resource": "course_sections",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/course_sections/71",
+    "args": [
+      71,
+      {
+        "name": "Updated SDK Fixture Section"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "Updated SDK Fixture Section"
+    },
+    "response": {
+      "id": 71,
+      "name": "SDK Fixture Section",
+      "space_id": 51,
+      "created_at": "2026-10-27T08:00:00Z",
+      "updated_at": "2026-10-27T08:00:00Z",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ]
+  }
+]

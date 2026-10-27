@@ -13,6 +13,7 @@ include docs/admin-v1-learning.md
 include docs/admin-v2-members.md
 include docs/admin-v2-access.md
 include docs/admin-v2-content.md
+include docs/admin-v2-courses.md
 recursive-include circlepy *.py
 recursive-include tests *.py *.json *.md
 recursive-include tools *.py
