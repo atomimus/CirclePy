@@ -1,3 +1,6 @@
+
+from ..pagination import iter_records
+from .pagination import member_pages
 from .base_api_client import BaseAPIClient
 from copy import deepcopy
 from .content import segment
@@ -23,3 +26,18 @@ class BookmarksAPI(BaseAPIClient):
 
     def delete_bookmark(self, bookmark_id):
         return self.delete(f"/bookmarks/{segment(bookmark_id)}")
+
+    def iter_bookmarks_pages(self, page=None, per_page=None, bookmark_type=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        if bookmark_type is not None:
+            params['bookmark_type'] = bookmark_type
+        return member_pages(self, '/bookmarks', params or None, max_pages=max_pages)
+
+    def iter_bookmarks(self, page=None, per_page=None, bookmark_type=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_bookmarks_pages(page, per_page, bookmark_type, max_pages=max_pages))

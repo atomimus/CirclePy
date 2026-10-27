@@ -21,6 +21,8 @@ including signup custom fields/timezone and field/choice record preservation.
 Both expose [HTTP messaging, notifications, search, bookmarks and cookies](docs/messaging.md),
 including raw rich-text replies, Unicode reactions, complete filters and shared sessions.
 Both expose [courses, quizzes, event participation, reports, invitations and live rooms](docs/learning.md).
+Use [opt-in pagination](docs/pagination.md) for bounded sync/async page or record
+iteration, cursor search, and unprojected legacy space/post arrays.
 All 102 frozen Member and four Auth operations have explicit sync/async entry
 points and independent offline contract coverage; live sandbox checks remain separate.
 

@@ -1,5 +1,9 @@
 """Native async Member learning, event, moderation, invitation and live resources."""
 
+from ..pagination import aiter_records
+from .pagination import async_member_pages
+from contextlib import aclosing
+
 from copy import deepcopy
 
 from .content import segment
@@ -34,6 +38,46 @@ class AsyncCoursesAPI:
         """One page of latest course attempts; Circle requires admin permission."""
         return await self._client.request('GET', f'/courses/{segment(course_id)}/quiz_attempts',
                                           params=page_params(page, per_page) or None)
+
+    async def iter_course_topics_pages(self, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = page_params(page, per_page)
+        async with aclosing(async_member_pages(self, '/course_topics', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_course_topics(self, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_course_topics_pages(page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_course_lesson_files_pages(self, course_id, lesson_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = page_params(page, per_page)
+        async with aclosing(async_member_pages(self, f'/courses/{segment(course_id)}/lessons/{segment(lesson_id)}/files', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_course_lesson_files(self, course_id, lesson_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_course_lesson_files_pages(course_id, lesson_id, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_course_quiz_attempts_pages(self, course_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = page_params(page, per_page)
+        async with aclosing(async_member_pages(self, f'/courses/{segment(course_id)}/quiz_attempts', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_course_quiz_attempts(self, course_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_course_quiz_attempts_pages(course_id, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
 
 
 class AsyncQuizzesAPI:
@@ -84,6 +128,46 @@ class AsyncEventsAPI:
     async def update_recurring_events_rsvp(self, space_id, event_id, event_ids=None, payload=None):
         body = field_payload('event_ids', event_ids, payload)
         return await self._client.request('PUT', f'/spaces/{segment(space_id)}/events/{segment(event_id)}/recurring_events/rsvp', json=body)
+
+    async def iter_community_events_pages(self, page=None, per_page=None, filter_date_start=None, filter_date_end=None, status=None, past_events=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = event_params(page, per_page, filter_date_start, filter_date_end, status, past_events)
+        async with aclosing(async_member_pages(self, '/community_events', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_community_events(self, page=None, per_page=None, filter_date_start=None, filter_date_end=None, status=None, past_events=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_community_events_pages(page, per_page, filter_date_start, filter_date_end, status, past_events, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_event_attendees_pages(self, event_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = page_params(page, per_page)
+        async with aclosing(async_member_pages(self, f'/events/{segment(event_id)}/event_attendees', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_event_attendees(self, event_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_event_attendees_pages(event_id, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_recurring_events_pages(self, space_id, event_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = page_params(page, per_page)
+        async with aclosing(async_member_pages(self, f'/spaces/{segment(space_id)}/events/{segment(event_id)}/recurring_events', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_recurring_events(self, space_id, event_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_recurring_events_pages(space_id, event_id, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
 
 
 class AsyncFlaggedContentsAPI:

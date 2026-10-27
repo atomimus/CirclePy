@@ -79,6 +79,8 @@ jobs:
       - run: python -m ruff check --select E4,E7,E9,F circlepy/headless_models/learning.py circlepy/headless_models/async_learning_api.py circlepy/headless_models/courses_api.py circlepy/headless_models/quizzes_api.py circlepy/headless_models/events_api.py circlepy/headless_models/flagged_contents_api.py circlepy/headless_models/invitation_links_api.py circlepy/headless_models/live_streams_api.py tests/test_headless_learning.py tools/check_learning_contract.py tools/check_headless_inventory.py
       - run: python tools/check_learning_contract.py
       - run: python tools/check_headless_inventory.py
+      - run: python -m ruff check --select E4,E7,E9,F circlepy/pagination.py circlepy/headless_models/pagination.py tests/test_pagination.py tests/test_pagination_examples.py tools/check_pagination_contract.py
+      - run: python tools/check_pagination_contract.py
       - run: python tools/check_ci.py --negative-fixture
 
   dependencies:

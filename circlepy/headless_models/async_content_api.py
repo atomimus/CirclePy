@@ -1,5 +1,9 @@
 """Explicit native async Member content resources borrowing the facade pool."""
 
+from ..pagination import aiter_records
+from .pagination import async_member_pages
+from contextlib import aclosing
+
 from copy import deepcopy
 
 from .content import (append_image, comment_params, comment_payload, image_dimensions,
@@ -92,6 +96,35 @@ class AsyncPostsAPI:
         params = comment_params(page, per_page, reaction_type=reaction_type)
         return await self._client.request('GET', f'/posts/{segment(post_id)}/user_likes', params=params)
 
+    async def iter_posts_pages(self, space_id, page=1, per_page=10, sort='latest', status=None, past_events=None, topics=None, post_ids=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = post_params(page, per_page, sort, status, past_events, topics, post_ids)
+        async with aclosing(async_member_pages(self, f'/spaces/{segment(space_id)}/posts', params, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_posts(self, space_id, page=1, per_page=10, sort='latest', status=None, past_events=None, topics=None, post_ids=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_posts_pages(space_id, page, per_page, sort, status, past_events, topics, post_ids, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_post_likes_pages(self, post_id, page=1, per_page=10, reaction_type=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = post_params(page, per_page, None, None, None, None, None)
+        if reaction_type is not None:
+            params['reaction_type'] = reaction_type
+        async with aclosing(async_member_pages(self, f'/posts/{segment(post_id)}/user_likes', params, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_post_likes(self, post_id, page=1, per_page=10, reaction_type=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_post_likes_pages(post_id, page, per_page, reaction_type, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+
 
 class AsyncCommentsAPI:
     def __init__(self, client):
@@ -145,3 +178,60 @@ class AsyncCommentsAPI:
 
     async def unlike_comment(self, comment_id):
         return await self._client.request('DELETE', f'/comments/{segment(comment_id)}/user_likes')
+
+    async def iter_post_comments_pages(self, post_id, page=None, per_page=None, sort=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        if sort is not None:
+            params['sort'] = sort
+        async with aclosing(async_member_pages(self, f'/posts/{segment(post_id)}/comments', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_post_comments(self, post_id, page=None, per_page=None, sort=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_post_comments_pages(post_id, page, per_page, sort, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_comment_replies_pages(self, comment_id, page=None, per_page=None, sort=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        if sort is not None:
+            params['sort'] = sort
+        async with aclosing(async_member_pages(self, f'/comments/{segment(comment_id)}/replies', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_comment_replies(self, comment_id, page=None, per_page=None, sort=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_comment_replies_pages(comment_id, page, per_page, sort, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_comment_likes_pages(self, comment_id, page=None, per_page=None, reaction_type=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        if reaction_type is not None:
+            params['reaction_type'] = reaction_type
+        async with aclosing(async_member_pages(self, f'/comments/{segment(comment_id)}/user_likes', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_comment_likes(self, comment_id, page=None, per_page=None, reaction_type=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_comment_likes_pages(comment_id, page, per_page, reaction_type, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record

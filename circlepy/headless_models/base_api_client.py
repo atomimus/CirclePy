@@ -22,7 +22,7 @@ class BaseAPIClient:
             'Content-Type': 'application/json'
         }
 
-    def _request(self, method, endpoint, **kwargs):
+    def _request(self, method, endpoint, *, _strict=False, **kwargs):
         url = f"{self.auth.base_url}{endpoint}"
         self._transport._url(url)
         # Legacy Auth-compatible objects can supply just token fields and a
@@ -42,7 +42,7 @@ class BaseAPIClient:
             if attempt == 1 or refreshed:
                 if coordinated:
                     self.auth.reject_token(token, response)
-                if self._transport.raise_on_error:
+                if _strict or self._transport.raise_on_error:
                     response.raise_for_status()
                 # Legacy code catches requests.HTTPError. No raw request/URL is
                 # retained: Requests' default message can expose signed queries.
@@ -52,7 +52,7 @@ class BaseAPIClient:
             else:
                 self.auth.refresh_access_token()
                 token = self.auth.access_token
-        if self._transport.raise_on_error:
+        if _strict or self._transport.raise_on_error:
             response.raise_for_status()
         if endpoint == "/cookies" and method == "POST" and response.status_code == 200:
             return {
@@ -76,4 +76,3 @@ class BaseAPIClient:
 
     def delete(self, endpoint):
         return self._request('DELETE', endpoint)
-

@@ -352,7 +352,8 @@ def test_public_member_signatures_match_sync_async():
             if name.startswith('_') or not callable(method):
                 continue
             counterpart = getattr(async_cls,name)
-            assert inspect.iscoroutinefunction(counterpart)
+            assert (inspect.isasyncgenfunction(counterpart) if name.startswith('iter_')
+                    else inspect.iscoroutinefunction(counterpart))
             assert inspect.signature(method) == inspect.signature(counterpart)
 
 

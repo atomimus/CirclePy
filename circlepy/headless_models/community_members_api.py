@@ -1,5 +1,8 @@
 """Member-authenticated directory, current profile and signup operations."""
 
+from ..pagination import CursorPages, MemberDirectoryPages, iter_records
+from .pagination import member_pages
+
 from copy import deepcopy
 
 from .uploads_api import UploadsAPI
@@ -86,3 +89,43 @@ class CommunityMembersAPI(BaseAPIClient):
     def confirm_member_profile_raw(self, payload):
         """Confirm using the complete unmodified provider body."""
         return self.put('/signup/profile', data=deepcopy(payload))
+
+    def iter_comments_pages(self, community_member_id, page=1, per_page=10, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        return member_pages(self, f'/community_members/{segment(community_member_id)}/comments', page_params(page, per_page), max_pages=max_pages)
+
+    def iter_comments(self, community_member_id, page=1, per_page=10, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_comments_pages(community_member_id, page, per_page, max_pages=max_pages))
+
+    def iter_members_pages(self, page=1, per_page=10, space_id=None, search_text=None, search_after=None, sort=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        return member_pages(self, '/community_members', page_params(page, per_page, space_id=space_id, search_text=search_text, search_after=search_after, sort=sort), pagination=MemberDirectoryPages(), max_pages=max_pages)
+
+    def iter_members(self, page=1, per_page=10, space_id=None, search_text=None, search_after=None, sort=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_members_pages(page, per_page, space_id, search_text, search_after, sort, max_pages=max_pages))
+
+    def iter_posts_pages(self, community_member_id, page=1, per_page=10, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        return member_pages(self, f'/community_members/{segment(community_member_id)}/posts', page_params(page, per_page), max_pages=max_pages)
+
+    def iter_posts(self, community_member_id, page=1, per_page=10, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_posts_pages(community_member_id, page, per_page, max_pages=max_pages))
+
+    def iter_spaces_pages(self, community_member_id, page=1, per_page=30, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        return member_pages(self, f'/community_members/{segment(community_member_id)}/spaces', page_params(page, per_page), max_pages=max_pages)
+
+    def iter_spaces(self, community_member_id, page=1, per_page=30, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_spaces_pages(community_member_id, page, per_page, max_pages=max_pages))
+
+    def iter_search_members_pages(self, page=1, per_page=30, search_text='', exclude_empty_name=True, exclude_empty_profiles=True, order='oldest', status='active', filters=None, search_after=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        return member_pages(self, '/search/community_members', search_payload(page, per_page, search_text, exclude_empty_name, order, status, filters, search_after), pagination=CursorPages(), method='POST', max_pages=max_pages)
+
+    def iter_search_members(self, page=1, per_page=30, search_text='', exclude_empty_name=True, exclude_empty_profiles=True, order='oldest', status='active', filters=None, search_after=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_search_members_pages(page, per_page, search_text, exclude_empty_name, exclude_empty_profiles, order, status, filters, search_after, max_pages=max_pages))

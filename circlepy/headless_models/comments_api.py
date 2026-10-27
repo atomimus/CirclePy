@@ -1,3 +1,6 @@
+
+from ..pagination import iter_records
+from .pagination import member_pages
 from .base_api_client import BaseAPIClient
 from .content import comment_payload, reaction_payload, segment
 
@@ -71,3 +74,48 @@ class CommentsAPI(BaseAPIClient):
 
     def unlike_comment(self, comment_id):
         return self.delete(f"/comments/{segment(comment_id)}/user_likes")
+
+    def iter_post_comments_pages(self, post_id, page=None, per_page=None, sort=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        if sort is not None:
+            params['sort'] = sort
+        return member_pages(self, f'/posts/{segment(post_id)}/comments', params or None, max_pages=max_pages)
+
+    def iter_post_comments(self, post_id, page=None, per_page=None, sort=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_post_comments_pages(post_id, page, per_page, sort, max_pages=max_pages))
+
+    def iter_comment_replies_pages(self, comment_id, page=None, per_page=None, sort=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        if sort is not None:
+            params['sort'] = sort
+        return member_pages(self, f'/comments/{segment(comment_id)}/replies', params or None, max_pages=max_pages)
+
+    def iter_comment_replies(self, comment_id, page=None, per_page=None, sort=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_comment_replies_pages(comment_id, page, per_page, sort, max_pages=max_pages))
+
+    def iter_comment_likes_pages(self, comment_id, page=None, per_page=None, reaction_type=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        if reaction_type is not None:
+            params['reaction_type'] = reaction_type
+        return member_pages(self, f'/comments/{segment(comment_id)}/user_likes', params or None, max_pages=max_pages)
+
+    def iter_comment_likes(self, comment_id, page=None, per_page=None, reaction_type=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_comment_likes_pages(comment_id, page, per_page, reaction_type, max_pages=max_pages))

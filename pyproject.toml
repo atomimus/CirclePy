@@ -79,7 +79,7 @@ select = ["E9", "F63", "F7", "F82"]
 
 [tool.mypy]
 python_version = "3.11"
-files = ["tests/http_fixtures.py", "tests/conftest.py", "tools/check_ci.py", "circlepy/transport.py", "circlepy/errors.py", "circlepy/tokens.py", "circlepy/uploads.py"]
+files = ["tests/http_fixtures.py", "tests/conftest.py", "tools/check_ci.py", "circlepy/transport.py", "circlepy/errors.py", "circlepy/tokens.py", "circlepy/uploads.py", "circlepy/pagination.py"]
 strict = true
 
 [[tool.mypy.overrides]]

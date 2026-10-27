@@ -5,6 +5,8 @@ from collections import namedtuple
 import json
 import re
 from .transport import AsyncTransport
+from .pagination import LegacyPages, aiter_pages, aiter_records
+from contextlib import aclosing
 
 
 class AsyncMemberAPI:
@@ -90,6 +92,22 @@ class AsyncSpaceAPI:
         """Private method to return the authorization headers."""
         return {'Authorization': f'Token {self.api_key}'}
 
+    async def iter_spaces_pages(self, sort='latest', per_page=100, page=1, *, max_pages=None):
+        async def fetch(request):
+            response = await self._transport.request('GET', '/spaces', headers=self._headers(),
+                params=request.params, safe_read=True, raise_on_error=True)
+            return response.json()
+        async with aclosing(aiter_pages(fetch, pagination=LegacyPages(), params={
+            'community_id': self.community_id, 'sort': sort, 'per_page': per_page, 'page': page}, max_pages=max_pages)) as pages:
+            async for result in pages:
+                yield result
+
+    async def iter_spaces(self, sort='latest', per_page=100, page=1, *, max_pages=None):
+        async with aclosing(aiter_records(self.iter_spaces_pages(sort, per_page, page,
+                max_pages=max_pages), records_key=None)) as records:
+            async for record in records:
+                yield record
+
     async def fetch(self, sort='latest', per_page=100, page=1, brief=True):
         """Retrieve information about a set of spaces in the community."""
         url = f'{self.base_url}/spaces'
@@ -158,6 +176,23 @@ class AsyncPostAPI:
     def _headers(self):
         """Private method to return the authorization headers."""
         return {'Authorization': f'Token {self.api_key}'}
+
+    async def iter_posts_pages(self, space_id, sort='latest', per_page=100, page=1, *, max_pages=None):
+        async def fetch(request):
+            response = await self._transport.request('GET', '/posts', headers=self._headers(),
+                params=request.params, safe_read=True, raise_on_error=True)
+            return response.json()
+        async with aclosing(aiter_pages(fetch, pagination=LegacyPages(), params={
+            'community_id': self.community_id, 'space_id': space_id, 'sort': sort,
+            'per_page': per_page, 'page': page}, max_pages=max_pages)) as pages:
+            async for result in pages:
+                yield result
+
+    async def iter_posts(self, space_id, sort='latest', per_page=100, page=1, *, max_pages=None):
+        async with aclosing(aiter_records(self.iter_posts_pages(space_id, sort, per_page,
+                page, max_pages=max_pages), records_key=None)) as records:
+            async for record in records:
+                yield record
 
     async def create(self, space_id, title, body, user_email, is_comments_closed=False, status='published', published_at=None):
         """Create a new post.

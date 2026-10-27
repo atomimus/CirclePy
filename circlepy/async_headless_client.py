@@ -76,6 +76,9 @@ class AsyncHeadlessClient:
 
     async def request(self, method, endpoint, *, params=None, json=None):
         """Call a member path within the configured root; writes are never replayed."""
+        return await self._request(method, endpoint, params=params, json=json)
+
+    async def _request(self, method, endpoint, *, params=None, json=None, _strict=False):
         method = method.upper()
         # Validate before refreshing: a bad target must not trigger auth I/O.
         self.transport._url(family_path(endpoint))
@@ -92,7 +95,7 @@ class AsyncHeadlessClient:
                 self.auth.reject_token(token, response)
                 response.raise_for_status()
             token = await self.auth.refresh_for_request(generation)
-        if self.transport.raise_on_error:
+        if _strict or self.transport.raise_on_error:
             response.raise_for_status()
         if endpoint.rstrip('/') == '/cookies' and method == 'POST' and response.status_code == 200:
             return {'cookies': response.cookies, 'cookies_set': response.cookies.get_dict()}

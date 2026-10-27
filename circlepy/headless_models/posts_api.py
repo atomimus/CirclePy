@@ -1,5 +1,8 @@
 """Member posts, image posts, following and reactions; full provider results."""
 
+from ..pagination import iter_records
+from .pagination import member_pages
+
 from copy import deepcopy
 
 from .base_api_client import BaseAPIClient
@@ -110,3 +113,23 @@ class PostsAPI(BaseAPIClient):
         if reaction_type is not None:
             params['reaction_type'] = reaction_type
         return self._request('GET', f'/posts/{segment(post_id)}/user_likes', params=params)
+
+    def iter_posts_pages(self, space_id, page=1, per_page=10, sort='latest', status=None, past_events=None, topics=None, post_ids=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = post_params(page, per_page, sort, status, past_events, topics, post_ids)
+        return member_pages(self, f'/spaces/{segment(space_id)}/posts', params, max_pages=max_pages)
+
+    def iter_posts(self, space_id, page=1, per_page=10, sort='latest', status=None, past_events=None, topics=None, post_ids=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_posts_pages(space_id, page, per_page, sort, status, past_events, topics, post_ids, max_pages=max_pages))
+
+    def iter_post_likes_pages(self, post_id, page=1, per_page=10, reaction_type=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = post_params(page, per_page, None, None, None, None, None)
+        if reaction_type is not None:
+            params['reaction_type'] = reaction_type
+        return member_pages(self, f'/posts/{segment(post_id)}/user_likes', params, max_pages=max_pages)
+
+    def iter_post_likes(self, post_id, page=1, per_page=10, reaction_type=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_post_likes_pages(post_id, page, per_page, reaction_type, max_pages=max_pages))

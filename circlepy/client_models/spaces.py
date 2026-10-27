@@ -1,4 +1,5 @@
 from ..transport import SyncTransport
+from ..pagination import LegacyPages, iter_pages, iter_records
 
 class SpaceAPI:
     def __init__(self,api_key=None,community_id=None,base_url=None, *, transport=None):
@@ -10,6 +11,17 @@ class SpaceAPI:
     def _headers(self):
         """Private method to return the authorization headers."""
         return {"Authorization": f"Token {self.api_key}"}
+
+    def iter_spaces_pages(self, sort='latest', per_page=100, page=1, *, max_pages=None):
+        """Yield unprojected legacy arrays; an empty array terminates traversal."""
+        def fetch(request):
+            return self._transport.request('GET', '/spaces', headers=self._headers(),
+                params=request.params, safe_read=True, raise_on_error=True).json()
+        return iter_pages(fetch, pagination=LegacyPages(), params={
+            'community_id': self.community_id, 'sort': sort, 'per_page': per_page, 'page': page}, max_pages=max_pages)
+
+    def iter_spaces(self, sort='latest', per_page=100, page=1, *, max_pages=None):
+        return iter_records(self.iter_spaces_pages(sort, per_page, page, max_pages=max_pages), records_key=None)
     
     def fetch(self, sort='latest', per_page=100, page=1,brief=True):
         """Retrieve information about a set of spaces in the community."""

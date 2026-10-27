@@ -1,3 +1,6 @@
+
+from ..pagination import iter_records
+from .pagination import member_pages
 from copy import deepcopy
 
 from .base_api_client import BaseAPIClient
@@ -74,3 +77,27 @@ class ChatAPI(BaseAPIClient):
 
     def get_chat_thread(self, thread_id):
         return self.get(f'/chat_threads/{segment(thread_id)}')
+
+    def iter_chat_rooms_pages(self, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        return member_pages(self, '/messages', page_params(page, per_page), max_pages=max_pages)
+
+    def iter_chat_rooms(self, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_chat_rooms_pages(page, per_page, max_pages=max_pages))
+
+    def iter_chat_room_participants_pages(self, chat_room_uuid, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        return member_pages(self, f'/messages/{segment(chat_room_uuid)}/chat_room_participants', page_params(page, per_page), max_pages=max_pages)
+
+    def iter_chat_room_participants(self, chat_room_uuid, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_chat_room_participants_pages(chat_room_uuid, page, per_page, max_pages=max_pages))
+
+    def iter_chat_threads_pages(self, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        return member_pages(self, '/chat_threads', page_params(page, per_page), max_pages=max_pages)
+
+    def iter_chat_threads(self, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_chat_threads_pages(page, per_page, max_pages=max_pages))

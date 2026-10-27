@@ -1,4 +1,5 @@
 from ..transport import SyncTransport
+from ..pagination import LegacyPages, iter_pages, iter_records
 import os
 import hashlib
 import base64
@@ -14,6 +15,18 @@ class PostAPI:
     def _headers(self):
         """Private method to return the authorization headers."""
         return {"Authorization": f"Token {self.api_key}"}
+
+    def iter_posts_pages(self, space_id, sort='latest', per_page=100, page=1, *, max_pages=None):
+        """Yield full legacy arrays, retaining fields omitted by the old fetch helper."""
+        def fetch(request):
+            return self._transport.request('GET', '/posts', headers=self._headers(),
+                params=request.params, safe_read=True, raise_on_error=True).json()
+        return iter_pages(fetch, pagination=LegacyPages(), params={
+            'community_id': self.community_id, 'space_id': space_id, 'sort': sort,
+            'per_page': per_page, 'page': page}, max_pages=max_pages)
+
+    def iter_posts(self, space_id, sort='latest', per_page=100, page=1, *, max_pages=None):
+        return iter_records(self.iter_posts_pages(space_id, sort, per_page, page, max_pages=max_pages), records_key=None)
 
     def create(
         self,

@@ -23,7 +23,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.update_post",
-          "line": 70,
+          "line": 73,
           "visibility": "public_method"
         }
       ],
@@ -237,7 +237,7 @@
         {
           "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.delete",
-          "line": 92,
+          "line": 105,
           "visibility": "public_method"
         }
       ],
@@ -343,7 +343,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.remove_member",
-          "line": 81,
+          "line": 93,
           "visibility": "public_method"
         }
       ],
@@ -373,7 +373,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.delete",
-          "line": 67,
+          "line": 79,
           "visibility": "public_method"
         }
       ],
@@ -975,8 +975,14 @@
       "code_references": [
         {
           "file": "circlepy/client_models/posts.py",
+          "symbol": "PostAPI.iter_posts_pages",
+          "line": 22,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.fetch",
-          "line": 62,
+          "line": 75,
           "visibility": "public_method"
         }
       ],
@@ -1127,8 +1133,14 @@
       "code_references": [
         {
           "file": "circlepy/client_models/spaces.py",
+          "symbol": "SpaceAPI.iter_spaces_pages",
+          "line": 18,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.fetch",
-          "line": 23,
+          "line": 35,
           "visibility": "public_method"
         }
       ],
@@ -1546,7 +1558,7 @@
         {
           "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.create",
-          "line": 49,
+          "line": 62,
           "visibility": "public_method"
         }
       ],
@@ -1652,7 +1664,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.add_member",
-          "line": 74,
+          "line": 86,
           "visibility": "public_method"
         }
       ],
@@ -1682,7 +1694,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.create",
-          "line": 61,
+          "line": 73,
           "visibility": "public_method"
         }
       ],
@@ -1811,7 +1823,7 @@
         {
           "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.update",
-          "line": 85,
+          "line": 98,
           "visibility": "public_method"
         }
       ],
@@ -5846,7 +5858,7 @@
         {
           "file": "circlepy/headless_models/bookmarks_api.py",
           "symbol": "BookmarksAPI.delete_bookmark",
-          "line": 25,
+          "line": 28,
           "visibility": "public_method"
         }
       ],
@@ -5875,7 +5887,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.delete_comment_reply",
-          "line": 55,
+          "line": 58,
           "visibility": "public_method"
         }
       ],
@@ -5904,7 +5916,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.unlike_comment",
-          "line": 73,
+          "line": 76,
           "visibility": "public_method"
         }
       ],
@@ -5933,7 +5945,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.deactivate_member",
-          "line": 25,
+          "line": 28,
           "visibility": "public_method"
         }
       ],
@@ -5991,7 +6003,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.delete_event_attendee",
-          "line": 31,
+          "line": 34,
           "visibility": "public_method"
         }
       ],
@@ -6020,7 +6032,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.delete_chat_room_message",
-          "line": 46,
+          "line": 49,
           "visibility": "public_method"
         }
       ],
@@ -6049,7 +6061,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.delete_notification",
-          "line": 30,
+          "line": 33,
           "visibility": "public_method"
         }
       ],
@@ -6078,7 +6090,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.delete_post_comment",
-          "line": 31,
+          "line": 34,
           "visibility": "public_method"
         }
       ],
@@ -6107,7 +6119,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.unfollow_post",
-          "line": 92,
+          "line": 95,
           "visibility": "public_method"
         }
       ],
@@ -6136,7 +6148,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.unfollow_post_with_id",
-          "line": 96,
+          "line": 99,
           "visibility": "public_method"
         }
       ],
@@ -6165,7 +6177,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.unlike_post",
-          "line": 105,
+          "line": 108,
           "visibility": "public_method"
         }
       ],
@@ -6194,7 +6206,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.delete_reaction",
-          "line": 66,
+          "line": 69,
           "visibility": "public_method"
         }
       ],
@@ -6223,7 +6235,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.delete_post",
-          "line": 74,
+          "line": 77,
           "visibility": "public_method"
         }
       ],
@@ -6252,7 +6264,7 @@
         {
           "file": "circlepy/headless_models/search_api.py",
           "symbol": "SearchAPI.advanced_search_raw",
-          "line": 14,
+          "line": 17,
           "visibility": "public_method"
         }
       ],
@@ -6281,7 +6293,7 @@
         {
           "file": "circlepy/headless_models/bookmarks_api.py",
           "symbol": "BookmarksAPI.list_bookmarks",
-          "line": 15,
+          "line": 18,
           "visibility": "public_method"
         }
       ],
@@ -6310,7 +6322,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_chat_threads",
-          "line": 70,
+          "line": 73,
           "visibility": "public_method"
         }
       ],
@@ -6339,7 +6351,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_unread_chat_threads",
-          "line": 73,
+          "line": 76,
           "visibility": "public_method"
         }
       ],
@@ -6368,7 +6380,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.get_chat_thread",
-          "line": 76,
+          "line": 79,
           "visibility": "public_method"
         }
       ],
@@ -6397,7 +6409,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.list_comment_replies",
-          "line": 41,
+          "line": 44,
           "visibility": "public_method"
         }
       ],
@@ -6426,7 +6438,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.get_comment_reply",
-          "line": 48,
+          "line": 51,
           "visibility": "public_method"
         }
       ],
@@ -6455,7 +6467,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.list_comment_likes",
-          "line": 65,
+          "line": 68,
           "visibility": "public_method"
         }
       ],
@@ -6484,7 +6496,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.list_community_events",
-          "line": 20,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -6542,7 +6554,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_current_member",
-          "line": 36,
+          "line": 39,
           "visibility": "public_method"
         }
       ],
@@ -6571,7 +6583,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.list_members",
-          "line": 28,
+          "line": 31,
           "visibility": "public_method"
         }
       ],
@@ -6600,7 +6612,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_comments",
-          "line": 20,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -6629,7 +6641,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_posts",
-          "line": 32,
+          "line": 35,
           "visibility": "public_method"
         }
       ],
@@ -6658,7 +6670,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_public_profile",
-          "line": 43,
+          "line": 46,
           "visibility": "public_method"
         }
       ],
@@ -6687,7 +6699,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_spaces",
-          "line": 39,
+          "line": 42,
           "visibility": "public_method"
         }
       ],
@@ -6716,7 +6728,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.list_course_topics",
-          "line": 10,
+          "line": 13,
           "visibility": "public_method"
         }
       ],
@@ -6745,7 +6757,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.get_course_lesson",
-          "line": 16,
+          "line": 19,
           "visibility": "public_method"
         }
       ],
@@ -6774,7 +6786,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.list_course_lesson_files",
-          "line": 20,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -6803,7 +6815,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.list_course_quiz_attempts",
-          "line": 29,
+          "line": 32,
           "visibility": "public_method"
         }
       ],
@@ -6832,7 +6844,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.list_course_sections",
-          "line": 13,
+          "line": 16,
           "visibility": "public_method"
         }
       ],
@@ -6861,7 +6873,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.list_event_attendees",
-          "line": 24,
+          "line": 27,
           "visibility": "public_method"
         }
       ],
@@ -6890,7 +6902,7 @@
         {
           "file": "circlepy/headless_models/home_api.py",
           "symbol": "HomeAPI.list_home_posts",
-          "line": 13,
+          "line": 16,
           "visibility": "public_method"
         }
       ],
@@ -6919,7 +6931,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_chat_rooms",
-          "line": 12,
+          "line": 15,
           "visibility": "public_method"
         }
       ],
@@ -6948,7 +6960,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_unread_chat_rooms",
-          "line": 21,
+          "line": 24,
           "visibility": "public_method"
         }
       ],
@@ -6977,7 +6989,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.get_chat_room_details",
-          "line": 57,
+          "line": 60,
           "visibility": "public_method"
         }
       ],
@@ -7006,7 +7018,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_chat_room_messages",
-          "line": 24,
+          "line": 27,
           "visibility": "public_method"
         }
       ],
@@ -7035,7 +7047,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.get_chat_room_message",
-          "line": 36,
+          "line": 39,
           "visibility": "public_method"
         }
       ],
@@ -7064,7 +7076,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_chat_room_participants",
-          "line": 49,
+          "line": 52,
           "visibility": "public_method"
         }
       ],
@@ -7093,7 +7105,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.get_space_notification_preferences",
-          "line": 60,
+          "line": 63,
           "visibility": "public_method"
         }
       ],
@@ -7122,7 +7134,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.get_notification_preferences",
-          "line": 39,
+          "line": 42,
           "visibility": "public_method"
         }
       ],
@@ -7151,7 +7163,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.list_notifications",
-          "line": 17,
+          "line": 20,
           "visibility": "public_method"
         }
       ],
@@ -7180,7 +7192,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.get_new_notifications_count",
-          "line": 20,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -7209,7 +7221,7 @@
         {
           "file": "circlepy/headless_models/page_profile_fields_api.py",
           "symbol": "PageProfileFieldsAPI.list_page_profile_fields",
-          "line": 13,
+          "line": 16,
           "visibility": "public_method"
         }
       ],
@@ -7238,7 +7250,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.list_post_comments",
-          "line": 17,
+          "line": 20,
           "visibility": "public_method"
         }
       ],
@@ -7267,7 +7279,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.get_post_comment",
-          "line": 24,
+          "line": 27,
           "visibility": "public_method"
         }
       ],
@@ -7296,7 +7308,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.list_post_likes",
-          "line": 112,
+          "line": 115,
           "visibility": "public_method"
         }
       ],
@@ -7354,7 +7366,7 @@
         {
           "file": "circlepy/headless_models/search_api.py",
           "symbol": "SearchAPI.search",
-          "line": 19,
+          "line": 22,
           "visibility": "public_method"
         }
       ],
@@ -7383,7 +7395,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_space_notification_details",
-          "line": 8,
+          "line": 11,
           "visibility": "public_method"
         }
       ],
@@ -7412,7 +7424,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.list_spaces",
-          "line": 11,
+          "line": 14,
           "visibility": "public_method"
         }
       ],
@@ -7441,7 +7453,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_home_space",
-          "line": 14,
+          "line": 17,
           "visibility": "public_method"
         }
       ],
@@ -7470,7 +7482,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_space",
-          "line": 17,
+          "line": 20,
           "visibility": "public_method"
         }
       ],
@@ -7499,7 +7511,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_space_bookmarks",
-          "line": 31,
+          "line": 34,
           "visibility": "public_method"
         }
       ],
@@ -7528,7 +7540,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.list_recurring_events",
-          "line": 35,
+          "line": 38,
           "visibility": "public_method"
         }
       ],
@@ -7557,7 +7569,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.list_posts",
-          "line": 84,
+          "line": 87,
           "visibility": "public_method"
         }
       ],
@@ -7586,7 +7598,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.get_post",
-          "line": 78,
+          "line": 81,
           "visibility": "public_method"
         }
       ],
@@ -7615,7 +7627,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_space_topics",
-          "line": 39,
+          "line": 42,
           "visibility": "public_method"
         }
       ],
@@ -7644,7 +7656,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.update_comment_reply",
-          "line": 52,
+          "line": 55,
           "visibility": "public_method"
         }
       ],
@@ -7673,7 +7685,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.update_course_lesson_progress",
-          "line": 24,
+          "line": 27,
           "visibility": "public_method"
         }
       ],
@@ -7702,7 +7714,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.update_post_comment",
-          "line": 28,
+          "line": 31,
           "visibility": "public_method"
         }
       ],
@@ -7731,7 +7743,7 @@
         {
           "file": "circlepy/headless_models/bookmarks_api.py",
           "symbol": "BookmarksAPI.create_bookmark",
-          "line": 22,
+          "line": 25,
           "visibility": "public_method"
         }
       ],
@@ -7760,7 +7772,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.create_comment_reply",
-          "line": 45,
+          "line": 48,
           "visibility": "public_method"
         }
       ],
@@ -7789,7 +7801,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.like_comment",
-          "line": 69,
+          "line": 72,
           "visibility": "public_method"
         }
       ],
@@ -7882,7 +7894,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.create_event_attendee",
-          "line": 28,
+          "line": 31,
           "visibility": "public_method"
         }
       ],
@@ -7998,7 +8010,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.create_chat_room_raw",
-          "line": 18,
+          "line": 21,
           "visibility": "public_method"
         }
       ],
@@ -8027,7 +8039,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.create_chat_room_message_raw",
-          "line": 33,
+          "line": 36,
           "visibility": "public_method"
         }
       ],
@@ -8056,7 +8068,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.mark_chat_room_as_read",
-          "line": 60,
+          "line": 63,
           "visibility": "public_method"
         }
       ],
@@ -8085,7 +8097,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.mark_all_as_read",
-          "line": 26,
+          "line": 29,
           "visibility": "public_method"
         }
       ],
@@ -8114,7 +8126,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.reset_new_notifications_count",
-          "line": 23,
+          "line": 26,
           "visibility": "public_method"
         }
       ],
@@ -8143,7 +8155,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.archive_notification",
-          "line": 33,
+          "line": 36,
           "visibility": "public_method"
         }
       ],
@@ -8172,7 +8184,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.mark_notification_as_read",
-          "line": 36,
+          "line": 39,
           "visibility": "public_method"
         }
       ],
@@ -8201,7 +8213,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.create_post_comment",
-          "line": 21,
+          "line": 24,
           "visibility": "public_method"
         }
       ],
@@ -8230,7 +8242,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.follow_post",
-          "line": 88,
+          "line": 91,
           "visibility": "public_method"
         }
       ],
@@ -8259,7 +8271,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.like_post",
-          "line": 100,
+          "line": 103,
           "visibility": "public_method"
         }
       ],
@@ -8317,7 +8329,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.create_reaction",
-          "line": 63,
+          "line": 66,
           "visibility": "public_method"
         }
       ],
@@ -8346,7 +8358,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.search_members_raw",
-          "line": 53,
+          "line": 56,
           "visibility": "public_method"
         }
       ],
@@ -8404,13 +8416,13 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.create_image_post",
-          "line": 29,
+          "line": 32,
           "visibility": "public_method"
         },
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.create_image_post_raw",
-          "line": 34,
+          "line": 37,
           "visibility": "public_method"
         }
       ],
@@ -8439,7 +8451,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.join_space",
-          "line": 20,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -8468,7 +8480,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.leave_space",
-          "line": 23,
+          "line": 26,
           "visibility": "public_method"
         }
       ],
@@ -8497,13 +8509,13 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.create_post",
-          "line": 57,
+          "line": 60,
           "visibility": "public_method"
         },
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.create_post_raw",
-          "line": 61,
+          "line": 64,
           "visibility": "public_method"
         }
       ],
@@ -8532,7 +8544,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.update_chat_room_message_raw",
-          "line": 42,
+          "line": 45,
           "visibility": "public_method"
         }
       ],
@@ -8561,7 +8573,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.update_chat_room_participant",
-          "line": 53,
+          "line": 56,
           "visibility": "public_method"
         }
       ],
@@ -8590,7 +8602,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.update_notification_preferences",
-          "line": 45,
+          "line": 48,
           "visibility": "public_method"
         }
       ],
@@ -8619,7 +8631,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.update_notification_preferences_for_spaces",
-          "line": 51,
+          "line": 54,
           "visibility": "public_method"
         }
       ],
@@ -8648,7 +8660,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.update_notification_preferences_for_space",
-          "line": 57,
+          "line": 60,
           "visibility": "public_method"
         }
       ],
@@ -8677,7 +8689,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.update_profile_raw",
-          "line": 70,
+          "line": 73,
           "visibility": "public_method"
         }
       ],
@@ -8735,7 +8747,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.confirm_member_profile_raw",
-          "line": 88,
+          "line": 91,
           "visibility": "public_method"
         }
       ],
@@ -8764,7 +8776,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.update_recurring_events_rsvp",
-          "line": 42,
+          "line": 45,
           "visibility": "public_method"
         }
       ],
@@ -8793,7 +8805,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.update_image_post",
-          "line": 42,
+          "line": 45,
           "visibility": "public_method"
         }
       ],

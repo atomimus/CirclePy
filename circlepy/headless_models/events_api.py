@@ -1,3 +1,6 @@
+
+from ..pagination import iter_records
+from .pagination import member_pages
 from copy import deepcopy
 
 from .base_api_client import BaseAPIClient
@@ -44,3 +47,30 @@ class EventsAPI(BaseAPIClient):
             f"/spaces/{segment(space_id)}/events/{segment(event_id)}/recurring_events/rsvp",
             json=body,
         )
+
+    def iter_community_events_pages(self, page=None, per_page=None, filter_date_start=None, filter_date_end=None, status=None, past_events=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = event_params(page, per_page, filter_date_start, filter_date_end, status, past_events)
+        return member_pages(self, '/community_events', params or None, max_pages=max_pages)
+
+    def iter_community_events(self, page=None, per_page=None, filter_date_start=None, filter_date_end=None, status=None, past_events=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_community_events_pages(page, per_page, filter_date_start, filter_date_end, status, past_events, max_pages=max_pages))
+
+    def iter_event_attendees_pages(self, event_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = page_params(page, per_page)
+        return member_pages(self, f'/events/{segment(event_id)}/event_attendees', params or None, max_pages=max_pages)
+
+    def iter_event_attendees(self, event_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_event_attendees_pages(event_id, page, per_page, max_pages=max_pages))
+
+    def iter_recurring_events_pages(self, space_id, event_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = page_params(page, per_page)
+        return member_pages(self, f'/spaces/{segment(space_id)}/events/{segment(event_id)}/recurring_events', params or None, max_pages=max_pages)
+
+    def iter_recurring_events(self, space_id, event_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_recurring_events_pages(space_id, event_id, page, per_page, max_pages=max_pages))

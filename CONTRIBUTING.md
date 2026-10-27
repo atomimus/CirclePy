@@ -69,6 +69,7 @@ python tools/check_members_contract.py
 python tools/check_messaging_contract.py
 python tools/check_learning_contract.py
 python tools/check_headless_inventory.py
+python tools/check_pagination_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build
@@ -120,8 +121,9 @@ is a baseline report; Task 28 must reach the 90% branch-coverage release gate.
 Ruff checks syntax and fatal correctness rules across production/tests/tools;
 new harness, transport/error and media files also receive full F and E4/E7/E9 checks.
 It does not impose a formatting migration. Strict mypy covers the fixture/convention
-helpers and transport/error/token-state/upload modules listed in `pyproject.toml`;
-facades and dictionary resource modules stay outside this strict boundary. Extend that list as typed
+helpers and transport/error/token-state/upload/pagination modules listed in
+`pyproject.toml`; facades and dictionary resource modules stay outside this strict
+boundary. Extend that list as typed
 modules are introduced.
 Warnings, unknown pytest configuration and unknown markers fail the suite.
 

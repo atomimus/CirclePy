@@ -1,3 +1,6 @@
+
+from ..pagination import iter_records
+from .pagination import member_pages
 from .base_api_client import BaseAPIClient
 from .content import segment
 from .messaging import notification_payload
@@ -58,3 +61,20 @@ class NotificationsAPI(BaseAPIClient):
 
     def get_space_notification_preferences(self, space_member_id):
         return self.get(f"/notification_preferences/space_members/{segment(space_member_id)}")
+
+    def iter_notifications_pages(self, page=None, per_page=None, sort=None, status=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        if sort is not None:
+            params['sort'] = sort
+        if status is not None:
+            params['status'] = status
+        return member_pages(self, '/notifications', params or None, max_pages=max_pages)
+
+    def iter_notifications(self, page=None, per_page=None, sort=None, status=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        return iter_records(self.iter_notifications_pages(page, per_page, sort, status, max_pages=max_pages))

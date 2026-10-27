@@ -1,5 +1,9 @@
 """Native async Member profile, directory and space resources."""
 
+from ..pagination import CursorPages, MemberDirectoryPages, aiter_records
+from .pagination import async_member_pages
+from contextlib import aclosing
+
 from copy import deepcopy
 
 from .content import segment
@@ -85,6 +89,67 @@ class AsyncCommunityMembersAPI:
     async def confirm_member_profile_raw(self, payload):
         return await self._client.request('PUT', '/signup/profile', json=deepcopy(payload))
 
+    async def iter_comments_pages(self, community_member_id, page=1, per_page=10, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        async with aclosing(async_member_pages(self, f'/community_members/{segment(community_member_id)}/comments', page_params(page, per_page), max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_comments(self, community_member_id, page=1, per_page=10, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_comments_pages(community_member_id, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_members_pages(self, page=1, per_page=10, space_id=None, search_text=None, search_after=None, sort=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        async with aclosing(async_member_pages(self, '/community_members', page_params(page, per_page, space_id=space_id, search_text=search_text, search_after=search_after, sort=sort), pagination=MemberDirectoryPages(), max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_members(self, page=1, per_page=10, space_id=None, search_text=None, search_after=None, sort=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_members_pages(page, per_page, space_id, search_text, search_after, sort, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_posts_pages(self, community_member_id, page=1, per_page=10, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        async with aclosing(async_member_pages(self, f'/community_members/{segment(community_member_id)}/posts', page_params(page, per_page), max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_posts(self, community_member_id, page=1, per_page=10, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_posts_pages(community_member_id, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_spaces_pages(self, community_member_id, page=1, per_page=30, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        async with aclosing(async_member_pages(self, f'/community_members/{segment(community_member_id)}/spaces', page_params(page, per_page), max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_spaces(self, community_member_id, page=1, per_page=30, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_spaces_pages(community_member_id, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_search_members_pages(self, page=1, per_page=30, search_text='', exclude_empty_name=True, exclude_empty_profiles=True, order='oldest', status='active', filters=None, search_after=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        async with aclosing(async_member_pages(self, '/search/community_members', search_payload(page, per_page, search_text, exclude_empty_name, order, status, filters, search_after), pagination=CursorPages(), method='POST', max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_search_members(self, page=1, per_page=30, search_text='', exclude_empty_name=True, exclude_empty_profiles=True, order='oldest', status='active', filters=None, search_after=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_search_members_pages(page, per_page, search_text, exclude_empty_name, exclude_empty_profiles, order, status, filters, search_after, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+
 
 class AsyncSpacesAPI:
     def __init__(self, client):
@@ -123,6 +188,41 @@ class AsyncSpacesAPI:
         word = search_word(word)
         return filter_spaces(await self.list_spaces(), word, case_sensitive, include_slug)
 
+    async def iter_space_bookmarks_pages(self, space_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        async with aclosing(async_member_pages(self, f'/spaces/{segment(space_id)}/bookmarks', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_space_bookmarks(self, space_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_space_bookmarks_pages(space_id, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+    async def iter_space_topics_pages(self, space_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        params = {}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        async with aclosing(async_member_pages(self, f'/spaces/{segment(space_id)}/topics', params or None, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_space_topics(self, space_id, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_space_topics_pages(space_id, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record
+
+
 
 class AsyncSpaceMembersAPI:
     def __init__(self, client):
@@ -147,3 +247,22 @@ class AsyncPageProfileFieldsAPI:
         # Match the sync resource's stable query ordering.
         params = {'page_name': page_name, **page_params(page, per_page)}
         return await self._client.request('GET', '/page_profile_fields', params=params)
+
+    async def iter_page_profile_fields_pages(self, page_name, page=None, per_page=None, *, max_pages=None):
+        """Iterate full pages on demand; max_pages=None budgets 100 requests."""
+        if not page_name:
+            raise ValueError('page_name must be a non-empty string')
+        params = {'page_name': page_name}
+        if page is not None:
+            params['page'] = page
+        if per_page is not None:
+            params['per_page'] = per_page
+        async with aclosing(async_member_pages(self, '/page_profile_fields', params, max_pages=max_pages)) as pages:
+            async for page in pages:
+                yield page
+
+    async def iter_page_profile_fields(self, page_name, page=None, per_page=None, *, max_pages=None):
+        """Iterate complete records without prefetching the next page."""
+        async with aclosing(aiter_records(self.iter_page_profile_fields_pages(page_name, page, per_page, max_pages=max_pages))) as records:
+            async for record in records:
+                yield record

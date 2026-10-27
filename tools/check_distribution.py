@@ -75,7 +75,7 @@ def inspect_artifacts(directory):
         require(all(member.name.startswith(prefix + "/") or (member.name == prefix and member.isdir()) for member in members), "Unexpected sdist root")
         files = {member.name[len(prefix) + 1:] for member in members if member.isfile()}
         check_paths(files)
-        required = package_sources | {"LICENSE", "README.md", "CONTRIBUTING.md", "pyproject.toml", "constraints-dev.txt", "requirements.txt", "docs/transports.md", "docs/clients.md", "docs/media.md", "docs/content.md", "docs/members.md", "docs/messaging.md", "docs/learning.md"}
+        required = package_sources | {"LICENSE", "README.md", "CONTRIBUTING.md", "pyproject.toml", "constraints-dev.txt", "requirements.txt", "docs/transports.md", "docs/clients.md", "docs/media.md", "docs/content.md", "docs/members.md", "docs/messaging.md", "docs/learning.md", "docs/pagination.md"}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "tools").glob("*.py")}
         required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / ".github").rglob("*.yml")}
@@ -129,6 +129,7 @@ def check_installs(artifacts):
             shutil.copy2(ROOT / "docs/members.md", work / "docs/members.md")
             shutil.copy2(ROOT / "docs/messaging.md", work / "docs/messaging.md")
             shutil.copy2(ROOT / "docs/learning.md", work / "docs/learning.md")
+            shutil.copy2(ROOT / "docs/pagination.md", work / "docs/pagination.md")
             # Validate consumer dependencies first, then add only the test tools.
             # Copy configuration so the identical offline guard and strict async
             # mode apply outside the checkout, without PYTHONPATH shadowing.
