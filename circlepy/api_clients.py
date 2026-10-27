@@ -100,7 +100,10 @@ class AdminV2Client(_SyncAPIClient):
                  trust_env=False, session=None, verify=True, max_retries=0,
                  raise_on_error=True):
         from .admin_v2 import (CommunitiesAPI, CommunityMembersAPI, CommunityLeadsAPI,
-                               ContactNotesAPI, InvitationLinksAPI)
+                               ContactNotesAPI, InvitationLinksAPI, AccessGroupsAPI,
+                               AccessGroupMembersAPI, CommunityMemberSpacesAPI,
+                               CommunityMemberAccessGroupsAPI, SpaceGroupsAPI,
+                               SpaceGroupMembersAPI, SpaceMembersAPI, SpacesAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -110,6 +113,14 @@ class AdminV2Client(_SyncAPIClient):
         self.community_leads = CommunityLeadsAPI(self)
         self.contact_notes = ContactNotesAPI(self)
         self.invitation_links = InvitationLinksAPI(self)
+        self.access_groups = AccessGroupsAPI(self)
+        self.access_group_members = AccessGroupMembersAPI(self)
+        self.community_member_spaces = CommunityMemberSpacesAPI(self)
+        self.community_member_access_groups = CommunityMemberAccessGroupsAPI(self)
+        self.space_groups = SpaceGroupsAPI(self)
+        self.space_group_members = SpaceGroupMembersAPI(self)
+        self.space_members = SpaceMembersAPI(self)
+        self.spaces = SpacesAPI(self)
 
 
 class AsyncAdminV2Client(_AsyncAPIClient):
@@ -120,7 +131,10 @@ class AsyncAdminV2Client(_AsyncAPIClient):
                  raise_on_error=True):
         from .admin_v2 import (AsyncCommunitiesAPI, AsyncCommunityMembersAPI,
                                AsyncCommunityLeadsAPI, AsyncContactNotesAPI,
-                               AsyncInvitationLinksAPI)
+                               AsyncInvitationLinksAPI, AsyncAccessGroupsAPI,
+                               AsyncAccessGroupMembersAPI, AsyncCommunityMemberSpacesAPI,
+                               AsyncCommunityMemberAccessGroupsAPI, AsyncSpaceGroupsAPI,
+                               AsyncSpaceGroupMembersAPI, AsyncSpaceMembersAPI, AsyncSpacesAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -130,6 +144,14 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.community_leads = AsyncCommunityLeadsAPI(self)
         self.contact_notes = AsyncContactNotesAPI(self)
         self.invitation_links = AsyncInvitationLinksAPI(self)
+        self.access_groups = AsyncAccessGroupsAPI(self)
+        self.access_group_members = AsyncAccessGroupMembersAPI(self)
+        self.community_member_spaces = AsyncCommunityMemberSpacesAPI(self)
+        self.community_member_access_groups = AsyncCommunityMemberAccessGroupsAPI(self)
+        self.space_groups = AsyncSpaceGroupsAPI(self)
+        self.space_group_members = AsyncSpaceGroupMembersAPI(self)
+        self.space_members = AsyncSpaceMembersAPI(self)
+        self.spaces = AsyncSpacesAPI(self)
 
 
 class DataClient(_SyncAPIClient):

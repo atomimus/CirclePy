@@ -1,0 +1,365 @@
+[
+  {
+    "title": "Post Space",
+    "method": "POST",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces/post/requestBody/content/application~1json/examples/Post Space",
+    "body": {
+      "name": "Test Space",
+      "slug": "test-space",
+      "space_type": "basic",
+      "space_group_id": 1,
+      "cover_image": "signed_id of the cover image",
+      "cover_image_visible": true,
+      "cover_image_display_style": "normal",
+      "is_private": false,
+      "is_hidden": false,
+      "is_hidden_from_non_members": false,
+      "locked_button_url": "https://example.com",
+      "locked_button_label": "Join",
+      "locked_page_heading": "This space is locked",
+      "locked_page_description": "Please join the space to view the content.",
+      "is_post_disabled": false,
+      "default_sort": "latest",
+      "hide_sorting": false,
+      "topics": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "title": "Event Space",
+    "method": "POST",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces/post/requestBody/content/application~1json/examples/Event Space",
+    "body": {
+      "name": "Test Event Space",
+      "slug": "test-event-space",
+      "space_group_id": 1,
+      "space_type": "event",
+      "event_auto_rsvp_enabled": true,
+      "default_in_app_notification_setting": "all",
+      "default_mobile_notification_setting": "all",
+      "default_notification_setting": "all"
+    }
+  },
+  {
+    "title": "Members Space",
+    "method": "POST",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces/post/requestBody/content/application~1json/examples/Members Space",
+    "body": {
+      "name": "Test Members Space",
+      "slug": "test-members-space",
+      "space_group_id": 1,
+      "space_type": "members"
+    }
+  },
+  {
+    "title": "Image Space",
+    "method": "POST",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces/post/requestBody/content/application~1json/examples/Image Space",
+    "body": {
+      "name": "Test Image Space",
+      "slug": "test-image-space",
+      "space_group_id": 1,
+      "space_type": "image",
+      "default_in_app_notification_setting": "all",
+      "default_mobile_notification_setting": "all",
+      "default_notification_setting": "all"
+    }
+  },
+  {
+    "title": "Course Space",
+    "method": "POST",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces/post/requestBody/content/application~1json/examples/Course Space",
+    "body": {
+      "name": "Test Course Space",
+      "slug": "test-course-space",
+      "space_group_id": 1,
+      "space_type": "course",
+      "course_setting": {
+        "course_type": "structured",
+        "new_comment_notification_enabled": true,
+        "enforce_lessons_order": true,
+        "custom_lesson_label": "lesson",
+        "custom_section_label": "section"
+      }
+    }
+  },
+  {
+    "title": "Chat Space",
+    "method": "POST",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces/post/requestBody/content/application~1json/examples/Chat Space",
+    "body": {
+      "name": "Test Chat Space",
+      "slug": "test-chat-space",
+      "space_group_id": 1,
+      "space_type": "chat",
+      "default_mention_in_app_notification_setting": "all",
+      "default_mention_mobile_notification_setting": "all",
+      "default_mobile_notification_setting": "all",
+      "default_notification_setting": "all"
+    }
+  },
+  {
+    "title": "Update Basic Discussion Space",
+    "method": "PUT",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{id}/put/requestBody/content/application~1json/examples/Update Basic Discussion Space",
+    "body": {
+      "name": "General Discussion",
+      "slug": "general-discussion",
+      "space_group_id": 1,
+      "space_type": "basic",
+      "cover_image": "signed_id_cover_image_123",
+      "cover_image_visible": true,
+      "cover_image_display_style": "wide",
+      "thumbnail_image": "signed_id_thumbnail_456",
+      "is_private": false,
+      "is_hidden": false,
+      "is_hidden_from_non_members": false,
+      "is_post_disabled": false,
+      "default_sort": "latest",
+      "hide_sorting": false,
+      "display_view": "posts",
+      "require_topic_selection": true,
+      "topics": [
+        1,
+        2,
+        3
+      ],
+      "show_tab_bar": true,
+      "default_tab": "posts",
+      "visible_tabs": {
+        "posts": true,
+        "members": true,
+        "upcoming": false,
+        "past": false
+      },
+      "emoji": "💬",
+      "default_comment_sort": "oldest",
+      "default_member_sort": "alphabetical",
+      "hide_members_count": false,
+      "pinned_posts_label": "Important Announcements",
+      "hide_from_sidebar": false,
+      "hide_right_sidebar": false,
+      "prevent_members_from_adding_others": false,
+      "hide_from_featured_areas": false,
+      "disable_member_post_covers": false,
+      "show_lock_icon_for_non_members": false,
+      "hide_post_settings": false,
+      "default_in_app_notification_setting": "never",
+      "default_mobile_notification_setting": "never",
+      "default_notification_setting": "never",
+      "meta_tag_attributes": {
+        "meta_title": "General Discussion - Community Forum",
+        "meta_description": "Join our general discussion forum to connect with community members",
+        "opengraph_title": "General Discussion Forum",
+        "opengraph_description": "Connect and discuss with our community",
+        "opengraph_image": "signed_id_og_image_789"
+      }
+    }
+  },
+  {
+    "title": "Update Event Space",
+    "method": "PUT",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{id}/put/requestBody/content/application~1json/examples/Update Event Space",
+    "body": {
+      "name": "Community Events",
+      "slug": "community-events",
+      "space_group_id": 1,
+      "space_type": "event",
+      "cover_image": "signed_id_event_cover_123",
+      "cover_image_visible": true,
+      "cover_image_display_style": "normal",
+      "thumbnail_image": "signed_id_event_thumb_456",
+      "is_private": false,
+      "is_hidden": false,
+      "event_auto_rsvp_enabled": true,
+      "show_next_event": true,
+      "display_view": "calendar",
+      "show_tab_bar": true,
+      "default_tab": "upcoming",
+      "visible_tabs": {
+        "posts": true,
+        "members": false,
+        "upcoming": true,
+        "past": true
+      },
+      "emoji": "📅",
+      "default_in_app_notification_setting": "all",
+      "default_mobile_notification_setting": "all",
+      "default_notification_setting": "all",
+      "default_member_sort": "latest",
+      "hide_members_count": false,
+      "pinned_posts_label": "Featured Events",
+      "meta_tag_attributes": {
+        "meta_title": "Community Events Calendar",
+        "meta_description": "Join our upcoming community events and workshops",
+        "opengraph_title": "Community Events",
+        "opengraph_description": "Don't miss out on our amazing community events!"
+      }
+    }
+  },
+  {
+    "title": "Update Members Space",
+    "method": "PUT",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{id}/put/requestBody/content/application~1json/examples/Update Members Space",
+    "body": {
+      "name": "Member Directory",
+      "slug": "member-directory",
+      "space_group_id": 1,
+      "space_type": "members",
+      "cover_image": "signed_id_members_cover_123",
+      "cover_image_visible": true,
+      "is_private": false,
+      "is_hidden_from_non_members": false,
+      "display_view": "list",
+      "show_tab_bar": false,
+      "default_tab": "members",
+      "visible_tabs": {
+        "posts": false,
+        "members": true,
+        "upcoming": false,
+        "past": false
+      },
+      "emoji": "👥",
+      "default_member_sort": "alphabetical",
+      "hide_members_count": false,
+      "prevent_members_from_adding_others": true,
+      "hide_from_sidebar": false,
+      "default_in_app_notification_setting": "never",
+      "default_mobile_notification_setting": "never",
+      "default_notification_setting": "never",
+      "meta_tag_attributes": {
+        "meta_title": "Community Member Directory",
+        "meta_description": "Browse and connect with our community members",
+        "opengraph_title": "Member Directory",
+        "opengraph_description": "Discover and connect with fellow community members"
+      }
+    }
+  },
+  {
+    "title": "Update Image Space",
+    "method": "PUT",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{id}/put/requestBody/content/application~1json/examples/Update Image Space",
+    "body": {
+      "name": "Photo Gallery",
+      "slug": "photo-gallery",
+      "space_group_id": 1,
+      "space_type": "image",
+      "cover_image": "signed_id_gallery_cover_123",
+      "cover_image_visible": true,
+      "cover_image_display_style": "wide",
+      "is_private": false,
+      "is_post_disabled": false,
+      "display_view": "masonry",
+      "show_tab_bar": true,
+      "default_tab": "posts",
+      "visible_tabs": {
+        "posts": true,
+        "members": false,
+        "upcoming": false,
+        "past": false
+      },
+      "emoji": "📸",
+      "default_sort": "latest",
+      "hide_sorting": false,
+      "disable_member_post_covers": false,
+      "require_topic_selection": false,
+      "topics": [
+        4,
+        5
+      ],
+      "default_comment_sort": "latest",
+      "default_member_sort": "latest",
+      "hide_members_count": true,
+      "pinned_posts_label": "Featured Photos",
+      "default_in_app_notification_setting": "all",
+      "default_mobile_notification_setting": "never",
+      "default_notification_setting": "never",
+      "meta_tag_attributes": {
+        "meta_title": "Community Photo Gallery",
+        "meta_description": "Share and discover amazing photos from our community",
+        "opengraph_title": "Photo Gallery",
+        "opengraph_description": "Beautiful photos shared by our community members"
+      }
+    }
+  },
+  {
+    "title": "Update Course Space",
+    "method": "PUT",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{id}/put/requestBody/content/application~1json/examples/Update Course Space",
+    "body": {
+      "name": "Digital Marketing Masterclass",
+      "slug": "digital-marketing-masterclass",
+      "space_group_id": 1,
+      "space_type": "course",
+      "cover_image": "signed_id_course_cover_123",
+      "cover_image_visible": true,
+      "cover_image_display_style": "normal",
+      "is_private": true,
+      "is_hidden_from_non_members": true,
+      "is_post_disabled": true,
+      "display_view": "posts",
+      "show_tab_bar": true,
+      "default_tab": "posts",
+      "visible_tabs": {
+        "posts": true,
+        "members": true,
+        "upcoming": false,
+        "past": false
+      },
+      "emoji": "🎓",
+      "hide_from_sidebar": false,
+      "prevent_members_from_adding_others": true,
+      "hide_members_count": false,
+      "default_in_app_notification_setting": "all",
+      "default_mobile_notification_setting": "all",
+      "default_notification_setting": "all",
+      "course_setting_attributes": {
+        "new_comment_notification_enabled": true,
+        "enforce_lessons_order": true,
+        "custom_lesson_label": "activity",
+        "custom_section_label": "chapter"
+      },
+      "meta_tag_attributes": {
+        "meta_title": "Digital Marketing Masterclass Course",
+        "meta_description": "Comprehensive digital marketing course for professionals",
+        "opengraph_title": "Digital Marketing Masterclass",
+        "opengraph_description": "Learn digital marketing from industry experts"
+      }
+    }
+  },
+  {
+    "title": "Update Chat Space",
+    "method": "PUT",
+    "source_pointer": "/paths/~1api~1admin~1v2~1spaces~1{id}/put/requestBody/content/application~1json/examples/Update Chat Space",
+    "body": {
+      "name": "Real-time Team Chat",
+      "slug": "team-chat",
+      "space_group_id": 1,
+      "space_type": "chat",
+      "cover_image": "signed_id_chat_cover_123",
+      "cover_image_visible": false,
+      "is_private": true,
+      "is_hidden_from_non_members": true,
+      "show_tab_bar": false,
+      "emoji": "💬",
+      "hide_from_sidebar": false,
+      "prevent_members_from_adding_others": false,
+      "hide_members_count": false,
+      "default_mention_in_app_notification_setting": "all",
+      "default_mention_mobile_notification_setting": "all",
+      "default_mobile_notification_setting": "all",
+      "default_notification_setting": "never",
+      "chat_room_show_history": true,
+      "chat_room_description": "Private team chat for project discussions and quick updates",
+      "meta_tag_attributes": {
+        "meta_title": "Team Chat Room",
+        "meta_description": "Private chat space for team collaboration",
+        "opengraph_title": "Team Chat",
+        "opengraph_description": "Real-time team communication space"
+      }
+    }
+  }
+]

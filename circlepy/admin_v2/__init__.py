@@ -14,6 +14,26 @@ from .async_members import (
     AsyncContactNotesAPI,
     AsyncInvitationLinksAPI,
 )
+from .access import (
+    AccessGroupsAPI,
+    AccessGroupMembersAPI,
+    CommunityMemberSpacesAPI,
+    CommunityMemberAccessGroupsAPI,
+    SpaceGroupsAPI,
+    SpaceGroupMembersAPI,
+    SpaceMembersAPI,
+    SpacesAPI,
+)
+from .async_access import (
+    AsyncAccessGroupsAPI,
+    AsyncAccessGroupMembersAPI,
+    AsyncCommunityMemberSpacesAPI,
+    AsyncCommunityMemberAccessGroupsAPI,
+    AsyncSpaceGroupsAPI,
+    AsyncSpaceGroupMembersAPI,
+    AsyncSpaceMembersAPI,
+    AsyncSpacesAPI,
+)
 
 __all__ = [
     "CommunitiesAPI",
@@ -26,4 +46,20 @@ __all__ = [
     "AsyncCommunityLeadsAPI",
     "AsyncContactNotesAPI",
     "AsyncInvitationLinksAPI",
+    "AccessGroupsAPI",
+    "AccessGroupMembersAPI",
+    "CommunityMemberSpacesAPI",
+    "CommunityMemberAccessGroupsAPI",
+    "SpaceGroupsAPI",
+    "SpaceGroupMembersAPI",
+    "SpaceMembersAPI",
+    "SpacesAPI",
+    "AsyncAccessGroupsAPI",
+    "AsyncAccessGroupMembersAPI",
+    "AsyncCommunityMemberSpacesAPI",
+    "AsyncCommunityMemberAccessGroupsAPI",
+    "AsyncSpaceGroupsAPI",
+    "AsyncSpaceGroupMembersAPI",
+    "AsyncSpaceMembersAPI",
+    "AsyncSpacesAPI",
 ]

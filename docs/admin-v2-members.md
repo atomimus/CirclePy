@@ -277,13 +277,14 @@ within the selected family; it does not validate a caller-built endpoint's schem
 
 The agreed implementation package is `circlepy.admin_v2`, with explicit plural
 attributes registered in the two client constructors. The following table reserves
-the remaining tag-based layout; only Task 15's resources are implemented here.
+the remaining tag-based layout; Task 16's resources are documented in
+[spaces, groups and access](admin-v2-access.md).
 Owning tasks will define their exact methods from the frozen/current schemas.
 
 | Owner | Resource names |
 |---|---|
 | 15, implemented | `communities`, `community_members`, `community_leads`, `contact_notes`, `invitation_links` |
-| 16 | `spaces`, `space_groups`, `space_group_members`, `space_members`, `community_member_spaces`, `access_groups`, `access_group_members`, `community_member_access_groups` |
+| 16, implemented | `spaces`, `space_groups`, `space_group_members`, `space_members`, `community_member_spaces`, `access_groups`, `access_group_members`, `community_member_access_groups` |
 | 17 | `posts`, `comments`, `post_followers`, `embeds`, `direct_uploads` |
 | 18 | `course_sections`, `course_lessons`, `course_lesson_progress` |
 | 19 | `events`, `event_attendees`, `live` |

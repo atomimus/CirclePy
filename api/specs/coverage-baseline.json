@@ -2364,9 +2364,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupsAPI.archive",
+          "line": 27,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupsAPI.archive",
+          "line": 29,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2386,9 +2399,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupMembersAPI.remove",
+          "line": 95,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupMembersAPI.remove",
+          "line": 107,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2821,9 +2847,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceGroupMembersAPI.remove",
+          "line": 272,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceGroupMembersAPI.remove",
+          "line": 311,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2843,9 +2882,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceGroupsAPI.delete",
+          "line": 240,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceGroupsAPI.delete",
+          "line": 270,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2865,9 +2917,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceMembersAPI.remove",
+          "line": 330,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceMembersAPI.remove",
+          "line": 379,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2887,9 +2952,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpacesAPI.delete",
+          "line": 390,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpacesAPI.delete",
+          "line": 447,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2975,9 +3053,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupsAPI.list_groups",
+          "line": 37,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupsAPI.list_groups",
+          "line": 41,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2997,9 +3088,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupMembersAPI.get",
+          "line": 102,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupMembersAPI.get",
+          "line": 114,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3019,9 +3123,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupMembersAPI.list_members",
+          "line": 109,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupMembersAPI.list_members",
+          "line": 121,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3164,9 +3281,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "CommunityMemberSpacesAPI.list_spaces",
+          "line": 144,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncCommunityMemberSpacesAPI.list_spaces",
+          "line": 158,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3313,9 +3443,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "CommunityMemberAccessGroupsAPI.list_groups",
+          "line": 197,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncCommunityMemberAccessGroupsAPI.list_groups",
+          "line": 219,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4087,9 +4230,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceGroupMembersAPI.get",
+          "line": 279,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceGroupMembersAPI.get",
+          "line": 318,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4109,9 +4265,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceGroupMembersAPI.list_members",
+          "line": 286,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceGroupMembersAPI.list_members",
+          "line": 327,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4131,9 +4300,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceGroupsAPI.list_groups",
+          "line": 243,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceGroupsAPI.list_groups",
+          "line": 273,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4153,9 +4335,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceGroupsAPI.get",
+          "line": 230,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceGroupsAPI.get",
+          "line": 260,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4175,9 +4370,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceMembersAPI.get",
+          "line": 337,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceMembersAPI.get",
+          "line": 386,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4197,9 +4405,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceMembersAPI.list_members",
+          "line": 342,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceMembersAPI.list_members",
+          "line": 391,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4219,9 +4440,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpacesAPI.list_spaces",
+          "line": 402,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpacesAPI.list_spaces",
+          "line": 461,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4241,9 +4475,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpacesAPI.get",
+          "line": 381,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpacesAPI.get",
+          "line": 438,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4263,9 +4510,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpacesAPI.get_summary",
+          "line": 393,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpacesAPI.get_summary",
+          "line": 452,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4483,9 +4743,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupsAPI.replace_content",
+          "line": 20,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupsAPI.replace_content",
+          "line": 22,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4505,9 +4778,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupsAPI.unarchive",
+          "line": 30,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupsAPI.unarchive",
+          "line": 34,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4672,9 +4958,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupsAPI.create",
+          "line": 9,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupsAPI.create",
+          "line": 11,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4694,9 +4993,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupMembersAPI.add",
+          "line": 88,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupMembersAPI.add",
+          "line": 100,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5494,9 +5806,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceGroupMembersAPI.add",
+          "line": 269,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceGroupMembersAPI.add",
+          "line": 306,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5516,9 +5841,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceGroupsAPI.create",
+          "line": 227,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceGroupsAPI.create",
+          "line": 257,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5538,9 +5876,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceMembersAPI.add",
+          "line": 327,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceMembersAPI.add",
+          "line": 376,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5560,9 +5911,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpacesAPI.create",
+          "line": 378,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpacesAPI.create",
+          "line": 435,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5714,9 +6078,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "AccessGroupsAPI.update",
+          "line": 12,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncAccessGroupsAPI.update",
+          "line": 14,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6263,9 +6640,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpaceGroupsAPI.update",
+          "line": 233,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpaceGroupsAPI.update",
+          "line": 263,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6285,9 +6675,22 @@
         }
       ],
       "task_id": 16,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/access.py",
+          "symbol": "SpacesAPI.update",
+          "line": 385,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_access.py",
+          "symbol": "AsyncSpacesAPI.update",
+          "line": 442,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },

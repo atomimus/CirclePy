@@ -22,6 +22,9 @@ inconsistencies, GET JSON bodies and notification token isolation.
 authentication. Their explicit community, member, lead, contact-note and invitation-link
 resources cover all 19 operations in those tags, including bounded pagination.
 See [Admin v2 methods, complete fields and v1 migration](docs/admin-v2-members.md).
+Both also cover all 31 [space, group and access operations](docs/admin-v2-access.md),
+including separate content/membership management, space settings, AI summaries,
+and bounded pagination with full provider policies and responses.
 
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`

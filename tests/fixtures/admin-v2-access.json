@@ -1,0 +1,1878 @@
+[
+  {
+    "case_id": "access_groups.replace_content",
+    "resource": "access_groups",
+    "name": "replace_content",
+    "method": "PATCH",
+    "path": "/api/admin/v2/access_groups/41/content",
+    "args": [
+      41,
+      {
+        "space_ids": [],
+        "space_group_ids": [
+          31
+        ]
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "space_ids": [],
+      "space_group_ids": [
+        31
+      ]
+    },
+    "response": {
+      "space_ids": [],
+      "space_group_ids": [
+        31
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "access_group_members.add",
+    "resource": "access_group_members",
+    "name": "add",
+    "method": "POST",
+    "path": "/api/admin/v2/access_groups/41/community_members",
+    "args": [
+      41,
+      {
+        "email": "member@example.test"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "email": "member@example.test"
+    },
+    "response": {
+      "success": true,
+      "message": "Synthetic success",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 201,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "access_group_members.remove",
+    "resource": "access_group_members",
+    "name": "remove",
+    "method": "DELETE",
+    "path": "/api/admin/v2/access_groups/41/community_members",
+    "args": [
+      41,
+      "member@example.test"
+    ],
+    "kwargs": {},
+    "query": "email=member%40example.test",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic success",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "access_group_members.list_members",
+    "resource": "access_group_members",
+    "name": "list_members",
+    "method": "GET",
+    "path": "/api/admin/v2/access_groups/41/community_members",
+    "args": [
+      41
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4
+    },
+    "query": "page=2&per_page=4",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 91,
+          "access_group_id": 41,
+          "community_member_id": 21,
+          "community_id": 1,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z",
+          "policies": {
+            "can_destroy": false
+          }
+        }
+      ],
+      "policies": {
+        "can_create": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "access_group_members.get",
+    "resource": "access_group_members",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/access_groups/41/community_member",
+    "args": [
+      41,
+      "member@example.test"
+    ],
+    "kwargs": {},
+    "query": "email=member%40example.test",
+    "body": null,
+    "response": {
+      "id": 91,
+      "access_group_id": 41,
+      "community_member_id": 21,
+      "community_id": 1,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "policies": {
+        "can_destroy": false
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "access_groups.create",
+    "resource": "access_groups",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/access_groups",
+    "args": [
+      {
+        "access_group": {
+          "name": "SDK Test Access",
+          "description": ""
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "access_group": {
+        "name": "SDK Test Access",
+        "description": ""
+      }
+    },
+    "response": {
+      "id": 41,
+      "name": "SDK Test Access",
+      "description": "",
+      "status": "active",
+      "community_id": 1,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "access_groups.list_groups",
+    "resource": "access_groups",
+    "name": "list_groups",
+    "method": "GET",
+    "path": "/api/admin/v2/access_groups",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "status": "all",
+      "ids": [
+        41,
+        42
+      ],
+      "name": ""
+    },
+    "query": "page=2&per_page=4&status=all&ids=41&ids=42&name=",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 41,
+          "name": "SDK Test Access",
+          "description": "",
+          "status": "active",
+          "community_id": 1,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z",
+          "policies": {
+            "can_update": false
+          },
+          "future": null
+        }
+      ],
+      "policies": {
+        "can_create": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      400,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "access_groups.archive",
+    "resource": "access_groups",
+    "name": "archive",
+    "method": "DELETE",
+    "path": "/api/admin/v2/access_groups/41",
+    "args": [
+      41
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic success",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "access_groups.update",
+    "resource": "access_groups",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/access_groups/41",
+    "args": [
+      41,
+      {
+        "access_group": {
+          "name": "SDK Test Access",
+          "description": ""
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "access_group": {
+        "name": "SDK Test Access",
+        "description": ""
+      }
+    },
+    "response": {
+      "id": 41,
+      "name": "SDK Test Access",
+      "description": "",
+      "status": "active",
+      "community_id": 1,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "access_groups.unarchive",
+    "resource": "access_groups",
+    "name": "unarchive",
+    "method": "PATCH",
+    "path": "/api/admin/v2/access_groups/41/unarchive",
+    "args": [
+      41
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 41,
+      "name": "SDK Test Access",
+      "description": "",
+      "status": "active",
+      "community_id": 1,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "community_member_spaces.list_spaces",
+    "resource": "community_member_spaces",
+    "name": "list_spaces",
+    "method": "GET",
+    "path": "/api/admin/v2/community_member_spaces",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "community_member_id": 21,
+      "user_email": "member@example.test"
+    },
+    "query": "page=2&per_page=4&community_member_id=21&user_email=member%40example.test",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 51,
+          "name": "SDK Test Space",
+          "slug": "sdk-test-space",
+          "cover_image_url": null,
+          "cover_image_visible": false,
+          "cover_image_display_style": "wide",
+          "thumbnail_image_url": null,
+          "community_id": 1,
+          "is_private": true,
+          "is_hidden_from_non_members": true,
+          "is_draft": false,
+          "is_hidden": false,
+          "locked_button_url": "",
+          "locked_button_label": "",
+          "locked_page_heading": "",
+          "locked_page_description": "",
+          "emoji": null,
+          "custom_emoji_url": null,
+          "custom_emoji_dark_url": null,
+          "hide_post_settings": false,
+          "display_view": "posts",
+          "is_post_disabled": false,
+          "space_type": "basic",
+          "host": null,
+          "post_ids": [],
+          "url": null,
+          "space_group": {
+            "id": 31,
+            "name": "SDK Test Group"
+          },
+          "topics": [],
+          "default_mention_in_app_notification_setting": "never",
+          "default_mention_mobile_notification_setting": "never",
+          "event_auto_rsvp_enabled": false,
+          "default_in_app_notification_setting": "never",
+          "default_mobile_notification_setting": "never",
+          "default_notification_setting": "never",
+          "default_sort": "latest",
+          "hide_sorting": false,
+          "require_topic_selection": false,
+          "prevent_members_from_adding_others": false,
+          "hide_from_featured_areas": false,
+          "disable_member_post_covers": false,
+          "hide_members_count": false,
+          "pinned_posts_label": "",
+          "show_lock_icon_for_non_members": false,
+          "default_comment_sort": "oldest",
+          "default_member_sort": "alphabetical",
+          "default_tab": "posts",
+          "show_tab_bar": false,
+          "show_next_event": false,
+          "hide_from_sidebar": false,
+          "hide_right_sidebar": false,
+          "lock_screen_blocks": [],
+          "visible_tabs": {
+            "posts": true,
+            "members": false
+          },
+          "meta_tag_attributes": {
+            "meta_title": "",
+            "meta_description": "",
+            "opengraph_title": "",
+            "opengraph_description": "",
+            "opengraph_image": null
+          },
+          "chat_room_show_history": false,
+          "chat_room_description": "",
+          "course_setting": {
+            "course_type": "structured",
+            "new_comment_notification_enabled": false,
+            "enforce_lessons_order": false,
+            "custom_lesson_label": "lesson",
+            "custom_section_label": "section",
+            "lesson_thumbnails_visible": false
+          },
+          "policies": {
+            "can_update": false,
+            "can_destroy": false
+          },
+          "future": null
+        }
+      ],
+      "policies": {
+        "can_create": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": []
+  },
+  {
+    "case_id": "community_member_access_groups.list_groups",
+    "resource": "community_member_access_groups",
+    "name": "list_groups",
+    "method": "GET",
+    "path": "/api/admin/v2/community_members/21/access_groups",
+    "args": [
+      21
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4
+    },
+    "query": "page=2&per_page=4",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 41,
+          "name": "SDK Test Access",
+          "description": "",
+          "status": "active",
+          "community_id": 1,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z",
+          "policies": {
+            "can_update": false
+          },
+          "future": null
+        }
+      ],
+      "policies": {
+        "can_create": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "space_group_members.add",
+    "resource": "space_group_members",
+    "name": "add",
+    "method": "POST",
+    "path": "/api/admin/v2/space_group_members",
+    "args": [
+      {
+        "space_group_id": 31,
+        "email": "member@example.test"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "space_group_id": 31,
+      "email": "member@example.test"
+    },
+    "response": {
+      "success": true,
+      "message": "Synthetic success",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "space_group_members.remove",
+    "resource": "space_group_members",
+    "name": "remove",
+    "method": "DELETE",
+    "path": "/api/admin/v2/space_group_members",
+    "args": [
+      31,
+      "member@example.test"
+    ],
+    "kwargs": {},
+    "query": "email=member%40example.test&space_group_id=31",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic success",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      403
+    ]
+  },
+  {
+    "case_id": "space_group_members.list_members",
+    "resource": "space_group_members",
+    "name": "list_members",
+    "method": "GET",
+    "path": "/api/admin/v2/space_group_members",
+    "args": [
+      31
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "status": "inactive"
+    },
+    "query": "page=2&per_page=4&space_group_id=31&status=inactive",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 81,
+          "space_group_id": 31,
+          "user_id": 11,
+          "moderator": false,
+          "community_member_id": 21,
+          "access_type": "direct",
+          "status": "inactive",
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z",
+          "community_member": {
+            "name": "Synthetic Member",
+            "first_name": "Synthetic",
+            "last_name": "Member",
+            "avatar_url": null,
+            "headline": null,
+            "community_id": 1,
+            "profile_url": "https://example.test/u/synthetic",
+            "public_uid": "synthetic",
+            "email": "member@example.test"
+          },
+          "policies": {
+            "can_destroy": false
+          },
+          "future": null
+        }
+      ],
+      "policies": {
+        "can_create": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "space_group_members.get",
+    "resource": "space_group_members",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/space_group_member",
+    "args": [
+      31,
+      "member@example.test"
+    ],
+    "kwargs": {},
+    "query": "email=member%40example.test&space_group_id=31",
+    "body": null,
+    "response": {
+      "id": 81,
+      "space_group_id": 31,
+      "user_id": 11,
+      "moderator": false,
+      "community_member_id": 21,
+      "access_type": "direct",
+      "status": "inactive",
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "community_member": {
+        "name": "Synthetic Member",
+        "first_name": "Synthetic",
+        "last_name": "Member",
+        "avatar_url": null,
+        "headline": null,
+        "community_id": 1,
+        "profile_url": "https://example.test/u/synthetic",
+        "public_uid": "synthetic",
+        "email": "member@example.test"
+      },
+      "policies": {
+        "can_destroy": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "space_groups.create",
+    "resource": "space_groups",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/space_groups",
+    "args": [
+      {
+        "name": "SDK Test Group",
+        "slug": "sdk-test-group",
+        "is_hidden_from_non_members": false,
+        "hide_members_count": false,
+        "allow_members_to_create_spaces": false,
+        "automatically_add_members_to_new_spaces": false,
+        "add_members_to_space_group_on_space_join": false,
+        "hide_non_member_spaces_from_sidebar": false
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Test Group",
+      "slug": "sdk-test-group",
+      "is_hidden_from_non_members": false,
+      "hide_members_count": false,
+      "allow_members_to_create_spaces": false,
+      "automatically_add_members_to_new_spaces": false,
+      "add_members_to_space_group_on_space_join": false,
+      "hide_non_member_spaces_from_sidebar": false
+    },
+    "response": {
+      "name": "SDK Test Group",
+      "slug": "sdk-test-group",
+      "is_hidden_from_non_members": false,
+      "hide_members_count": false,
+      "allow_members_to_create_spaces": false,
+      "automatically_add_members_to_new_spaces": false,
+      "add_members_to_space_group_on_space_join": false,
+      "hide_non_member_spaces_from_sidebar": false,
+      "id": 31,
+      "community_id": 1,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "space_group_members_count": 0,
+      "spaces_count": 0,
+      "policies": {
+        "can_update": false,
+        "can_destroy": false
+      },
+      "future": null
+    },
+    "success_status": 201,
+    "error_statuses": [
+      400,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "space_groups.list_groups",
+    "resource": "space_groups",
+    "name": "list_groups",
+    "method": "GET",
+    "path": "/api/admin/v2/space_groups",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "name": ""
+    },
+    "query": "page=2&per_page=4&name=",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "name": "SDK Test Group",
+          "slug": "sdk-test-group",
+          "is_hidden_from_non_members": false,
+          "hide_members_count": false,
+          "allow_members_to_create_spaces": false,
+          "automatically_add_members_to_new_spaces": false,
+          "add_members_to_space_group_on_space_join": false,
+          "hide_non_member_spaces_from_sidebar": false,
+          "id": 31,
+          "community_id": 1,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z",
+          "space_group_members_count": 0,
+          "spaces_count": 0,
+          "policies": {
+            "can_update": false,
+            "can_destroy": false
+          },
+          "future": null
+        }
+      ],
+      "policies": {
+        "can_create": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "space_groups.delete",
+    "resource": "space_groups",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/space_groups/31",
+    "args": [
+      31
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic success",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "space_groups.get",
+    "resource": "space_groups",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/space_groups/31",
+    "args": [
+      31
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "name": "SDK Test Group",
+      "slug": "sdk-test-group",
+      "is_hidden_from_non_members": false,
+      "hide_members_count": false,
+      "allow_members_to_create_spaces": false,
+      "automatically_add_members_to_new_spaces": false,
+      "add_members_to_space_group_on_space_join": false,
+      "hide_non_member_spaces_from_sidebar": false,
+      "id": 31,
+      "community_id": 1,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "space_group_members_count": 0,
+      "spaces_count": 0,
+      "policies": {
+        "can_update": false,
+        "can_destroy": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404
+    ]
+  },
+  {
+    "case_id": "space_groups.update",
+    "resource": "space_groups",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/space_groups/31",
+    "args": [
+      31,
+      {
+        "name": "SDK Test Group",
+        "slug": "sdk-test-group",
+        "is_hidden_from_non_members": false,
+        "hide_members_count": false,
+        "allow_members_to_create_spaces": false,
+        "automatically_add_members_to_new_spaces": false,
+        "add_members_to_space_group_on_space_join": false,
+        "hide_non_member_spaces_from_sidebar": false,
+        "moderator_community_member_ids": []
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Test Group",
+      "slug": "sdk-test-group",
+      "is_hidden_from_non_members": false,
+      "hide_members_count": false,
+      "allow_members_to_create_spaces": false,
+      "automatically_add_members_to_new_spaces": false,
+      "add_members_to_space_group_on_space_join": false,
+      "hide_non_member_spaces_from_sidebar": false,
+      "moderator_community_member_ids": []
+    },
+    "response": {
+      "name": "SDK Test Group",
+      "slug": "sdk-test-group",
+      "is_hidden_from_non_members": false,
+      "hide_members_count": false,
+      "allow_members_to_create_spaces": false,
+      "automatically_add_members_to_new_spaces": false,
+      "add_members_to_space_group_on_space_join": false,
+      "hide_non_member_spaces_from_sidebar": false,
+      "id": 31,
+      "community_id": 1,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "space_group_members_count": 0,
+      "spaces_count": 0,
+      "policies": {
+        "can_update": false,
+        "can_destroy": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "space_members.add",
+    "resource": "space_members",
+    "name": "add",
+    "method": "POST",
+    "path": "/api/admin/v2/space_members",
+    "args": [
+      {
+        "email": "member@example.test",
+        "space_id": 51
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "email": "member@example.test",
+      "space_id": 51
+    },
+    "response": {
+      "success": true,
+      "message": "Synthetic success",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      403
+    ]
+  },
+  {
+    "case_id": "space_members.remove",
+    "resource": "space_members",
+    "name": "remove",
+    "method": "DELETE",
+    "path": "/api/admin/v2/space_members",
+    "args": [
+      51,
+      "member@example.test"
+    ],
+    "kwargs": {},
+    "query": "email=member%40example.test&space_id=51",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic success",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "space_members.list_members",
+    "resource": "space_members",
+    "name": "list_members",
+    "method": "GET",
+    "path": "/api/admin/v2/space_members",
+    "args": [
+      51
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "status": "all"
+    },
+    "query": "page=2&per_page=4&space_id=51&status=all",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 81,
+          "user_id": 11,
+          "moderator": false,
+          "community_member_id": 21,
+          "access_type": "direct",
+          "status": "inactive",
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z",
+          "community_member": {
+            "name": "Synthetic Member",
+            "first_name": "Synthetic",
+            "last_name": "Member",
+            "avatar_url": null,
+            "headline": null,
+            "community_id": 1,
+            "profile_url": "https://example.test/u/synthetic",
+            "public_uid": "synthetic",
+            "email": "member@example.test"
+          },
+          "policies": {
+            "can_destroy": false
+          },
+          "future": null,
+          "space_id": 51,
+          "notification_type": "never",
+          "posts_read_count": 0,
+          "in_app_notification_setting": "never",
+          "mobile_notification_setting": "never"
+        }
+      ],
+      "policies": {
+        "can_create": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "space_members.get",
+    "resource": "space_members",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/space_member",
+    "args": [
+      51,
+      "member@example.test"
+    ],
+    "kwargs": {},
+    "query": "email=member%40example.test&space_id=51",
+    "body": null,
+    "response": {
+      "id": 81,
+      "user_id": 11,
+      "moderator": false,
+      "community_member_id": 21,
+      "access_type": "direct",
+      "status": "inactive",
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "community_member": {
+        "name": "Synthetic Member",
+        "first_name": "Synthetic",
+        "last_name": "Member",
+        "avatar_url": null,
+        "headline": null,
+        "community_id": 1,
+        "profile_url": "https://example.test/u/synthetic",
+        "public_uid": "synthetic",
+        "email": "member@example.test"
+      },
+      "policies": {
+        "can_destroy": false
+      },
+      "future": null,
+      "space_id": 51,
+      "notification_type": "never",
+      "posts_read_count": 0,
+      "in_app_notification_setting": "never",
+      "mobile_notification_setting": "never"
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "spaces.get_summary",
+    "resource": "spaces",
+    "name": "get_summary",
+    "method": "GET",
+    "path": "/api/admin/v2/spaces/51/ai_summaries",
+    "args": [
+      51
+    ],
+    "kwargs": {
+      "date_from": "2026-10-27T00:00:00Z",
+      "first_unread_message_id": 0
+    },
+    "query": "date_from=2026-10-27T00%3A00%3A00Z&first_unread_message_id=0",
+    "body": null,
+    "response": {
+      "overview": "Synthetic overview",
+      "topics": [
+        {
+          "topic_name": "Synthetic topic",
+          "summary": "Full text",
+          "contributors": [
+            {
+              "id": 21,
+              "name": "Synthetic Member"
+            }
+          ],
+          "relevant_post_ids": [
+            61,
+            62
+          ],
+          "future": null
+        }
+      ],
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      404,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "spaces.create",
+    "resource": "spaces",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/spaces",
+    "args": [
+      {
+        "name": "SDK Test Space",
+        "slug": "sdk-test-space",
+        "cover_image": "synthetic-cover-id",
+        "cover_image_visible": false,
+        "cover_image_display_style": "wide",
+        "is_private": true,
+        "is_hidden_from_non_members": true,
+        "is_hidden": false,
+        "locked_button_url": "",
+        "locked_button_label": "",
+        "locked_page_heading": "",
+        "locked_page_description": "",
+        "is_post_disabled": false,
+        "default_sort": "latest",
+        "hide_sorting": false,
+        "space_group_id": 31,
+        "topics": [],
+        "custom_emoji": {
+          "emoji": "🚀"
+        },
+        "space_type": "course",
+        "event_auto_rsvp_enabled": false,
+        "default_in_app_notification_setting": "never",
+        "default_mobile_notification_setting": "never",
+        "default_notification_setting": "never",
+        "course_setting": {
+          "course_type": "structured",
+          "new_comment_notification_enabled": false,
+          "enforce_lessons_order": false,
+          "custom_lesson_label": "lesson",
+          "custom_section_label": "section",
+          "lesson_thumbnails_visible": false
+        },
+        "thumbnail_image": "synthetic-thumbnail-id",
+        "default_mention_in_app_notification_setting": "never",
+        "default_mention_mobile_notification_setting": "never",
+        "hide_from_sidebar": false,
+        "hide_right_sidebar": false,
+        "require_topic_selection": false,
+        "display_view": "posts",
+        "prevent_members_from_adding_others": false,
+        "hide_from_featured_areas": false,
+        "disable_member_post_covers": false,
+        "hide_members_count": false,
+        "pinned_posts_label": "",
+        "show_lock_icon_for_non_members": false,
+        "hide_post_settings": false,
+        "default_comment_sort": "oldest",
+        "default_member_sort": "alphabetical",
+        "emoji": "🚀",
+        "default_tab": "posts",
+        "show_tab_bar": false,
+        "show_next_event": false,
+        "visible_tabs": {
+          "posts": true,
+          "members": false,
+          "upcoming": false,
+          "past": false
+        },
+        "meta_tag_attributes": {
+          "meta_description": "",
+          "meta_title": "",
+          "opengraph_description": "",
+          "opengraph_title": "",
+          "opengraph_image": "synthetic-og-id"
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Test Space",
+      "slug": "sdk-test-space",
+      "cover_image": "synthetic-cover-id",
+      "cover_image_visible": false,
+      "cover_image_display_style": "wide",
+      "is_private": true,
+      "is_hidden_from_non_members": true,
+      "is_hidden": false,
+      "locked_button_url": "",
+      "locked_button_label": "",
+      "locked_page_heading": "",
+      "locked_page_description": "",
+      "is_post_disabled": false,
+      "default_sort": "latest",
+      "hide_sorting": false,
+      "space_group_id": 31,
+      "topics": [],
+      "custom_emoji": {
+        "emoji": "🚀"
+      },
+      "space_type": "course",
+      "event_auto_rsvp_enabled": false,
+      "default_in_app_notification_setting": "never",
+      "default_mobile_notification_setting": "never",
+      "default_notification_setting": "never",
+      "course_setting": {
+        "course_type": "structured",
+        "new_comment_notification_enabled": false,
+        "enforce_lessons_order": false,
+        "custom_lesson_label": "lesson",
+        "custom_section_label": "section",
+        "lesson_thumbnails_visible": false
+      },
+      "thumbnail_image": "synthetic-thumbnail-id",
+      "default_mention_in_app_notification_setting": "never",
+      "default_mention_mobile_notification_setting": "never",
+      "hide_from_sidebar": false,
+      "hide_right_sidebar": false,
+      "require_topic_selection": false,
+      "display_view": "posts",
+      "prevent_members_from_adding_others": false,
+      "hide_from_featured_areas": false,
+      "disable_member_post_covers": false,
+      "hide_members_count": false,
+      "pinned_posts_label": "",
+      "show_lock_icon_for_non_members": false,
+      "hide_post_settings": false,
+      "default_comment_sort": "oldest",
+      "default_member_sort": "alphabetical",
+      "emoji": "🚀",
+      "default_tab": "posts",
+      "show_tab_bar": false,
+      "show_next_event": false,
+      "visible_tabs": {
+        "posts": true,
+        "members": false,
+        "upcoming": false,
+        "past": false
+      },
+      "meta_tag_attributes": {
+        "meta_description": "",
+        "meta_title": "",
+        "opengraph_description": "",
+        "opengraph_title": "",
+        "opengraph_image": "synthetic-og-id"
+      }
+    },
+    "response": {
+      "success": true,
+      "message": "Synthetic space created",
+      "space": {
+        "id": 51,
+        "name": "SDK Test Space",
+        "slug": "sdk-test-space",
+        "cover_image_url": null,
+        "cover_image_visible": false,
+        "cover_image_display_style": "wide",
+        "thumbnail_image_url": null,
+        "community_id": 1,
+        "is_private": true,
+        "is_hidden_from_non_members": true,
+        "is_draft": false,
+        "is_hidden": false,
+        "locked_button_url": "",
+        "locked_button_label": "",
+        "locked_page_heading": "",
+        "locked_page_description": "",
+        "emoji": null,
+        "custom_emoji_url": null,
+        "custom_emoji_dark_url": null,
+        "hide_post_settings": false,
+        "display_view": "posts",
+        "is_post_disabled": false,
+        "space_type": "basic",
+        "host": null,
+        "post_ids": [],
+        "url": null,
+        "space_group": {
+          "id": 31,
+          "name": "SDK Test Group"
+        },
+        "topics": [],
+        "default_mention_in_app_notification_setting": "never",
+        "default_mention_mobile_notification_setting": "never",
+        "event_auto_rsvp_enabled": false,
+        "default_in_app_notification_setting": "never",
+        "default_mobile_notification_setting": "never",
+        "default_notification_setting": "never",
+        "default_sort": "latest",
+        "hide_sorting": false,
+        "require_topic_selection": false,
+        "prevent_members_from_adding_others": false,
+        "hide_from_featured_areas": false,
+        "disable_member_post_covers": false,
+        "hide_members_count": false,
+        "pinned_posts_label": "",
+        "show_lock_icon_for_non_members": false,
+        "default_comment_sort": "oldest",
+        "default_member_sort": "alphabetical",
+        "default_tab": "posts",
+        "show_tab_bar": false,
+        "show_next_event": false,
+        "hide_from_sidebar": false,
+        "hide_right_sidebar": false,
+        "lock_screen_blocks": [],
+        "visible_tabs": {
+          "posts": true,
+          "members": false
+        },
+        "meta_tag_attributes": {
+          "meta_title": "",
+          "meta_description": "",
+          "opengraph_title": "",
+          "opengraph_description": "",
+          "opengraph_image": null
+        },
+        "chat_room_show_history": false,
+        "chat_room_description": "",
+        "course_setting": {
+          "course_type": "structured",
+          "new_comment_notification_enabled": false,
+          "enforce_lessons_order": false,
+          "custom_lesson_label": "lesson",
+          "custom_section_label": "section",
+          "lesson_thumbnails_visible": false
+        },
+        "policies": {
+          "can_update": false,
+          "can_destroy": false
+        },
+        "future": null
+      },
+      "policies": {
+        "can_create": false
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      400,
+      403
+    ]
+  },
+  {
+    "case_id": "spaces.list_spaces",
+    "resource": "spaces",
+    "name": "list_spaces",
+    "method": "GET",
+    "path": "/api/admin/v2/spaces",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "sort": "latest_updated"
+    },
+    "query": "page=2&per_page=4&sort=latest_updated",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 51,
+          "name": "SDK Test Space",
+          "slug": "sdk-test-space",
+          "cover_image_url": null,
+          "cover_image_visible": false,
+          "cover_image_display_style": "wide",
+          "thumbnail_image_url": null,
+          "community_id": 1,
+          "is_private": true,
+          "is_hidden_from_non_members": true,
+          "is_draft": false,
+          "is_hidden": false,
+          "locked_button_url": "",
+          "locked_button_label": "",
+          "locked_page_heading": "",
+          "locked_page_description": "",
+          "emoji": null,
+          "custom_emoji_url": null,
+          "custom_emoji_dark_url": null,
+          "hide_post_settings": false,
+          "display_view": "posts",
+          "is_post_disabled": false,
+          "space_type": "basic",
+          "host": null,
+          "post_ids": [],
+          "url": null,
+          "space_group": {
+            "id": 31,
+            "name": "SDK Test Group"
+          },
+          "topics": [],
+          "default_mention_in_app_notification_setting": "never",
+          "default_mention_mobile_notification_setting": "never",
+          "event_auto_rsvp_enabled": false,
+          "default_in_app_notification_setting": "never",
+          "default_mobile_notification_setting": "never",
+          "default_notification_setting": "never",
+          "default_sort": "latest",
+          "hide_sorting": false,
+          "require_topic_selection": false,
+          "prevent_members_from_adding_others": false,
+          "hide_from_featured_areas": false,
+          "disable_member_post_covers": false,
+          "hide_members_count": false,
+          "pinned_posts_label": "",
+          "show_lock_icon_for_non_members": false,
+          "default_comment_sort": "oldest",
+          "default_member_sort": "alphabetical",
+          "default_tab": "posts",
+          "show_tab_bar": false,
+          "show_next_event": false,
+          "hide_from_sidebar": false,
+          "hide_right_sidebar": false,
+          "lock_screen_blocks": [],
+          "visible_tabs": {
+            "posts": true,
+            "members": false
+          },
+          "meta_tag_attributes": {
+            "meta_title": "",
+            "meta_description": "",
+            "opengraph_title": "",
+            "opengraph_description": "",
+            "opengraph_image": null
+          },
+          "chat_room_show_history": false,
+          "chat_room_description": "",
+          "course_setting": {
+            "course_type": "structured",
+            "new_comment_notification_enabled": false,
+            "enforce_lessons_order": false,
+            "custom_lesson_label": "lesson",
+            "custom_section_label": "section",
+            "lesson_thumbnails_visible": false
+          },
+          "policies": {
+            "can_update": false,
+            "can_destroy": false
+          },
+          "future": null
+        }
+      ],
+      "policies": {
+        "can_create": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": []
+  },
+  {
+    "case_id": "spaces.delete",
+    "resource": "spaces",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/spaces/51",
+    "args": [
+      51
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic success",
+      "policies": {
+        "can_update": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      422
+    ]
+  },
+  {
+    "case_id": "spaces.get",
+    "resource": "spaces",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/spaces/51",
+    "args": [
+      51
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 51,
+      "name": "SDK Test Space",
+      "slug": "sdk-test-space",
+      "cover_image_url": null,
+      "cover_image_visible": false,
+      "cover_image_display_style": "wide",
+      "thumbnail_image_url": null,
+      "community_id": 1,
+      "is_private": true,
+      "is_hidden_from_non_members": true,
+      "is_draft": false,
+      "is_hidden": false,
+      "locked_button_url": "",
+      "locked_button_label": "",
+      "locked_page_heading": "",
+      "locked_page_description": "",
+      "emoji": null,
+      "custom_emoji_url": null,
+      "custom_emoji_dark_url": null,
+      "hide_post_settings": false,
+      "display_view": "posts",
+      "is_post_disabled": false,
+      "space_type": "basic",
+      "host": null,
+      "post_ids": [],
+      "url": null,
+      "space_group": {
+        "id": 31,
+        "name": "SDK Test Group"
+      },
+      "topics": [],
+      "default_mention_in_app_notification_setting": "never",
+      "default_mention_mobile_notification_setting": "never",
+      "event_auto_rsvp_enabled": false,
+      "default_in_app_notification_setting": "never",
+      "default_mobile_notification_setting": "never",
+      "default_notification_setting": "never",
+      "default_sort": "latest",
+      "hide_sorting": false,
+      "require_topic_selection": false,
+      "prevent_members_from_adding_others": false,
+      "hide_from_featured_areas": false,
+      "disable_member_post_covers": false,
+      "hide_members_count": false,
+      "pinned_posts_label": "",
+      "show_lock_icon_for_non_members": false,
+      "default_comment_sort": "oldest",
+      "default_member_sort": "alphabetical",
+      "default_tab": "posts",
+      "show_tab_bar": false,
+      "show_next_event": false,
+      "hide_from_sidebar": false,
+      "hide_right_sidebar": false,
+      "lock_screen_blocks": [],
+      "visible_tabs": {
+        "posts": true,
+        "members": false
+      },
+      "meta_tag_attributes": {
+        "meta_title": "",
+        "meta_description": "",
+        "opengraph_title": "",
+        "opengraph_description": "",
+        "opengraph_image": null
+      },
+      "chat_room_show_history": false,
+      "chat_room_description": "",
+      "course_setting": {
+        "course_type": "structured",
+        "new_comment_notification_enabled": false,
+        "enforce_lessons_order": false,
+        "custom_lesson_label": "lesson",
+        "custom_section_label": "section",
+        "lesson_thumbnails_visible": false
+      },
+      "policies": {
+        "can_update": false,
+        "can_destroy": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404
+    ]
+  },
+  {
+    "case_id": "spaces.update",
+    "resource": "spaces",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/spaces/51",
+    "args": [
+      51,
+      {
+        "name": "SDK Test Space",
+        "slug": "sdk-test-space",
+        "cover_image": "synthetic-cover-id",
+        "cover_image_visible": false,
+        "cover_image_display_style": "wide",
+        "is_private": true,
+        "is_hidden_from_non_members": true,
+        "is_hidden": false,
+        "locked_button_url": "",
+        "locked_button_label": "",
+        "locked_page_heading": "",
+        "locked_page_description": "",
+        "is_post_disabled": false,
+        "default_sort": "latest",
+        "hide_sorting": false,
+        "space_group_id": 31,
+        "topics": [],
+        "custom_emoji": {
+          "emoji": "🚀"
+        },
+        "space_type": "course",
+        "event_auto_rsvp_enabled": false,
+        "default_in_app_notification_setting": "never",
+        "default_mobile_notification_setting": "never",
+        "default_notification_setting": "never",
+        "thumbnail_image": "synthetic-thumbnail-id",
+        "default_mention_in_app_notification_setting": "never",
+        "default_mention_mobile_notification_setting": "never",
+        "hide_from_sidebar": false,
+        "hide_right_sidebar": false,
+        "require_topic_selection": false,
+        "display_view": "posts",
+        "prevent_members_from_adding_others": false,
+        "hide_from_featured_areas": false,
+        "disable_member_post_covers": false,
+        "hide_members_count": false,
+        "pinned_posts_label": "",
+        "show_lock_icon_for_non_members": false,
+        "hide_post_settings": false,
+        "default_comment_sort": "oldest",
+        "default_member_sort": "alphabetical",
+        "emoji": "🚀",
+        "default_tab": "posts",
+        "show_tab_bar": false,
+        "show_next_event": false,
+        "visible_tabs": {
+          "posts": true,
+          "members": false,
+          "upcoming": false,
+          "past": false
+        },
+        "meta_tag_attributes": {
+          "meta_description": "",
+          "meta_title": "",
+          "opengraph_description": "",
+          "opengraph_title": "",
+          "opengraph_image": "synthetic-og-id"
+        },
+        "course_setting_attributes": {
+          "course_type": "structured",
+          "new_comment_notification_enabled": false,
+          "enforce_lessons_order": false,
+          "custom_lesson_label": "lesson",
+          "custom_section_label": "section",
+          "lesson_thumbnails_visible": false
+        },
+        "is_draft": false,
+        "chat_room_show_history": false,
+        "chat_room_description": ""
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "name": "SDK Test Space",
+      "slug": "sdk-test-space",
+      "cover_image": "synthetic-cover-id",
+      "cover_image_visible": false,
+      "cover_image_display_style": "wide",
+      "is_private": true,
+      "is_hidden_from_non_members": true,
+      "is_hidden": false,
+      "locked_button_url": "",
+      "locked_button_label": "",
+      "locked_page_heading": "",
+      "locked_page_description": "",
+      "is_post_disabled": false,
+      "default_sort": "latest",
+      "hide_sorting": false,
+      "space_group_id": 31,
+      "topics": [],
+      "custom_emoji": {
+        "emoji": "🚀"
+      },
+      "space_type": "course",
+      "event_auto_rsvp_enabled": false,
+      "default_in_app_notification_setting": "never",
+      "default_mobile_notification_setting": "never",
+      "default_notification_setting": "never",
+      "thumbnail_image": "synthetic-thumbnail-id",
+      "default_mention_in_app_notification_setting": "never",
+      "default_mention_mobile_notification_setting": "never",
+      "hide_from_sidebar": false,
+      "hide_right_sidebar": false,
+      "require_topic_selection": false,
+      "display_view": "posts",
+      "prevent_members_from_adding_others": false,
+      "hide_from_featured_areas": false,
+      "disable_member_post_covers": false,
+      "hide_members_count": false,
+      "pinned_posts_label": "",
+      "show_lock_icon_for_non_members": false,
+      "hide_post_settings": false,
+      "default_comment_sort": "oldest",
+      "default_member_sort": "alphabetical",
+      "emoji": "🚀",
+      "default_tab": "posts",
+      "show_tab_bar": false,
+      "show_next_event": false,
+      "visible_tabs": {
+        "posts": true,
+        "members": false,
+        "upcoming": false,
+        "past": false
+      },
+      "meta_tag_attributes": {
+        "meta_description": "",
+        "meta_title": "",
+        "opengraph_description": "",
+        "opengraph_title": "",
+        "opengraph_image": "synthetic-og-id"
+      },
+      "course_setting_attributes": {
+        "course_type": "structured",
+        "new_comment_notification_enabled": false,
+        "enforce_lessons_order": false,
+        "custom_lesson_label": "lesson",
+        "custom_section_label": "section",
+        "lesson_thumbnails_visible": false
+      },
+      "is_draft": false,
+      "chat_room_show_history": false,
+      "chat_room_description": ""
+    },
+    "response": {
+      "id": 51,
+      "name": "SDK Test Space",
+      "slug": "sdk-test-space",
+      "cover_image_url": null,
+      "cover_image_visible": false,
+      "cover_image_display_style": "wide",
+      "thumbnail_image_url": null,
+      "community_id": 1,
+      "is_private": true,
+      "is_hidden_from_non_members": true,
+      "is_draft": false,
+      "is_hidden": false,
+      "locked_button_url": "",
+      "locked_button_label": "",
+      "locked_page_heading": "",
+      "locked_page_description": "",
+      "emoji": null,
+      "custom_emoji_url": null,
+      "custom_emoji_dark_url": null,
+      "hide_post_settings": false,
+      "display_view": "posts",
+      "is_post_disabled": false,
+      "space_type": "basic",
+      "host": null,
+      "post_ids": [],
+      "url": null,
+      "space_group": {
+        "id": 31,
+        "name": "SDK Test Group"
+      },
+      "topics": [],
+      "default_mention_in_app_notification_setting": "never",
+      "default_mention_mobile_notification_setting": "never",
+      "event_auto_rsvp_enabled": false,
+      "default_in_app_notification_setting": "never",
+      "default_mobile_notification_setting": "never",
+      "default_notification_setting": "never",
+      "default_sort": "latest",
+      "hide_sorting": false,
+      "require_topic_selection": false,
+      "prevent_members_from_adding_others": false,
+      "hide_from_featured_areas": false,
+      "disable_member_post_covers": false,
+      "hide_members_count": false,
+      "pinned_posts_label": "",
+      "show_lock_icon_for_non_members": false,
+      "default_comment_sort": "oldest",
+      "default_member_sort": "alphabetical",
+      "default_tab": "posts",
+      "show_tab_bar": false,
+      "show_next_event": false,
+      "hide_from_sidebar": false,
+      "hide_right_sidebar": false,
+      "lock_screen_blocks": [],
+      "visible_tabs": {
+        "posts": true,
+        "members": false
+      },
+      "meta_tag_attributes": {
+        "meta_title": "",
+        "meta_description": "",
+        "opengraph_title": "",
+        "opengraph_description": "",
+        "opengraph_image": null
+      },
+      "chat_room_show_history": false,
+      "chat_room_description": "",
+      "course_setting": {
+        "course_type": "structured",
+        "new_comment_notification_enabled": false,
+        "enforce_lessons_order": false,
+        "custom_lesson_label": "lesson",
+        "custom_section_label": "section",
+        "lesson_thumbnails_visible": false
+      },
+      "policies": {
+        "can_update": false,
+        "can_destroy": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      400,
+      404,
+      422
+    ]
+  }
+]

@@ -40,6 +40,10 @@ def query_params(**values):
         if name == "member_tag_ids" and isinstance(value, (list, tuple)):
             # OpenAPI form/explode=false: one comma-separated query value.
             value = ",".join(str(item) for item in value)
+        if name == "ids" and isinstance(value, (list, tuple)) and not value:
+            # Access-group ids uses the OpenAPI default form/explode=true.
+            # Nonempty lists stay lists (repeated keys); explicit [] is blank.
+            value = ""
         result[name] = (
             ""
             if value is None
