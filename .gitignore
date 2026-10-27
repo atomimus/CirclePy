@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 coverage-matrix.md
+# Local release planning files
+v1-release/
 # C extensions
 *.so
 *tmp*.py

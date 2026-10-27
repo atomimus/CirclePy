@@ -3,6 +3,6 @@ recursive-include circlepy *.py
 recursive-include tests *.py *.json *.md
 recursive-include tools *.py
 recursive-include .github *.yml
-recursive-include docs/v1-release *.md *.json *.py
 recursive-include api/specs *.yaml *.json *.txt
+prune docs/v1-release
 global-exclude *.py[cod] .env .env.* .pypirc

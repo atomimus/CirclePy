@@ -80,10 +80,7 @@ the support matrix, dependency constraints and clean artifact verification.
 
 Development tasks commit and push directly to main after automated validation.
 
-The [v1 public contract](docs/v1-release/contract.md) and
-[release plan](docs/v1-release/README.md) describe the planned 1.0.0 interfaces,
-runtime support, compatibility decisions and remaining work. The current package
-is still 0.5.1; its async client remains unimplemented.
+The current package is still 0.5.1; its async client remains unimplemented.
 
 Run the request and authentication regression tests without calling a community:
 

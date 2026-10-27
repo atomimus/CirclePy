@@ -14,8 +14,7 @@ Users of Python 3.7–3.10 must keep the previously published 0.5.1 artifacts.
 
 CirclePy itself is pure Python (`py3-none-any`); dependencies such as aiohttp and
 Pillow may need platform wheels or native build tools. A wheel tag does not prove
-that every dependency works on every platform. See the
-[contract](docs/v1-release/contract.md) and [Task 02 evidence](docs/v1-release/evidence/02.md).
+that every dependency works on every platform.
 
 ## Set up a checkout
 
@@ -59,9 +58,9 @@ interpreter path shown above.
 python -m coverage run -m pytest -v --junitxml=test-results.xml
 python -m coverage report
 python -m coverage xml
-python -X utf8 docs/v1-release/tools/baseline.py
-python -X utf8 docs/v1-release/tools/published_api.py
-python -m ruff check circlepy tests tools docs/v1-release/tools
+python -X utf8 tools/baseline.py
+python -X utf8 tools/published_api.py
+python -m ruff check circlepy tests tools
 python -m ruff check --select E4,E7,E9,F tests/conftest.py tests/http_fixtures.py tests/test_offline_http.py tools/check_ci.py
 python -m mypy
 python tools/check_ci.py --negative-fixture
@@ -165,7 +164,7 @@ task selects `1.0.0`. Do not upload development builds under the existing 0.5.1
 version. TestPyPI and production publication belong to Tasks 33 and 34.
 
 The sdist includes source, license, contributor documentation, synthetic tests,
-and the sanitized v1 plan/specification checks. The wheel includes the package,
+and the frozen API specifications and compatibility checks. The wheel includes the package,
 README metadata and license. Generated `dist/`, build outputs, caches and local
 environments must stay out of Git and distributions. Never put credentials,
 tokens, private responses or signed storage URLs in source or fixtures.
@@ -174,5 +173,6 @@ The restored MIT license is byte-for-byte from the repository's initial commit
 `bc647f7302668258c6b599546eb30783cb863548`; its original 2024 Atomimus notice
 is retained. No new copyright holder or date is inferred.
 
-Development tasks commit and push directly to `main` after their required checks,
-following [the execution rules](docs/v1-release/EXECUTION_RULES.md).
+Development tasks commit and push directly to `main` after their required checks.
+The ignored `docs/v1-release/` folder contains local release planning files.
+Keep it local; never force-add it to Git or include it in distributions.

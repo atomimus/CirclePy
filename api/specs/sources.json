@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "freeze_id": "circlepy-v1-2026-10-27",
-  "reproduction": "python docs/v1-release/tools/baseline.py --freeze (explicitly replaces snapshots); use --verify-live to compare without writing",
+  "reproduction": "python tools/baseline.py --freeze (explicitly replaces snapshots); use --verify-live to compare without writing",
   "specs": [
     {
       "name": "headless-client-v1",

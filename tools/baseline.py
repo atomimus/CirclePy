@@ -17,9 +17,9 @@ from urllib.request import Request, urlopen
 
 import yaml
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[1]
 SPECS = ROOT / "api/specs"
-PLAN = ROOT / "docs/v1-release"
+INVENTORY = SPECS / "coverage-baseline.json"
 METHODS = {"get", "post", "put", "patch", "delete", "head", "options", "trace"}
 SOURCES = {
     "headless-client-v1": ("headless-client-v1.yaml", "https://api-headless.circle.so/api/headless_client/v1/swagger.yaml"),
@@ -98,7 +98,7 @@ def freeze():
         })
     (SPECS / "sources.json").write_bytes(json_bytes({
         "schema_version": 2, "freeze_id": "circlepy-v1-2026-10-27",
-        "reproduction": "python docs/v1-release/tools/baseline.py --freeze (explicitly replaces snapshots); use --verify-live to compare without writing",
+        "reproduction": "python tools/baseline.py --freeze (explicitly replaces snapshots); use --verify-live to compare without writing",
         "specs": records,
     }))
 
@@ -192,7 +192,7 @@ def code_routes():
 
 
 def reconciled_inventory():
-    old = read_json(PLAN / "coverage-baseline.json")
+    old = read_json(INVENTORY)
     owners = {(op["family"], op["method"], normalize(op["path"])): op["task_id"] for op in old["operations"]}
     documented, routes = documented_operations(), code_routes()
     for key, operation in documented.items():
@@ -229,29 +229,12 @@ def check(verify_live=False):
             raise ValueError(f"Snapshot hash/size mismatch: {record['path']}")
         if verify_live and digest(fetch(record["url"])) != record["upstream_sha256"]:
             raise ValueError(f"Upstream drift: {record['name']}; record it before changing the freeze")
-    inventory = read_json(PLAN / "coverage-baseline.json")
+    inventory = read_json(INVENTORY)
     if inventory != reconciled_inventory():
         raise ValueError("Inventory differs from snapshots/code audit; review and run --reconcile")
-    tasks = read_json(PLAN / "manifest.json")
-    workflow = tasks.get("git_workflow", {})
-    if workflow.get("mode") != "direct_main" or workflow.get("branch") != "main" or workflow.get("pull_requests_required") is not False or workflow.get("human_review_required") is not False:
-        raise ValueError("Release workflow must use direct main with automated validation")
-    task_ids = {task["id"] for task in tasks["tasks"]}
-    sequence = tasks["task_sequence"]
-    if len(sequence) != len(task_ids) or set(sequence) != task_ids or tasks["task_count"] != len(task_ids):
-        raise ValueError("Task sequence/count differs from task definitions")
     keys = [(op["family"], op["method"], op["normalized_path"]) for op in inventory["operations"]]
-    if len(keys) != len(set(keys)) or any(op["task_id"] not in task_ids for op in inventory["operations"]):
-        raise ValueError("Duplicate operation or missing task owner")
-    for task in tasks["tasks"]:
-        if task.get("branch") != "main":
-            raise ValueError(f"Task {task['id']} must use main")
-        if not (PLAN / task["prompt_file"]).is_file() or not set(task["dependencies"]) <= task_ids:
-            raise ValueError(f"Invalid prompt/dependency for task {task['id']}")
-        index = sequence.index(task["id"])
-        expected_next = sequence[index + 1] if index + 1 < len(sequence) else None
-        if task.get("next_task_id") != expected_next or any(sequence.index(dependency) >= index for dependency in task["dependencies"]):
-            raise ValueError(f"Invalid successor/dependency order for task {task['id']}")
+    if len(keys) != len(set(keys)):
+        raise ValueError("Duplicate operation")
     print(f"Verified {len(keys)} operations with unique owners: {inventory['family_counts']}")
     print("Static exposure:", dict(Counter(op["exposure_at_audit"] for op in inventory["operations"])))
     print(f"Verified {len(manifest['specs'])} snapshot hashes; undocumented routes: {len(inventory['undocumented_code_routes'])}")
@@ -268,5 +251,5 @@ if __name__ == "__main__":
     if args.freeze:
         freeze()
     if args.freeze or args.reconcile:
-        (PLAN / "coverage-baseline.json").write_bytes(json_bytes(reconciled_inventory()))
+        INVENTORY.write_bytes(json_bytes(reconciled_inventory()))
     check(args.verify_live)

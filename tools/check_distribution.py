@@ -31,7 +31,7 @@ def require(condition, message):
 
 
 def check_paths(names):
-    forbidden = {".git", ".venv", "venv", "__pycache__", ".pytest_cache", "dist", "build"}
+    forbidden = {".git", ".venv", "venv", "__pycache__", ".pytest_cache", "dist", "build", "v1-release"}
     for name in names:
         path = PurePosixPath(name)
         require(not path.is_absolute() and ".." not in path.parts, f"Unsafe archive path: {name}")
@@ -77,7 +77,7 @@ def inspect_artifacts(directory):
         check_paths(files)
         required = package_sources | {"LICENSE", "README.md", "CONTRIBUTING.md", "pyproject.toml", "constraints-dev.txt", "requirements.txt"}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "tools").glob("*.py")}
-        required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "docs/v1-release", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}
+        required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / ".github").rglob("*.yml")}
         require(required <= files, f"Missing sdist files: {sorted(required - files)}")
         require("setup.py" not in files, "Duplicated setup metadata remains")

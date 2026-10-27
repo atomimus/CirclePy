@@ -1,7 +1,7 @@
 """Capture 0.5.1 public Python signatures from its verified sdist; check offline.
 
-Capture: python docs/v1-release/tools/published_api.py --sdist PATH
-Check:   python docs/v1-release/tools/published_api.py
+Capture: python tools/published_api.py --sdist PATH
+Check:   python tools/published_api.py
 Reads archive members without extracting or executing downloaded Python.
 """
 
@@ -12,8 +12,8 @@ import json
 from pathlib import Path
 import tarfile
 
-ROOT = Path(__file__).resolve().parents[3]
-SNAPSHOT = ROOT / "docs/v1-release/published-0.5.1.json"
+ROOT = Path(__file__).resolve().parents[1]
+SNAPSHOT = ROOT / "tests/fixtures/published-0.5.1.json"
 SDIST_SHA256 = "ac8aa0d6c97901bbbe38eb8d849ce7527ca42d4564a57f1ecfdba65e0b82f2c8"
 
 
