@@ -1,4 +1,3 @@
-import requests
 from .base_api_client import BaseAPIClient
 
 class CookiesAPI(BaseAPIClient):

@@ -5846,7 +5846,7 @@
         {
           "file": "circlepy/headless_models/bookmarks_api.py",
           "symbol": "BookmarksAPI.delete_bookmark",
-          "line": 23,
+          "line": 25,
           "visibility": "public_method"
         }
       ],
@@ -5962,7 +5962,7 @@
         {
           "file": "circlepy/headless_models/cookies_api.py",
           "symbol": "CookiesAPI.delete",
-          "line": 11,
+          "line": 10,
           "visibility": "public_method"
         }
       ],
@@ -6020,7 +6020,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.delete_chat_room_message",
-          "line": 59,
+          "line": 46,
           "visibility": "public_method"
         }
       ],
@@ -6049,7 +6049,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.delete_notification",
-          "line": 34,
+          "line": 30,
           "visibility": "public_method"
         }
       ],
@@ -6194,7 +6194,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.delete_reaction",
-          "line": 108,
+          "line": 66,
           "visibility": "public_method"
         }
       ],
@@ -6251,8 +6251,8 @@
       "code_references": [
         {
           "file": "circlepy/headless_models/search_api.py",
-          "symbol": "SearchAPI.advanced_search",
-          "line": 19,
+          "symbol": "SearchAPI.advanced_search_raw",
+          "line": 14,
           "visibility": "public_method"
         }
       ],
@@ -6281,7 +6281,7 @@
         {
           "file": "circlepy/headless_models/bookmarks_api.py",
           "symbol": "BookmarksAPI.list_bookmarks",
-          "line": 13,
+          "line": 15,
           "visibility": "public_method"
         }
       ],
@@ -6310,7 +6310,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_chat_threads",
-          "line": 116,
+          "line": 70,
           "visibility": "public_method"
         }
       ],
@@ -6339,7 +6339,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_unread_chat_threads",
-          "line": 119,
+          "line": 73,
           "visibility": "public_method"
         }
       ],
@@ -6368,7 +6368,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.get_chat_thread",
-          "line": 122,
+          "line": 76,
           "visibility": "public_method"
         }
       ],
@@ -6919,7 +6919,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_chat_rooms",
-          "line": 11,
+          "line": 12,
           "visibility": "public_method"
         }
       ],
@@ -6948,7 +6948,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_unread_chat_rooms",
-          "line": 27,
+          "line": 21,
           "visibility": "public_method"
         }
       ],
@@ -6977,7 +6977,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.get_chat_room_details",
-          "line": 83,
+          "line": 57,
           "visibility": "public_method"
         }
       ],
@@ -7006,7 +7006,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_chat_room_messages",
-          "line": 37,
+          "line": 24,
           "visibility": "public_method"
         }
       ],
@@ -7035,7 +7035,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.get_chat_room_message",
-          "line": 49,
+          "line": 36,
           "visibility": "public_method"
         }
       ],
@@ -7064,7 +7064,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.list_chat_room_participants",
-          "line": 67,
+          "line": 49,
           "visibility": "public_method"
         }
       ],
@@ -7093,7 +7093,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.get_space_notification_preferences",
-          "line": 64,
+          "line": 60,
           "visibility": "public_method"
         }
       ],
@@ -7122,7 +7122,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.get_notification_preferences",
-          "line": 43,
+          "line": 39,
           "visibility": "public_method"
         }
       ],
@@ -7151,7 +7151,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.list_notifications",
-          "line": 15,
+          "line": 17,
           "visibility": "public_method"
         }
       ],
@@ -7180,7 +7180,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.get_new_notifications_count",
-          "line": 18,
+          "line": 20,
           "visibility": "public_method"
         }
       ],
@@ -7354,7 +7354,7 @@
         {
           "file": "circlepy/headless_models/search_api.py",
           "symbol": "SearchAPI.search",
-          "line": 29,
+          "line": 19,
           "visibility": "public_method"
         }
       ],
@@ -7731,7 +7731,7 @@
         {
           "file": "circlepy/headless_models/bookmarks_api.py",
           "symbol": "BookmarksAPI.create_bookmark",
-          "line": 20,
+          "line": 22,
           "visibility": "public_method"
         }
       ],
@@ -7818,7 +7818,7 @@
         {
           "file": "circlepy/headless_models/cookies_api.py",
           "symbol": "CookiesAPI.create",
-          "line": 7,
+          "line": 6,
           "visibility": "public_method"
         }
       ],
@@ -7997,8 +7997,8 @@
       "code_references": [
         {
           "file": "circlepy/headless_models/chat_api.py",
-          "symbol": "ChatAPI.create_chat_room",
-          "line": 24,
+          "symbol": "ChatAPI.create_chat_room_raw",
+          "line": 18,
           "visibility": "public_method"
         }
       ],
@@ -8026,8 +8026,8 @@
       "code_references": [
         {
           "file": "circlepy/headless_models/chat_api.py",
-          "symbol": "ChatAPI.create_chat_room_message",
-          "line": 46,
+          "symbol": "ChatAPI.create_chat_room_message_raw",
+          "line": 33,
           "visibility": "public_method"
         }
       ],
@@ -8056,7 +8056,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.mark_chat_room_as_read",
-          "line": 86,
+          "line": 60,
           "visibility": "public_method"
         }
       ],
@@ -8085,7 +8085,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.mark_all_as_read",
-          "line": 31,
+          "line": 26,
           "visibility": "public_method"
         }
       ],
@@ -8114,7 +8114,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.reset_new_notifications_count",
-          "line": 21,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -8143,7 +8143,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.archive_notification",
-          "line": 37,
+          "line": 33,
           "visibility": "public_method"
         }
       ],
@@ -8172,7 +8172,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.mark_notification_as_read",
-          "line": 40,
+          "line": 36,
           "visibility": "public_method"
         }
       ],
@@ -8317,7 +8317,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.create_reaction",
-          "line": 97,
+          "line": 63,
           "visibility": "public_method"
         }
       ],
@@ -8531,8 +8531,8 @@
       "code_references": [
         {
           "file": "circlepy/headless_models/chat_api.py",
-          "symbol": "ChatAPI.update_chat_room_message",
-          "line": 56,
+          "symbol": "ChatAPI.update_chat_room_message_raw",
+          "line": 42,
           "visibility": "public_method"
         }
       ],
@@ -8561,7 +8561,7 @@
         {
           "file": "circlepy/headless_models/chat_api.py",
           "symbol": "ChatAPI.update_chat_room_participant",
-          "line": 80,
+          "line": 53,
           "visibility": "public_method"
         }
       ],
@@ -8590,7 +8590,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.update_notification_preferences",
-          "line": 49,
+          "line": 45,
           "visibility": "public_method"
         }
       ],
@@ -8619,7 +8619,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.update_notification_preferences_for_spaces",
-          "line": 55,
+          "line": 51,
           "visibility": "public_method"
         }
       ],
@@ -8648,7 +8648,7 @@
         {
           "file": "circlepy/headless_models/notifications_api.py",
           "symbol": "NotificationsAPI.update_notification_preferences_for_space",
-          "line": 61,
+          "line": 57,
           "visibility": "public_method"
         }
       ],

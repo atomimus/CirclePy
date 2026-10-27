@@ -1,29 +1,19 @@
+from copy import deepcopy
+
 from .base_api_client import BaseAPIClient
+from .members import page_params
+from .messaging import search_params
 
 
 class SearchAPI(BaseAPIClient):
     def advanced_search(self, query, page=None, per_page=None, search_type=None, mention_scope=None, filters=None):
-        if not query:
-            raise ValueError("query must be a non-empty string")
-        params = {"query": query}
-        if page is not None:
-            params["page"] = page
-        if per_page is not None:
-            params["per_page"] = per_page
-        if search_type is not None:
-            params["type"] = search_type
-        if mention_scope is not None:
-            params["mention_scope"] = mention_scope
-        if filters is not None:
-            params["filters"] = filters
-        return self.get("/advanced_search", params=params)
+        return self.advanced_search_raw(search_params(query, page, per_page, search_type, mention_scope, filters))
+
+    def advanced_search_raw(self, params):
+        """One page with caller-encoded wire query parameters, including pairs."""
+        return self.get('/advanced_search', params=deepcopy(params))
 
     def search(self, search_text, page=None, per_page=None):
         if not search_text:
-            raise ValueError("search_text must be a non-empty string")
-        params = {"search_text": search_text}
-        if page is not None:
-            params["page"] = page
-        if per_page is not None:
-            params["per_page"] = per_page
-        return self.get("/search", params=params)
+            raise ValueError('search_text must be a non-empty string')
+        return self.get('/search', params=page_params(page, per_page, search_text=search_text))

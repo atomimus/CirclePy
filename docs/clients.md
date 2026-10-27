@@ -32,6 +32,9 @@ operations. See [content methods and the experimental basic-post update](content
 Both expose `.community_members`, `.spaces`, `.space_members` and
 `.page_profile_fields` for all 20 documented Member profile/space operations.
 See [profile, directory search and space methods](members.md).
+The same facades expose `.chat`, `.notifications`, `.search`, `.bookmarks`,
+`.cookies`, `.community_links` and `.home`; see [messaging and discovery](messaging.md)
+for all 38 HTTP operations, permission/ID details and executable examples.
 
 New resource classes must explicitly receive the client's existing transport
 (and Headless Auth), register readable attributes in the constructor, and use

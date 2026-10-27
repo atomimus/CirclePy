@@ -10,6 +10,8 @@ from .headless_models.uploads_api import AsyncUploadsAPI
 from .headless_models.async_content_api import AsyncPostsAPI, AsyncCommentsAPI
 from .headless_models.async_members_api import (AsyncCommunityMembersAPI, AsyncSpacesAPI,
                                                AsyncSpaceMembersAPI, AsyncPageProfileFieldsAPI)
+from .headless_models.async_messaging_api import (AsyncChatAPI, AsyncNotificationsAPI,
+    AsyncSearchAPI, AsyncBookmarksAPI, AsyncCookiesAPI, AsyncCommunityLinksAPI, AsyncHomeAPI)
 
 
 class AsyncHeadlessClient:
@@ -34,6 +36,13 @@ class AsyncHeadlessClient:
         self.spaces = AsyncSpacesAPI(self)
         self.space_members = AsyncSpaceMembersAPI(self)
         self.page_profile_fields = AsyncPageProfileFieldsAPI(self)
+        self.chat = AsyncChatAPI(self)
+        self.notifications = AsyncNotificationsAPI(self)
+        self.search = AsyncSearchAPI(self)
+        self.bookmarks = AsyncBookmarksAPI(self)
+        self.cookies = AsyncCookiesAPI(self)
+        self.community_links = AsyncCommunityLinksAPI(self)
+        self.home = AsyncHomeAPI(self)
 
     @classmethod
     async def create(cls, api_key, *, email=None, community_member_id=None, sso_user_id=None, **options):

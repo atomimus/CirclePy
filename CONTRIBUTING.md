@@ -66,6 +66,7 @@ python -m mypy
 python tools/check_media_contract.py
 python tools/check_content_contract.py
 python tools/check_members_contract.py
+python tools/check_messaging_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build

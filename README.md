@@ -18,6 +18,8 @@ Both Headless clients expose direct [uploads and rich-text helpers](docs/media.m
 with bounded file processing, native async I/O and content-preserving Markdown.
 Both also expose complete [member profiles, directory search and spaces](docs/members.md),
 including signup custom fields/timezone and field/choice record preservation.
+Both expose [HTTP messaging, notifications, search, bookmarks and cookies](docs/messaging.md),
+including raw rich-text replies, Unicode reactions, complete filters and shared sessions.
 
 The Headless implementations were checked against Circle's live API specs on
 October 27, 2026. The refreshed specs are saved in `api/specs`, with their source

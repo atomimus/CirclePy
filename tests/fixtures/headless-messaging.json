@@ -1,0 +1,2788 @@
+[
+  {
+    "resource": "search",
+    "name": "advanced_search",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/advanced_search",
+    "path": "/api/headless/v1/advanced_search",
+    "args": [
+      "مرحبا + &"
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 3,
+      "search_type": "mentions",
+      "mention_scope": "thread",
+      "filters": {
+        "space_ids": [
+          "13",
+          "14"
+        ],
+        "topic_ids": [
+          "9"
+        ],
+        "member_tag_ids": [
+          "4"
+        ],
+        "author_name": "Synthetic Member",
+        "status": "upcoming"
+      }
+    },
+    "query": "page=2&per_page=3&query=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7+%2B+%26&type=mentions&mention_scope=thread&filters%5Bspace_ids%5D%5B%5D=13&filters%5Bspace_ids%5D%5B%5D=14&filters%5Btopic_ids%5D%5B%5D=9&filters%5Bmember_tag_ids%5D%5B%5D=4&filters%5Bauthor_name%5D=Synthetic+Member&filters%5Bstatus%5D=upcoming",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "id": 81,
+          "type": "community_member",
+          "name": "Synthetic Member",
+          "future": null
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "search",
+    "name": "search",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/search",
+    "path": "/api/headless/v1/search",
+    "args": [
+      "مرحبا + &"
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 3
+    },
+    "query": "page=2&per_page=3&search_text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7+%2B+%26",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "id": "post_42",
+          "type": "post",
+          "attributes": {
+            "id": 42,
+            "future": false
+          }
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "bookmarks",
+    "name": "create_bookmark",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/bookmarks",
+    "path": "/api/headless/v1/bookmarks",
+    "args": [
+      42,
+      "comment"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "record_id": 42,
+      "bookmark_type": "comment"
+    },
+    "response": {
+      "id": 20,
+      "record_id": 42,
+      "bookmark_type": "comment",
+      "community_id": 1,
+      "community_member_id": 81,
+      "bookmark_record": {
+        "id": 42,
+        "future": null
+      },
+      "is_deleted": false
+    },
+    "status": 201
+  },
+  {
+    "resource": "bookmarks",
+    "name": "list_bookmarks",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/bookmarks",
+    "path": "/api/headless/v1/bookmarks",
+    "args": [
+      2,
+      3,
+      "comment"
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=3&bookmark_type=comment",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "id": 20,
+          "record_id": 42,
+          "bookmark_type": "comment",
+          "community_id": 1,
+          "community_member_id": 81,
+          "bookmark_record": {
+            "id": 42,
+            "future": null
+          },
+          "is_deleted": false
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "bookmarks",
+    "name": "delete_bookmark",
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/bookmarks/{id}",
+    "path": "/api/headless/v1/bookmarks/20",
+    "args": [
+      20
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": null,
+    "status": 204
+  },
+  {
+    "resource": "chat",
+    "name": "list_chat_rooms",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/messages",
+    "path": "/api/headless/v1/messages",
+    "args": [
+      2,
+      3
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=3",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "chat_room": {
+            "id": 3,
+            "uuid": "room-uuid",
+            "identifier": "synthetic-room",
+            "unread_messages_count": 1,
+            "chat_room_kind": "group_chat",
+            "chat_room_name": "Synthetic Room",
+            "chat_room_description": "",
+            "chat_room_show_history": false,
+            "chat_room_participants_count": 2,
+            "other_participants_preview": [
+              {
+                "id": 5,
+                "community_member_id": 81,
+                "admin": false,
+                "muted": false,
+                "archived": false
+              }
+            ],
+            "current_participant": {
+              "id": 6,
+              "community_member_id": 82,
+              "can_send_message": true
+            },
+            "last_message": {
+              "id": 42,
+              "parent_message_id": 41,
+              "chat_room_uuid": "room-uuid",
+              "chat_room_participant_id": 5,
+              "body": "مرحبا 👋",
+              "rich_text_body": {
+                "body": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "مرحبا 👋",
+                          "circle_ios_fallback_text": "مرحبا 👋",
+                          "attrs": {
+                            "sgid": "synthetic-member-sgid",
+                            "href": "https://example.com",
+                            "target": "_blank"
+                          },
+                          "marks": [
+                            {
+                              "type": "link",
+                              "attrs": {
+                                "href": "https://example.com",
+                                "target": "_blank"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "mention",
+                          "attrs": {
+                            "sgid": "synthetic-mention-sgid"
+                          },
+                          "future": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "circle_ios_fallback_text": "مرحبا 👋",
+                "attachments": [
+                  "synthetic-signed-attachment"
+                ],
+                "inline_attachments": [
+                  {
+                    "signed_id": "synthetic-inline",
+                    "extension": false
+                  }
+                ],
+                "sgids_to_object_map": {
+                  "synthetic-mention-sgid": {
+                    "id": 81
+                  }
+                },
+                "format": "chat",
+                "community_members": [
+                  {
+                    "id": 81
+                  }
+                ],
+                "entities": [
+                  {
+                    "type": "custom",
+                    "empty": []
+                  }
+                ],
+                "group_mentions": [
+                  {
+                    "id": 9
+                  }
+                ],
+                "polls": [
+                  {
+                    "id": 7
+                  }
+                ],
+                "unknown": {
+                  "null": null,
+                  "false": false,
+                  "zero": 0
+                }
+              },
+              "replies_count": 1,
+              "total_thread_participants_count": 2,
+              "chat_thread_id": 7,
+              "reactions": [
+                {
+                  "emoji": "heart",
+                  "unicode": "2764-fe0f",
+                  "count": 1,
+                  "community_member_ids": [
+                    81
+                  ]
+                }
+              ],
+              "sender": {
+                "id": 5,
+                "name": "Synthetic Member",
+                "community_member_id": 81,
+                "avatar_url": null
+              },
+              "thread_participants_preview": [
+                {
+                  "community_member_id": 82,
+                  "name": "Another Synthetic Member"
+                }
+              ],
+              "embedded_chat_message_access": [
+                {
+                  "allowed": false
+                }
+              ],
+              "can_report": false,
+              "future": null
+            },
+            "first_unread_message_id": 42,
+            "is_embedded": true,
+            "course_lesson": {
+              "id": 12
+            },
+            "parent": {
+              "id": 13,
+              "type": "Space"
+            },
+            "future": {
+              "false": false
+            }
+          }
+        }
+      ],
+      "future": null,
+      "meta": {
+        "future": false
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "create_chat_room",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/messages",
+    "path": "/api/headless/v1/messages",
+    "args": [
+      "group_chat",
+      [
+        "81",
+        "82"
+      ],
+      {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 👋",
+                  "circle_ios_fallback_text": "مرحبا 👋",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid",
+                    "href": "https://example.com",
+                    "target": "_blank"
+                  },
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-mention-sgid"
+                  },
+                  "future": false
+                }
+              ]
+            }
+          ]
+        },
+        "circle_ios_fallback_text": "مرحبا 👋",
+        "attachments": [
+          "synthetic-signed-attachment"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline",
+            "extension": false
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-mention-sgid": {
+            "id": 81
+          }
+        },
+        "format": "chat",
+        "community_members": [
+          {
+            "id": 81
+          }
+        ],
+        "entities": [
+          {
+            "type": "custom",
+            "empty": []
+          }
+        ],
+        "group_mentions": [
+          {
+            "id": 9
+          }
+        ],
+        "polls": [
+          {
+            "id": 7
+          }
+        ],
+        "unknown": {
+          "null": null,
+          "false": false,
+          "zero": 0
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "chat_room": {
+        "kind": "group_chat",
+        "community_member_ids": [
+          "81",
+          "82"
+        ],
+        "rich_text_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا 👋",
+                    "circle_ios_fallback_text": "مرحبا 👋",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid",
+                      "href": "https://example.com",
+                      "target": "_blank"
+                    },
+                    "marks": [
+                      {
+                        "type": "link",
+                        "attrs": {
+                          "href": "https://example.com",
+                          "target": "_blank"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-mention-sgid"
+                    },
+                    "future": false
+                  }
+                ]
+              }
+            ]
+          },
+          "circle_ios_fallback_text": "مرحبا 👋",
+          "attachments": [
+            "synthetic-signed-attachment"
+          ],
+          "inline_attachments": [
+            {
+              "signed_id": "synthetic-inline",
+              "extension": false
+            }
+          ],
+          "sgids_to_object_map": {
+            "synthetic-mention-sgid": {
+              "id": 81
+            }
+          },
+          "format": "chat",
+          "community_members": [
+            {
+              "id": 81
+            }
+          ],
+          "entities": [
+            {
+              "type": "custom",
+              "empty": []
+            }
+          ],
+          "group_mentions": [
+            {
+              "id": 9
+            }
+          ],
+          "polls": [
+            {
+              "id": 7
+            }
+          ],
+          "unknown": {
+            "null": null,
+            "false": false,
+            "zero": 0
+          }
+        }
+      }
+    },
+    "response": {
+      "chat_room_uuid": "room-uuid",
+      "future": false
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "list_unread_chat_rooms",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/messages/unread_chat_rooms",
+    "path": "/api/headless/v1/messages/unread_chat_rooms",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "chat_rooms": [
+        "room-uuid"
+      ],
+      "future": false
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "list_chat_room_messages",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/messages/{chat_room_uuid}/chat_room_messages",
+    "path": "/api/headless/v1/messages/room-uuid/chat_room_messages",
+    "args": [
+      "room-uuid",
+      42,
+      3,
+      4
+    ],
+    "kwargs": {},
+    "query": "id=42&previous_per_page=3&next_per_page=4",
+    "body": null,
+    "response": {
+      "id": 42,
+      "has_previous_page": false,
+      "has_next_page": true,
+      "first_id": 41,
+      "last_id": 42,
+      "total_count": 2,
+      "records": [
+        {
+          "id": 42,
+          "parent_message_id": 41,
+          "chat_room_uuid": "room-uuid",
+          "chat_room_participant_id": 5,
+          "body": "مرحبا 👋",
+          "rich_text_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا 👋",
+                      "circle_ios_fallback_text": "مرحبا 👋",
+                      "attrs": {
+                        "sgid": "synthetic-member-sgid",
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      },
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://example.com",
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mention",
+                      "attrs": {
+                        "sgid": "synthetic-mention-sgid"
+                      },
+                      "future": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "circle_ios_fallback_text": "مرحبا 👋",
+            "attachments": [
+              "synthetic-signed-attachment"
+            ],
+            "inline_attachments": [
+              {
+                "signed_id": "synthetic-inline",
+                "extension": false
+              }
+            ],
+            "sgids_to_object_map": {
+              "synthetic-mention-sgid": {
+                "id": 81
+              }
+            },
+            "format": "chat",
+            "community_members": [
+              {
+                "id": 81
+              }
+            ],
+            "entities": [
+              {
+                "type": "custom",
+                "empty": []
+              }
+            ],
+            "group_mentions": [
+              {
+                "id": 9
+              }
+            ],
+            "polls": [
+              {
+                "id": 7
+              }
+            ],
+            "unknown": {
+              "null": null,
+              "false": false,
+              "zero": 0
+            }
+          },
+          "replies_count": 1,
+          "total_thread_participants_count": 2,
+          "chat_thread_id": 7,
+          "reactions": [
+            {
+              "emoji": "heart",
+              "unicode": "2764-fe0f",
+              "count": 1,
+              "community_member_ids": [
+                81
+              ]
+            }
+          ],
+          "sender": {
+            "id": 5,
+            "name": "Synthetic Member",
+            "community_member_id": 81,
+            "avatar_url": null
+          },
+          "thread_participants_preview": [
+            {
+              "community_member_id": 82,
+              "name": "Another Synthetic Member"
+            }
+          ],
+          "embedded_chat_message_access": [
+            {
+              "allowed": false
+            }
+          ],
+          "can_report": false,
+          "future": null
+        }
+      ],
+      "future": 0
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "create_chat_room_message",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/messages/{chat_room_uuid}/chat_room_messages",
+    "path": "/api/headless/v1/messages/room-uuid/chat_room_messages",
+    "args": [
+      "room-uuid",
+      {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 👋",
+                  "circle_ios_fallback_text": "مرحبا 👋",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid",
+                    "href": "https://example.com",
+                    "target": "_blank"
+                  },
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-mention-sgid"
+                  },
+                  "future": false
+                }
+              ]
+            }
+          ]
+        },
+        "circle_ios_fallback_text": "مرحبا 👋",
+        "attachments": [
+          "synthetic-signed-attachment"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline",
+            "extension": false
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-mention-sgid": {
+            "id": 81
+          }
+        },
+        "format": "chat",
+        "community_members": [
+          {
+            "id": 81
+          }
+        ],
+        "entities": [
+          {
+            "type": "custom",
+            "empty": []
+          }
+        ],
+        "group_mentions": [
+          {
+            "id": 9
+          }
+        ],
+        "polls": [
+          {
+            "id": 7
+          }
+        ],
+        "unknown": {
+          "null": null,
+          "false": false,
+          "zero": 0
+        }
+      },
+      41
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 👋",
+                  "circle_ios_fallback_text": "مرحبا 👋",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid",
+                    "href": "https://example.com",
+                    "target": "_blank"
+                  },
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-mention-sgid"
+                  },
+                  "future": false
+                }
+              ]
+            }
+          ]
+        },
+        "circle_ios_fallback_text": "مرحبا 👋",
+        "attachments": [
+          "synthetic-signed-attachment"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline",
+            "extension": false
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-mention-sgid": {
+            "id": 81
+          }
+        },
+        "format": "chat",
+        "community_members": [
+          {
+            "id": 81
+          }
+        ],
+        "entities": [
+          {
+            "type": "custom",
+            "empty": []
+          }
+        ],
+        "group_mentions": [
+          {
+            "id": 9
+          }
+        ],
+        "polls": [
+          {
+            "id": 7
+          }
+        ],
+        "unknown": {
+          "null": null,
+          "false": false,
+          "zero": 0
+        }
+      },
+      "parent_message_id": 41
+    },
+    "response": {
+      "creation_uuid": "synthetic-creation",
+      "parent_message_id": 41,
+      "sent_at": "2026-10-27T01:00:00Z",
+      "future": false
+    },
+    "status": 202
+  },
+  {
+    "resource": "chat",
+    "name": "get_chat_room_message",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/messages/{chat_room_uuid}/chat_room_messages/{id}",
+    "path": "/api/headless/v1/messages/room-uuid/chat_room_messages/42",
+    "args": [
+      "room-uuid",
+      "42"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 42,
+      "parent_message_id": 41,
+      "chat_room_uuid": "room-uuid",
+      "chat_room_participant_id": 5,
+      "body": "مرحبا 👋",
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 👋",
+                  "circle_ios_fallback_text": "مرحبا 👋",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid",
+                    "href": "https://example.com",
+                    "target": "_blank"
+                  },
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-mention-sgid"
+                  },
+                  "future": false
+                }
+              ]
+            }
+          ]
+        },
+        "circle_ios_fallback_text": "مرحبا 👋",
+        "attachments": [
+          "synthetic-signed-attachment"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline",
+            "extension": false
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-mention-sgid": {
+            "id": 81
+          }
+        },
+        "format": "chat",
+        "community_members": [
+          {
+            "id": 81
+          }
+        ],
+        "entities": [
+          {
+            "type": "custom",
+            "empty": []
+          }
+        ],
+        "group_mentions": [
+          {
+            "id": 9
+          }
+        ],
+        "polls": [
+          {
+            "id": 7
+          }
+        ],
+        "unknown": {
+          "null": null,
+          "false": false,
+          "zero": 0
+        }
+      },
+      "replies_count": 1,
+      "total_thread_participants_count": 2,
+      "chat_thread_id": 7,
+      "reactions": [
+        {
+          "emoji": "heart",
+          "unicode": "2764-fe0f",
+          "count": 1,
+          "community_member_ids": [
+            81
+          ]
+        }
+      ],
+      "sender": {
+        "id": 5,
+        "name": "Synthetic Member",
+        "community_member_id": 81,
+        "avatar_url": null
+      },
+      "thread_participants_preview": [
+        {
+          "community_member_id": 82,
+          "name": "Another Synthetic Member"
+        }
+      ],
+      "embedded_chat_message_access": [
+        {
+          "allowed": false
+        }
+      ],
+      "can_report": false,
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "update_chat_room_message",
+    "method": "PUT",
+    "schema_path": "/api/headless/v1/messages/{chat_room_uuid}/chat_room_messages/{id}",
+    "path": "/api/headless/v1/messages/room-uuid/chat_room_messages/42",
+    "args": [
+      "room-uuid",
+      "42"
+    ],
+    "kwargs": {
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 👋",
+                  "circle_ios_fallback_text": "مرحبا 👋",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid",
+                    "href": "https://example.com",
+                    "target": "_blank"
+                  },
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-mention-sgid"
+                  },
+                  "future": false
+                }
+              ]
+            }
+          ]
+        },
+        "circle_ios_fallback_text": "مرحبا 👋",
+        "attachments": [
+          "synthetic-signed-attachment"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline",
+            "extension": false
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-mention-sgid": {
+            "id": 81
+          }
+        },
+        "format": "chat",
+        "community_members": [
+          {
+            "id": 81
+          }
+        ],
+        "entities": [
+          {
+            "type": "custom",
+            "empty": []
+          }
+        ],
+        "group_mentions": [
+          {
+            "id": 9
+          }
+        ],
+        "polls": [
+          {
+            "id": 7
+          }
+        ],
+        "unknown": {
+          "null": null,
+          "false": false,
+          "zero": 0
+        }
+      }
+    },
+    "query": "",
+    "body": {
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 👋",
+                  "circle_ios_fallback_text": "مرحبا 👋",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid",
+                    "href": "https://example.com",
+                    "target": "_blank"
+                  },
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-mention-sgid"
+                  },
+                  "future": false
+                }
+              ]
+            }
+          ]
+        },
+        "circle_ios_fallback_text": "مرحبا 👋",
+        "attachments": [
+          "synthetic-signed-attachment"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline",
+            "extension": false
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-mention-sgid": {
+            "id": 81
+          }
+        },
+        "format": "chat",
+        "community_members": [
+          {
+            "id": 81
+          }
+        ],
+        "entities": [
+          {
+            "type": "custom",
+            "empty": []
+          }
+        ],
+        "group_mentions": [
+          {
+            "id": 9
+          }
+        ],
+        "polls": [
+          {
+            "id": 7
+          }
+        ],
+        "unknown": {
+          "null": null,
+          "false": false,
+          "zero": 0
+        }
+      }
+    },
+    "response": {
+      "id": 42,
+      "parent_message_id": 41,
+      "chat_room_uuid": "room-uuid",
+      "chat_room_participant_id": 5,
+      "body": "مرحبا 👋",
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا 👋",
+                  "circle_ios_fallback_text": "مرحبا 👋",
+                  "attrs": {
+                    "sgid": "synthetic-member-sgid",
+                    "href": "https://example.com",
+                    "target": "_blank"
+                  },
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-mention-sgid"
+                  },
+                  "future": false
+                }
+              ]
+            }
+          ]
+        },
+        "circle_ios_fallback_text": "مرحبا 👋",
+        "attachments": [
+          "synthetic-signed-attachment"
+        ],
+        "inline_attachments": [
+          {
+            "signed_id": "synthetic-inline",
+            "extension": false
+          }
+        ],
+        "sgids_to_object_map": {
+          "synthetic-mention-sgid": {
+            "id": 81
+          }
+        },
+        "format": "chat",
+        "community_members": [
+          {
+            "id": 81
+          }
+        ],
+        "entities": [
+          {
+            "type": "custom",
+            "empty": []
+          }
+        ],
+        "group_mentions": [
+          {
+            "id": 9
+          }
+        ],
+        "polls": [
+          {
+            "id": 7
+          }
+        ],
+        "unknown": {
+          "null": null,
+          "false": false,
+          "zero": 0
+        }
+      },
+      "replies_count": 1,
+      "total_thread_participants_count": 2,
+      "chat_thread_id": 7,
+      "reactions": [
+        {
+          "emoji": "heart",
+          "unicode": "2764-fe0f",
+          "count": 1,
+          "community_member_ids": [
+            81
+          ]
+        }
+      ],
+      "sender": {
+        "id": 5,
+        "name": "Synthetic Member",
+        "community_member_id": 81,
+        "avatar_url": null
+      },
+      "thread_participants_preview": [
+        {
+          "community_member_id": 82,
+          "name": "Another Synthetic Member"
+        }
+      ],
+      "embedded_chat_message_access": [
+        {
+          "allowed": false
+        }
+      ],
+      "can_report": false,
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "delete_chat_room_message",
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/messages/{chat_room_uuid}/chat_room_messages/{id}",
+    "path": "/api/headless/v1/messages/room-uuid/chat_room_messages/42",
+    "args": [
+      "room-uuid",
+      "42"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "future": false
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "list_chat_room_participants",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/messages/{chat_room_uuid}/chat_room_participants",
+    "path": "/api/headless/v1/messages/room-uuid/chat_room_participants",
+    "args": [
+      "room-uuid",
+      2,
+      3
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=3",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "id": 5,
+          "community_member_id": 81,
+          "admin": false,
+          "muted": false,
+          "archived": false
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "update_chat_room_participant",
+    "method": "PUT",
+    "schema_path": "/api/headless/v1/messages/{chat_room_uuid}/chat_room_participants/{id}",
+    "path": "/api/headless/v1/messages/room-uuid/chat_room_participants/5",
+    "args": [
+      "room-uuid",
+      "5",
+      false,
+      false,
+      false
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "admin": false,
+      "archived": false,
+      "muted": false
+    },
+    "response": {
+      "chat_room": {
+        "id": 3,
+        "uuid": "room-uuid",
+        "identifier": "synthetic-room",
+        "unread_messages_count": 1,
+        "chat_room_kind": "group_chat",
+        "chat_room_name": "Synthetic Room",
+        "chat_room_description": "",
+        "chat_room_show_history": false,
+        "chat_room_participants_count": 2,
+        "other_participants_preview": [
+          {
+            "id": 5,
+            "community_member_id": 81,
+            "admin": false,
+            "muted": false,
+            "archived": false
+          }
+        ],
+        "current_participant": {
+          "id": 6,
+          "community_member_id": 82,
+          "can_send_message": true
+        },
+        "last_message": {
+          "id": 42,
+          "parent_message_id": 41,
+          "chat_room_uuid": "room-uuid",
+          "chat_room_participant_id": 5,
+          "body": "مرحبا 👋",
+          "rich_text_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا 👋",
+                      "circle_ios_fallback_text": "مرحبا 👋",
+                      "attrs": {
+                        "sgid": "synthetic-member-sgid",
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      },
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://example.com",
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mention",
+                      "attrs": {
+                        "sgid": "synthetic-mention-sgid"
+                      },
+                      "future": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "circle_ios_fallback_text": "مرحبا 👋",
+            "attachments": [
+              "synthetic-signed-attachment"
+            ],
+            "inline_attachments": [
+              {
+                "signed_id": "synthetic-inline",
+                "extension": false
+              }
+            ],
+            "sgids_to_object_map": {
+              "synthetic-mention-sgid": {
+                "id": 81
+              }
+            },
+            "format": "chat",
+            "community_members": [
+              {
+                "id": 81
+              }
+            ],
+            "entities": [
+              {
+                "type": "custom",
+                "empty": []
+              }
+            ],
+            "group_mentions": [
+              {
+                "id": 9
+              }
+            ],
+            "polls": [
+              {
+                "id": 7
+              }
+            ],
+            "unknown": {
+              "null": null,
+              "false": false,
+              "zero": 0
+            }
+          },
+          "replies_count": 1,
+          "total_thread_participants_count": 2,
+          "chat_thread_id": 7,
+          "reactions": [
+            {
+              "emoji": "heart",
+              "unicode": "2764-fe0f",
+              "count": 1,
+              "community_member_ids": [
+                81
+              ]
+            }
+          ],
+          "sender": {
+            "id": 5,
+            "name": "Synthetic Member",
+            "community_member_id": 81,
+            "avatar_url": null
+          },
+          "thread_participants_preview": [
+            {
+              "community_member_id": 82,
+              "name": "Another Synthetic Member"
+            }
+          ],
+          "embedded_chat_message_access": [
+            {
+              "allowed": false
+            }
+          ],
+          "can_report": false,
+          "future": null
+        },
+        "first_unread_message_id": 42,
+        "is_embedded": true,
+        "course_lesson": {
+          "id": 12
+        },
+        "parent": {
+          "id": 13,
+          "type": "Space"
+        },
+        "future": {
+          "false": false
+        }
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "get_chat_room_details",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/messages/{uuid}",
+    "path": "/api/headless/v1/messages/room-uuid",
+    "args": [
+      "room-uuid"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "chat_room": {
+        "id": 3,
+        "uuid": "room-uuid",
+        "identifier": "synthetic-room",
+        "unread_messages_count": 1,
+        "chat_room_kind": "group_chat",
+        "chat_room_name": "Synthetic Room",
+        "chat_room_description": "",
+        "chat_room_show_history": false,
+        "chat_room_participants_count": 2,
+        "other_participants_preview": [
+          {
+            "id": 5,
+            "community_member_id": 81,
+            "admin": false,
+            "muted": false,
+            "archived": false
+          }
+        ],
+        "current_participant": {
+          "id": 6,
+          "community_member_id": 82,
+          "can_send_message": true
+        },
+        "last_message": {
+          "id": 42,
+          "parent_message_id": 41,
+          "chat_room_uuid": "room-uuid",
+          "chat_room_participant_id": 5,
+          "body": "مرحبا 👋",
+          "rich_text_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا 👋",
+                      "circle_ios_fallback_text": "مرحبا 👋",
+                      "attrs": {
+                        "sgid": "synthetic-member-sgid",
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      },
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://example.com",
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mention",
+                      "attrs": {
+                        "sgid": "synthetic-mention-sgid"
+                      },
+                      "future": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "circle_ios_fallback_text": "مرحبا 👋",
+            "attachments": [
+              "synthetic-signed-attachment"
+            ],
+            "inline_attachments": [
+              {
+                "signed_id": "synthetic-inline",
+                "extension": false
+              }
+            ],
+            "sgids_to_object_map": {
+              "synthetic-mention-sgid": {
+                "id": 81
+              }
+            },
+            "format": "chat",
+            "community_members": [
+              {
+                "id": 81
+              }
+            ],
+            "entities": [
+              {
+                "type": "custom",
+                "empty": []
+              }
+            ],
+            "group_mentions": [
+              {
+                "id": 9
+              }
+            ],
+            "polls": [
+              {
+                "id": 7
+              }
+            ],
+            "unknown": {
+              "null": null,
+              "false": false,
+              "zero": 0
+            }
+          },
+          "replies_count": 1,
+          "total_thread_participants_count": 2,
+          "chat_thread_id": 7,
+          "reactions": [
+            {
+              "emoji": "heart",
+              "unicode": "2764-fe0f",
+              "count": 1,
+              "community_member_ids": [
+                81
+              ]
+            }
+          ],
+          "sender": {
+            "id": 5,
+            "name": "Synthetic Member",
+            "community_member_id": 81,
+            "avatar_url": null
+          },
+          "thread_participants_preview": [
+            {
+              "community_member_id": 82,
+              "name": "Another Synthetic Member"
+            }
+          ],
+          "embedded_chat_message_access": [
+            {
+              "allowed": false
+            }
+          ],
+          "can_report": false,
+          "future": null
+        },
+        "first_unread_message_id": 42,
+        "is_embedded": true,
+        "course_lesson": {
+          "id": 12
+        },
+        "parent": {
+          "id": 13,
+          "type": "Space"
+        },
+        "future": {
+          "false": false
+        }
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "mark_chat_room_as_read",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/messages/{uuid}/mark_all_as_read",
+    "path": "/api/headless/v1/messages/room-uuid/mark_all_as_read",
+    "args": [
+      "room-uuid"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {},
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "create_reaction",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/reactions",
+    "path": "/api/headless/v1/reactions",
+    "args": [
+      42,
+      "heart"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "chat_room_message": 42,
+      "emoji": "heart"
+    },
+    "response": {
+      "success": true,
+      "message": "Reaction created",
+      "reaction": {
+        "reactionable_type": "ChatRoomMessage",
+        "reactionable_id": 42,
+        "community_member_id": 81,
+        "emoji": "heart",
+        "unicode": "2764-fe0f"
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "delete_reaction",
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/reactions",
+    "path": "/api/headless/v1/reactions",
+    "args": [
+      42,
+      "heart"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "chat_room_message": 42,
+      "emoji": "heart"
+    },
+    "response": null,
+    "status": 204
+  },
+  {
+    "resource": "chat",
+    "name": "list_chat_threads",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/chat_threads",
+    "path": "/api/headless/v1/chat_threads",
+    "args": [
+      2,
+      3
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=3",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "id": 7,
+          "parent_message": {
+            "id": 42,
+            "parent_message_id": null,
+            "chat_room_uuid": "room-uuid",
+            "chat_room_participant_id": 5,
+            "body": "مرحبا 👋",
+            "rich_text_body": {
+              "body": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "مرحبا 👋",
+                        "circle_ios_fallback_text": "مرحبا 👋",
+                        "attrs": {
+                          "sgid": "synthetic-member-sgid",
+                          "href": "https://example.com",
+                          "target": "_blank"
+                        },
+                        "marks": [
+                          {
+                            "type": "link",
+                            "attrs": {
+                              "href": "https://example.com",
+                              "target": "_blank"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "mention",
+                        "attrs": {
+                          "sgid": "synthetic-mention-sgid"
+                        },
+                        "future": false
+                      }
+                    ]
+                  }
+                ]
+              },
+              "circle_ios_fallback_text": "مرحبا 👋",
+              "attachments": [
+                "synthetic-signed-attachment"
+              ],
+              "inline_attachments": [
+                {
+                  "signed_id": "synthetic-inline",
+                  "extension": false
+                }
+              ],
+              "sgids_to_object_map": {
+                "synthetic-mention-sgid": {
+                  "id": 81
+                }
+              },
+              "format": "chat",
+              "community_members": [
+                {
+                  "id": 81
+                }
+              ],
+              "entities": [
+                {
+                  "type": "custom",
+                  "empty": []
+                }
+              ],
+              "group_mentions": [
+                {
+                  "id": 9
+                }
+              ],
+              "polls": [
+                {
+                  "id": 7
+                }
+              ],
+              "unknown": {
+                "null": null,
+                "false": false,
+                "zero": 0
+              }
+            },
+            "replies_count": 1,
+            "total_thread_participants_count": 2,
+            "chat_thread_id": 7,
+            "reactions": [
+              {
+                "emoji": "heart",
+                "unicode": "2764-fe0f",
+                "count": 1,
+                "community_member_ids": [
+                  81
+                ]
+              }
+            ],
+            "sender": {
+              "id": 5,
+              "name": "Synthetic Member",
+              "community_member_id": 81,
+              "avatar_url": null
+            },
+            "thread_participants_preview": [
+              {
+                "community_member_id": 82,
+                "name": "Another Synthetic Member"
+              }
+            ],
+            "embedded_chat_message_access": [
+              {
+                "allowed": false
+              }
+            ],
+            "can_report": false,
+            "future": null
+          },
+          "replies": [
+            {
+              "id": 42,
+              "parent_message_id": 41,
+              "chat_room_uuid": "room-uuid",
+              "chat_room_participant_id": 5,
+              "body": "مرحبا 👋",
+              "rich_text_body": {
+                "body": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "مرحبا 👋",
+                          "circle_ios_fallback_text": "مرحبا 👋",
+                          "attrs": {
+                            "sgid": "synthetic-member-sgid",
+                            "href": "https://example.com",
+                            "target": "_blank"
+                          },
+                          "marks": [
+                            {
+                              "type": "link",
+                              "attrs": {
+                                "href": "https://example.com",
+                                "target": "_blank"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "mention",
+                          "attrs": {
+                            "sgid": "synthetic-mention-sgid"
+                          },
+                          "future": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "circle_ios_fallback_text": "مرحبا 👋",
+                "attachments": [
+                  "synthetic-signed-attachment"
+                ],
+                "inline_attachments": [
+                  {
+                    "signed_id": "synthetic-inline",
+                    "extension": false
+                  }
+                ],
+                "sgids_to_object_map": {
+                  "synthetic-mention-sgid": {
+                    "id": 81
+                  }
+                },
+                "format": "chat",
+                "community_members": [
+                  {
+                    "id": 81
+                  }
+                ],
+                "entities": [
+                  {
+                    "type": "custom",
+                    "empty": []
+                  }
+                ],
+                "group_mentions": [
+                  {
+                    "id": 9
+                  }
+                ],
+                "polls": [
+                  {
+                    "id": 7
+                  }
+                ],
+                "unknown": {
+                  "null": null,
+                  "false": false,
+                  "zero": 0
+                }
+              },
+              "replies_count": 1,
+              "total_thread_participants_count": 2,
+              "chat_thread_id": 7,
+              "reactions": [
+                {
+                  "emoji": "heart",
+                  "unicode": "2764-fe0f",
+                  "count": 1,
+                  "community_member_ids": [
+                    81
+                  ]
+                }
+              ],
+              "sender": {
+                "id": 5,
+                "name": "Synthetic Member",
+                "community_member_id": 81,
+                "avatar_url": null
+              },
+              "thread_participants_preview": [
+                {
+                  "community_member_id": 82,
+                  "name": "Another Synthetic Member"
+                }
+              ],
+              "embedded_chat_message_access": [
+                {
+                  "allowed": false
+                }
+              ],
+              "can_report": false,
+              "future": null
+            }
+          ],
+          "chat_room": {
+            "kind": "group_chat",
+            "name": "Synthetic Room",
+            "embedded_space": {
+              "id": 13,
+              "slug": "synthetic",
+              "emoji": null,
+              "custom_emoji": "",
+              "host": "example.com",
+              "include_default": false
+            },
+            "lesson": {
+              "id": 12,
+              "name": "Synthetic Lesson",
+              "courses_section_id": 9
+            }
+          },
+          "future": 0
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "get_chat_thread",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/chat_threads/{id}",
+    "path": "/api/headless/v1/chat_threads/7",
+    "args": [
+      "7"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 7,
+      "parent_message": {
+        "id": 42,
+        "parent_message_id": null,
+        "chat_room_uuid": "room-uuid",
+        "chat_room_participant_id": 5,
+        "body": "مرحبا 👋",
+        "rich_text_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا 👋",
+                    "circle_ios_fallback_text": "مرحبا 👋",
+                    "attrs": {
+                      "sgid": "synthetic-member-sgid",
+                      "href": "https://example.com",
+                      "target": "_blank"
+                    },
+                    "marks": [
+                      {
+                        "type": "link",
+                        "attrs": {
+                          "href": "https://example.com",
+                          "target": "_blank"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "mention",
+                    "attrs": {
+                      "sgid": "synthetic-mention-sgid"
+                    },
+                    "future": false
+                  }
+                ]
+              }
+            ]
+          },
+          "circle_ios_fallback_text": "مرحبا 👋",
+          "attachments": [
+            "synthetic-signed-attachment"
+          ],
+          "inline_attachments": [
+            {
+              "signed_id": "synthetic-inline",
+              "extension": false
+            }
+          ],
+          "sgids_to_object_map": {
+            "synthetic-mention-sgid": {
+              "id": 81
+            }
+          },
+          "format": "chat",
+          "community_members": [
+            {
+              "id": 81
+            }
+          ],
+          "entities": [
+            {
+              "type": "custom",
+              "empty": []
+            }
+          ],
+          "group_mentions": [
+            {
+              "id": 9
+            }
+          ],
+          "polls": [
+            {
+              "id": 7
+            }
+          ],
+          "unknown": {
+            "null": null,
+            "false": false,
+            "zero": 0
+          }
+        },
+        "replies_count": 1,
+        "total_thread_participants_count": 2,
+        "chat_thread_id": 7,
+        "reactions": [
+          {
+            "emoji": "heart",
+            "unicode": "2764-fe0f",
+            "count": 1,
+            "community_member_ids": [
+              81
+            ]
+          }
+        ],
+        "sender": {
+          "id": 5,
+          "name": "Synthetic Member",
+          "community_member_id": 81,
+          "avatar_url": null
+        },
+        "thread_participants_preview": [
+          {
+            "community_member_id": 82,
+            "name": "Another Synthetic Member"
+          }
+        ],
+        "embedded_chat_message_access": [
+          {
+            "allowed": false
+          }
+        ],
+        "can_report": false,
+        "future": null
+      },
+      "replies": [
+        {
+          "id": 42,
+          "parent_message_id": 41,
+          "chat_room_uuid": "room-uuid",
+          "chat_room_participant_id": 5,
+          "body": "مرحبا 👋",
+          "rich_text_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا 👋",
+                      "circle_ios_fallback_text": "مرحبا 👋",
+                      "attrs": {
+                        "sgid": "synthetic-member-sgid",
+                        "href": "https://example.com",
+                        "target": "_blank"
+                      },
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://example.com",
+                            "target": "_blank"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mention",
+                      "attrs": {
+                        "sgid": "synthetic-mention-sgid"
+                      },
+                      "future": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "circle_ios_fallback_text": "مرحبا 👋",
+            "attachments": [
+              "synthetic-signed-attachment"
+            ],
+            "inline_attachments": [
+              {
+                "signed_id": "synthetic-inline",
+                "extension": false
+              }
+            ],
+            "sgids_to_object_map": {
+              "synthetic-mention-sgid": {
+                "id": 81
+              }
+            },
+            "format": "chat",
+            "community_members": [
+              {
+                "id": 81
+              }
+            ],
+            "entities": [
+              {
+                "type": "custom",
+                "empty": []
+              }
+            ],
+            "group_mentions": [
+              {
+                "id": 9
+              }
+            ],
+            "polls": [
+              {
+                "id": 7
+              }
+            ],
+            "unknown": {
+              "null": null,
+              "false": false,
+              "zero": 0
+            }
+          },
+          "replies_count": 1,
+          "total_thread_participants_count": 2,
+          "chat_thread_id": 7,
+          "reactions": [
+            {
+              "emoji": "heart",
+              "unicode": "2764-fe0f",
+              "count": 1,
+              "community_member_ids": [
+                81
+              ]
+            }
+          ],
+          "sender": {
+            "id": 5,
+            "name": "Synthetic Member",
+            "community_member_id": 81,
+            "avatar_url": null
+          },
+          "thread_participants_preview": [
+            {
+              "community_member_id": 82,
+              "name": "Another Synthetic Member"
+            }
+          ],
+          "embedded_chat_message_access": [
+            {
+              "allowed": false
+            }
+          ],
+          "can_report": false,
+          "future": null
+        }
+      ],
+      "chat_room": {
+        "kind": "group_chat",
+        "name": "Synthetic Room",
+        "embedded_space": {
+          "id": 13,
+          "slug": "synthetic",
+          "emoji": null,
+          "custom_emoji": "",
+          "host": "example.com",
+          "include_default": false
+        },
+        "lesson": {
+          "id": 12,
+          "name": "Synthetic Lesson",
+          "courses_section_id": 9
+        }
+      },
+      "future": 0
+    },
+    "status": 200
+  },
+  {
+    "resource": "chat",
+    "name": "list_unread_chat_threads",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/chat_threads/unread_chat_threads",
+    "path": "/api/headless/v1/chat_threads/unread_chat_threads",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "chat_thread_ids": [
+        7
+      ],
+      "future": false
+    },
+    "status": 200
+  },
+  {
+    "resource": "community_links",
+    "name": "list_community_links",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/community_links",
+    "path": "/api/headless/v1/community_links",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": [
+      {
+        "id": 1,
+        "name": "Synthetic Link",
+        "url": "https://example.com",
+        "community_id": 1,
+        "future": null
+      }
+    ],
+    "status": 200
+  },
+  {
+    "resource": "cookies",
+    "name": "create",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/cookies",
+    "path": "/api/headless/v1/cookies",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "message": "Cookies generated"
+    },
+    "status": 200
+  },
+  {
+    "resource": "cookies",
+    "name": "delete",
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/cookies",
+    "path": "/api/headless/v1/cookies",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "message": "Cookies destroyed"
+    },
+    "status": 200
+  },
+  {
+    "resource": "home",
+    "name": "list_home_posts",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/home",
+    "path": "/api/headless/v1/home",
+    "args": [
+      2,
+      3,
+      "new_activity"
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=3&sort=new_activity",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "id": 42,
+          "post_type": "basic",
+          "name": "Synthetic Post",
+          "reaction_summary": {
+            "current_user_reaction_type": null,
+            "counts": {
+              "like": 0,
+              "celebrate": 0,
+              "love": 0,
+              "support": 0,
+              "insightful": 0,
+              "funny": 0
+            }
+          },
+          "future": false
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "list_notifications",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/notifications",
+    "path": "/api/headless/v1/notifications",
+    "args": [
+      2,
+      3,
+      "oldest",
+      "unread"
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=3&sort=oldest&status=unread",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "id": 15,
+          "read_at": null,
+          "action": "add",
+          "notifiable_id": 42,
+          "notification_text_structure": [
+            "actor_name",
+            "display_action"
+          ],
+          "notifiable_type": "ChatRoomMessage",
+          "actor_name": "Synthetic Member",
+          "notifiable": {
+            "id": 42,
+            "community_id": 1,
+            "space_id": 13
+          },
+          "future": {
+            "false": false,
+            "null": null
+          }
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "get_new_notifications_count",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/notifications/new_notifications_count",
+    "path": "/api/headless/v1/notifications/new_notifications_count",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "new_notifications_count": 0,
+      "new_mentions_count": 0,
+      "new_inbox_count": 0,
+      "new_content_count": 0,
+      "new_moderation_count": 0,
+      "future": false
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "reset_new_notifications_count",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/notifications/reset_new_notifications_count",
+    "path": "/api/headless/v1/notifications/reset_new_notifications_count",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "new_notifications_count": 0,
+      "future": false
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "mark_all_as_read",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/notifications/mark_all_as_read",
+    "path": "/api/headless/v1/notifications/mark_all_as_read",
+    "args": [
+      "mentions",
+      {
+        "type": "ChatRoomMessage",
+        "id": 42
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "notification_type": "mentions",
+      "parent_notifiable": {
+        "type": "ChatRoomMessage",
+        "id": 42
+      }
+    },
+    "response": {},
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "delete_notification",
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/notifications/{id}",
+    "path": "/api/headless/v1/notifications/15",
+    "args": [
+      15
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 15,
+      "read_at": null,
+      "action": "add",
+      "notifiable_id": 42,
+      "notification_text_structure": [
+        "actor_name",
+        "display_action"
+      ],
+      "notifiable_type": "ChatRoomMessage",
+      "actor_name": "Synthetic Member",
+      "notifiable": {
+        "id": 42,
+        "community_id": 1,
+        "space_id": 13
+      },
+      "future": {
+        "false": false,
+        "null": null
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "archive_notification",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/notifications/{id}/archive",
+    "path": "/api/headless/v1/notifications/15/archive",
+    "args": [
+      15
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 15,
+      "read_at": null,
+      "action": "add",
+      "notifiable_id": 42,
+      "notification_text_structure": [
+        "actor_name",
+        "display_action"
+      ],
+      "notifiable_type": "ChatRoomMessage",
+      "actor_name": "Synthetic Member",
+      "notifiable": {
+        "id": 42,
+        "community_id": 1,
+        "space_id": 13
+      },
+      "future": {
+        "false": false,
+        "null": null
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "mark_notification_as_read",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/notifications/{id}/mark_as_read",
+    "path": "/api/headless/v1/notifications/15/mark_as_read",
+    "args": [
+      15
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 15,
+      "read_at": null,
+      "action": "add",
+      "notifiable_id": 42,
+      "notification_text_structure": [
+        "actor_name",
+        "display_action"
+      ],
+      "notifiable_type": "ChatRoomMessage",
+      "actor_name": "Synthetic Member",
+      "notifiable": {
+        "id": 42,
+        "community_id": 1,
+        "space_id": 13
+      },
+      "future": {
+        "false": false,
+        "null": null
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "get_notification_preferences",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/notification_preferences/{medium}",
+    "path": "/api/headless/v1/notification_preferences/in_app",
+    "args": [
+      "in_app"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "notification_preference": [
+        {
+          "type": 3,
+          "name": "mention",
+          "enabled": false
+        }
+      ],
+      "space_preferences": [
+        {
+          "id": 5,
+          "space_id": 13,
+          "space_name": "Synthetic Space",
+          "choice": "mention",
+          "is_chat_space": false,
+          "future": false
+        }
+      ]
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "update_notification_preferences",
+    "method": "PUT",
+    "schema_path": "/api/headless/v1/notification_preferences/{medium}",
+    "path": "/api/headless/v1/notification_preferences/mobile",
+    "args": [
+      "mobile",
+      "mention",
+      false
+    ],
+    "kwargs": {},
+    "query": "type=mention&enabled=false",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Updated"
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "get_space_notification_preferences",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/notification_preferences/space_members/{id}",
+    "path": "/api/headless/v1/notification_preferences/space_members/5",
+    "args": [
+      5
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "in_app": "never",
+      "push": "mention",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "update_notification_preferences_for_spaces",
+    "method": "PUT",
+    "schema_path": "/api/headless/v1/notification_preferences/{notification_preference_medium}/spaces",
+    "path": "/api/headless/v1/notification_preferences/push/spaces",
+    "args": [
+      "push",
+      "never"
+    ],
+    "kwargs": {},
+    "query": "choice=never",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Updated"
+    },
+    "status": 200
+  },
+  {
+    "resource": "notifications",
+    "name": "update_notification_preferences_for_space",
+    "method": "PUT",
+    "schema_path": "/api/headless/v1/notification_preferences/{notification_preference_medium}/spaces/{id}",
+    "path": "/api/headless/v1/notification_preferences/in_app/spaces/5",
+    "args": [
+      "in_app",
+      5,
+      "mention"
+    ],
+    "kwargs": {},
+    "query": "choice=mention",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Updated"
+    },
+    "status": 200
+  }
+]
