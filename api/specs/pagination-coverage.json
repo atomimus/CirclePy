@@ -433,6 +433,22 @@
       "iterator": "member.iter_members",
       "adapter": "LegacyPages",
       "max_per_page": 100
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/topics",
+      "iterator": "topic.iter_topics",
+      "adapter": "LegacyPages",
+      "max_per_page": 100
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/flagged_contents",
+      "iterator": "flagged_content.iter_contents",
+      "adapter": "NumberedPages",
+      "max_per_page": 100
     }
   ],
   "extensions": {

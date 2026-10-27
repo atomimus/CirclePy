@@ -291,9 +291,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "SpaceGroupMemberAPI.remove",
+          "line": 129,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -314,9 +321,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "SpaceGroupAPI.delete",
+          "line": 91,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -397,9 +411,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "TaggedMemberAPI.untag",
+          "line": 198,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -420,9 +441,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "TopicAPI.delete",
+          "line": 288,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -533,9 +561,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "CommunityAPI.list_communities",
+          "line": 37,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -556,9 +591,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "CommunityAPI.get",
+          "line": 43,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -602,9 +644,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "MemberSpaceAPI.list_spaces",
+          "line": 238,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -888,9 +937,22 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "FlaggedContentAPI.list_contents",
+          "line": 334,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "FlaggedContentAPI.iter_contents_pages",
+          "line": 354,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -911,9 +973,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "MeAPI.get",
+          "line": 30,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -934,9 +1003,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "MemberTagAPI.list_tags",
+          "line": 145,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -957,9 +1033,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "MemberTagAPI.get",
+          "line": 154,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -980,9 +1063,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "ProfileFieldAPI.list_fields",
+          "line": 249,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1105,9 +1195,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "SpaceGroupMemberAPI.get",
+          "line": 102,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1128,9 +1225,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "SpaceGroupAPI.list_groups",
+          "line": 54,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1151,9 +1255,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "SpaceGroupAPI.get",
+          "line": 63,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1246,9 +1357,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "TaggedMemberAPI.list_members",
+          "line": 166,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1269,9 +1387,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "TaggedMemberAPI.get",
+          "line": 178,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1292,9 +1417,22 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "TopicAPI.list_topics",
+          "line": 260,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "TopicAPI.iter_topics_pages",
+          "line": 297,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1480,9 +1618,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "ContactAPI.create",
+          "line": 327,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1601,9 +1746,22 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "MessageAPI.send",
+          "line": 210,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "MessageAPI.start_group",
+          "line": 225,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1690,9 +1848,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "SpaceGroupMemberAPI.add",
+          "line": 119,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1713,9 +1878,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "SpaceGroupAPI.create",
+          "line": 73,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1802,9 +1974,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "TaggedMemberAPI.tag",
+          "line": 187,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1825,9 +2004,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "TopicAPI.create",
+          "line": 272,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1943,9 +2129,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "SpaceGroupAPI.update",
+          "line": 82,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1966,9 +2159,16 @@
         }
       ],
       "task_id": 13,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/organization.py",
+          "symbol": "TopicAPI.update",
+          "line": 280,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },

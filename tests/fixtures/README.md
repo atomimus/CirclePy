@@ -33,3 +33,10 @@ moderation values, invitation redirects and the different live invitation shapes
 response schemas; `headless-inventory.json` reconciles all 102 Member/four Auth
 entry points with their independent evidence. These are synthetic offline checks,
 with no live permission, participation or moderation claim.
+
+`admin-v1-organization.json` independently records all 26 Task 13 operations,
+27 published variants, bulk tag encoding and alternate contact names. Requests
+come from v1 Postman request entries and saved originalRequest examples, with
+synthetic values only. Responses exercise preservation without claiming a schema
+or live provider success. Blank contact query placeholders are superseded by
+the populated saved JSON request.

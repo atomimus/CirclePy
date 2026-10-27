@@ -1,0 +1,821 @@
+[
+  {
+    "case_id": "me.get.primary",
+    "source_pointer": "/item/0/item/0",
+    "resource": "me",
+    "name": "get",
+    "args": [],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/me",
+    "query": "",
+    "async_query": "",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "community.list_communities.primary",
+    "source_pointer": "/item/1/item/0",
+    "resource": "community",
+    "name": "list_communities",
+    "args": [],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/communities",
+    "query": "",
+    "async_query": "",
+    "body": null,
+    "response": [
+      {
+        "id": 2,
+        "prefs": {
+          "future": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "community.get.primary",
+    "source_pointer": "/item/1/item/1",
+    "resource": "community",
+    "name": "get",
+    "args": [
+      2
+    ],
+    "kwargs": {
+      "slug": ""
+    },
+    "method": "GET",
+    "path": "/api/v1/communities/2",
+    "query": "slug=",
+    "async_query": "slug=",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "space_group.list_groups.primary",
+    "source_pointer": "/item/2/item/0",
+    "resource": "space_group",
+    "name": "list_groups",
+    "args": [],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/space_groups",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": null,
+    "response": [
+      {
+        "id": 31,
+        "space_order_array": [],
+        "future": false
+      }
+    ]
+  },
+  {
+    "case_id": "space_group.get.primary",
+    "source_pointer": "/item/2/item/1",
+    "resource": "space_group",
+    "name": "get",
+    "args": [
+      31
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/space_groups/31",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "space_group.create.primary",
+    "source_pointer": "/item/2/item/2",
+    "resource": "space_group",
+    "name": "create",
+    "args": [
+      {
+        "name": "",
+        "slug": "",
+        "add_members_to_space_group_on_space_join": false,
+        "allow_members_to_create_spaces": false,
+        "automatically_add_members_to_new_spaces": false,
+        "hide_non_member_spaces_from_sidebar": false,
+        "is_hidden_from_non_members": false,
+        "space_order_array": [],
+        "position": 0,
+        "future": {
+          "null": null,
+          "nested": []
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/space_groups",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": {
+      "name": "",
+      "slug": "",
+      "add_members_to_space_group_on_space_join": false,
+      "allow_members_to_create_spaces": false,
+      "automatically_add_members_to_new_spaces": false,
+      "hide_non_member_spaces_from_sidebar": false,
+      "is_hidden_from_non_members": false,
+      "space_order_array": [],
+      "position": 0,
+      "future": {
+        "null": null,
+        "nested": []
+      }
+    },
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "space_group.update.primary",
+    "source_pointer": "/item/2/item/3",
+    "resource": "space_group",
+    "name": "update",
+    "args": [
+      31,
+      {
+        "name": "",
+        "slug": "",
+        "add_members_to_space_group_on_space_join": false,
+        "allow_members_to_create_spaces": false,
+        "automatically_add_members_to_new_spaces": false,
+        "hide_non_member_spaces_from_sidebar": false,
+        "is_hidden_from_non_members": false,
+        "future": {
+          "null": null,
+          "nested": []
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "PUT",
+    "path": "/api/v1/space_groups/31",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": {
+      "name": "",
+      "slug": "",
+      "add_members_to_space_group_on_space_join": false,
+      "allow_members_to_create_spaces": false,
+      "automatically_add_members_to_new_spaces": false,
+      "hide_non_member_spaces_from_sidebar": false,
+      "is_hidden_from_non_members": false,
+      "future": {
+        "null": null,
+        "nested": []
+      }
+    },
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "space_group.delete.primary",
+    "source_pointer": "/item/2/item/4",
+    "resource": "space_group",
+    "name": "delete",
+    "args": [
+      31
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "path": "/api/v1/space_groups/31",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "space_group_member.get.primary",
+    "source_pointer": "/item/3/item/0",
+    "resource": "space_group_member",
+    "name": "get",
+    "args": [
+      "a@example.test",
+      31
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/space_group_member",
+    "query": "community_id=2&email=a%40example.test&space_group_id=31",
+    "async_query": "community_id=2&email=a@example.test&space_group_id=31",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "space_group_member.add.primary",
+    "source_pointer": "/item/3/item/1",
+    "resource": "space_group_member",
+    "name": "add",
+    "args": [
+      "a@example.test",
+      31
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/space_group_members",
+    "query": "email=a%40example.test&space_group_id=31&community_id=2",
+    "async_query": "email=a@example.test&space_group_id=31&community_id=2",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "space_group_member.remove.primary",
+    "source_pointer": "/item/3/item/2",
+    "resource": "space_group_member",
+    "name": "remove",
+    "args": [
+      "a@example.test",
+      31
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "path": "/api/v1/space_group_members",
+    "query": "email=a%40example.test&space_group_id=31&community_id=2",
+    "async_query": "email=a@example.test&space_group_id=31&community_id=2",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "member_tag.list_tags.primary",
+    "source_pointer": "/item/9/item/0",
+    "resource": "member_tag",
+    "name": "list_tags",
+    "args": [],
+    "kwargs": {
+      "page": 2
+    },
+    "method": "GET",
+    "path": "/api/v1/member_tags",
+    "query": "community_id=2&page=2",
+    "async_query": "community_id=2&page=2",
+    "body": null,
+    "response": [
+      {
+        "id": 4,
+        "display_locations": [],
+        "is_public": false
+      }
+    ]
+  },
+  {
+    "case_id": "member_tag.get.primary",
+    "source_pointer": "/item/9/item/1",
+    "resource": "member_tag",
+    "name": "get",
+    "args": [
+      4
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/member_tags/4",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "tagged_member.list_members.primary",
+    "source_pointer": "/item/10/item/0",
+    "resource": "tagged_member",
+    "name": "list_members",
+    "args": [],
+    "kwargs": {
+      "sort": "oldest",
+      "per_page": 4,
+      "page": 2
+    },
+    "method": "GET",
+    "path": "/api/v1/tagged_members",
+    "query": "sort=oldest&per_page=4&page=2",
+    "async_query": "sort=oldest&per_page=4&page=2",
+    "body": null,
+    "response": {
+      "future": []
+    }
+  },
+  {
+    "case_id": "tagged_member.get.primary",
+    "source_pointer": "/item/10/item/1",
+    "resource": "tagged_member",
+    "name": "get",
+    "args": [
+      31
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/tagged_members/31",
+    "query": "",
+    "async_query": "",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "tagged_member.tag.primary",
+    "source_pointer": "/item/10/item/2",
+    "resource": "tagged_member",
+    "name": "tag",
+    "args": [
+      "a@example.test",
+      4
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/tagged_members",
+    "query": "user_email=a%40example.test&member_tag_id=4",
+    "async_query": "user_email=a@example.test&member_tag_id=4",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "tagged_member.untag.primary",
+    "source_pointer": "/item/10/item/3",
+    "resource": "tagged_member",
+    "name": "untag",
+    "args": [
+      "a@example.test",
+      4
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "path": "/api/v1/tagged_members",
+    "query": "member_tag_id=4&email=a%40example.test&community_id=2",
+    "async_query": "member_tag_id=4&email=a@example.test&community_id=2",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "message.start_group.primary",
+    "source_pointer": "/item/11/item/0",
+    "resource": "message",
+    "name": "start_group",
+    "args": [
+      [
+        "a@example.test",
+        "b@example.test"
+      ],
+      ""
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/messages",
+    "query": "community_id=2&message_body=",
+    "async_query": "community_id=2&message_body=",
+    "body": {
+      "user_emails": [
+        "a@example.test",
+        "b@example.test"
+      ]
+    },
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "message.send.primary",
+    "source_pointer": "/item/12/item/0",
+    "resource": "message",
+    "name": "send",
+    "args": [
+      "a@example.test",
+      ""
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/messages",
+    "query": "community_id=2&user_email=a%40example.test&message_body=",
+    "async_query": "community_id=2&user_email=a@example.test&message_body=",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "member_space.list_spaces.primary",
+    "source_pointer": "/item/19/item/0",
+    "resource": "member_space",
+    "name": "list_spaces",
+    "args": [
+      "a@example.test"
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/community_member_spaces",
+    "query": "user_email=a%40example.test",
+    "async_query": "user_email=a@example.test",
+    "body": null,
+    "response": [
+      {
+        "id": 3,
+        "future": null
+      }
+    ]
+  },
+  {
+    "case_id": "profile_field.list_fields.primary",
+    "source_pointer": "/item/20/item/0",
+    "resource": "profile_field",
+    "name": "list_fields",
+    "args": [
+      "signup"
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/page_profile_fields",
+    "query": "page_name=signup",
+    "async_query": "page_name=signup",
+    "body": null,
+    "response": [
+      {
+        "id": 4,
+        "field_type": "Checkbox",
+        "key": "preferences",
+        "allow_null": false,
+        "choices": [
+          {
+            "id": 31,
+            "label": "",
+            "future": 0
+          }
+        ],
+        "future": null
+      }
+    ]
+  },
+  {
+    "case_id": "topic.list_topics.primary",
+    "source_pointer": "/item/25/item/0",
+    "resource": "topic",
+    "name": "list_topics",
+    "args": [],
+    "kwargs": {
+      "per_page": 4,
+      "page": 2
+    },
+    "method": "GET",
+    "path": "/api/v1/topics",
+    "query": "community_id=2&per_page=4&page=2",
+    "async_query": "community_id=2&per_page=4&page=2",
+    "body": null,
+    "response": [
+      {
+        "id": 4,
+        "admin_only": false,
+        "future": null
+      }
+    ]
+  },
+  {
+    "case_id": "topic.create.primary",
+    "source_pointer": "/item/25/item/1",
+    "resource": "topic",
+    "name": "create",
+    "args": [
+      {
+        "name": "",
+        "admin_only": false
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/topics",
+    "query": "name=&admin_only=false&community_id=2",
+    "async_query": "name=&admin_only=false&community_id=2",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "topic.update.primary",
+    "source_pointer": "/item/25/item/2",
+    "resource": "topic",
+    "name": "update",
+    "args": [
+      4,
+      {
+        "name": "",
+        "admin_only": false
+      }
+    ],
+    "kwargs": {},
+    "method": "PUT",
+    "path": "/api/v1/topics/4",
+    "query": "name=&admin_only=false&community_id=2",
+    "async_query": "name=&admin_only=false&community_id=2",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "topic.delete.primary",
+    "source_pointer": "/item/25/item/3",
+    "resource": "topic",
+    "name": "delete",
+    "args": [
+      4
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "path": "/api/v1/topics/4",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "contact.create.primary",
+    "source_pointer": "/item/26/item/0",
+    "resource": "contact",
+    "name": "create",
+    "args": [
+      {
+        "email": "a@example.test",
+        "name": "",
+        "contact_type": "community_lead",
+        "member_tag_ids": [],
+        "profile_field_values": {
+          "headline": "",
+          "bio": "",
+          "hobbies": "",
+          "future": {
+            "false": false,
+            "empty": [],
+            "null": null,
+            "zero": 0
+          }
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/contacts",
+    "query": "",
+    "async_query": "",
+    "body": {
+      "email": "a@example.test",
+      "name": "",
+      "contact_type": "community_lead",
+      "member_tag_ids": [],
+      "profile_field_values": {
+        "headline": "",
+        "bio": "",
+        "hobbies": "",
+        "future": {
+          "false": false,
+          "empty": [],
+          "null": null,
+          "zero": 0
+        }
+      }
+    },
+    "response": {
+      "id": 31,
+      "member_tags": [],
+      "profile_fields": [
+        {
+          "key": "future",
+          "value": null
+        }
+      ],
+      "future": false
+    }
+  },
+  {
+    "case_id": "flagged_content.list_contents.primary",
+    "source_pointer": "/item/27/item/0",
+    "resource": "flagged_content",
+    "name": "list_contents",
+    "args": [],
+    "kwargs": {
+      "per_page": 4,
+      "page": 2,
+      "status": "rejected"
+    },
+    "method": "GET",
+    "path": "/api/v1/flagged_contents",
+    "query": "community_id=2&per_page=4&page=2&status=rejected",
+    "async_query": "community_id=2&per_page=4&page=2&status=rejected",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "id": 31,
+          "future": false
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "tagged_member.tag.multiple",
+    "source_pointer": "/item/10/item/2",
+    "resource": "tagged_member",
+    "name": "tag",
+    "args": [
+      [
+        "a@example.test",
+        "b@example.test"
+      ],
+      4
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/tagged_members",
+    "query": "user_email%5B%5D=a%40example.test&user_email%5B%5D=b%40example.test&member_tag_id=4",
+    "async_query": "user_email%5B%5D=a@example.test&user_email%5B%5D=b@example.test&member_tag_id=4",
+    "body": null,
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "contact.create.split_name",
+    "source_pointer": "/item/26/item/0",
+    "resource": "contact",
+    "name": "create",
+    "args": [
+      {
+        "email": "a@example.test",
+        "contact_type": "community_member",
+        "member_tag_ids": [],
+        "profile_field_values": {
+          "headline": "",
+          "bio": "",
+          "hobbies": "",
+          "future": {
+            "false": false,
+            "empty": [],
+            "null": null,
+            "zero": 0
+          }
+        },
+        "first_name": "",
+        "last_name": ""
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/contacts",
+    "query": "",
+    "async_query": "",
+    "body": {
+      "email": "a@example.test",
+      "contact_type": "community_member",
+      "member_tag_ids": [],
+      "profile_field_values": {
+        "headline": "",
+        "bio": "",
+        "hobbies": "",
+        "future": {
+          "false": false,
+          "empty": [],
+          "null": null,
+          "zero": 0
+        }
+      },
+      "first_name": "",
+      "last_name": ""
+    },
+    "response": {
+      "id": 31,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  }
+]

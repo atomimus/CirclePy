@@ -7,6 +7,21 @@ from .client_models import CommentAPI
 from .client_models import CommentLikesAPI
 from .client_models import MemberAPI
 
+from .client_models.organization import (
+    MeAPI,
+    CommunityAPI,
+    SpaceGroupAPI,
+    SpaceGroupMemberAPI,
+    MemberTagAPI,
+    TaggedMemberAPI,
+    MessageAPI,
+    MemberSpaceAPI,
+    ProfileFieldAPI,
+    TopicAPI,
+    ContactAPI,
+    FlaggedContentAPI,
+)
+
 base_url = "https://app.circle.so/api/v1"
 
 class CircleClient:
@@ -24,6 +39,21 @@ class CircleClient:
         self.likes = LikesAPI(api_key=api_key,community_id=community_id,base_url=self.transport.base_url, transport=self.transport)
         self.comment = CommentAPI(api_key=api_key,community_id=community_id,base_url=self.transport.base_url, transport=self.transport)
         self.comment_likes = CommentLikesAPI(api_key=api_key,community_id=community_id,base_url=self.transport.base_url, transport=self.transport)
+
+        options = dict(api_key=api_key, community_id=community_id,
+                       base_url=self.transport.base_url, transport=self.transport)
+        self.me = MeAPI(**options)
+        self.community = CommunityAPI(**options)
+        self.space_group = SpaceGroupAPI(**options)
+        self.space_group_member = SpaceGroupMemberAPI(**options)
+        self.member_tag = MemberTagAPI(**options)
+        self.tagged_member = TaggedMemberAPI(**options)
+        self.message = MessageAPI(**options)
+        self.member_space = MemberSpaceAPI(**options)
+        self.profile_field = ProfileFieldAPI(**options)
+        self.topic = TopicAPI(**options)
+        self.contact = ContactAPI(**options)
+        self.flagged_content = FlaggedContentAPI(**options)
 
     def close(self):
         self.transport.close()

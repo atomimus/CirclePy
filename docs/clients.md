@@ -16,7 +16,11 @@ It preserves legacy projections, member search attribute access, and the integer
 returned by post deletion. Both clients now implement all 27 documented legacy
 core operations, including member list/get/invite, full payload helpers, and
 member/space/post iteration. See [Admin v1 core methods and provider limits](admin-v1.md).
-Other legacy resource groups remain assigned to their implementation tasks.
+Both also expose `.me`, `.community`, `.space_group`, `.space_group_member`,
+`.member_tag`, `.tagged_member`, `.message`, `.member_space`, `.profile_field`,
+`.topic`, `.contact` and `.flagged_content` for all 26
+[community and organization operations](admin-v1-organization.md). Legacy
+learning, events, billing and public notifications remain assigned to Task 14.
 
 Admin v2, Data and both Headless facades expose a family-scoped
 `request(method, endpoint, *, params=None, json=None)` returning decoded JSON or

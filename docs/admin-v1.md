@@ -1,5 +1,8 @@
 # Legacy Admin v1 core resources
 
+See [community and organization resources](admin-v1-organization.md) for account,
+communities, groups, tags, messaging, contacts, profile fields and moderation lists.
+
 Both `CircleClient` and `AsyncCircleClient` implement all 27 documented core
 operations below. Use an **Admin v1 token**, `Authorization: Token ...`, and
 `https://app.circle.so/api/v1`. Admin v2 uses different credentials, paths and

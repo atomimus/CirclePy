@@ -1,0 +1,496 @@
+{
+  "upstream_sha256": "8d4bf73d8bc53de48100c753cf37e2d2a3558023dccbf04261af67b8f2d84ded",
+  "meaning": "Sanitized request field names including saved examples; not response schemas or live evidence. Contacts use populated JSON example instead of blank URL placeholders.",
+  "operations": [
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/me",
+      "source_pointer": "/item/0/item/0",
+      "entry_point": "me.get",
+      "query_fields": [],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/communities",
+      "source_pointer": "/item/1/item/0",
+      "entry_point": "community.list_communities",
+      "query_fields": [],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/communities/{}",
+      "source_pointer": "/item/1/item/1",
+      "entry_point": "community.get",
+      "query_fields": [
+        "slug"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/space_groups",
+      "source_pointer": "/item/2/item/0",
+      "entry_point": "space_group.list_groups",
+      "query_fields": [
+        "community_id"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/space_groups/{}",
+      "source_pointer": "/item/2/item/1",
+      "entry_point": "space_group.get",
+      "query_fields": [
+        "community_id"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "POST",
+      "path": "/api/v1/space_groups",
+      "source_pointer": "/item/2/item/2",
+      "entry_point": "space_group.create",
+      "query_fields": [
+        "community_id"
+      ],
+      "json_fields": [
+        "add_members_to_space_group_on_space_join",
+        "allow_members_to_create_spaces",
+        "automatically_add_members_to_new_spaces",
+        "hide_non_member_spaces_from_sidebar",
+        "is_hidden_from_non_members",
+        "name",
+        "position",
+        "slug",
+        "space_order_array"
+      ],
+      "json_source_pointers": [
+        "/item/2/item/2/response/0/originalRequest/body/raw"
+      ],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "PUT",
+      "path": "/api/v1/space_groups/{}",
+      "source_pointer": "/item/2/item/3",
+      "entry_point": "space_group.update",
+      "query_fields": [
+        "community_id"
+      ],
+      "json_fields": [
+        "add_members_to_space_group_on_space_join",
+        "allow_members_to_create_spaces",
+        "automatically_add_members_to_new_spaces",
+        "hide_non_member_spaces_from_sidebar",
+        "is_hidden_from_non_members",
+        "name",
+        "slug"
+      ],
+      "json_source_pointers": [
+        "/item/2/item/3/response/0/originalRequest/body/raw"
+      ],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "DELETE",
+      "path": "/api/v1/space_groups/{}",
+      "source_pointer": "/item/2/item/4",
+      "entry_point": "space_group.delete",
+      "query_fields": [
+        "community_id"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/space_group_member",
+      "source_pointer": "/item/3/item/0",
+      "entry_point": "space_group_member.get",
+      "query_fields": [
+        "community_id",
+        "email",
+        "space_group_id"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "POST",
+      "path": "/api/v1/space_group_members",
+      "source_pointer": "/item/3/item/1",
+      "entry_point": "space_group_member.add",
+      "query_fields": [
+        "community_id",
+        "email",
+        "space_group_id"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "DELETE",
+      "path": "/api/v1/space_group_members",
+      "source_pointer": "/item/3/item/2",
+      "entry_point": "space_group_member.remove",
+      "query_fields": [
+        "community_id",
+        "email",
+        "space_group_id"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/member_tags",
+      "source_pointer": "/item/9/item/0",
+      "entry_point": "member_tag.list_tags",
+      "query_fields": [
+        "community_id",
+        "page"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/member_tags/{}",
+      "source_pointer": "/item/9/item/1",
+      "entry_point": "member_tag.get",
+      "query_fields": [
+        "community_id"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/tagged_members",
+      "source_pointer": "/item/10/item/0",
+      "entry_point": "tagged_member.list_members",
+      "query_fields": [
+        "page",
+        "per_page",
+        "sort"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/tagged_members/{}",
+      "source_pointer": "/item/10/item/1",
+      "entry_point": "tagged_member.get",
+      "query_fields": [],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "POST",
+      "path": "/api/v1/tagged_members",
+      "source_pointer": "/item/10/item/2",
+      "entry_point": "tagged_member.tag",
+      "query_fields": [
+        "member_tag_id",
+        "user_email",
+        "user_email[]"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "DELETE",
+      "path": "/api/v1/tagged_members",
+      "source_pointer": "/item/10/item/3",
+      "entry_point": "tagged_member.untag",
+      "query_fields": [
+        "community_id",
+        "email",
+        "member_tag_id"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "POST",
+      "path": "/api/v1/messages",
+      "source_pointer": "/item/11/item/0",
+      "entry_point": "message.start_group",
+      "query_fields": [
+        "community_id",
+        "message_body"
+      ],
+      "json_fields": [
+        "user_emails"
+      ],
+      "json_source_pointers": [
+        "/item/11/item/0/request/body/raw",
+        "/item/11/item/0/response/0/originalRequest/body/raw"
+      ],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "POST",
+      "path": "/api/v1/messages",
+      "source_pointer": "/item/12/item/0",
+      "entry_point": "message.send",
+      "query_fields": [
+        "community_id",
+        "message_body",
+        "user_email"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/community_member_spaces",
+      "source_pointer": "/item/19/item/0",
+      "entry_point": "member_space.list_spaces",
+      "query_fields": [
+        "user_email"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/page_profile_fields",
+      "source_pointer": "/item/20/item/0",
+      "entry_point": "profile_field.list_fields",
+      "query_fields": [
+        "page_name"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/topics",
+      "source_pointer": "/item/25/item/0",
+      "entry_point": "topic.list_topics",
+      "query_fields": [
+        "community_id",
+        "page",
+        "per_page"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "POST",
+      "path": "/api/v1/topics",
+      "source_pointer": "/item/25/item/1",
+      "entry_point": "topic.create",
+      "query_fields": [
+        "admin_only",
+        "community_id",
+        "name"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "PUT",
+      "path": "/api/v1/topics/{}",
+      "source_pointer": "/item/25/item/2",
+      "entry_point": "topic.update",
+      "query_fields": [
+        "admin_only",
+        "community_id",
+        "name"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "DELETE",
+      "path": "/api/v1/topics/{}",
+      "source_pointer": "/item/25/item/3",
+      "entry_point": "topic.delete",
+      "query_fields": [
+        "community_id"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "POST",
+      "path": "/api/v1/contacts",
+      "source_pointer": "/item/26/item/0",
+      "entry_point": "contact.create",
+      "query_fields": [],
+      "json_fields": [
+        "contact_type",
+        "email",
+        "first_name",
+        "last_name",
+        "member_tag_ids",
+        "name",
+        "profile_field_values",
+        "profile_field_values.bio",
+        "profile_field_values.headline",
+        "profile_field_values.hobbies"
+      ],
+      "json_source_pointers": [
+        "/item/26/item/0/request/body/raw",
+        "/item/26/item/0/response/0/originalRequest/body/raw"
+      ],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 13,
+      "method": "GET",
+      "path": "/api/v1/flagged_contents",
+      "source_pointer": "/item/27/item/0",
+      "entry_point": "flagged_content.list_contents",
+      "query_fields": [
+        "community_id",
+        "page",
+        "per_page",
+        "status"
+      ],
+      "json_fields": [],
+      "json_source_pointers": [],
+      "fixture": "tests/fixtures/admin-v1-organization.json",
+      "tests": "tests/test_admin_v1_organization.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    }
+  ]
+}

@@ -85,5 +85,5 @@ strict = true
 [[tool.mypy.overrides]]
 # Keep the incremental strict boundary for transport, errors, token state and
 # the HTTP harness. Facades and dictionary resource methods remain partially typed.
-module = ["circlepy", "circlepy.client", "circlepy.async_client", "circlepy.async_auth", "circlepy.async_resources", "circlepy.api_clients", "circlepy.async_headless_client", "circlepy.headless_client", "circlepy.client_models.*", "circlepy.headless_models.*"]
+module = ["circlepy", "circlepy.client", "circlepy.async_client", "circlepy.async_auth", "circlepy.async_resources", "circlepy.async_organization", "circlepy.api_clients", "circlepy.async_headless_client", "circlepy.headless_client", "circlepy.client_models.*", "circlepy.headless_models.*"]
 follow_imports = "silent"

@@ -9,6 +9,22 @@ from .async_resources import (
 )
 
 
+from .async_organization import (
+    AsyncMeAPI,
+    AsyncCommunityAPI,
+    AsyncSpaceGroupAPI,
+    AsyncSpaceGroupMemberAPI,
+    AsyncMemberTagAPI,
+    AsyncTaggedMemberAPI,
+    AsyncMessageAPI,
+    AsyncMemberSpaceAPI,
+    AsyncProfileFieldAPI,
+    AsyncTopicAPI,
+    AsyncContactAPI,
+    AsyncFlaggedContentAPI,
+)
+
+
 class AsyncCircleClient(_AsyncAPIClient):
     _default_root = 'https://app.circle.so/api/v1'
     _scheme = 'Token'
@@ -27,3 +43,16 @@ class AsyncCircleClient(_AsyncAPIClient):
         self.likes = AsyncLikesAPI(**options)
         self.comment = AsyncCommentAPI(**options)
         self.comment_likes = AsyncCommentLikesAPI(**options)
+
+        self.me = AsyncMeAPI(**options)
+        self.community = AsyncCommunityAPI(**options)
+        self.space_group = AsyncSpaceGroupAPI(**options)
+        self.space_group_member = AsyncSpaceGroupMemberAPI(**options)
+        self.member_tag = AsyncMemberTagAPI(**options)
+        self.tagged_member = AsyncTaggedMemberAPI(**options)
+        self.message = AsyncMessageAPI(**options)
+        self.member_space = AsyncMemberSpaceAPI(**options)
+        self.profile_field = AsyncProfileFieldAPI(**options)
+        self.topic = AsyncTopicAPI(**options)
+        self.contact = AsyncContactAPI(**options)
+        self.flagged_content = AsyncFlaggedContentAPI(**options)

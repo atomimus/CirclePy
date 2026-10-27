@@ -10,6 +10,9 @@ formats. Circle continues to support v1, while new admin endpoints are added to
 Both legacy clients implement all 27 [Admin v1 core operations](docs/admin-v1.md),
 including full member list/get/invite, nested member fields, and raw space/post/comment
 payloads. The guide documents v1's post body-update limitation and preserved helpers.
+Both also implement all 26 [community and organization operations](docs/admin-v1-organization.md),
+including groups, tag assignments, contacts, direct/group messages and read-only
+profile-field and moderation lists.
 
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`
