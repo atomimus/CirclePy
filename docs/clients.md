@@ -20,13 +20,15 @@ Admin v2, Data, and async Headless currently expose a family-scoped
 `None` for an empty success. Paths stay within the configured API root; pass
 query fields through `params`. Absolute URLs and path traversal are rejected.
 These facades do not yet claim complete named resource or field coverage.
-Headless content resources, Admin v2 plural resources, and Data resources are
-added by their respective implementation tasks. Sync Headless keeps its existing
+Admin v2 plural resources and Data resources are added by their respective
+implementation tasks. Sync Headless keeps its existing
 plural resources and also exposes `request`. No methods are generated at runtime.
 
 Both Headless facades also expose `.uploads` for direct metadata creation and
 bounded file uploads. Shared Markdown and raw container builders are documented
 in [uploads and rich text](media.md).
+Both also expose `.posts` and `.comments` with all 25 documented Member content
+operations. See [content methods and the experimental basic-post update](content.md).
 
 New resource classes must explicitly receive the client's existing transport
 (and Headless Auth), register readable attributes in the constructor, and use

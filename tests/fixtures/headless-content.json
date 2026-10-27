@@ -1,0 +1,1323 @@
+[
+  {
+    "resource": "posts",
+    "name": "create_post_raw",
+    "args": [
+      1,
+      {
+        "space_id": 1,
+        "name": "",
+        "slug": "",
+        "body": "",
+        "cover_image": "signed-cover",
+        "topics": [],
+        "is_liking_enabled": false,
+        "is_comments_enabled": false,
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا"
+                  }
+                ]
+              }
+            ]
+          },
+          "attachments": [],
+          "sgids_to_object_map": {},
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": "",
+            "null": null
+          }
+        },
+        "future": null
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/posts",
+    "path": "/api/headless/v1/spaces/1/posts",
+    "body": {
+      "space_id": 1,
+      "name": "",
+      "slug": "",
+      "body": "",
+      "cover_image": "signed-cover",
+      "topics": [],
+      "is_liking_enabled": false,
+      "is_comments_enabled": false,
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": [],
+        "sgids_to_object_map": {},
+        "future": {
+          "false": false,
+          "zero": 0,
+          "empty": "",
+          "null": null
+        }
+      },
+      "future": null
+    },
+    "query": "",
+    "response": {
+      "id": 42,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "list_posts",
+    "args": [
+      1
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 3,
+      "sort": "likes",
+      "status": "draft",
+      "past_events": false,
+      "topics": [
+        6,
+        7
+      ],
+      "post_ids": [
+        42,
+        43
+      ]
+    },
+    "method": "GET",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/posts",
+    "path": "/api/headless/v1/spaces/1/posts",
+    "body": null,
+    "query": "page=2&per_page=3&sort=likes&status=draft&past_events=false&topics=6&topics=7&post_ids=42&post_ids=43",
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "records": [
+        {
+          "id": 42,
+          "reaction_summary": {
+            "current_user_reaction_type": null,
+            "counts": {
+              "like": 0,
+              "celebrate": 0,
+              "love": 1,
+              "support": 0,
+              "insightful": 0,
+              "funny": 0
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "null": null
+          }
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "get_post",
+    "args": [
+      1,
+      42
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/posts/{id}",
+    "path": "/api/headless/v1/spaces/1/posts/42",
+    "body": null,
+    "query": "",
+    "response": {
+      "id": 42,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "delete_post",
+    "args": [
+      1,
+      42
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/posts/{id}",
+    "path": "/api/headless/v1/spaces/1/posts/42",
+    "body": null,
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "create_image_post_raw",
+    "args": [
+      1,
+      {
+        "space_id": 1,
+        "slug": "",
+        "is_liking_enabled": false,
+        "is_comments_enabled": false,
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا"
+                  }
+                ]
+              }
+            ]
+          },
+          "attachments": [],
+          "sgids_to_object_map": {},
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": "",
+            "null": null
+          }
+        },
+        "gallery_attributes": {
+          "images_attributes": [
+            {
+              "id": 4,
+              "signed_id": "signed-gallery",
+              "width": 10,
+              "height": 20
+            }
+          ]
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/images/posts",
+    "path": "/api/headless/v1/spaces/1/images/posts",
+    "body": {
+      "space_id": 1,
+      "slug": "",
+      "is_liking_enabled": false,
+      "is_comments_enabled": false,
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": [],
+        "sgids_to_object_map": {},
+        "future": {
+          "false": false,
+          "zero": 0,
+          "empty": "",
+          "null": null
+        }
+      },
+      "gallery_attributes": {
+        "images_attributes": [
+          {
+            "id": 4,
+            "signed_id": "signed-gallery",
+            "width": 10,
+            "height": 20
+          }
+        ]
+      }
+    },
+    "query": "",
+    "response": {
+      "id": 42,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      },
+      "gallery": {
+        "id": 1,
+        "images": []
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "update_image_post",
+    "args": [
+      1,
+      42,
+      {
+        "space_id": 1,
+        "slug": "",
+        "is_liking_enabled": false,
+        "is_comments_enabled": false,
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا"
+                  }
+                ]
+              }
+            ]
+          },
+          "attachments": [],
+          "sgids_to_object_map": {},
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": "",
+            "null": null
+          }
+        },
+        "gallery_attributes": {
+          "images_attributes": [
+            {
+              "id": 4,
+              "image": "signed-replacement",
+              "position": 0
+            }
+          ]
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "PUT",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/images/posts/{id}",
+    "path": "/api/headless/v1/spaces/1/images/posts/42",
+    "body": {
+      "space_id": 1,
+      "slug": "",
+      "is_liking_enabled": false,
+      "is_comments_enabled": false,
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": [],
+        "sgids_to_object_map": {},
+        "future": {
+          "false": false,
+          "zero": 0,
+          "empty": "",
+          "null": null
+        }
+      },
+      "gallery_attributes": {
+        "images_attributes": [
+          {
+            "id": 4,
+            "image": "signed-replacement",
+            "position": 0
+          }
+        ]
+      }
+    },
+    "query": "",
+    "response": {
+      "id": 42,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      },
+      "gallery": {
+        "id": 1,
+        "images": []
+      }
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "follow_post",
+    "args": [
+      42
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "schema_path": "/api/headless/v1/posts/{post_id}/post_followers",
+    "path": "/api/headless/v1/posts/42/post_followers",
+    "body": null,
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "unfollow_post",
+    "args": [
+      "42"
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/posts/{post_id}/post_followers",
+    "path": "/api/headless/v1/posts/42/post_followers",
+    "body": null,
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "unfollow_post_with_id",
+    "args": [
+      42,
+      8
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/posts/{post_id}/post_followers/{id}",
+    "path": "/api/headless/v1/posts/42/post_followers/8",
+    "body": null,
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "like_post",
+    "args": [
+      "42",
+      "love"
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "schema_path": "/api/headless/v1/posts/{post_id}/user_likes",
+    "path": "/api/headless/v1/posts/42/user_likes",
+    "body": {
+      "reaction_type": "love"
+    },
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "unlike_post",
+    "args": [
+      "42"
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/posts/{post_id}/user_likes",
+    "path": "/api/headless/v1/posts/42/user_likes",
+    "body": null,
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "posts",
+    "name": "list_post_likes",
+    "args": [
+      "42",
+      2,
+      3,
+      "love"
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "schema_path": "/api/headless/v1/posts/{post_id}/user_likes",
+    "path": "/api/headless/v1/posts/42/user_likes",
+    "body": null,
+    "query": "page=2&per_page=3&reaction_type=love",
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "records": [
+        {
+          "id": 11,
+          "reaction_type": "love",
+          "future": null
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "create_post_comment",
+    "args": [
+      42
+    ],
+    "kwargs": {
+      "payload": {
+        "comment": {
+          "body": "",
+          "tiptap_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا"
+                    }
+                  ]
+                }
+              ]
+            },
+            "attachments": [],
+            "sgids_to_object_map": {},
+            "future": {
+              "false": false,
+              "zero": 0,
+              "empty": "",
+              "null": null
+            }
+          },
+          "future": null
+        }
+      }
+    },
+    "method": "POST",
+    "schema_path": "/api/headless/v1/posts/{post_id}/comments",
+    "path": "/api/headless/v1/posts/42/comments",
+    "body": {
+      "comment": {
+        "body": "",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا"
+                  }
+                ]
+              }
+            ]
+          },
+          "attachments": [],
+          "sgids_to_object_map": {},
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": "",
+            "null": null
+          }
+        },
+        "future": null
+      }
+    },
+    "query": "",
+    "response": {
+      "id": 7,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      },
+      "parent_comment_id": null,
+      "replies": [
+        {
+          "id": 9,
+          "reaction_summary": {
+            "current_user_reaction_type": null,
+            "counts": {
+              "like": 0,
+              "celebrate": 0,
+              "love": 1,
+              "support": 0,
+              "insightful": 0,
+              "funny": 0
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "null": null
+          },
+          "parent_comment_id": 7,
+          "replies": []
+        }
+      ]
+    },
+    "status": 201
+  },
+  {
+    "resource": "comments",
+    "name": "list_post_comments",
+    "args": [
+      42,
+      2,
+      3,
+      "oldest"
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "schema_path": "/api/headless/v1/posts/{post_id}/comments",
+    "path": "/api/headless/v1/posts/42/comments",
+    "body": null,
+    "query": "page=2&per_page=3&sort=oldest",
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "records": [
+        {
+          "id": 7,
+          "reaction_summary": {
+            "current_user_reaction_type": null,
+            "counts": {
+              "like": 0,
+              "celebrate": 0,
+              "love": 1,
+              "support": 0,
+              "insightful": 0,
+              "funny": 0
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "null": null
+          },
+          "parent_comment_id": null,
+          "replies": [
+            {
+              "id": 9,
+              "reaction_summary": {
+                "current_user_reaction_type": null,
+                "counts": {
+                  "like": 0,
+                  "celebrate": 0,
+                  "love": 1,
+                  "support": 0,
+                  "insightful": 0,
+                  "funny": 0
+                }
+              },
+              "future": {
+                "false": false,
+                "zero": 0,
+                "null": null
+              },
+              "parent_comment_id": 7,
+              "replies": []
+            }
+          ]
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "get_post_comment",
+    "args": [
+      42,
+      7
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "schema_path": "/api/headless/v1/posts/{post_id}/comments/{id}",
+    "path": "/api/headless/v1/posts/42/comments/7",
+    "body": null,
+    "query": "",
+    "response": {
+      "id": 7,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      },
+      "parent_comment_id": null,
+      "replies": [
+        {
+          "id": 9,
+          "reaction_summary": {
+            "current_user_reaction_type": null,
+            "counts": {
+              "like": 0,
+              "celebrate": 0,
+              "love": 1,
+              "support": 0,
+              "insightful": 0,
+              "funny": 0
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "null": null
+          },
+          "parent_comment_id": 7,
+          "replies": []
+        }
+      ]
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "update_post_comment",
+    "args": [
+      42,
+      7
+    ],
+    "kwargs": {
+      "payload": {
+        "comment": {
+          "body": "",
+          "tiptap_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا"
+                    }
+                  ]
+                }
+              ]
+            },
+            "attachments": [],
+            "sgids_to_object_map": {},
+            "future": {
+              "false": false,
+              "zero": 0,
+              "empty": "",
+              "null": null
+            }
+          },
+          "future": null
+        }
+      }
+    },
+    "method": "PATCH",
+    "schema_path": "/api/headless/v1/posts/{post_id}/comments/{id}",
+    "path": "/api/headless/v1/posts/42/comments/7",
+    "body": {
+      "comment": {
+        "body": "",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا"
+                  }
+                ]
+              }
+            ]
+          },
+          "attachments": [],
+          "sgids_to_object_map": {},
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": "",
+            "null": null
+          }
+        },
+        "future": null
+      }
+    },
+    "query": "",
+    "response": {
+      "id": 7,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      },
+      "parent_comment_id": null,
+      "replies": [
+        {
+          "id": 9,
+          "reaction_summary": {
+            "current_user_reaction_type": null,
+            "counts": {
+              "like": 0,
+              "celebrate": 0,
+              "love": 1,
+              "support": 0,
+              "insightful": 0,
+              "funny": 0
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "null": null
+          },
+          "parent_comment_id": 7,
+          "replies": []
+        }
+      ]
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "delete_post_comment",
+    "args": [
+      42,
+      7
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/posts/{post_id}/comments/{id}",
+    "path": "/api/headless/v1/posts/42/comments/7",
+    "body": null,
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "create_comment_reply",
+    "args": [
+      "7"
+    ],
+    "kwargs": {
+      "payload": {
+        "comment": {
+          "body": "",
+          "tiptap_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا"
+                    }
+                  ]
+                }
+              ]
+            },
+            "attachments": [],
+            "sgids_to_object_map": {},
+            "future": {
+              "false": false,
+              "zero": 0,
+              "empty": "",
+              "null": null
+            }
+          },
+          "future": null
+        }
+      }
+    },
+    "method": "POST",
+    "schema_path": "/api/headless/v1/comments/{comment_id}/replies",
+    "path": "/api/headless/v1/comments/7/replies",
+    "body": {
+      "comment": {
+        "body": "",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا"
+                  }
+                ]
+              }
+            ]
+          },
+          "attachments": [],
+          "sgids_to_object_map": {},
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": "",
+            "null": null
+          }
+        },
+        "future": null
+      }
+    },
+    "query": "",
+    "response": {
+      "id": 9,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      },
+      "parent_comment_id": 7,
+      "replies": []
+    },
+    "status": 201
+  },
+  {
+    "resource": "comments",
+    "name": "list_comment_replies",
+    "args": [
+      7,
+      2,
+      3,
+      "latest_updated"
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "schema_path": "/api/headless/v1/comments/{comment_id}/replies",
+    "path": "/api/headless/v1/comments/7/replies",
+    "body": null,
+    "query": "page=2&per_page=3&sort=latest_updated",
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "records": [
+        {
+          "id": 9,
+          "reaction_summary": {
+            "current_user_reaction_type": null,
+            "counts": {
+              "like": 0,
+              "celebrate": 0,
+              "love": 1,
+              "support": 0,
+              "insightful": 0,
+              "funny": 0
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "null": null
+          },
+          "parent_comment_id": 7,
+          "replies": []
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "get_comment_reply",
+    "args": [
+      "7",
+      "9"
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "schema_path": "/api/headless/v1/comments/{comment_id}/replies/{id}",
+    "path": "/api/headless/v1/comments/7/replies/9",
+    "body": null,
+    "query": "",
+    "response": {
+      "id": 9,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      },
+      "parent_comment_id": 7,
+      "replies": []
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "update_comment_reply",
+    "args": [
+      7,
+      9
+    ],
+    "kwargs": {
+      "payload": {
+        "comment": {
+          "body": "",
+          "tiptap_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "مرحبا"
+                    }
+                  ]
+                }
+              ]
+            },
+            "attachments": [],
+            "sgids_to_object_map": {},
+            "future": {
+              "false": false,
+              "zero": 0,
+              "empty": "",
+              "null": null
+            }
+          },
+          "future": null
+        }
+      }
+    },
+    "method": "PATCH",
+    "schema_path": "/api/headless/v1/comments/{comment_id}/replies/{id}",
+    "path": "/api/headless/v1/comments/7/replies/9",
+    "body": {
+      "comment": {
+        "body": "",
+        "tiptap_body": {
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "مرحبا"
+                  }
+                ]
+              }
+            ]
+          },
+          "attachments": [],
+          "sgids_to_object_map": {},
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": "",
+            "null": null
+          }
+        },
+        "future": null
+      }
+    },
+    "query": "",
+    "response": {
+      "id": 9,
+      "reaction_summary": {
+        "current_user_reaction_type": null,
+        "counts": {
+          "like": 0,
+          "celebrate": 0,
+          "love": 1,
+          "support": 0,
+          "insightful": 0,
+          "funny": 0
+        }
+      },
+      "future": {
+        "false": false,
+        "zero": 0,
+        "null": null
+      },
+      "parent_comment_id": 7,
+      "replies": []
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "delete_comment_reply",
+    "args": [
+      "7",
+      "9"
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/comments/{comment_id}/replies/{id}",
+    "path": "/api/headless/v1/comments/7/replies/9",
+    "body": null,
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "like_comment",
+    "args": [
+      7,
+      "love"
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "schema_path": "/api/headless/v1/comments/{comment_id}/user_likes",
+    "path": "/api/headless/v1/comments/7/user_likes",
+    "body": {
+      "reaction_type": "love"
+    },
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "unlike_comment",
+    "args": [
+      7
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/comments/{comment_id}/user_likes",
+    "path": "/api/headless/v1/comments/7/user_likes",
+    "body": null,
+    "query": "",
+    "response": {
+      "success": true,
+      "message": "ok",
+      "future": null
+    },
+    "status": 200
+  },
+  {
+    "resource": "comments",
+    "name": "list_comment_likes",
+    "args": [
+      7,
+      2,
+      3,
+      "love"
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "schema_path": "/api/headless/v1/comments/{comment_id}/user_likes",
+    "path": "/api/headless/v1/comments/7/user_likes",
+    "body": null,
+    "query": "page=2&per_page=3&reaction_type=love",
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": false,
+      "count": 1,
+      "records": [
+        {
+          "id": 11,
+          "reaction_type": "love",
+          "future": null
+        }
+      ],
+      "future": null
+    },
+    "status": 200
+  }
+]

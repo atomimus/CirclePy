@@ -1,12 +1,15 @@
+"""Member posts, image posts, following and reactions; full provider results."""
+
+from copy import deepcopy
+
+from .base_api_client import BaseAPIClient
+from .content import (append_image, image_dimensions, image_payload, image_update,
+                      post_params, post_payload, reaction_payload, segment)
 from .uploads_api import UploadsAPI
 from ..uploads import calculate_md5
-import warnings
-from PIL import Image
-from .base_api_client import BaseAPIClient
-from .helper.tiptap import markdown_to_tiptap
+
 
 class PostsAPI(BaseAPIClient):
-
     def _calculate_md5(self, file_data):
         return calculate_md5(file_data)
 
@@ -14,175 +17,96 @@ class PostsAPI(BaseAPIClient):
         return UploadsAPI(self.auth).upload_file(file_path)
 
     def create_image_post(self, space_id, slug, tiptap_text, image_paths,
-                        is_liking_enabled=True, is_comments_enabled=True):
-        images_attributes = []
-        for idx, path in enumerate(image_paths):
-            upload_response = self._direct_upload_file(path)
-            
-            with Image.open(path) as img:
-                images_attributes.append({
-                    "signed_id": upload_response["signed_id"],
-                    "position": idx, 
-                    "width": img.width,
-                    "height": img.height,
-                    "alt_text": ""
-                })
+                          is_liking_enabled=True, is_comments_enabled=True):
+        """Upload a gallery and create it. For existing IDs use create_image_post_raw."""
+        endpoint = f'/spaces/{segment(space_id)}/images/posts'
+        self._transport._url(endpoint)
+        images = []
+        for path in image_paths:
+            width, height = image_dimensions(path)
+            upload = self._direct_upload_file(path)
+            images.append(dict(signed_id=upload['signed_id'], width=width, height=height))
+        return self.post(endpoint, data=image_payload(space_id, slug, tiptap_text, images,
+                                                     is_liking_enabled, is_comments_enabled))
 
-        tiptap_body = {
-            "type": "doc",
-            "content": [{
-                "type": "paragraph",
-                "content": [{"type": "text", "text": tiptap_text}]
-            }]
-        }
+    def create_image_post_raw(self, space_id, payload):
+        """Send the complete image-post payload, including pre-uploaded gallery IDs."""
+        return self.post(f'/spaces/{segment(space_id)}/images/posts', data=deepcopy(payload))
 
-        payload = {
-                "tiptap_body": {"body": tiptap_body},
-                "slug": slug,
-                "space_id": space_id,
-                "is_liking_enabled": is_liking_enabled,
-                "is_comments_enabled": is_comments_enabled,
-                "gallery_attributes": {
-                    "images_attributes": images_attributes
-                }
-        }
+    def update_image_post(self, space_id, image_post_id, payload=None, slug=None,
+                          tiptap_body=None, is_liking_enabled=None,
+                          is_comments_enabled=None, gallery_attributes=None):
+        """PUT the documented image route. Raw payloads and empty updates survive."""
+        data = image_update(payload, slug, tiptap_body, is_liking_enabled,
+                            is_comments_enabled, gallery_attributes)
+        return self._request('PUT', f'/spaces/{segment(space_id)}/images/posts/{segment(image_post_id)}', json=data)
 
-        endpoint = f"/spaces/{space_id}/images/posts"
-        return self.post(endpoint, data=payload)
-
-    def update_image_post(
-        self,
-        space_id,
-        image_post_id,
-        payload=None,
-        slug=None,
-        tiptap_body=None,
-        is_liking_enabled=None,
-        is_comments_enabled=None,
-        gallery_attributes=None,
-    ):
-        if payload is None:
-            payload = {}
-            if slug is not None:
-                payload["slug"] = slug
-            if tiptap_body is not None:
-                payload["tiptap_body"] = tiptap_body
-            if is_liking_enabled is not None:
-                payload["is_liking_enabled"] = is_liking_enabled
-            if is_comments_enabled is not None:
-                payload["is_comments_enabled"] = is_comments_enabled
-            if gallery_attributes is not None:
-                payload["gallery_attributes"] = gallery_attributes
-            if not payload:
-                raise ValueError("Provide payload or at least one field to update")
-        endpoint = f"/spaces/{space_id}/images/posts/{image_post_id}"
-        return self._request("PUT", endpoint, json=payload)
-    
     def create_post(self, space_id, name, slug, body=None, tiptap_body=None, markdown=None, image_paths=None,
-                    topics=None, is_liking_enabled=True, is_comments_enabled=True):
-        if tiptap_body is None and body is None and markdown is None:
-            raise ValueError("Provide either tiptap_body, body, or markdown")
-        if image_paths and not self.auth.community_url:
-            raise ValueError("Community URL is required for image uploads")
-        image_paths = image_paths or []
+                    topics=None, is_liking_enabled=True, is_comments_enabled=True, *, cover_image=None):
+        """Create with HTML, bare/wrapped TipTap, or Markdown; append all image_paths.
 
-        if topics and image_paths:
-            warnings.warn("Topics cannot be set when creating posts with images; ignoring provided topics.")
-            topics = None
-        
-        if markdown is not None:
-            tiptap_body = markdown_to_tiptap(markdown)
-            if body is None:
-                body = markdown
-            for image_path in image_paths:
-                upload_response = self._direct_upload_file(image_path)
-                image_tap = {"type": "image",
-                    "attrs": {
-                        "url": f"{self.auth.community_url}/rails/active_storage/blobs/{upload_response['signed_id']}/{upload_response['file_name']}",
-                        "width": "100%",
-                        "alignment": "center",
-                        "content_type": upload_response["mime_type"],
-                        "signed_id": upload_response["signed_id"],
-
-                    }
-                }
-                tiptap_body["content"].append(image_tap)
-
-        payload = {
-            "space_id": space_id,
-            "name": name,
-            "slug": slug,
-            "tiptap_body": {"body": tiptap_body} if tiptap_body is not None else None,
-            "body": body if body is not None else None,
-            "is_liking_enabled": is_liking_enabled,
-            "is_comments_enabled": is_comments_enabled
-        }
-        if topics:
-            payload["topics"] = topics
-        endpoint = f"/spaces/{space_id}/posts"
+        cover_image is an already uploaded signed_id. See docs/content.md for
+        editor precedence and create_post_raw for unmodified advanced payloads.
+        """
+        endpoint = f'/spaces/{segment(space_id)}/posts'
+        self._transport._url(endpoint)
+        payload = post_payload(space_id, name, slug, body, tiptap_body, markdown, topics,
+                               is_liking_enabled, is_comments_enabled, cover_image)
+        for path in image_paths or []:
+            append_image(payload, self._direct_upload_file(path), self.auth.base_url)
         return self.post(endpoint, data=payload)
-    
+
+    def create_post_raw(self, space_id, payload):
+        """Send the full provider payload without conversion, defaults or wrapping."""
+        return self.post(f'/spaces/{segment(space_id)}/posts', data=deepcopy(payload))
+
     def update_post(self, space_id, post_id, name=None, body=None):
-        payload = {}
-        if name is not None:
-            payload["name"] = name
-        if body is not None:
-            payload["body"] = body
-        endpoint = f"/spaces/{space_id}/posts/{post_id}"
-        return self.put(endpoint, data=payload)
-    
+        """Experimental compatibility PUT, absent from the Member API schema.
+
+        Server support is unverified. No documented Member basic-post update
+        replacement exists; image posts use update_image_post. See docs/content.md.
+        """
+        payload = {key: value for key, value in dict(name=name, body=body).items() if value is not None}
+        return self.put(f'/spaces/{segment(space_id)}/posts/{segment(post_id)}', data=payload)
+
     def delete_post(self, space_id, post_id):
-        endpoint = f"/spaces/{space_id}/posts/{post_id}"
-        return self._request("DELETE", endpoint)
+        """Delete a post by ID or slug."""
+        return self._request('DELETE', f'/spaces/{segment(space_id)}/posts/{segment(post_id)}')
 
     def get_post(self, space_id, post_id):
-        endpoint = f"/spaces/{space_id}/posts/{post_id}"
-        return self._request("GET", endpoint)
+        """Retrieve the full post, including reaction_summary and future fields."""
+        return self._request('GET', f'/spaces/{segment(space_id)}/posts/{segment(post_id)}')
 
     def list_posts(self, space_id, page=1, per_page=10, sort="latest",
                    status=None, past_events=None, topics=None, post_ids=None):
-        params = {
-            "page": page,
-            "per_page": per_page,
-            "sort": sort,
-        }
-        if status:
-            params["status"] = status
-        if past_events is not None:
-            params["past_events"] = str(past_events).lower()
-        if topics:
-            params["topics"] = topics
-        if post_ids is not None:
-            params["post_ids"] = post_ids
-
-        endpoint = f"/spaces/{space_id}/posts"
-        return self._request("GET", endpoint, params=params)
+        """Retrieve one page; post_ids accepts an integer array or comma-separated IDs."""
+        params = post_params(page, per_page, sort, status, past_events, topics, post_ids)
+        return self._request('GET', f'/spaces/{segment(space_id)}/posts', params=params)
 
     def follow_post(self, post_id):
-        endpoint = f"/posts/{post_id}/post_followers"
-        return self._request("POST", endpoint)
+        """Follow as the authenticated member; returns the provider follower ID."""
+        return self._request('POST', f'/posts/{segment(post_id)}/post_followers')
 
     def unfollow_post(self, post_id):
-        endpoint = f"/posts/{post_id}/post_followers"
-        return self._request("DELETE", endpoint)
+        """Remove the authenticated member's follow."""
+        return self._request('DELETE', f'/posts/{segment(post_id)}/post_followers')
 
     def unfollow_post_with_id(self, post_id, post_follower_id):
-        endpoint = f"/posts/{post_id}/post_followers/{post_follower_id}"
-        return self._request("DELETE", endpoint)
+        """Remove a specific follower using the documented follower ID route."""
+        return self._request('DELETE', f'/posts/{segment(post_id)}/post_followers/{segment(post_follower_id)}')
 
-    def like_post(self, post_id, reaction_type=None):
-        endpoint = f"/posts/{post_id}/user_likes"
-        if reaction_type is None:
-            return self._request("POST", endpoint)
-        return self._request("POST", endpoint, json={"reaction_type": reaction_type})
+    def like_post(self, post_id, reaction_type=None, *, payload=None):
+        """Create/replace a reaction. Omitted or blank defaults to like at Circle."""
+        return self._request('POST', f'/posts/{segment(post_id)}/user_likes',
+                             json=reaction_payload(reaction_type, payload))
 
     def unlike_post(self, post_id):
-        endpoint = f"/posts/{post_id}/user_likes"
-        return self._request("DELETE", endpoint)
+        """Remove the member's reaction, regardless of its type."""
+        return self._request('DELETE', f'/posts/{segment(post_id)}/user_likes')
 
     def list_post_likes(self, post_id, page=1, per_page=10, reaction_type=None):
-        endpoint = f"/posts/{post_id}/user_likes"
-        params = {"page": page, "per_page": per_page}
+        """Retrieve one page of reacting members, optionally filtered by type."""
+        params = post_params(page, per_page, None, None, None, None, None)
         if reaction_type is not None:
-            params["reaction_type"] = reaction_type
-        return self._request("GET", endpoint, params=params)
+            params['reaction_type'] = reaction_type
+        return self._request('GET', f'/posts/{segment(post_id)}/user_likes', params=params)

@@ -23,7 +23,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.update_post",
-          "line": 132,
+          "line": 70,
           "visibility": "public_method"
         }
       ],
@@ -5875,7 +5875,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.delete_comment_reply",
-          "line": 63,
+          "line": 55,
           "visibility": "public_method"
         }
       ],
@@ -5904,7 +5904,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.unlike_comment",
-          "line": 82,
+          "line": 73,
           "visibility": "public_method"
         }
       ],
@@ -6078,7 +6078,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.delete_post_comment",
-          "line": 39,
+          "line": 31,
           "visibility": "public_method"
         }
       ],
@@ -6107,7 +6107,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.unfollow_post",
-          "line": 167,
+          "line": 92,
           "visibility": "public_method"
         }
       ],
@@ -6136,7 +6136,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.unfollow_post_with_id",
-          "line": 171,
+          "line": 96,
           "visibility": "public_method"
         }
       ],
@@ -6165,7 +6165,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.unlike_post",
-          "line": 181,
+          "line": 105,
           "visibility": "public_method"
         }
       ],
@@ -6223,7 +6223,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.delete_post",
-          "line": 136,
+          "line": 74,
           "visibility": "public_method"
         }
       ],
@@ -6397,7 +6397,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.list_comment_replies",
-          "line": 49,
+          "line": 41,
           "visibility": "public_method"
         }
       ],
@@ -6426,7 +6426,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.get_comment_reply",
-          "line": 56,
+          "line": 48,
           "visibility": "public_method"
         }
       ],
@@ -6455,7 +6455,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.list_comment_likes",
-          "line": 73,
+          "line": 65,
           "visibility": "public_method"
         }
       ],
@@ -7238,7 +7238,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.list_post_comments",
-          "line": 25,
+          "line": 17,
           "visibility": "public_method"
         }
       ],
@@ -7267,7 +7267,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.get_post_comment",
-          "line": 32,
+          "line": 24,
           "visibility": "public_method"
         }
       ],
@@ -7296,7 +7296,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.list_post_likes",
-          "line": 188,
+          "line": 112,
           "visibility": "public_method"
         }
       ],
@@ -7557,7 +7557,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.list_posts",
-          "line": 159,
+          "line": 84,
           "visibility": "public_method"
         }
       ],
@@ -7586,7 +7586,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.get_post",
-          "line": 140,
+          "line": 78,
           "visibility": "public_method"
         }
       ],
@@ -7644,7 +7644,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.update_comment_reply",
-          "line": 60,
+          "line": 52,
           "visibility": "public_method"
         }
       ],
@@ -7702,7 +7702,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.update_post_comment",
-          "line": 36,
+          "line": 28,
           "visibility": "public_method"
         }
       ],
@@ -7760,7 +7760,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.create_comment_reply",
-          "line": 53,
+          "line": 45,
           "visibility": "public_method"
         }
       ],
@@ -7789,7 +7789,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.like_comment",
-          "line": 79,
+          "line": 69,
           "visibility": "public_method"
         }
       ],
@@ -8201,7 +8201,7 @@
         {
           "file": "circlepy/headless_models/comments_api.py",
           "symbol": "CommentsAPI.create_post_comment",
-          "line": 29,
+          "line": 21,
           "visibility": "public_method"
         }
       ],
@@ -8230,7 +8230,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.follow_post",
-          "line": 163,
+          "line": 88,
           "visibility": "public_method"
         }
       ],
@@ -8259,13 +8259,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.like_post",
-          "line": 176,
-          "visibility": "public_method"
-        },
-        {
-          "file": "circlepy/headless_models/posts_api.py",
-          "symbol": "PostsAPI.like_post",
-          "line": 177,
+          "line": 100,
           "visibility": "public_method"
         }
       ],
@@ -8410,7 +8404,13 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.create_image_post",
-          "line": 51,
+          "line": 29,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/headless_models/posts_api.py",
+          "symbol": "PostsAPI.create_image_post_raw",
+          "line": 34,
           "visibility": "public_method"
         }
       ],
@@ -8497,7 +8497,13 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.create_post",
-          "line": 123,
+          "line": 57,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/headless_models/posts_api.py",
+          "symbol": "PostsAPI.create_post_raw",
+          "line": 61,
           "visibility": "public_method"
         }
       ],
@@ -8787,7 +8793,7 @@
         {
           "file": "circlepy/headless_models/posts_api.py",
           "symbol": "PostsAPI.update_image_post",
-          "line": 79,
+          "line": 42,
           "visibility": "public_method"
         }
       ],

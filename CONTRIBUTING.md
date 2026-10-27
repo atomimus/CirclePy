@@ -64,6 +64,7 @@ python -m ruff check circlepy tests tools
 python -m ruff check --select E4,E7,E9,F tests/conftest.py tests/http_fixtures.py tests/test_offline_http.py tools/check_ci.py circlepy/transport.py circlepy/errors.py tests/test_transport.py
 python -m mypy
 python tools/check_media_contract.py
+python tools/check_content_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build

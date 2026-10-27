@@ -7,6 +7,7 @@ from .async_auth import AsyncAuth
 from .api_clients import family_path
 from .tokens import identity
 from .headless_models.uploads_api import AsyncUploadsAPI
+from .headless_models.async_content_api import AsyncPostsAPI, AsyncCommentsAPI
 
 
 class AsyncHeadlessClient:
@@ -25,6 +26,8 @@ class AsyncHeadlessClient:
                               on_token_change=on_token_change)
         self.transport = self.auth.transport
         self.uploads = AsyncUploadsAPI(self.auth)
+        self.posts = AsyncPostsAPI(self)
+        self.comments = AsyncCommentsAPI(self)
 
     @classmethod
     async def create(cls, api_key, *, email=None, community_member_id=None, sso_user_id=None, **options):
