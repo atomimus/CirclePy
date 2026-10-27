@@ -19,6 +19,7 @@ from circlepy.headless_models import (
 def make_response(status=200, data=None):
     response = requests.Response()
     response.status_code = status
+    response._content_consumed = True
     response._content = json.dumps(data).encode('utf-8') if data is not None else b''
     return response
 
@@ -32,7 +33,7 @@ class HeadlessAPITests(unittest.TestCase):
             refresh_access_token=Mock(),
         )
         self.request_patch = patch(
-            "circlepy.headless_models.base_api_client.requests.request",
+            "requests.Session.request",
             return_value=make_response(200, {"success": True}),
         )
         self.request = self.request_patch.start()
@@ -129,7 +130,9 @@ class HeadlessAPITests(unittest.TestCase):
         first, second = self.request.call_args_list
         self.assertEqual(first.kwargs["headers"]["Authorization"], "Bearer member-token")
         self.assertEqual(second.kwargs["headers"]["Authorization"], "Bearer new-token")
-        self.assertEqual(second.kwargs["proxies"], {"https": "http://localhost:8080"})
+        self.assertEqual(second.kwargs["proxies"], {
+            "http": "http://localhost:8080", "https": "http://localhost:8080", "all": "http://localhost:8080",
+        })
 
     def test_repeated_unauthorized_does_not_recurse(self):
         self.request.return_value = make_response(401, {"message": "Unauthorized"})
@@ -138,10 +141,10 @@ class HeadlessAPITests(unittest.TestCase):
         self.assertEqual(self.request.call_count, 2)
         self.auth.refresh_access_token.assert_called_once_with()
 
-    def test_cookie_creation_after_refresh_preserves_cookie_jar(self):
+    def test_cookie_creation_preserves_cookie_jar_without_mutation_replay(self):
         response = make_response(200, {"message": "Cookies generated"})
         response.cookies.set("user_session_identifier", "session")
-        self.request.side_effect = [make_response(401), response]
+        self.request.return_value = response
         result = CookiesAPI(self.auth).create()
         self.assertIs(result["cookies"], response.cookies)
         self.assertEqual(result["cookies_set"], {"user_session_identifier": "session"})

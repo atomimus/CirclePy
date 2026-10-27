@@ -80,7 +80,10 @@ the support matrix, dependency constraints and clean artifact verification.
 
 Development tasks commit and push directly to main after automated validation.
 
-The current package is still 0.5.1; its async client remains unimplemented.
+The current package is still 0.5.1. Sync clients now pool sessions and support
+timeouts, proxies, explicit cleanup and opt-in strict errors. A native async
+transport is implemented; public async client facades remain the next task.
+See [HTTP transport configuration and migration notes](docs/transports.md).
 
 Run the request and authentication regression tests without calling a community:
 

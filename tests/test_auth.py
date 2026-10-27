@@ -15,6 +15,9 @@ class AuthTests(unittest.TestCase):
             "https://app.circle.so/api/headless/v1", proxy="http://localhost:8080",
         )
 
+    def tearDown(self):
+        self.auth.close()
+
     def test_authentication_and_refresh_preserve_expiration_timezone(self):
         tokens = {
             "access_token": "access", "refresh_token": "refresh",
@@ -22,17 +25,19 @@ class AuthTests(unittest.TestCase):
             "refresh_token_expires_at": "2099-02-01T12:00:00Z",
             "community_member_id": 1, "community_id": 2,
         }
-        with patch("circlepy.headless_models.auth.requests.post", return_value=make_response(200, tokens)) as post:
+        with patch("requests.Session.request", return_value=make_response(200, tokens)) as post:
             self.auth.authenticate(email="member@example.com")
         self.assertEqual(self.auth.access_token_expires_at.tzinfo, timezone.utc)
         self.assertEqual(self.auth.refresh_token_expires_at.tzinfo, timezone.utc)
         self.assertTrue(self.auth.is_access_token_valid())
+        self.assertEqual(post.call_args.args[0], "POST")
         self.assertEqual(post.call_args.kwargs["proxies"], {
-            "http": "http://localhost:8080", "https": "http://localhost:8080",
+            "http": "http://localhost:8080", "https": "http://localhost:8080", "all": "http://localhost:8080",
         })
         refreshed = {"access_token": "updated", "access_token_expires_at": "2099-01-01T15:00:00+03:00"}
-        with patch("circlepy.headless_models.auth.requests.patch", return_value=make_response(200, refreshed)):
+        with patch("requests.Session.request", return_value=make_response(200, refreshed)) as refresh:
             self.auth.refresh_access_token()
+        self.assertEqual(refresh.call_args.args[0], "PATCH")
         self.assertEqual(self.auth.access_token_expires_at.utcoffset(), timedelta(hours=3))
         self.assertEqual(self.auth.access_token, "updated")
         self.assertTrue(self.auth.is_access_token_valid())
@@ -49,6 +54,7 @@ class AuthTests(unittest.TestCase):
     def test_community_url_trailing_slash(self):
         with patch("circlepy.headless_client.Auth.authenticate"):
             client = HeadlessClient("api-key", "https://community.example/", email="member@example.com")
+        self.addCleanup(client.close)
         self.assertEqual(client.auth.community_url, "https://community.example")
         self.assertEqual(client.auth.base_url, "https://community.example/api/headless/v1")
         self.assertEqual(client.auth.auth_base_url, "https://community.example/api/v1/headless")

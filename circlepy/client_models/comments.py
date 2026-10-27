@@ -1,9 +1,10 @@
-import requests
+from ..transport import SyncTransport
 
 
 class CommentAPI:
-    def __init__(self,api_key=None,community_id=None,base_url=None):
-        self.base_url = base_url
+    def __init__(self,api_key=None,community_id=None,base_url=None, *, transport=None):
+        self._transport = transport or SyncTransport(base_url or "https://app.circle.so/api/v1", raise_on_error=False)
+        self.base_url = self._transport.base_url.rstrip("/")
         self.api_key = api_key
         self.community_id = community_id
 
@@ -35,14 +36,14 @@ class CommentAPI:
             "updated_at": updated_at,
             "skip_notifications": skip_notifications,
         }
-        response = requests.post(url, headers=self._headers(), json=data)
+        response = self._transport.request("POST", url, headers=self._headers(), json=data)
         return response.json()
 
     def delete(self, comment_id):
         """Delete a comment."""
         url = f"{self.base_url}/comments/{comment_id}"
         params = {"community_id": self.community_id}
-        response = requests.delete(url, headers=self._headers(), params=params)
+        response = self._transport.request("DELETE", url, headers=self._headers(), params=params)
         return response.json()
 
     def fetch(self, space_id, post_id=None):
@@ -53,5 +54,5 @@ class CommentAPI:
             "space_id": space_id,
             "post_id": post_id,
         }
-        response = requests.get(url, headers=self._headers(), params=params)
+        response = self._transport.request("GET", url, safe_read=True, headers=self._headers(), params=params)
         return response.json()

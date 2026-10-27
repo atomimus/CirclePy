@@ -1,8 +1,9 @@
-import requests
+from ..transport import SyncTransport
 
 class SpaceAPI:
-    def __init__(self,api_key=None,community_id=None,base_url=None):
-        self.base_url = base_url
+    def __init__(self,api_key=None,community_id=None,base_url=None, *, transport=None):
+        self._transport = transport or SyncTransport(base_url or "https://app.circle.so/api/v1", raise_on_error=False)
+        self.base_url = self._transport.base_url.rstrip("/")
         self.api_key = api_key
         self.community_id = community_id
         
@@ -19,9 +20,9 @@ class SpaceAPI:
             "per_page": per_page,
             "page": page
         }
-        response = requests.get(url, headers=self._headers(), params=params)
+        response = self._transport.request("GET", url, safe_read=True, headers=self._headers(), params=params)
         spaces = response.json()
-        if brief:
+        if brief and isinstance(spaces, list):
             attributes_to_delete = ['post_ids', 'topic_ids','emoji','custom_emoji_url','custom_emoji_dark_url']
             for space in spaces:
                 for attribute in attributes_to_delete:
@@ -57,25 +58,25 @@ class SpaceAPI:
             "slug": slug,
             "space_group_id": space_group_id
         }
-        response = requests.post(url, headers=self._headers(), params=params)
+        response = self._transport.request("POST", url, headers=self._headers(), params=params)
         return response.json()
 
     def delete(self, space_id):
         """Remove a space from the community."""
         url = f"{self.base_url}/spaces/{space_id}"
-        response = requests.delete(url, headers=self._headers())
+        response = self._transport.request("DELETE", url, headers=self._headers())
         return response.json()
 
     def add_member(self, email, space_id):
         """Add a member to a specific space."""
         url = f"{self.base_url}/space_members"
         params = {"email": email, "space_id": space_id, "community_id": self.community_id}
-        response = requests.post(url, headers=self._headers(), params=params)
+        response = self._transport.request("POST", url, headers=self._headers(), params=params)
         return response.json()
 
     def remove_member(self, email, space_id):
         """Remove a member from a space."""
         url = f"{self.base_url}/space_members"
         params = {"email": email, "space_id": space_id, "community_id": self.community_id}
-        response = requests.delete(url, headers=self._headers(), params=params)
+        response = self._transport.request("DELETE", url, headers=self._headers(), params=params)
         return response.json()

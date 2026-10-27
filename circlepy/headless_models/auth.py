@@ -1,11 +1,27 @@
-import requests
+from ..transport import SyncTransport
 from datetime import datetime, timezone
 
 class Auth:
-    def __init__(self, api_key, community_url, auth_base_url, base_url, proxy=None):
+    def __init__(self, api_key, community_url, auth_base_url, base_url, proxy=None, *, timeout=30.0,
+                 trust_env=False, session=None, verify=True, max_retries=0,
+                 raise_on_error=False):
         self.api_key = api_key
         self.auth_base_url = auth_base_url
-        self.base_url = base_url
+        self.transport = SyncTransport(base_url, timeout=timeout, proxy=proxy,
+                                       trust_env=trust_env, session=session, verify=verify,
+                                       max_retries=max_retries, raise_on_error=raise_on_error)
+        try:
+            # An explicit auth root has its own origin policy and credentials.
+            # Borrow the pool, not the member token or default headers.
+            self.auth_transport = SyncTransport(auth_base_url, session=self.transport.session,
+                                               timeout=timeout, proxy=proxy, trust_env=trust_env,
+                                               verify=verify, max_retries=max_retries,
+                                               raise_on_error=raise_on_error)
+        except ValueError:
+            self.transport.close()
+            raise
+        self.auth_base_url = self.auth_transport.base_url.rstrip("/")
+        self.base_url = self.transport.base_url.rstrip("/")
         self.community_url = community_url
         self.proxies = self._normalize_proxy(proxy)
         self.access_token = None
@@ -49,11 +65,10 @@ class Auth:
             'Content-Type': 'application/json'
         }
 
-        response = requests.post(
+        response = self.auth_transport.request("POST",
             f'{self.auth_base_url}/auth_token',
             headers=headers,
             json=params,
-            **self._request_options()
         )
         if response.status_code == 401:
             raise Exception("Authentication failed. Please check your API KEY.")
@@ -93,7 +108,7 @@ class Auth:
             "refresh_token": self.refresh_token
         }
 
-        response = requests.patch(url, headers=headers, json=payload, **self._request_options())
+        response = self.auth_transport.request("PATCH", url, headers=headers, json=payload)
 
         if response.status_code == 200:
             data = response.json()
@@ -109,8 +124,7 @@ class Auth:
         elif response.status_code == 404:
             raise Exception("Not Found: Refresh token not found.")
         elif response.status_code == 422:
-            error_details = response.json().get('error_details', {})
-            raise Exception(f"Unprocessable Entity: The access token generation failed. {error_details.get('message', '')}")
+            raise response.status_error()
         else:
             response.raise_for_status()
 
@@ -131,7 +145,7 @@ class Auth:
             "access_token": self.access_token
         }
 
-        response = requests.post(url, headers=headers, json=payload, **self._request_options())
+        response = self.auth_transport.request("POST", url, headers=headers, json=payload)
 
         if response.status_code == 204:
             self.access_token = None
@@ -142,8 +156,7 @@ class Auth:
         elif response.status_code == 403:
             raise Exception("Forbidden: Your community isn't eligible for headless API access. Please upgrade or contact support.")
         elif response.status_code == 404:
-            error_details = response.json().get('error_details', {})
-            raise Exception(f"Not Found: {response.json().get('message', 'Missing parameter: access_token')}. {error_details.get('message', '')}")
+            raise response.status_error()
         elif response.status_code == 422:
             raise Exception("Unprocessable Entity: The access token is invalid.")
         else:
@@ -166,7 +179,7 @@ class Auth:
             "refresh_token": self.refresh_token
         }
 
-        response = requests.post(url, headers=headers, json=payload, **self._request_options())
+        response = self.auth_transport.request("POST", url, headers=headers, json=payload)
 
         if response.status_code == 204:
             self.refresh_token = None
@@ -179,7 +192,9 @@ class Auth:
         elif response.status_code == 404:
             raise Exception("Not Found: Refresh token not found.")
         elif response.status_code == 422:
-            error_details = response.json().get('error_details', {})
-            raise Exception(f"Unprocessable Entity: Failed to revoke the refresh token. {error_details.get('message', '')}")
+            raise response.status_error()
         else:
             response.raise_for_status()
+    def close(self):
+        self.auth_transport.close()
+        self.transport.close()

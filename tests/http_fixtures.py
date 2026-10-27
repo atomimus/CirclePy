@@ -6,7 +6,8 @@ from collections import deque
 from dataclasses import dataclass, field
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
-from threading import Thread
+from threading import Event, Thread
+import socket
 from typing import Mapping
 
 
@@ -19,6 +20,10 @@ class Exchange:
     response_headers: Mapping[str, str] = field(default_factory=dict)
     request_json: object = None
     request_headers: Mapping[str, str] = field(default_factory=dict)
+    headers_gate: Event | None = None
+    body_gate: Event | None = None
+    arrived: Event | None = None
+    disconnect: bool = False
 
 
 @dataclass
@@ -27,6 +32,7 @@ class RecordedRequest:
     path: str
     headers: Mapping[str, str]
     body: bytes
+    client_port: int
 
 
 class OfflineHTTP:
@@ -44,10 +50,30 @@ class OfflineHTTP:
         owner = self
 
         class Handler(BaseHTTPRequestHandler):
+            protocol_version = "HTTP/1.1"
+
+            def handle(self) -> None:
+                try:
+                    super().handle()
+                except (ConnectionResetError, ConnectionAbortedError):
+                    # A cancelled/timed-out client can reset an idle keepalive.
+                    self.close_connection = True
+
             def handle_request(self) -> None:
-                body = self.rfile.read(int(self.headers.get("Content-Length", "0")))
+                if self.headers.get("Transfer-Encoding") == "chunked":
+                    chunks = []
+                    while True:
+                        size = int(self.rfile.readline().split(b";", 1)[0], 16)
+                        if not size:
+                            self.rfile.readline()
+                            break
+                        chunks.append(self.rfile.read(size))
+                        self.rfile.read(2)
+                    body = b"".join(chunks)
+                else:
+                    body = self.rfile.read(int(self.headers.get("Content-Length", "0")))
                 owner.requests.append(RecordedRequest(
-                    self.command, self.path, dict(self.headers), body,
+                    self.command, self.path, dict(self.headers), body, self.client_address[1],
                 ))
                 if not owner.pending:
                     owner.errors.append(f"Unexpected request: {self.command} {self.path}")
@@ -67,12 +93,26 @@ class OfflineHTTP:
                 for key, value in expected.request_headers.items():
                     if self.headers.get(key) != value:
                         owner.errors.append(f"Request header differs: {key}")
+                if expected.arrived:
+                    expected.arrived.set()
+                if expected.disconnect:
+                    self.connection.shutdown(socket.SHUT_RDWR)
+                    self.close_connection = True
+                    return
+                if expected.headers_gate:
+                    expected.headers_gate.wait(timeout=5)
                 self.send_response(expected.status)
                 for key, value in expected.response_headers.items():
                     self.send_header(key, value)
                 self.send_header("Content-Length", str(len(expected.response)))
                 self.end_headers()
-                self.wfile.write(expected.response)
+                if expected.body_gate:
+                    expected.body_gate.wait(timeout=5)
+                try:
+                    self.wfile.write(expected.response)
+                except (BrokenPipeError, ConnectionResetError):
+                    # Timeout/cancellation tests deliberately close the peer.
+                    self.close_connection = True
 
             do_GET = handle_request
             do_POST = handle_request

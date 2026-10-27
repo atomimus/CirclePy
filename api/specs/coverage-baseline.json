@@ -55,7 +55,7 @@
         {
           "file": "circlepy/client_models/comments.py",
           "symbol": "CommentAPI.delete",
-          "line": 45,
+          "line": 46,
           "visibility": "public_method"
         }
       ],
@@ -85,7 +85,7 @@
         {
           "file": "circlepy/client_models/comment_likes.py",
           "symbol": "CommentLikesAPI.delete",
-          "line": 30,
+          "line": 31,
           "visibility": "public_method"
         }
       ],
@@ -115,7 +115,7 @@
         {
           "file": "circlepy/client_models/members.py",
           "symbol": "MemberAPI.remove",
-          "line": 79,
+          "line": 81,
           "visibility": "public_method"
         }
       ],
@@ -237,7 +237,7 @@
         {
           "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.delete",
-          "line": 89,
+          "line": 92,
           "visibility": "public_method"
         }
       ],
@@ -267,7 +267,7 @@
         {
           "file": "circlepy/client_models/likes.py",
           "symbol": "LikesAPI.delete",
-          "line": 31,
+          "line": 32,
           "visibility": "public_method"
         }
       ],
@@ -343,7 +343,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.remove_member",
-          "line": 80,
+          "line": 81,
           "visibility": "public_method"
         }
       ],
@@ -373,7 +373,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.delete",
-          "line": 66,
+          "line": 67,
           "visibility": "public_method"
         }
       ],
@@ -449,7 +449,7 @@
         {
           "file": "circlepy/client_models/comments.py",
           "symbol": "CommentAPI.fetch",
-          "line": 56,
+          "line": 57,
           "visibility": "public_method"
         }
       ],
@@ -502,7 +502,7 @@
         {
           "file": "circlepy/client_models/comment_likes.py",
           "symbol": "CommentLikesAPI.fetch",
-          "line": 16,
+          "line": 17,
           "visibility": "public_method"
         }
       ],
@@ -670,7 +670,7 @@
         {
           "file": "circlepy/client_models/members.py",
           "symbol": "MemberAPI.search",
-          "line": 43,
+          "line": 44,
           "visibility": "public_method"
         }
       ],
@@ -976,7 +976,7 @@
         {
           "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.fetch",
-          "line": 61,
+          "line": 62,
           "visibility": "public_method"
         }
       ],
@@ -1029,7 +1029,7 @@
         {
           "file": "circlepy/client_models/likes.py",
           "symbol": "LikesAPI.fetch",
-          "line": 17,
+          "line": 18,
           "visibility": "public_method"
         }
       ],
@@ -1128,7 +1128,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.fetch",
-          "line": 22,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -1319,7 +1319,7 @@
         {
           "file": "circlepy/client_models/comments.py",
           "symbol": "CommentAPI.create",
-          "line": 38,
+          "line": 39,
           "visibility": "public_method"
         }
       ],
@@ -1349,7 +1349,7 @@
         {
           "file": "circlepy/client_models/comment_likes.py",
           "symbol": "CommentLikesAPI.create",
-          "line": 23,
+          "line": 24,
           "visibility": "public_method"
         }
       ],
@@ -1546,7 +1546,7 @@
         {
           "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.create",
-          "line": 48,
+          "line": 49,
           "visibility": "public_method"
         }
       ],
@@ -1576,7 +1576,7 @@
         {
           "file": "circlepy/client_models/likes.py",
           "symbol": "LikesAPI.create",
-          "line": 24,
+          "line": 25,
           "visibility": "public_method"
         }
       ],
@@ -1652,7 +1652,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.add_member",
-          "line": 73,
+          "line": 74,
           "visibility": "public_method"
         }
       ],
@@ -1682,7 +1682,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.create",
-          "line": 60,
+          "line": 61,
           "visibility": "public_method"
         }
       ],
@@ -1758,7 +1758,7 @@
         {
           "file": "circlepy/client_models/members.py",
           "symbol": "MemberAPI.update",
-          "line": 64,
+          "line": 66,
           "visibility": "public_method"
         }
       ],
@@ -1811,7 +1811,7 @@
         {
           "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.update",
-          "line": 82,
+          "line": 85,
           "visibility": "public_method"
         }
       ],
@@ -5730,7 +5730,7 @@
         {
           "file": "circlepy/headless_models/auth.py",
           "symbol": "Auth.refresh_access_token",
-          "line": 96,
+          "line": 111,
           "visibility": "public_method"
         }
       ],
@@ -5759,7 +5759,7 @@
         {
           "file": "circlepy/headless_models/auth.py",
           "symbol": "Auth.revoke_access_token",
-          "line": 134,
+          "line": 148,
           "visibility": "public_method"
         }
       ],
@@ -5788,7 +5788,7 @@
         {
           "file": "circlepy/headless_models/auth.py",
           "symbol": "Auth.authenticate",
-          "line": 52,
+          "line": 68,
           "visibility": "public_method"
         }
       ],
@@ -5817,7 +5817,7 @@
         {
           "file": "circlepy/headless_models/auth.py",
           "symbol": "Auth.revoke_refresh_token",
-          "line": 169,
+          "line": 182,
           "visibility": "public_method"
         }
       ],

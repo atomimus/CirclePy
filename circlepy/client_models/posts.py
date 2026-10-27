@@ -1,12 +1,13 @@
-import requests
+from ..transport import SyncTransport
 import os
 import hashlib
 import base64
 from PIL import Image
 
 class PostAPI:
-    def __init__(self,api_key=None,community_id=None,base_url=None):
-        self.base_url = base_url
+    def __init__(self,api_key=None,community_id=None,base_url=None, *, transport=None):
+        self._transport = transport or SyncTransport(base_url or "https://app.circle.so/api/v1", raise_on_error=False)
+        self.base_url = self._transport.base_url.rstrip("/")
         self.api_key = api_key
         self.community_id = community_id
 
@@ -45,7 +46,7 @@ class PostAPI:
             "published_at": published_at,
             "user_email": user_email,
         }
-        response = requests.post(url, headers=self._headers(), params=params)
+        response = self._transport.request("POST", url, headers=self._headers(), params=params)
         return response.json()
 
     def fetch(self, space_id, sort="latest", per_page=100, page=1):
@@ -58,7 +59,7 @@ class PostAPI:
             "per_page": per_page,
             "page": page,
         }
-        response = requests.get(url, headers=self._headers(), params=params)
+        response = self._transport.request("GET", url, safe_read=True, headers=self._headers(), params=params)
         posts = response.json()
 
         attributes_to_delete = [
@@ -68,6 +69,8 @@ class PostAPI:
             "cardview_thumbnail",
             "cardview_thumbnail_url",
         ]
+        if not isinstance(posts, list):
+            return posts
         for post in posts:
             for attribute in attributes_to_delete:
                 if attribute in post:
@@ -79,13 +82,13 @@ class PostAPI:
         """Update an existing post."""
         url = f"{self.base_url}/posts/{post_id}"
         params = {"community_id": self.community_id}
-        response = requests.put(url, headers=self._headers(), params=params, json=data)
+        response = self._transport.request("PUT", url, headers=self._headers(), params=params, json=data)
         return response.json()
 
     def delete(self, post_id):
         """Delete an existing post."""
         url = f"{self.base_url}/posts/{post_id}"
         params = {"community_id": self.community_id}
-        response = requests.delete(url, headers=self._headers(), params=params)
+        response = self._transport.request("DELETE", url, headers=self._headers(), params=params)
         return response.status_code
 
