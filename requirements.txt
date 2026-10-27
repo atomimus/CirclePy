@@ -1,4 +1,2 @@
-requests
-aiohttp
-pillow
-commonmark
+# Install the library's canonical dependencies from pyproject.toml.
+.

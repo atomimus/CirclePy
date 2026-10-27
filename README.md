@@ -1,5 +1,5 @@
 # CirclePy
-Circle.so API made easy with async support for efficient Python integration.
+Python clients for the Circle.so Admin and Headless APIs.
 
 ## API compatibility
 
@@ -73,6 +73,10 @@ client = HeadlessClient(
 ```
 
 ## Development
+
+This development checkout requires CPython 3.11+. See
+[the contributor guide](CONTRIBUTING.md) for Windows, Linux and macOS setup,
+the support matrix, dependency constraints and clean artifact verification.
 
 Development tasks commit and push directly to main after automated validation.
 

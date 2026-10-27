@@ -23,7 +23,15 @@ from .headless_models import (
 )
 
 class HeadlessClient:
-    def __init__(self, api_key, community_url=None, email=None,community_member_id=None,sso_id=None, proxy=None):
+    def __init__(
+        self,
+        api_key: str,
+        community_url: str | None = None,
+        email: str | None = None,
+        community_member_id: int | str | None = None,
+        sso_id: str | None = None,
+        proxy: str | dict[str, str] | None = None,
+    ) -> None:
         community_url = community_url.rstrip('/') if community_url else None
         base_url = f"{community_url}/api/headless/v1" if community_url else "https://app.circle.so/api/headless/v1"
         auth_base_url = f"{community_url}/api/v1/headless" if community_url else "https://app.circle.so/api/v1/headless"

@@ -9,7 +9,7 @@ from .client_models import MemberAPI
 base_url = "https://app.circle.so/api/v1"
 
 class CircleClient:
-    def __init__(self, api_key,community_id=None):
+    def __init__(self, api_key: str, community_id: int | str | None = None) -> None:
         self.member = MemberAPI(api_key=api_key,community_id=community_id,base_url=base_url) 
         self.space = SpaceAPI(api_key=api_key,community_id=community_id,base_url=base_url)
         self.post = PostAPI(api_key=api_key,community_id=community_id,base_url=base_url)

@@ -1,0 +1,7 @@
+include LICENSE README.md CONTRIBUTING.md requirements.txt constraints-dev.txt
+recursive-include circlepy *.py
+recursive-include tests *.py
+include tools/check_distribution.py
+recursive-include docs/v1-release *.md *.json *.py
+recursive-include api/specs *.yaml *.json *.txt
+global-exclude *.py[cod] .env .env.* .pypirc

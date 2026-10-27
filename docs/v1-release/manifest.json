@@ -40,7 +40,10 @@
       "id": 2,
       "title": "Modernize packaging and the development environment",
       "phase": "Foundations",
-      "status": "not_started",
+      "status": "in_progress",
+      "evidence_file": "evidence/02.md",
+      "owned_operation_count": 0,
+      "integration_status": "pending_main_verification",
       "dependencies": [
         1
       ],
