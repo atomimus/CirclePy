@@ -32,6 +32,9 @@ requirement for administrative content updates and the separate v2 credential.
 Both cover all 12 [course administration operations](docs/admin-v2-courses.md),
 including section/lesson construction, full course reordering, media and member
 progress updates, with matching sync/async methods and bounded pagination.
+Both cover all 11 [event, attendee and live transcript operations](docs/admin-v2-events.md),
+including recurrence settings, offset timestamps, event duplication, administrative
+RSVPs and complete raw VTT responses.
 
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`

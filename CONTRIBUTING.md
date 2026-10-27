@@ -77,6 +77,7 @@ python tools/check_admin_v2_members_contract.py
 python tools/check_admin_v2_access_contract.py
 python tools/check_admin_v2_content_contract.py
 python tools/check_admin_v2_courses_contract.py
+python tools/check_admin_v2_events_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build
@@ -161,6 +162,11 @@ Admin v2 course changes also require
 `python tools/check_admin_v2_courses_contract.py`, covering all 12 owned operations,
 full ordering arrays, lesson rich text/media, progress and documented errors.
 See `docs/admin-v2-courses.md` for fields and tested construction examples.
+
+Admin v2 event, attendee and live changes also require
+`python tools/check_admin_v2_events_contract.py`, covering all 11 owned operations,
+full nested event settings, date filters, duplication identifiers, RSVPs and VTT.
+See `docs/admin-v2-events.md` for recurrence, timezone and transcript examples.
 
 ## Direct main workflow and CI
 

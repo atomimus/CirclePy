@@ -1,0 +1,1332 @@
+[
+  {
+    "case_id": "event_attendees.create",
+    "resource": "event_attendees",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/event_attendees",
+    "args": [
+      {
+        "member_email": "member@example.test",
+        "event_id": "71"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "member_email": "member@example.test",
+      "event_id": "71"
+    },
+    "success_status": 200,
+    "response": {
+      "message": "RSVP'd to the event.",
+      "future": false
+    },
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "event_attendees.delete",
+    "resource": "event_attendees",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/event_attendees",
+    "args": [
+      {
+        "member_email": "member@example.test",
+        "event_id": "71"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "member_email": "member@example.test",
+      "event_id": "71"
+    },
+    "success_status": 200,
+    "response": {
+      "message": "Un-RSVP successful from the event",
+      "future": null
+    },
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "event_attendees.list_attendees",
+    "resource": "event_attendees",
+    "name": "list_attendees",
+    "method": "GET",
+    "path": "/api/admin/v2/event_attendees",
+    "args": [
+      "71"
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4
+    },
+    "query": "event_id=71&page=2&per_page=4",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 81,
+          "event_id": 71,
+          "event_name": "SDK Test Event",
+          "member_name": "SDK Test Member",
+          "member_email": "member@example.test",
+          "member_avatar_url": null,
+          "headline": null,
+          "rsvp_date": "2026-10-27T12:30:00+02:00",
+          "community_member_id": 31,
+          "contact_id": 41,
+          "contact_type": "CommunityMember",
+          "rsvp_status": "yes",
+          "future": null
+        }
+      ],
+      "future": null
+    },
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "events.create",
+    "resource": "events",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/events",
+    "args": [
+      {
+        "space_id": 51,
+        "event": {
+          "name": "SDK Test Event",
+          "slug": "sdk-test-event",
+          "body": "<p>Hello <strong>Circle</strong><br><a href=\"https://example.test\">Details</a></p>",
+          "user_id": 11,
+          "space_id": 51,
+          "cover_image": "synthetic-cover-id",
+          "thumbnail_image": "synthetic-thumbnail-id",
+          "hide_from_featured_areas": false,
+          "event_type": "recurring",
+          "status": "draft",
+          "topics": [
+            21,
+            22
+          ],
+          "event_setting_attributes": {
+            "starts_at": "2026-11-01T09:30:00.123456+02:00",
+            "host": "SDK Test Host",
+            "duration_in_seconds": 3600,
+            "location_type": "live_room",
+            "virtual_location_url": "https://example.test/test-event",
+            "in_person_location": "{\"name\":\"SDK Test Venue\",\"formatted_address\":\"Test address\",\"geometry\":{\"location\":{\"lat\":0,\"lng\":0}},\"html_attributions\":[]}",
+            "hide_location_from_non_attendees": true,
+            "send_email_reminder": false,
+            "send_in_app_notification_reminder": false,
+            "rsvp_disabled": false,
+            "hide_attendees": false,
+            "enable_custom_thank_you_message": false,
+            "send_email_confirmation": false,
+            "send_in_app_notification_confirmation": false,
+            "confirmation_message_title": "",
+            "confirmation_message_description": "",
+            "confirmation_message_button_title": "",
+            "confirmation_message_button_link": "",
+            "rsvp_limit_enabled": false,
+            "rsvp_limit": 0,
+            "send_publish_email": false,
+            "ticket_type": "free",
+            "live_stream_room_setting_attributes": {
+              "access_type": "secret",
+              "recording_enabled": true,
+              "view_type": "grid_view",
+              "auto_post_recording_enabled": false,
+              "mute_on_join": false,
+              "hide_participants_list": false,
+              "limit_url_sharing": true
+            }
+          },
+          "meta_tag_attributes": {
+            "meta_title": "SDK Test Event",
+            "meta_description": "",
+            "opengraph_title": "",
+            "opengraph_description": "",
+            "opengraph_image": "synthetic-opengraph-id"
+          },
+          "recurring_setting_attributes": {
+            "frequency": "weekly",
+            "ends_at": "2026-12-01T09:30:00.123456+02:00",
+            "occurrences": 4,
+            "edit_mode": "remaining"
+          },
+          "paywall_attributes": {
+            "currency_id": 1,
+            "description": "Synthetic test only",
+            "price_amount": 0.0
+          },
+          "attendee_invite_attributes": {
+            "invited_entities_ids": {
+              "members_ids": [
+                31
+              ],
+              "spaces_ids": [
+                51
+              ],
+              "space_groups_ids": [
+                61
+              ],
+              "member_tags_ids": [
+                21
+              ]
+            },
+            "invited_cohost_ids": [
+              32
+            ]
+          }
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "space_id": 51,
+      "event": {
+        "name": "SDK Test Event",
+        "slug": "sdk-test-event",
+        "body": "<p>Hello <strong>Circle</strong><br><a href=\"https://example.test\">Details</a></p>",
+        "user_id": 11,
+        "space_id": 51,
+        "cover_image": "synthetic-cover-id",
+        "thumbnail_image": "synthetic-thumbnail-id",
+        "hide_from_featured_areas": false,
+        "event_type": "recurring",
+        "status": "draft",
+        "topics": [
+          21,
+          22
+        ],
+        "event_setting_attributes": {
+          "starts_at": "2026-11-01T09:30:00.123456+02:00",
+          "host": "SDK Test Host",
+          "duration_in_seconds": 3600,
+          "location_type": "live_room",
+          "virtual_location_url": "https://example.test/test-event",
+          "in_person_location": "{\"name\":\"SDK Test Venue\",\"formatted_address\":\"Test address\",\"geometry\":{\"location\":{\"lat\":0,\"lng\":0}},\"html_attributions\":[]}",
+          "hide_location_from_non_attendees": true,
+          "send_email_reminder": false,
+          "send_in_app_notification_reminder": false,
+          "rsvp_disabled": false,
+          "hide_attendees": false,
+          "enable_custom_thank_you_message": false,
+          "send_email_confirmation": false,
+          "send_in_app_notification_confirmation": false,
+          "confirmation_message_title": "",
+          "confirmation_message_description": "",
+          "confirmation_message_button_title": "",
+          "confirmation_message_button_link": "",
+          "rsvp_limit_enabled": false,
+          "rsvp_limit": 0,
+          "send_publish_email": false,
+          "ticket_type": "free",
+          "live_stream_room_setting_attributes": {
+            "access_type": "secret",
+            "recording_enabled": true,
+            "view_type": "grid_view",
+            "auto_post_recording_enabled": false,
+            "mute_on_join": false,
+            "hide_participants_list": false,
+            "limit_url_sharing": true
+          }
+        },
+        "meta_tag_attributes": {
+          "meta_title": "SDK Test Event",
+          "meta_description": "",
+          "opengraph_title": "",
+          "opengraph_description": "",
+          "opengraph_image": "synthetic-opengraph-id"
+        },
+        "recurring_setting_attributes": {
+          "frequency": "weekly",
+          "ends_at": "2026-12-01T09:30:00.123456+02:00",
+          "occurrences": 4,
+          "edit_mode": "remaining"
+        },
+        "paywall_attributes": {
+          "currency_id": 1,
+          "description": "Synthetic test only",
+          "price_amount": 0.0
+        },
+        "attendee_invite_attributes": {
+          "invited_entities_ids": {
+            "members_ids": [
+              31
+            ],
+            "spaces_ids": [
+              51
+            ],
+            "space_groups_ids": [
+              61
+            ],
+            "member_tags_ids": [
+              21
+            ]
+          },
+          "invited_cohost_ids": [
+            32
+          ]
+        }
+      }
+    },
+    "success_status": 201,
+    "response": {
+      "id": 71,
+      "name": "SDK Test Event",
+      "slug": "sdk-test-event",
+      "user_id": 11,
+      "community_member_id": 31,
+      "created_at": "2026-10-27T12:00:00Z",
+      "hide_meta_info": null,
+      "confirmation_message_title": null,
+      "confirmation_message_button_title": null,
+      "confirmation_message_button_link": null,
+      "confirmation_message_description": null,
+      "in_person_location": null,
+      "host": "SDK Test Host",
+      "comments_count": 0,
+      "duration_in_seconds": 3600,
+      "enable_custom_thank_you_message": false,
+      "send_in_app_notification_confirmation": false,
+      "rsvp_disabled": false,
+      "send_email_confirmation": false,
+      "send_email_reminder": false,
+      "send_in_app_notification_reminder": false,
+      "virtual_location_url": "",
+      "starts_at": "2026-11-01T09:30:00.123456+02:00",
+      "location_type": "live_room",
+      "hide_attendees": false,
+      "ends_at": "2026-11-01T10:30:00.123456+02:00",
+      "updated_at": "2026-10-27T12:00:00Z",
+      "hide_location_from_non_attendees": true,
+      "space": {
+        "id": 51,
+        "slug": "sdk-test-space",
+        "name": "SDK Test Space",
+        "community_id": 1
+      },
+      "body": "<p>Hello <strong>Circle</strong><br><a href=\"https://example.test\">Details</a></p>",
+      "url": "https://example.test/events/sdk-test-event",
+      "member_email": "host@example.test",
+      "member_name": "SDK Test Host",
+      "member_avatar_url": null,
+      "zapier_display_title": "SDK Test Event",
+      "likes_count": 0,
+      "cover_image_url": null,
+      "meta_tag_attributes": {
+        "meta_title": "SDK Test Event",
+        "meta_description": null,
+        "opengraph_title": "",
+        "opengraph_description": null,
+        "opengraph_image": null
+      },
+      "topics": [
+        21,
+        22
+      ],
+      "event_setting_attributes": {
+        "starts_at": "2026-11-01T09:30:00.123456+02:00",
+        "host": "SDK Test Host",
+        "duration_in_seconds": 3600,
+        "location_type": "live_room",
+        "virtual_location_url": "https://example.test/test-event",
+        "in_person_location": "{\"name\":\"SDK Test Venue\",\"formatted_address\":\"Test address\",\"geometry\":{\"location\":{\"lat\":0,\"lng\":0}},\"html_attributions\":[]}",
+        "hide_location_from_non_attendees": true,
+        "send_email_reminder": false,
+        "send_in_app_notification_reminder": false,
+        "rsvp_disabled": false,
+        "hide_attendees": false,
+        "enable_custom_thank_you_message": false,
+        "send_email_confirmation": false,
+        "send_in_app_notification_confirmation": false,
+        "confirmation_message_title": "",
+        "confirmation_message_description": "",
+        "confirmation_message_button_title": "",
+        "confirmation_message_button_link": "",
+        "rsvp_limit_enabled": false,
+        "rsvp_limit": 0,
+        "send_publish_email": false,
+        "ticket_type": "free",
+        "live_stream_room_setting_attributes": {
+          "access_type": "secret",
+          "recording_enabled": true,
+          "view_type": "grid_view",
+          "auto_post_recording_enabled": false,
+          "mute_on_join": false,
+          "hide_participants_list": false,
+          "limit_url_sharing": true
+        }
+      },
+      "event_recurring_settings_attributes": {
+        "frequency": "weekly",
+        "ends_at": "2026-12-01T09:30:00+02:00",
+        "occurrences": 4,
+        "range_type": "date",
+        "future": null
+      },
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Hello Circle",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-sgid",
+                    "future": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": [],
+        "future": false
+      },
+      "layout": {
+        "featured": false,
+        "position": 0,
+        "future": []
+      },
+      "future": null
+    },
+    "error_statuses": [
+      400,
+      403
+    ]
+  },
+  {
+    "case_id": "events.list_events",
+    "resource": "events",
+    "name": "list_events",
+    "method": "GET",
+    "path": "/api/admin/v2/events",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "space_id": 51,
+      "start_date": "2026-11-01",
+      "end_date": "2026-12-01",
+      "sort": "start_date_desc"
+    },
+    "query": "page=2&per_page=4&space_id=51&filter_date%5Bstart_date%5D=2026-11-01&filter_date%5Bend_date%5D=2026-12-01&sort=start_date_desc",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 71,
+          "name": "SDK Test Event",
+          "slug": "sdk-test-event",
+          "user_id": 11,
+          "community_member_id": 31,
+          "created_at": "2026-10-27T12:00:00Z",
+          "hide_meta_info": null,
+          "confirmation_message_title": null,
+          "confirmation_message_button_title": null,
+          "confirmation_message_button_link": null,
+          "confirmation_message_description": null,
+          "in_person_location": null,
+          "host": "SDK Test Host",
+          "comments_count": 0,
+          "duration_in_seconds": 3600,
+          "enable_custom_thank_you_message": false,
+          "send_in_app_notification_confirmation": false,
+          "rsvp_disabled": false,
+          "send_email_confirmation": false,
+          "send_email_reminder": false,
+          "send_in_app_notification_reminder": false,
+          "virtual_location_url": "",
+          "starts_at": "2026-11-01T09:30:00.123456+02:00",
+          "location_type": "live_room",
+          "hide_attendees": false,
+          "ends_at": "2026-11-01T10:30:00.123456+02:00",
+          "updated_at": "2026-10-27T12:00:00Z",
+          "hide_location_from_non_attendees": true,
+          "space": {
+            "id": 51,
+            "slug": "sdk-test-space",
+            "name": "SDK Test Space",
+            "community_id": 1
+          },
+          "body": "<p>Hello <strong>Circle</strong><br><a href=\"https://example.test\">Details</a></p>",
+          "url": "https://example.test/events/sdk-test-event",
+          "member_email": "host@example.test",
+          "member_name": "SDK Test Host",
+          "member_avatar_url": null,
+          "zapier_display_title": "SDK Test Event",
+          "likes_count": 0,
+          "cover_image_url": null,
+          "meta_tag_attributes": {
+            "meta_title": "SDK Test Event",
+            "meta_description": null,
+            "opengraph_title": "",
+            "opengraph_description": null,
+            "opengraph_image": null
+          },
+          "topics": [
+            21,
+            22
+          ],
+          "event_setting_attributes": {
+            "starts_at": "2026-11-01T09:30:00.123456+02:00",
+            "host": "SDK Test Host",
+            "duration_in_seconds": 3600,
+            "location_type": "live_room",
+            "virtual_location_url": "https://example.test/test-event",
+            "in_person_location": "{\"name\":\"SDK Test Venue\",\"formatted_address\":\"Test address\",\"geometry\":{\"location\":{\"lat\":0,\"lng\":0}},\"html_attributions\":[]}",
+            "hide_location_from_non_attendees": true,
+            "send_email_reminder": false,
+            "send_in_app_notification_reminder": false,
+            "rsvp_disabled": false,
+            "hide_attendees": false,
+            "enable_custom_thank_you_message": false,
+            "send_email_confirmation": false,
+            "send_in_app_notification_confirmation": false,
+            "confirmation_message_title": "",
+            "confirmation_message_description": "",
+            "confirmation_message_button_title": "",
+            "confirmation_message_button_link": "",
+            "rsvp_limit_enabled": false,
+            "rsvp_limit": 0,
+            "send_publish_email": false,
+            "ticket_type": "free",
+            "live_stream_room_setting_attributes": {
+              "access_type": "secret",
+              "recording_enabled": true,
+              "view_type": "grid_view",
+              "auto_post_recording_enabled": false,
+              "mute_on_join": false,
+              "hide_participants_list": false,
+              "limit_url_sharing": true
+            }
+          },
+          "event_recurring_settings_attributes": {
+            "frequency": "weekly",
+            "ends_at": "2026-12-01T09:30:00+02:00",
+            "occurrences": 4,
+            "range_type": "date",
+            "future": null
+          },
+          "tiptap_body": {
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello Circle",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "mention",
+                      "attrs": {
+                        "sgid": "synthetic-sgid",
+                        "future": null
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "attachments": [],
+            "future": false
+          },
+          "layout": {
+            "featured": false,
+            "position": 0,
+            "future": []
+          },
+          "future": null
+        }
+      ],
+      "future": null
+    },
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "events.delete",
+    "resource": "events",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/events/71",
+    "args": [
+      71
+    ],
+    "kwargs": {
+      "space_id": 51
+    },
+    "query": "space_id=51",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "message": "Event deleted",
+      "future": null
+    },
+    "error_statuses": [
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "events.get",
+    "resource": "events",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/events/71",
+    "args": [
+      71
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "id": 71,
+      "name": "SDK Test Event",
+      "slug": "sdk-test-event",
+      "user_id": 11,
+      "community_member_id": 31,
+      "created_at": "2026-10-27T12:00:00Z",
+      "hide_meta_info": null,
+      "confirmation_message_title": null,
+      "confirmation_message_button_title": null,
+      "confirmation_message_button_link": null,
+      "confirmation_message_description": null,
+      "in_person_location": null,
+      "host": "SDK Test Host",
+      "comments_count": 0,
+      "duration_in_seconds": 3600,
+      "enable_custom_thank_you_message": false,
+      "send_in_app_notification_confirmation": false,
+      "rsvp_disabled": false,
+      "send_email_confirmation": false,
+      "send_email_reminder": false,
+      "send_in_app_notification_reminder": false,
+      "virtual_location_url": "",
+      "starts_at": "2026-11-01T09:30:00.123456+02:00",
+      "location_type": "live_room",
+      "hide_attendees": false,
+      "ends_at": "2026-11-01T10:30:00.123456+02:00",
+      "updated_at": "2026-10-27T12:00:00Z",
+      "hide_location_from_non_attendees": true,
+      "space": {
+        "id": 51,
+        "slug": "sdk-test-space",
+        "name": "SDK Test Space",
+        "community_id": 1
+      },
+      "body": "<p>Hello <strong>Circle</strong><br><a href=\"https://example.test\">Details</a></p>",
+      "url": "https://example.test/events/sdk-test-event",
+      "member_email": "host@example.test",
+      "member_name": "SDK Test Host",
+      "member_avatar_url": null,
+      "zapier_display_title": "SDK Test Event",
+      "likes_count": 0,
+      "cover_image_url": null,
+      "meta_tag_attributes": {
+        "meta_title": "SDK Test Event",
+        "meta_description": null,
+        "opengraph_title": "",
+        "opengraph_description": null,
+        "opengraph_image": null
+      },
+      "topics": [
+        21,
+        22
+      ],
+      "event_setting_attributes": {
+        "starts_at": "2026-11-01T09:30:00.123456+02:00",
+        "host": "SDK Test Host",
+        "duration_in_seconds": 3600,
+        "location_type": "live_room",
+        "virtual_location_url": "https://example.test/test-event",
+        "in_person_location": "{\"name\":\"SDK Test Venue\",\"formatted_address\":\"Test address\",\"geometry\":{\"location\":{\"lat\":0,\"lng\":0}},\"html_attributions\":[]}",
+        "hide_location_from_non_attendees": true,
+        "send_email_reminder": false,
+        "send_in_app_notification_reminder": false,
+        "rsvp_disabled": false,
+        "hide_attendees": false,
+        "enable_custom_thank_you_message": false,
+        "send_email_confirmation": false,
+        "send_in_app_notification_confirmation": false,
+        "confirmation_message_title": "",
+        "confirmation_message_description": "",
+        "confirmation_message_button_title": "",
+        "confirmation_message_button_link": "",
+        "rsvp_limit_enabled": false,
+        "rsvp_limit": 0,
+        "send_publish_email": false,
+        "ticket_type": "free",
+        "live_stream_room_setting_attributes": {
+          "access_type": "secret",
+          "recording_enabled": true,
+          "view_type": "grid_view",
+          "auto_post_recording_enabled": false,
+          "mute_on_join": false,
+          "hide_participants_list": false,
+          "limit_url_sharing": true
+        }
+      },
+      "event_recurring_settings_attributes": {
+        "frequency": "weekly",
+        "ends_at": "2026-12-01T09:30:00+02:00",
+        "occurrences": 4,
+        "range_type": "date",
+        "future": null
+      },
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Hello Circle",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-sgid",
+                    "future": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": [],
+        "future": false
+      },
+      "layout": {
+        "featured": false,
+        "position": 0,
+        "future": []
+      },
+      "future": null
+    },
+    "error_statuses": [
+      404
+    ]
+  },
+  {
+    "case_id": "events.update",
+    "resource": "events",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/events/71",
+    "args": [
+      71,
+      {
+        "space_id": 51,
+        "event": {
+          "name": "SDK Updated Event",
+          "slug": "sdk-test-event",
+          "body": "<p>Hello <strong>Circle</strong><br><a href=\"https://example.test\">Details</a></p>",
+          "user_id": 11,
+          "space_id": 51,
+          "cover_image": "synthetic-cover-id",
+          "thumbnail_image": "synthetic-thumbnail-id",
+          "hide_from_featured_areas": false,
+          "event_type": "recurring",
+          "status": "draft",
+          "topics": [
+            21,
+            22
+          ],
+          "event_setting_attributes": {
+            "starts_at": "2026-11-01T09:30:00.123456+02:00",
+            "host": "SDK Test Host",
+            "duration_in_seconds": 3600,
+            "location_type": "live_room",
+            "virtual_location_url": "https://example.test/test-event",
+            "in_person_location": "{\"name\":\"SDK Test Venue\",\"formatted_address\":\"Test address\",\"geometry\":{\"location\":{\"lat\":0,\"lng\":0}},\"html_attributions\":[]}",
+            "hide_location_from_non_attendees": true,
+            "send_email_reminder": false,
+            "send_in_app_notification_reminder": false,
+            "rsvp_disabled": false,
+            "hide_attendees": false,
+            "enable_custom_thank_you_message": false,
+            "send_email_confirmation": false,
+            "send_in_app_notification_confirmation": false,
+            "confirmation_message_title": "",
+            "confirmation_message_description": "",
+            "confirmation_message_button_title": "",
+            "confirmation_message_button_link": "",
+            "rsvp_limit_enabled": false,
+            "rsvp_limit": 0,
+            "send_publish_email": false,
+            "ticket_type": "free",
+            "live_stream_room_setting_attributes": {
+              "access_type": "secret",
+              "recording_enabled": true,
+              "view_type": "grid_view",
+              "auto_post_recording_enabled": false,
+              "mute_on_join": false,
+              "hide_participants_list": false,
+              "limit_url_sharing": true
+            }
+          },
+          "meta_tag_attributes": {
+            "meta_title": "SDK Test Event",
+            "meta_description": "",
+            "opengraph_title": "",
+            "opengraph_description": "",
+            "opengraph_image": "synthetic-opengraph-id"
+          },
+          "recurring_setting_attributes": {
+            "frequency": "weekly",
+            "ends_at": "2026-12-01T09:30:00.123456+02:00",
+            "occurrences": 4,
+            "edit_mode": "all"
+          },
+          "paywall_attributes": {
+            "currency_id": 1,
+            "description": "Synthetic test only",
+            "price_amount": 0.0
+          },
+          "attendee_invite_attributes": {
+            "invited_entities_ids": {
+              "members_ids": [
+                31
+              ],
+              "spaces_ids": [
+                51
+              ],
+              "space_groups_ids": [
+                61
+              ],
+              "member_tags_ids": [
+                21
+              ]
+            },
+            "invited_cohost_ids": [
+              32
+            ]
+          }
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "space_id": 51,
+      "event": {
+        "name": "SDK Updated Event",
+        "slug": "sdk-test-event",
+        "body": "<p>Hello <strong>Circle</strong><br><a href=\"https://example.test\">Details</a></p>",
+        "user_id": 11,
+        "space_id": 51,
+        "cover_image": "synthetic-cover-id",
+        "thumbnail_image": "synthetic-thumbnail-id",
+        "hide_from_featured_areas": false,
+        "event_type": "recurring",
+        "status": "draft",
+        "topics": [
+          21,
+          22
+        ],
+        "event_setting_attributes": {
+          "starts_at": "2026-11-01T09:30:00.123456+02:00",
+          "host": "SDK Test Host",
+          "duration_in_seconds": 3600,
+          "location_type": "live_room",
+          "virtual_location_url": "https://example.test/test-event",
+          "in_person_location": "{\"name\":\"SDK Test Venue\",\"formatted_address\":\"Test address\",\"geometry\":{\"location\":{\"lat\":0,\"lng\":0}},\"html_attributions\":[]}",
+          "hide_location_from_non_attendees": true,
+          "send_email_reminder": false,
+          "send_in_app_notification_reminder": false,
+          "rsvp_disabled": false,
+          "hide_attendees": false,
+          "enable_custom_thank_you_message": false,
+          "send_email_confirmation": false,
+          "send_in_app_notification_confirmation": false,
+          "confirmation_message_title": "",
+          "confirmation_message_description": "",
+          "confirmation_message_button_title": "",
+          "confirmation_message_button_link": "",
+          "rsvp_limit_enabled": false,
+          "rsvp_limit": 0,
+          "send_publish_email": false,
+          "ticket_type": "free",
+          "live_stream_room_setting_attributes": {
+            "access_type": "secret",
+            "recording_enabled": true,
+            "view_type": "grid_view",
+            "auto_post_recording_enabled": false,
+            "mute_on_join": false,
+            "hide_participants_list": false,
+            "limit_url_sharing": true
+          }
+        },
+        "meta_tag_attributes": {
+          "meta_title": "SDK Test Event",
+          "meta_description": "",
+          "opengraph_title": "",
+          "opengraph_description": "",
+          "opengraph_image": "synthetic-opengraph-id"
+        },
+        "recurring_setting_attributes": {
+          "frequency": "weekly",
+          "ends_at": "2026-12-01T09:30:00.123456+02:00",
+          "occurrences": 4,
+          "edit_mode": "all"
+        },
+        "paywall_attributes": {
+          "currency_id": 1,
+          "description": "Synthetic test only",
+          "price_amount": 0.0
+        },
+        "attendee_invite_attributes": {
+          "invited_entities_ids": {
+            "members_ids": [
+              31
+            ],
+            "spaces_ids": [
+              51
+            ],
+            "space_groups_ids": [
+              61
+            ],
+            "member_tags_ids": [
+              21
+            ]
+          },
+          "invited_cohost_ids": [
+            32
+          ]
+        }
+      }
+    },
+    "success_status": 200,
+    "response": {
+      "id": 71,
+      "name": "SDK Test Event",
+      "slug": "sdk-test-event",
+      "user_id": 11,
+      "community_member_id": 31,
+      "created_at": "2026-10-27T12:00:00Z",
+      "hide_meta_info": null,
+      "confirmation_message_title": null,
+      "confirmation_message_button_title": null,
+      "confirmation_message_button_link": null,
+      "confirmation_message_description": null,
+      "in_person_location": null,
+      "host": "SDK Test Host",
+      "comments_count": 0,
+      "duration_in_seconds": 3600,
+      "enable_custom_thank_you_message": false,
+      "send_in_app_notification_confirmation": false,
+      "rsvp_disabled": false,
+      "send_email_confirmation": false,
+      "send_email_reminder": false,
+      "send_in_app_notification_reminder": false,
+      "virtual_location_url": "",
+      "starts_at": "2026-11-01T09:30:00.123456+02:00",
+      "location_type": "live_room",
+      "hide_attendees": false,
+      "ends_at": "2026-11-01T10:30:00.123456+02:00",
+      "updated_at": "2026-10-27T12:00:00Z",
+      "hide_location_from_non_attendees": true,
+      "space": {
+        "id": 51,
+        "slug": "sdk-test-space",
+        "name": "SDK Test Space",
+        "community_id": 1
+      },
+      "body": "<p>Hello <strong>Circle</strong><br><a href=\"https://example.test\">Details</a></p>",
+      "url": "https://example.test/events/sdk-test-event",
+      "member_email": "host@example.test",
+      "member_name": "SDK Test Host",
+      "member_avatar_url": null,
+      "zapier_display_title": "SDK Test Event",
+      "likes_count": 0,
+      "cover_image_url": null,
+      "meta_tag_attributes": {
+        "meta_title": "SDK Test Event",
+        "meta_description": null,
+        "opengraph_title": "",
+        "opengraph_description": null,
+        "opengraph_image": null
+      },
+      "topics": [
+        21,
+        22
+      ],
+      "event_setting_attributes": {
+        "starts_at": "2026-11-01T09:30:00.123456+02:00",
+        "host": "SDK Test Host",
+        "duration_in_seconds": 3600,
+        "location_type": "live_room",
+        "virtual_location_url": "https://example.test/test-event",
+        "in_person_location": "{\"name\":\"SDK Test Venue\",\"formatted_address\":\"Test address\",\"geometry\":{\"location\":{\"lat\":0,\"lng\":0}},\"html_attributions\":[]}",
+        "hide_location_from_non_attendees": true,
+        "send_email_reminder": false,
+        "send_in_app_notification_reminder": false,
+        "rsvp_disabled": false,
+        "hide_attendees": false,
+        "enable_custom_thank_you_message": false,
+        "send_email_confirmation": false,
+        "send_in_app_notification_confirmation": false,
+        "confirmation_message_title": "",
+        "confirmation_message_description": "",
+        "confirmation_message_button_title": "",
+        "confirmation_message_button_link": "",
+        "rsvp_limit_enabled": false,
+        "rsvp_limit": 0,
+        "send_publish_email": false,
+        "ticket_type": "free",
+        "live_stream_room_setting_attributes": {
+          "access_type": "secret",
+          "recording_enabled": true,
+          "view_type": "grid_view",
+          "auto_post_recording_enabled": false,
+          "mute_on_join": false,
+          "hide_participants_list": false,
+          "limit_url_sharing": true
+        }
+      },
+      "event_recurring_settings_attributes": {
+        "frequency": "weekly",
+        "ends_at": "2026-12-01T09:30:00+02:00",
+        "occurrences": 4,
+        "range_type": "date",
+        "future": null
+      },
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Hello Circle",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-sgid",
+                    "future": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": [],
+        "future": false
+      },
+      "layout": {
+        "featured": false,
+        "position": 0,
+        "future": []
+      },
+      "future": null
+    },
+    "error_statuses": [
+      404,
+      400,
+      403
+    ]
+  },
+  {
+    "case_id": "events.duplicate",
+    "resource": "events",
+    "name": "duplicate",
+    "method": "POST",
+    "path": "/api/admin/v2/spaces/51/events/71/duplicate",
+    "args": [
+      51,
+      71,
+      {
+        "event": {
+          "space_id": 52
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "event": {
+        "space_id": 52
+      }
+    },
+    "success_status": 200,
+    "response": {
+      "id": 72,
+      "name": "SDK Test Event",
+      "slug": "sdk-test-event",
+      "user_id": 11,
+      "community_member_id": 31,
+      "created_at": "2026-10-27T12:00:00Z",
+      "hide_meta_info": null,
+      "confirmation_message_title": null,
+      "confirmation_message_button_title": null,
+      "confirmation_message_button_link": null,
+      "confirmation_message_description": null,
+      "in_person_location": null,
+      "host": "SDK Test Host",
+      "comments_count": 0,
+      "duration_in_seconds": 3600,
+      "enable_custom_thank_you_message": false,
+      "send_in_app_notification_confirmation": false,
+      "rsvp_disabled": false,
+      "send_email_confirmation": false,
+      "send_email_reminder": false,
+      "send_in_app_notification_reminder": false,
+      "virtual_location_url": "",
+      "starts_at": "2026-11-01T09:30:00.123456+02:00",
+      "location_type": "live_room",
+      "hide_attendees": false,
+      "ends_at": "2026-11-01T10:30:00.123456+02:00",
+      "updated_at": "2026-10-27T12:00:00Z",
+      "hide_location_from_non_attendees": true,
+      "space": {
+        "id": 52,
+        "slug": "sdk-test-space",
+        "name": "SDK Test Space",
+        "community_id": 1
+      },
+      "body": "<p>Hello <strong>Circle</strong><br><a href=\"https://example.test\">Details</a></p>",
+      "url": "https://example.test/events/sdk-test-event",
+      "member_email": "host@example.test",
+      "member_name": "SDK Test Host",
+      "member_avatar_url": null,
+      "zapier_display_title": "SDK Test Event",
+      "likes_count": 0,
+      "cover_image_url": null,
+      "meta_tag_attributes": {
+        "meta_title": "SDK Test Event",
+        "meta_description": null,
+        "opengraph_title": "",
+        "opengraph_description": null,
+        "opengraph_image": null
+      },
+      "topics": [
+        21,
+        22
+      ],
+      "event_setting_attributes": {
+        "starts_at": "2026-11-01T09:30:00.123456+02:00",
+        "host": "SDK Test Host",
+        "duration_in_seconds": 3600,
+        "location_type": "live_room",
+        "virtual_location_url": "https://example.test/test-event",
+        "in_person_location": "{\"name\":\"SDK Test Venue\",\"formatted_address\":\"Test address\",\"geometry\":{\"location\":{\"lat\":0,\"lng\":0}},\"html_attributions\":[]}",
+        "hide_location_from_non_attendees": true,
+        "send_email_reminder": false,
+        "send_in_app_notification_reminder": false,
+        "rsvp_disabled": false,
+        "hide_attendees": false,
+        "enable_custom_thank_you_message": false,
+        "send_email_confirmation": false,
+        "send_in_app_notification_confirmation": false,
+        "confirmation_message_title": "",
+        "confirmation_message_description": "",
+        "confirmation_message_button_title": "",
+        "confirmation_message_button_link": "",
+        "rsvp_limit_enabled": false,
+        "rsvp_limit": 0,
+        "send_publish_email": false,
+        "ticket_type": "free",
+        "live_stream_room_setting_attributes": {
+          "access_type": "secret",
+          "recording_enabled": true,
+          "view_type": "grid_view",
+          "auto_post_recording_enabled": false,
+          "mute_on_join": false,
+          "hide_participants_list": false,
+          "limit_url_sharing": true
+        }
+      },
+      "event_recurring_settings_attributes": {
+        "frequency": "weekly",
+        "ends_at": "2026-12-01T09:30:00+02:00",
+        "occurrences": 4,
+        "range_type": "date",
+        "future": null
+      },
+      "tiptap_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Hello Circle",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "mention",
+                  "attrs": {
+                    "sgid": "synthetic-sgid",
+                    "future": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": [],
+        "future": false
+      },
+      "layout": {
+        "featured": false,
+        "position": 0,
+        "future": []
+      },
+      "future": null
+    },
+    "error_statuses": [
+      404,
+      422,
+      403
+    ]
+  },
+  {
+    "case_id": "live.list_rooms",
+    "resource": "live",
+    "name": "list_rooms",
+    "method": "GET",
+    "path": "/api/admin/v2/live/rooms",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4
+    },
+    "query": "page=2&per_page=4",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 91,
+          "name": "SDK Test Live Room",
+          "status": "closed",
+          "room_type": "live_room",
+          "created_at": "2026-10-27T12:00:00+02:00",
+          "live_at": null,
+          "closed_at": "2026-10-27T13:00:00+02:00",
+          "recording_enabled": true,
+          "slug": "sdk-test-room",
+          "layout": {
+            "view_type": "grid_view",
+            "position": 0,
+            "participants": []
+          },
+          "recording": {
+            "id": 101,
+            "transcript_status": "ready",
+            "future": null
+          },
+          "future": false
+        }
+      ],
+      "future": null
+    },
+    "error_statuses": [
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "live.get_transcripts",
+    "resource": "live",
+    "name": "get_transcripts",
+    "method": "GET",
+    "path": "/api/admin/v2/live/rooms/91/transcripts",
+    "args": [
+      91
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "success_status": 200,
+    "response": {
+      "transcripts": [
+        "WEBVTT\r\n\r\nintro\r\n00:00:00.000 --> 00:00:02.500 align:start\r\n<v SDK Test Host>Hello, Circle! مرحباً 🌍</v>\r\n\r\nNOTE metadata\r\nkeep this\r\n",
+        "WEBVTT\n\n00:00.000 --> 00:01.000\nSecond recording\n"
+      ],
+      "future": {
+        "language": "mixed",
+        "offset": 0
+      }
+    },
+    "error_statuses": [
+      404,
+      401,
+      403
+    ]
+  }
+]

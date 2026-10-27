@@ -105,7 +105,8 @@ class AdminV2Client(_SyncAPIClient):
                                CommunityMemberAccessGroupsAPI, SpaceGroupsAPI,
                                SpaceGroupMembersAPI, SpaceMembersAPI, SpacesAPI,
                                PostsAPI, CommentsAPI, UploadsAPI, EmbedsAPI, PostFollowersAPI,
-                               CourseSectionsAPI, CourseLessonsAPI, CourseLessonProgressAPI)
+                               CourseSectionsAPI, CourseLessonsAPI, CourseLessonProgressAPI,
+                               EventsAPI, EventAttendeesAPI, LiveAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -131,6 +132,9 @@ class AdminV2Client(_SyncAPIClient):
         self.course_sections = CourseSectionsAPI(self)
         self.course_lessons = CourseLessonsAPI(self)
         self.course_lesson_progress = CourseLessonProgressAPI(self)
+        self.events = EventsAPI(self)
+        self.event_attendees = EventAttendeesAPI(self)
+        self.live = LiveAPI(self)
 
 
 class AsyncAdminV2Client(_AsyncAPIClient):
@@ -147,7 +151,8 @@ class AsyncAdminV2Client(_AsyncAPIClient):
                                AsyncSpaceGroupMembersAPI, AsyncSpaceMembersAPI, AsyncSpacesAPI,
                                AsyncPostsAPI, AsyncCommentsAPI, AsyncUploadsAPI,
                                AsyncEmbedsAPI, AsyncPostFollowersAPI, AsyncCourseSectionsAPI,
-                               AsyncCourseLessonsAPI, AsyncCourseLessonProgressAPI)
+                               AsyncCourseLessonsAPI, AsyncCourseLessonProgressAPI,
+                               AsyncEventsAPI, AsyncEventAttendeesAPI, AsyncLiveAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -173,3 +178,6 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.course_sections = AsyncCourseSectionsAPI(self)
         self.course_lessons = AsyncCourseLessonsAPI(self)
         self.course_lesson_progress = AsyncCourseLessonProgressAPI(self)
+        self.events = AsyncEventsAPI(self)
+        self.event_attendees = AsyncEventAttendeesAPI(self)
+        self.live = AsyncLiveAPI(self)

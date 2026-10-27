@@ -39,6 +39,9 @@ updates, full gallery metadata, shared uploads and bounded pagination.
 Both expose `.course_sections`, `.course_lessons`, `.course_lesson_progress`
 for all 12 [course administration operations](admin-v2-courses.md), including
 PATCH lesson editing, PUT course reordering and progress updates by member email.
+Both expose `.events`, `.event_attendees` and `.live` for all 11
+[event and live administration operations](admin-v2-events.md), including recurrence,
+duplication, administrative RSVPs and raw transcripts.
 Both Headless facades expose explicit plural resources
 for every frozen Member operation. No methods are generated at runtime.
 

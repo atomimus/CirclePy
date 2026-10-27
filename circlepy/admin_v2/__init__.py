@@ -44,8 +44,12 @@ from .courses import CourseSectionsAPI, CourseLessonsAPI, CourseLessonProgressAP
 from .async_courses import (
     AsyncCourseSectionsAPI, AsyncCourseLessonsAPI, AsyncCourseLessonProgressAPI,
 )
+from .events import EventsAPI, EventAttendeesAPI, LiveAPI
+from .async_events import AsyncEventsAPI, AsyncEventAttendeesAPI, AsyncLiveAPI
 
 __all__ = [
+    "EventsAPI", "EventAttendeesAPI", "LiveAPI",
+    "AsyncEventsAPI", "AsyncEventAttendeesAPI", "AsyncLiveAPI",
     "CourseSectionsAPI", "CourseLessonsAPI", "CourseLessonProgressAPI",
     "AsyncCourseSectionsAPI", "AsyncCourseLessonsAPI", "AsyncCourseLessonProgressAPI",
     "PostsAPI", "CommentsAPI", "UploadsAPI", "EmbedsAPI", "PostFollowersAPI",

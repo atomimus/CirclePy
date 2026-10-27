@@ -2630,9 +2630,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncEventAttendeesAPI.delete",
+          "line": 81,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "EventAttendeesAPI.delete",
+          "line": 85,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2652,9 +2665,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncEventsAPI.delete",
+          "line": 24,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "EventsAPI.delete",
+          "line": 33,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3813,9 +3839,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncEventAttendeesAPI.list_attendees",
+          "line": 85,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "EventAttendeesAPI.list_attendees",
+          "line": 89,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3835,9 +3874,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncEventsAPI.list_events",
+          "line": 40,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "EventsAPI.list_events",
+          "line": 49,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3857,9 +3909,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncEventsAPI.get",
+          "line": 15,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "EventsAPI.get",
+          "line": 24,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4090,9 +4155,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncLiveAPI.list_rooms",
+          "line": 109,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "LiveAPI.list_rooms",
+          "line": 108,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4112,9 +4190,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncLiveAPI.get_transcripts",
+          "line": 115,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "LiveAPI.get_transcripts",
+          "line": 114,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5730,9 +5821,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncEventAttendeesAPI.create",
+          "line": 77,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "EventAttendeesAPI.create",
+          "line": 81,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5752,9 +5856,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncEventsAPI.create",
+          "line": 12,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "EventsAPI.create",
+          "line": 21,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6270,9 +6387,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncEventsAPI.duplicate",
+          "line": 31,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "EventsAPI.duplicate",
+          "line": 40,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6752,9 +6882,22 @@
         }
       ],
       "task_id": 19,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_events.py",
+          "symbol": "AsyncEventsAPI.update",
+          "line": 19,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/events.py",
+          "symbol": "EventsAPI.update",
+          "line": 28,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
