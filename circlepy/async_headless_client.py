@@ -8,6 +8,8 @@ from .api_clients import family_path
 from .tokens import identity
 from .headless_models.uploads_api import AsyncUploadsAPI
 from .headless_models.async_content_api import AsyncPostsAPI, AsyncCommentsAPI
+from .headless_models.async_members_api import (AsyncCommunityMembersAPI, AsyncSpacesAPI,
+                                               AsyncSpaceMembersAPI, AsyncPageProfileFieldsAPI)
 
 
 class AsyncHeadlessClient:
@@ -28,6 +30,10 @@ class AsyncHeadlessClient:
         self.uploads = AsyncUploadsAPI(self.auth)
         self.posts = AsyncPostsAPI(self)
         self.comments = AsyncCommentsAPI(self)
+        self.community_members = AsyncCommunityMembersAPI(self)
+        self.spaces = AsyncSpacesAPI(self)
+        self.space_members = AsyncSpaceMembersAPI(self)
+        self.page_profile_fields = AsyncPageProfileFieldsAPI(self)
 
     @classmethod
     async def create(cls, api_key, *, email=None, community_member_id=None, sso_user_id=None, **options):

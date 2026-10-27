@@ -1,0 +1,745 @@
+[
+  {
+    "resource": "community_members",
+    "name": "get_comments",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members/81/comments",
+    "schema_path": "/api/headless/v1/community_members/{community_member_id}/comments",
+    "args": [
+      81,
+      2,
+      17
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=17",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 17,
+      "count": 1,
+      "has_next_page": true,
+      "records": [
+        {
+          "fixture_extension": {
+            "zero": 0
+          },
+          "reaction_summary": {
+            "current_user_reaction_type": null,
+            "counts": {
+              "like": 0,
+              "celebrate": 0,
+              "love": 0,
+              "support": 0,
+              "insightful": 0,
+              "funny": 0
+            }
+          }
+        }
+      ],
+      "next_search_after": [
+        "opaque/+=",
+        0
+      ]
+    }
+  },
+  {
+    "resource": "community_members",
+    "name": "get_posts",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members/81/posts",
+    "schema_path": "/api/headless/v1/community_members/{community_member_id}/posts",
+    "args": [
+      81,
+      2,
+      17
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=17",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 17,
+      "count": 1,
+      "has_next_page": true,
+      "records": [
+        {
+          "fixture_extension": {
+            "zero": 0
+          }
+        }
+      ],
+      "next_search_after": [
+        "opaque/+=",
+        0
+      ]
+    }
+  },
+  {
+    "resource": "community_members",
+    "name": "get_spaces",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members/81/spaces",
+    "schema_path": "/api/headless/v1/community_members/{community_member_id}/spaces",
+    "args": [
+      81,
+      2,
+      17
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=17",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 17,
+      "count": 1,
+      "has_next_page": true,
+      "records": [
+        {
+          "fixture_extension": {
+            "zero": 0
+          }
+        }
+      ],
+      "next_search_after": [
+        "opaque/+=",
+        0
+      ]
+    }
+  },
+  {
+    "resource": "community_members",
+    "name": "deactivate_member",
+    "method": "DELETE",
+    "path": "/api/headless/v1/community_member/deactivate",
+    "schema_path": "/api/headless/v1/community_member/deactivate",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "success": true,
+      "fixture_extension": false
+    }
+  },
+  {
+    "resource": "community_members",
+    "name": "list_members",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members",
+    "schema_path": "/api/headless/v1/community_members",
+    "args": [
+      2,
+      17,
+      12,
+      "",
+      [
+        "opaque/+=",
+        0
+      ],
+      "latest"
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=17&space_id=12&search_text=&search_after=opaque%2F%2B%3D&search_after=0&sort=latest",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 17,
+      "count": 1,
+      "has_next_page": true,
+      "records": [
+        {
+          "fixture_extension": {
+            "zero": 0
+          }
+        }
+      ],
+      "next_search_after": [
+        "opaque/+=",
+        0
+      ]
+    },
+    "async_query": "page=2&per_page=17&space_id=12&search_text=&search_after=opaque/%2B%3D&search_after=0&sort=latest"
+  },
+  {
+    "resource": "community_members",
+    "name": "get_current_member",
+    "method": "GET",
+    "path": "/api/headless/v1/community_member",
+    "schema_path": "/api/headless/v1/community_member",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 81,
+      "name": "Synthetic",
+      "active": true,
+      "profile_fields": {
+        "visible": [],
+        "not_visible": []
+      },
+      "fixture_extension": {
+        "false": false
+      }
+    }
+  },
+  {
+    "resource": "community_members",
+    "name": "get_public_profile",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members/81/public_profile",
+    "schema_path": "/api/headless/v1/community_members/{community_member_id}/public_profile",
+    "args": [
+      81
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 81,
+      "name": "Synthetic",
+      "avatar_url": null,
+      "roles": {
+        "admin": false,
+        "moderator": false
+      },
+      "fixture_extension": []
+    }
+  },
+  {
+    "resource": "community_members",
+    "name": "update_profile_raw",
+    "method": "PUT",
+    "path": "/api/headless/v1/profile",
+    "schema_path": "/api/headless/v1/profile",
+    "args": [
+      {
+        "community_member": {
+          "name": "",
+          "avatar": "signed-avatar",
+          "headline": "",
+          "time_zone": "Africa/Cairo",
+          "preferences": {
+            "messaging_enabled": false,
+            "visible_in_member_directory": false,
+            "make_my_email_public": false
+          },
+          "community_member_profile_fields_attributes": [
+            {
+              "id": 501,
+              "profile_field_id": 71,
+              "text": "",
+              "textarea": "",
+              "community_member_choices_attributes": [
+                {
+                  "id": 601,
+                  "profile_field_choice_id": 91,
+                  "_destroy": true
+                },
+                {
+                  "id": 602,
+                  "profile_field_choice_id": 92,
+                  "_destroy": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "community_member": {
+        "name": "",
+        "avatar": "signed-avatar",
+        "headline": "",
+        "time_zone": "Africa/Cairo",
+        "preferences": {
+          "messaging_enabled": false,
+          "visible_in_member_directory": false,
+          "make_my_email_public": false
+        },
+        "community_member_profile_fields_attributes": [
+          {
+            "id": 501,
+            "profile_field_id": 71,
+            "text": "",
+            "textarea": "",
+            "community_member_choices_attributes": [
+              {
+                "id": 601,
+                "profile_field_choice_id": 91,
+                "_destroy": true
+              },
+              {
+                "id": 602,
+                "profile_field_choice_id": 92,
+                "_destroy": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "status": 200,
+    "response": {
+      "message": "Updated",
+      "current_community_member": {
+        "id": 81,
+        "name": "",
+        "messaging_enabled": false,
+        "profile_fields": {
+          "visible": []
+        }
+      },
+      "fixture_extension": {
+        "null": null
+      }
+    }
+  },
+  {
+    "resource": "community_members",
+    "name": "confirm_member_profile_raw",
+    "method": "PUT",
+    "path": "/api/headless/v1/signup/profile",
+    "schema_path": "/api/headless/v1/signup/profile",
+    "args": [
+      {
+        "community_member": {
+          "name": "",
+          "avatar": "signed-avatar",
+          "headline": "",
+          "time_zone": "Africa/Cairo",
+          "preferences": {
+            "messaging_enabled": false,
+            "visible_in_member_directory": false,
+            "make_my_email_public": false
+          },
+          "community_member_profile_fields_attributes": [
+            {
+              "id": 501,
+              "profile_field_id": 71,
+              "text": "",
+              "textarea": "",
+              "community_member_choices_attributes": [
+                {
+                  "id": 601,
+                  "profile_field_choice_id": 91,
+                  "_destroy": true
+                },
+                {
+                  "id": 602,
+                  "profile_field_choice_id": 92,
+                  "_destroy": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "community_member": {
+        "name": "",
+        "avatar": "signed-avatar",
+        "headline": "",
+        "time_zone": "Africa/Cairo",
+        "preferences": {
+          "messaging_enabled": false,
+          "visible_in_member_directory": false,
+          "make_my_email_public": false
+        },
+        "community_member_profile_fields_attributes": [
+          {
+            "id": 501,
+            "profile_field_id": 71,
+            "text": "",
+            "textarea": "",
+            "community_member_choices_attributes": [
+              {
+                "id": 601,
+                "profile_field_choice_id": 91,
+                "_destroy": true
+              },
+              {
+                "id": 602,
+                "profile_field_choice_id": 92,
+                "_destroy": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "status": 200,
+    "response": {
+      "message": "Updated",
+      "current_community_member": {
+        "id": 81,
+        "name": "",
+        "messaging_enabled": false,
+        "profile_fields": {
+          "visible": []
+        }
+      },
+      "fixture_extension": {
+        "null": null
+      }
+    }
+  },
+  {
+    "resource": "community_members",
+    "name": "search_members",
+    "method": "POST",
+    "path": "/api/headless/v1/search/community_members",
+    "schema_path": "/api/headless/v1/search/community_members",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 17,
+      "search_text": "",
+      "exclude_empty_name": false,
+      "order": "role",
+      "status": "inactive",
+      "filters": [
+        {
+          "key": "profile_field",
+          "filter_type": "is",
+          "profile_field_type": "text",
+          "profile_field_id": "71",
+          "value": "",
+          "gte": 0,
+          "lte": 0
+        }
+      ],
+      "search_after": [
+        "opaque/+=",
+        "0"
+      ],
+      "exclude_empty_profiles": false
+    },
+    "query": "",
+    "body": {
+      "page": 2,
+      "per_page": 17,
+      "search_text": "",
+      "exclude_empty_name": false,
+      "order": "role",
+      "status": "inactive",
+      "filters": [
+        {
+          "key": "profile_field",
+          "filter_type": "is",
+          "profile_field_type": "text",
+          "profile_field_id": "71",
+          "value": "",
+          "gte": 0,
+          "lte": 0
+        }
+      ],
+      "search_after": [
+        "opaque/+=",
+        "0"
+      ]
+    },
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 17,
+      "count": 1,
+      "has_next_page": true,
+      "records": [
+        {
+          "fixture_extension": {
+            "zero": 0
+          }
+        }
+      ],
+      "next_search_after": [
+        "next",
+        "0"
+      ]
+    }
+  },
+  {
+    "resource": "page_profile_fields",
+    "name": "list_page_profile_fields",
+    "method": "GET",
+    "path": "/api/headless/v1/page_profile_fields",
+    "schema_path": "/api/headless/v1/page_profile_fields",
+    "args": [
+      "signup",
+      2,
+      17
+    ],
+    "kwargs": {},
+    "query": "page_name=signup&page=2&per_page=17",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 17,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 2,
+      "records": [
+        {
+          "id": 71,
+          "label": "Skills",
+          "field_type": "select",
+          "key": "skills",
+          "required": false,
+          "allow_null": true,
+          "choices": [
+            {
+              "id": 91,
+              "value": "Python"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "resource": "space_members",
+    "name": "mark_as_read",
+    "method": "POST",
+    "path": "/api/headless/v1/space_members/901/mark_as_read",
+    "schema_path": "/api/headless/v1/space_members/{id}/mark_as_read",
+    "args": [
+      901
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "success": true,
+      "fixture_extension": 0
+    }
+  },
+  {
+    "resource": "spaces",
+    "name": "get_space_notification_details",
+    "method": "GET",
+    "path": "/api/headless/v1/space_notification_details",
+    "schema_path": "/api/headless/v1/space_notification_details",
+    "args": [
+      [
+        12,
+        13
+      ]
+    ],
+    "kwargs": {},
+    "query": "space_ids=12%2C13",
+    "body": null,
+    "status": 200,
+    "response": [
+      {
+        "id": 12,
+        "unread_content_count": 0,
+        "unread_notifications_count": 0,
+        "fixture_extension": false
+      }
+    ],
+    "async_query": "space_ids=12,13"
+  },
+  {
+    "resource": "spaces",
+    "name": "list_spaces",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces",
+    "schema_path": "/api/headless/v1/spaces",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": [
+      {
+        "id": 12,
+        "name": "Synthetic",
+        "slug": "synthetic",
+        "space_member_id": 901,
+        "is_member": true,
+        "policies": {
+          "can_manage_space": false,
+          "can_view_space": true
+        },
+        "fixture_extension": {
+          "null": null
+        }
+      }
+    ]
+  },
+  {
+    "resource": "spaces",
+    "name": "get_home_space",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces/home",
+    "schema_path": "/api/headless/v1/spaces/home",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 0,
+      "name": "Synthetic",
+      "slug": "synthetic",
+      "space_member_id": 901,
+      "is_member": true,
+      "policies": {
+        "can_manage_space": false,
+        "can_view_space": true
+      },
+      "fixture_extension": {
+        "null": null
+      }
+    }
+  },
+  {
+    "resource": "spaces",
+    "name": "get_space",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces/12",
+    "schema_path": "/api/headless/v1/spaces/{id}",
+    "args": [
+      12
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 12,
+      "name": "Synthetic",
+      "slug": "synthetic",
+      "space_member_id": 901,
+      "is_member": true,
+      "policies": {
+        "can_manage_space": false,
+        "can_view_space": true
+      },
+      "fixture_extension": {
+        "null": null
+      }
+    }
+  },
+  {
+    "resource": "spaces",
+    "name": "join_space",
+    "method": "POST",
+    "path": "/api/headless/v1/spaces/12/join",
+    "schema_path": "/api/headless/v1/spaces/{id}/join",
+    "args": [
+      12
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 12,
+      "name": "Synthetic",
+      "slug": "synthetic",
+      "space_member_id": 901,
+      "is_member": true,
+      "policies": {
+        "can_manage_space": false,
+        "can_view_space": true
+      },
+      "fixture_extension": {
+        "null": null
+      }
+    }
+  },
+  {
+    "resource": "spaces",
+    "name": "leave_space",
+    "method": "POST",
+    "path": "/api/headless/v1/spaces/12/leave",
+    "schema_path": "/api/headless/v1/spaces/{id}/leave",
+    "args": [
+      12
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 12,
+      "name": "Synthetic",
+      "slug": "synthetic",
+      "space_member_id": 901,
+      "is_member": true,
+      "policies": {
+        "can_manage_space": false,
+        "can_view_space": true
+      },
+      "fixture_extension": {
+        "null": null
+      }
+    }
+  },
+  {
+    "resource": "spaces",
+    "name": "get_space_bookmarks",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces/12/bookmarks",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/bookmarks",
+    "args": [
+      12,
+      2,
+      17
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=17",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 17,
+      "has_next_page": false,
+      "count": 0,
+      "page_count": 1,
+      "records": [],
+      "fixture_extension": false
+    }
+  },
+  {
+    "resource": "spaces",
+    "name": "get_space_topics",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces/12/topics",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/topics",
+    "args": [
+      12,
+      2,
+      17
+    ],
+    "kwargs": {},
+    "query": "page=2&per_page=17",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 17,
+      "has_next_page": false,
+      "count": 0,
+      "page_count": 1,
+      "records": [],
+      "fixture_extension": false
+    }
+  }
+]

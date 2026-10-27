@@ -3,6 +3,7 @@ include docs/transports.md
 include docs/clients.md
 include docs/media.md
 include docs/content.md
+include docs/members.md
 recursive-include circlepy *.py
 recursive-include tests *.py *.json *.md
 recursive-include tools *.py

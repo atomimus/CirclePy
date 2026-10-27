@@ -1,0 +1,222 @@
+[
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members/{community_member_id}/comments",
+    "sync": "CommunityMembersAPI.get_comments",
+    "async_method": "AsyncCommunityMembersAPI.get_comments",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members/{community_member_id}/posts",
+    "sync": "CommunityMembersAPI.get_posts",
+    "async_method": "AsyncCommunityMembersAPI.get_posts",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members/{community_member_id}/spaces",
+    "sync": "CommunityMembersAPI.get_spaces",
+    "async_method": "AsyncCommunityMembersAPI.get_spaces",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "DELETE",
+    "path": "/api/headless/v1/community_member/deactivate",
+    "sync": "CommunityMembersAPI.deactivate_member",
+    "async_method": "AsyncCommunityMembersAPI.deactivate_member",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members",
+    "sync": "CommunityMembersAPI.list_members",
+    "async_method": "AsyncCommunityMembersAPI.list_members",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/community_member",
+    "sync": "CommunityMembersAPI.get_current_member",
+    "async_method": "AsyncCommunityMembersAPI.get_current_member",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/community_members/{community_member_id}/public_profile",
+    "sync": "CommunityMembersAPI.get_public_profile",
+    "async_method": "AsyncCommunityMembersAPI.get_public_profile",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "PUT",
+    "path": "/api/headless/v1/profile",
+    "sync": "CommunityMembersAPI.update_profile_raw",
+    "async_method": "AsyncCommunityMembersAPI.update_profile_raw",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "PUT",
+    "path": "/api/headless/v1/signup/profile",
+    "sync": "CommunityMembersAPI.confirm_member_profile_raw",
+    "async_method": "AsyncCommunityMembersAPI.confirm_member_profile_raw",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "POST",
+    "path": "/api/headless/v1/search/community_members",
+    "sync": "CommunityMembersAPI.search_members",
+    "async_method": "AsyncCommunityMembersAPI.search_members",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/page_profile_fields",
+    "sync": "PageProfileFieldsAPI.list_page_profile_fields",
+    "async_method": "AsyncPageProfileFieldsAPI.list_page_profile_fields",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "POST",
+    "path": "/api/headless/v1/space_members/{id}/mark_as_read",
+    "sync": "SpaceMembersAPI.mark_as_read",
+    "async_method": "AsyncSpaceMembersAPI.mark_as_read",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/space_notification_details",
+    "sync": "SpacesAPI.get_space_notification_details",
+    "async_method": "AsyncSpacesAPI.get_space_notification_details",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces",
+    "sync": "SpacesAPI.list_spaces",
+    "async_method": "AsyncSpacesAPI.list_spaces",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces/home",
+    "sync": "SpacesAPI.get_home_space",
+    "async_method": "AsyncSpacesAPI.get_home_space",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces/{id}",
+    "sync": "SpacesAPI.get_space",
+    "async_method": "AsyncSpacesAPI.get_space",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "POST",
+    "path": "/api/headless/v1/spaces/{id}/join",
+    "sync": "SpacesAPI.join_space",
+    "async_method": "AsyncSpacesAPI.join_space",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "POST",
+    "path": "/api/headless/v1/spaces/{id}/leave",
+    "sync": "SpacesAPI.leave_space",
+    "async_method": "AsyncSpacesAPI.leave_space",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces/{space_id}/bookmarks",
+    "sync": "SpacesAPI.get_space_bookmarks",
+    "async_method": "AsyncSpacesAPI.get_space_bookmarks",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces/{space_id}/topics",
+    "sync": "SpacesAPI.get_space_topics",
+    "async_method": "AsyncSpacesAPI.get_space_topics",
+    "fixture": "tests/fixtures/headless-members.json",
+    "tests": "tests/test_headless_members.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  }
+]

@@ -29,6 +29,9 @@ bounded file uploads. Shared Markdown and raw container builders are documented
 in [uploads and rich text](media.md).
 Both also expose `.posts` and `.comments` with all 25 documented Member content
 operations. See [content methods and the experimental basic-post update](content.md).
+Both expose `.community_members`, `.spaces`, `.space_members` and
+`.page_profile_fields` for all 20 documented Member profile/space operations.
+See [profile, directory search and space methods](members.md).
 
 New resource classes must explicitly receive the client's existing transport
 (and Headless Auth), register readable attributes in the constructor, and use

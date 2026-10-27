@@ -5933,7 +5933,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.deactivate_member",
-          "line": 19,
+          "line": 25,
           "visibility": "public_method"
         }
       ],
@@ -6542,7 +6542,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_current_member",
-          "line": 41,
+          "line": 36,
           "visibility": "public_method"
         }
       ],
@@ -6571,7 +6571,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.list_members",
-          "line": 32,
+          "line": 28,
           "visibility": "public_method"
         }
       ],
@@ -6600,7 +6600,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_comments",
-          "line": 15,
+          "line": 20,
           "visibility": "public_method"
         }
       ],
@@ -6629,7 +6629,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_posts",
-          "line": 37,
+          "line": 32,
           "visibility": "public_method"
         }
       ],
@@ -6658,7 +6658,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_public_profile",
-          "line": 50,
+          "line": 43,
           "visibility": "public_method"
         }
       ],
@@ -6687,7 +6687,7 @@
         {
           "file": "circlepy/headless_models/community_members_api.py",
           "symbol": "CommunityMembersAPI.get_spaces",
-          "line": 46,
+          "line": 39,
           "visibility": "public_method"
         }
       ],
@@ -7383,7 +7383,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_space_notification_details",
-          "line": 12,
+          "line": 8,
           "visibility": "public_method"
         }
       ],
@@ -7412,7 +7412,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.list_spaces",
-          "line": 15,
+          "line": 11,
           "visibility": "public_method"
         }
       ],
@@ -7441,7 +7441,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_home_space",
-          "line": 18,
+          "line": 14,
           "visibility": "public_method"
         }
       ],
@@ -7470,7 +7470,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_space",
-          "line": 21,
+          "line": 17,
           "visibility": "public_method"
         }
       ],
@@ -7499,7 +7499,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_space_bookmarks",
-          "line": 35,
+          "line": 31,
           "visibility": "public_method"
         }
       ],
@@ -7615,7 +7615,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.get_space_topics",
-          "line": 43,
+          "line": 39,
           "visibility": "public_method"
         }
       ],
@@ -8345,8 +8345,8 @@
       "code_references": [
         {
           "file": "circlepy/headless_models/community_members_api.py",
-          "symbol": "CommunityMembersAPI.search_members",
-          "line": 65,
+          "symbol": "CommunityMembersAPI.search_members_raw",
+          "line": 53,
           "visibility": "public_method"
         }
       ],
@@ -8375,7 +8375,7 @@
         {
           "file": "circlepy/headless_models/space_members_api.py",
           "symbol": "SpaceMembersAPI.mark_as_read",
-          "line": 6,
+          "line": 8,
           "visibility": "public_method"
         }
       ],
@@ -8439,7 +8439,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.join_space",
-          "line": 24,
+          "line": 20,
           "visibility": "public_method"
         }
       ],
@@ -8468,7 +8468,7 @@
         {
           "file": "circlepy/headless_models/spaces_api.py",
           "symbol": "SpacesAPI.leave_space",
-          "line": 27,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -8676,8 +8676,8 @@
       "code_references": [
         {
           "file": "circlepy/headless_models/community_members_api.py",
-          "symbol": "CommunityMembersAPI.update_profile",
-          "line": 128,
+          "symbol": "CommunityMembersAPI.update_profile_raw",
+          "line": 70,
           "visibility": "public_method"
         }
       ],
@@ -8734,8 +8734,8 @@
       "code_references": [
         {
           "file": "circlepy/headless_models/community_members_api.py",
-          "symbol": "CommunityMembersAPI.confirm_member_profile",
-          "line": 190,
+          "symbol": "CommunityMembersAPI.confirm_member_profile_raw",
+          "line": 88,
           "visibility": "public_method"
         }
       ],

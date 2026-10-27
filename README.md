@@ -16,6 +16,8 @@ current resource coverage.
 
 Both Headless clients expose direct [uploads and rich-text helpers](docs/media.md)
 with bounded file processing, native async I/O and content-preserving Markdown.
+Both also expose complete [member profiles, directory search and spaces](docs/members.md),
+including signup custom fields/timezone and field/choice record preservation.
 
 The Headless implementations were checked against Circle's live API specs on
 October 27, 2026. The refreshed specs are saved in `api/specs`, with their source
@@ -88,7 +90,8 @@ Development tasks commit and push directly to main after automated validation.
 
 The current package is still 0.5.1. Sync clients now pool sessions and support
 timeouts, proxies, explicit cleanup and opt-in strict errors. A native async
-transport is implemented; public async client facades remain the next task.
+transport and public async client facades are implemented, with the current
+named resource coverage described in the guides above.
 See [HTTP transport configuration and migration notes](docs/transports.md).
 
 Run the request and authentication regression tests without calling a community:

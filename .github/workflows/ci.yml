@@ -72,6 +72,8 @@ jobs:
       - run: python tools/check_media_contract.py
       - run: python -m ruff check --select E4,E7,E9,F circlepy/headless_models/content.py circlepy/headless_models/posts_api.py circlepy/headless_models/comments_api.py circlepy/headless_models/async_content_api.py tests/test_headless_content.py tools/check_content_contract.py
       - run: python tools/check_content_contract.py
+      - run: python -m ruff check --select E4,E7,E9,F circlepy/headless_models/members.py circlepy/headless_models/community_members_api.py circlepy/headless_models/async_members_api.py circlepy/headless_models/spaces_api.py circlepy/headless_models/space_members_api.py circlepy/headless_models/page_profile_fields_api.py tests/test_headless_members.py tools/check_members_contract.py
+      - run: python tools/check_members_contract.py
       - run: python tools/check_ci.py --negative-fixture
 
   dependencies:

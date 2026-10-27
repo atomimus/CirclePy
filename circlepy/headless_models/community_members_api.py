@@ -1,6 +1,13 @@
+"""Member-authenticated directory, current profile and signup operations."""
+
+from copy import deepcopy
+
 from .uploads_api import UploadsAPI
 from ..uploads import calculate_md5
 from .base_api_client import BaseAPIClient
+from .content import segment
+from .members import page_params, profile_payload, search_payload
+
 
 class CommunityMembersAPI(BaseAPIClient):
     def _calculate_md5(self, file_data):
@@ -10,181 +17,72 @@ class CommunityMembersAPI(BaseAPIClient):
         return UploadsAPI(self.auth).upload_file(file_path)
 
     def get_comments(self, community_member_id, page=1, per_page=10):
-        endpoint = f"/community_members/{community_member_id}/comments"
-        params = {"page": page, "per_page": per_page}
-        return self.get(endpoint, params=params)
+        return self.get(f'/community_members/{segment(community_member_id)}/comments',
+                        params=page_params(page, per_page))
 
     def deactivate_member(self):
-        endpoint = "/community_member/deactivate"
-        return self.delete(endpoint)
+        """Deactivate the authenticated non-admin/non-owner, never an arbitrary ID."""
+        return self.delete('/community_member/deactivate')
 
     def list_members(self, page=1, per_page=10, space_id=None, search_text=None, search_after=None, sort=None):
-        endpoint = "/community_members"
-        params = {"page": page, "per_page": per_page}
-        if space_id is not None:
-            params["space_id"] = space_id
-        if search_text is not None:
-            params["search_text"] = search_text
-        if search_after is not None:
-            params["search_after"] = search_after
-        if sort is not None:
-            params["sort"] = sort
-        return self.get(endpoint, params=params)
+        return self.get('/community_members', params=page_params(page, per_page,
+                        space_id=space_id, search_text=search_text, search_after=search_after, sort=sort))
 
     def get_posts(self, community_member_id, page=1, per_page=10):
-        endpoint = f"/community_members/{community_member_id}/posts"
-        params = {"page": page, "per_page": per_page}
-        return self.get(endpoint, params=params)
+        return self.get(f'/community_members/{segment(community_member_id)}/posts',
+                        params=page_params(page, per_page))
 
     def get_current_member(self):
-        endpoint = "/community_member"
-        return self.get(endpoint)
+        return self.get('/community_member')
 
     def get_spaces(self, community_member_id, page=1, per_page=30):
-        endpoint = f"/community_members/{community_member_id}/spaces"
-        params = {"page": page, "per_page": per_page}
-        return self.get(endpoint, params=params)
+        return self.get(f'/community_members/{segment(community_member_id)}/spaces',
+                        params=page_params(page, per_page))
 
     def get_public_profile(self, community_member_id):
-        endpoint = f"/community_members/{community_member_id}/public_profile"
-        return self.get(endpoint)
+        return self.get(f'/community_members/{segment(community_member_id)}/public_profile')
 
-    def search_members(self, page=1, per_page=30, search_text="", exclude_empty_name=True, exclude_empty_profiles=True, order="oldest", status="active", filters=None, search_after=None):
-        """Search members. exclude_empty_profiles is retained for compatibility and is no longer sent."""
-        endpoint = "/search/community_members"
-        payload = {
-            "page": page,
-            "per_page": per_page,
-            "search_text": search_text,
-            "exclude_empty_name": exclude_empty_name,
-            "order": order,
-            "status": status,
-            "filters": filters if filters is not None else [],
-            "search_after": search_after if search_after is not None else []
-        }
-        return self.post(endpoint, data=payload)
+    def search_members(self, page=1, per_page=30, search_text="", exclude_empty_name=True,
+                       exclude_empty_profiles=True, order="oldest", status="active", filters=None, search_after=None):
+        """Search one page; exclude_empty_profiles is retained but no longer sent."""
+        return self.search_members_raw(search_payload(page, per_page, search_text,
+                     exclude_empty_name, order, status, filters, search_after))
 
-    def update_profile(
-        self,
-        name=None,
-        avatar=None,
-        headline=None,
-        time_zone=None,
-        messaging_enabled=None,
-        visible_in_member_directory=None,
-        make_my_email_public=None,
-        profile_fields=None
-    ):
-        if (
-            name is None
-            and avatar is None
-            and headline is None
-            and time_zone is None
-            and messaging_enabled is None
-            and visible_in_member_directory is None
-            and make_my_email_public is None
-            and not profile_fields
-        ):
-            raise ValueError("At least one field must be provided.")
-        community_member_payload = {}
-        if name is not None:
-            community_member_payload["name"] = name
+    def search_members_raw(self, payload):
+        """Send the full search body, without defaults or filter normalization."""
+        return self.post('/search/community_members', data=deepcopy(payload))
+
+    def update_profile(self, name=None, avatar=None, headline=None, time_zone=None,
+                       messaging_enabled=None, visible_in_member_directory=None,
+                       make_my_email_public=None, profile_fields=None, *, avatar_file=None):
+        """Update self; avatar is a signed ID, avatar_file uses shared uploads."""
+        if avatar is not None and avatar_file is not None:
+            raise ValueError('Use either avatar or avatar_file')
+        payload = profile_payload(name, '' if avatar_file is not None else avatar,
+                  headline, time_zone, messaging_enabled, visible_in_member_directory,
+                  make_my_email_public, profile_fields)
+        if avatar_file is not None:
+            payload['community_member']['avatar'] = self._direct_upload_file(avatar_file)['signed_id']
+        return self.update_profile_raw(payload)
+
+    def update_profile_raw(self, payload):
+        """Send the complete wire body, including its community_member envelope."""
+        return self.put('/profile', data=deepcopy(payload))
+
+    def confirm_member_profile(self, name=None, avatar=None, headline=None,
+                               messaging_enabled=None, visible_in_member_directory=None,
+                               make_my_email_public=None, *, time_zone=None,
+                               profile_fields=None, avatar_signed_id=None):
+        """Confirm self; legacy avatar uploads a file, avatar_signed_id skips upload."""
+        if avatar is not None and avatar_signed_id is not None:
+            raise ValueError('Use either avatar or avatar_signed_id')
+        payload = profile_payload(name, '' if avatar is not None else avatar_signed_id,
+                  headline, time_zone, messaging_enabled, visible_in_member_directory,
+                  make_my_email_public, profile_fields)
         if avatar is not None:
-            community_member_payload["avatar"] = avatar
-        if headline is not None:
-            community_member_payload["headline"] = headline
-        if time_zone is not None:
-            community_member_payload["time_zone"] = time_zone
-        preferences_payload = {}
-        if messaging_enabled is not None:
-            preferences_payload["messaging_enabled"] = messaging_enabled
-        if visible_in_member_directory is not None:
-            preferences_payload["visible_in_member_directory"] = visible_in_member_directory
-        if make_my_email_public is not None:
-            preferences_payload["make_my_email_public"] = make_my_email_public
-        if preferences_payload:
-            community_member_payload["preferences"] = preferences_payload
-        if profile_fields:
-            fields_attributes = []
-            for field in profile_fields:
-                attr = {}
-                if "profile_field_id" in field:
-                    attr["profile_field_id"] = field["profile_field_id"]
-                if "text" in field:
-                    attr["text"] = field["text"]
-                if "textarea" in field:
-                    attr["textarea"] = field["textarea"]
-                if "choices" in field:
-                    attr["community_member_choices_attributes"] = []
-                    for choice in field["choices"]:
-                        choice_dict = {"profile_field_choice_id": choice["profile_field_choice_id"]}
-                        if "_destroy" in choice:
-                            choice_dict["_destroy"] = choice["_destroy"]
-                        attr["community_member_choices_attributes"].append(choice_dict)
-                fields_attributes.append(attr)
-            if fields_attributes:
-                community_member_payload["community_member_profile_fields_attributes"] = fields_attributes
-        payload = {"community_member": community_member_payload}
-        return self.put("/profile", data=payload)
+            payload['community_member']['avatar'] = self._direct_upload_file(avatar)['signed_id']
+        return self.confirm_member_profile_raw(payload)
 
-    def confirm_member_profile(
-        self,
-        name=None,
-        avatar=None,
-        headline=None,
-        messaging_enabled=None,
-        visible_in_member_directory=None,
-        make_my_email_public=None,
-    ):
-        """
-        Update and confirm the community member profile by setting one or more of the following fields:
-        - Profile details: name, avatar (as a file path to be uploaded), headline
-        - Messaging preferences: messaging_enabled, visible_in_member_directory, make_my_email_public
-
-        The avatar file is uploaded via the direct upload endpoint and its signed_id is used.
-        At least one parameter must be provided.
-
-        PUT /api/headless/v1/signup/profile
-        """
-        # Ensure at least one field is provided.
-        if (
-            name is None
-            and avatar is None
-            and headline is None
-            and messaging_enabled is None
-            and visible_in_member_directory is None
-            and make_my_email_public is None
-        ):
-            raise ValueError("At least one field must be provided.")
-
-        # Build the payload for the community member.
-        community_member_payload = {}
-        if name is not None:
-            community_member_payload["name"] = name
-
-        if avatar is not None:
-            # Use the direct upload function to upload the avatar file.
-            # This returns a dict with upload details, including the signed_id.
-            upload_info = self._direct_upload_file(avatar)
-            community_member_payload["avatar"] = upload_info["signed_id"]
-
-        if headline is not None:
-            community_member_payload["headline"] = headline
-
-        # Build the preferences payload if any messaging preferences are provided.
-        preferences_payload = {}
-        if messaging_enabled is not None:
-            preferences_payload["messaging_enabled"] = messaging_enabled
-        if visible_in_member_directory is not None:
-            preferences_payload["visible_in_member_directory"] = visible_in_member_directory
-        if make_my_email_public is not None:
-            preferences_payload["make_my_email_public"] = make_my_email_public
-
-        if preferences_payload:
-            community_member_payload["preferences"] = preferences_payload
-
-        # Construct the final JSON payload.
-        payload = {"community_member": community_member_payload}
-
-        # Send the PUT request to the confirm profile endpoint.
-        return self.put("/signup/profile", data=payload)
+    def confirm_member_profile_raw(self, payload):
+        """Confirm using the complete unmodified provider body."""
+        return self.put('/signup/profile', data=deepcopy(payload))
