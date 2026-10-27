@@ -425,6 +425,14 @@
       "iterator": "post.iter_posts",
       "adapter": "LegacyPages",
       "max_per_page": 100
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/community_members",
+      "iterator": "member.iter_members",
+      "adapter": "LegacyPages",
+      "max_per_page": 100
     }
   ],
   "extensions": {

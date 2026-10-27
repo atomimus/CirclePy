@@ -92,6 +92,11 @@ def check():
                     is inspect.Parameter.KEYWORD_ONLY
                 )
             assert (ROOT / record["pagination_tests"]).is_file()
+        assert {(r["path"], r["iterator"]) for r in coverage["legacy_operations"]} == {
+            ("/api/v1/spaces", "space.iter_spaces"),
+            ("/api/v1/posts", "post.iter_posts"),
+            ("/api/v1/community_members", "member.iter_members"),
+        }
         for record in coverage["legacy_operations"]:
             resource, name = record["iterator"].split(".")
             assert record["max_per_page"] == 100
@@ -128,7 +133,7 @@ def check():
         sync.close()
         legacy.close()
     print(
-        "Verified 27 Member iterator pairs, two legacy array pairs, frozen owners, API-specific limits, native async generators and Data URL extension"
+        "Verified 27 Member iterator pairs, three legacy array pairs, frozen owners, API-specific limits, native async generators and Data URL extension"
     )
 
 

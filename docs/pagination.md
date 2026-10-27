@@ -37,6 +37,7 @@ remain. Optional page arguments omitted as `None` start iteration at page 1.
 | Headless `.events` | `iter_community_events`, `iter_event_attendees`, `iter_recurring_events` |
 | Legacy Admin `.space` | `iter_spaces` |
 | Legacy Admin `.post` | `iter_posts` |
+| Legacy Admin `.member` | `iter_members` |
 
 Legacy iterators preserve all fields. `.space.fetch(brief=True)` and the old
 `.post.fetch` retain their historical projections. Chat message anchor/two-window

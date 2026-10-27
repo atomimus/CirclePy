@@ -81,6 +81,8 @@ jobs:
       - run: python tools/check_headless_inventory.py
       - run: python -m ruff check --select E4,E7,E9,F circlepy/pagination.py circlepy/headless_models/pagination.py tests/test_pagination.py tests/test_pagination_examples.py tools/check_pagination_contract.py
       - run: python tools/check_pagination_contract.py
+      - run: python -m ruff check --select E4,E7,E9,F circlepy/client_models circlepy/async_resources.py tests/test_admin_v1_core.py tests/test_admin_v1_examples.py tools/check_admin_v1_core_contract.py
+      - run: python tools/check_admin_v1_core_contract.py
       - run: python tools/check_ci.py --negative-fixture
 
   dependencies:

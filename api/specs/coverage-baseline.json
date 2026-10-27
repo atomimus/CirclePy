@@ -55,7 +55,7 @@
         {
           "file": "circlepy/client_models/comments.py",
           "symbol": "CommentAPI.delete",
-          "line": 46,
+          "line": 84,
           "visibility": "public_method"
         }
       ],
@@ -85,7 +85,7 @@
         {
           "file": "circlepy/client_models/comment_likes.py",
           "symbol": "CommentLikesAPI.delete",
-          "line": 31,
+          "line": 44,
           "visibility": "public_method"
         }
       ],
@@ -115,7 +115,7 @@
         {
           "file": "circlepy/client_models/members.py",
           "symbol": "MemberAPI.remove",
-          "line": 81,
+          "line": 204,
           "visibility": "public_method"
         }
       ],
@@ -237,7 +237,7 @@
         {
           "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.delete",
-          "line": 105,
+          "line": 249,
           "visibility": "public_method"
         }
       ],
@@ -267,7 +267,7 @@
         {
           "file": "circlepy/client_models/likes.py",
           "symbol": "LikesAPI.delete",
-          "line": 32,
+          "line": 44,
           "visibility": "public_method"
         }
       ],
@@ -343,7 +343,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.remove_member",
-          "line": 93,
+          "line": 185,
           "visibility": "public_method"
         }
       ],
@@ -373,7 +373,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.delete",
-          "line": 79,
+          "line": 161,
           "visibility": "public_method"
         }
       ],
@@ -449,7 +449,7 @@
         {
           "file": "circlepy/client_models/comments.py",
           "symbol": "CommentAPI.fetch",
-          "line": 57,
+          "line": 99,
           "visibility": "public_method"
         }
       ],
@@ -473,9 +473,16 @@
         }
       ],
       "task_id": 12,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/comments.py",
+          "symbol": "CommentAPI.get",
+          "line": 25,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -502,7 +509,7 @@
         {
           "file": "circlepy/client_models/comment_likes.py",
           "symbol": "CommentLikesAPI.fetch",
-          "line": 17,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -641,9 +648,22 @@
         }
       ],
       "task_id": 12,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/members.py",
+          "symbol": "MemberAPI.list_members",
+          "line": 39,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/members.py",
+          "symbol": "MemberAPI.iter_members_pages",
+          "line": 52,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -669,8 +689,14 @@
       "code_references": [
         {
           "file": "circlepy/client_models/members.py",
+          "symbol": "MemberAPI.search_raw",
+          "line": 90,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/members.py",
           "symbol": "MemberAPI.search",
-          "line": 44,
+          "line": 152,
           "visibility": "public_method"
         }
       ],
@@ -694,9 +720,16 @@
         }
       ],
       "task_id": 12,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/members.py",
+          "symbol": "MemberAPI.get",
+          "line": 79,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -975,14 +1008,20 @@
       "code_references": [
         {
           "file": "circlepy/client_models/posts.py",
+          "symbol": "PostAPI.list_posts",
+          "line": 49,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.iter_posts_pages",
-          "line": 22,
+          "line": 103,
           "visibility": "public_method"
         },
         {
           "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.fetch",
-          "line": 75,
+          "line": 205,
           "visibility": "public_method"
         }
       ],
@@ -1006,9 +1045,16 @@
         }
       ],
       "task_id": 12,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/posts.py",
+          "symbol": "PostAPI.get",
+          "line": 55,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1035,7 +1081,7 @@
         {
           "file": "circlepy/client_models/likes.py",
           "symbol": "LikesAPI.fetch",
-          "line": 18,
+          "line": 23,
           "visibility": "public_method"
         }
       ],
@@ -1133,14 +1179,20 @@
       "code_references": [
         {
           "file": "circlepy/client_models/spaces.py",
+          "symbol": "SpaceAPI.list_spaces",
+          "line": 23,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.iter_spaces_pages",
-          "line": 18,
+          "line": 61,
           "visibility": "public_method"
         },
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.fetch",
-          "line": 35,
+          "line": 97,
           "visibility": "public_method"
         }
       ],
@@ -1164,9 +1216,16 @@
         }
       ],
       "task_id": 12,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/spaces.py",
+          "symbol": "SpaceAPI.get",
+          "line": 38,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1330,8 +1389,14 @@
       "code_references": [
         {
           "file": "circlepy/client_models/comments.py",
+          "symbol": "CommentAPI.create_raw",
+          "line": 36,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/comments.py",
           "symbol": "CommentAPI.create",
-          "line": 39,
+          "line": 75,
           "visibility": "public_method"
         }
       ],
@@ -1361,7 +1426,7 @@
         {
           "file": "circlepy/client_models/comment_likes.py",
           "symbol": "CommentLikesAPI.create",
-          "line": 24,
+          "line": 35,
           "visibility": "public_method"
         }
       ],
@@ -1385,9 +1450,16 @@
         }
       ],
       "task_id": 12,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/members.py",
+          "symbol": "MemberAPI.invite",
+          "line": 104,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1557,8 +1629,14 @@
       "code_references": [
         {
           "file": "circlepy/client_models/posts.py",
+          "symbol": "PostAPI.create_raw",
+          "line": 66,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.create",
-          "line": 62,
+          "line": 190,
           "visibility": "public_method"
         }
       ],
@@ -1588,7 +1666,7 @@
         {
           "file": "circlepy/client_models/likes.py",
           "symbol": "LikesAPI.create",
-          "line": 25,
+          "line": 35,
           "visibility": "public_method"
         }
       ],
@@ -1664,7 +1742,7 @@
         {
           "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.add_member",
-          "line": 86,
+          "line": 172,
           "visibility": "public_method"
         }
       ],
@@ -1693,8 +1771,14 @@
       "code_references": [
         {
           "file": "circlepy/client_models/spaces.py",
+          "symbol": "SpaceAPI.create_raw",
+          "line": 49,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/spaces.py",
           "symbol": "SpaceAPI.create",
-          "line": 73,
+          "line": 153,
           "visibility": "public_method"
         }
       ],
@@ -1769,8 +1853,14 @@
       "code_references": [
         {
           "file": "circlepy/client_models/members.py",
+          "symbol": "MemberAPI.update_raw",
+          "line": 132,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/members.py",
           "symbol": "MemberAPI.update",
-          "line": 66,
+          "line": 187,
           "visibility": "public_method"
         }
       ],
@@ -1822,8 +1912,14 @@
       "code_references": [
         {
           "file": "circlepy/client_models/posts.py",
+          "symbol": "PostAPI.update_raw",
+          "line": 79,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/posts.py",
           "symbol": "PostAPI.update",
-          "line": 98,
+          "line": 234,
           "visibility": "public_method"
         }
       ],

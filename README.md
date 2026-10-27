@@ -7,6 +7,9 @@ Python clients for the Circle.so Admin and Headless APIs.
 member, space, post, comment, and like methods keep their public names and return
 formats. Circle continues to support v1, while new admin endpoints are added to
 [Admin v2](https://api.circle.so/apis/admin-api.md).
+Both legacy clients implement all 27 [Admin v1 core operations](docs/admin-v1.md),
+including full member list/get/invite, nested member fields, and raw space/post/comment
+payloads. The guide documents v1's post body-update limitation and preserved helpers.
 
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`
@@ -22,7 +25,7 @@ Both expose [HTTP messaging, notifications, search, bookmarks and cookies](docs/
 including raw rich-text replies, Unicode reactions, complete filters and shared sessions.
 Both expose [courses, quizzes, event participation, reports, invitations and live rooms](docs/learning.md).
 Use [opt-in pagination](docs/pagination.md) for bounded sync/async page or record
-iteration, cursor search, and unprojected legacy space/post arrays.
+iteration, cursor search, and unprojected legacy member/space/post arrays.
 All 102 frozen Member and four Auth operations have explicit sync/async entry
 points and independent offline contract coverage; live sandbox checks remain separate.
 

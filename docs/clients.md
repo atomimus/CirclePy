@@ -13,7 +13,10 @@ The public facades are available from `circlepy`:
 The Admin v1 async client has the existing singular `.member`, `.space`, `.post`,
 `.likes`, `.comment`, `.comment_likes` resources with awaitable network methods.
 It preserves legacy projections, member search attribute access, and the integer
-returned by post deletion. Those methods remain the existing partial API surface.
+returned by post deletion. Both clients now implement all 27 documented legacy
+core operations, including member list/get/invite, full payload helpers, and
+member/space/post iteration. See [Admin v1 core methods and provider limits](admin-v1.md).
+Other legacy resource groups remain assigned to their implementation tasks.
 
 Admin v2, Data and both Headless facades expose a family-scoped
 `request(method, endpoint, *, params=None, json=None)` returning decoded JSON or
