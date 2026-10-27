@@ -68,7 +68,20 @@ from .async_operations import (
     AsyncFlaggedContentsAPI, AsyncFormsAPI, AsyncGamificationAPI, AsyncWorkflowsAPI,
 )
 
+from .billing import (
+    CommunityMemberChargesAPI, CommunityMemberSubscriptionsAPI,
+    PaymentMethodSettingsAPI, TaxSettingsAPI,
+)
+from .async_billing import (
+    AsyncCommunityMemberChargesAPI, AsyncCommunityMemberSubscriptionsAPI,
+    AsyncPaymentMethodSettingsAPI, AsyncTaxSettingsAPI,
+)
+
 __all__ = [
+    "CommunityMemberChargesAPI", "CommunityMemberSubscriptionsAPI",
+    "PaymentMethodSettingsAPI", "TaxSettingsAPI",
+    "AsyncCommunityMemberChargesAPI", "AsyncCommunityMemberSubscriptionsAPI",
+    "AsyncPaymentMethodSettingsAPI", "AsyncTaxSettingsAPI",
     "ChatPreferencesAPI", "AsyncChatPreferencesAPI",
     "ChatRoomMessageImportsAPI", "AsyncChatRoomMessageImportsAPI",
     "MessagesAPI", "AsyncMessagesAPI",

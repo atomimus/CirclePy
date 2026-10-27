@@ -1,0 +1,817 @@
+[
+  {
+    "case_id": "community_member_charges.export",
+    "resource": "community_member_charges",
+    "name": "export",
+    "method": "POST",
+    "path": "/api/admin/v2/community_member_charges/export",
+    "args": [],
+    "kwargs": {
+      "member_email": "billing@example.test",
+      "community_member_id": 21,
+      "community_member_public_uid": "sdk-member-21",
+      "billing_info_business_name": "SDK Synthetic",
+      "paywall_price_type": "subscription,onetime,installments",
+      "processor_id": "pi_sdk_41",
+      "subscription_processor_id": "sub_sdk_51",
+      "invoice_processor_id": "in_sdk_61",
+      "currency": "usd,jpy",
+      "paywall_ids": "31,32",
+      "status": "paid,refunded,partial_refunded",
+      "platform": "web,app_store,play_store",
+      "amount_gte": 0,
+      "amount_lte": 9007199254740993,
+      "created_at_gte": "2024-01-02T03:04:05+02:00",
+      "created_at_lte": "2024-02-02T03:04:05Z",
+      "fields": "processor_id,display_status_raw,currency,community_member_email",
+      "timezone": "Etc/UTC"
+    },
+    "query": "member_email=billing%40example.test&community_member_id=21&community_member_public_uid=sdk-member-21&billing_info_business_name=SDK+Synthetic&paywall_price_type=subscription%2Conetime%2Cinstallments&processor_id=pi_sdk_41&subscription_processor_id=sub_sdk_51&invoice_processor_id=in_sdk_61&currency=usd%2Cjpy&paywall_ids=31%2C32&status=paid%2Crefunded%2Cpartial_refunded&platform=web%2Capp_store%2Cplay_store&amount_gte=0&amount_lte=9007199254740993&created_at_gte=2024-01-02T03%3A04%3A05%2B02%3A00&created_at_lte=2024-02-02T03%3A04%3A05Z&fields=processor_id%2Cdisplay_status_raw%2Ccurrency%2Ccommunity_member_email&timezone=Etc%2FUTC",
+    "body": null,
+    "response": {
+      "id": 71,
+      "relation": "CommunityMemberCharge",
+      "fields": [
+        "processor_id",
+        "display_status_raw",
+        "currency",
+        "community_member_email"
+      ],
+      "filters": {
+        "member_email": "billing@example.test",
+        "community_member_id": 21,
+        "community_member_public_uid": "sdk-member-21",
+        "billing_info_business_name": "SDK Synthetic",
+        "paywall_price_type": "subscription,onetime,installments",
+        "processor_id": "pi_sdk_41",
+        "subscription_processor_id": "sub_sdk_51",
+        "invoice_processor_id": "in_sdk_61",
+        "currency": "usd,jpy",
+        "paywall_ids": "31,32",
+        "status": "paid,refunded,partial_refunded",
+        "platform": "web,app_store,play_store",
+        "amount_gte": 0,
+        "amount_lte": 9007199254740993,
+        "created_at_gte": "2024-01-02T03:04:05+02:00",
+        "created_at_lte": "2024-02-02T03:04:05Z"
+      },
+      "created_at": "2024-02-02T03:04:05+02:00",
+      "request_id": "sdk-export-charges",
+      "future": null
+    },
+    "success_status": 201,
+    "request_variants": [],
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "community_member_charges.list_charges",
+    "resource": "community_member_charges",
+    "name": "list_charges",
+    "method": "GET",
+    "path": "/api/admin/v2/community_member_charges",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "query": "SDK Synthetic",
+      "member_email": "billing@example.test",
+      "community_member_id": 21,
+      "community_member_public_uid": "sdk-member-21",
+      "billing_info_business_name": "SDK Synthetic",
+      "paywall_price_type": "subscription,onetime,installments",
+      "processor_id": "pi_sdk_41",
+      "subscription_processor_id": "sub_sdk_51",
+      "invoice_processor_id": "in_sdk_61",
+      "currency": "usd,jpy",
+      "paywall_ids": "31,32",
+      "status": "paid,refunded,partial_refunded",
+      "platform": "web,app_store,play_store",
+      "amount_gte": 0,
+      "amount_lte": 9007199254740993,
+      "created_at_gte": "2024-01-02T03:04:05+02:00",
+      "created_at_lte": "2024-02-02T03:04:05Z",
+      "sort": "created_at",
+      "direction": "desc"
+    },
+    "query": "page=2&per_page=4&query=SDK+Synthetic&member_email=billing%40example.test&community_member_id=21&community_member_public_uid=sdk-member-21&billing_info_business_name=SDK+Synthetic&paywall_price_type=subscription%2Conetime%2Cinstallments&processor_id=pi_sdk_41&subscription_processor_id=sub_sdk_51&invoice_processor_id=in_sdk_61&currency=usd%2Cjpy&paywall_ids=31%2C32&status=paid%2Crefunded%2Cpartial_refunded&platform=web%2Capp_store%2Cplay_store&amount_gte=0&amount_lte=9007199254740993&created_at_gte=2024-01-02T03%3A04%3A05%2B02%3A00&created_at_lte=2024-02-02T03%3A04%3A05Z&sort=created_at&direction=desc",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "paywall_id": 31,
+          "paywall_name": "SDK Synthetic",
+          "paywall_price_id": 32,
+          "paywall_price_type": "subscription",
+          "paywall_price_interval": "month",
+          "paywall_coupon_code": null,
+          "community_member_id": 21,
+          "community_member_public_uid": "sdk-member-21",
+          "community_member_name": "SDK Synthetic",
+          "community_member_email": "billing@example.test",
+          "id": 41,
+          "processor_id": "pi_sdk_41",
+          "invoice_processor_id": "in_sdk_61",
+          "subscription_processor_id": "sub_sdk_51",
+          "status": "partial_refunded",
+          "display_status_raw": "partial_refunded",
+          "refundable": true,
+          "amount": 9007199254740993,
+          "amount_refunded": 1,
+          "amount_to_refund": 9007199254740992,
+          "currency": "jpy",
+          "platform": "web",
+          "payment_method_type": "card",
+          "created_at": "2024-01-02T03:04:05+02:00",
+          "request_id": "sdk-audit-charge",
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "request_variants": [],
+    "error_statuses": [
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "community_member_subscriptions.export",
+    "resource": "community_member_subscriptions",
+    "name": "export",
+    "method": "POST",
+    "path": "/api/admin/v2/community_member_subscriptions/export",
+    "args": [],
+    "kwargs": {
+      "member_email": "billing@example.test",
+      "community_member_id": 21,
+      "community_member_public_uid": "sdk-member-21",
+      "billing_info_business_name": "SDK Synthetic",
+      "paywall_price_type": "subscription,onetime,installments",
+      "billing_interval": "month",
+      "subscription_processor_id": "sub_sdk_51",
+      "currency": "usd,jpy",
+      "paywall_ids": "31,32",
+      "status": "active,trial,canceled",
+      "scheduled_to_cancel": false,
+      "platform": "web,app_store,play_store",
+      "total_amount_paid_gte": 0,
+      "total_amount_paid_lte": 9007199254740993,
+      "start_date_gte": "2024-01-02T03:04:05+02:00",
+      "start_date_lte": "2024-02-02T03:04:05Z",
+      "fields": "processor_id,status,currency,community_member_email",
+      "timezone": "Etc/UTC"
+    },
+    "query": "member_email=billing%40example.test&community_member_id=21&community_member_public_uid=sdk-member-21&billing_info_business_name=SDK+Synthetic&paywall_price_type=subscription%2Conetime%2Cinstallments&billing_interval=month&subscription_processor_id=sub_sdk_51&currency=usd%2Cjpy&paywall_ids=31%2C32&status=active%2Ctrial%2Ccanceled&scheduled_to_cancel=false&platform=web%2Capp_store%2Cplay_store&total_amount_paid_gte=0&total_amount_paid_lte=9007199254740993&start_date_gte=2024-01-02T03%3A04%3A05%2B02%3A00&start_date_lte=2024-02-02T03%3A04%3A05Z&fields=processor_id%2Cstatus%2Ccurrency%2Ccommunity_member_email&timezone=Etc%2FUTC",
+    "body": null,
+    "response": {
+      "id": 72,
+      "relation": "CommunityMemberSubscription",
+      "fields": [
+        "processor_id",
+        "status",
+        "currency",
+        "community_member_email"
+      ],
+      "filters": {
+        "member_email": "billing@example.test",
+        "community_member_id": 21,
+        "community_member_public_uid": "sdk-member-21",
+        "billing_info_business_name": "SDK Synthetic",
+        "paywall_price_type": "subscription,onetime,installments",
+        "billing_interval": "month",
+        "subscription_processor_id": "sub_sdk_51",
+        "currency": "usd,jpy",
+        "paywall_ids": "31,32",
+        "status": "active,trial,canceled",
+        "scheduled_to_cancel": false,
+        "platform": "web,app_store,play_store",
+        "total_amount_paid_gte": 0,
+        "total_amount_paid_lte": 9007199254740993,
+        "start_date_gte": "2024-01-02T03:04:05+02:00",
+        "start_date_lte": "2024-02-02T03:04:05Z"
+      },
+      "created_at": "2024-02-02T03:04:05+02:00",
+      "request_id": "sdk-export-subscriptions",
+      "future": null
+    },
+    "success_status": 201,
+    "request_variants": [],
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "community_member_subscriptions.list_subscriptions",
+    "resource": "community_member_subscriptions",
+    "name": "list_subscriptions",
+    "method": "GET",
+    "path": "/api/admin/v2/community_member_subscriptions",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "query": "SDK Synthetic",
+      "member_email": "billing@example.test",
+      "community_member_id": 21,
+      "community_member_public_uid": "sdk-member-21",
+      "billing_info_business_name": "SDK Synthetic",
+      "paywall_price_type": "subscription,onetime,installments",
+      "billing_interval": "month",
+      "subscription_processor_id": "sub_sdk_51",
+      "currency": "usd,jpy",
+      "paywall_ids": "31,32",
+      "status": "active,trial,canceled",
+      "scheduled_to_cancel": false,
+      "platform": "web,app_store,play_store",
+      "total_amount_paid_gte": 0,
+      "total_amount_paid_lte": 9007199254740993,
+      "start_date_gte": "2024-01-02T03:04:05+02:00",
+      "start_date_lte": "2024-02-02T03:04:05Z",
+      "sort": "created_at",
+      "direction": "desc"
+    },
+    "query": "page=2&per_page=4&query=SDK+Synthetic&member_email=billing%40example.test&community_member_id=21&community_member_public_uid=sdk-member-21&billing_info_business_name=SDK+Synthetic&paywall_price_type=subscription%2Conetime%2Cinstallments&billing_interval=month&subscription_processor_id=sub_sdk_51&currency=usd%2Cjpy&paywall_ids=31%2C32&status=active%2Ctrial%2Ccanceled&scheduled_to_cancel=false&platform=web%2Capp_store%2Cplay_store&total_amount_paid_gte=0&total_amount_paid_lte=9007199254740993&start_date_gte=2024-01-02T03%3A04%3A05%2B02%3A00&start_date_lte=2024-02-02T03%3A04%3A05Z&sort=created_at&direction=desc",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "paywall_id": 31,
+          "paywall_name": "SDK Synthetic",
+          "paywall_price_id": 32,
+          "paywall_price_type": "subscription",
+          "paywall_price_interval": "month",
+          "paywall_coupon_code": null,
+          "community_member_id": 21,
+          "community_member_public_uid": "sdk-member-21",
+          "community_member_name": "SDK Synthetic",
+          "community_member_email": "billing@example.test",
+          "id": 51,
+          "processor_id": "sub_sdk_51",
+          "status": "active",
+          "platform": "web",
+          "renews_at": "2024-02-02T03:04:05+02:00",
+          "trial_ends_at": null,
+          "ends_at": null,
+          "created_at": "2024-01-02T03:04:05Z",
+          "charges_quantity": 0,
+          "total_amount_paid": 9007199254740993,
+          "currency": "usd",
+          "refundable": false,
+          "renewing": true,
+          "completed_installment": false,
+          "request_id": "sdk-audit-subscription",
+          "future": {
+            "amount_text": "123.4500",
+            "null": null
+          }
+        }
+      ],
+      "future": null
+    },
+    "success_status": 200,
+    "request_variants": [],
+    "error_statuses": [
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "community_member_charges.refund",
+    "resource": "community_member_charges",
+    "name": "refund",
+    "method": "POST",
+    "path": "/api/admin/v2/community_member_charges/41/refund",
+    "args": [
+      41,
+      {
+        "amount": 1,
+        "reason_details": "SDK synthetic refund أهلًا"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "amount": 1,
+      "reason_details": "SDK synthetic refund أهلًا"
+    },
+    "response": {
+      "paywall_id": 31,
+      "paywall_name": "SDK Synthetic",
+      "paywall_price_id": 32,
+      "paywall_price_type": "subscription",
+      "paywall_price_interval": "month",
+      "paywall_coupon_code": null,
+      "community_member_id": 21,
+      "community_member_public_uid": "sdk-member-21",
+      "community_member_name": "SDK Synthetic",
+      "community_member_email": "billing@example.test",
+      "id": 41,
+      "processor_id": "pi_sdk_41",
+      "invoice_processor_id": "in_sdk_61",
+      "subscription_processor_id": "sub_sdk_51",
+      "status": "partial_refunded",
+      "display_status_raw": "partial_refunded",
+      "refundable": true,
+      "amount": 9007199254740993,
+      "amount_refunded": 1,
+      "amount_to_refund": 9007199254740992,
+      "currency": "jpy",
+      "platform": "web",
+      "payment_method_type": "card",
+      "created_at": "2024-01-02T03:04:05+02:00",
+      "request_id": "sdk-audit-charge",
+      "future": {
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "null": null
+      }
+    },
+    "success_status": 200,
+    "request_variants": [
+      {
+        "reason_details": "SDK full refund"
+      },
+      {
+        "amount": 0,
+        "reason_details": "SDK zero for provider validation"
+      },
+      {
+        "amount": 9007199254740993,
+        "reason_details": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }
+    ],
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "community_member_subscriptions.cancel",
+    "resource": "community_member_subscriptions",
+    "name": "cancel",
+    "method": "POST",
+    "path": "/api/admin/v2/community_member_subscriptions/51/cancel",
+    "args": [
+      51,
+      {
+        "ends_at": "now",
+        "refund_type": "prorated"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "ends_at": "now",
+      "refund_type": "prorated"
+    },
+    "response": {
+      "paywall_id": 31,
+      "paywall_name": "SDK Synthetic",
+      "paywall_price_id": 32,
+      "paywall_price_type": "subscription",
+      "paywall_price_interval": "month",
+      "paywall_coupon_code": null,
+      "community_member_id": 21,
+      "community_member_public_uid": "sdk-member-21",
+      "community_member_name": "SDK Synthetic",
+      "community_member_email": "billing@example.test",
+      "id": 51,
+      "processor_id": "sub_sdk_51",
+      "status": "active",
+      "platform": "web",
+      "renews_at": "2024-02-02T03:04:05+02:00",
+      "trial_ends_at": null,
+      "ends_at": null,
+      "created_at": "2024-01-02T03:04:05Z",
+      "charges_quantity": 0,
+      "total_amount_paid": 9007199254740993,
+      "currency": "usd",
+      "refundable": false,
+      "renewing": true,
+      "completed_installment": false,
+      "request_id": "sdk-audit-subscription",
+      "future": {
+        "amount_text": "123.4500",
+        "null": null
+      }
+    },
+    "success_status": 200,
+    "request_variants": [
+      {
+        "ends_at": "now",
+        "refund_type": "full"
+      },
+      {
+        "ends_at": "now"
+      },
+      {
+        "ends_at": "at_period_end"
+      }
+    ],
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "community_member_subscriptions.update_billing_date",
+    "resource": "community_member_subscriptions",
+    "name": "update_billing_date",
+    "method": "PATCH",
+    "path": "/api/admin/v2/community_member_subscriptions/51/billing_date",
+    "args": [
+      51,
+      {
+        "operation": "change_billing_date",
+        "billing_date": "2028-02-29"
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "operation": "change_billing_date",
+      "billing_date": "2028-02-29"
+    },
+    "response": {
+      "paywall_id": 31,
+      "paywall_name": "SDK Synthetic",
+      "paywall_price_id": 32,
+      "paywall_price_type": "subscription",
+      "paywall_price_interval": "month",
+      "paywall_coupon_code": null,
+      "community_member_id": 21,
+      "community_member_public_uid": "sdk-member-21",
+      "community_member_name": "SDK Synthetic",
+      "community_member_email": "billing@example.test",
+      "id": 51,
+      "processor_id": "sub_sdk_51",
+      "status": "active",
+      "platform": "web",
+      "renews_at": "2024-02-02T03:04:05+02:00",
+      "trial_ends_at": null,
+      "ends_at": null,
+      "created_at": "2024-01-02T03:04:05Z",
+      "charges_quantity": 0,
+      "total_amount_paid": 9007199254740993,
+      "currency": "usd",
+      "refundable": false,
+      "renewing": true,
+      "completed_installment": false,
+      "request_id": "sdk-audit-subscription",
+      "future": {
+        "amount_text": "123.4500",
+        "null": null
+      }
+    },
+    "success_status": 200,
+    "request_variants": [
+      {
+        "operation": "extend_trial",
+        "days_to_extend": 7
+      },
+      {
+        "operation": "change_billing_date",
+        "billing_date": "2028-02-29",
+        "days_to_extend": 5
+      },
+      {
+        "operation": "extend_trial",
+        "days_to_extend": 1,
+        "billing_date": "2028-02-29"
+      }
+    ],
+    "error_statuses": [
+      422,
+      401,
+      404,
+      403
+    ]
+  },
+  {
+    "case_id": "community_member_subscriptions.resume",
+    "resource": "community_member_subscriptions",
+    "name": "resume",
+    "method": "POST",
+    "path": "/api/admin/v2/community_member_subscriptions/51/resume",
+    "args": [
+      51
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "paywall_id": 31,
+      "paywall_name": "SDK Synthetic",
+      "paywall_price_id": 32,
+      "paywall_price_type": "subscription",
+      "paywall_price_interval": "month",
+      "paywall_coupon_code": null,
+      "community_member_id": 21,
+      "community_member_public_uid": "sdk-member-21",
+      "community_member_name": "SDK Synthetic",
+      "community_member_email": "billing@example.test",
+      "id": 51,
+      "processor_id": "sub_sdk_51",
+      "status": "active",
+      "platform": "web",
+      "renews_at": "2024-02-02T03:04:05+02:00",
+      "trial_ends_at": null,
+      "ends_at": null,
+      "created_at": "2024-01-02T03:04:05Z",
+      "charges_quantity": 0,
+      "total_amount_paid": 9007199254740993,
+      "currency": "usd",
+      "refundable": false,
+      "renewing": true,
+      "completed_installment": false,
+      "request_id": "sdk-audit-subscription",
+      "future": {
+        "amount_text": "123.4500",
+        "null": null
+      }
+    },
+    "success_status": 200,
+    "request_variants": [],
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "payment_method_settings.get",
+    "resource": "payment_method_settings",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/payment_method_setting",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": [
+      {
+        "payment_method": "apple_pay",
+        "capability_id": null,
+        "capability_status": null,
+        "value": true,
+        "is_enabled": true,
+        "is_capability_active": true,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": false,
+        "normalized_state": "active",
+        "future": null
+      },
+      {
+        "payment_method": "google_pay",
+        "capability_id": "google_pay_payments",
+        "capability_status": "active",
+        "value": false,
+        "is_enabled": false,
+        "is_capability_active": false,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "disabled",
+        "future": null
+      },
+      {
+        "payment_method": "card",
+        "capability_id": "card_payments",
+        "capability_status": "active",
+        "value": true,
+        "is_enabled": true,
+        "is_capability_active": true,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "active",
+        "future": null
+      },
+      {
+        "payment_method": "klarna",
+        "capability_id": "klarna_payments",
+        "capability_status": "active",
+        "value": false,
+        "is_enabled": false,
+        "is_capability_active": false,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "disabled",
+        "future": null
+      },
+      {
+        "payment_method": "afterpay_clearpay",
+        "capability_id": "afterpay_clearpay_payments",
+        "capability_status": "active",
+        "value": true,
+        "is_enabled": true,
+        "is_capability_active": true,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "active",
+        "future": null
+      },
+      {
+        "payment_method": "affirm",
+        "capability_id": "affirm_payments",
+        "capability_status": "active",
+        "value": false,
+        "is_enabled": false,
+        "is_capability_active": false,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "disabled",
+        "future": null
+      },
+      {
+        "payment_method": "bancontact",
+        "capability_id": "bancontact_payments",
+        "capability_status": "active",
+        "value": true,
+        "is_enabled": true,
+        "is_capability_active": true,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "active",
+        "future": null
+      },
+      {
+        "payment_method": "ideal",
+        "capability_id": "ideal_payments",
+        "capability_status": "active",
+        "value": false,
+        "is_enabled": false,
+        "is_capability_active": false,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "disabled",
+        "future": null
+      },
+      {
+        "payment_method": "pix",
+        "capability_id": "pix_payments",
+        "capability_status": "active",
+        "value": true,
+        "is_enabled": true,
+        "is_capability_active": true,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "active",
+        "future": null
+      },
+      {
+        "payment_method": "sepa_debit",
+        "capability_id": "sepa_debit_payments",
+        "capability_status": "active",
+        "value": false,
+        "is_enabled": false,
+        "is_capability_active": false,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "disabled",
+        "future": null
+      },
+      {
+        "payment_method": "link",
+        "capability_id": "link_payments",
+        "capability_status": "active",
+        "value": true,
+        "is_enabled": true,
+        "is_capability_active": true,
+        "is_capability_pending": false,
+        "can_request_capability": false,
+        "is_capability_available": true,
+        "mutable": true,
+        "normalized_state": "active",
+        "future": null
+      }
+    ],
+    "success_status": 200,
+    "request_variants": [],
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  },
+  {
+    "case_id": "tax_settings.get",
+    "resource": "tax_settings",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/tax_setting",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "processor_status": "enabled",
+      "platform_status": "disabled",
+      "default_tax_behavior": null,
+      "future": null
+    },
+    "success_status": 200,
+    "request_variants": [],
+    "error_statuses": [
+      401,
+      400,
+      403
+    ]
+  },
+  {
+    "case_id": "tax_settings.update",
+    "resource": "tax_settings",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/tax_setting",
+    "args": [
+      {
+        "tax_setting": {
+          "platform_status": "enabled",
+          "default_tax_behavior": "inferred_by_currency"
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "tax_setting": {
+        "platform_status": "enabled",
+        "default_tax_behavior": "inferred_by_currency"
+      }
+    },
+    "response": {
+      "processor_status": "enabled",
+      "platform_status": "enabled",
+      "default_tax_behavior": "inferred_by_currency",
+      "future": null
+    },
+    "success_status": 200,
+    "request_variants": [
+      {
+        "tax_setting": {
+          "platform_status": "disabled"
+        }
+      },
+      {
+        "tax_setting": {
+          "default_tax_behavior": "inclusive"
+        }
+      },
+      {
+        "tax_setting": {
+          "default_tax_behavior": "exclusive"
+        }
+      },
+      {}
+    ],
+    "error_statuses": [
+      422,
+      401,
+      403
+    ]
+  }
+]

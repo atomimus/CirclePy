@@ -3504,9 +3504,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncCommunityMemberChargesAPI.list_charges",
+          "line": 54,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "CommunityMemberChargesAPI.list_charges",
+          "line": 75,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3561,9 +3574,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncCommunityMemberSubscriptionsAPI.list_subscriptions",
+          "line": 280,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "CommunityMemberSubscriptionsAPI.list_subscriptions",
+          "line": 293,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4598,9 +4624,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncPaymentMethodSettingsAPI.get",
+          "line": 496,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "PaymentMethodSettingsAPI.get",
+          "line": 501,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5294,9 +5333,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncTaxSettingsAPI.get",
+          "line": 501,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "TaxSettingsAPI.get",
+          "line": 506,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5526,9 +5578,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncCommunityMemberSubscriptionsAPI.update_billing_date",
+          "line": 487,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "CommunityMemberSubscriptionsAPI.update_billing_date",
+          "line": 492,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5885,9 +5950,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncCommunityMemberChargesAPI.export",
+          "line": 220,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "CommunityMemberChargesAPI.export",
+          "line": 233,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5907,9 +5985,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncCommunityMemberChargesAPI.refund",
+          "line": 247,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "CommunityMemberChargesAPI.refund",
+          "line": 260,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5929,9 +6020,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncCommunityMemberSubscriptionsAPI.export",
+          "line": 446,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "CommunityMemberSubscriptionsAPI.export",
+          "line": 451,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5951,9 +6055,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncCommunityMemberSubscriptionsAPI.cancel",
+          "line": 473,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "CommunityMemberSubscriptionsAPI.cancel",
+          "line": 478,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5973,9 +6090,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncCommunityMemberSubscriptionsAPI.resume",
+          "line": 480,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "CommunityMemberSubscriptionsAPI.resume",
+          "line": 485,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -7930,9 +8060,22 @@
         }
       ],
       "task_id": 23,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_billing.py",
+          "symbol": "AsyncTaxSettingsAPI.update",
+          "line": 504,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/billing.py",
+          "symbol": "TaxSettingsAPI.update",
+          "line": 509,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },

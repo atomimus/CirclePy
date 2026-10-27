@@ -111,7 +111,9 @@ class AdminV2Client(_SyncAPIClient):
                                AdvancedSearchAPI, FilterKitConfigurationAPI, FilterKitControlsAPI,
                                LocationsAPI, PageProfileFieldsAPI, ProfileFieldsAPI, ConnectSettingsAPI,
                                ChatPreferencesAPI, ChatRoomMessageImportsAPI, MessagesAPI,
-                               FlaggedContentsAPI, FormsAPI, GamificationAPI, WorkflowsAPI)
+                               FlaggedContentsAPI, FormsAPI, GamificationAPI, WorkflowsAPI,
+                               CommunityMemberChargesAPI, CommunityMemberSubscriptionsAPI,
+                               PaymentMethodSettingsAPI, TaxSettingsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -158,6 +160,10 @@ class AdminV2Client(_SyncAPIClient):
         self.forms = FormsAPI(self)
         self.gamification = GamificationAPI(self)
         self.workflows = WorkflowsAPI(self)
+        self.community_member_charges = CommunityMemberChargesAPI(self)
+        self.community_member_subscriptions = CommunityMemberSubscriptionsAPI(self)
+        self.payment_method_settings = PaymentMethodSettingsAPI(self)
+        self.tax_settings = TaxSettingsAPI(self)
 
 
 class AsyncAdminV2Client(_AsyncAPIClient):
@@ -182,7 +188,9 @@ class AsyncAdminV2Client(_AsyncAPIClient):
                                AsyncFilterKitControlsAPI, AsyncLocationsAPI,
                                AsyncPageProfileFieldsAPI, AsyncProfileFieldsAPI, AsyncConnectSettingsAPI,
                                AsyncChatPreferencesAPI, AsyncChatRoomMessageImportsAPI, AsyncMessagesAPI,
-                               AsyncFlaggedContentsAPI, AsyncFormsAPI, AsyncGamificationAPI, AsyncWorkflowsAPI)
+                               AsyncFlaggedContentsAPI, AsyncFormsAPI, AsyncGamificationAPI, AsyncWorkflowsAPI,
+                               AsyncCommunityMemberChargesAPI, AsyncCommunityMemberSubscriptionsAPI,
+                               AsyncPaymentMethodSettingsAPI, AsyncTaxSettingsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -229,3 +237,7 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.forms = AsyncFormsAPI(self)
         self.gamification = AsyncGamificationAPI(self)
         self.workflows = AsyncWorkflowsAPI(self)
+        self.community_member_charges = AsyncCommunityMemberChargesAPI(self)
+        self.community_member_subscriptions = AsyncCommunityMemberSubscriptionsAPI(self)
+        self.payment_method_settings = AsyncPaymentMethodSettingsAPI(self)
+        self.tax_settings = AsyncTaxSettingsAPI(self)

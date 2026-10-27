@@ -48,6 +48,13 @@ Both Admin v2 clients expose `.chat_preferences`, `.chat_room_message_imports`,
 These include historical imports, nested form updates and submissions, explicit
 workflow state changes and four bounded iterator pairs. Mutations are single-attempt.
 
+Both Admin v2 clients expose `.community_member_charges`,
+`.community_member_subscriptions`, `.payment_method_settings` and `.tax_settings`
+for all 11 [billing operations](docs/admin-v2-billing.md). These preserve integer
+currency subunits, calendar billing dates and complete export acknowledgments.
+Refunds, cancellation options, trial changes, tax updates and emailed exports
+require explicit calls; all financial requests remain single-attempt.
+
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`
 (`sso_id` remains a compatibility spelling). See [client lifecycle and token

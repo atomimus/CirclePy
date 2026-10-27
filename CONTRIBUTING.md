@@ -239,3 +239,11 @@ Admin v2 messaging, import, form, submission, moderation, leaderboard and workfl
 operations. Its independent fixtures cover nested bodies, answers, errors and
 sync/native async parity, with the upstream missing import-response definition
 recorded explicitly. See `docs/admin-v2-operations.md` for executable examples.
+
+Task 23 adds `python tools/check_admin_v2_billing_contract.py` for all 11
+Admin v2 charge, subscription and payment/tax settings operations. Independent
+synthetic wire fixtures cover exact integer subunits, calendar dates, query-only
+export POSTs, error context and sync/native async parity. Every financial call
+stays single-attempt under timeout, disconnect, 429 and 5xx, with billing query
+redaction. The 32 functions in `docs/admin-v2-billing.md` run offline and in clean
+installed-artifact checks. Never exercise real financial effects as a test.

@@ -103,6 +103,8 @@ jobs:
       - run: python tools/check_admin_v2_profiles_contract.py
       - run: python -m ruff check --select E4,E7,E9,F tests/test_admin_v2_operations.py tests/test_admin_v2_operations_examples.py tools/check_admin_v2_operations_contract.py
       - run: python tools/check_admin_v2_operations_contract.py
+      - run: python -m ruff check --select E4,E7,E9,F tests/test_admin_v2_billing.py tests/test_admin_v2_billing_examples.py tools/check_admin_v2_billing_contract.py
+      - run: python tools/check_admin_v2_billing_contract.py
       - run: python tools/check_ci.py --negative-fixture
 
   dependencies:

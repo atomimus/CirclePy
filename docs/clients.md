@@ -53,6 +53,13 @@ Both Admin v2 clients expose `.chat_preferences`, `.chat_room_message_imports`,
 These include historical imports, nested form updates and submissions, explicit
 workflow state changes and four bounded iterator pairs. Mutations are single-attempt.
 
+Both expose `.community_member_charges`, `.community_member_subscriptions`,
+`.payment_method_settings` and `.tax_settings` for all 11
+[billing operations](admin-v2-billing.md), including bounded charge/subscription
+iteration. Amounts remain integer subunits, dates retain their documented form,
+and financial requests never retry automatically. Refunds, cancellations,
+billing changes, tax updates and emailed exports are explicit calls.
+
 Both Headless facades expose explicit plural resources
 for every frozen Member operation. No methods are generated at runtime.
 

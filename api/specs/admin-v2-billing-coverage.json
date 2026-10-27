@@ -1,0 +1,333 @@
+{
+  "task_id": 23,
+  "family": "admin-v2",
+  "frozen_sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+  "operations": [
+    {
+      "task_id": 23,
+      "method": "POST",
+      "path": "/api/admin/v2/community_member_charges/export",
+      "tag": "Community Member Charges",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_member_charges~1export/post",
+      "entry_point": "community_member_charges.export",
+      "query_fields": [
+        "member_email",
+        "community_member_id",
+        "community_member_public_uid",
+        "billing_info_business_name",
+        "paywall_price_type",
+        "processor_id",
+        "subscription_processor_id",
+        "invoice_processor_id",
+        "currency",
+        "paywall_ids",
+        "status",
+        "platform",
+        "amount_gte",
+        "amount_lte",
+        "created_at_gte",
+        "created_at_lte",
+        "fields",
+        "timezone"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "GET",
+      "path": "/api/admin/v2/community_member_charges",
+      "tag": "Community Member Charges",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_member_charges/get",
+      "entry_point": "community_member_charges.list_charges",
+      "query_fields": [
+        "page",
+        "per_page",
+        "query",
+        "member_email",
+        "community_member_id",
+        "community_member_public_uid",
+        "billing_info_business_name",
+        "paywall_price_type",
+        "processor_id",
+        "subscription_processor_id",
+        "invoice_processor_id",
+        "currency",
+        "paywall_ids",
+        "status",
+        "platform",
+        "amount_gte",
+        "amount_lte",
+        "created_at_gte",
+        "created_at_lte",
+        "sort",
+        "direction"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "POST",
+      "path": "/api/admin/v2/community_member_charges/{id}/refund",
+      "tag": "Community Member Charges",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_member_charges~1{id}~1refund/post",
+      "entry_point": "community_member_charges.refund",
+      "query_fields": [],
+      "json_fields": [
+        "amount",
+        "reason_details"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "POST",
+      "path": "/api/admin/v2/community_member_subscriptions/{id}/cancel",
+      "tag": "Community Member Subscriptions",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_member_subscriptions~1{id}~1cancel/post",
+      "entry_point": "community_member_subscriptions.cancel",
+      "query_fields": [],
+      "json_fields": [
+        "ends_at",
+        "refund_type"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "POST",
+      "path": "/api/admin/v2/community_member_subscriptions/export",
+      "tag": "Community Member Subscriptions",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_member_subscriptions~1export/post",
+      "entry_point": "community_member_subscriptions.export",
+      "query_fields": [
+        "member_email",
+        "community_member_id",
+        "community_member_public_uid",
+        "billing_info_business_name",
+        "paywall_price_type",
+        "billing_interval",
+        "subscription_processor_id",
+        "currency",
+        "paywall_ids",
+        "status",
+        "scheduled_to_cancel",
+        "platform",
+        "total_amount_paid_gte",
+        "total_amount_paid_lte",
+        "start_date_gte",
+        "start_date_lte",
+        "fields",
+        "timezone"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "PATCH",
+      "path": "/api/admin/v2/community_member_subscriptions/{id}/billing_date",
+      "tag": "Community Member Subscriptions",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_member_subscriptions~1{id}~1billing_date/patch",
+      "entry_point": "community_member_subscriptions.update_billing_date",
+      "query_fields": [],
+      "json_fields": [
+        "billing_date",
+        "days_to_extend",
+        "operation"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "404",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "GET",
+      "path": "/api/admin/v2/community_member_subscriptions",
+      "tag": "Community Member Subscriptions",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_member_subscriptions/get",
+      "entry_point": "community_member_subscriptions.list_subscriptions",
+      "query_fields": [
+        "page",
+        "per_page",
+        "query",
+        "member_email",
+        "community_member_id",
+        "community_member_public_uid",
+        "billing_info_business_name",
+        "paywall_price_type",
+        "billing_interval",
+        "subscription_processor_id",
+        "currency",
+        "paywall_ids",
+        "status",
+        "scheduled_to_cancel",
+        "platform",
+        "total_amount_paid_gte",
+        "total_amount_paid_lte",
+        "start_date_gte",
+        "start_date_lte",
+        "sort",
+        "direction"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "POST",
+      "path": "/api/admin/v2/community_member_subscriptions/{id}/resume",
+      "tag": "Community Member Subscriptions",
+      "source_pointer": "/paths/~1api~1admin~1v2~1community_member_subscriptions~1{id}~1resume/post",
+      "entry_point": "community_member_subscriptions.resume",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "GET",
+      "path": "/api/admin/v2/payment_method_setting",
+      "tag": "Payment Method Settings",
+      "source_pointer": "/paths/~1api~1admin~1v2~1payment_method_setting/get",
+      "entry_point": "payment_method_settings.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "GET",
+      "path": "/api/admin/v2/tax_setting",
+      "tag": "Tax Settings",
+      "source_pointer": "/paths/~1api~1admin~1v2~1tax_setting/get",
+      "entry_point": "tax_settings.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "400",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 23,
+      "method": "PUT",
+      "path": "/api/admin/v2/tax_setting",
+      "tag": "Tax Settings",
+      "source_pointer": "/paths/~1api~1admin~1v2~1tax_setting/put",
+      "entry_point": "tax_settings.update",
+      "query_fields": [],
+      "json_fields": [
+        "tax_setting",
+        "tax_setting.default_tax_behavior",
+        "tax_setting.platform_status"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-billing.json",
+      "tests": "tests/test_admin_v2_billing.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    }
+  ]
+}
