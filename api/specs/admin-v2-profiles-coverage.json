@@ -1,0 +1,458 @@
+{
+  "task_id": 21,
+  "family": "admin-v2",
+  "frozen_sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+  "operations": [
+    {
+      "task_id": 21,
+      "method": "GET",
+      "path": "/api/admin/v2/advanced_search",
+      "tag": "Advanced Search",
+      "source_pointer": "/paths/~1api~1admin~1v2~1advanced_search/get",
+      "entry_point": "advanced_search.search",
+      "query_fields": [
+        "page",
+        "per_page",
+        "query",
+        "type",
+        "mention_scope",
+        "filters"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "GET",
+      "path": "/api/admin/v2/filter_kit_configuration",
+      "tag": "FilterKit Configuration",
+      "source_pointer": "/paths/~1api~1admin~1v2~1filter_kit_configuration/get",
+      "entry_point": "filter_kit_configuration.get",
+      "query_fields": [
+        "context",
+        "space_id"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "400",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "POST",
+      "path": "/api/admin/v2/filter_kit_controls",
+      "tag": "Filter Kit Controls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1filter_kit_controls/post",
+      "entry_point": "filter_kit_controls.create",
+      "query_fields": [],
+      "json_fields": [
+        "enabled",
+        "key",
+        "profile_field_id",
+        "sort_key",
+        "space_id"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "GET",
+      "path": "/api/admin/v2/filter_kit_controls",
+      "tag": "Filter Kit Controls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1filter_kit_controls/get",
+      "entry_point": "filter_kit_controls.list_controls",
+      "query_fields": [
+        "space_id",
+        "member_directory_only",
+        "enabled",
+        "key",
+        "profile_field_id",
+        "page",
+        "per_page"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "DELETE",
+      "path": "/api/admin/v2/filter_kit_controls/{id}",
+      "tag": "Filter Kit Controls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1filter_kit_controls~1{id}/delete",
+      "entry_point": "filter_kit_controls.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "GET",
+      "path": "/api/admin/v2/filter_kit_controls/{id}",
+      "tag": "Filter Kit Controls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1filter_kit_controls~1{id}/get",
+      "entry_point": "filter_kit_controls.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "PATCH",
+      "path": "/api/admin/v2/filter_kit_controls/{id}",
+      "tag": "Filter Kit Controls",
+      "source_pointer": "/paths/~1api~1admin~1v2~1filter_kit_controls~1{id}/patch",
+      "entry_point": "filter_kit_controls.update",
+      "query_fields": [],
+      "json_fields": [
+        "enabled",
+        "key",
+        "profile_field_id",
+        "sort_key",
+        "space_id"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "GET",
+      "path": "/api/admin/v2/locations/search",
+      "tag": "Locations",
+      "source_pointer": "/paths/~1api~1admin~1v2~1locations~1search/get",
+      "entry_point": "locations.search",
+      "query_fields": [
+        "query"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "GET",
+      "path": "/api/admin/v2/page_profile_fields",
+      "tag": "Page Profile Fields",
+      "source_pointer": "/paths/~1api~1admin~1v2~1page_profile_fields/get",
+      "entry_point": "page_profile_fields.list_fields",
+      "query_fields": [
+        "page_name"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "PUT",
+      "path": "/api/admin/v2/profile_fields/{id}/archive",
+      "tag": "Profile Fields",
+      "source_pointer": "/paths/~1api~1admin~1v2~1profile_fields~1{id}~1archive/put",
+      "entry_point": "profile_fields.archive",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "422",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "POST",
+      "path": "/api/admin/v2/profile_fields",
+      "tag": "Profile Fields",
+      "source_pointer": "/paths/~1api~1admin~1v2~1profile_fields/post",
+      "entry_point": "profile_fields.create",
+      "query_fields": [],
+      "json_fields": [
+        "profile_field",
+        "profile_field.allow_null",
+        "profile_field.choices_attributes",
+        "profile_field.choices_attributes[].sort_key",
+        "profile_field.choices_attributes[].value",
+        "profile_field.description",
+        "profile_field.field_type",
+        "profile_field.key",
+        "profile_field.label",
+        "profile_field.number_options_attributes",
+        "profile_field.number_options_attributes.decimal",
+        "profile_field.number_options_attributes.format",
+        "profile_field.number_options_attributes.position",
+        "profile_field.number_options_attributes.text",
+        "profile_field.pages_attributes",
+        "profile_field.pages_attributes[].name",
+        "profile_field.pages_attributes[].visible",
+        "profile_field.placeholder",
+        "profile_field.required"
+      ],
+      "response_statuses": [
+        "201",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "GET",
+      "path": "/api/admin/v2/profile_fields",
+      "tag": "Profile Fields",
+      "source_pointer": "/paths/~1api~1admin~1v2~1profile_fields/get",
+      "entry_point": "profile_fields.list_fields",
+      "query_fields": [
+        "page",
+        "per_page",
+        "label",
+        "archived"
+      ],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": "records/has_next_page",
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "DELETE",
+      "path": "/api/admin/v2/profile_fields/{id}",
+      "tag": "Profile Fields",
+      "source_pointer": "/paths/~1api~1admin~1v2~1profile_fields~1{id}/delete",
+      "entry_point": "profile_fields.delete",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "PUT",
+      "path": "/api/admin/v2/profile_fields/{id}",
+      "tag": "Profile Fields",
+      "source_pointer": "/paths/~1api~1admin~1v2~1profile_fields~1{id}/put",
+      "entry_point": "profile_fields.update",
+      "query_fields": [],
+      "json_fields": [
+        "profile_field",
+        "profile_field.allow_null",
+        "profile_field.choices_attributes",
+        "profile_field.choices_attributes[]._destroy",
+        "profile_field.choices_attributes[].id",
+        "profile_field.choices_attributes[].sort_key",
+        "profile_field.choices_attributes[].value",
+        "profile_field.description",
+        "profile_field.key",
+        "profile_field.label",
+        "profile_field.number_options_attributes",
+        "profile_field.number_options_attributes.decimal",
+        "profile_field.number_options_attributes.format",
+        "profile_field.number_options_attributes.id",
+        "profile_field.number_options_attributes.position",
+        "profile_field.number_options_attributes.text",
+        "profile_field.pages_attributes",
+        "profile_field.pages_attributes[].id",
+        "profile_field.pages_attributes[].visible",
+        "profile_field.placeholder",
+        "profile_field.required"
+      ],
+      "response_statuses": [
+        "200",
+        "404",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "PUT",
+      "path": "/api/admin/v2/profile_fields/{id}/unarchive",
+      "tag": "Profile Fields",
+      "source_pointer": "/paths/~1api~1admin~1v2~1profile_fields~1{id}~1unarchive/put",
+      "entry_point": "profile_fields.unarchive",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "422",
+        "404",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "GET",
+      "path": "/api/admin/v2/settings/connect",
+      "tag": "Connect Settings",
+      "source_pointer": "/paths/~1api~1admin~1v2~1settings~1connect/get",
+      "entry_point": "connect_settings.get",
+      "query_fields": [],
+      "json_fields": [],
+      "response_statuses": [
+        "200",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    },
+    {
+      "task_id": 21,
+      "method": "PATCH",
+      "path": "/api/admin/v2/settings/connect",
+      "tag": "Connect Settings",
+      "source_pointer": "/paths/~1api~1admin~1v2~1settings~1connect/patch",
+      "entry_point": "connect_settings.update",
+      "query_fields": [],
+      "json_fields": [
+        "connect",
+        "connect.enabled",
+        "connect.exclude_admins_from_recommendations",
+        "connect.exclude_moderators_from_recommendations",
+        "connect.recommendations",
+        "member_directory",
+        "member_directory.public",
+        "member_directory.sort",
+        "member_directory.view",
+        "messaging",
+        "messaging.enabled",
+        "messaging.group_messaging_enabled",
+        "messaging.member_to_member_messaging_enabled",
+        "messaging.require_connection_before_messaging",
+        "messaging.voice_messages_enabled"
+      ],
+      "response_statuses": [
+        "200",
+        "422",
+        "401",
+        "403"
+      ],
+      "pagination": null,
+      "fixture": "tests/fixtures/admin-v2-profiles.json",
+      "tests": "tests/test_admin_v2_profiles.py",
+      "contract": "independent_offline_wire",
+      "live_validation": "not_run"
+    }
+  ]
+}

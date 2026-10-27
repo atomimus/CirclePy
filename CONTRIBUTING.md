@@ -79,6 +79,7 @@ python tools/check_admin_v2_content_contract.py
 python tools/check_admin_v2_courses_contract.py
 python tools/check_admin_v2_events_contract.py
 python tools/check_admin_v2_organization_contract.py
+python tools/check_admin_v2_profiles_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build
@@ -173,6 +174,11 @@ Admin v2 tag, topic and segment changes also require
 `python tools/check_admin_v2_organization_contract.py`, covering all 19 operations,
 typed nested rules, selected-member arrays, appearance settings and duplication.
 See `docs/admin-v2-organization.md` for tested cohort and segment examples.
+
+Admin v2 profile, filter, discovery and Connect changes also require
+`python tools/check_admin_v2_profiles_contract.py`, covering all 17 operations,
+profile choices and record IDs, 12 runtime filter variants, deep query filters
+and complete settings. See `docs/admin-v2-profiles.md` for tested examples.
 
 ## Direct main workflow and CI
 

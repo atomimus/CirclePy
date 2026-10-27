@@ -42,6 +42,11 @@ PATCH lesson editing, PUT course reordering and progress updates by member email
 Both expose `.events`, `.event_attendees` and `.live` for all 11
 [event and live administration operations](admin-v2-events.md), including recurrence,
 duplication, administrative RSVPs and raw transcripts.
+Both expose `.profile_fields`, `.page_profile_fields`, `.advanced_search`,
+`.locations`, `.filter_kit_configuration`, `.filter_kit_controls` and
+`.connect_settings` for all 17 [profile, filter and discovery operations](admin-v2-profiles.md).
+These preserve nested directory configuration and Circle's member interaction
+settings, with matching native async methods and documented pagination.
 Both Headless facades expose explicit plural resources
 for every frozen Member operation. No methods are generated at runtime.
 

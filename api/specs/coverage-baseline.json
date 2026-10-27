@@ -2713,9 +2713,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncFilterKitControlsAPI.delete",
+          "line": 70,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "FilterKitControlsAPI.delete",
+          "line": 111,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2941,9 +2954,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncProfileFieldsAPI.delete",
+          "line": 142,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "ProfileFieldsAPI.delete",
+          "line": 181,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -3313,9 +3339,34 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncAdvancedSearchAPI.search",
+          "line": 15,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncAdvancedSearchAPI.search_raw",
+          "line": 23,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "AdvancedSearchAPI.search",
+          "line": 58,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "AdvancedSearchAPI.search_raw",
+          "line": 66,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4009,9 +4060,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncFilterKitConfigurationAPI.get",
+          "line": 50,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "FilterKitConfigurationAPI.get",
+          "line": 91,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4031,9 +4095,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncFilterKitControlsAPI.list_controls",
+          "line": 76,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "FilterKitControlsAPI.list_controls",
+          "line": 117,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4053,9 +4130,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncFilterKitControlsAPI.get",
+          "line": 61,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "FilterKitControlsAPI.get",
+          "line": 102,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4290,9 +4380,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncLocationsAPI.search",
+          "line": 112,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "LocationsAPI.search",
+          "line": 151,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4382,9 +4485,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncPageProfileFieldsAPI.list_fields",
+          "line": 118,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "PageProfileFieldsAPI.list_fields",
+          "line": 157,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4575,9 +4691,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncProfileFieldsAPI.list_fields",
+          "line": 145,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "ProfileFieldsAPI.list_fields",
+          "line": 184,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -4597,9 +4726,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncConnectSettingsAPI.get",
+          "line": 174,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "ConnectSettingsAPI.get",
+          "line": 211,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5337,9 +5479,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncFilterKitControlsAPI.update",
+          "line": 64,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "FilterKitControlsAPI.update",
+          "line": 105,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -5416,9 +5571,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncConnectSettingsAPI.update",
+          "line": 178,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "ConnectSettingsAPI.update",
+          "line": 215,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6060,9 +6228,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncFilterKitControlsAPI.create",
+          "line": 58,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "FilterKitControlsAPI.create",
+          "line": 99,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -6407,9 +6588,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncProfileFieldsAPI.create",
+          "line": 126,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "ProfileFieldsAPI.create",
+          "line": 165,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -7353,9 +7547,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncProfileFieldsAPI.update",
+          "line": 130,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "ProfileFieldsAPI.update",
+          "line": 169,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -7375,9 +7582,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncProfileFieldsAPI.archive",
+          "line": 135,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "ProfileFieldsAPI.archive",
+          "line": 174,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -7397,9 +7617,22 @@
         }
       ],
       "task_id": 21,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/admin_v2/async_profiles.py",
+          "symbol": "AsyncProfileFieldsAPI.unarchive",
+          "line": 138,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/admin_v2/profiles.py",
+          "symbol": "ProfileFieldsAPI.unarchive",
+          "line": 177,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },

@@ -50,8 +50,20 @@ from .organization import MemberTagsAPI, TaggedMembersAPI, TopicsAPI, CommunityS
 from .async_organization import (
     AsyncMemberTagsAPI, AsyncTaggedMembersAPI, AsyncTopicsAPI, AsyncCommunitySegmentsAPI,
 )
+from .profiles import (
+    AdvancedSearchAPI, FilterKitConfigurationAPI, FilterKitControlsAPI, LocationsAPI,
+    PageProfileFieldsAPI, ProfileFieldsAPI, ConnectSettingsAPI,
+)
+from .async_profiles import (
+    AsyncAdvancedSearchAPI, AsyncFilterKitConfigurationAPI, AsyncFilterKitControlsAPI,
+    AsyncLocationsAPI, AsyncPageProfileFieldsAPI, AsyncProfileFieldsAPI, AsyncConnectSettingsAPI,
+)
 
 __all__ = [
+    "AdvancedSearchAPI", "FilterKitConfigurationAPI", "FilterKitControlsAPI", "LocationsAPI",
+    "PageProfileFieldsAPI", "ProfileFieldsAPI", "ConnectSettingsAPI",
+    "AsyncAdvancedSearchAPI", "AsyncFilterKitConfigurationAPI", "AsyncFilterKitControlsAPI",
+    "AsyncLocationsAPI", "AsyncPageProfileFieldsAPI", "AsyncProfileFieldsAPI", "AsyncConnectSettingsAPI",
     "MemberTagsAPI", "TaggedMembersAPI", "TopicsAPI", "CommunitySegmentsAPI",
     "AsyncMemberTagsAPI", "AsyncTaggedMembersAPI", "AsyncTopicsAPI", "AsyncCommunitySegmentsAPI",
     "EventsAPI", "EventAttendeesAPI", "LiveAPI",

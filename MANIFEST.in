@@ -16,6 +16,7 @@ include docs/admin-v2-content.md
 include docs/admin-v2-courses.md
 include docs/admin-v2-events.md
 include docs/admin-v2-organization.md
+include docs/admin-v2-profiles.md
 recursive-include circlepy *.py
 recursive-include tests *.py *.json *.md
 recursive-include tools *.py

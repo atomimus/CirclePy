@@ -38,6 +38,9 @@ RSVPs and complete raw VTT responses.
 Both cover all 19 [tag, topic and segment operations](docs/admin-v2-organization.md),
 including member tagging/removal, appearance settings, typed segment rules,
 selected-member arrays and segment duplication, with bounded pagination.
+Both cover all 17 [profile, filter, discovery and Circle Connect operations](docs/admin-v2-profiles.md),
+including custom field choices and archive/restore, directory controls, complete
+filter configuration, deep search queries and member interaction settings.
 
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`

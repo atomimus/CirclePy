@@ -107,7 +107,9 @@ class AdminV2Client(_SyncAPIClient):
                                PostsAPI, CommentsAPI, UploadsAPI, EmbedsAPI, PostFollowersAPI,
                                CourseSectionsAPI, CourseLessonsAPI, CourseLessonProgressAPI,
                                EventsAPI, EventAttendeesAPI, LiveAPI, MemberTagsAPI,
-                               TaggedMembersAPI, TopicsAPI, CommunitySegmentsAPI)
+                               TaggedMembersAPI, TopicsAPI, CommunitySegmentsAPI,
+                               AdvancedSearchAPI, FilterKitConfigurationAPI, FilterKitControlsAPI,
+                               LocationsAPI, PageProfileFieldsAPI, ProfileFieldsAPI, ConnectSettingsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -140,6 +142,13 @@ class AdminV2Client(_SyncAPIClient):
         self.tagged_members = TaggedMembersAPI(self)
         self.topics = TopicsAPI(self)
         self.community_segments = CommunitySegmentsAPI(self)
+        self.advanced_search = AdvancedSearchAPI(self)
+        self.filter_kit_configuration = FilterKitConfigurationAPI(self)
+        self.filter_kit_controls = FilterKitControlsAPI(self)
+        self.locations = LocationsAPI(self)
+        self.page_profile_fields = PageProfileFieldsAPI(self)
+        self.profile_fields = ProfileFieldsAPI(self)
+        self.connect_settings = ConnectSettingsAPI(self)
 
 
 class AsyncAdminV2Client(_AsyncAPIClient):
@@ -159,7 +168,10 @@ class AsyncAdminV2Client(_AsyncAPIClient):
                                AsyncCourseLessonsAPI, AsyncCourseLessonProgressAPI,
                                AsyncEventsAPI, AsyncEventAttendeesAPI, AsyncLiveAPI,
                                AsyncMemberTagsAPI, AsyncTaggedMembersAPI,
-                               AsyncTopicsAPI, AsyncCommunitySegmentsAPI)
+                               AsyncTopicsAPI, AsyncCommunitySegmentsAPI,
+                               AsyncAdvancedSearchAPI, AsyncFilterKitConfigurationAPI,
+                               AsyncFilterKitControlsAPI, AsyncLocationsAPI,
+                               AsyncPageProfileFieldsAPI, AsyncProfileFieldsAPI, AsyncConnectSettingsAPI)
 
         super().__init__(api_key, base_url=base_url, timeout=timeout, proxy=proxy,
                          trust_env=trust_env, session=session, verify=verify,
@@ -192,3 +204,10 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.tagged_members = AsyncTaggedMembersAPI(self)
         self.topics = AsyncTopicsAPI(self)
         self.community_segments = AsyncCommunitySegmentsAPI(self)
+        self.advanced_search = AsyncAdvancedSearchAPI(self)
+        self.filter_kit_configuration = AsyncFilterKitConfigurationAPI(self)
+        self.filter_kit_controls = AsyncFilterKitControlsAPI(self)
+        self.locations = AsyncLocationsAPI(self)
+        self.page_profile_fields = AsyncPageProfileFieldsAPI(self)
+        self.profile_fields = AsyncProfileFieldsAPI(self)
+        self.connect_settings = AsyncConnectSettingsAPI(self)

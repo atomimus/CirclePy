@@ -82,6 +82,7 @@ def inspect_artifacts(directory):
         required.add("docs/admin-v2-courses.md")
         required.add("docs/admin-v2-events.md")
         required.add("docs/admin-v2-organization.md")
+        required.add("docs/admin-v2-profiles.md")
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "tools").glob("*.py")}
         required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / ".github").rglob("*.yml")}
@@ -145,6 +146,7 @@ def check_installs(artifacts):
             shutil.copy2(ROOT / "docs/admin-v2-courses.md", work / "docs/admin-v2-courses.md")
             shutil.copy2(ROOT / "docs/admin-v2-events.md", work / "docs/admin-v2-events.md")
             shutil.copy2(ROOT / "docs/admin-v2-organization.md", work / "docs/admin-v2-organization.md")
+            shutil.copy2(ROOT / "docs/admin-v2-profiles.md", work / "docs/admin-v2-profiles.md")
             # Validate consumer dependencies first, then add only the test tools.
             # Copy configuration so the identical offline guard and strict async
             # mode apply outside the checkout, without PYTHONPATH shadowing.

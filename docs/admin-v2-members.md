@@ -289,7 +289,7 @@ Owning tasks will define their exact methods from the frozen/current schemas.
 | 18 | `course_sections`, `course_lessons`, `course_lesson_progress` |
 | 19 | `events`, `event_attendees`, `live` |
 | 20 | `member_tags`, `tagged_members`, `topics`, `community_segments` |
-| 21 | `profile_fields`, `page_profile_fields`, `advanced_search`, `locations`, `connect_settings`, `filter_kit_configuration`, `filter_kit_controls` |
+| 21, implemented | `profile_fields`, `page_profile_fields`, `advanced_search`, `locations`, `connect_settings`, `filter_kit_configuration`, `filter_kit_controls` ([profile/filter guide](admin-v2-profiles.md)) |
 | 22 | `messages`, `chat_preferences`, `chat_room_message_imports`, `forms`, `workflows`, `flagged_contents`, `gamification` |
 | 23 | `community_member_charges`, `community_member_subscriptions`, `payment_method_settings`, `tax_settings` |
 | 24 | `paywalls`, `paywall_groups`, `paywall_coupons`, `paywall_affiliates`, `paywall_affiliate_payouts` |

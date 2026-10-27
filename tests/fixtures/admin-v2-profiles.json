@@ -1,0 +1,2112 @@
+[
+  {
+    "case_id": "advanced_search.search",
+    "resource": "advanced_search",
+    "name": "search",
+    "method": "GET",
+    "path": "/api/admin/v2/advanced_search",
+    "args": [
+      "SDK cohort"
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 8,
+      "type": "mentions",
+      "mention_scope": "thread",
+      "filters": {
+        "space_ids": [
+          "31",
+          "32"
+        ],
+        "topic_ids": [
+          "33"
+        ],
+        "member_tag_ids": [
+          "34"
+        ],
+        "author_name": "Fixture",
+        "status": "upcoming"
+      }
+    },
+    "query": "page=2&per_page=8&query=SDK+cohort&type=mentions&mention_scope=thread&filters%5Bspace_ids%5D%5B%5D=31&filters%5Bspace_ids%5D%5B%5D=32&filters%5Btopic_ids%5D%5B%5D=33&filters%5Bmember_tag_ids%5D%5B%5D=34&filters%5Bauthor_name%5D=Fixture&filters%5Bstatus%5D=upcoming",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 8,
+      "has_next_page": false,
+      "count": 6,
+      "page_count": 6,
+      "records": [
+        {
+          "id": 71,
+          "type": "post",
+          "name": "SDK Post",
+          "slug": "sdk-post",
+          "url": "https://example.test/posts/sdk-post",
+          "created_at": "2026-10-27T00:00:00Z",
+          "status": "published",
+          "highlighted_name": null,
+          "cover_image_url": null,
+          "body": "",
+          "highlighted_body": "",
+          "sgid": "synthetic-post-sgid",
+          "starts_at": null,
+          "author": {
+            "name": "Fixture",
+            "avatar_url": null,
+            "community_member_id": 81
+          },
+          "space": {
+            "id": 31,
+            "name": "SDK Space",
+            "slug": "sdk-space"
+          },
+          "future": null
+        },
+        {
+          "id": 72,
+          "type": "comment",
+          "body": "",
+          "url": "https://example.test/comment/72",
+          "post_id": 71,
+          "post_slug": "sdk-post",
+          "post_name": "SDK Post",
+          "space_id": 31,
+          "space_slug": "sdk-space",
+          "parent_comment_id": null,
+          "highlighted_body": null,
+          "author": {
+            "name": "Fixture",
+            "avatar_url": null,
+            "community_member_id": 81
+          }
+        },
+        {
+          "id": 73,
+          "type": "lesson",
+          "name": "SDK Lesson",
+          "body": "",
+          "status": "published",
+          "section_name": "SDK Section",
+          "section_id": 32,
+          "created_at": "2026-10-27T00:00:00Z",
+          "highlighted_name": null,
+          "highlighted_body": null,
+          "sgid": "synthetic-lesson-sgid",
+          "space": {
+            "id": 31,
+            "name": "SDK Space",
+            "slug": "sdk-space"
+          }
+        },
+        {
+          "id": 31,
+          "type": "space",
+          "name": "SDK Space",
+          "slug": "sdk-space",
+          "highlighted_name": null,
+          "sgid": "synthetic-space-sgid",
+          "space_type": "members"
+        },
+        {
+          "type": "community_member",
+          "id": 81,
+          "name": "Fixture",
+          "email": "fixture@example.test",
+          "headline": "",
+          "avatar_url": null,
+          "bio": null,
+          "public_uid": "synthetic-uid",
+          "location": "",
+          "user_id": 82,
+          "highlighted_name": null,
+          "sgid": "synthetic-member-sgid"
+        },
+        {
+          "id": 83,
+          "type": "group_mention",
+          "name": "SDK Group",
+          "mention_type": "space",
+          "mention_scope": "thread",
+          "highlighted_name": null,
+          "sgid": "synthetic-group-sgid"
+        }
+      ],
+      "future": {
+        "zero": 0,
+        "empty": []
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "filter_kit_configuration.get",
+    "resource": "filter_kit_configuration",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/filter_kit_configuration",
+    "args": [
+      "member_space"
+    ],
+    "kwargs": {
+      "space_id": 31
+    },
+    "query": "context=member_space&space_id=31",
+    "body": null,
+    "response": {
+      "filter_configurations": [
+        {
+          "type": "standard",
+          "key": "fixture_string",
+          "label": "SDK string",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "string",
+          "payload": {
+            "filter_types": [
+              "contains",
+              "does_not_contain",
+              "is",
+              "is_not",
+              "not_exist",
+              "exist"
+            ],
+            "additional_params": {
+              "blank": "",
+              "zero": 0,
+              "null": null
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_boolean",
+          "label": "SDK boolean",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "boolean",
+          "payload": null,
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_radio",
+          "label": "SDK radio",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "radio",
+          "payload": {
+            "options": [
+              {
+                "key": "oldest",
+                "value": "oldest"
+              },
+              {
+                "key": "zero",
+                "value": 0
+              }
+            ]
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_array",
+          "label": "SDK array",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "array",
+          "payload": {
+            "options": [
+              {
+                "text": "Engineering",
+                "value": 41,
+                "group": null
+              },
+              {
+                "text": "",
+                "value": "",
+                "group": ""
+              }
+            ],
+            "filter_types": [
+              "is",
+              "is_not",
+              "not_exist",
+              "exist"
+            ],
+            "mode": "popover",
+            "additional_params": {
+              "profile_field_id": 21,
+              "future": []
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_near_me",
+          "label": "SDK near_me",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "near_me",
+          "payload": {
+            "location_search_options": {
+              "key": "location",
+              "source": "mapbox_v6"
+            },
+            "require_user_to_provide_more_precise_location": false,
+            "near_me_location_filter_values": {
+              "source": "mapbox_v6",
+              "id": "sdk-place",
+              "name": "SDK Cairo"
+            },
+            "community_member_profile_field": {
+              "id": 0,
+              "text": ""
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_preset",
+          "label": "SDK preset",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "presets",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "preset",
+          "payload": {
+            "preset_params": {
+              "filters": [
+                {
+                  "id": "online",
+                  "key": "online",
+                  "value": false
+                }
+              ],
+              "future": {
+                "null": null
+              }
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_location",
+          "label": "SDK location",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "location",
+          "payload": {
+            "location_search_options": {
+              "key": "location",
+              "source": "mapbox_v6"
+            },
+            "mode": "inline"
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "search",
+          "key": "fixture_search",
+          "label": "SDK search",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "global",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "search",
+          "payload": null,
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_number",
+          "label": "SDK number",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "number",
+          "payload": {
+            "filter_types": [
+              "is",
+              "is_not"
+            ],
+            "additional_params": null,
+            "number_options": {
+              "id": 51,
+              "format": "custom",
+              "decimal": 0,
+              "position": "left",
+              "text": ""
+            }
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_async_search",
+          "label": "SDK async_search",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "async_search",
+          "payload": {
+            "filter_types": [
+              "is",
+              "is_not",
+              "not_exist",
+              "exist"
+            ],
+            "mode": "popover",
+            "url": "https://example.test/fixture-options"
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_days_ago",
+          "label": "SDK days_ago",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "days_ago",
+          "payload": {
+            "filter_types": [
+              "lt",
+              "eq",
+              "gt"
+            ]
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        },
+        {
+          "type": "standard",
+          "key": "fixture_number_range",
+          "label": "SDK number_range",
+          "icon": null,
+          "allow_multiple": false,
+          "pinned": false,
+          "visible_by_default": false,
+          "customizable": true,
+          "filter_group": "profile",
+          "enabled": false,
+          "filter_kit_control": {
+            "id": 61,
+            "community_id": 1,
+            "space_id": 31,
+            "profile_field_id": 21,
+            "key": "profile_field",
+            "filter_type": "select",
+            "enabled": false,
+            "sort_key": 0,
+            "created_at": null,
+            "updated_at": "",
+            "profile_field": {
+              "id": 21,
+              "key": "sdk_department",
+              "label": "SDK Department"
+            },
+            "space": {
+              "id": 31,
+              "name": "SDK Directory"
+            },
+            "future": {
+              "null": null,
+              "false": false
+            }
+          },
+          "input_type": "number_range",
+          "payload": {
+            "filter_types": [
+              "lt",
+              "gt",
+              "between"
+            ],
+            "min": 0,
+            "max": null
+          },
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        }
+      ],
+      "enabled": false,
+      "base_search_params": {
+        "status": "active",
+        "exclude_empty_name": false,
+        "order": {
+          "name": "asc",
+          "future": []
+        },
+        "filters": [
+          {
+            "id": "fixture-online",
+            "key": "online",
+            "value": false
+          },
+          {
+            "id": "fixture-name",
+            "key": "name",
+            "value": ""
+          }
+        ]
+      },
+      "future": {
+        "empty": [],
+        "zero": 0,
+        "null": null
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      400,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "filter_kit_controls.create",
+    "resource": "filter_kit_controls",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/filter_kit_controls",
+    "args": [
+      {
+        "key": "profile_field",
+        "enabled": false,
+        "space_id": 31,
+        "profile_field_id": 21,
+        "sort_key": 0
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "key": "profile_field",
+      "enabled": false,
+      "space_id": 31,
+      "profile_field_id": 21,
+      "sort_key": 0
+    },
+    "response": {
+      "id": 61,
+      "community_id": 1,
+      "space_id": 31,
+      "profile_field_id": 21,
+      "key": "profile_field",
+      "filter_type": "select",
+      "enabled": false,
+      "sort_key": 0,
+      "created_at": null,
+      "updated_at": "",
+      "profile_field": {
+        "id": 21,
+        "key": "sdk_department",
+        "label": "SDK Department"
+      },
+      "space": {
+        "id": 31,
+        "name": "SDK Directory"
+      },
+      "future": {
+        "null": null,
+        "false": false
+      }
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {
+        "key": "contact_search",
+        "enabled": false
+      },
+      {
+        "key": "near_me",
+        "enabled": false
+      },
+      {
+        "key": "online",
+        "enabled": false
+      },
+      {
+        "key": "recently_joined",
+        "enabled": false
+      },
+      {
+        "key": "location",
+        "enabled": false
+      },
+      {
+        "key": "tags",
+        "enabled": false
+      },
+      {
+        "key": "profile_field",
+        "enabled": false,
+        "profile_field_id": 21
+      },
+      {
+        "key": "spaces",
+        "enabled": false
+      },
+      {
+        "key": "space_groups",
+        "enabled": false
+      },
+      {
+        "key": "global",
+        "enabled": false
+      }
+    ]
+  },
+  {
+    "case_id": "filter_kit_controls.list_controls",
+    "resource": "filter_kit_controls",
+    "name": "list_controls",
+    "method": "GET",
+    "path": "/api/admin/v2/filter_kit_controls",
+    "args": [],
+    "kwargs": {
+      "space_id": 31,
+      "member_directory_only": false,
+      "enabled": false,
+      "key": "profile_field",
+      "profile_field_id": 21,
+      "page": 2,
+      "per_page": 4
+    },
+    "query": "space_id=31&member_directory_only=false&enabled=false&key=profile_field&profile_field_id=21&page=2&per_page=4",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 61,
+          "community_id": 1,
+          "space_id": 31,
+          "profile_field_id": 21,
+          "key": "profile_field",
+          "filter_type": "select",
+          "enabled": false,
+          "sort_key": 0,
+          "created_at": null,
+          "updated_at": "",
+          "profile_field": {
+            "id": 21,
+            "key": "sdk_department",
+            "label": "SDK Department"
+          },
+          "space": {
+            "id": 31,
+            "name": "SDK Directory"
+          },
+          "future": {
+            "null": null,
+            "false": false
+          }
+        }
+      ],
+      "future": {
+        "zero": 0,
+        "empty": []
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "filter_kit_controls.delete",
+    "resource": "filter_kit_controls",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/filter_kit_controls/61",
+    "args": [
+      61
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic control removed",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "filter_kit_controls.get",
+    "resource": "filter_kit_controls",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/filter_kit_controls/61",
+    "args": [
+      61
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "id": 61,
+      "community_id": 1,
+      "space_id": 31,
+      "profile_field_id": 21,
+      "key": "profile_field",
+      "filter_type": "select",
+      "enabled": false,
+      "sort_key": 0,
+      "created_at": null,
+      "updated_at": "",
+      "profile_field": {
+        "id": 21,
+        "key": "sdk_department",
+        "label": "SDK Department"
+      },
+      "space": {
+        "id": 31,
+        "name": "SDK Directory"
+      },
+      "future": {
+        "null": null,
+        "false": false
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "filter_kit_controls.update",
+    "resource": "filter_kit_controls",
+    "name": "update",
+    "method": "PATCH",
+    "path": "/api/admin/v2/filter_kit_controls/61",
+    "args": [
+      61,
+      {
+        "key": "profile_field",
+        "enabled": false,
+        "space_id": 31,
+        "profile_field_id": 21,
+        "sort_key": 0
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "key": "profile_field",
+      "enabled": false,
+      "space_id": 31,
+      "profile_field_id": 21,
+      "sort_key": 0
+    },
+    "response": {
+      "id": 61,
+      "community_id": 1,
+      "space_id": 31,
+      "profile_field_id": 21,
+      "key": "profile_field",
+      "filter_type": "select",
+      "enabled": false,
+      "sort_key": 0,
+      "created_at": null,
+      "updated_at": "",
+      "profile_field": {
+        "id": 21,
+        "key": "sdk_department",
+        "label": "SDK Department"
+      },
+      "space": {
+        "id": 31,
+        "name": "SDK Directory"
+      },
+      "future": {
+        "null": null,
+        "false": false
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {},
+      {
+        "enabled": false
+      }
+    ]
+  },
+  {
+    "case_id": "locations.search",
+    "resource": "locations",
+    "name": "search",
+    "method": "GET",
+    "path": "/api/admin/v2/locations/search",
+    "args": [
+      "Cairo, EG"
+    ],
+    "kwargs": {},
+    "query": "query=Cairo%2C+EG",
+    "body": null,
+    "response": {
+      "results": [
+        {
+          "source": "mapbox_v6",
+          "name": "SDK Cairo",
+          "full_address": null,
+          "feature_type": "place",
+          "source_id": "fixture-place",
+          "future": {
+            "coordinates": [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "future": []
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "page_profile_fields.list_fields",
+    "resource": "page_profile_fields",
+    "name": "list_fields",
+    "method": "GET",
+    "path": "/api/admin/v2/page_profile_fields",
+    "args": [
+      "edit_profile"
+    ],
+    "kwargs": {},
+    "query": "page_name=edit_profile",
+    "body": null,
+    "response": [
+      {
+        "id": 21,
+        "label": "SDK Department",
+        "field_type": "select",
+        "key": "sdk_department",
+        "placeholder": "",
+        "description": null,
+        "required": false,
+        "allow_null": true,
+        "platform_field": false,
+        "number_options": {
+          "id": 51,
+          "format": "custom",
+          "decimal": 0,
+          "position": null,
+          "text": null
+        },
+        "choices": [
+          {
+            "id": 41,
+            "value": "Engineering"
+          },
+          {
+            "id": 42,
+            "value": ""
+          }
+        ],
+        "future": {
+          "false": false,
+          "zero": 0,
+          "empty": [],
+          "null": null
+        }
+      }
+    ],
+    "success_status": 200,
+    "error_statuses": [
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "profile_fields.archive",
+    "resource": "profile_fields",
+    "name": "archive",
+    "method": "PUT",
+    "path": "/api/admin/v2/profile_fields/21/archive",
+    "args": [
+      21
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic archive",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      404,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "profile_fields.unarchive",
+    "resource": "profile_fields",
+    "name": "unarchive",
+    "method": "PUT",
+    "path": "/api/admin/v2/profile_fields/21/unarchive",
+    "args": [
+      21
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic unarchive",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      404,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "profile_fields.create",
+    "resource": "profile_fields",
+    "name": "create",
+    "method": "POST",
+    "path": "/api/admin/v2/profile_fields",
+    "args": [
+      {
+        "profile_field": {
+          "label": "SDK Department",
+          "field_type": "select",
+          "key": "sdk_department",
+          "description": "",
+          "placeholder": "",
+          "required": false,
+          "allow_null": true,
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ],
+          "choices_attributes": [
+            {
+              "value": "Engineering",
+              "sort_key": 0
+            },
+            {
+              "value": "",
+              "sort_key": 1
+            }
+          ]
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "profile_field": {
+        "label": "SDK Department",
+        "field_type": "select",
+        "key": "sdk_department",
+        "description": "",
+        "placeholder": "",
+        "required": false,
+        "allow_null": true,
+        "pages_attributes": [
+          {
+            "name": "signup",
+            "visible": false
+          },
+          {
+            "name": "edit_profile",
+            "visible": false
+          },
+          {
+            "name": "profile_view",
+            "visible": false
+          },
+          {
+            "name": "community_view",
+            "visible": false
+          }
+        ],
+        "choices_attributes": [
+          {
+            "value": "Engineering",
+            "sort_key": 0
+          },
+          {
+            "value": "",
+            "sort_key": 1
+          }
+        ]
+      }
+    },
+    "response": {
+      "id": 21,
+      "label": "SDK Department",
+      "field_type": "select",
+      "key": "sdk_department",
+      "placeholder": "",
+      "description": null,
+      "required": false,
+      "allow_null": true,
+      "platform_field": false,
+      "archived": false,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "number_options": null,
+      "choices": [
+        {
+          "id": 41,
+          "value": "Engineering"
+        },
+        {
+          "id": 42,
+          "value": ""
+        }
+      ],
+      "pages": [
+        {
+          "id": 11,
+          "name": "signup",
+          "position": 0,
+          "visible": false,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z"
+        }
+      ],
+      "future": {
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "null": null
+      }
+    },
+    "success_status": 201,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {
+        "profile_field": {
+          "label": "SDK text",
+          "field_type": "text",
+          "key": "sdk_text",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ]
+        }
+      },
+      {
+        "profile_field": {
+          "label": "SDK select",
+          "field_type": "select",
+          "key": "sdk_select",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ],
+          "choices_attributes": [
+            {
+              "value": "Fixture",
+              "sort_key": 0
+            }
+          ]
+        }
+      },
+      {
+        "profile_field": {
+          "label": "SDK checkbox",
+          "field_type": "checkbox",
+          "key": "sdk_checkbox",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ],
+          "choices_attributes": [
+            {
+              "value": "Fixture",
+              "sort_key": 0
+            }
+          ]
+        }
+      },
+      {
+        "profile_field": {
+          "label": "SDK textarea",
+          "field_type": "textarea",
+          "key": "sdk_textarea",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ]
+        }
+      },
+      {
+        "profile_field": {
+          "label": "SDK link",
+          "field_type": "link",
+          "key": "sdk_link",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ]
+        }
+      },
+      {
+        "profile_field": {
+          "label": "SDK number",
+          "field_type": "number",
+          "key": "sdk_number",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ],
+          "number_options_attributes": {
+            "format": "number",
+            "decimal": 0
+          }
+        }
+      },
+      {
+        "profile_field": {
+          "label": "SDK Number",
+          "field_type": "number",
+          "key": "sdk_number",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ],
+          "number_options_attributes": {
+            "format": "number",
+            "decimal": 0,
+            "text": "",
+            "position": "right"
+          }
+        }
+      },
+      {
+        "profile_field": {
+          "label": "SDK Number",
+          "field_type": "number",
+          "key": "sdk_number",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ],
+          "number_options_attributes": {
+            "format": "percentage",
+            "decimal": 0,
+            "text": "",
+            "position": "right"
+          }
+        }
+      },
+      {
+        "profile_field": {
+          "label": "SDK Number",
+          "field_type": "number",
+          "key": "sdk_number",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ],
+          "number_options_attributes": {
+            "format": "custom",
+            "decimal": 0,
+            "text": "",
+            "position": "right"
+          }
+        }
+      },
+      {
+        "profile_field": {
+          "label": "SDK Number",
+          "field_type": "number",
+          "key": "sdk_number",
+          "pages_attributes": [
+            {
+              "name": "signup",
+              "visible": false
+            },
+            {
+              "name": "edit_profile",
+              "visible": false
+            },
+            {
+              "name": "profile_view",
+              "visible": false
+            },
+            {
+              "name": "community_view",
+              "visible": false
+            }
+          ],
+          "number_options_attributes": {
+            "format": "unformatted",
+            "decimal": 0,
+            "text": "",
+            "position": "right"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "profile_fields.list_fields",
+    "resource": "profile_fields",
+    "name": "list_fields",
+    "method": "GET",
+    "path": "/api/admin/v2/profile_fields",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 4,
+      "label": "SDK Department",
+      "archived": "true"
+    },
+    "query": "page=2&per_page=4&label=SDK+Department&archived=true",
+    "body": null,
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "has_next_page": false,
+      "count": 1,
+      "page_count": 1,
+      "records": [
+        {
+          "id": 21,
+          "label": "SDK Department",
+          "field_type": "select",
+          "key": "sdk_department",
+          "placeholder": "",
+          "description": null,
+          "required": false,
+          "allow_null": true,
+          "platform_field": false,
+          "archived": true,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z",
+          "number_options": null,
+          "choices": [
+            {
+              "id": 41,
+              "value": "Engineering"
+            },
+            {
+              "id": 42,
+              "value": ""
+            }
+          ],
+          "pages": [
+            {
+              "id": 11,
+              "name": "signup",
+              "position": 0,
+              "visible": false,
+              "created_at": "2026-10-27T00:00:00Z",
+              "updated_at": "2026-10-27T00:00:00Z"
+            }
+          ],
+          "future": {
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "null": null
+          }
+        }
+      ],
+      "future": {
+        "zero": 0,
+        "empty": []
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "profile_fields.delete",
+    "resource": "profile_fields",
+    "name": "delete",
+    "method": "DELETE",
+    "path": "/api/admin/v2/profile_fields/21",
+    "args": [
+      21
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "success": true,
+      "message": "Synthetic archived field removed",
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "profile_fields.update",
+    "resource": "profile_fields",
+    "name": "update",
+    "method": "PUT",
+    "path": "/api/admin/v2/profile_fields/21",
+    "args": [
+      21,
+      {
+        "profile_field": {
+          "label": "SDK Department",
+          "key": "sdk_department",
+          "description": "",
+          "placeholder": "",
+          "required": false,
+          "allow_null": true,
+          "pages_attributes": [
+            {
+              "id": 11,
+              "visible": false
+            }
+          ],
+          "choices_attributes": [
+            {
+              "id": 41,
+              "value": "Renamed",
+              "sort_key": 0,
+              "_destroy": false
+            },
+            {
+              "id": 42,
+              "_destroy": true
+            },
+            {
+              "value": "New",
+              "sort_key": 1
+            }
+          ]
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "profile_field": {
+        "label": "SDK Department",
+        "key": "sdk_department",
+        "description": "",
+        "placeholder": "",
+        "required": false,
+        "allow_null": true,
+        "pages_attributes": [
+          {
+            "id": 11,
+            "visible": false
+          }
+        ],
+        "choices_attributes": [
+          {
+            "id": 41,
+            "value": "Renamed",
+            "sort_key": 0,
+            "_destroy": false
+          },
+          {
+            "id": 42,
+            "_destroy": true
+          },
+          {
+            "value": "New",
+            "sort_key": 1
+          }
+        ]
+      }
+    },
+    "response": {
+      "id": 21,
+      "label": "SDK Department",
+      "field_type": "select",
+      "key": "sdk_department",
+      "placeholder": "",
+      "description": null,
+      "required": false,
+      "allow_null": true,
+      "platform_field": false,
+      "archived": false,
+      "created_at": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-27T00:00:00Z",
+      "number_options": null,
+      "choices": [
+        {
+          "id": 41,
+          "value": "Engineering"
+        },
+        {
+          "id": 42,
+          "value": ""
+        }
+      ],
+      "pages": [
+        {
+          "id": 11,
+          "name": "signup",
+          "position": 0,
+          "visible": false,
+          "created_at": "2026-10-27T00:00:00Z",
+          "updated_at": "2026-10-27T00:00:00Z"
+        }
+      ],
+      "future": {
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "null": null
+      }
+    },
+    "success_status": 200,
+    "error_statuses": [
+      404,
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {
+        "profile_field": {}
+      },
+      {
+        "profile_field": {
+          "pages_attributes": [],
+          "choices_attributes": []
+        }
+      },
+      {
+        "profile_field": {
+          "number_options_attributes": {
+            "id": 51,
+            "format": "custom",
+            "decimal": 0,
+            "text": "",
+            "position": "left"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "connect_settings.get",
+    "resource": "connect_settings",
+    "name": "get",
+    "method": "GET",
+    "path": "/api/admin/v2/settings/connect",
+    "args": [],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "response": {
+      "connect": {
+        "enabled": false,
+        "recommendations": false,
+        "exclude_admins_from_recommendations": false,
+        "exclude_moderators_from_recommendations": false
+      },
+      "member_directory": {
+        "public": false,
+        "sort": "alphabetical",
+        "view": "list"
+      },
+      "messaging": {
+        "enabled": false,
+        "member_to_member_messaging_enabled": false,
+        "group_messaging_enabled": false,
+        "voice_messages_enabled": false,
+        "require_connection_before_messaging": false
+      },
+      "future": null
+    },
+    "success_status": 200,
+    "error_statuses": [
+      401,
+      403
+    ],
+    "request_variants": []
+  },
+  {
+    "case_id": "connect_settings.update",
+    "resource": "connect_settings",
+    "name": "update",
+    "method": "PATCH",
+    "path": "/api/admin/v2/settings/connect",
+    "args": [
+      {
+        "connect": {
+          "enabled": false,
+          "recommendations": false,
+          "exclude_admins_from_recommendations": false,
+          "exclude_moderators_from_recommendations": false
+        },
+        "member_directory": {
+          "public": false,
+          "sort": "alphabetical",
+          "view": "list"
+        },
+        "messaging": {
+          "enabled": false,
+          "member_to_member_messaging_enabled": false,
+          "group_messaging_enabled": false,
+          "voice_messages_enabled": false,
+          "require_connection_before_messaging": false
+        }
+      }
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": {
+      "connect": {
+        "enabled": false,
+        "recommendations": false,
+        "exclude_admins_from_recommendations": false,
+        "exclude_moderators_from_recommendations": false
+      },
+      "member_directory": {
+        "public": false,
+        "sort": "alphabetical",
+        "view": "list"
+      },
+      "messaging": {
+        "enabled": false,
+        "member_to_member_messaging_enabled": false,
+        "group_messaging_enabled": false,
+        "voice_messages_enabled": false,
+        "require_connection_before_messaging": false
+      }
+    },
+    "response": {
+      "connect": {
+        "enabled": false,
+        "recommendations": false,
+        "exclude_admins_from_recommendations": false,
+        "exclude_moderators_from_recommendations": false
+      },
+      "member_directory": {
+        "public": false,
+        "sort": "alphabetical",
+        "view": "list"
+      },
+      "messaging": {
+        "enabled": false,
+        "member_to_member_messaging_enabled": false,
+        "group_messaging_enabled": false,
+        "voice_messages_enabled": false,
+        "require_connection_before_messaging": false
+      },
+      "future": []
+    },
+    "success_status": 200,
+    "error_statuses": [
+      422,
+      401,
+      403
+    ],
+    "request_variants": [
+      {},
+      {
+        "connect": {},
+        "member_directory": {},
+        "messaging": {}
+      },
+      {
+        "messaging": {
+          "group_messaging_enabled": false
+        }
+      },
+      {
+        "member_directory": {
+          "sort": "oldest",
+          "view": "cards"
+        }
+      },
+      {
+        "member_directory": {
+          "sort": "latest"
+        }
+      }
+    ]
+  }
+]
