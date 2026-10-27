@@ -13,10 +13,8 @@ from dataclasses import dataclass, field
 import hashlib
 import json
 from typing import Any, Protocol
-from urllib.parse import parse_qsl, unquote, urlencode, urljoin, urlsplit, urlunsplit
 
 from .errors import PaginationError
-from .transport import _origin, normalize_base_url
 
 
 DEFAULT_MAX_PAGES = 100
@@ -69,7 +67,6 @@ class PageRequest:
     """Arguments for one fetch; params may be used as query fields or a JSON body."""
 
     params: dict[str, Any] = field(default_factory=dict)
-    url: str | None = None
 
 
 class PageAdapter(Protocol):
@@ -177,131 +174,9 @@ class LegacyPages(NumberedPages):
         )
 
 
-def _path(value: str) -> str:
-    while True:
-        if (
-            "\\" in value
-            or any(p in (".", "..") for p in value.split("/"))
-            or any(ord(c) < 32 or ord(c) == 127 for c in value)
-        ):
-            raise ValueError("Invalid pagination path")
-        decoded = unquote(value)
-        if decoded == value:
-            return value
-        value = decoded
-
-
-def pagination_url(base_url: str, current_url: str, link: str) -> str:
-    """Resolve a response link within a configured origin AND API family root."""
-    try:
-        base = normalize_base_url(base_url)
-        if (
-            not isinstance(link, str)
-            or not link
-            or "\\" in link
-            or any(c.isspace() or ord(c) < 32 or ord(c) == 127 for c in link)
-            or "#" in link
-        ):
-            raise ValueError("Invalid pagination link")
-        _path(urlsplit(link).path)
-        current = urlsplit(current_url)
-        if _origin(current_url) != _origin(base) or not _path(current.path).startswith(
-            _path(urlsplit(base).path)
-        ):
-            raise ValueError("Invalid current page")
-        resolved = urljoin(current_url, link)
-        parts = urlsplit(resolved)
-        if _origin(resolved) != _origin(base) or not _path(parts.path).startswith(
-            _path(urlsplit(base).path)
-        ):
-            raise ValueError("Pagination link leaves API family")
-        return resolved
-    except (ValueError, TypeError):
-        raise PaginationError(
-            "Pagination URL must stay within the configured origin and API family"
-        ) from None
-
-
-@dataclass(frozen=True)
-class URLPages(NumberedPages):
-    """Data extension: events plus pagination.next_page_uri; no Data resources yet."""
-
-    base_url: str = "https://app.circle.so/data_api/v1"
-    initial_url: str = "https://app.circle.so/data_api/v1/community_events"
-    records_key: str = "events"
-
-    def first(self, params: dict[str, Any]) -> PageRequest:
-        url = pagination_url(
-            self.base_url, normalize_base_url(self.base_url), self.initial_url
-        )
-        parts = urlsplit(url)
-        query = parse_qsl(parts.query, keep_blank_values=True)
-        for key in ("page", "per_page"):
-            values = [v for k, v in query if k == key]
-            if key not in params and values:
-                if (
-                    len(values) != 1
-                    or not values[0].isascii()
-                    or not values[0].isdecimal()
-                ):
-                    raise PaginationError("Invalid pagination URL page parameters")
-                params[key] = int(values[0])
-        super().first(params)
-        # Explicit initial parameters take precedence; preserve repeated link values.
-        query = [(k, v) for k, v in query if k not in params]
-        query.extend(parse_qsl(urlencode(params, doseq=True), keep_blank_values=True))
-        url = urlunsplit(parts._replace(query=urlencode(query)))
-        return PageRequest(url=url)
-
-    def next(self, page: Any, request: PageRequest) -> PageRequest | None:
-        page = _object(page)
-        pagination = page.get("pagination")
-        if not isinstance(pagination, dict) or "next_page_uri" not in pagination:
-            raise PaginationError("Expected pagination.next_page_uri")
-        link = pagination["next_page_uri"]
-        if link is None:
-            return None
-        assert request.url is not None
-        url = pagination_url(self.base_url, request.url, link)
-        parts = urlsplit(url)
-        query = parse_qsl(parts.query, keep_blank_values=True)
-        for key in ("page", "per_page"):
-            values = [v for k, v in query if k == key]
-            if values and (
-                len(values) != 1
-                or not values[0].isascii()
-                or not values[0].isdecimal()
-                or int(values[0]) < 1
-            ):
-                raise PaginationError("Invalid pagination URL page parameters")
-        # Retain all non-page filters, rejecting conflicting values from the server.
-        previous = parse_qsl(urlsplit(request.url).query, keep_blank_values=True)
-        for key in dict(previous):
-            if key == "page":
-                continue
-            values = [v for k, v in previous if k == key]
-            returned = [v for k, v in query if k == key]
-            if returned and returned != values:
-                raise PaginationError("Pagination URL changes a retained filter")
-            if not returned:
-                query.extend((key, value) for value in values)
-        if not self.records(page):
-            raise PaginationError("Empty page advertises another URL")
-        return PageRequest(url=urlunsplit(parts._replace(query=urlencode(query))))
-
-
 def _identity(request: PageRequest) -> str:
-    if request.url is not None:
-        parts = urlsplit(request.url)
-        value: Any = (
-            _origin(request.url),
-            _path(parts.path),
-            sorted(parse_qsl(parts.query, keep_blank_values=True)),
-        )
-    else:
-        # A cursor identifies the position even if the initial request also used page.
-        value = request.params.get("search_after") or request.params
-    return _digest(value)
+    # A cursor identifies the position even if the initial request also used page.
+    return _digest(request.params.get("search_after") or request.params)
 
 
 def _digest(value: Any) -> str:
@@ -337,7 +212,7 @@ class _Traversal:
             self.seen_records.add(digest)
         next_request = self.adapter.next(page, self.request)
         if next_request is not None and _identity(next_request) in self.seen_requests:
-            raise PaginationError("Provider repeated a pagination cursor or URL")
+            raise PaginationError("Provider repeated a pagination cursor")
         self.remaining -= 1
         return next_request
 

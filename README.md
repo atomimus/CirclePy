@@ -36,7 +36,7 @@ progress updates, with matching sync/async methods and bounded pagination.
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`
 (`sso_id` remains a compatibility spelling). See [client lifecycle and token
-restoration examples](docs/clients.md) for all eight sync/async facades and the
+restoration examples](docs/clients.md) for all six sync/async facades and the
 current resource coverage.
 
 Both Headless clients expose direct [uploads and rich-text helpers](docs/media.md)

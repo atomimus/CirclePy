@@ -173,11 +173,3 @@ class AsyncAdminV2Client(_AsyncAPIClient):
         self.course_sections = AsyncCourseSectionsAPI(self)
         self.course_lessons = AsyncCourseLessonsAPI(self)
         self.course_lesson_progress = AsyncCourseLessonProgressAPI(self)
-
-
-class DataClient(_SyncAPIClient):
-    _default_root = 'https://app.circle.so/data_api/v1'
-
-
-class AsyncDataClient(_AsyncAPIClient):
-    _default_root = 'https://app.circle.so/data_api/v1'

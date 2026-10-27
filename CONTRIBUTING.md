@@ -191,7 +191,7 @@ assigned to Tasks 32–34. Do not create a release to test this workflow.
 `pyproject.toml` is the sole metadata and version source. Use
 `importlib.metadata.version("circlepy")` for an installed distribution's version.
 The existing three package client exports and positional signatures remain.
-The eight public sync/async client facades and native async Admin v1 methods are
+The six public sync/async client facades and native async Admin v1 methods are
 implemented; named resource expansion remains scoped to its owning tasks.
 See [client lifecycles](docs/clients.md). Constructor annotations describe accepted
 inputs; the package does not ship `py.typed` or claim complete type coverage.

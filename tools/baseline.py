@@ -25,7 +25,6 @@ SOURCES = {
     "headless-client-v1": ("headless-client-v1.yaml", "https://api-headless.circle.so/api/headless_client/v1/swagger.yaml"),
     "headless-auth-v1": ("headless-auth-v1.yaml", "https://api-headless.circle.so/api/headless_auth/swagger.yaml"),
     "admin-v2": ("admin-v2.yaml", "https://api-headless.circle.so/api/admin/v2/swagger.yaml"),
-    "data-api": ("data-api.yaml", "https://app.circle.so/data_api/docs/openapi.yaml"),
     "admin-v1": ("admin-v1-operations.json", "https://api-v1.circle.so/api/collections/9712302/TzCS4kJc?environment=16379091-2b72120d-4dc9-4e79-9415-4324727e534c&segregateAuth=true&versionTag=latest"),
     "developer-index": ("circle-developer-index.txt", "https://api.circle.so/llms.txt"),
 }
@@ -81,6 +80,18 @@ def project_postman(raw):
     return {"representation": "operation projection; not a request/response schema", "requests": operations}
 
 
+def project_index(raw):
+    """Keep API overview links for the supported Admin and Headless families."""
+    supported = {"/apis/admin-api.md", "/apis/headless/member-api.md"}
+    lines = []
+    for line in raw.decode("utf-8").splitlines(keepends=True):
+        overview = re.match(r"- \[[^\]]* API\]\(([^)]+)\)", line)
+        if overview and urlsplit(overview[1]).path not in supported:
+            continue
+        lines.append(line)
+    return "".join(lines).encode("utf-8")
+
+
 def freeze():
     """Explicit online mutation. Existing freezes must be reviewed before replacement."""
     records = []
@@ -88,13 +99,16 @@ def freeze():
     downloaded = [(family, filename, url, fetch(url)) for family, (filename, url) in SOURCES.items()]
     for family, filename, url, raw in downloaded:
         projected = family == "admin-v1"
-        stored = json_bytes(project_postman(raw)) if projected else raw
+        stored = (json_bytes(project_postman(raw)) if projected else
+                  project_index(raw) if family == "developer-index" else raw)
         (SPECS / filename).write_bytes(stored)
         records.append({
             "name": family, "url": url, "path": "api/specs/" + filename,
             "retrieved_on": date.today().isoformat(), "upstream_sha256": digest(raw),
             "sha256": digest(stored), "bytes": len(stored),
-            "representation": "postman_operation_projection" if projected else "exact_response_bytes",
+            "representation": ("postman_operation_projection" if projected else
+                               "documentation_index_projection" if family == "developer-index" else
+                               "exact_response_bytes"),
         })
     (SPECS / "sources.json").write_bytes(json_bytes({
         "schema_version": 2, "freeze_id": "circlepy-v1-2026-10-27",

@@ -17,7 +17,7 @@ from circlepy import (  # noqa: E402
     CircleClient,
     HeadlessClient,
 )
-from circlepy.pagination import CursorPages, LegacyPages, NumberedPages, URLPages  # noqa: E402
+from circlepy.pagination import CursorPages, LegacyPages, NumberedPages  # noqa: E402
 
 
 def identity(method, path):
@@ -116,18 +116,6 @@ def check():
                 raise AssertionError("Admin page limit was not enforced")
         for adapter in [NumberedPages(), CursorPages()]:
             assert adapter.first({"per_page": 101}).params["per_page"] == 101
-        data = yaml.safe_load((ROOT / "api/specs/data-api.yaml").read_bytes())
-        assert len(data["paths"]) == 3
-        for operation in data["paths"].values():
-            props = operation["get"]["responses"]["200"]["content"]["application/json"][
-                "schema"
-            ]["properties"]
-            assert props["events"]["type"] == "array"
-            assert props["pagination"]["properties"]["next_page_uri"] == {
-                "type": "string",
-                "nullable": True,
-            }
-        assert URLPages().records_key == "events"
         assert (
             native.transport.session is None and async_legacy.transport.session is None
         )
@@ -135,7 +123,7 @@ def check():
         sync.close()
         legacy.close()
     print(
-        "Verified 27 Member iterator pairs, five legacy pairs, frozen owners, API-specific limits, native async generators and Data URL extension"
+        "Verified 27 Member iterator pairs, five legacy pairs, frozen owners, API-specific limits, native async generators"
     )
 
 

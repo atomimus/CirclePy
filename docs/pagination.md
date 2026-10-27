@@ -115,8 +115,8 @@ async def legacy_spaces_async(client):
 - Legacy arrays continue until an empty array, including one extra request after
   a short nonempty page. A short array alone does not prove completion.
 - Terminal empty pages are yielded by page iterators and yield no records.
-  An empty page that advertises another page/cursor/URL raises `PaginationError`.
-- Repeated complete records pages, cursors and canonical URLs raise
+  An empty page that advertises another page/cursor raises `PaginationError`.
+- Repeated complete records pages and cursors raise
   `PaginationError` before yielding the inconsistent page. Records are never
   silently deduplicated; partial overlap between changing pages is preserved.
 - Attached resource iterators always raise SDK HTTP status errors, even when
@@ -127,7 +127,7 @@ async def legacy_spaces_async(client):
 Iterator page/page-size arguments must be positive integers (no bools). These
 checks are additive; existing single-page methods retain their prior behavior.
 The legacy Admin endpoints and Admin adapter enforce the documented maximum of
-100. Member and Data schemas supply no maximum, so their adapters validate
+100. Member schemas supply no maximum, so their adapters validate
 positivity without inventing a cap. An endpoint may still reject a value at the
 provider. Server-side caps, permissions and cursor lifetime require live evidence.
 
@@ -140,7 +140,7 @@ The SDK retains filters rather than silently substituting an unfiltered query.
 `circlepy.pagination` exposes `iter_pages`/`aiter_pages`,
 `iter_records`/`aiter_records`, `PageRequest`, and small adapters:
 `NumberedPages(max_per_page=...)`, `CursorPages`, `MemberDirectoryPages`,
-`LegacyPages`, and `URLPages`. A callback receives one `PageRequest`, performs the
+and `LegacyPages`. A callback receives one `PageRequest`, performs the
 corresponding sync/native async HTTP request, checks HTTP status, releases the
 response, and returns decoded JSON. These helpers do not own callback resources.
 They copy initial parameters and each request, retaining nested filters across
@@ -168,41 +168,7 @@ def admin_post_pages_async(client, space_id):
         params={"space_id": space_id, "per_page": 3}, max_pages=5)
 ```
 
-The Data extension reads `events` and `pagination.next_page_uri`; null terminates.
-It accepts absolute, root-relative, path-relative and query-relative links from
-verified responses. Before another callback runs, links must match the configured
-scheme, host, effective port and API root path. Userinfo, fragments, whitespace,
-backslashes, traversal and other-family paths are rejected. Original non-page
-query filters are retained; conflicting returned filter values raise. Canonical
-query order/escaping cannot disguise a repeated URL. No credential is attached
-to a rejected target. Redirects remain disabled by the HTTP transport.
-
-```python
-from circlepy.pagination import URLPages
-
-
-def data_event_pages(fetch, base_url):
-    adapter = URLPages(base_url=base_url,
-        initial_url=base_url.rstrip("/") + "/community_events")
-    return iter_pages(fetch, pagination=adapter,
-        params={"events": ["post.liked"], "per_page": 3}, max_pages=5)
-
-
-def data_event_pages_async(fetch, base_url):
-    adapter = URLPages(base_url=base_url,
-        initial_url=base_url.rstrip("/") + "/community_events")
-    return aiter_pages(fetch, pagination=adapter,
-        params={"events": ["post.liked"], "per_page": 3}, max_pages=5)
-```
-
-For these Data extension examples, `fetch` receives the validated absolute
-`request.url` with its full query. It must use a transport that disables redirects
-and does not bypass status checking. Named Data resources, checkpoint persistence
-and caller-confirmed advancement remain Task 25. Offline HTTP tests establish
-request and credential boundaries, not acceptance by a live Circle community.
-
 Sources checked October 27, 2026: [Admin pagination and limits](https://api.circle.so/apis/admin-api.md),
 [member cursor search](https://api.circle.so/apis/headless/member-api/community-member-search.md),
-[Member schema](https://api-headless.circle.so/api/headless_client/v1/swagger.yaml),
-[legacy endpoint reference](https://api-v1.circle.so/), and
-[Data schema](https://app.circle.so/data_api/docs/openapi.yaml).
+[Member schema](https://api-headless.circle.so/api/headless_client/v1/swagger.yaml), and
+[legacy endpoint reference](https://api-v1.circle.so/).

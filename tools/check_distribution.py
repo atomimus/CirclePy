@@ -119,7 +119,7 @@ def check_installs(artifacts):
                 "import circlepy",
                 "location = pathlib.Path(circlepy.__file__).resolve()",
                 "assert location.is_relative_to(pathlib.Path(sys.prefix).resolve()), location",
-                "assert {'CircleClient', 'AsyncCircleClient', 'HeadlessClient', 'AsyncHeadlessClient', 'AdminV2Client', 'AsyncAdminV2Client', 'DataClient', 'AsyncDataClient'} <= set(circlepy.__all__)",
+                "assert {'CircleClient', 'AsyncCircleClient', 'HeadlessClient', 'AsyncHeadlessClient', 'AdminV2Client', 'AsyncAdminV2Client'} <= set(circlepy.__all__)",
                 "assert all(inspect.isclass(getattr(circlepy, name)) for name in circlepy.__all__)",
                 "modules = [item.name for item in pkgutil.walk_packages(circlepy.__path__, 'circlepy.')]",
                 "for name in modules: importlib.import_module(name)",

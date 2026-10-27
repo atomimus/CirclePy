@@ -34,16 +34,6 @@
       "representation": "exact_response_bytes"
     },
     {
-      "name": "data-api",
-      "url": "https://app.circle.so/data_api/docs/openapi.yaml",
-      "path": "api/specs/data-api.yaml",
-      "retrieved_on": "2026-10-27",
-      "upstream_sha256": "3e0bbedde4238d5ebb702689d52003408ee84d6e026386c180e3bc4135015408",
-      "sha256": "3e0bbedde4238d5ebb702689d52003408ee84d6e026386c180e3bc4135015408",
-      "bytes": 90336,
-      "representation": "exact_response_bytes"
-    },
-    {
       "name": "admin-v1",
       "url": "https://api-v1.circle.so/api/collections/9712302/TzCS4kJc?environment=16379091-2b72120d-4dc9-4e79-9415-4324727e534c&segregateAuth=true&versionTag=latest",
       "path": "api/specs/admin-v1-operations.json",
@@ -59,9 +49,9 @@
       "path": "api/specs/circle-developer-index.txt",
       "retrieved_on": "2026-10-27",
       "upstream_sha256": "7dd29987575ff01ae8b6ec8f091799e238162609966558c836a0fb3ad95886b0",
-      "sha256": "7dd29987575ff01ae8b6ec8f091799e238162609966558c836a0fb3ad95886b0",
-      "bytes": 3989,
-      "representation": "exact_response_bytes"
+      "sha256": "7624cf6bb3151eead3591776d5e5ddb2a8d338a750d1a0241c28fcae7a41e14f",
+      "bytes": 3936,
+      "representation": "documentation_index_projection"
     }
   ]
 }

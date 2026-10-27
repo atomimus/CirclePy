@@ -7,7 +7,7 @@ import inspect
 import json
 from pathlib import Path
 from threading import Event
-from urllib.parse import parse_qsl, urlencode, urlsplit
+from urllib.parse import parse_qsl, urlencode
 
 import aiohttp
 import pytest
@@ -27,12 +27,10 @@ from circlepy.pagination import (
     MemberDirectoryPages,
     NumberedPages,
     PageRequest,
-    URLPages,
     aiter_pages,
     aiter_records,
     iter_pages,
     iter_records,
-    pagination_url,
 )
 from http_fixtures import Exchange
 
@@ -267,7 +265,7 @@ async def test_legacy_arrays_retain_all_fields_and_stop_only_at_empty(
 @pytest.mark.asyncio
 @pytest.mark.parametrize("async_mode", [False, True])
 @pytest.mark.parametrize(
-    "adapter", [NumberedPages(), CursorPages(), LegacyPages(), URLPages()]
+    "adapter", [NumberedPages(), CursorPages(), LegacyPages()]
 )
 @pytest.mark.parametrize("limit", [0, 1, 2, None])
 async def test_generic_iteration_is_lazy_bounded_and_snapshots_filters(
@@ -280,11 +278,6 @@ async def test_generic_iteration_is_lazy_bounded_and_snapshots_filters(
         calls.append(deepcopy(request))
         number = len(calls)
         request.params["filter"] = ["callback cannot mutate traversal"]
-        if isinstance(adapter, URLPages):
-            return {
-                "events": [{"id": number}],
-                "pagination": {"next_page_uri": "?page=" + str(number + 1)},
-            }
         if isinstance(adapter, LegacyPages):
             return [{"id": number}]
         return envelope(number, [{"id": number}], True, next_search_after=[str(number)])
@@ -308,13 +301,7 @@ async def test_generic_iteration_is_lazy_bounded_and_snapshots_filters(
         result = await collect(iterator, async_mode)
         assert len(result) == len(calls) == limit
     for request in calls:
-        if request.url:
-            assert (
-                parse_qsl(urlsplit(request.url).query).count(("filter", "original"))
-                == 1
-            )
-        else:
-            assert request.params["filter"] == ["original"]
+        assert request.params["filter"] == ["original"]
 
 
 BAD_NUMBERED = [
@@ -368,22 +355,19 @@ async def test_malformed_or_inconsistent_pages_fail_before_yield(
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("async_mode", [False, True])
-@pytest.mark.parametrize("style", ["numbered", "cursor", "legacy", "url"])
-async def test_repeated_pages_cursors_and_urls_raise_without_extra_fetch(
+@pytest.mark.parametrize("style", ["numbered", "cursor", "legacy"])
+async def test_repeated_pages_and_cursors_raise_without_extra_fetch(
     async_mode, style
 ):
     adapter = {
         "numbered": NumberedPages(),
         "cursor": CursorPages(),
         "legacy": LegacyPages(),
-        "url": URLPages(),
     }[style]
     calls = []
 
     def fetch(_request):
         calls.append(1)
-        if style == "url":
-            return {"events": [1], "pagination": {"next_page_uri": "?page=1"}}
         if style == "cursor":
             return envelope(1, [len(calls)], True, next_search_after=["initial"])
         if style == "legacy":
@@ -408,12 +392,12 @@ async def test_repeated_pages_cursors_and_urls_raise_without_extra_fetch(
             ),
             async_mode,
         )
-    assert len(calls) == (1 if style in ("cursor", "url") else 2)
+    assert len(calls) == (1 if style == "cursor" else 2)
 
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("async_mode", [False, True])
-@pytest.mark.parametrize("style", ["numbered", "cursor", "legacy", "url"])
+@pytest.mark.parametrize("style", ["numbered", "cursor", "legacy"])
 async def test_empty_terminal_pages_are_preserved_and_yield_no_records(
     async_mode, style
 ):
@@ -421,15 +405,8 @@ async def test_empty_terminal_pages_are_preserved_and_yield_no_records(
         "numbered": NumberedPages(),
         "cursor": CursorPages(),
         "legacy": LegacyPages(),
-        "url": URLPages(),
     }[style]
-    page = (
-        {"events": [], "pagination": {"next_page_uri": None}}
-        if style == "url"
-        else []
-        if style == "legacy"
-        else envelope(1, [])
-    )
+    page = [] if style == "legacy" else envelope(1, [])
 
     async def fetch(_request):
         return page
@@ -442,7 +419,7 @@ async def test_empty_terminal_pages_are_preserved_and_yield_no_records(
         )
 
     assert await collect(pages(), async_mode) == [page]
-    key = None if style == "legacy" else "events" if style == "url" else "records"
+    key = None if style == "legacy" else "records"
     assert (
         await collect(
             aiter_records(pages(), records_key=key)
@@ -482,139 +459,8 @@ def test_endpoint_limits_are_distinct_and_never_apply_admin_cap_to_member():
             adapter.first({"per_page": 101})
     assert NumberedPages().first({"per_page": 250}).params["per_page"] == 250
     assert CursorPages().first({"per_page": 250}).params["per_page"] == 250
-    assert URLPages().first({"per_page": 250}).url.endswith("per_page=250&page=1")
     with pytest.raises(ValueError):
         NumberedPages(max_per_page=0)
-
-
-BAD_LINKS = [
-    "https://attacker.invalid/data_api/v1/community_events?page=2",
-    "//attacker.invalid/data_api/v1/community_events?page=2",
-    "https://app.circle.so:444/data_api/v1/community_events?page=2",
-    "http://app.circle.so/data_api/v1/community_events?page=2",
-    "/api/admin/v2/posts?page=2",
-    "/api/headless/v1/posts?page=2",
-    "/data_api/v10/community_events?page=2",
-    "/data_api/v1evil/community_events",
-    "/data_api/v1/../api/admin/v2/posts",
-    "/data_api/v1/%252e%252e/api/admin/v2/posts",
-    "/data_api/v1/%2f..%2fapi/admin/v2/posts",
-    "https://user:secret@app.circle.so/data_api/v1/community_events",
-    "?page=2#secret",
-    "?page=2#",
-    " ?page=2",
-    "?page=2\r\nsecret",
-    "\\attacker.invalid\\x",
-    "https://app.circle.so.evil.invalid/data_api/v1/community_events",
-    "ftp://app.circle.so/data_api/v1/events",
-    "",
-    None,
-    7,
-    "https://app.circle.so:invalid/data_api/v1/events",
-]
-
-
-@pytest.mark.parametrize("link", BAD_LINKS)
-def test_malicious_pagination_urls_are_rejected_without_leaking_links(link):
-    with pytest.raises(PaginationError) as caught:
-        pagination_url(
-            "https://app.circle.so/data_api/v1",
-            "https://app.circle.so/data_api/v1/community_events",
-            link,
-        )
-    assert "secret" not in str(caught.value) and "attacker" not in str(caught.value)
-
-
-@pytest.mark.asyncio
-@pytest.mark.parametrize("async_mode", [False, True])
-@pytest.mark.parametrize(
-    "link",
-    ["?page=2", "community_events?page=2", "/data_api/v1/community_events?page=2"],
-)
-async def test_data_url_extension_retains_filters_and_credentials_stay_in_family(
-    http_server, async_mode, link
-):
-    # This exercises the extension over real local HTTP, not completed Data resources.
-    from circlepy.transport import AsyncTransport, SyncTransport
-
-    transport = (AsyncTransport if async_mode else SyncTransport)(
-        http_server.url + "/data_api/v1", raise_on_error=False
-    )
-    adapter = URLPages(
-        base_url=transport.base_url, initial_url=transport.base_url + "community_events"
-    )
-    first = {
-        "events": [{"id": "a", "future": None}],
-        "pagination": {"next_page_uri": link},
-    }
-    last = {"events": [], "pagination": {"next_page_uri": None}}
-    for page, response in [(1, first), (2, last)]:
-        http_server.expect(
-            Exchange(
-                "GET",
-                "/data_api/v1/community_events?page="
-                + str(page)
-                + "&events=post.liked&per_page=250",
-                response=json.dumps(response).encode(),
-                request_headers={"Authorization": "Bearer synthetic-data"},
-            )
-        )
-
-    def fetch(request):
-        return transport.request(
-            "GET",
-            request.url,
-            headers={"Authorization": "Bearer synthetic-data"},
-            raise_on_error=True,
-        ).json()
-
-    async def afetch(request):
-        response = await transport.request(
-            "GET",
-            request.url,
-            headers={"Authorization": "Bearer synthetic-data"},
-            raise_on_error=True,
-        )
-        return response.json()
-
-    try:
-        params = {"page": 1, "events": ["post.liked"], "per_page": 250}
-        assert await collect(
-            aiter_pages(afetch, pagination=adapter, params=params)
-            if async_mode
-            else iter_pages(fetch, pagination=adapter, params=params),
-            async_mode,
-        ) == [first, last]
-    finally:
-        await transport.aclose() if async_mode else transport.close()
-
-
-@pytest.mark.asyncio
-@pytest.mark.parametrize("async_mode", [False, True])
-@pytest.mark.parametrize(
-    "link",
-    ["https://attacker.invalid/data_api/v1/events", "/api/admin/v2/posts", "?page=1"],
-)
-async def test_unsafe_response_link_never_reaches_an_authenticated_fetch(
-    http_server, async_mode, link
-):
-    calls = []
-
-    def fetch(request):
-        calls.append(request)
-        return {"events": [{"id": 1}], "pagination": {"next_page_uri": link}}
-
-    async def afetch(request):
-        return fetch(request)
-
-    with pytest.raises(PaginationError):
-        await collect(
-            aiter_pages(afetch, pagination=URLPages())
-            if async_mode
-            else iter_pages(fetch, pagination=URLPages()),
-            async_mode,
-        )
-    assert len(calls) == 1
 
 
 @pytest.mark.asyncio
@@ -726,7 +572,7 @@ async def test_decode_or_empty_success_is_not_a_successful_page(
 
 
 def test_page_request_and_original_envelope_are_transparent():
-    assert PageRequest().params == {} and PageRequest().url is None
+    assert PageRequest().params == {}
     response = envelope(1, [{"id": 1}])
     assert next(iter_pages(lambda _: response, pagination=NumberedPages())) is response
 
@@ -751,61 +597,6 @@ def test_directory_uses_page_numbers_until_a_cursor_is_supplied():
     assert next_request.params == {"per_page": 3, "search_after": [0, ""]}
     with pytest.raises(PaginationError):
         adapter.next(envelope(1, [2], True), next_request)
-
-
-@pytest.mark.parametrize("link", ["?page=2&per_page=3", "?per_page=3&page=2"])
-def test_url_links_can_repeat_unchanged_filters(link):
-    adapter = URLPages()
-    request = adapter.first({"per_page": 3})
-    result = adapter.next(
-        {"events": [1], "pagination": {"next_page_uri": link}}, request
-    )
-    assert sorted(parse_qsl(urlsplit(result.url).query)) == [
-        ("page", "2"),
-        ("per_page", "3"),
-    ]
-
-
-@pytest.mark.parametrize(
-    "page",
-    [
-        {"events": []},
-        {"events": [], "pagination": {}},
-        {"events": [], "pagination": {"next_page_uri": "?page=2"}},
-        {"events": [1], "pagination": {"next_page_uri": "?page=2&per_page=4"}},
-        {"events": [1], "pagination": {"next_page_uri": "?page=0"}},
-        {"events": [1], "pagination": {"next_page_uri": "?page=2&page=3"}},
-    ],
-)
-def test_invalid_data_links_or_metadata_raise(page):
-    adapter = URLPages()
-    with pytest.raises(PaginationError):
-        adapter.next(page, adapter.first({"per_page": 3}))
-
-
-@pytest.mark.parametrize(
-    "url",
-    [
-        "https://other.invalid/data_api/v1/events",
-        "https://app.circle.so/api/admin/v2/posts",
-    ],
-)
-def test_unverified_current_url_cannot_be_a_resolution_base(url):
-    with pytest.raises(PaginationError):
-        pagination_url("https://app.circle.so/data_api/v1", url, "?page=2")
-
-
-def test_initial_data_url_can_start_at_an_existing_page():
-    request = URLPages(
-        initial_url="https://app.circle.so/data_api/v1/community_events?page=4&per_page=2"
-    ).first({})
-    assert request.url.endswith("?page=4&per_page=2")
-    with pytest.raises(PaginationError):
-        URLPages(
-            initial_url="https://app.circle.so/data_api/v1/community_events?page=one"
-        ).first({})
-    with pytest.raises(ValueError):
-        CursorPages().first({"search_after": "invalid"})
 
 
 @pytest.mark.asyncio
@@ -869,53 +660,6 @@ async def test_empty_client_iterators_make_no_authentication_or_member_request(
         await close_client(client, async_mode)
 
 
-@pytest.mark.asyncio
-@pytest.mark.parametrize("async_mode", [False, True])
-@pytest.mark.parametrize(
-    "link",
-    ["https://attacker.invalid/data_api/v1/community_events", "/api/admin/v2/posts"],
-)
-async def test_native_authenticated_http_never_follows_unsafe_data_links(
-    http_server, async_mode, link
-):
-    from circlepy.transport import AsyncTransport, SyncTransport
-
-    transport = (AsyncTransport if async_mode else SyncTransport)(
-        http_server.url + "/data_api/v1"
-    )
-    http_server.expect(
-        Exchange(
-            "GET",
-            "/data_api/v1/community_events?page=1",
-            response=json.dumps(
-                {"events": [1], "pagination": {"next_page_uri": link}}
-            ).encode(),
-            request_headers={"Authorization": "Bearer synthetic-data"},
-        )
-    )
-
-    def fetch(request):
-        return transport.request(
-            "GET", request.url, headers={"Authorization": "Bearer synthetic-data"}
-        ).json()
-
-    async def afetch(request):
-        response = await transport.request(
-            "GET", request.url, headers={"Authorization": "Bearer synthetic-data"}
-        )
-        return response.json()
-
-    adapter = URLPages(
-        base_url=transport.base_url, initial_url=transport.base_url + "community_events"
-    )
-    try:
-        with pytest.raises(PaginationError):
-            await collect(
-                aiter_pages(afetch, pagination=adapter)
-                if async_mode
-                else iter_pages(fetch, pagination=adapter),
-                async_mode,
-            )
-        assert len(http_server.requests) == 1
-    finally:
-        await transport.aclose() if async_mode else transport.close()
+def test_invalid_initial_cursor_fails_before_io():
+    with pytest.raises(ValueError):
+        CursorPages().first({"search_after": "invalid"})

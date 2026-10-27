@@ -14,14 +14,13 @@ from circlepy import (
     CircleClient,
     HeadlessClient,
 )
-from circlepy.transport import AsyncTransport, SyncTransport
 from http_fixtures import Exchange
 
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("async_mode", [False, True])
 @pytest.mark.parametrize(
-    "example", ["posts", "first", "members", "legacy", "admin", "data"]
+    "example", ["posts", "first", "members", "legacy", "admin"]
 )
 async def test_public_pagination_examples(http_server, async_mode, example):
     source = Path(__file__).resolve().parents[1] / "docs/pagination.md"
@@ -120,43 +119,10 @@ async def test_public_pagination_examples(http_server, async_mode, example):
         function = "admin_post_pages"
         args = [7]
         expected = pages
-    else:
-        client = (AsyncTransport if async_mode else SyncTransport)(
-            http_server.url + "/data_api/v1"
-        )
-        expected = [
-            {"events": [{"id": 1}], "pagination": {"next_page_uri": "?page=2"}},
-            {"events": [], "pagination": {"next_page_uri": None}},
-        ]
-        for query, page in zip(
-            [
-                "events=post.liked&per_page=3&page=1",
-                "page=2&events=post.liked&per_page=3",
-            ],
-            expected,
-            strict=True,
-        ):
-            http_server.expect(
-                Exchange(
-                    "GET",
-                    "/data_api/v1/community_events?" + query,
-                    response=json.dumps(page).encode(),
-                )
-            )
-
-        def fetch(request):
-            return client.request("GET", request.url, raise_on_error=True).json()
-
-        async def afetch(request):
-            response = await client.request("GET", request.url, raise_on_error=True)
-            return response.json()
-
-        function = "data_event_pages"
-        args = [afetch if async_mode else fetch, client.base_url]
     try:
         method = namespace[function + ("_async" if async_mode else "")]
-        value = method(*args) if example == "data" else method(client, *args)
-        if example in ("admin", "data"):
+        value = method(client, *args)
+        if example == "admin":
             value = [item async for item in value] if async_mode else list(value)
         elif async_mode:
             value = await value

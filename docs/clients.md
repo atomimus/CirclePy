@@ -8,7 +8,6 @@ The public facades are available from `circlepy`:
 | Admin v1 | `CircleClient` | `AsyncCircleClient` | Admin v1 key, `Token` header |
 | Admin v2 | `AdminV2Client` | `AsyncAdminV2Client` | Admin v2 key, `Bearer` header |
 | Headless | `HeadlessClient` | `AsyncHeadlessClient` | Headless Auth key for auth; member access token for member calls |
-| Data | `DataClient` | `AsyncDataClient` | Data key, `Bearer` header |
 
 The Admin v1 async client has the existing singular `.member`, `.space`, `.post`,
 `.likes`, `.comment`, `.comment_likes` resources with awaitable network methods.
@@ -25,14 +24,14 @@ implemented; see the [legacy learning guide](admin-v1-learning.md) and
 [complete 76-operation report](../api/specs/legacy-coverage.json). Public routes
 use notification-link query tokens, never an inherited Admin credential.
 
-Admin v2, Data and both Headless facades expose a family-scoped
+Admin v2 and both Headless facades expose a family-scoped
 `request(method, endpoint, *, params=None, json=None)` returning decoded JSON or
 `None` for an empty success. Paths stay within the configured API root; pass
 query fields through `params`. Absolute URLs and path traversal are rejected.
 Both Admin v2 facades expose `.communities`, `.community_members`, `.community_leads`,
 `.contact_notes` and `.invitation_links`, covering all 19 operations in those tags.
 See [Admin v2 methods, fields and v1 migration](admin-v2-members.md). Remaining
-Admin v2 and named Data resources belong to their implementation tasks.
+Admin v2 resources belong to their implementation tasks.
 Both also expose the eight [space/group/access resources](admin-v2-access.md)
 and `.posts`, `.comments`, `.uploads`, `.embeds`, `.post_followers` for all 19
 [content/media operations](admin-v2-content.md), including documented basic-post
@@ -190,7 +189,7 @@ The actual account/session blast radius requires dedicated Circle sandbox eviden
 
 Configuration, proxies, trust policy, default legacy error dictionaries and strict
 errors follow [the transport guide](transports.md). All family facades propagate
-their supplied proxy and session settings. Admin v2/Data default to strict errors;
+their supplied proxy and session settings. Admin v2 defaults to strict errors;
 Admin v1/Headless retain legacy error-JSON defaults.
 
 The implementation follows the current [Auth schema](https://api-headless.circle.so/api/headless_auth/swagger.yaml),

@@ -3,11 +3,10 @@
   "freeze_id": "circlepy-v1-2026-10-27",
   "observed_on": "2026-10-27",
   "meaning": "Frozen documented operation ownership. Static code references are not proof of field support, contract tests, async parity, or live validation.",
-  "operation_count": 357,
+  "operation_count": 354,
   "family_counts": {
     "admin-v1": 73,
     "admin-v2": 172,
-    "data-api": 3,
     "headless-auth-v1": 4,
     "headless-client-v1": 102,
     "legacy-public": 3
@@ -7179,66 +7178,6 @@
         }
       ],
       "task_id": 22,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
-      "contract_test_status": "not_audited",
-      "live_validation_status": "not_run"
-    },
-    {
-      "family": "data-api",
-      "method": "GET",
-      "path": "/data_api/v1/analytics_tracker_events",
-      "normalized_path": "/data_api/v1/analytics_tracker_events",
-      "tags": [],
-      "deprecated_upstream": false,
-      "source_references": [
-        {
-          "path": "api/specs/data-api.yaml",
-          "pointer": "/paths/~1data_api~1v1~1analytics_tracker_events/get"
-        }
-      ],
-      "task_id": 25,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
-      "contract_test_status": "not_audited",
-      "live_validation_status": "not_run"
-    },
-    {
-      "family": "data-api",
-      "method": "GET",
-      "path": "/data_api/v1/community_events",
-      "normalized_path": "/data_api/v1/community_events",
-      "tags": [],
-      "deprecated_upstream": false,
-      "source_references": [
-        {
-          "path": "api/specs/data-api.yaml",
-          "pointer": "/paths/~1data_api~1v1~1community_events/get"
-        }
-      ],
-      "task_id": 25,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
-      "contract_test_status": "not_audited",
-      "live_validation_status": "not_run"
-    },
-    {
-      "family": "data-api",
-      "method": "GET",
-      "path": "/data_api/v1/member_visit_events",
-      "normalized_path": "/data_api/v1/member_visit_events",
-      "tags": [],
-      "deprecated_upstream": true,
-      "source_references": [
-        {
-          "path": "api/specs/data-api.yaml",
-          "pointer": "/paths/~1data_api~1v1~1member_visit_events/get"
-        }
-      ],
-      "task_id": 25,
       "code_reference_at_audit": false,
       "exposure_at_audit": "missing",
       "code_references": [],

@@ -456,13 +456,6 @@
       "adapter": "NumberedPages",
       "max_per_page": 100,
       "source": "https://api.circle.so/apis/admin-api.md"
-    },
-    "data": {
-      "adapter": "URLPages",
-      "max_per_page": null,
-      "records_key": "events",
-      "next_url": "pagination.next_page_uri",
-      "resource_implementation_task": 25
     }
   }
 }

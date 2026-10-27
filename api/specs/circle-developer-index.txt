@@ -33,7 +33,6 @@
 - [Go](https://api.circle.so/apis/headless/auth-sdk/go.md)
 - [Python](https://api.circle.so/apis/headless/auth-sdk/python.md)
 - [Usage and limits](https://api.circle.so/apis/headless/usage-and-limits.md)
-- [Data API](https://api.circle.so/apis/data-api.md)
 - [Circle Plus](https://api.circle.so/apis/circle-plus.md)
 - [Custom Signup API reference](https://api.circle.so/apis/circle-plus/custom-signup-api-reference.md)
 - [Deep Linking Guide](https://api.circle.so/apis/circle-plus/deep-linking-guide.md)

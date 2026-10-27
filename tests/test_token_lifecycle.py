@@ -13,7 +13,7 @@ import requests
 
 from circlepy import (
     HeadlessClient, AsyncHeadlessClient, AsyncCircleClient,
-    AdminV2Client, AsyncAdminV2Client, DataClient, AsyncDataClient,
+    AdminV2Client, AsyncAdminV2Client,
     AuthenticationError, ClientClosedError, PermissionDeniedError,
     ResponseDecodeError, APIStatusError,
 )
@@ -402,7 +402,7 @@ async def test_async_constructor_and_restoration_need_no_session(monkeypatch):
 
 
 def test_all_async_facades_construct_without_event_loop():
-    clients = [AsyncHeadlessClient(), AsyncCircleClient('key'), AsyncAdminV2Client('key'), AsyncDataClient('key'),
+    clients = [AsyncHeadlessClient(), AsyncCircleClient('key'), AsyncAdminV2Client('key'),
                AsyncHeadlessClient.from_tokens(**TOKENS)]
     for client in clients:
         assert client.transport.session is None
@@ -512,7 +512,6 @@ async def test_proxy_propagates_to_auth_and_member(http_server):
 @pytest.mark.asyncio
 @pytest.mark.parametrize('cls,root', [
     (AdminV2Client, '/api/admin/v2'), (AsyncAdminV2Client, '/api/admin/v2'),
-    (DataClient, '/data_api/v1'), (AsyncDataClient, '/data_api/v1'),
 ])
 async def test_family_facades_and_strict_defaults(cls, root, http_server):
     client = cls('family-key', base_url=http_server.url+root)
@@ -638,7 +637,7 @@ def test_sync_factory_failure_closes_owned_but_not_borrowed_pool(http_server, mo
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize('cls', [AsyncCircleClient, AsyncAdminV2Client, AsyncDataClient])
+@pytest.mark.parametrize('cls', [AsyncCircleClient, AsyncAdminV2Client])
 async def test_async_facades_borrow_session_and_context(cls, async_session, http_server):
     client = cls('key', base_url=http_server.url+'/family', session=async_session)
     async with client:
@@ -648,7 +647,7 @@ async def test_async_facades_borrow_session_and_context(cls, async_session, http
     await client.aclose()
 
 
-@pytest.mark.parametrize('cls', [AdminV2Client, DataClient])
+@pytest.mark.parametrize('cls', [AdminV2Client])
 def test_sync_facades_borrow_session_and_context(cls, http_server):
     with requests.Session() as session:
         session.trust_env = False
@@ -683,7 +682,7 @@ async def test_legacy_auth_alias_and_string_member_id_wire(headless_type, http_s
         await close(client)
 
 
-@pytest.mark.parametrize('cls', [AdminV2Client, DataClient, AsyncAdminV2Client, AsyncDataClient,
+@pytest.mark.parametrize('cls', [AdminV2Client, AsyncAdminV2Client,
                                  AsyncCircleClient, AsyncHeadlessClient])
 def test_empty_root_rejected(cls):
     with pytest.raises(ValueError):
