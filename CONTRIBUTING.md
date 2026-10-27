@@ -72,6 +72,7 @@ python tools/check_headless_inventory.py
 python tools/check_pagination_contract.py
 python tools/check_admin_v1_core_contract.py
 python tools/check_admin_v1_organization_contract.py
+python tools/check_admin_v1_learning_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build

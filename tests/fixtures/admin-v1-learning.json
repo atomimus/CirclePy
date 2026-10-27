@@ -1,0 +1,1061 @@
+[
+  {
+    "case_id": "member_subscription.list_subscriptions.primary",
+    "source_pointer": "/item/13/item/0",
+    "resource": "member_subscription",
+    "name": "list_subscriptions",
+    "args": [],
+    "kwargs": {
+      "per_page": 4,
+      "page": 2,
+      "status": [
+        "active",
+        "trial"
+      ],
+      "sort": "oldest"
+    },
+    "method": "GET",
+    "path": "/api/v1/community_member_subscriptions",
+    "query": "community_id=2&status%5B%5D=active&status%5B%5D=trial&sort=oldest&per_page=4&page=2",
+    "async_query": "community_id=2&status%5B%5D=active&status%5B%5D=trial&sort=oldest&per_page=4&page=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": [
+      {
+        "id": 31,
+        "status": "active",
+        "amount": 0,
+        "amount_refunded": 0,
+        "currency": "usd",
+        "community_member": {
+          "id": 4,
+          "email": "a@example.test"
+        },
+        "paywalls": [
+          {
+            "price": {
+              "amount_in_cents": 0,
+              "future": null
+            }
+          }
+        ],
+        "future": false
+      }
+    ]
+  },
+  {
+    "case_id": "member_charge.list_charges.primary",
+    "source_pointer": "/item/16/item/0",
+    "resource": "member_charge",
+    "name": "list_charges",
+    "args": [],
+    "kwargs": {
+      "per_page": 4,
+      "page": 2,
+      "status": [
+        "paid",
+        "refunded"
+      ],
+      "sort": "oldest"
+    },
+    "method": "GET",
+    "path": "/api/v1/community_member_charges",
+    "query": "community_id=2&status%5B%5D=paid&status%5B%5D=refunded&sort=oldest&per_page=4&page=2",
+    "async_query": "community_id=2&status%5B%5D=paid&status%5B%5D=refunded&sort=oldest&per_page=4&page=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": [
+      {
+        "id": 31,
+        "status": "paid",
+        "amount": 0,
+        "amount_refunded": 0,
+        "currency": "usd",
+        "community_member": {
+          "id": 4,
+          "email": "a@example.test"
+        },
+        "paywalls": [
+          {
+            "price": {
+              "amount_in_cents": 0,
+              "future": null
+            }
+          }
+        ],
+        "future": false
+      }
+    ]
+  },
+  {
+    "case_id": "event.create.primary",
+    "source_pointer": "/item/14/item/0",
+    "resource": "event",
+    "name": "create",
+    "args": [
+      3,
+      {
+        "event": {
+          "name": "",
+          "body": "<p>Event</p>",
+          "slug": "",
+          "user_id": 0,
+          "is_liking_disabled": false,
+          "is_comments_disabled": false,
+          "hide_meta_info": false,
+          "hide_from_featured_areas": false,
+          "event_setting_attributes": {
+            "starts_at": "2030-01-01T12:00:00Z",
+            "duration_in_seconds": 0,
+            "location_type": "tbd",
+            "in_person_location": "",
+            "rsvp_disabled": false,
+            "hide_location_from_non_attendees": false,
+            "virtual_location_url": "",
+            "hide_attendees": false,
+            "send_email_reminder": false,
+            "send_in_app_notification_reminder": false,
+            "enable_custom_thank_you_message": false,
+            "send_email_confirmation": false,
+            "send_in_app_notification_confirmation": false,
+            "confirmation_message_title": "",
+            "confirmation_message_description": "",
+            "confirmation_message_button_title": "",
+            "confirmation_message_button_link": "",
+            "future": {
+              "null": null,
+              "empty": []
+            }
+          },
+          "meta_tag_attributes": {
+            "meta_title": "",
+            "meta_description": "",
+            "opengraph_title": "",
+            "opengraph_description": "",
+            "opengraph_image": ""
+          },
+          "future": {
+            "zero": 0,
+            "null": null
+          }
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/events",
+    "query": "space_id=3&community_id=2",
+    "async_query": "space_id=3&community_id=2",
+    "body": {
+      "event": {
+        "name": "",
+        "body": "<p>Event</p>",
+        "slug": "",
+        "user_id": 0,
+        "is_liking_disabled": false,
+        "is_comments_disabled": false,
+        "hide_meta_info": false,
+        "hide_from_featured_areas": false,
+        "event_setting_attributes": {
+          "starts_at": "2030-01-01T12:00:00Z",
+          "duration_in_seconds": 0,
+          "location_type": "tbd",
+          "in_person_location": "",
+          "rsvp_disabled": false,
+          "hide_location_from_non_attendees": false,
+          "virtual_location_url": "",
+          "hide_attendees": false,
+          "send_email_reminder": false,
+          "send_in_app_notification_reminder": false,
+          "enable_custom_thank_you_message": false,
+          "send_email_confirmation": false,
+          "send_in_app_notification_confirmation": false,
+          "confirmation_message_title": "",
+          "confirmation_message_description": "",
+          "confirmation_message_button_title": "",
+          "confirmation_message_button_link": "",
+          "future": {
+            "null": null,
+            "empty": []
+          }
+        },
+        "meta_tag_attributes": {
+          "meta_title": "",
+          "meta_description": "",
+          "opengraph_title": "",
+          "opengraph_description": "",
+          "opengraph_image": ""
+        },
+        "future": {
+          "zero": 0,
+          "null": null
+        }
+      }
+    },
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "id": 31,
+      "rsvp_disabled": false,
+      "body": {
+        "body": null
+      },
+      "future": []
+    }
+  },
+  {
+    "case_id": "event.update.primary",
+    "source_pointer": "/item/14/item/1",
+    "resource": "event",
+    "name": "update",
+    "args": [
+      31,
+      3,
+      {
+        "event": {
+          "name": "",
+          "body": "<p>Event</p>",
+          "slug": "",
+          "user_id": 0,
+          "is_liking_disabled": false,
+          "is_comments_disabled": false,
+          "hide_meta_info": false,
+          "hide_from_featured_areas": false,
+          "event_setting_attributes": {
+            "starts_at": "2030-01-01T12:00:00Z",
+            "duration_in_seconds": 0,
+            "location_type": "tbd",
+            "in_person_location": "",
+            "rsvp_disabled": false,
+            "hide_location_from_non_attendees": false,
+            "virtual_location_url": "",
+            "hide_attendees": false,
+            "send_email_reminder": false,
+            "send_in_app_notification_reminder": false,
+            "enable_custom_thank_you_message": false,
+            "send_email_confirmation": false,
+            "send_in_app_notification_confirmation": false,
+            "confirmation_message_title": "",
+            "confirmation_message_description": "",
+            "confirmation_message_button_title": "",
+            "confirmation_message_button_link": "",
+            "future": {
+              "null": null,
+              "empty": []
+            }
+          },
+          "meta_tag_attributes": {
+            "meta_title": "",
+            "meta_description": "",
+            "opengraph_title": "",
+            "opengraph_description": "",
+            "opengraph_image": ""
+          },
+          "future": {
+            "zero": 0,
+            "null": null
+          },
+          "space_id": 0
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "PUT",
+    "path": "/api/v1/events/31",
+    "query": "space_id=3&community_id=2",
+    "async_query": "space_id=3&community_id=2",
+    "body": {
+      "event": {
+        "name": "",
+        "body": "<p>Event</p>",
+        "slug": "",
+        "user_id": 0,
+        "is_liking_disabled": false,
+        "is_comments_disabled": false,
+        "hide_meta_info": false,
+        "hide_from_featured_areas": false,
+        "event_setting_attributes": {
+          "starts_at": "2030-01-01T12:00:00Z",
+          "duration_in_seconds": 0,
+          "location_type": "tbd",
+          "in_person_location": "",
+          "rsvp_disabled": false,
+          "hide_location_from_non_attendees": false,
+          "virtual_location_url": "",
+          "hide_attendees": false,
+          "send_email_reminder": false,
+          "send_in_app_notification_reminder": false,
+          "enable_custom_thank_you_message": false,
+          "send_email_confirmation": false,
+          "send_in_app_notification_confirmation": false,
+          "confirmation_message_title": "",
+          "confirmation_message_description": "",
+          "confirmation_message_button_title": "",
+          "confirmation_message_button_link": "",
+          "future": {
+            "null": null,
+            "empty": []
+          }
+        },
+        "meta_tag_attributes": {
+          "meta_title": "",
+          "meta_description": "",
+          "opengraph_title": "",
+          "opengraph_description": "",
+          "opengraph_image": ""
+        },
+        "future": {
+          "zero": 0,
+          "null": null
+        },
+        "space_id": 0
+      }
+    },
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "event.list_events.primary",
+    "source_pointer": "/item/14/item/2",
+    "resource": "event",
+    "name": "list_events",
+    "args": [
+      {
+        "communinty_id": 2,
+        "per_page": 4,
+        "page": 2,
+        "future": {
+          "zero": 0,
+          "null": null
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/events",
+    "query": "",
+    "async_query": "",
+    "body": {
+      "communinty_id": 2,
+      "per_page": 4,
+      "page": 2,
+      "future": {
+        "zero": 0,
+        "null": null
+      }
+    },
+    "authorization": "Token synthetic-v1",
+    "response": [
+      {
+        "id": 31,
+        "rsvp_disabled": false,
+        "hide_attendees": false,
+        "future": null
+      }
+    ]
+  },
+  {
+    "case_id": "event.delete.primary",
+    "source_pointer": "/item/14/item/3",
+    "resource": "event",
+    "name": "delete",
+    "args": [
+      31,
+      3
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "path": "/api/v1/events/31",
+    "query": "space_id=3&community_id=2",
+    "async_query": "space_id=3&community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "event_attendee.rsvp.primary",
+    "source_pointer": "/item/15/item/0",
+    "resource": "event_attendee",
+    "name": "rsvp",
+    "args": [
+      {
+        "communinty_id": 2,
+        "event_id": 31,
+        "member_email": "a@example.test",
+        "future": {
+          "null": null
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/event_attendees",
+    "query": "",
+    "async_query": "",
+    "body": {
+      "communinty_id": 2,
+      "event_id": 31,
+      "member_email": "a@example.test",
+      "future": {
+        "null": null
+      }
+    },
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "message": "Synthetic RSVP accepted",
+      "future": false
+    }
+  },
+  {
+    "case_id": "event_attendee.list_attendees.primary",
+    "source_pointer": "/item/15/item/1",
+    "resource": "event_attendee",
+    "name": "list_attendees",
+    "args": [
+      {
+        "communinty_id": 2,
+        "event_id": 31,
+        "per_page": 4,
+        "page": 2
+      }
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/event_attendees",
+    "query": "",
+    "async_query": "",
+    "body": {
+      "communinty_id": 2,
+      "event_id": 31,
+      "per_page": 4,
+      "page": 2
+    },
+    "authorization": "Token synthetic-v1",
+    "response": [
+      {
+        "id": 4,
+        "event_id": 31,
+        "member_email": "a@example.test",
+        "rsvp_date": "2030-01-01",
+        "future": null
+      }
+    ]
+  },
+  {
+    "case_id": "event_attendee.unrsvp.primary",
+    "source_pointer": "/item/15/item/2",
+    "resource": "event_attendee",
+    "name": "unrsvp",
+    "args": [
+      {
+        "communinty_id": 2,
+        "event_id": 31,
+        "member_email": "a@example.test",
+        "future": {
+          "null": null
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "path": "/api/v1/event_attendees",
+    "query": "",
+    "async_query": "",
+    "body": {
+      "communinty_id": 2,
+      "event_id": 31,
+      "member_email": "a@example.test",
+      "future": {
+        "null": null
+      }
+    },
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "message": "Synthetic RSVP removed",
+      "future": false
+    }
+  },
+  {
+    "case_id": "course_section.list_sections.primary",
+    "source_pointer": "/item/21/item/0",
+    "resource": "course_section",
+    "name": "list_sections",
+    "args": [],
+    "kwargs": {
+      "per_page": 4,
+      "page": 2,
+      "space_id": 3
+    },
+    "method": "GET",
+    "path": "/api/v1/course_sections",
+    "query": "community_id=2&space_id=3&per_page=4&page=2",
+    "async_query": "community_id=2&space_id=3&per_page=4&page=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "records": [
+        {
+          "id": 31,
+          "space_id": 3,
+          "name": "",
+          "future": null
+        }
+      ],
+      "has_next_page": false,
+      "future": 0
+    }
+  },
+  {
+    "case_id": "course_section.get.primary",
+    "source_pointer": "/item/21/item/1",
+    "resource": "course_section",
+    "name": "get",
+    "args": [
+      31
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/course_sections/31",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "id": 31,
+      "space_id": 3,
+      "name": "",
+      "future": null
+    }
+  },
+  {
+    "case_id": "course_section.create.primary",
+    "source_pointer": "/item/21/item/2",
+    "resource": "course_section",
+    "name": "create",
+    "args": [
+      {
+        "space_id": 3,
+        "name": ""
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/course_sections",
+    "query": "space_id=3&name=&community_id=2",
+    "async_query": "space_id=3&name=&community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "id": 31,
+      "space_id": 3,
+      "name": "",
+      "future": null
+    }
+  },
+  {
+    "case_id": "course_section.update.primary",
+    "source_pointer": "/item/21/item/3",
+    "resource": "course_section",
+    "name": "update",
+    "args": [
+      31,
+      {
+        "name": ""
+      }
+    ],
+    "kwargs": {},
+    "method": "PATCH",
+    "path": "/api/v1/course_sections/31",
+    "query": "name=&community_id=2",
+    "async_query": "name=&community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "id": 31,
+      "space_id": 3,
+      "name": "",
+      "future": null
+    }
+  },
+  {
+    "case_id": "course_section.delete.primary",
+    "source_pointer": "/item/21/item/4",
+    "resource": "course_section",
+    "name": "delete",
+    "args": [
+      31
+    ],
+    "kwargs": {},
+    "method": "DELETE",
+    "path": "/api/v1/course_sections/31",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "course_lesson.list_lessons.primary",
+    "source_pointer": "/item/22/item/0",
+    "resource": "course_lesson",
+    "name": "list_lessons",
+    "args": [],
+    "kwargs": {
+      "per_page": 4,
+      "page": 2,
+      "space_id": 3,
+      "section_id": 4,
+      "status": "published"
+    },
+    "method": "GET",
+    "path": "/api/v1/course_lessons",
+    "query": "community_id=2&space_id=3&section_id=4&status=published&per_page=4&page=2",
+    "async_query": "community_id=2&space_id=3&section_id=4&status=published&per_page=4&page=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "page": 2,
+      "per_page": 4,
+      "records": [
+        {
+          "id": 31,
+          "section_id": 4,
+          "space_id": 3,
+          "name": "",
+          "status": "published",
+          "body_html": "<p>Lesson</p>",
+          "is_comments_enabled": false,
+          "is_featured_media_enabled": false,
+          "is_featured_media_download_enabled": false,
+          "future": null
+        }
+      ],
+      "has_next_page": false,
+      "future": 0
+    }
+  },
+  {
+    "case_id": "course_lesson.get.primary",
+    "source_pointer": "/item/22/item/1",
+    "resource": "course_lesson",
+    "name": "get",
+    "args": [
+      31
+    ],
+    "kwargs": {},
+    "method": "GET",
+    "path": "/api/v1/course_lessons/31",
+    "query": "community_id=2",
+    "async_query": "community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "id": 31,
+      "section_id": 4,
+      "space_id": 3,
+      "name": "",
+      "status": "published",
+      "body_html": "<p>Lesson</p>",
+      "is_comments_enabled": false,
+      "is_featured_media_enabled": false,
+      "is_featured_media_download_enabled": false,
+      "future": null
+    }
+  },
+  {
+    "case_id": "course_lesson.create.primary",
+    "source_pointer": "/item/22/item/2",
+    "resource": "course_lesson",
+    "name": "create",
+    "args": [
+      {
+        "section_id": 4,
+        "name": "",
+        "status": "published",
+        "body_html": "<p>Lesson</p>",
+        "is_comments_enabled": false,
+        "is_featured_media_enabled": false,
+        "is_featured_media_download_enabled": false
+      }
+    ],
+    "kwargs": {},
+    "method": "POST",
+    "path": "/api/v1/course_lessons",
+    "query": "section_id=4&name=&status=published&body_html=%3Cp%3ELesson%3C%2Fp%3E&is_comments_enabled=false&is_featured_media_enabled=false&is_featured_media_download_enabled=false&community_id=2",
+    "async_query": "section_id=4&name=&status=published&body_html=%3Cp%3ELesson%3C/p%3E&is_comments_enabled=false&is_featured_media_enabled=false&is_featured_media_download_enabled=false&community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "id": 31,
+      "section_id": 4,
+      "space_id": 3,
+      "name": "",
+      "status": "published",
+      "body_html": "<p>Lesson</p>",
+      "is_comments_enabled": false,
+      "is_featured_media_enabled": false,
+      "is_featured_media_download_enabled": false,
+      "future": null
+    }
+  },
+  {
+    "case_id": "course_lesson.update.primary",
+    "source_pointer": "/item/22/item/3",
+    "resource": "course_lesson",
+    "name": "update",
+    "args": [
+      31,
+      {
+        "name": "",
+        "status": "published",
+        "body_html": "<p>Lesson</p>",
+        "is_comments_enabled": false,
+        "is_featured_media_enabled": false,
+        "is_featured_media_download_enabled": false
+      }
+    ],
+    "kwargs": {},
+    "method": "PATCH",
+    "path": "/api/v1/course_lessons/31",
+    "query": "name=&status=published&body_html=%3Cp%3ELesson%3C%2Fp%3E&is_comments_enabled=false&is_featured_media_enabled=false&is_featured_media_download_enabled=false&community_id=2",
+    "async_query": "name=&status=published&body_html=%3Cp%3ELesson%3C/p%3E&is_comments_enabled=false&is_featured_media_enabled=false&is_featured_media_download_enabled=false&community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "id": 31,
+      "section_id": 4,
+      "space_id": 3,
+      "name": "",
+      "status": "published",
+      "body_html": "<p>Lesson</p>",
+      "is_comments_enabled": false,
+      "is_featured_media_enabled": false,
+      "is_featured_media_download_enabled": false,
+      "future": null
+    }
+  },
+  {
+    "case_id": "course_lesson.delete.primary",
+    "source_pointer": "/item/22/item/4",
+    "resource": "course_lesson",
+    "name": "delete",
+    "args": [
+      31
+    ],
+    "kwargs": {
+      "id": 31
+    },
+    "method": "DELETE",
+    "path": "/api/v1/course_lessons/31",
+    "query": "id=31&community_id=2",
+    "async_query": "id=31&community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "course_lesson_progress.update.primary",
+    "source_pointer": "/item/23/item/0",
+    "resource": "course_lesson_progress",
+    "name": "update",
+    "args": [
+      31,
+      "a@example.test",
+      {
+        "status": "completed",
+        "future": {
+          "zero": 0,
+          "null": null
+        }
+      }
+    ],
+    "kwargs": {},
+    "method": "PATCH",
+    "path": "/api/v1/course_lesson_progress",
+    "query": "lesson_id=31&member_email=a%40example.test&community_id=2",
+    "async_query": "lesson_id=31&member_email=a@example.test&community_id=2",
+    "body": {
+      "status": "completed",
+      "future": {
+        "zero": 0,
+        "null": null
+      }
+    },
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "public_notification.unsubscribe.primary",
+    "source_pointer": "/item/24/item/0",
+    "resource": "public_notification",
+    "name": "unsubscribe",
+    "args": [
+      "synthetic+token/&?=#%"
+    ],
+    "kwargs": {
+      "params": {
+        "space_id": 3,
+        "section_id": 4,
+        "status": "draft",
+        "page": 2,
+        "per_page": 4
+      }
+    },
+    "method": "GET",
+    "path": "/public/unsubscribe",
+    "query": "token=synthetic%2Btoken%2F%26%3F%3D%23%25&space_id=3&section_id=4&status=draft&page=2&per_page=4",
+    "async_query": "token=synthetic%2Btoken/%26?%3D%23%25&space_id=3&section_id=4&status=draft&page=2&per_page=4",
+    "body": null,
+    "authorization": null,
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "public_notification.get_preferences.primary",
+    "source_pointer": "/item/24/item/1",
+    "resource": "public_notification",
+    "name": "get_preferences",
+    "args": [
+      "synthetic+token/&?=#%"
+    ],
+    "kwargs": {
+      "params": {
+        "space_id": 3,
+        "section_id": 4,
+        "status": "draft",
+        "page": 2,
+        "per_page": 4
+      }
+    },
+    "method": "GET",
+    "path": "/public/notification_preferences",
+    "query": "token=synthetic%2Btoken%2F%26%3F%3D%23%25&space_id=3&section_id=4&status=draft&page=2&per_page=4",
+    "async_query": "token=synthetic%2Btoken/%26?%3D%23%25&space_id=3&section_id=4&status=draft&page=2&per_page=4",
+    "body": null,
+    "authorization": null,
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "public_notification.update_preferences.primary",
+    "source_pointer": "/item/24/item/2",
+    "resource": "public_notification",
+    "name": "update_preferences",
+    "args": [
+      "synthetic+token/&?=#%",
+      {
+        "notification_preferences": [
+          {
+            "notification_type": "post_comment",
+            "medium": "email",
+            "value": false
+          },
+          {
+            "notification_type": "new_course_content",
+            "medium": "in_app",
+            "value": false
+          }
+        ],
+        "space_members": [
+          {
+            "notification_type": false,
+            "in_app_notification_setting": false,
+            "id": "4",
+            "future": null
+          }
+        ],
+        "future": {
+          "zero": 0,
+          "null": null,
+          "empty": []
+        }
+      }
+    ],
+    "kwargs": {
+      "params": {
+        "space_id": 3,
+        "section_id": 4,
+        "status": "draft",
+        "page": 2,
+        "per_page": 4
+      }
+    },
+    "method": "PATCH",
+    "path": "/public/notification_preferences",
+    "query": "token=synthetic%2Btoken%2F%26%3F%3D%23%25&space_id=3&section_id=4&status=draft&page=2&per_page=4",
+    "async_query": "token=synthetic%2Btoken/%26?%3D%23%25&space_id=3&section_id=4&status=draft&page=2&per_page=4",
+    "body": {
+      "notification_preferences": [
+        {
+          "notification_type": "post_comment",
+          "medium": "email",
+          "value": false
+        },
+        {
+          "notification_type": "new_course_content",
+          "medium": "in_app",
+          "value": false
+        }
+      ],
+      "space_members": [
+        {
+          "notification_type": false,
+          "in_app_notification_setting": false,
+          "id": "4",
+          "future": null
+        }
+      ],
+      "future": {
+        "zero": 0,
+        "null": null,
+        "empty": []
+      }
+    },
+    "authorization": null,
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "course_section.create.saved_json",
+    "source_pointer": "/item/21/item/2",
+    "resource": "course_section",
+    "name": "create",
+    "args": [
+      {
+        "space_id": 3,
+        "name": ""
+      }
+    ],
+    "kwargs": {
+      "json_payload": {
+        "space_id": 3,
+        "name": ""
+      }
+    },
+    "method": "POST",
+    "path": "/api/v1/course_sections",
+    "query": "space_id=3&name=&community_id=2",
+    "async_query": "space_id=3&name=&community_id=2",
+    "body": {
+      "space_id": 3,
+      "name": ""
+    },
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "course_lesson_progress.update.query_status",
+    "source_pointer": "/item/23/item/0",
+    "resource": "course_lesson_progress",
+    "name": "update",
+    "args": [
+      31,
+      "a@example.test"
+    ],
+    "kwargs": {
+      "status": "completed"
+    },
+    "method": "PATCH",
+    "path": "/api/v1/course_lesson_progress",
+    "query": "lesson_id=31&member_email=a%40example.test&status=completed&community_id=2",
+    "async_query": "lesson_id=31&member_email=a@example.test&status=completed&community_id=2",
+    "body": null,
+    "authorization": "Token synthetic-v1",
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  },
+  {
+    "case_id": "event.delete.published_bearer",
+    "source_pointer": "/item/14/item/3",
+    "resource": "event",
+    "name": "delete",
+    "args": [
+      31,
+      3
+    ],
+    "kwargs": {
+      "bearer_token": "synthetic-separate-bearer"
+    },
+    "method": "DELETE",
+    "path": "/api/v1/events/31",
+    "query": "space_id=3&community_id=2",
+    "async_query": "space_id=3&community_id=2",
+    "body": null,
+    "authorization": "Bearer synthetic-separate-bearer",
+    "response": {
+      "success": true,
+      "future": {
+        "false": false,
+        "null": null,
+        "empty": []
+      }
+    }
+  }
+]

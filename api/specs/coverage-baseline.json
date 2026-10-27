@@ -139,9 +139,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseLessonAPI.delete",
+          "line": 144,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -162,9 +169,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseSectionAPI.delete",
+          "line": 59,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -185,9 +199,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "EventAttendeeAPI.unrsvp",
+          "line": 315,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -208,9 +229,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "EventAPI.delete",
+          "line": 266,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -621,9 +649,22 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "MemberChargeAPI.list_charges",
+          "line": 394,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "MemberChargeAPI.iter_charges_pages",
+          "line": 407,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -674,9 +715,22 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "MemberSubscriptionAPI.list_subscriptions",
+          "line": 347,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "MemberSubscriptionAPI.iter_subscriptions_pages",
+          "line": 360,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -799,9 +853,22 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseLessonAPI.list_lessons",
+          "line": 101,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseLessonAPI.iter_lessons_pages",
+          "line": 162,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -822,9 +889,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseLessonAPI.get",
+          "line": 117,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -845,9 +919,22 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseSectionAPI.list_sections",
+          "line": 22,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseSectionAPI.iter_sections_pages",
+          "line": 70,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -868,9 +955,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseSectionAPI.get",
+          "line": 31,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -891,9 +985,22 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "EventAttendeeAPI.list_attendees",
+          "line": 307,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "EventAttendeeAPI.iter_attendees_pages",
+          "line": 324,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -914,9 +1021,22 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "EventAPI.list_events",
+          "line": 252,
+          "visibility": "public_method"
+        },
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "EventAPI.iter_events_pages",
+          "line": 275,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1453,9 +1573,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseLessonProgressAPI.update",
+          "line": 218,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1476,9 +1603,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseLessonAPI.update",
+          "line": 134,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1499,9 +1633,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseSectionAPI.update",
+          "line": 51,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1648,9 +1789,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseLessonAPI.create",
+          "line": 126,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1671,9 +1819,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "CourseSectionAPI.create",
+          "line": 42,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1694,9 +1849,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "EventAttendeeAPI.rsvp",
+          "line": 299,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -1717,9 +1879,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "EventAPI.create",
+          "line": 229,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -2070,9 +2239,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/learning.py",
+          "symbol": "EventAPI.update",
+          "line": 238,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -9125,9 +9301,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/notifications.py",
+          "symbol": "PublicNotificationAPI.get_preferences",
+          "line": 73,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -9148,9 +9331,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/notifications.py",
+          "symbol": "PublicNotificationAPI.unsubscribe",
+          "line": 67,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     },
@@ -9171,9 +9361,16 @@
         }
       ],
       "task_id": 14,
-      "code_reference_at_audit": false,
-      "exposure_at_audit": "missing",
-      "code_references": [],
+      "code_reference_at_audit": true,
+      "exposure_at_audit": "public_method",
+      "code_references": [
+        {
+          "file": "circlepy/client_models/notifications.py",
+          "symbol": "PublicNotificationAPI.update_preferences",
+          "line": 82,
+          "visibility": "public_method"
+        }
+      ],
       "contract_test_status": "not_audited",
       "live_validation_status": "not_run"
     }

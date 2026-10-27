@@ -20,7 +20,10 @@ Both also expose `.me`, `.community`, `.space_group`, `.space_group_member`,
 `.member_tag`, `.tagged_member`, `.message`, `.member_space`, `.profile_field`,
 `.topic`, `.contact` and `.flagged_content` for all 26
 [community and organization operations](admin-v1-organization.md). Legacy
-learning, events, billing and public notifications remain assigned to Task 14.
+learning, events, read-only billing and isolated public notifications are also
+implemented; see the [legacy learning guide](admin-v1-learning.md) and
+[complete 76-operation report](../api/specs/legacy-coverage.json). Public routes
+use notification-link query tokens, never an inherited Admin credential.
 
 Admin v2, Data and both Headless facades expose a family-scoped
 `request(method, endpoint, *, params=None, json=None)` returning decoded JSON or

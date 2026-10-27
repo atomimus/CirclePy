@@ -21,6 +21,11 @@ from .client_models.organization import (
     ContactAPI,
     FlaggedContentAPI,
 )
+from .client_models.learning import (
+    CourseSectionAPI, CourseLessonAPI, CourseLessonProgressAPI, EventAPI,
+    EventAttendeeAPI, MemberSubscriptionAPI, MemberChargeAPI,
+)
+from .client_models.notifications import PublicNotificationAPI
 
 base_url = "https://app.circle.so/api/v1"
 
@@ -54,6 +59,14 @@ class CircleClient:
         self.topic = TopicAPI(**options)
         self.contact = ContactAPI(**options)
         self.flagged_content = FlaggedContentAPI(**options)
+        self.course_section = CourseSectionAPI(**options)
+        self.course_lesson = CourseLessonAPI(**options)
+        self.course_lesson_progress = CourseLessonProgressAPI(**options)
+        self.event = EventAPI(**options)
+        self.event_attendee = EventAttendeeAPI(**options)
+        self.member_subscription = MemberSubscriptionAPI(**options)
+        self.member_charge = MemberChargeAPI(**options)
+        self.public_notification = PublicNotificationAPI(transport=self.transport)
 
     def close(self):
         self.transport.close()

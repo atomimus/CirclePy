@@ -9,6 +9,7 @@ include docs/learning.md
 include docs/pagination.md
 include docs/admin-v1.md
 include docs/admin-v1-organization.md
+include docs/admin-v1-learning.md
 recursive-include circlepy *.py
 recursive-include tests *.py *.json *.md
 recursive-include tools *.py

@@ -13,6 +13,10 @@ payloads. The guide documents v1's post body-update limitation and preserved hel
 Both also implement all 26 [community and organization operations](docs/admin-v1-organization.md),
 including groups, tag assignments, contacts, direct/group messages and read-only
 profile-field and moderation lists.
+Both now cover the remaining [learning, events, read-only billing and public
+notifications](docs/admin-v1-learning.md), completing all 73 Admin v1 and three
+public routes with sync/native async methods. The guide records upstream example
+inconsistencies, GET JSON bodies and notification token isolation.
 
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
 and identify the member with `email`, `community_member_id`, or `sso_user_id`

@@ -1,5 +1,8 @@
 # Legacy Admin v1 core resources
 
+See [learning, events, billing and public notifications](admin-v1-learning.md)
+for the remaining legacy operations and upstream example limitations.
+
 See [community and organization resources](admin-v1-organization.md) for account,
 communities, groups, tags, messaging, contacts, profile fields and moderation lists.
 

@@ -171,10 +171,10 @@ def code_routes():
                         if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Attribute):
                             continue
                         owner, verb = ast.unparse(node.func.value), node.func.attr
-                        if owner not in ("self", "super()", "requests", "self.transport", "self.auth_transport", "self._transport") or not node.args:
+                        if owner not in ("self", "super()", "requests", "self.transport", "self.auth_transport", "self._transport", "public") or not node.args:
                             continue
                         if ((verb == "_request" and owner == "self")
-                                or (verb == "request" and owner in ("self.transport", "self.auth_transport", "self._transport"))) and len(node.args) > 1:
+                                or (verb == "request" and owner in ("self.transport", "self.auth_transport", "self._transport", "public"))) and len(node.args) > 1:
                             verb, route = string(node.args[0]), string(node.args[1])
                         elif verb in METHODS:
                             verb, route = verb.upper(), string(node.args[0])
@@ -182,9 +182,10 @@ def code_routes():
                             continue
                         if not route or not route.startswith("/"):
                             continue
-                        if not route.startswith("/api/"):
+                        route_family = "legacy-public" if route.startswith("/public/") else family
+                        if not route.startswith(("/api/", "/public/")):
                             route = base + route
-                        key = (family, verb, normalize(route))
+                        key = (route_family, verb, normalize(route))
                         reference = {"file": path.relative_to(ROOT).as_posix(), "symbol": cls.name + "." + method.name, "line": node.lineno, "visibility": "private_helper" if method.name.startswith("_") else "public_method"}
                         routes.setdefault(key, [])
                         if reference not in routes[key]:

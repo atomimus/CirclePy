@@ -23,6 +23,11 @@ from .async_organization import (
     AsyncContactAPI,
     AsyncFlaggedContentAPI,
 )
+from .async_learning import (
+    AsyncCourseSectionAPI, AsyncCourseLessonAPI, AsyncCourseLessonProgressAPI, AsyncEventAPI,
+    AsyncEventAttendeeAPI, AsyncMemberSubscriptionAPI, AsyncMemberChargeAPI,
+)
+from .async_notifications import AsyncPublicNotificationAPI
 
 
 class AsyncCircleClient(_AsyncAPIClient):
@@ -56,3 +61,11 @@ class AsyncCircleClient(_AsyncAPIClient):
         self.topic = AsyncTopicAPI(**options)
         self.contact = AsyncContactAPI(**options)
         self.flagged_content = AsyncFlaggedContentAPI(**options)
+        self.course_section = AsyncCourseSectionAPI(**options)
+        self.course_lesson = AsyncCourseLessonAPI(**options)
+        self.course_lesson_progress = AsyncCourseLessonProgressAPI(**options)
+        self.event = AsyncEventAPI(**options)
+        self.event_attendee = AsyncEventAttendeeAPI(**options)
+        self.member_subscription = AsyncMemberSubscriptionAPI(**options)
+        self.member_charge = AsyncMemberChargeAPI(**options)
+        self.public_notification = AsyncPublicNotificationAPI(transport=self.transport)
