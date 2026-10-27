@@ -1,0 +1,21 @@
+name: Feature request
+description: Propose a focused compatibility or API improvement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User need and expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: documentation
+    attributes:
+      label: Official source and API family
+      description: Link the exact official operation/schema. Do not include credentials or private community data.
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and example
+      description: Show a synthetic call, including sync/async needs, and describe how existing callers should behave.

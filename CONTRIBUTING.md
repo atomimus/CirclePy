@@ -6,11 +6,10 @@ The v1 development line requires CPython 3.11 or newer. The package version stay
 0.5.1 during implementation; this checkout is not a new published 0.5.1 release.
 Users of Python 3.7–3.10 must keep the previously published 0.5.1 artifacts.
 
-| Runtime/platform | Task 02 execution evidence | Remaining validation |
+| Runtime/platform | Validation | Evidence |
 |---|---|---|
-| Windows x64, CPython 3.11 and 3.13 | Editable, wheel and sdist installs; offline regression tests | Task 03 CI |
-| CPython 3.12, 3.14, 3.15 | Targeted by the v1 contract | Task 03 runtime/dependency execution |
-| Linux and macOS | Contributor commands below | Task 03 CI on representative runners |
+| CPython 3.11–3.15 on Ubuntu, Windows and macOS | 15 CI jobs, each with offline tests and clean wheel/sdist installs | Exact pushed commit's CI run |
+| Windows x64, CPython 3.11 and 3.13 | Local editable, wheel and sdist validation | Task 02/03 evidence |
 | PyPy and free-threaded CPython | Unverified | No support claim |
 
 CirclePy itself is pure Python (`py3-none-any`); dependencies such as aiohttp and
@@ -57,9 +56,16 @@ three platforms. Without activation, replace `python` with the environment's
 interpreter path shown above.
 
 ```sh
-python -m unittest discover -s tests -v
+python -m coverage run -m pytest -v --junitxml=test-results.xml
+python -m coverage report
+python -m coverage xml
 python -X utf8 docs/v1-release/tools/baseline.py
 python -X utf8 docs/v1-release/tools/published_api.py
+python -m ruff check circlepy tests tools docs/v1-release/tools
+python -m ruff check --select E4,E7,E9,F tests/conftest.py tests/http_fixtures.py tests/test_offline_http.py tools/check_ci.py
+python -m mypy
+python tools/check_ci.py --negative-fixture
+python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build
 python -m twine check dist/*
 python tools/check_distribution.py dist
@@ -69,10 +75,80 @@ python tools/check_distribution.py dist
 default. Start with an empty output directory, or choose a new one with
 `python -m build --outdir <new-directory>` and pass it to both artifact checks.
 `check_distribution.py` inspects both archives, installs each into a new venv,
-checks dependencies/imports and runs copied offline tests outside the checkout.
+checks dependencies/imports and runs the complete copied pytest suite with
+`python -I` outside the checkout. It installs the three constrained pytest tools
+only after checking the consumer environment and site-packages import location.
 It downloads dependencies but never contacts a Circle community. Source tests
 use synthetic responses; they are not live API evidence. The optional baseline
 `--verify-live` only retrieves public documentation to detect schema drift.
+
+## Test conventions and quality scope
+
+Pytest runs the original unittest cases and new function tests. Test names should
+describe observable behavior or a failure mode. Derive literal request contracts
+from official schemas and synthetic payloads, independently of SDK dictionaries.
+Keep explicit false, zero, empty and null values in fixtures. No test credentials
+or real community responses belong in Git.
+
+The function-scoped `http_server` fixture in `tests/conftest.py` supplies a scripted
+loopback HTTP server, records requests and rejects missing/unexpected method,
+path, JSON or selected header expectations at teardown. See
+`tests/fixtures/README.md` and `tests/test_offline_http.py` for examples. It accepts
+raw response bytes for empty or malformed bodies. The `async_session` fixture
+uses native aiohttp and closes at teardown. Mark coroutines `@pytest.mark.asyncio`;
+pytest-asyncio uses strict mode with a separate loop for each test/async fixture.
+This fixture's own async tests do not establish SDK async parity.
+
+Pytest-socket allows only `127.0.0.1`, `::1` and local Unix sockets (needed by
+event loops). External TCP connections are blocked before I/O, including aiohttp
+connections. A companion fixture guards external DNS and event-loop connections,
+including Windows Proactor's native ConnectEx path. Do not enable network markers
+or override these guards in unit tests.
+The negative-fixture command runs an intentionally wrong request in a temporary
+test outside the checkout and requires pytest to fail. It commits no broken test.
+Live/sandbox tests remain a separate explicitly opt-in future suite.
+
+Coverage measures branches in every `circlepy` module with no production-module
+exclusions. CI uploads XML and test reports for each matrix cell. Current coverage
+is a baseline report; Task 28 must reach the 90% branch-coverage release gate.
+Ruff checks syntax and fatal correctness rules across production/tests/tools;
+new harness files also receive the full F and E4/E7/E9 checks. It does not impose
+a formatting migration. Strict mypy currently covers the new fixture/convention
+helpers listed in `pyproject.toml`; legacy production remains partially typed.
+Extend that list as typed modules are introduced, starting with Task 04 transports.
+Warnings, unknown pytest configuration and unknown markers fail the suite.
+
+The dependency job audits the complete pinned runtime/development dependency file
+via the public PyPI advisory service. `--no-deps` avoids another resolution of
+the already complete exact pins; `--strict` fails on collection errors. This
+unpublished CirclePy checkout has no advisory-index identity. No dependency or
+vulnerability is ignored; the audit honors the file's platform markers.
+An advisory-service outage is an unresolved check, not a clean audit. This check
+does not replace the scoped security review in Task 29.
+
+## Direct main workflow and CI
+
+Inspect status, fetch `origin/main`, and verify prerequisite history before work.
+Preserve unrelated changes and implement only the selected task on `main`.
+Run the commands above, inspect the task-owned staged diff and create one commit
+with `gitmoji type(scope): imperative summary`. Push with `git push origin main`
+without force. Verify that origin/main contains that SHA and that every CI job
+for the exact commit succeeds before completing a task or starting its successor.
+Resolve a remote advancement safely; never overwrite another writer's changes.
+
+The push workflow's unique check names are `test (<runner>, Python <version>)`
+for each of the 15 matrix cells, `quality` and `dependencies`. These are required
+completion checks under the execution rules; no new branch protection, PR or
+human approval gate is configured. Test jobs receive read-only contents access,
+no Circle/PyPI secrets and no OIDC write permission. Actions are pinned by full
+commit SHA and checkout does not retain Git credentials. Dependency downloads,
+public advisory queries and GitHub artifact uploads happen outside test I/O.
+
+Publication stays in the separate `release: published` workflow with explicit
+release-event conditions. It cannot run on an ordinary main push. Its existing
+PyPI token remains confined to the publish job; redundant OIDC permission was
+removed. Trusted publishing, release provenance and candidate uploads remain
+assigned to Tasks 32–34. Do not create a release to test this workflow.
 
 ## Versioning, typing and distributions
 

@@ -1,0 +1,13 @@
+{
+  "post": {
+    "id": 42,
+    "name": "Offline example",
+    "body": null,
+    "fixture_extension": {"enabled": false, "count": 0, "tags": [], "value": null}
+  },
+  "validation_error": {
+    "success": false,
+    "message": "Post cannot be liked",
+    "error_details": {"reaction_type": ["is not included in the list"]}
+  }
+}

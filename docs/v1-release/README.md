@@ -1,6 +1,6 @@
 # CirclePy v1 Release Plan
 
-Target release: circlepy 1.0.0. Prepared October 27, 2026. Task 01 is complete on origin/main; Task 02 is in progress. Future tasks work directly on main after automated validation.
+Target release: circlepy 1.0.0. Prepared October 27, 2026. Task 01 is complete on origin/main; Task 02 is complete on origin/main; Task 03 is in progress. Future tasks work directly on main after automated validation.
 
 Task 01 establishes the [public contract](contract.md), [runtime/transport decision](decisions/001-runtime-and-transports.md), [frozen source provenance](../../api/specs/sources.json), and [validation evidence](evidence/01.md). These describe the target behavior; they do not claim future implementations are complete.
 
@@ -27,8 +27,8 @@ Task 01 preserved the authorized API corrections and planning documents and push
 | Task | Work | Prerequisites | Status |
 |---|---|---|---|
 | 01 | [Preserve the baseline and define the v1 contract](tasks/01-baseline-contract.md) | None | Complete; verified on origin/main |
-| 02 | [Modernize packaging and the development environment](tasks/02-packaging-environment.md) | 01 | In progress; [evidence](evidence/02.md) |
-| 03 | [Establish continuous integration and test conventions](tasks/03-ci-quality.md) | 02 | Not started |
+| 02 | [Modernize packaging and the development environment](tasks/02-packaging-environment.md) | 01 | Complete; [evidence](evidence/02.md) |
+| 03 | [Establish continuous integration and test conventions](tasks/03-ci-quality.md) | 02 | In progress; [evidence](evidence/03.md) |
 | 04 | [Implement reliable synchronous and asynchronous HTTP transports](tasks/04-http-transports.md) | 03 | Not started |
 | 05 | [Complete token management and public client lifecycles](tasks/05-auth-clients.md) | 04 | Not started |
 | 06 | [Finish uploads and Markdown rich text handling](tasks/06-uploads-rich-text.md) | 05 | Not started |

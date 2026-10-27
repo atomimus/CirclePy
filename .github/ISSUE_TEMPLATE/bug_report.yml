@@ -1,0 +1,44 @@
+name: Bug report
+description: Report reproducible CirclePy behavior
+body:
+  - type: markdown
+    attributes:
+      value: Use synthetic examples. Remove tokens, cookies, signed URLs and member data from all reports.
+  - type: input
+    id: version
+    attributes:
+      label: CirclePy version or commit
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Python version and operating system
+    validations:
+      required: true
+  - type: dropdown
+    id: family
+    attributes:
+      label: API family
+      options:
+        - Admin v1
+        - Admin v2
+        - Headless Auth
+        - Headless Member
+        - Data
+        - Packaging or tooling
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal synthetic reproduction
+      description: Include the public method, expected behavior, actual result and sanitized error. Say whether this used offline fixtures or a live sandbox.
+      render: python
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Official documentation and validation
+      description: Link the exact Circle operation if applicable, and include relevant local check results.

@@ -75,8 +75,10 @@ def inspect_artifacts(directory):
         require(all(member.name.startswith(prefix + "/") or (member.name == prefix and member.isdir()) for member in members), "Unexpected sdist root")
         files = {member.name[len(prefix) + 1:] for member in members if member.isfile()}
         check_paths(files)
-        required = package_sources | {"LICENSE", "README.md", "CONTRIBUTING.md", "pyproject.toml", "constraints-dev.txt", "requirements.txt", "tools/check_distribution.py"}
+        required = package_sources | {"LICENSE", "README.md", "CONTRIBUTING.md", "pyproject.toml", "constraints-dev.txt", "requirements.txt"}
+        required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "tools").glob("*.py")}
         required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "docs/v1-release", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}
+        required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / ".github").rglob("*.yml")}
         require(required <= files, f"Missing sdist files: {sorted(required - files)}")
         require("setup.py" not in files, "Duplicated setup metadata remains")
         # Setuptools adds this generated egg_info configuration to an sdist.
@@ -120,7 +122,14 @@ def check_installs(artifacts):
                 "print('Installed', importlib.metadata.version('circlepy'), 'from', location, '; imported', len(modules), 'modules')",
             ])], work)
             shutil.copytree(ROOT / "tests", work / "tests", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-            run([python, "-I", "-m", "unittest", "discover", "-s", work / "tests", "-v"], work)
+            # Validate consumer dependencies first, then add only the test tools.
+            # Copy configuration so the identical offline guard and strict async
+            # mode apply outside the checkout, without PYTHONPATH shadowing.
+            shutil.copy2(ROOT / "pyproject.toml", work / "pyproject.toml")
+            run([python, "-m", "pip", "install", "-c", ROOT / "constraints-dev.txt",
+                 "pytest", "pytest-asyncio", "pytest-socket"], work)
+            run([python, "-m", "pip", "check"], work)
+            run([python, "-I", "-m", "pytest", "-v", work / "tests"], work)
 
 
 if __name__ == "__main__":
