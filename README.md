@@ -74,6 +74,8 @@ client = HeadlessClient(
 
 ## Development
 
+Development tasks commit and push directly to main after automated validation.
+
 The [v1 public contract](docs/v1-release/contract.md) and
 [release plan](docs/v1-release/README.md) describe the planned 1.0.0 interfaces,
 runtime support, compatibility decisions and remaining work. The current package

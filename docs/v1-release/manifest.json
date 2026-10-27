@@ -9,31 +9,32 @@
     "path": "D:/Aiville/CirclePy",
     "remote": "https://github.com/atomimus/CirclePy.git"
   },
-  "default_execution": "The user selects the first remaining task to start here or in a new local chat; after verified completion, automatically create and open its successor from task_sequence in a separate local chat. Tasks 26 and 27 are removed, so Task 25 hands off to Task 28. Pause on unresolved checks, required review/merge, or prerequisites; Task 35 ends the chain.",
+  "default_execution": "The user selects the first task. Each task implements, validates, commits and pushes directly to main, verifies origin/main and configured automated checks, then starts its successor in a new local chat. Tasks 26 and 27 are removed. Pause only for unresolved checks, prerequisites or concrete external access; Task 35 ends the chain.",
   "task_count": 33,
   "tasks": [
     {
       "id": 1,
       "title": "Preserve the baseline and define the v1 contract",
       "phase": "Foundations",
-      "status": "ready_for_review",
+      "status": "complete",
       "evidence_file": "evidence/01.md",
       "contract_file": "contract.md",
       "decision_file": "decisions/001-runtime-and-transports.md",
       "freeze_id": "circlepy-v1-2026-10-27",
       "owned_operation_count": 0,
       "baseline_operation_count": 357,
-      "integration_status": "pending_maintainer_review_and_merge",
-      "pr_test_ci": "not_configured_in_base; full CI belongs to Task 03",
+      "integration_status": "verified_on_origin_main",
       "dependencies": [],
       "prompt_file": "tasks/01-baseline-contract.md",
-      "branch": "codex/v1-01-baseline-contract",
+      "branch": "main",
       "suggested_commit": "🐛 fix(api): preserve the verified baseline for v1 development",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 01. Read D:/Aiville/CirclePy/docs/v1-release/tasks/01-baseline-contract.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 01. Read D:/Aiville/CirclePy/docs/v1-release/tasks/01-baseline-contract.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 2,
       "next_prompt_file": "tasks/02-packaging-environment.md",
-      "automatic_next_chat": true
+      "automatic_next_chat": true,
+      "implementation_commit": "60100b4d65181bddcb00c7517fc131d30a2e1dc5",
+      "push_ci": "not_configured_before_Task_03; required_local_validation_passed"
     },
     {
       "id": 2,
@@ -44,10 +45,10 @@
         1
       ],
       "prompt_file": "tasks/02-packaging-environment.md",
-      "branch": "codex/v1-02-packaging-environment",
+      "branch": "main",
       "suggested_commit": "📦 build(packaging): establish the v1 package configuration",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 02. Read D:/Aiville/CirclePy/docs/v1-release/tasks/02-packaging-environment.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 02. Read D:/Aiville/CirclePy/docs/v1-release/tasks/02-packaging-environment.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 3,
       "next_prompt_file": "tasks/03-ci-quality.md",
       "automatic_next_chat": true
@@ -61,10 +62,10 @@
         2
       ],
       "prompt_file": "tasks/03-ci-quality.md",
-      "branch": "codex/v1-03-ci-quality",
+      "branch": "main",
       "suggested_commit": "👷 ci(testing): add the supported runtime validation matrix",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 03. Read D:/Aiville/CirclePy/docs/v1-release/tasks/03-ci-quality.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 03. Read D:/Aiville/CirclePy/docs/v1-release/tasks/03-ci-quality.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 4,
       "next_prompt_file": "tasks/04-http-transports.md",
       "automatic_next_chat": true
@@ -78,10 +79,10 @@
         3
       ],
       "prompt_file": "tasks/04-http-transports.md",
-      "branch": "codex/v1-04-http-transports",
+      "branch": "main",
       "suggested_commit": "✨ feat(transport): add reliable sync and async request handling",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 04. Read D:/Aiville/CirclePy/docs/v1-release/tasks/04-http-transports.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 04. Read D:/Aiville/CirclePy/docs/v1-release/tasks/04-http-transports.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 5,
       "next_prompt_file": "tasks/05-auth-clients.md",
       "automatic_next_chat": true
@@ -95,10 +96,10 @@
         4
       ],
       "prompt_file": "tasks/05-auth-clients.md",
-      "branch": "codex/v1-05-auth-clients",
+      "branch": "main",
       "suggested_commit": "✨ feat(auth): complete token sessions and async client lifecycles",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 05. Read D:/Aiville/CirclePy/docs/v1-release/tasks/05-auth-clients.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 05. Read D:/Aiville/CirclePy/docs/v1-release/tasks/05-auth-clients.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 6,
       "next_prompt_file": "tasks/06-uploads-rich-text.md",
       "automatic_next_chat": true
@@ -112,10 +113,10 @@
         5
       ],
       "prompt_file": "tasks/06-uploads-rich-text.md",
-      "branch": "codex/v1-06-uploads-rich-text",
+      "branch": "main",
       "suggested_commit": "🐛 fix(media): preserve rich text and consolidate direct uploads",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 06. Read D:/Aiville/CirclePy/docs/v1-release/tasks/06-uploads-rich-text.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 06. Read D:/Aiville/CirclePy/docs/v1-release/tasks/06-uploads-rich-text.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 7,
       "next_prompt_file": "tasks/07-headless-content.md",
       "automatic_next_chat": true
@@ -129,10 +130,10 @@
         6
       ],
       "prompt_file": "tasks/07-headless-content.md",
-      "branch": "codex/v1-07-headless-content",
+      "branch": "main",
       "suggested_commit": "✨ feat(headless): complete content and reaction resources",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 07. Read D:/Aiville/CirclePy/docs/v1-release/tasks/07-headless-content.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 07. Read D:/Aiville/CirclePy/docs/v1-release/tasks/07-headless-content.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 8,
       "next_prompt_file": "tasks/08-headless-members-spaces.md",
       "automatic_next_chat": true
@@ -146,10 +147,10 @@
         6
       ],
       "prompt_file": "tasks/08-headless-members-spaces.md",
-      "branch": "codex/v1-08-headless-members-spaces",
+      "branch": "main",
       "suggested_commit": "✨ feat(headless): complete member profile and space support",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 08. Read D:/Aiville/CirclePy/docs/v1-release/tasks/08-headless-members-spaces.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 08. Read D:/Aiville/CirclePy/docs/v1-release/tasks/08-headless-members-spaces.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 9,
       "next_prompt_file": "tasks/09-headless-messaging.md",
       "automatic_next_chat": true
@@ -163,10 +164,10 @@
         6
       ],
       "prompt_file": "tasks/09-headless-messaging.md",
-      "branch": "codex/v1-09-headless-messaging",
+      "branch": "main",
       "suggested_commit": "✨ feat(headless): complete messaging and notification resources",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 09. Read D:/Aiville/CirclePy/docs/v1-release/tasks/09-headless-messaging.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 09. Read D:/Aiville/CirclePy/docs/v1-release/tasks/09-headless-messaging.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 10,
       "next_prompt_file": "tasks/10-headless-learning-events.md",
       "automatic_next_chat": true
@@ -180,10 +181,10 @@
         6
       ],
       "prompt_file": "tasks/10-headless-learning-events.md",
-      "branch": "codex/v1-10-headless-learning-events",
+      "branch": "main",
       "suggested_commit": "✨ feat(headless): complete learning event and live resources",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 10. Read D:/Aiville/CirclePy/docs/v1-release/tasks/10-headless-learning-events.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 10. Read D:/Aiville/CirclePy/docs/v1-release/tasks/10-headless-learning-events.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 11,
       "next_prompt_file": "tasks/11-pagination.md",
       "automatic_next_chat": true
@@ -200,10 +201,10 @@
         10
       ],
       "prompt_file": "tasks/11-pagination.md",
-      "branch": "codex/v1-11-pagination",
+      "branch": "main",
       "suggested_commit": "✨ feat(pagination): add bounded sync and async iterators",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 11. Read D:/Aiville/CirclePy/docs/v1-release/tasks/11-pagination.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 11. Read D:/Aiville/CirclePy/docs/v1-release/tasks/11-pagination.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 12,
       "next_prompt_file": "tasks/12-legacy-core.md",
       "automatic_next_chat": true
@@ -217,10 +218,10 @@
         11
       ],
       "prompt_file": "tasks/12-legacy-core.md",
-      "branch": "codex/v1-12-legacy-core",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v1): complete the legacy core resources",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 12. Read D:/Aiville/CirclePy/docs/v1-release/tasks/12-legacy-core.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 12. Read D:/Aiville/CirclePy/docs/v1-release/tasks/12-legacy-core.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 13,
       "next_prompt_file": "tasks/13-legacy-community.md",
       "automatic_next_chat": true
@@ -234,10 +235,10 @@
         12
       ],
       "prompt_file": "tasks/13-legacy-community.md",
-      "branch": "codex/v1-13-legacy-community",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v1): add community and organization resources",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 13. Read D:/Aiville/CirclePy/docs/v1-release/tasks/13-legacy-community.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 13. Read D:/Aiville/CirclePy/docs/v1-release/tasks/13-legacy-community.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 14,
       "next_prompt_file": "tasks/14-legacy-learning-billing.md",
       "automatic_next_chat": true
@@ -251,10 +252,10 @@
         13
       ],
       "prompt_file": "tasks/14-legacy-learning-billing.md",
-      "branch": "codex/v1-14-legacy-learning-billing",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v1): finish legacy learning and event coverage",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 14. Read D:/Aiville/CirclePy/docs/v1-release/tasks/14-legacy-learning-billing.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 14. Read D:/Aiville/CirclePy/docs/v1-release/tasks/14-legacy-learning-billing.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 15,
       "next_prompt_file": "tasks/15-admin-v2-members.md",
       "automatic_next_chat": true
@@ -269,7 +270,7 @@
         11
       ],
       "prompt_file": "tasks/15-admin-v2-members.md",
-      "branch": "codex/v1-15-admin-v2-members",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add member and community resources",
       "admin_v2_tags": [
         "Communities",
@@ -278,7 +279,7 @@
         "Contact Notes",
         "Invitation Links"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 15. Read D:/Aiville/CirclePy/docs/v1-release/tasks/15-admin-v2-members.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 15. Read D:/Aiville/CirclePy/docs/v1-release/tasks/15-admin-v2-members.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 16,
       "next_prompt_file": "tasks/16-admin-v2-access.md",
       "automatic_next_chat": true
@@ -292,7 +293,7 @@
         15
       ],
       "prompt_file": "tasks/16-admin-v2-access.md",
-      "branch": "codex/v1-16-admin-v2-access",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add spaces groups and access management",
       "admin_v2_tags": [
         "Access Groups",
@@ -304,7 +305,7 @@
         "Space Members",
         "Spaces"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 16. Read D:/Aiville/CirclePy/docs/v1-release/tasks/16-admin-v2-access.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 16. Read D:/Aiville/CirclePy/docs/v1-release/tasks/16-admin-v2-access.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 17,
       "next_prompt_file": "tasks/17-admin-v2-content.md",
       "automatic_next_chat": true
@@ -320,7 +321,7 @@
         16
       ],
       "prompt_file": "tasks/17-admin-v2-content.md",
-      "branch": "codex/v1-17-admin-v2-content",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add content media and summary resources",
       "admin_v2_tags": [
         "Posts",
@@ -329,7 +330,7 @@
         "Embeds",
         "Post Followers"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 17. Read D:/Aiville/CirclePy/docs/v1-release/tasks/17-admin-v2-content.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 17. Read D:/Aiville/CirclePy/docs/v1-release/tasks/17-admin-v2-content.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 18,
       "next_prompt_file": "tasks/18-admin-v2-courses.md",
       "automatic_next_chat": true
@@ -345,14 +346,14 @@
         17
       ],
       "prompt_file": "tasks/18-admin-v2-courses.md",
-      "branch": "codex/v1-18-admin-v2-courses",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add course administration",
       "admin_v2_tags": [
         "Course Sections",
         "Course Lessons",
         "Course Lesson Progress"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 18. Read D:/Aiville/CirclePy/docs/v1-release/tasks/18-admin-v2-courses.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 18. Read D:/Aiville/CirclePy/docs/v1-release/tasks/18-admin-v2-courses.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 19,
       "next_prompt_file": "tasks/19-admin-v2-events-live.md",
       "automatic_next_chat": true
@@ -368,14 +369,14 @@
         17
       ],
       "prompt_file": "tasks/19-admin-v2-events-live.md",
-      "branch": "codex/v1-19-admin-v2-events-live",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add events attendees and live transcripts",
       "admin_v2_tags": [
         "Events",
         "Event Attendees",
         "Live"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 19. Read D:/Aiville/CirclePy/docs/v1-release/tasks/19-admin-v2-events-live.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 19. Read D:/Aiville/CirclePy/docs/v1-release/tasks/19-admin-v2-events-live.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 20,
       "next_prompt_file": "tasks/20-admin-v2-organization.md",
       "automatic_next_chat": true
@@ -390,7 +391,7 @@
         16
       ],
       "prompt_file": "tasks/20-admin-v2-organization.md",
-      "branch": "codex/v1-20-admin-v2-organization",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add tags topics and segments",
       "admin_v2_tags": [
         "Member Tags",
@@ -398,7 +399,7 @@
         "Topics",
         "Community Segments"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 20. Read D:/Aiville/CirclePy/docs/v1-release/tasks/20-admin-v2-organization.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 20. Read D:/Aiville/CirclePy/docs/v1-release/tasks/20-admin-v2-organization.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 21,
       "next_prompt_file": "tasks/21-admin-v2-profiles-search.md",
       "automatic_next_chat": true
@@ -414,7 +415,7 @@
         20
       ],
       "prompt_file": "tasks/21-admin-v2-profiles-search.md",
-      "branch": "codex/v1-21-admin-v2-profiles-search",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add profiles filters and discovery",
       "admin_v2_tags": [
         "Advanced Search",
@@ -425,7 +426,7 @@
         "Profile Fields",
         "Connect Settings"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 21. Read D:/Aiville/CirclePy/docs/v1-release/tasks/21-admin-v2-profiles-search.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 21. Read D:/Aiville/CirclePy/docs/v1-release/tasks/21-admin-v2-profiles-search.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 22,
       "next_prompt_file": "tasks/22-admin-v2-operations.md",
       "automatic_next_chat": true
@@ -443,7 +444,7 @@
         21
       ],
       "prompt_file": "tasks/22-admin-v2-operations.md",
-      "branch": "codex/v1-22-admin-v2-operations",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add community operations resources",
       "admin_v2_tags": [
         "Chat Preferences",
@@ -454,7 +455,7 @@
         "Gamification",
         "Workflows"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 22. Read D:/Aiville/CirclePy/docs/v1-release/tasks/22-admin-v2-operations.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 22. Read D:/Aiville/CirclePy/docs/v1-release/tasks/22-admin-v2-operations.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 23,
       "next_prompt_file": "tasks/23-admin-v2-billing.md",
       "automatic_next_chat": true
@@ -468,7 +469,7 @@
         15
       ],
       "prompt_file": "tasks/23-admin-v2-billing.md",
-      "branch": "codex/v1-23-admin-v2-billing",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add billing and subscription resources",
       "admin_v2_tags": [
         "Community Member Charges",
@@ -476,7 +477,7 @@
         "Payment Method Settings",
         "Tax Settings"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 23. Read D:/Aiville/CirclePy/docs/v1-release/tasks/23-admin-v2-billing.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 23. Read D:/Aiville/CirclePy/docs/v1-release/tasks/23-admin-v2-billing.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 24,
       "next_prompt_file": "tasks/24-admin-v2-paywalls.md",
       "automatic_next_chat": true
@@ -492,7 +493,7 @@
         23
       ],
       "prompt_file": "tasks/24-admin-v2-paywalls.md",
-      "branch": "codex/v1-24-admin-v2-paywalls",
+      "branch": "main",
       "suggested_commit": "✨ feat(admin-v2): add paywalls affiliates and payouts",
       "admin_v2_tags": [
         "Paywall Affiliate Payouts",
@@ -501,7 +502,7 @@
         "Paywall Groups",
         "Paywalls"
       ],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 24. Read D:/Aiville/CirclePy/docs/v1-release/tasks/24-admin-v2-paywalls.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 24. Read D:/Aiville/CirclePy/docs/v1-release/tasks/24-admin-v2-paywalls.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 25,
       "next_prompt_file": "tasks/25-data-api.md",
       "automatic_next_chat": true
@@ -516,10 +517,10 @@
         11
       ],
       "prompt_file": "tasks/25-data-api.md",
-      "branch": "codex/v1-25-data-api",
+      "branch": "main",
       "suggested_commit": "✨ feat(data): add event feeds and incremental synchronization",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 25. Read D:/Aiville/CirclePy/docs/v1-release/tasks/25-data-api.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 25. Read D:/Aiville/CirclePy/docs/v1-release/tasks/25-data-api.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 28,
       "next_prompt_file": "tasks/28-coverage-faults.md",
       "automatic_next_chat": true
@@ -552,10 +553,10 @@
         25
       ],
       "prompt_file": "tasks/28-coverage-faults.md",
-      "branch": "codex/v1-28-coverage-faults",
+      "branch": "main",
       "suggested_commit": "✅ test(sdk): verify API coverage and failure behavior",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 28. Read D:/Aiville/CirclePy/docs/v1-release/tasks/28-coverage-faults.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 28. Read D:/Aiville/CirclePy/docs/v1-release/tasks/28-coverage-faults.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 29,
       "next_prompt_file": "tasks/29-security-dependencies.md",
       "automatic_next_chat": true
@@ -569,10 +570,10 @@
         28
       ],
       "prompt_file": "tasks/29-security-dependencies.md",
-      "branch": "codex/v1-29-security-dependencies",
+      "branch": "main",
       "suggested_commit": "🔒 security(sdk): resolve release security and dependency risks",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 29. Read D:/Aiville/CirclePy/docs/v1-release/tasks/29-security-dependencies.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 29. Read D:/Aiville/CirclePy/docs/v1-release/tasks/29-security-dependencies.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 30,
       "next_prompt_file": "tasks/30-sandbox-validation.md",
       "automatic_next_chat": true
@@ -586,10 +587,10 @@
         29
       ],
       "prompt_file": "tasks/30-sandbox-validation.md",
-      "branch": "codex/v1-30-sandbox-validation",
+      "branch": "main",
       "suggested_commit": "✅ test(integration): verify dedicated Circle sandbox workflows",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 30. Read D:/Aiville/CirclePy/docs/v1-release/tasks/30-sandbox-validation.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 30. Read D:/Aiville/CirclePy/docs/v1-release/tasks/30-sandbox-validation.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 31,
       "next_prompt_file": "tasks/31-documentation-support.md",
       "automatic_next_chat": true
@@ -603,10 +604,10 @@
         30
       ],
       "prompt_file": "tasks/31-documentation-support.md",
-      "branch": "codex/v1-31-documentation-support",
+      "branch": "main",
       "suggested_commit": "📚 docs(sdk): complete the v1 guides and migration notes",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 31. Read D:/Aiville/CirclePy/docs/v1-release/tasks/31-documentation-support.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 31. Read D:/Aiville/CirclePy/docs/v1-release/tasks/31-documentation-support.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 32,
       "next_prompt_file": "tasks/32-trusted-publishing.md",
       "automatic_next_chat": true
@@ -622,10 +623,10 @@
         31
       ],
       "prompt_file": "tasks/32-trusted-publishing.md",
-      "branch": "codex/v1-32-trusted-publishing",
+      "branch": "main",
       "suggested_commit": "👷 ci(release): add trusted publishing and artifact gates",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 32. Read D:/Aiville/CirclePy/docs/v1-release/tasks/32-trusted-publishing.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 32. Read D:/Aiville/CirclePy/docs/v1-release/tasks/32-trusted-publishing.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 33,
       "next_prompt_file": "tasks/33-release-candidate.md",
       "automatic_next_chat": true
@@ -641,10 +642,10 @@
         32
       ],
       "prompt_file": "tasks/33-release-candidate.md",
-      "branch": "codex/v1-33-release-candidate",
+      "branch": "main",
       "suggested_commit": "📦 build(release): prepare and validate the v1 release candidate",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 33. Read D:/Aiville/CirclePy/docs/v1-release/tasks/33-release-candidate.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 33. Read D:/Aiville/CirclePy/docs/v1-release/tasks/33-release-candidate.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 34,
       "next_prompt_file": "tasks/34-publish-v1.md",
       "automatic_next_chat": true
@@ -658,10 +659,10 @@
         33
       ],
       "prompt_file": "tasks/34-publish-v1.md",
-      "branch": "codex/v1-34-publish-v1",
+      "branch": "main",
       "suggested_commit": "📦 build(release): prepare CirclePy 1.0.0",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 34. Read D:/Aiville/CirclePy/docs/v1-release/tasks/34-publish-v1.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 34. Read D:/Aiville/CirclePy/docs/v1-release/tasks/34-publish-v1.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": 35,
       "next_prompt_file": "tasks/35-postrelease-verification.md",
       "automatic_next_chat": true
@@ -675,10 +676,10 @@
         34
       ],
       "prompt_file": "tasks/35-postrelease-verification.md",
-      "branch": "codex/v1-35-postrelease-verification",
+      "branch": "main",
       "suggested_commit": "✅ test(release): verify the published v1 distribution",
       "admin_v2_tags": [],
-      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 35. Read D:/Aiville/CirclePy/docs/v1-release/tasks/35-postrelease-verification.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, perform its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
+      "launch_prompt": "Create and open a new local chat in the CirclePy project at D:/Aiville/CirclePy to execute task 35. Read D:/Aiville/CirclePy/docs/v1-release/tasks/35-postrelease-verification.md and D:/Aiville/CirclePy/docs/v1-release/EXECUTION_RULES.md in full and use their complete contents as the new chat's initial instructions. Check prerequisites, execute only this task in that chat, validate, commit and push directly to main using its specified Git handoff, and follow its authorized next-task new-chat handoff only after verified completion.",
       "next_task_id": null,
       "next_prompt_file": null,
       "automatic_next_chat": false
@@ -690,12 +691,13 @@
     "trigger": "verified_complete",
     "target": "new_local_chat",
     "require_next_task_prerequisites": true,
-    "require_review_and_integration_when_applicable": true,
     "launch_while_blocked": false,
     "prevent_duplicate_launches": true,
     "final_task_id": 35,
     "starts_any_task_now": false,
-    "sequence_source": "task_sequence"
+    "sequence_source": "task_sequence",
+    "require_remote_main_commit": true,
+    "require_automated_validation": true
   },
   "task_sequence": [
     1,
@@ -741,5 +743,15 @@
     "Circle Plus integrations",
     "Circle MCP integrations",
     "Webhook integrations"
-  ]
+  ],
+  "git_workflow": {
+    "mode": "direct_main",
+    "branch": "main",
+    "remote": "origin",
+    "pull_requests_required": false,
+    "human_review_required": false,
+    "verify_remote_main": true,
+    "automated_validation_required": true,
+    "selected_on": "2026-10-27"
+  }
 }

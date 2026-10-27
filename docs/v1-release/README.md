@@ -1,8 +1,8 @@
 # CirclePy v1 Release Plan
 
-Target release: circlepy 1.0.0. Prepared October 27, 2026. Task 01 is ready for maintainer review; the other 32 remaining tasks are not started. Review/merge and completion checks must be verified before Task 02 starts.
+Target release: circlepy 1.0.0. Prepared October 27, 2026. Task 01 is complete on origin/main; the other 32 remaining tasks are not started. Future tasks work directly on main after automated validation.
 
-Task 01 establishes the [public contract](contract.md), [runtime/transport decision](decisions/001-runtime-and-transports.md), [frozen source provenance](../../api/specs/sources.json), and [review/validation evidence](evidence/01.md). These describe the target behavior; they do not claim future implementations are complete.
+Task 01 establishes the [public contract](contract.md), [runtime/transport decision](decisions/001-runtime-and-transports.md), [frozen source provenance](../../api/specs/sources.json), and [validation evidence](evidence/01.md). These describe the target behavior; they do not claim future implementations are complete.
 
 The plan covers a compatible Admin v1 client, a complete Admin v2 client, Headless Auth and Member APIs, the Data API, real synchronous and asynchronous I/O, and the engineering work needed for a trustworthy release. Completion is measured by explicit tests, source-to-artifact checks, and documented provider limitations.
 
@@ -12,21 +12,21 @@ Tell the planning chat `start task #N` to execute it there, or use its task laun
 
 The file links below open the complete prompts for review. Each prompt contains its own scope, research sources, acceptance checks, deliverables, Git instructions, and stopping point. The machine-readable [manifest](manifest.json) also includes launch prompts.
 
-Run the remaining tasks in number order by default. Task IDs stay stable so existing launch buttons and references continue to work; Tasks 26 and 27 have been removed. Prerequisites must be verified in the integrated Git history; clicking a later task does not authorize running its prerequisites. Only one implementation chat should write to the shared checkout at a time.
+Run the remaining tasks in number order by default. Task IDs stay stable so existing launch buttons and references continue to work; Tasks 26 and 27 have been removed. Prerequisites must be verified in the actual origin/main history; clicking a later task does not authorize running its prerequisites. Only one implementation chat should write to the shared checkout at a time.
 
-Once you start a task, every remaining task except Task 35 is authorized to create and open its next task from the manifest sequence in a new chat immediately after verified completion. Task 25 now hands off directly to Task 28. Pending checks, required review/merge, or missing prerequisites pause that handoff. Task 35 ends the chain. Editing this plan starts nothing.
+Once you start a task, every remaining task except Task 35 is authorized to create and open its next task from the manifest sequence in a new chat immediately after verified completion. Task 25 now hands off directly to Task 28. Pending checks, missing remote access, or missing prerequisites pause that handoff. Task 35 ends the chain. Editing this plan starts nothing.
 
 ## GitHub workflow
 
-Each normal task follows: verified base → topic branch → scoped implementation and checks → one clean commit → branch push → PR → passing CI → maintainer review and merge → verified completion → next task in a new chat. Dependent tasks use the integrated result. The [execution rules](EXECUTION_RULES.md) define the complete workflow, handoff checks, and publication exceptions for Tasks 33 and 34.
+Each normal task follows: verified main → scoped implementation and automated checks → one clean commit on main → direct push to origin main → verify the remote commit and configured CI → verified completion → next task in a new chat. Dependent tasks verify the prerequisite commits in origin/main. The [execution rules](EXECUTION_RULES.md) define the complete workflow, handoff checks, and publication exceptions for Tasks 33 and 34.
 
-No release work, commits, pushes, PRs, merges, package uploads, or background tasks were started by this planning step. Task 01 will review and preserve the current authorized uncommitted API changes and these plan files.
+Task 01 preserved the authorized API corrections and planning documents and pushed the verified baseline to main. The user selected direct commits and pushes to main for every remaining task. Package publication remains limited to its assigned release tasks.
 
 ## Task index
 
 | Task | Work | Prerequisites | Status |
 |---|---|---|---|
-| 01 | [Preserve the baseline and define the v1 contract](tasks/01-baseline-contract.md) | None | Ready for review; not integrated |
+| 01 | [Preserve the baseline and define the v1 contract](tasks/01-baseline-contract.md) | None | Complete; verified on origin/main |
 | 02 | [Modernize packaging and the development environment](tasks/02-packaging-environment.md) | 01 | Not started |
 | 03 | [Establish continuous integration and test conventions](tasks/03-ci-quality.md) | 02 | Not started |
 | 04 | [Implement reliable synchronous and asynchronous HTTP transports](tasks/04-http-transports.md) | 03 | Not started |
@@ -92,4 +92,3 @@ WebSocket, Circle Plus, MCP, and webhook integrations are outside this release p
 - [Data API specification](https://app.circle.so/data_api/docs/openapi.yaml)
 - [Python Packaging User Guide](https://packaging.python.org/en/latest/flow/)
 - [PyPI Trusted Publishing](https://docs.pypi.org/trusted-publishers/using-a-publisher/)
-- [GitHub protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)

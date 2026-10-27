@@ -29,7 +29,7 @@ Search Circle's official developer index and read the current pages/schemas rele
 
 ## Work to complete
 
-1. Review the existing dirty working tree before changing branches. Preserve the API corrections, tests, refreshed Headless specs, and planning files from this conversation. Identify unrelated edits and leave them untouched; stage only reviewed paths. Do not discard changes or mistake existing work for a fresh checkout.
+1. Review the existing dirty working tree before updating main. Preserve the API corrections, tests, refreshed Headless specs, and planning files from this conversation. Identify unrelated edits and leave them untouched; stage only inspected paths. Do not discard changes or mistake existing work for a fresh checkout.
 
 2. Refresh the official documentation inventory and API snapshots with retrieval dates, hashes, and reproducible provenance. Reconcile docs/v1-release/coverage-baseline.json against the current live references, including all Admin v1, Admin v2, Headless, Auth, and Data operations and the three public notification routes.
 
@@ -57,18 +57,18 @@ Run the focused checks and applicable required suite, then fix relevant failures
 
 ## Git handoff
 
-Use branch codex/v1-01-baseline-contract from the verified integrated base. Inspect the dirty tree and stage only reviewed task-owned paths. After required checks pass, create one clean Gitmoji Conventional Commit, push the topic branch to origin, create/update a focused PR, attach the PR to the chat, and verify CI on the current pushed head.
+Work directly on main after verifying origin/main and preserving unrelated working-tree changes. Stage only inspected task-owned paths. After required checks pass, create one clean Gitmoji Conventional Commit, push directly to origin main without force, and verify the remote commit and any configured CI on that exact commit.
 
 Suggested subject, adjusted if the actual diff requires a different type or scope:
 
 🐛 fix(api): preserve the verified baseline for v1 development
 
-The selected task authorizes its commit, topic-branch push, and PR handoff; routine reconfirmation is unnecessary. It does not authorize merging main or publishing packages. After verified completion, the final handoff instruction authorizes starting only the next numbered task in a new chat.
+The selected task authorizes its commit and direct push to origin main after validation; routine reconfirmation is unnecessary. Package publication remains limited to its explicitly assigned release task. After verified completion, the final handoff instruction authorizes starting only the next numbered task in a new chat.
 
 ## Finish and handoff
 
-Prepare the scoped deliverables with required checks passing and the pushed PR ready for maintainer review. This task is completely done only after required review and integration are verified, its evidence is current, and all prerequisites of the next task are satisfied. Pending review, merge, checks, or other blockers pause the handoff; do not bypass them or launch the next task early.
+Finish the scoped deliverables with required checks passing, the task commit verified on origin/main, and current evidence. Complete the task once those checks and every prerequisite of the successor are satisfied. Pause the handoff only for an unresolved check, missing prerequisite, or concrete external capability; proceed automatically when the verified requirements are met.
 
-Report changed behavior, source/validation evidence, branch, commit SHA, PR URL and CI status, and any material limitation or concrete missing prerequisite. After verified completion, perform the authorized handoff below; do not implement the successor in this chat.
+Report changed behavior, source/validation evidence, main commit SHA, remote verification and CI status, and any material limitation or concrete missing prerequisite. After verified completion, perform the authorized handoff below; do not implement the successor in this chat.
 
-Once Task #01 is completely done and verified under EXECUTION_RULES.md, immediately create and open one new local chat in the CirclePy project at D:/Aiville/CirclePy to start Task #02; use the complete prompt at D:/Aiville/CirclePy/docs/v1-release/tasks/02-packaging-environment.md and the shared execution rules as its initial instructions, include the verified commit/PR/check summary, record the returned chat ID in the completion response to avoid duplicate launches, and pause this handoff if completion or any next-task prerequisite remains unresolved.
+Once Task #01 is completely done and verified under EXECUTION_RULES.md, immediately create and open one new local chat in the CirclePy project at D:/Aiville/CirclePy to start Task #02; use the complete prompt at D:/Aiville/CirclePy/docs/v1-release/tasks/02-packaging-environment.md and the shared execution rules as its initial instructions, include the verified main commit/check summary, record the returned chat ID in the completion response to avoid duplicate launches, and pause this handoff if completion or any next-task prerequisite remains unresolved.

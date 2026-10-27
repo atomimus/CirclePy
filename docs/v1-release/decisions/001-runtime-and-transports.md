@@ -1,6 +1,6 @@
 # ADR 001: Python runtime and native HTTP transports
 
-Status: accepted for the v1 implementation plan, pending Task 01 PR review.
+Status: accepted for the v1 implementation plan; Task 01 baseline verified on main.
 Decision date and source retrieval date: October 27, 2026.
 
 ## Context

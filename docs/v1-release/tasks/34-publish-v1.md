@@ -6,7 +6,7 @@ Status when prepared: not started. Target: circlepy 1.0.0. Activate this task on
 
 Execute only Task 34 in the CirclePy repository at D:/Aiville/CirclePy, with origin https://github.com/atomimus/CirclePy.git. Read docs/v1-release/EXECUTION_RULES.md in full before work; its research, compatibility, evidence, testing, Git, and publication rules are mandatory. Preserve existing readable resource classes and public compatibility. Implement only this task in this chat; follow the authorized next-task handoff below only after verified completion.
 
-Prerequisites: Tasks 33. Verify their required artifacts and passing evidence are integrated into the actual base history before implementation. If a prerequisite is missing, identify it and stop this task without starting it for the user.
+Prerequisites: Tasks 33. Verify their required artifacts and passing evidence are present in the verified origin/main history before implementation. If a prerequisite is missing, identify it and stop this task without starting it for the user.
 
 Read the selected source files, applicable AGENTS.md, the release manifest, and the v1 contract/architecture decisions once available. Re-check current primary documentation; do not infer endpoints or copy another API family's schemas.
 
@@ -21,19 +21,19 @@ Search Circle's official developer index and read the current pages/schemas rele
 
 ## Work to complete
 
-1. Prepare the final 1.0.0 version/changelog PR from the validated integrated release-candidate line, verify all predecessor evidence and current upstream compatibility, and rerun final required checks on the exact final source.
+1. Prepare the final 1.0.0 version/changelog commit directly on main from the validated release-candidate source, verify all predecessor evidence and current upstream compatibility, and rerun final required checks on the exact final source.
 
-2. Starting this task explicitly authorizes the release version commit/PR, its integration after required checks/reviews, the v1.0.0 tag, GitHub release, and production PyPI upload. Respect actual branch/environment protections and do not bypass required human review.
+2. Starting this task explicitly authorizes the release version commit and direct push to main after required automated checks, the v1.0.0 tag, GitHub release, and production PyPI upload. Verify the exact source and publisher access before publication.
 
 3. Check that circlepy 1.0.0 is not already published and that the intended tag/source SHA and publisher identity are correct. If an upload outcome is unknown, reconcile the index before retrying; never overwrite immutable versions or move an already published tag.
 
 4. Build the final-version artifacts once, validate/install/test them, retain checksums/provenance, and publish those same bytes through the trusted pipeline. Do not promote RC metadata or accidentally publish stale tracked dist files.
 
-5. Verify the public PyPI/GitHub version and metadata, retain a factual release record, and stop after v1.0.0 publication/initial verification. If a real platform approval is required, identify the exact gate and leave the prepared result reviewable rather than inventing extra confirmation steps.
+5. Verify the public PyPI/GitHub version and metadata, retain a factual release record, and stop after v1.0.0 publication/initial verification. If publisher access is unavailable, identify the exact missing capability after preparing the validated result.
 
 ## Acceptance checks
 
-- Require all scope, behavior, API coverage, async parity, support-matrix, security, documentation, sandbox, and RC gates to pass or have explicit recorded maintainer acceptance for provider-only limitations.
+- Require all scope, behavior, API coverage, async parity, support-matrix, security, documentation, sandbox, and RC gates to pass or have documented provider-only limitations with their actual evidence and impact.
 - Verify release tag/source/metadata consistency, final artifact installation, hashes, and actual upload success.
 - Confirm public pip metadata resolves exactly circlepy==1.0.0 and GitHub identifies the same source commit.
 
@@ -49,18 +49,18 @@ Run the focused checks and applicable required suite, then fix relevant failures
 
 ## Git handoff
 
-Use branch codex/v1-34-publish-v1 from the verified integrated base. Inspect the dirty tree and stage only reviewed task-owned paths. After required checks pass, create one clean Gitmoji Conventional Commit, push the topic branch to origin, create/update a focused PR, attach the PR to the chat, and verify CI on the current pushed head.
+Work directly on main after verifying origin/main and preserving unrelated working-tree changes. Stage only inspected task-owned paths. After required checks pass, create one clean Gitmoji Conventional Commit, push directly to origin main without force, and verify the remote commit and any configured CI on that exact commit.
 
 Suggested subject, adjusted if the actual diff requires a different type or scope:
 
 📦 build(release): prepare CirclePy 1.0.0
 
-This release task also authorizes the final release-version PR integration after required checks/reviews, v1.0.0 tag, GitHub release, and production PyPI upload as specified above. Respect actual protections; never bypass a required review or upload unvalidated artifacts.
+This release task also authorizes the final release-version commit and direct push to main after required checks, v1.0.0 tag, GitHub release, and production PyPI upload as specified above. Upload only the exact validated artifacts.
 
 ## Finish and handoff
 
-Finish only when the exact 1.0.0 release/tag/source/artifacts are verified on GitHub and production PyPI, or report the concrete external approval/access gate with the fully prepared result.
+Finish only when the exact 1.0.0 release/tag/source/artifacts are verified on GitHub and production PyPI, or report the concrete external access dependency with the fully prepared result.
 
-Report changed behavior, source/validation evidence, branch, commit SHA, PR URL and CI status, and any material limitation or concrete missing prerequisite. After verified completion, perform the authorized handoff below; do not implement the successor in this chat.
+Report changed behavior, source/validation evidence, main commit SHA, remote verification and CI status, and any material limitation or concrete missing prerequisite. After verified completion, perform the authorized handoff below; do not implement the successor in this chat.
 
-Once Task #34 is completely done and verified under EXECUTION_RULES.md, immediately create and open one new local chat in the CirclePy project at D:/Aiville/CirclePy to start Task #35; use the complete prompt at D:/Aiville/CirclePy/docs/v1-release/tasks/35-postrelease-verification.md and the shared execution rules as its initial instructions, include the verified commit/PR/check summary, record the returned chat ID in the completion response to avoid duplicate launches, and pause this handoff if completion or any next-task prerequisite remains unresolved.
+Once Task #34 is completely done and verified under EXECUTION_RULES.md, immediately create and open one new local chat in the CirclePy project at D:/Aiville/CirclePy to start Task #35; use the complete prompt at D:/Aiville/CirclePy/docs/v1-release/tasks/35-postrelease-verification.md and the shared execution rules as its initial instructions, include the verified main commit/check summary, record the returned chat ID in the completion response to avoid duplicate launches, and pause this handoff if completion or any next-task prerequisite remains unresolved.

@@ -233,6 +233,9 @@ def check(verify_live=False):
     if inventory != reconciled_inventory():
         raise ValueError("Inventory differs from snapshots/code audit; review and run --reconcile")
     tasks = read_json(PLAN / "manifest.json")
+    workflow = tasks.get("git_workflow", {})
+    if workflow.get("mode") != "direct_main" or workflow.get("branch") != "main" or workflow.get("pull_requests_required") is not False or workflow.get("human_review_required") is not False:
+        raise ValueError("Release workflow must use direct main with automated validation")
     task_ids = {task["id"] for task in tasks["tasks"]}
     sequence = tasks["task_sequence"]
     if len(sequence) != len(task_ids) or set(sequence) != task_ids or tasks["task_count"] != len(task_ids):
@@ -241,6 +244,8 @@ def check(verify_live=False):
     if len(keys) != len(set(keys)) or any(op["task_id"] not in task_ids for op in inventory["operations"]):
         raise ValueError("Duplicate operation or missing task owner")
     for task in tasks["tasks"]:
+        if task.get("branch") != "main":
+            raise ValueError(f"Task {task['id']} must use main")
         if not (PLAN / task["prompt_file"]).is_file() or not set(task["dependencies"]) <= task_ids:
             raise ValueError(f"Invalid prompt/dependency for task {task['id']}")
         index = sequence.index(task["id"])

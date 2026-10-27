@@ -1,6 +1,6 @@
 # CirclePy v1 Task Execution Rules
 
-These rules apply when the user starts one numbered task from the CirclePy v1 plan. The plan was prepared on October 27, 2026. Creating the plan did not start, commit, push, merge, or publish any task. The target release is circlepy 1.0.0.
+These rules apply when the user starts one numbered task from the CirclePy v1 plan. The plan was prepared on October 27, 2026. Creating the plan did not start, commit, push, or publish any task. The target release is circlepy 1.0.0.
 
 ## Activation and scope
 
@@ -8,7 +8,7 @@ Start the first task only when the user explicitly selects it. Reading or editin
 
 Read the selected prompt, these rules, the plan index, the task manifest, applicable AGENTS.md instructions, and Task 01's contract and decisions once they exist. If instructions disagree, follow the human's current direction and applicable higher-priority instructions. Use the actual current files and Git history; do not rely solely on a prior chat summary or a green status field.
 
-Default to one active implementation chat in the shared checkout. If the user explicitly requests parallel work, use suitable isolated managed worktrees and agree file ownership. Independently parallelize read-only research and checks where useful. Do not create concurrent writers in the same files.
+Use one active implementation chat in the shared main checkout. Independently parallelize read-only research and checks where useful, and serialize repository writes.
 
 ## Research and implementation
 
@@ -24,13 +24,13 @@ Keep caller intent intact: preserve explicit false, zero, empty, and null values
 
 ## Dependencies and evidence
 
-Before implementation, verify every declared prerequisite has its required artifacts, passing evidence, and an integrated commit in the actual base history. Normal prerequisites must have their PR merged into the selected base; a manifest label alone is insufficient. If the user explicitly chooses an accepted stacked branch, record that base and its risks. Otherwise report the exact missing prerequisite and stop that task without implementing another one.
+Before implementation, verify every declared prerequisite has its required artifacts, passing evidence, and a commit present in the actual origin/main history. A manifest label alone is insufficient. Report an exact missing prerequisite and stop that task without implementing another one.
 
-Inspect the working tree before switching branches or staging. Task 01 is specifically responsible for reviewing and preserving the existing authorized API changes and this plan. In every other task, preserve unrelated dirty work; never reset, clean, overwrite, stash, force-push, or commit it blindly. Stage reviewed paths explicitly.
+Inspect the working tree before updating main or staging. Task 01 is specifically responsible for reviewing and preserving the existing authorized API changes and this plan. In every other task, preserve unrelated dirty work; never reset, clean, overwrite, stash, force-push, or commit it blindly. Stage reviewed paths explicitly.
 
-When implementing, write or update docs/v1-release/evidence/NN.md. Record the task scope, source URLs/spec hashes, selected base SHA, relevant decisions, changes, commands/results, compatibility implications, and remaining limits. Keep output concise and redact sensitive data. Record the resulting commit SHA and PR URL in the final chat and PR description rather than trying to embed a commit's own SHA in its contents.
+When implementing, write or update docs/v1-release/evidence/NN.md. Record the task scope, source URLs/spec hashes, selected base SHA, relevant decisions, changes, commands/results, compatibility implications, and remaining limits. Keep output concise and redact sensitive data. Record the resulting main commit SHA and remote verification in the final chat rather than trying to embed a commit's own SHA in its contents.
 
-Update the manifest's task status only to a state supported by evidence, such as in_progress, needs_input, or ready_for_review. Do not label code integrated or a release published until verified remotely. A later task may reconcile a predecessor's merged status from actual Git/PR evidence.
+Update the manifest's task status only to a state supported by evidence, such as in_progress, needs_input, or complete. Mark a task complete only after its deliverables/checks and pushed origin/main commit are verified. Mark publication complete only after it is verified at the package index. A later task may reconcile a predecessor's completion from actual main history and evidence.
 
 ## Validation standards
 
@@ -44,21 +44,21 @@ During normal implementation, use synthetic/local fixtures. Live community mutat
 
 Keep API keys, JWTs, cookies, signed storage URLs, credentials, member data, recordings, and private financial information out of Git, logs, examples, and build artifacts. Use approved environment/secret-store mechanisms. If genuine credentials or provider capability are missing, complete independent authorized preparation and report the exact dependency; do not fabricate evidence or silently substitute production.
 
-## Git and GitHub handoff
+## Direct main workflow
 
-For each normal implementation task:
+The user selected direct development on main on October 27, 2026. This applies to every task.
 
-1. Inspect status, remotes, current branch, and predecessor integration. Fetch the intended base without overwriting dirty work.
-2. Use an isolated topic branch named codex/v1-NN-slug from the verified integrated base. If already working on that task branch, reuse it. Do not push implementation changes directly to main.
-3. Finish the scoped implementation, necessary docs, evidence, and validation. Review the staged diff for unrelated edits and secrets.
-4. Create one clean task commit unless the user explicitly requests several. Use Gitmoji plus Conventional Commits: <gitmoji> <type>(<scope>): <imperative summary>. Select the type/scope from the actual diff, keep the subject concise, and do not end it with a period. The prompt's subject is a suggestion, not permission to misdescribe the diff.
-5. Push only that branch to origin with an upstream, without force. Create or update a focused PR to the verified base; attach it to the current chat using the app's PR artifact tool. PR creation is the intended GitHub write for an activated task. Do not post unrelated comments or messages.
-6. Verify the actual CI result for the current pushed head, fix task regressions, and update the same PR. Report the branch, commit SHA, PR URL, checks, evidence, and limitations.
-7. When the task PR is ready for maintainer review, report that intermediate state. Normal implementation tasks do not merge themselves, release a tag, or upload a distribution. Pending required review or integration means the task is not completely done for automatic handoff. After the required review/merge and all completion checks are verified, use the automatic next-task handoff below. Respect an explicitly chosen stacked workflow only if it satisfies the successor's accepted dependency contract.
+1. Inspect status, remotes and prerequisite commits. Fetch origin/main without overwriting dirty work, and update local main safely while preserving unrelated changes.
+2. Implement the selected task directly on main. Keep repository writes serialized in the shared checkout.
+3. Finish the scoped implementation, documentation, evidence and validation. Inspect the staged diff for unrelated edits and secrets, and stage task-owned paths explicitly.
+4. Create one clean task commit unless the user explicitly requests several. Use Gitmoji plus Conventional Commits: <gitmoji> <type>(<scope>): <imperative summary>. Select the type/scope from the actual diff and do not end the subject with a period.
+5. Push directly to origin main without force. Reconcile a remote advancement safely before retrying. Verify that the intended commit is present in origin/main.
+6. Verify any configured automated checks on the actual pushed main commit, fix task regressions, and report its SHA, checks, evidence and limitations. Before Task 03 establishes push CI, explicitly record absent remote checks and run the task's required local validation.
+7. Complete the task and perform its authorized successor handoff when its deliverables, required checks, remote main commit, prerequisites and any explicitly scoped publication steps are verified.
 
-Do not ask again for routine commit/push/PR permission after the user starts a task whose prompt includes this handoff. If GitHub access is unavailable, finish the reviewable local work and commit, report the precise missing push/PR/check capability, and do not claim the remote handoff is complete. Respect actual branch protections; never bypass a required review.
+Starting a task authorizes its routine commit and direct push to main after validation; do not request confirmation again. If remote access is unavailable, finish and commit the local work, report the missing capability, and leave remote completion pending.
 
-The publication tasks have additional explicitly scoped authorities. Task 33 authorizes only its verified TestPyPI candidate upload. Task 34 authorizes its release version PR/integration after required checks/reviews, v1.0.0 tag, GitHub release, and production PyPI publication. Task 35 validates the published release and prepares fixes if needed; it does not authorize another publication, tag rewrite, or yanking.
+Task 33 authorizes only its verified TestPyPI candidate upload. Task 34 authorizes its release-version commit and direct push to main after required checks, v1.0.0 tag, GitHub release, and production PyPI publication. Task 35 verifies the published release and implements fixes if needed; it does not authorize another publication, tag rewrite or yanking.
 
 ## Release gates and stopping conditions
 
@@ -66,19 +66,19 @@ The v1 release requires a complete reconciled frozen API inventory; real sync/as
 
 No unresolved critical correctness or exploitable high/critical security issue may be hidden behind coverage numbers. Do not call an API unsupported merely because a required feature was not implemented. Experimental compatibility routes must be labeled honestly. Report actual provider limitations and accepted evidence gaps with the relevant feature.
 
-Publishing uses exact versioned source and artifacts. Retain build hashes/provenance, validate the same bytes that will be uploaded, and reconcile unknown outcomes before retrying immutable publication. Do not rebuild or collect stale checked-in dist files for an already approved upload.
+Publishing uses exact versioned source and artifacts. Retain build hashes/provenance, validate the same bytes that will be uploaded, and reconcile unknown outcomes before retrying immutable publication. Do not rebuild or collect stale checked-in dist files for an already validated upload.
 
-At the selected task's finish, report what changed, why, what was verified, the GitHub handoff, material limits, and the precise next dependency. If it is completely done, perform the authorized next-task handoff below. Otherwise report the exact outstanding requirement and pause the handoff. Never promise zero defects or describe a ready-for-review PR as an integrated result.
+At the selected task's finish, report what changed, why, what was verified, the GitHub handoff, material limits, and the precise next dependency. If it is completely done, perform the authorized next-task handoff below. Otherwise report the exact outstanding requirement and pause the handoff. Never promise zero defects or describe an unpushed local commit as remote completion.
 
 ## Automatic next task handoff
 
-For every remaining task except Task 35, immediately start its successor from manifest.json task_sequence in one new local CirclePy chat only after the current task's deliverables, evidence, checks, required GitHub review/integration, and any scoped publication steps are verified, and every prerequisite of the successor is satisfied. This is the user's standing authorization to create and open that successor chat; routine permission reconfirmation is unnecessary. Editing these prompts does not start the chain.
+For every remaining task except Task 35, immediately start its successor from manifest.json task_sequence in one new local CirclePy chat only after the current task's deliverables, evidence, checks, the pushed origin/main commit, and any scoped publication steps are verified, and every prerequisite of the successor is satisfied. This is the user's standing authorization to create and open that successor chat; routine permission reconfirmation is unnecessary. Editing these prompts does not start the chain.
 
-Read the successor's complete Markdown prompt and these rules. Use the app's project listing to verify the CirclePy project, create the successor as a local project chat with the complete prompt/rules and a concise verified handoff summary, and open that chat using the returned thread ID. Pass the base/merged commit, PR, current checks, evidence paths, and relevant limitations without credentials. Keep the user's configured model settings unless they request an override. Do not implement the successor in the predecessor chat or leave concurrent writers in the shared checkout.
+Read the successor's complete Markdown prompt and these rules. Use the app's project listing to verify the CirclePy project, create the successor as a local project chat with the complete prompt/rules and a concise verified handoff summary, and open that chat using the returned thread ID. Pass the verified main/base commits, current checks, evidence paths, and relevant limitations without credentials. Keep the user's configured model settings unless they request an override. Do not implement the successor in the predecessor chat or leave concurrent writers in the shared checkout.
 
 Create each successor only once. Record its returned chat ID in the completion response and consult the task manifest, prior handoff response, and existing project chats before retrying an uncertain creation. If creation is queued, reconcile its actual result rather than blindly creating another chat. Follow the app's required created-chat directive and navigation behavior when reporting a successful creation.
 
-An unresolved check, missing credential/capability, required human review, unmerged prerequisite, or other material blocker pauses automatic handoff. Do not bypass protections, weaken acceptance checks, mark the task complete, or start a future task to work around the blocker. When the current chat resumes after the requirement is resolved, verify completion again and perform the same handoff. This instruction does not create a background monitor or promise execution while a chat is idle.
+An unresolved check, missing credential/capability, a prerequisite absent from origin/main, or other material blocker pauses automatic handoff. Do not weaken acceptance checks, mark the task complete, or start a future task to work around the blocker. When the current chat resumes after the requirement is resolved, verify completion again and perform the same handoff. This instruction does not create a background monitor or promise execution while a chat is idle.
 
 Task 35 is final. After its verified completion, report the release/maintenance results and end the chain; there is no Task 36 and no automatic additional work.
 
@@ -88,7 +88,6 @@ Task 35 is final. After its verified completion, report the release/maintenance 
 - [Circle Admin version guidance](https://api.circle.so/apis/admin-api.md)
 - [PyPA packaging flow](https://packaging.python.org/en/latest/flow/)
 - [PyPI Trusted Publishing](https://docs.pypi.org/trusted-publishers/using-a-publisher/)
-- [GitHub branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - [Maintained Python versions](https://devguide.python.org/versions/)
 - [OpenAI Python SDK reference practices](https://github.com/openai/openai-python)
 - [Codex tasks with acceptance criteria](https://developers.openai.com/blog/run-long-horizon-tasks-with-codex)
