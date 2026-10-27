@@ -20,6 +20,9 @@ Both also expose complete [member profiles, directory search and spaces](docs/me
 including signup custom fields/timezone and field/choice record preservation.
 Both expose [HTTP messaging, notifications, search, bookmarks and cookies](docs/messaging.md),
 including raw rich-text replies, Unicode reactions, complete filters and shared sessions.
+Both expose [courses, quizzes, event participation, reports, invitations and live rooms](docs/learning.md).
+All 102 frozen Member and four Auth operations have explicit sync/async entry
+points and independent offline contract coverage; live sandbox checks remain separate.
 
 The Headless implementations were checked against Circle's live API specs on
 October 27, 2026. The refreshed specs are saved in `api/specs`, with their source

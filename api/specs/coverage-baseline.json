@@ -5991,7 +5991,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.delete_event_attendee",
-          "line": 41,
+          "line": 31,
           "visibility": "public_method"
         }
       ],
@@ -6484,7 +6484,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.list_community_events",
-          "line": 27,
+          "line": 20,
           "visibility": "public_method"
         }
       ],
@@ -6716,7 +6716,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.list_course_topics",
-          "line": 11,
+          "line": 10,
           "visibility": "public_method"
         }
       ],
@@ -6745,7 +6745,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.get_course_lesson",
-          "line": 17,
+          "line": 16,
           "visibility": "public_method"
         }
       ],
@@ -6774,7 +6774,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.list_course_lesson_files",
-          "line": 25,
+          "line": 20,
           "visibility": "public_method"
         }
       ],
@@ -6803,7 +6803,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.list_course_quiz_attempts",
-          "line": 40,
+          "line": 29,
           "visibility": "public_method"
         }
       ],
@@ -6832,7 +6832,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.list_course_sections",
-          "line": 14,
+          "line": 13,
           "visibility": "public_method"
         }
       ],
@@ -6861,7 +6861,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.list_event_attendees",
-          "line": 35,
+          "line": 24,
           "visibility": "public_method"
         }
       ],
@@ -7325,7 +7325,7 @@
         {
           "file": "circlepy/headless_models/quizzes_api.py",
           "symbol": "QuizzesAPI.get_quiz_attempt",
-          "line": 18,
+          "line": 15,
           "visibility": "public_method"
         }
       ],
@@ -7528,7 +7528,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.list_recurring_events",
-          "line": 49,
+          "line": 35,
           "visibility": "public_method"
         }
       ],
@@ -7673,7 +7673,7 @@
         {
           "file": "circlepy/headless_models/courses_api.py",
           "symbol": "CoursesAPI.update_course_lesson_progress",
-          "line": 32,
+          "line": 24,
           "visibility": "public_method"
         }
       ],
@@ -7882,7 +7882,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.create_event_attendee",
-          "line": 38,
+          "line": 28,
           "visibility": "public_method"
         }
       ],
@@ -7911,7 +7911,7 @@
         {
           "file": "circlepy/headless_models/flagged_contents_api.py",
           "symbol": "FlaggedContentsAPI.create_flagged_content",
-          "line": 31,
+          "line": 17,
           "visibility": "public_method"
         }
       ],
@@ -7940,7 +7940,7 @@
         {
           "file": "circlepy/headless_models/invitation_links_api.py",
           "symbol": "InvitationLinksAPI.join_invitation_link",
-          "line": 6,
+          "line": 7,
           "visibility": "public_method"
         }
       ],
@@ -7969,7 +7969,7 @@
         {
           "file": "circlepy/headless_models/live_streams_api.py",
           "symbol": "LiveStreamsAPI.create_live_stream_room",
-          "line": 43,
+          "line": 22,
           "visibility": "public_method"
         }
       ],
@@ -8288,7 +8288,7 @@
         {
           "file": "circlepy/headless_models/quizzes_api.py",
           "symbol": "QuizzesAPI.create_quiz_attempt",
-          "line": 12,
+          "line": 8,
           "visibility": "public_method"
         }
       ],
@@ -8706,7 +8706,7 @@
         {
           "file": "circlepy/headless_models/quizzes_api.py",
           "symbol": "QuizzesAPI.update_quiz_attempt",
-          "line": 25,
+          "line": 19,
           "visibility": "public_method"
         }
       ],
@@ -8764,7 +8764,7 @@
         {
           "file": "circlepy/headless_models/events_api.py",
           "symbol": "EventsAPI.update_recurring_events_rsvp",
-          "line": 59,
+          "line": 42,
           "visibility": "public_method"
         }
       ],

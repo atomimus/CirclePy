@@ -1,0 +1,1027 @@
+[
+  {
+    "resource": "events",
+    "name": "list_community_events",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/community_events",
+    "path": "/api/headless/v1/community_events",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 3,
+      "filter_date_start": "2026-10-27",
+      "filter_date_end": "2026-12-01",
+      "status": "published",
+      "past_events": false
+    },
+    "query": "page=2&per_page=3&status=published&filter_date%5Bstart_date%5D=2026-10-27&filter_date%5Bend_date%5D=2026-12-01&past_events=false",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": true,
+      "count": 8,
+      "page_count": 3,
+      "records": [
+        {
+          "id": 61,
+          "post_type": "Event",
+          "space_type": "event",
+          "status": "published",
+          "name": "Synthetic Event",
+          "display_title": "Synthetic Event",
+          "slug": "event",
+          "cover_image": null,
+          "cardview_image": "https://example.invalid/event.png",
+          "reaction_summary": {
+            "current_user_reaction_type": null,
+            "counts": {
+              "like": 0,
+              "celebrate": 0,
+              "love": 0,
+              "support": 0,
+              "insightful": 0,
+              "funny": 0
+            }
+          },
+          "event_setting_attributes": {
+            "starts_at": "2026-10-27T13:00:00+02:00",
+            "ends_at": "2026-10-27T14:00:00+02:00",
+            "in_person_location": null,
+            "hide_location_from_non_attendees": true,
+            "duration_in_seconds": 3600,
+            "rsvp_disabled": false,
+            "hide_attendees": false,
+            "send_email_reminder": false,
+            "send_in_app_notification_reminder": false,
+            "send_email_confirmation": false,
+            "send_in_app_notification_confirmation": false,
+            "enable_custom_thank_you_message": false,
+            "confirmation_message_title": "",
+            "confirmation_message_description": "",
+            "confirmation_message_button_title": "",
+            "confirmation_message_button_link": "",
+            "location_type": "virtual",
+            "virtual_location_url": "https://example.invalid/event",
+            "live_stream_recording_url": "",
+            "rsvp_limit": null,
+            "rsvp_count": 0,
+            "future": {
+              "null": null,
+              "false": false,
+              "zero": 0,
+              "empty": [],
+              "text": "مرحبا"
+            }
+          },
+          "event_type": "recurring",
+          "recurring_setting_attributes": {
+            "frequency": "weekly",
+            "ends_at": "2026-12-01T00:00:00Z",
+            "occurrences": 4,
+            "range_type": "date"
+          },
+          "rsvped_event": false,
+          "rsvp_status": null,
+          "invited_attendee": false,
+          "event_attendees": {
+            "records": [
+              {
+                "id": 91,
+                "community_member_id": 81,
+                "contact_id": 81,
+                "contact_type": "CommunityMember",
+                "avatar_url": null,
+                "rsvp_date": "2026-10-27T13:00:00+02:00",
+                "rsvp_status": "going",
+                "name": "Synthetic Member",
+                "future": {
+                  "null": null,
+                  "false": false,
+                  "zero": 0,
+                  "empty": [],
+                  "text": "مرحبا"
+                }
+              }
+            ],
+            "count": 1
+          },
+          "future": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        }
+      ],
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      },
+      "meta": {
+        "events_directory_layout": "thumbnail",
+        "sort": "starts_at",
+        "future": {
+          "null": null,
+          "false": false,
+          "zero": 0,
+          "empty": [],
+          "text": "مرحبا"
+        }
+      }
+    }
+  },
+  {
+    "resource": "courses",
+    "name": "list_course_lesson_files",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/courses/{course_id}/lessons/{lesson_id}/files",
+    "path": "/api/headless/v1/courses/1/lessons/31/files",
+    "args": [
+      1,
+      31
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 3
+    },
+    "query": "page=2&per_page=3",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": true,
+      "count": 8,
+      "page_count": 3,
+      "records": [
+        {
+          "id": 71,
+          "filename": "Résumé.pdf",
+          "content_type": "application/pdf",
+          "byte_size": 0,
+          "created_at": "2026-10-27T00:00:00Z",
+          "signed_id": "synthetic-signed-id",
+          "url": "https://example.invalid/file.pdf",
+          "type": "file",
+          "future": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        }
+      ],
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "courses",
+    "name": "update_course_lesson_progress",
+    "method": "PATCH",
+    "schema_path": "/api/headless/v1/courses/{course_id}/lessons/{lesson_id}/progress",
+    "path": "/api/headless/v1/courses/1/lessons/31/progress",
+    "args": [
+      1,
+      31
+    ],
+    "kwargs": {
+      "status": "incomplete"
+    },
+    "query": "",
+    "body": {
+      "status": "incomplete"
+    },
+    "status": 200,
+    "response": {
+      "status": "incomplete",
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "courses",
+    "name": "get_course_lesson",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/courses/{course_id}/lessons/{id}",
+    "path": "/api/headless/v1/courses/1/lessons/31",
+    "args": [
+      1,
+      31
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 31,
+      "name": "Lesson",
+      "enforce_featured_media_completion": false,
+      "autocomplete_on_featured_media_completion": false,
+      "is_comments_enabled": false,
+      "is_featured_media_enabled": true,
+      "featured_media": {
+        "filename": "lesson.mp4",
+        "content_type": "video/mp4",
+        "metadata": {
+          "identified": true,
+          "width": 1280,
+          "height": 720,
+          "duration": 3.5,
+          "analyzed": true,
+          "future": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        },
+        "byte_size": 100,
+        "type": "video",
+        "url": "https://example.invalid/lesson.mp4",
+        "webvtt_file_url": null,
+        "chapters_url": "https://example.invalid/chapters.json",
+        "preview_thumbnails_url": "https://example.invalid/previews.vtt",
+        "image_variants": {
+          "thumbnail": "https://example.invalid/media-thumbnail.png",
+          "future": null
+        },
+        "signed_id": "synthetic-signed-id"
+      },
+      "is_featured_media_download_enabled": false,
+      "space": {
+        "id": 1,
+        "name": "Course",
+        "slug": "course"
+      },
+      "bookmark_id": null,
+      "chat_room_uuid": "synthetic-lesson-room",
+      "rich_text_body": {
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "مرحبا"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": [],
+        "sgids_to_object_map": {
+          "synthetic": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        },
+        "future": {
+          "null": null,
+          "false": false,
+          "zero": 0,
+          "empty": [],
+          "text": "مرحبا"
+        }
+      },
+      "featured_media_duration": 4,
+      "thumbnail_url": "https://example.invalid/lesson-thumbnail.png",
+      "section_id": 21,
+      "dripped_at": null,
+      "progress": {
+        "status": "incomplete",
+        "future": {
+          "null": null,
+          "false": false,
+          "zero": 0,
+          "empty": [],
+          "text": "مرحبا"
+        }
+      },
+      "needs_to_complete_previous_lesson": false,
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "courses",
+    "name": "list_course_quiz_attempts",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/courses/{course_id}/quiz_attempts",
+    "path": "/api/headless/v1/courses/1/quiz_attempts",
+    "args": [
+      1
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 3
+    },
+    "query": "page=2&per_page=3",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": true,
+      "count": 8,
+      "page_count": 3,
+      "records": [
+        {
+          "id": 51,
+          "quiz_id": 41,
+          "result": "failed",
+          "grade": 0,
+          "created_at": "2026-10-27T00:00:00Z",
+          "community_member": {
+            "id": 81,
+            "public_uid": "synthetic",
+            "name": "Member",
+            "avatar_url": null
+          },
+          "lesson_name": "Lesson",
+          "section_name": "Section",
+          "passing_grade": 80,
+          "quiz_attempts_count": 2,
+          "future": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        }
+      ],
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "courses",
+    "name": "list_course_sections",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/courses/{course_id}/sections",
+    "path": "/api/headless/v1/courses/1/sections",
+    "args": [
+      1
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": [
+      {
+        "id": 21,
+        "name": "Section",
+        "drip_delay": 0,
+        "notify_students_enabled": false,
+        "is_dropped": false,
+        "dripped_at": null,
+        "lessons": [
+          {
+            "id": 31,
+            "name": "Lesson",
+            "is_featured_media_enabled": true,
+            "featured_media_duration": null,
+            "thumbnail_url": "https://example.invalid/section-lesson-thumbnail.png",
+            "dripped_at": null,
+            "needs_to_complete_previous_lesson": false,
+            "progress": {
+              "status": "completed"
+            },
+            "future": {
+              "null": null,
+              "false": false,
+              "zero": 0,
+              "empty": [],
+              "text": "مرحبا"
+            }
+          }
+        ],
+        "future": {
+          "null": null,
+          "false": false,
+          "zero": 0,
+          "empty": [],
+          "text": "مرحبا"
+        }
+      }
+    ]
+  },
+  {
+    "resource": "courses",
+    "name": "list_course_topics",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/course_topics",
+    "path": "/api/headless/v1/course_topics",
+    "args": [],
+    "kwargs": {
+      "page": 2,
+      "per_page": 3
+    },
+    "query": "page=2&per_page=3",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": true,
+      "count": 8,
+      "page_count": 3,
+      "records": [
+        {
+          "id": 4,
+          "name": "Topic",
+          "admin_only": false,
+          "future": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        }
+      ],
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "events",
+    "name": "create_event_attendee",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/events/{event_id}/event_attendees",
+    "path": "/api/headless/v1/events/61/event_attendees",
+    "args": [
+      61
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 91,
+      "community_member_id": 81,
+      "contact_id": 81,
+      "contact_type": "CommunityMember",
+      "avatar_url": null,
+      "rsvp_date": "2026-10-27T13:00:00+02:00",
+      "rsvp_status": "going",
+      "name": "Synthetic Member",
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "events",
+    "name": "delete_event_attendee",
+    "method": "DELETE",
+    "schema_path": "/api/headless/v1/events/{event_id}/event_attendees",
+    "path": "/api/headless/v1/events/61/event_attendees",
+    "args": [
+      61
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 91,
+      "community_member_id": 81,
+      "contact_id": 81,
+      "contact_type": "CommunityMember",
+      "avatar_url": null,
+      "rsvp_date": "2026-10-27T13:00:00+02:00",
+      "rsvp_status": "not_going",
+      "name": "Synthetic Member",
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "events",
+    "name": "list_event_attendees",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/events/{event_id}/event_attendees",
+    "path": "/api/headless/v1/events/61/event_attendees",
+    "args": [
+      61
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 3
+    },
+    "query": "page=2&per_page=3",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": true,
+      "count": 8,
+      "page_count": 3,
+      "records": [
+        {
+          "id": 91,
+          "community_member_id": 81,
+          "contact_id": 81,
+          "contact_type": "CommunityMember",
+          "avatar_url": null,
+          "rsvp_date": "2026-10-27T13:00:00+02:00",
+          "rsvp_status": "going",
+          "name": "Synthetic Member",
+          "future": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        }
+      ],
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "flagged_contents",
+    "name": "create_flagged_content",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/flagged_contents",
+    "path": "/api/headless/v1/flagged_contents",
+    "args": [],
+    "kwargs": {
+      "flagged_contentable_id": 42,
+      "flagged_contentable_type": "ChatRoomMessage",
+      "reported_reason_type": "child_safety",
+      "reported_reason_body": ""
+    },
+    "query": "",
+    "body": {
+      "flagged_content": {
+        "flagged_contentable_id": 42,
+        "flagged_contentable_type": "ChatRoomMessage",
+        "reported_reason_type": "child_safety",
+        "reported_reason_body": ""
+      }
+    },
+    "status": 201,
+    "response": {
+      "message": "Report received",
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "invitation_links",
+    "name": "join_invitation_link",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/invitation_links/{token}/join",
+    "path": "/api/headless/v1/invitation_links/synthetic-invite/join",
+    "args": [
+      "synthetic-invite"
+    ],
+    "kwargs": {},
+    "query": "",
+    "body": null,
+    "status": 200,
+    "response": {
+      "redirect_to_space_id": null,
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "live_streams",
+    "name": "create_live_stream_room",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/live_streams/rooms",
+    "path": "/api/headless/v1/live_streams/rooms",
+    "args": [],
+    "kwargs": {
+      "name": "Study",
+      "description": "",
+      "slug": "study",
+      "view_type": "speaker_variant_view",
+      "recording_enabled": false,
+      "mute_on_join": false,
+      "limit_url_sharing": false,
+      "access_type": "secret",
+      "room_type": "conference",
+      "invited_entities_ids": {
+        "members_ids": [
+          81,
+          82
+        ],
+        "spaces_ids": [
+          1
+        ],
+        "space_groups_ids": [
+          0
+        ],
+        "member_tags_ids": [
+          4
+        ]
+      }
+    },
+    "query": "",
+    "body": {
+      "name": "Study",
+      "description": "",
+      "slug": "study",
+      "view_type": "speaker_variant_view",
+      "recording_enabled": false,
+      "mute_on_join": false,
+      "limit_url_sharing": false,
+      "access_type": "secret",
+      "room_type": "conference",
+      "invited_entities_ids": {
+        "members_ids": [
+          81,
+          82
+        ],
+        "spaces_ids": [
+          1
+        ],
+        "space_groups_ids": [
+          0
+        ],
+        "member_tags_ids": [
+          4
+        ]
+      }
+    },
+    "status": 201,
+    "response": {
+      "id": 101,
+      "name": "Study",
+      "description": "",
+      "slug": "study",
+      "status": "scheduled",
+      "host_capacity": 0,
+      "view_type": "speaker_variant_view",
+      "room_type": "conference",
+      "recording_enabled": false,
+      "access_type": "secret",
+      "room_provider": "synthetic",
+      "invited_entities_ids": [
+        81,
+        82
+      ],
+      "mute_on_join": false,
+      "limit_url_sharing": false,
+      "created_at": "2026-10-27T00:00:00Z",
+      "chat_room_uuid": "synthetic-live-room",
+      "creator": {
+        "id": 81,
+        "name": "Member",
+        "avatar_url": null,
+        "public_uid": "synthetic",
+        "bio": "",
+        "headline": ""
+      },
+      "participants_preview": {
+        "count": 0,
+        "records": []
+      },
+      "can_host": false,
+      "can_manage": false,
+      "can_moderate": false,
+      "is_creator": true,
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "quizzes",
+    "name": "create_quiz_attempt",
+    "method": "POST",
+    "schema_path": "/api/headless/v1/quizzes/{quiz_id}/attempts",
+    "path": "/api/headless/v1/quizzes/41/attempts",
+    "args": [
+      41
+    ],
+    "kwargs": {
+      "responses": [
+        {
+          "question_id": 11,
+          "selected_options": []
+        },
+        {
+          "question_id": 12,
+          "selected_options": [
+            21,
+            22
+          ]
+        }
+      ]
+    },
+    "query": "",
+    "body": {
+      "responses": [
+        {
+          "question_id": 11,
+          "selected_options": []
+        },
+        {
+          "question_id": 12,
+          "selected_options": [
+            21,
+            22
+          ]
+        }
+      ]
+    },
+    "status": 201,
+    "response": {
+      "id": 51,
+      "quiz_id": 41,
+      "created_at": "2026-10-27T13:00:00+02:00",
+      "grade": 0,
+      "result": "pending",
+      "passing_grade": 0,
+      "enforce_passing_grade": false,
+      "hide_answers": true,
+      "correct_responses": 0,
+      "description": null,
+      "questions": [
+        {
+          "id": 11,
+          "question_type": "multiple_choice",
+          "statement": "Choose",
+          "correct": false,
+          "options": [
+            {
+              "id": 21,
+              "value": "One",
+              "selected": false
+            },
+            {
+              "id": 22,
+              "value": "Two",
+              "selected": true
+            }
+          ],
+          "future": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        }
+      ],
+      "quiz_attempts_count": 2,
+      "lesson_name": "Lesson",
+      "section_name": "Section",
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "quizzes",
+    "name": "get_quiz_attempt",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/quizzes/{quiz_id}/attempts/{id}",
+    "path": "/api/headless/v1/quizzes/41/attempts/51",
+    "args": [
+      41,
+      51
+    ],
+    "kwargs": {
+      "for_admin_review": false
+    },
+    "query": "for_admin_review=false",
+    "body": null,
+    "status": 200,
+    "response": {
+      "id": 51,
+      "quiz_id": 41,
+      "created_at": "2026-10-27T13:00:00+02:00",
+      "grade": 0,
+      "result": "pending",
+      "passing_grade": 0,
+      "enforce_passing_grade": false,
+      "hide_answers": true,
+      "correct_responses": 0,
+      "description": null,
+      "questions": [
+        {
+          "id": 11,
+          "question_type": "multiple_choice",
+          "statement": "Choose",
+          "correct": false,
+          "options": [
+            {
+              "id": 21,
+              "value": "One",
+              "selected": false
+            },
+            {
+              "id": 22,
+              "value": "Two",
+              "selected": true
+            }
+          ],
+          "future": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        }
+      ],
+      "quiz_attempts_count": 2,
+      "lesson_name": "Lesson",
+      "section_name": "Section",
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "quizzes",
+    "name": "update_quiz_attempt",
+    "method": "PUT",
+    "schema_path": "/api/headless/v1/quizzes/{quiz_id}/attempts/{id}",
+    "path": "/api/headless/v1/quizzes/41/attempts/51",
+    "args": [
+      41,
+      51
+    ],
+    "kwargs": {
+      "result": "pending"
+    },
+    "query": "",
+    "body": {
+      "result": "pending"
+    },
+    "status": 204,
+    "response": null
+  },
+  {
+    "resource": "events",
+    "name": "list_recurring_events",
+    "method": "GET",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/events/{event_id}/recurring_events",
+    "path": "/api/headless/v1/spaces/1/events/61/recurring_events",
+    "args": [
+      1,
+      61
+    ],
+    "kwargs": {
+      "page": 2,
+      "per_page": 3
+    },
+    "query": "page=2&per_page=3",
+    "body": null,
+    "status": 200,
+    "response": {
+      "page": 2,
+      "per_page": 3,
+      "has_next_page": true,
+      "count": 8,
+      "page_count": 3,
+      "records": [
+        {
+          "id": 62,
+          "name": "Next Event",
+          "starts_at": "2026-11-03T13:00:00+02:00",
+          "ends_at": "2026-11-03T14:00:00+02:00",
+          "start_date": "2026-11-03",
+          "time_zone_abbreviations": "EET",
+          "time_zone": "Africa/Cairo",
+          "rsvped_event": false,
+          "rsvp_count": 0,
+          "rsvp_limit": null,
+          "future": {
+            "null": null,
+            "false": false,
+            "zero": 0,
+            "empty": [],
+            "text": "مرحبا"
+          }
+        }
+      ],
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  },
+  {
+    "resource": "events",
+    "name": "update_recurring_events_rsvp",
+    "method": "PUT",
+    "schema_path": "/api/headless/v1/spaces/{space_id}/events/{event_id}/recurring_events/rsvp",
+    "path": "/api/headless/v1/spaces/1/events/61/recurring_events/rsvp",
+    "args": [
+      1,
+      61
+    ],
+    "kwargs": {
+      "event_ids": [
+        61,
+        62
+      ]
+    },
+    "query": "",
+    "body": {
+      "event_ids": [
+        61,
+        62
+      ]
+    },
+    "status": 200,
+    "response": {
+      "message": "RSVP updated",
+      "future": {
+        "null": null,
+        "false": false,
+        "zero": 0,
+        "empty": [],
+        "text": "مرحبا"
+      }
+    }
+  }
+]

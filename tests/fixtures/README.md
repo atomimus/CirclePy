@@ -22,3 +22,14 @@ contract checker compares those fixtures with the frozen schema. Two query cases
 retain explicit async spellings for aiohttp's equivalent slash/comma
 canonicalization; decoded key/value sequences must be identical. These fixtures
 are offline contract evidence, never successful Circle requests.
+
+## Learning and remaining Member resources
+
+`headless-learning.json` contains 18 literal request/response contracts authored
+from the frozen Member schema independently of SDK builders. It includes event
+layout/sort meta, lesson thumbnails/media, quiz arrays/review, RSVP arrays, current
+moderation values, invitation redirects and the different live invitation shapes.
+`tools/check_learning_contract.py` checks complete documented request fields and
+response schemas; `headless-inventory.json` reconciles all 102 Member/four Auth
+entry points with their independent evidence. These are synthetic offline checks,
+with no live permission, participation or moderation claim.

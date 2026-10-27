@@ -15,14 +15,13 @@ The Admin v1 async client has the existing singular `.member`, `.space`, `.post`
 It preserves legacy projections, member search attribute access, and the integer
 returned by post deletion. Those methods remain the existing partial API surface.
 
-Admin v2, Data, and async Headless currently expose a family-scoped
+Admin v2, Data and both Headless facades expose a family-scoped
 `request(method, endpoint, *, params=None, json=None)` returning decoded JSON or
 `None` for an empty success. Paths stay within the configured API root; pass
 query fields through `params`. Absolute URLs and path traversal are rejected.
-These facades do not yet claim complete named resource or field coverage.
 Admin v2 plural resources and Data resources are added by their respective
-implementation tasks. Sync Headless keeps its existing
-plural resources and also exposes `request`. No methods are generated at runtime.
+implementation tasks. Both Headless facades expose explicit plural resources
+for every frozen Member operation. No methods are generated at runtime.
 
 Both Headless facades also expose `.uploads` for direct metadata creation and
 bounded file uploads. Shared Markdown and raw container builders are documented
@@ -35,6 +34,12 @@ See [profile, directory search and space methods](members.md).
 The same facades expose `.chat`, `.notifications`, `.search`, `.bookmarks`,
 `.cookies`, `.community_links` and `.home`; see [messaging and discovery](messaging.md)
 for all 38 HTTP operations, permission/ID details and executable examples.
+Both also expose `.courses`, `.quizzes`, `.events`, `.flagged_contents`,
+`.invitation_links` and `.live_streams`; see [learning, events and live rooms](learning.md)
+for the remaining 18 operations. The reconciled [Member/Auth inventory](../api/specs/headless-inventory.json)
+links all 102 Member and four Auth operations to explicit public entry points
+and independent offline evidence. Live permission and state validation remain
+separate; the experimental basic-post PUT is excluded from that inventory.
 
 New resource classes must explicitly receive the client's existing transport
 (and Headless Auth), register readable attributes in the constructor, and use

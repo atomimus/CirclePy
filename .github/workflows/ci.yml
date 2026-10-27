@@ -76,6 +76,9 @@ jobs:
       - run: python tools/check_members_contract.py
       - run: python -m ruff check --select E4,E7,E9,F circlepy/headless_models/messaging.py circlepy/headless_models/async_messaging_api.py circlepy/headless_models/chat_api.py circlepy/headless_models/notifications_api.py circlepy/headless_models/search_api.py circlepy/headless_models/bookmarks_api.py circlepy/headless_models/cookies_api.py tests/test_headless_messaging.py tools/check_messaging_contract.py
       - run: python tools/check_messaging_contract.py
+      - run: python -m ruff check --select E4,E7,E9,F circlepy/headless_models/learning.py circlepy/headless_models/async_learning_api.py circlepy/headless_models/courses_api.py circlepy/headless_models/quizzes_api.py circlepy/headless_models/events_api.py circlepy/headless_models/flagged_contents_api.py circlepy/headless_models/invitation_links_api.py circlepy/headless_models/live_streams_api.py tests/test_headless_learning.py tools/check_learning_contract.py tools/check_headless_inventory.py
+      - run: python tools/check_learning_contract.py
+      - run: python tools/check_headless_inventory.py
       - run: python tools/check_ci.py --negative-fixture
 
   dependencies:

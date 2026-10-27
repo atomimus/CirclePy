@@ -1,0 +1,200 @@
+[
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/community_events",
+    "sync": "EventsAPI.list_community_events",
+    "async_method": "AsyncEventsAPI.list_community_events",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/courses/{course_id}/lessons/{lesson_id}/files",
+    "sync": "CoursesAPI.list_course_lesson_files",
+    "async_method": "AsyncCoursesAPI.list_course_lesson_files",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "PATCH",
+    "path": "/api/headless/v1/courses/{course_id}/lessons/{lesson_id}/progress",
+    "sync": "CoursesAPI.update_course_lesson_progress",
+    "async_method": "AsyncCoursesAPI.update_course_lesson_progress",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/courses/{course_id}/lessons/{id}",
+    "sync": "CoursesAPI.get_course_lesson",
+    "async_method": "AsyncCoursesAPI.get_course_lesson",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/courses/{course_id}/quiz_attempts",
+    "sync": "CoursesAPI.list_course_quiz_attempts",
+    "async_method": "AsyncCoursesAPI.list_course_quiz_attempts",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/courses/{course_id}/sections",
+    "sync": "CoursesAPI.list_course_sections",
+    "async_method": "AsyncCoursesAPI.list_course_sections",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/course_topics",
+    "sync": "CoursesAPI.list_course_topics",
+    "async_method": "AsyncCoursesAPI.list_course_topics",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "POST",
+    "path": "/api/headless/v1/events/{event_id}/event_attendees",
+    "sync": "EventsAPI.create_event_attendee",
+    "async_method": "AsyncEventsAPI.create_event_attendee",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "DELETE",
+    "path": "/api/headless/v1/events/{event_id}/event_attendees",
+    "sync": "EventsAPI.delete_event_attendee",
+    "async_method": "AsyncEventsAPI.delete_event_attendee",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/events/{event_id}/event_attendees",
+    "sync": "EventsAPI.list_event_attendees",
+    "async_method": "AsyncEventsAPI.list_event_attendees",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "POST",
+    "path": "/api/headless/v1/flagged_contents",
+    "sync": "FlaggedContentsAPI.create_flagged_content",
+    "async_method": "AsyncFlaggedContentsAPI.create_flagged_content",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "POST",
+    "path": "/api/headless/v1/invitation_links/{token}/join",
+    "sync": "InvitationLinksAPI.join_invitation_link",
+    "async_method": "AsyncInvitationLinksAPI.join_invitation_link",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "POST",
+    "path": "/api/headless/v1/live_streams/rooms",
+    "sync": "LiveStreamsAPI.create_live_stream_room",
+    "async_method": "AsyncLiveStreamsAPI.create_live_stream_room",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "POST",
+    "path": "/api/headless/v1/quizzes/{quiz_id}/attempts",
+    "sync": "QuizzesAPI.create_quiz_attempt",
+    "async_method": "AsyncQuizzesAPI.create_quiz_attempt",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/quizzes/{quiz_id}/attempts/{id}",
+    "sync": "QuizzesAPI.get_quiz_attempt",
+    "async_method": "AsyncQuizzesAPI.get_quiz_attempt",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "PUT",
+    "path": "/api/headless/v1/quizzes/{quiz_id}/attempts/{id}",
+    "sync": "QuizzesAPI.update_quiz_attempt",
+    "async_method": "AsyncQuizzesAPI.update_quiz_attempt",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "GET",
+    "path": "/api/headless/v1/spaces/{space_id}/events/{event_id}/recurring_events",
+    "sync": "EventsAPI.list_recurring_events",
+    "async_method": "AsyncEventsAPI.list_recurring_events",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  },
+  {
+    "family": "headless-client-v1",
+    "method": "PUT",
+    "path": "/api/headless/v1/spaces/{space_id}/events/{event_id}/recurring_events/rsvp",
+    "sync": "EventsAPI.update_recurring_events_rsvp",
+    "async_method": "AsyncEventsAPI.update_recurring_events_rsvp",
+    "fixture": "tests/fixtures/headless-learning.json",
+    "tests": "tests/test_headless_learning.py",
+    "contract": "independent_offline_wire",
+    "live_validation": "not_run"
+  }
+]
