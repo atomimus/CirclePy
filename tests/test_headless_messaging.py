@@ -59,7 +59,7 @@ def wire(case):
 async def test_every_owned_messaging_operation_wire(http_server,async_mode,case):
     client = client_for(http_server,async_mode,raise_on_error=True)
     http_server.expect(Exchange(case['method'],wire(case),status=case['status'],
-        request_json=case['body'],response=json.dumps(case['response'],ensure_ascii=False).encode(),
+        request_json=case['body'],response=b'' if case['status']==204 else json.dumps(case['response'],ensure_ascii=False).encode(),
         request_headers={'Authorization':'Bearer synthetic-member'}))
     args, kwargs = deepcopy(case['args']),deepcopy(case['kwargs'])
     original = deepcopy((args,kwargs))
