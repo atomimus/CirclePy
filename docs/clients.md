@@ -24,6 +24,10 @@ Headless content resources, Admin v2 plural resources, and Data resources are
 added by their respective implementation tasks. Sync Headless keeps its existing
 plural resources and also exposes `request`. No methods are generated at runtime.
 
+Both Headless facades also expose `.uploads` for direct metadata creation and
+bounded file uploads. Shared Markdown and raw container builders are documented
+in [uploads and rich text](media.md).
+
 New resource classes must explicitly receive the client's existing transport
 (and Headless Auth), register readable attributes in the constructor, and use
 native async methods for async I/O. Resources borrow the pool and cannot close it

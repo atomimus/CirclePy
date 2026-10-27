@@ -1,143 +1,129 @@
+"""CommonMark to Circle TipTap. HTML is preserved as literal, inert text."""
+
 import commonmark
 
-def markdown_to_tiptap(markdown_text):
-    parser = commonmark.Parser()
-    ast = parser.parse(markdown_text)
 
-    def collect_plain_text(node):
-        if not node:
-            return ""
-        if node.t == "text":
+def markdown_to_tiptap(markdown_text, *, unsupported='literal'):
+    """Return a doc; preserve soft spaces and promote inline images to blocks.
+
+    CommonMark extensions are literal text. Raw HTML is literal by default or
+    rejected with unsupported='error'. Unknown AST nodes always fail explicitly.
+    No URL is fetched, uploaded or sanitized for browser rendering here.
+    """
+    if not isinstance(markdown_text, str):
+        raise TypeError('markdown_text must be a string')
+    if unsupported not in ('literal', 'error'):
+        raise ValueError("unsupported must be 'literal' or 'error'")
+    ast = commonmark.Parser().parse(markdown_text)
+
+    def children(node):
+        child = node.first_child
+        while child:
+            yield child
+            child = child.nxt
+
+    def plain(node):
+        if node.t in ('text', 'code', 'html_inline'):
             return node.literal
-        elif node.t in ["emph", "strong", "link", "code"]:
-            child = node.first_child
-            text = ""
-            while child:
-                text += collect_plain_text(child)
-                child = child.nxt
-            return text
-        return ""
+        if node.t in ('softbreak', 'linebreak'):
+            return ' '
+        return ''.join(plain(child) for child in children(node))
 
-    def collect_inline(node, marks=None):
-        if marks is None:
-            marks = []
-        if not node:
-            return []
+    def text(value, marks):
+        return {'type': 'text', 'text': value, 'marks': marks[:]}
 
+    def literal(node, marks):
+        if unsupported == 'error':
+            raise ValueError('Raw HTML cannot be converted to Circle TipTap')
+        return text(node.literal, marks)
+
+    def inline(node, marks):
         result = []
-        current = node
-        while current:
-            if current.t == "text":
-                result.append({"type": "text", "text": current.literal, "marks": marks[:]})
-            elif current.t == "emph":
-                result.extend(collect_inline(current.first_child, marks + [{"type": "italic"}]))
-            elif current.t == "strong":
-                result.extend(collect_inline(current.first_child, marks + [{"type": "bold"}]))
-            elif current.t == "link":
-                link_mark = {"type": "link", "attrs": {"href": current.destination}}
-                result.extend(collect_inline(current.first_child, marks + [link_mark]))
-            elif current.t == "code":
-                result.append({"type": "text", "text": current.literal, "marks": marks + [{"type": "code"}]})
-            elif current.t == "linebreak":
-                result.append({"type": "hardBreak"})
-            current = current.nxt
+        for child in children(node):
+            kind = child.t
+            if kind == 'text':
+                result.append(text(child.literal, marks))
+            elif kind == 'softbreak':
+                result.append(text(' ', marks))
+            elif kind == 'linebreak':
+                result.append({'type': 'hardBreak'})
+            elif kind in ('emph', 'strong', 'link'):
+                mark = {'type': {'emph': 'italic', 'strong': 'bold', 'link': 'link'}[kind]}
+                if kind == 'link':
+                    mark['attrs'] = {'href': child.destination, 'target': '_blank'}
+                    if child.title:
+                        mark['attrs']['title'] = child.title
+                result.extend(inline(child, marks + [mark]))
+            elif kind == 'code':
+                result.append(text(child.literal, marks + [{'type': 'code'}]))
+            elif kind == 'image':
+                alt = plain(child)
+                # Circle images are blocks. Keep an enclosing link as linked alt
+                # text before the image rather than dropping its destination.
+                if any(mark['type'] == 'link' for mark in marks):
+                    result.append(text(alt or child.destination, marks))
+                attrs = {'url': child.destination, 'alt': alt, 'width': '100%', 'alignment': 'center'}
+                if child.title:
+                    attrs['title'] = child.title
+                result.append({'type': 'image', 'attrs': attrs})
+            elif kind == 'html_inline':
+                result.append(literal(child, marks))
+            else:
+                raise ValueError('Unsupported CommonMark inline node')
         return result
 
-    def node_to_json(node):
-        if not node:
-            return None
+    def blocks(node):
+        result = []
+        for child in children(node):
+            result.extend(block(child))
+        return result
 
-        if node.t == "document":
-            children = []
-            child = node.first_child
-            while child:
-                json_node = node_to_json(child)
-                if json_node:
-                    children.append(json_node)
-                child = child.nxt
-            return {"type": "doc", "content": children}
+    def block(node):
+        kind = node.t
+        if kind == 'document':
+            return [{'type': 'doc', 'content': blocks(node)}]
+        if kind in ('paragraph', 'heading'):
+            result, content = [], []
 
-        elif node.t == "paragraph":
-            if node.first_child and node.first_child.t == "image" and not node.first_child.nxt:
-                image_node = node.first_child
-                alt_text = collect_plain_text(image_node.first_child)
-                return {
-                    "type": "image",
-                    "attrs": {
-                        "url": image_node.destination,
-                        "alt": alt_text,
-                        "width": "100%",
-                        "alignment": "center",
-                    }
-                }
-            else:
-                content = collect_inline(node.first_child)
+            def flush():
                 if content:
-                    return {"type": "paragraph", "content": content}
-                return None
+                    item = {'type': 'paragraph' if kind == 'paragraph' else 'heading', 'content': content[:]}
+                    if kind == 'heading':
+                        item['attrs'] = {'level': node.level}
+                    result.append(item)
+                    content.clear()
 
-        elif node.t == "heading":
-            level = node.level
-            content = collect_inline(node.first_child)
-            if content:
-                return {"type": "heading", "attrs": {"level": level}, "content": content}
-            return None
+            for item in inline(node, []):
+                if item['type'] == 'image':
+                    flush()
+                    result.append(item)
+                else:
+                    content.append(item)
+            flush()
+            if not result:
+                item = {'type': 'paragraph' if kind == 'paragraph' else 'heading', 'content': []}
+                if kind == 'heading':
+                    item['attrs'] = {'level': node.level}
+                result.append(item)
+            return result
+        if kind in ('block_quote', 'list', 'item'):
+            item = {'type': {'block_quote': 'blockquote', 'list': 'bulletList', 'item': 'listItem'}[kind],
+                    'content': blocks(node)}
+            if kind == 'list' and node.list_data['type'] == 'ordered':
+                item.update(type='orderedList', attrs={'start': node.list_data['start']})
+            if kind == 'item' and (not item['content'] or item['content'][0]['type'] != 'paragraph'):
+                item['content'].insert(0, {'type': 'paragraph', 'content': []})
+            return [item]
+        if kind == 'code_block':
+            # Keep legacy terminal-newline normalization; other whitespace survives.
+            value = node.literal.removesuffix('\n')
+            attrs = {'language': node.info.split()[0]} if node.info else {}
+            return [{'type': 'codeBlock', 'attrs': attrs,
+                     'content': [text(value, [])] if value else []}]
+        if kind == 'thematic_break':
+            return [{'type': 'horizontalRule'}]
+        if kind == 'html_block':
+            return [{'type': 'paragraph', 'content': [literal(node, [])]}]
+        raise ValueError('Unsupported CommonMark block node')
 
-        elif node.t == "block_quote":
-            children = []
-            child = node.first_child
-            while child:
-                json_node = node_to_json(child)
-                if json_node:
-                    children.append(json_node)
-                child = child.nxt
-            if children:
-                return {"type": "blockquote", "content": children}
-            return None
-
-        elif node.t == "list":
-            list_type = "orderedList" if node.list_data["type"] == "ordered" else "bulletList"
-            children = []
-            child = node.first_child
-            while child:
-                json_node = node_to_json(child)
-                if json_node:
-                    children.append(json_node)
-                child = child.nxt
-            if children:
-                attrs = {"start": node.list_data["start"]} if list_type == "orderedList" and node.list_data["start"] != 1 else {}
-                return {"type": list_type, "attrs": attrs, "content": children}
-            return None
-
-        elif node.t == "item":
-            children = []
-            child = node.first_child
-            while child:
-                json_node = node_to_json(child)
-                if json_node:
-                    children.append(json_node)
-                child = child.nxt
-            if children:
-                return {"type": "listItem", "content": children}
-            return None
-
-        elif node.t == "code_block":
-            language = node.info if node.info else None
-            attrs = {"language": language} if language else {}
-            code_text = node.literal
-            if code_text.endswith("\r\n"):
-                code_text = code_text[:-2]
-            elif code_text.endswith("\n") or code_text.endswith("\r"):
-                code_text = code_text[:-1]
-            content = [{"type": "text", "text": code_text}]
-            return {"type": "codeBlock", "attrs": attrs, "content": content}
-
-        elif node.t == "thematic_break":
-            return {"type": "horizontalRule"}
-
-        else:
-            return None  
-
-    tiptap_json = node_to_json(ast)
-    return tiptap_json if tiptap_json else {"type": "doc", "content": []}
-
+    return block(ast)[0]

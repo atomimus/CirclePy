@@ -23,6 +23,7 @@ from urllib.request import Request, getproxies
 
 import aiohttp
 import requests
+from yarl import URL
 from requests.cookies import RequestsCookieJar
 from requests.utils import get_netrc_auth
 from urllib3.exceptions import ReadTimeoutError
@@ -460,6 +461,7 @@ class AsyncTransport(_Policy):
         data: Any = None, headers: Mapping[str, str] | None = None, timeout: Any = UNSET,
         proxy: Any = UNSET, verify: bool | str | None = None,
         safe_read: bool = False, raise_on_error: bool | None = None,
+        preserve_url: bool = False,
     ) -> HTTPResponse:
         method = method.upper()
         url, seconds, selected, headers_copy, budget = self._prepare(method, endpoint, timeout, proxy, headers, safe_read, data, json)
@@ -495,7 +497,8 @@ class AsyncTransport(_Policy):
 
             try:
                 async with session.request(
-                    method, url, json=json, data=data, headers=headers_copy,
+                    method, URL(url, encoded=True) if preserve_url else url,
+                    json=json, data=data, headers=headers_copy,
                     timeout=aiohttp.ClientTimeout(total=seconds, connect=seconds, sock_connect=seconds, sock_read=seconds),
                     proxy=selected, ssl=tls, allow_redirects=False, raise_for_status=False,
                     middlewares=(single_send,),

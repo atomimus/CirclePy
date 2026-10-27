@@ -6,6 +6,7 @@ Named member resources are registered explicitly by their owning API tasks.
 from .async_auth import AsyncAuth
 from .api_clients import family_path
 from .tokens import identity
+from .headless_models.uploads_api import AsyncUploadsAPI
 
 
 class AsyncHeadlessClient:
@@ -23,6 +24,7 @@ class AsyncHeadlessClient:
                               raise_on_error=raise_on_error, expiry_skew=expiry_skew,
                               on_token_change=on_token_change)
         self.transport = self.auth.transport
+        self.uploads = AsyncUploadsAPI(self.auth)
 
     @classmethod
     async def create(cls, api_key, *, email=None, community_member_id=None, sso_user_id=None, **options):

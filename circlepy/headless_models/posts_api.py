@@ -1,10 +1,6 @@
-import os
-import uuid
-import base64
-import hashlib
-import mimetypes
+from .uploads_api import UploadsAPI
+from ..uploads import calculate_md5
 import warnings
-import requests
 from PIL import Image
 from .base_api_client import BaseAPIClient
 from .helper.tiptap import markdown_to_tiptap
@@ -12,61 +8,10 @@ from .helper.tiptap import markdown_to_tiptap
 class PostsAPI(BaseAPIClient):
 
     def _calculate_md5(self, file_data):
-        md5_hash = hashlib.md5(file_data).digest()
-        return base64.b64encode(md5_hash).decode('utf-8')
-
+        return calculate_md5(file_data)
 
     def _direct_upload_file(self, file_path):
-        file_name = os.path.basename(file_path)
-        mime_type, _ = mimetypes.guess_type(file_path)
-        if mime_type is None:
-            mime_type = "application/octet-stream"
-
-        with open(file_path, 'rb') as f:
-            file_data = f.read()
-
-        byte_size = len(file_data)
-        checksum = self._calculate_md5(file_data) 
-
-        upload_key = f"uploads/{uuid.uuid4().hex}/{file_name}"
-
-        payload = {
-            "blob": {
-                "key": upload_key,
-                "filename": file_name,
-                "content_type": mime_type,
-                "metadata": {"identified": True},
-                "byte_size": byte_size,
-                "checksum": checksum
-            }
-        }
-        data = self.post("/direct_uploads", data=payload)
-
-        direct_upload_info = data.get('direct_upload', {})
-        upload_url = direct_upload_info.get('url')
-        headers = direct_upload_info.get('headers', {})
-
-        if not upload_url:
-            raise ValueError("No upload URL returned from API")
-
-        headers["Content-MD5"] = checksum
-
-        response = requests.put(upload_url, headers=headers, data=file_data, **self.auth._request_options())
-
-        if response.status_code not in [200, 201, 204]:
-            print("Upload Failed:", response.text)
-            response.raise_for_status()
-
-        return {
-            "id": data.get('id'),
-            "signed_id": data.get('signed_id'),
-            "file_name": file_name,
-            "file_size": byte_size,
-            "mime_type": mime_type,
-            "upload_key": upload_key,
-            "uploaded_url": data.get('url') 
-        }
-
+        return UploadsAPI(self.auth).upload_file(file_path)
 
     def create_image_post(self, space_id, slug, tiptap_text, image_paths,
                         is_liking_enabled=True, is_comments_enabled=True):
@@ -145,7 +90,7 @@ class PostsAPI(BaseAPIClient):
             warnings.warn("Topics cannot be set when creating posts with images; ignoring provided topics.")
             topics = None
         
-        if markdown:
+        if markdown is not None:
             tiptap_body = markdown_to_tiptap(markdown)
             if body is None:
                 body = markdown
@@ -167,8 +112,8 @@ class PostsAPI(BaseAPIClient):
             "space_id": space_id,
             "name": name,
             "slug": slug,
-            "tiptap_body": {"body": tiptap_body} if tiptap_body else None,
-            "body": body if body else None,
+            "tiptap_body": {"body": tiptap_body} if tiptap_body is not None else None,
+            "body": body if body is not None else None,
             "is_liking_enabled": is_liking_enabled,
             "is_comments_enabled": is_comments_enabled
         }

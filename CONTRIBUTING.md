@@ -63,6 +63,7 @@ python -X utf8 tools/published_api.py
 python -m ruff check circlepy tests tools
 python -m ruff check --select E4,E7,E9,F tests/conftest.py tests/http_fixtures.py tests/test_offline_http.py tools/check_ci.py circlepy/transport.py circlepy/errors.py tests/test_transport.py
 python -m mypy
+python tools/check_media_contract.py
 python tools/check_ci.py --negative-fixture
 python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
 python -m build
@@ -112,9 +113,9 @@ Coverage measures branches in every `circlepy` module with no production-module
 exclusions. CI uploads XML and test reports for each matrix cell. Current coverage
 is a baseline report; Task 28 must reach the 90% branch-coverage release gate.
 Ruff checks syntax and fatal correctness rules across production/tests/tools;
-new harness and transport/error files also receive the full F and E4/E7/E9 checks.
+new harness, transport/error and media files also receive full F and E4/E7/E9 checks.
 It does not impose a formatting migration. Strict mypy covers the fixture/convention
-helpers and transport/error/token-state modules listed in `pyproject.toml`;
+helpers and transport/error/token-state/upload modules listed in `pyproject.toml`;
 facades and dictionary resource modules stay outside this strict boundary. Extend that list as typed
 modules are introduced.
 Warnings, unknown pytest configuration and unknown markers fail the suite.

@@ -1,68 +1,13 @@
+from .uploads_api import UploadsAPI
+from ..uploads import calculate_md5
 from .base_api_client import BaseAPIClient
-import uuid
-import base64
-import hashlib
-import mimetypes
-import os
-import requests
 
 class CommunityMembersAPI(BaseAPIClient):
     def _calculate_md5(self, file_data):
-        md5_hash = hashlib.md5(file_data).digest()
-        return base64.b64encode(md5_hash).decode('utf-8')
-
+        return calculate_md5(file_data)
 
     def _direct_upload_file(self, file_path):
-        file_name = os.path.basename(file_path)
-        mime_type, _ = mimetypes.guess_type(file_path)
-        if mime_type is None:
-            mime_type = "application/octet-stream"
-
-        with open(file_path, 'rb') as f:
-            file_data = f.read()
-
-        byte_size = len(file_data)
-        checksum = self._calculate_md5(file_data) 
-
-        upload_key = f"uploads/{uuid.uuid4().hex}/{file_name}"
-
-        payload = {
-            "blob": {
-                "key": upload_key,
-                "filename": file_name,
-                "content_type": mime_type,
-                "metadata": {"identified": True},
-                "byte_size": byte_size,
-                "checksum": checksum
-            }
-        }
-        data = self.post("/direct_uploads", data=payload)
-
-        direct_upload_info = data.get('direct_upload', {})
-        upload_url = direct_upload_info.get('url')
-        headers = direct_upload_info.get('headers', {})
-
-        if not upload_url:
-            raise ValueError("No upload URL returned from API")
-
-        headers["Content-MD5"] = checksum
-
-        response = requests.put(upload_url, headers=headers, data=file_data, **self.auth._request_options())
-
-        if response.status_code not in [200, 201, 204]:
-            print("Upload Failed:", response.text)
-            response.raise_for_status()
-
-        return {
-            "id": data.get('id'),
-            "signed_id": data.get('signed_id'),
-            "file_name": file_name,
-            "file_size": byte_size,
-            "mime_type": mime_type,
-            "upload_key": upload_key,
-            "uploaded_url": data.get('url') 
-        }
-
+        return UploadsAPI(self.auth).upload_file(file_path)
 
     def get_comments(self, community_member_id, page=1, per_page=10):
         endpoint = f"/community_members/{community_member_id}/comments"

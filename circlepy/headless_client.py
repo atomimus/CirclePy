@@ -24,6 +24,7 @@ from .headless_models import (
 from .tokens import identity
 from .api_clients import family_path
 from .headless_models.base_api_client import BaseAPIClient
+from .headless_models.uploads_api import UploadsAPI
 
 class HeadlessClient:
     def __init__(
@@ -56,6 +57,7 @@ class HeadlessClient:
             self.auth.close()
             raise
         self.transport = self.auth.transport
+        self.uploads = UploadsAPI(self.auth)
         self.posts = PostsAPI(self.auth)
         self.cookies = CookiesAPI(self.auth)
         self.community_members = CommunityMembersAPI(self.auth)

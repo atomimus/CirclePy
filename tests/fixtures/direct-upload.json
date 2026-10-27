@@ -1,0 +1,33 @@
+{
+  "request": {
+    "blob": {
+      "key": "uploads/test/example.txt",
+      "filename": "example.txt",
+      "content_type": "text/plain",
+      "byte_size": 3,
+      "checksum": "kAFQmDzST7DWlj99KOF/cg==",
+      "metadata": {"identified": false, "custom": {"zero": 0, "empty": "", "null": null}}
+    }
+  },
+  "response": {
+    "id": 1,
+    "key": "provider-key",
+    "filename": "example.txt",
+    "content_type": "text/plain",
+    "metadata": {"identified": false},
+    "byte_size": 3,
+    "checksum": "kAFQmDzST7DWlj99KOF/cg==",
+    "created_at": "2026-10-27T00:00:00Z",
+    "community_id": 2,
+    "community_member_id": 3,
+    "service_name": "local-fixture",
+    "signed_id": "synthetic-signed-id",
+    "attachable_sgid": "synthetic-attachable-sgid",
+    "direct_upload": {
+      "url": "STORAGE_URL",
+      "headers": {"Content-Type": "text/plain", "Content-MD5": "kAFQmDzST7DWlj99KOF/cg==", "X-Storage-Test": "retained"}
+    },
+    "url": "https://example.invalid/example.txt",
+    "future": {"zero": 0, "null": null}
+  }
+}
