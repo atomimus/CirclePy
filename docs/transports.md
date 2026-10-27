@@ -6,8 +6,8 @@ it has not been published as a replacement for the existing PyPI release.
 
 `CircleClient` and `HeadlessClient` now use the sync transport for API calls.
 The async transport is available through `circlepy.transport.AsyncTransport`.
-The public async client facades, coordinated token refresh and token restoration
-are the next implementation task; `AsyncCircleClient` is still the original stub.
+Public client facades, coordinated token refresh and restoration are now available;
+see [client lifecycles and migration examples](clients.md).
 Resource completeness and upload helpers remain separate implementation work.
 
 ## Sessions and configuration

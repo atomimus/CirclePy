@@ -206,7 +206,7 @@ class HTTPResponse:
             raise ResponseDecodeError(self._context()) from TransportCause(cause)
 
     def status_error(self) -> APIStatusError:
-        classes = {401: AuthenticationError, 403: PermissionDeniedError, 404: NotFoundError,
+        classes: dict[int, type[APIStatusError]] = {401: AuthenticationError, 403: PermissionDeniedError, 404: NotFoundError,
                    422: ValidationError, 429: RateLimitError}
         cls = classes.get(self.status_code, ServerError if self.status_code >= 500 else APIStatusError)
         try:
@@ -464,6 +464,12 @@ class AsyncTransport(_Policy):
         method = method.upper()
         url, seconds, selected, headers_copy, budget = self._prepare(method, endpoint, timeout, proxy, headers, safe_read, data, json)
         session = await self._get_session()
+        # Match Requests' query encoding (notably omitted None and True/False),
+        # without performing blocking I/O or handing unsupported bools to yarl.
+        if params is not None:
+            prepared_url = requests.PreparedRequest()
+            prepared_url.prepare_url(url, params)
+            url = str(prepared_url.url)
         if self.trust_env:
             await asyncio.to_thread(self._netrc, url, headers_copy)
         validation = self._verify(verify)
@@ -489,7 +495,7 @@ class AsyncTransport(_Policy):
 
             try:
                 async with session.request(
-                    method, url, params=params, json=json, data=data, headers=headers_copy,
+                    method, url, json=json, data=data, headers=headers_copy,
                     timeout=aiohttp.ClientTimeout(total=seconds, connect=seconds, sock_connect=seconds, sock_read=seconds),
                     proxy=selected, ssl=tls, allow_redirects=False, raise_for_status=False,
                     middlewares=(single_send,),

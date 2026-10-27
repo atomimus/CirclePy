@@ -1,200 +1,140 @@
-from ..transport import SyncTransport
-from datetime import datetime, timezone
+"""Synchronous Headless Auth; resources borrow its member transport and state."""
 
-class Auth:
-    def __init__(self, api_key, community_url, auth_base_url, base_url, proxy=None, *, timeout=30.0,
-                 trust_env=False, session=None, verify=True, max_retries=0,
-                 raise_on_error=False):
+from threading import RLock
+import inspect
+
+from ..errors import CircleError
+from ..tokens import TokenState, identity
+from ..transport import SyncTransport
+
+
+class Auth(TokenState):
+    def __init__(self, api_key, community_url, auth_base_url, base_url, proxy=None, *,
+                 timeout=30.0, trust_env=False, session=None, verify=True,
+                 max_retries=0, raise_on_error=False, expiry_skew=30.0,
+                 on_token_change=None):
+        self._init_tokens(expiry_skew, on_token_change)
+        if inspect.iscoroutinefunction(on_token_change):
+            raise TypeError("Sync Auth requires a synchronous on_token_change callback")
         self.api_key = api_key
-        self.auth_base_url = auth_base_url
-        self.transport = SyncTransport(base_url, timeout=timeout, proxy=proxy,
-                                       trust_env=trust_env, session=session, verify=verify,
-                                       max_retries=max_retries, raise_on_error=raise_on_error)
+        self.community_url = community_url
+        self._lock = RLock()
+        options = dict(timeout=timeout, proxy=proxy, trust_env=trust_env, verify=verify,
+                       max_retries=max_retries, raise_on_error=raise_on_error)
+        self.transport = SyncTransport(base_url, session=session, **options)
         try:
-            # An explicit auth root has its own origin policy and credentials.
-            # Borrow the pool, not the member token or default headers.
-            self.auth_transport = SyncTransport(auth_base_url, session=self.transport.session,
-                                               timeout=timeout, proxy=proxy, trust_env=trust_env,
-                                               verify=verify, max_retries=max_retries,
-                                               raise_on_error=raise_on_error)
-        except ValueError:
+            self.auth_transport = SyncTransport(auth_base_url, session=self.transport.session, **options)
+        except BaseException:
             self.transport.close()
             raise
         self.auth_base_url = self.auth_transport.base_url.rstrip("/")
         self.base_url = self.transport.base_url.rstrip("/")
-        self.community_url = community_url
-        self.proxies = self._normalize_proxy(proxy)
-        self.access_token = None
-        self.refresh_token = None
-        self.access_token_expires_at = None
-        self.refresh_token_expires_at = None
-        self.community_member_id = None
-        self.community_id = None
+        self.proxies = self.transport.proxies
 
     def _normalize_proxy(self, proxy):
-        if not proxy:
-            return None
-        if isinstance(proxy, str):
-            return {
-                "http": proxy,
-                "https": proxy
-            }
-        return proxy
+        from ..transport import normalize_proxy
+        return normalize_proxy(proxy) or None
 
     def _request_options(self):
-        if not self.proxies:
-            return {}
-        return {"proxies": self.proxies}
-
-    def authenticate(self, email=None, community_member_id=None, sso_id=None):
-        """
-        Authenticate using email, community_member_id, or sso_id and store tokens and expiration times.
-        """
-        params = {}
-        if email:
-            params['email'] = email
-        elif community_member_id:
-            params['community_member_id'] = community_member_id
-        elif sso_id:
-            params['sso_id'] = sso_id
-        else:
-            raise ValueError("Provide email, community_member_id, or sso_id")
-
-        headers = {
-            'Authorization': f'Bearer {self.api_key}',
-            'Content-Type': 'application/json'
-        }
-
-        response = self.auth_transport.request("POST",
-            f'{self.auth_base_url}/auth_token',
-            headers=headers,
-            json=params,
-        )
-        if response.status_code == 401:
-            raise Exception("Authentication failed. Please check your API KEY.")
-        response.raise_for_status()
-        data = response.json()
-        self.access_token = data['access_token']
-        self.refresh_token = data['refresh_token']
-        self.access_token_expires_at = datetime.fromisoformat(data['access_token_expires_at'].replace('Z', '+00:00'))
-        self.refresh_token_expires_at = datetime.fromisoformat(data['refresh_token_expires_at'].replace('Z', '+00:00'))
-        self.community_member_id = data['community_member_id']
-        self.community_id = data['community_id']
+        return {"proxies": self.proxies} if self.proxies else {}
 
     def is_access_token_valid(self):
-        """
-        Returns True if the access token exists and hasn't expired.
-        """
-        if not self.access_token or self.access_token_expires_at is None:
-            return False
-        if self.access_token_expires_at.tzinfo is None:
-            return datetime.now(timezone.utc).replace(tzinfo=None) < self.access_token_expires_at
-        return datetime.now(self.access_token_expires_at.tzinfo) < self.access_token_expires_at
+        """Retain the published Auth method, including introspection of the class."""
+        return super().is_access_token_valid()
+
+    def to_tokens(self):
+        with self._lock:
+            return super().to_tokens()
+
+    def reject_token(self, token, response):
+        with self._lock:
+            super().reject_token(token, response)
+
+    def _notify(self):
+        if self.on_token_change is not None:
+            result = self.on_token_change(self.to_tokens())
+            if inspect.isawaitable(result):
+                if inspect.iscoroutine(result):
+                    result.close()
+                raise TypeError("Sync Auth requires a synchronous on_token_change callback")
+
+    def authenticate(self, email=None, community_member_id=None, sso_id=None, *, sso_user_id=None):
+        payload = identity(email, community_member_id, sso_id, sso_user_id=sso_user_id)
+        with self._lock:
+            response = self.auth_transport.request("POST", f"{self.auth_base_url}/auth_token",
+                                                   headers=self._auth_headers(), json=payload,
+                                                   raise_on_error=False)
+            data = self._accept(response, replace=True)
+            self._notify()
+            return data
+
+    def _refresh_locked(self):
+        try:
+            headers = self._auth_headers()
+            payload = self._refresh_payload()
+            response = self.auth_transport.request("PATCH", f"{self.auth_base_url}/access_token/refresh",
+                                                   headers=headers, json=payload, raise_on_error=False)
+            self._refresh_error(response)
+            data = self._accept(response)
+            self._short_refresh_generation = self._generation if self._needs_refresh() else None
+        except CircleError as error:
+            self._refresh_failure = error
+            raise
+        self._notify()
+        return data
 
     def refresh_access_token(self):
-        """
-        Refresh the access token using the stored refresh token.
-        Sends a PATCH request to /access_token/refresh.
-        """
-        if not self.refresh_token:
-            raise Exception("No refresh token available. Please authenticate first.")
+        observed = self._generation
+        failure = self._refresh_failure
+        with self._lock:
+            self._check_open()
+            if observed != self._generation:
+                return self.to_tokens()
+            if self._refresh_failure is not None and self._refresh_failure is not failure:
+                raise self._refresh_failure
+            return self._refresh_locked()
 
-        url = f'{self.auth_base_url}/access_token/refresh'
-        headers = {
-            'Authorization': f'Bearer {self.api_key}',
-            'Content-Type': 'application/json'
-        }
-        payload = {
-            "refresh_token": self.refresh_token
-        }
+    def ensure_token(self):
+        with self._lock:
+            token = self._member_token()
+            refreshed = self._short_refresh_generation == self._generation
+            if self._proactive_refresh():
+                self._refresh_locked()
+                token = self._member_token()
+                refreshed = True
+            return token, self._generation, refreshed
 
-        response = self.auth_transport.request("PATCH", url, headers=headers, json=payload)
-
-        if response.status_code == 200:
-            data = response.json()
-            self.access_token = data.get('access_token')
-            expires_at_str = data.get('access_token_expires_at')
-            if expires_at_str:
-                self.access_token_expires_at = datetime.fromisoformat(expires_at_str.replace('Z', '+00:00'))
-            return data
-        elif response.status_code == 401:
-            raise Exception("Unauthorized: The refresh token is expired or invalid. Please generate/get new auth token.")
-        elif response.status_code == 403:
-            raise Exception("Forbidden: Your community isn't eligible for headless API access. Please upgrade or contact support.")
-        elif response.status_code == 404:
-            raise Exception("Not Found: Refresh token not found.")
-        elif response.status_code == 422:
-            raise response.status_error()
-        else:
-            response.raise_for_status()
+    def refresh_for_request(self, generation):
+        with self._lock:
+            self._check_open()
+            if generation == self._generation:
+                if self._refresh_failure is not None:
+                    raise self._refresh_failure
+                self._refresh_locked()
+            return self._member_token()
 
     def revoke_access_token(self):
-        """
-        Revoke the current access token.
-        Sends a POST request to /access_token/revoke.
-        """
-        if not self.access_token:
-            raise Exception("No access token available to revoke.")
-
-        url = f'{self.auth_base_url}/access_token/revoke'
-        headers = {
-            'Authorization': f'Bearer {self.api_key}',
-            'Content-Type': 'application/json'
-        }
-        payload = {
-            "access_token": self.access_token
-        }
-
-        response = self.auth_transport.request("POST", url, headers=headers, json=payload)
-
-        if response.status_code == 204:
-            self.access_token = None
-            self.access_token_expires_at = None
+        with self._lock:
+            token = self._member_token()
+            response = self.auth_transport.request("POST", f"{self.auth_base_url}/access_token/revoke",
+                                                   headers=self._auth_headers(), json={"access_token": token},
+                                                   raise_on_error=True)
+            self._confirm_revocation(response)
+            self._revoked("access_token")
+            self._notify()
             return {"message": "Access token revoked successfully."}
-        elif response.status_code == 401:
-            raise Exception("Unauthorized: Your account could not be authenticated.")
-        elif response.status_code == 403:
-            raise Exception("Forbidden: Your community isn't eligible for headless API access. Please upgrade or contact support.")
-        elif response.status_code == 404:
-            raise response.status_error()
-        elif response.status_code == 422:
-            raise Exception("Unprocessable Entity: The access token is invalid.")
-        else:
-            response.raise_for_status()
 
     def revoke_refresh_token(self):
-        """
-        Revoke the current refresh token.
-        Sends a POST request to /refresh_token/revoke.
-        """
-        if not self.refresh_token:
-            raise Exception("No refresh token available to revoke.")
-
-        url = f'{self.auth_base_url}/refresh_token/revoke'
-        headers = {
-            'Authorization': f'Bearer {self.api_key}',
-            'Content-Type': 'application/json'
-        }
-        payload = {
-            "refresh_token": self.refresh_token
-        }
-
-        response = self.auth_transport.request("POST", url, headers=headers, json=payload)
-
-        if response.status_code == 204:
-            self.refresh_token = None
-            self.refresh_token_expires_at = None
+        with self._lock:
+            payload = self._refresh_payload()
+            response = self.auth_transport.request("POST", f"{self.auth_base_url}/refresh_token/revoke",
+                                                   headers=self._auth_headers(), json=payload,
+                                                   raise_on_error=True)
+            self._confirm_revocation(response)
+            self._revoked("refresh_token")
+            self._notify()
             return {"message": "Refresh token revoked successfully."}
-        elif response.status_code == 401:
-            raise Exception("Unauthorized: Your account could not be authenticated.")
-        elif response.status_code == 403:
-            raise Exception("Forbidden: Your community isn't eligible for headless API access. Please upgrade or contact support.")
-        elif response.status_code == 404:
-            raise Exception("Not Found: Refresh token not found.")
-        elif response.status_code == 422:
-            raise response.status_error()
-        else:
-            response.raise_for_status()
+
     def close(self):
         self.auth_transport.close()
         self.transport.close()

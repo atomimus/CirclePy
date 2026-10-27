@@ -61,7 +61,13 @@ class APIStatusError(CircleError):
 
 
 class AuthenticationError(APIStatusError):
-    pass
+    def __init__(self, response: ResponseContext | None = None, *,
+                 message: str | None = None, request_id: str | None = None,
+                 retry_after: float | None = None) -> None:
+        super().__init__(response or ResponseContext(401, "", {}),
+                         request_id=request_id, retry_after=retry_after)
+        if message is not None:
+            self.args = (message,)
 
 
 class PermissionDeniedError(APIStatusError):

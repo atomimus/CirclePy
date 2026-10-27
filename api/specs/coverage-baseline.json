@@ -5725,13 +5725,13 @@
       ],
       "task_id": 5,
       "code_reference_at_audit": true,
-      "exposure_at_audit": "public_method",
+      "exposure_at_audit": "private_helper",
       "code_references": [
         {
           "file": "circlepy/headless_models/auth.py",
-          "symbol": "Auth.refresh_access_token",
-          "line": 111,
-          "visibility": "public_method"
+          "symbol": "Auth._refresh_locked",
+          "line": 75,
+          "visibility": "private_helper"
         }
       ],
       "contract_test_status": "not_audited",
@@ -5759,7 +5759,7 @@
         {
           "file": "circlepy/headless_models/auth.py",
           "symbol": "Auth.revoke_access_token",
-          "line": 148,
+          "line": 119,
           "visibility": "public_method"
         }
       ],
@@ -5788,7 +5788,7 @@
         {
           "file": "circlepy/headless_models/auth.py",
           "symbol": "Auth.authenticate",
-          "line": 68,
+          "line": 64,
           "visibility": "public_method"
         }
       ],
@@ -5817,7 +5817,7 @@
         {
           "file": "circlepy/headless_models/auth.py",
           "symbol": "Auth.revoke_refresh_token",
-          "line": 182,
+          "line": 130,
           "visibility": "public_method"
         }
       ],

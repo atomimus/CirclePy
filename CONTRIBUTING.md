@@ -114,8 +114,8 @@ is a baseline report; Task 28 must reach the 90% branch-coverage release gate.
 Ruff checks syntax and fatal correctness rules across production/tests/tools;
 new harness and transport/error files also receive the full F and E4/E7/E9 checks.
 It does not impose a formatting migration. Strict mypy covers the fixture/convention
-helpers and transport/error modules listed in `pyproject.toml`; imported legacy
-resource modules stay outside this strict boundary. Extend that list as typed
+helpers and transport/error/token-state modules listed in `pyproject.toml`;
+facades and dictionary resource modules stay outside this strict boundary. Extend that list as typed
 modules are introduced.
 Warnings, unknown pytest configuration and unknown markers fail the suite.
 
@@ -156,8 +156,9 @@ assigned to Tasks 32–34. Do not create a release to test this workflow.
 `pyproject.toml` is the sole metadata and version source. Use
 `importlib.metadata.version("circlepy")` for an installed distribution's version.
 The existing three package client exports and positional signatures remain.
-`AsyncCircleClient` is still an unimplemented stub; real async I/O belongs to
-later tasks. Constructor annotations are partial documentation of accepted
+The eight public sync/async client facades and native async Admin v1 methods are
+implemented; named resource expansion remains scoped to its owning tasks.
+See [client lifecycles](docs/clients.md). Constructor annotations describe accepted
 inputs; the package does not ship `py.typed` or claim complete type coverage.
 
 Keep 0.5.1 until the assigned candidate task selects a PEP 440 version such as

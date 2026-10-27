@@ -1,5 +1,6 @@
 include LICENSE README.md CONTRIBUTING.md requirements.txt constraints-dev.txt
 include docs/transports.md
+include docs/clients.md
 recursive-include circlepy *.py
 recursive-include tests *.py *.json *.md
 recursive-include tools *.py

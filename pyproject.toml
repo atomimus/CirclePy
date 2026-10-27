@@ -79,11 +79,11 @@ select = ["E9", "F63", "F7", "F82"]
 
 [tool.mypy]
 python_version = "3.11"
-files = ["tests/http_fixtures.py", "tests/conftest.py", "tools/check_ci.py", "circlepy/transport.py", "circlepy/errors.py"]
+files = ["tests/http_fixtures.py", "tests/conftest.py", "tools/check_ci.py", "circlepy/transport.py", "circlepy/errors.py", "circlepy/tokens.py"]
 strict = true
 
 [[tool.mypy.overrides]]
-# Keep the existing partial-typing boundary while checking the new transport and
-# errors strictly. These legacy modules are not claimed to pass strict typing.
-module = ["circlepy", "circlepy.client", "circlepy.async_client", "circlepy.headless_client", "circlepy.client_models.*", "circlepy.headless_models.*"]
+# Keep the incremental strict boundary for transport, errors, token state and
+# the HTTP harness. Facades and dictionary resource methods remain partially typed.
+module = ["circlepy", "circlepy.client", "circlepy.async_client", "circlepy.async_auth", "circlepy.async_resources", "circlepy.api_clients", "circlepy.async_headless_client", "circlepy.headless_client", "circlepy.client_models.*", "circlepy.headless_models.*"]
 follow_imports = "silent"

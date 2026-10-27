@@ -24,22 +24,34 @@ class BaseAPIClient:
 
     def _request(self, method, endpoint, **kwargs):
         url = f"{self.auth.base_url}{endpoint}"
+        self._transport._url(url)
+        # Legacy Auth-compatible objects can supply just token fields and a
+        # refresh method. Auth also validates and coordinates proactive refresh.
+        coordinated = hasattr(self.auth, 'ensure_token')
+        if coordinated:
+            token, generation, refreshed = self.auth.ensure_token()
+        else:
+            token, generation, refreshed = self.auth.access_token, None, False
         for attempt in range(2):
-            headers = self._get_headers()
+            headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'}
             response = self._transport.request(method, url, headers=headers, raise_on_error=False, **kwargs)
             if response.status_code != 401:
                 break
-            if attempt == 1:
+            if method != 'GET' or kwargs.get('json') is not None or kwargs.get('data') is not None:
+                break
+            if attempt == 1 or refreshed:
+                if coordinated:
+                    self.auth.reject_token(token, response)
                 if self._transport.raise_on_error:
                     response.raise_for_status()
                 # Legacy code catches requests.HTTPError. No raw request/URL is
                 # retained: Requests' default message can expose signed queries.
                 raise requests.HTTPError("Headless authentication failed (HTTP 401)", response=response)
-            if method != 'GET':
-                # Authentication replay of mutations belongs to an explicit
-                # operation policy, never a blanket response-to-401 retry.
-                break
-            self.auth.refresh_access_token()
+            if coordinated:
+                token = self.auth.refresh_for_request(generation)
+            else:
+                self.auth.refresh_access_token()
+                token = self.auth.access_token
         if self._transport.raise_on_error:
             response.raise_for_status()
         if endpoint == "/cookies" and method == "POST" and response.status_code == 200:

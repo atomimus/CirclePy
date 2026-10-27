@@ -75,7 +75,7 @@ def inspect_artifacts(directory):
         require(all(member.name.startswith(prefix + "/") or (member.name == prefix and member.isdir()) for member in members), "Unexpected sdist root")
         files = {member.name[len(prefix) + 1:] for member in members if member.isfile()}
         check_paths(files)
-        required = package_sources | {"LICENSE", "README.md", "CONTRIBUTING.md", "pyproject.toml", "constraints-dev.txt", "requirements.txt", "docs/transports.md"}
+        required = package_sources | {"LICENSE", "README.md", "CONTRIBUTING.md", "pyproject.toml", "constraints-dev.txt", "requirements.txt", "docs/transports.md", "docs/clients.md"}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "tools").glob("*.py")}
         required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / ".github").rglob("*.yml")}
@@ -115,13 +115,15 @@ def check_installs(artifacts):
                 "import circlepy",
                 "location = pathlib.Path(circlepy.__file__).resolve()",
                 "assert location.is_relative_to(pathlib.Path(sys.prefix).resolve()), location",
-                "assert {'CircleClient', 'AsyncCircleClient', 'HeadlessClient'} <= set(circlepy.__all__)",
+                "assert {'CircleClient', 'AsyncCircleClient', 'HeadlessClient', 'AsyncHeadlessClient', 'AdminV2Client', 'AsyncAdminV2Client', 'DataClient', 'AsyncDataClient'} <= set(circlepy.__all__)",
                 "assert all(inspect.isclass(getattr(circlepy, name)) for name in circlepy.__all__)",
                 "modules = [item.name for item in pkgutil.walk_packages(circlepy.__path__, 'circlepy.')]",
                 "for name in modules: importlib.import_module(name)",
                 "print('Installed', importlib.metadata.version('circlepy'), 'from', location, '; imported', len(modules), 'modules')",
             ])], work)
             shutil.copytree(ROOT / "tests", work / "tests", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+            (work / "docs").mkdir()
+            shutil.copy2(ROOT / "docs/clients.md", work / "docs/clients.md")
             # Validate consumer dependencies first, then add only the test tools.
             # Copy configuration so the identical offline guard and strict async
             # mode apply outside the checkout, without PYTHONPATH shadowing.

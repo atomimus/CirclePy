@@ -49,7 +49,8 @@ class AuthTests(unittest.TestCase):
         self.auth.access_token_expires_at = datetime.now(timezone.utc) - timedelta(hours=1)
         self.assertFalse(self.auth.is_access_token_valid())
         self.auth.access_token_expires_at = datetime(2099, 1, 1)
-        self.assertTrue(self.auth.is_access_token_valid())
+        with self.assertWarns(DeprecationWarning):
+            self.assertTrue(self.auth.is_access_token_valid())
 
     def test_community_url_trailing_slash(self):
         with patch("circlepy.headless_client.Auth.authenticate"):

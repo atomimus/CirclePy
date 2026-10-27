@@ -9,7 +9,10 @@ formats. Circle continues to support v1, while new admin endpoints are added to
 [Admin v2](https://api.circle.so/apis/admin-api.md).
 
 `HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
-and identify the member with `email`, `community_member_id`, or `sso_id`.
+and identify the member with `email`, `community_member_id`, or `sso_user_id`
+(`sso_id` remains a compatibility spelling). See [client lifecycle and token
+restoration examples](docs/clients.md) for all eight sync/async facades and the
+current resource coverage.
 
 The Headless implementations were checked against Circle's live API specs on
 October 27, 2026. The refreshed specs are saved in `api/specs`, with their source
