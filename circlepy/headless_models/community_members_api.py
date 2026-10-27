@@ -105,13 +105,13 @@ class CommunityMembersAPI(BaseAPIClient):
         return self.get(endpoint)
 
     def search_members(self, page=1, per_page=30, search_text="", exclude_empty_name=True, exclude_empty_profiles=True, order="oldest", status="active", filters=None, search_after=None):
+        """Search members. exclude_empty_profiles is retained for compatibility and is no longer sent."""
         endpoint = "/search/community_members"
         payload = {
             "page": page,
             "per_page": per_page,
             "search_text": search_text,
             "exclude_empty_name": exclude_empty_name,
-            "exclude_empty_profiles": exclude_empty_profiles,
             "order": order,
             "status": status,
             "filters": filters if filters is not None else [],
@@ -141,7 +141,7 @@ class CommunityMembersAPI(BaseAPIClient):
             and not profile_fields
         ):
             raise ValueError("At least one field must be provided.")
-        community_member_payload = {"skip_invitation": True}
+        community_member_payload = {}
         if name is not None:
             community_member_payload["name"] = name
         if avatar is not None:

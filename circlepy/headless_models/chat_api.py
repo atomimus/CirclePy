@@ -85,18 +85,26 @@ class ChatAPI(BaseAPIClient):
     def mark_chat_room_as_read(self, chat_room_uuid):
         return self.post(f"/messages/{chat_room_uuid}/mark_all_as_read")
 
-    def create_reaction(self, chat_room_message_id=None, emoji=None, payload=None):
+    def create_reaction(self, chat_room_message_id=None, emoji=None, payload=None, unicode=None):
         if payload is None:
-            if chat_room_message_id is None or emoji is None:
-                raise ValueError("Provide chat_room_message_id and emoji, or payload")
-            payload = {"chat_room_message": chat_room_message_id, "emoji": emoji}
+            if chat_room_message_id is None or (emoji is None and unicode is None):
+                raise ValueError("Provide chat_room_message_id and emoji or unicode, or payload")
+            payload = {"chat_room_message": chat_room_message_id}
+            if emoji is not None:
+                payload["emoji"] = emoji
+            if unicode is not None:
+                payload["unicode"] = unicode
         return self.post("/reactions", data=payload)
 
-    def delete_reaction(self, chat_room_message_id=None, emoji=None, payload=None):
+    def delete_reaction(self, chat_room_message_id=None, emoji=None, payload=None, unicode=None):
         if payload is None:
-            if chat_room_message_id is None or emoji is None:
-                raise ValueError("Provide chat_room_message_id and emoji, or payload")
-            payload = {"chat_room_message": chat_room_message_id, "emoji": emoji}
+            if chat_room_message_id is None or (emoji is None and unicode is None):
+                raise ValueError("Provide chat_room_message_id and emoji or unicode, or payload")
+            payload = {"chat_room_message": chat_room_message_id}
+            if emoji is not None:
+                payload["emoji"] = emoji
+            if unicode is not None:
+                payload["unicode"] = unicode
         return self._request("DELETE", "/reactions", json=payload)
 
     def list_chat_threads(self, page=None, per_page=None):

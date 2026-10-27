@@ -1,16 +1,67 @@
 {
+  "schema_version": 2,
+  "freeze_id": "circlepy-v1-2026-10-27",
+  "reproduction": "python docs/v1-release/tools/baseline.py --freeze (explicitly replaces snapshots); use --verify-live to compare without writing",
   "specs": [
     {
-      "name": "admin-v2",
-      "url": "https://api-headless.circle.so/api/admin/v2/swagger.yaml"
-    },
-    {
       "name": "headless-client-v1",
-      "url": "https://api-headless.circle.so/api/headless_client/v1/swagger.yaml"
+      "url": "https://api-headless.circle.so/api/headless_client/v1/swagger.yaml",
+      "path": "api/specs/headless-client-v1.yaml",
+      "retrieved_on": "2026-10-27",
+      "upstream_sha256": "0b934fce6204ac8a2664acdf39c70c8e06e9ee67a930310e1655ff439c02a6fc",
+      "sha256": "0b934fce6204ac8a2664acdf39c70c8e06e9ee67a930310e1655ff439c02a6fc",
+      "bytes": 774484,
+      "representation": "exact_response_bytes"
     },
     {
       "name": "headless-auth-v1",
-      "url": "https://api-headless.circle.so/api/headless_auth/swagger.yaml"
+      "url": "https://api-headless.circle.so/api/headless_auth/swagger.yaml",
+      "path": "api/specs/headless-auth-v1.yaml",
+      "retrieved_on": "2026-10-27",
+      "upstream_sha256": "948cdee2b1e04db8c7f1e65240fdfbfa36191b9ce3173406fa63246bbede5368",
+      "sha256": "948cdee2b1e04db8c7f1e65240fdfbfa36191b9ce3173406fa63246bbede5368",
+      "bytes": 14982,
+      "representation": "exact_response_bytes"
+    },
+    {
+      "name": "admin-v2",
+      "url": "https://api-headless.circle.so/api/admin/v2/swagger.yaml",
+      "path": "api/specs/admin-v2.yaml",
+      "retrieved_on": "2026-10-27",
+      "upstream_sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+      "sha256": "bad66ebb7a69acb0a0a0107020bf064cfa92b6f6b8ebfa440521954693f2a834",
+      "bytes": 774535,
+      "representation": "exact_response_bytes"
+    },
+    {
+      "name": "data-api",
+      "url": "https://app.circle.so/data_api/docs/openapi.yaml",
+      "path": "api/specs/data-api.yaml",
+      "retrieved_on": "2026-10-27",
+      "upstream_sha256": "3e0bbedde4238d5ebb702689d52003408ee84d6e026386c180e3bc4135015408",
+      "sha256": "3e0bbedde4238d5ebb702689d52003408ee84d6e026386c180e3bc4135015408",
+      "bytes": 90336,
+      "representation": "exact_response_bytes"
+    },
+    {
+      "name": "admin-v1",
+      "url": "https://api-v1.circle.so/api/collections/9712302/TzCS4kJc?environment=16379091-2b72120d-4dc9-4e79-9415-4324727e534c&segregateAuth=true&versionTag=latest",
+      "path": "api/specs/admin-v1-operations.json",
+      "retrieved_on": "2026-10-27",
+      "upstream_sha256": "8d4bf73d8bc53de48100c753cf37e2d2a3558023dccbf04261af67b8f2d84ded",
+      "sha256": "8258ea2bf2b98f3a838b2d4f03df44a5ba84cd54b593cc7928c4da647bb6b1bf",
+      "bytes": 19010,
+      "representation": "postman_operation_projection"
+    },
+    {
+      "name": "developer-index",
+      "url": "https://api.circle.so/llms.txt",
+      "path": "api/specs/circle-developer-index.txt",
+      "retrieved_on": "2026-10-27",
+      "upstream_sha256": "7dd29987575ff01ae8b6ec8f091799e238162609966558c836a0fb3ad95886b0",
+      "sha256": "7dd29987575ff01ae8b6ec8f091799e238162609966558c836a0fb3ad95886b0",
+      "bytes": 3989,
+      "representation": "exact_response_bytes"
     }
   ]
 }

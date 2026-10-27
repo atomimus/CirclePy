@@ -8,7 +8,7 @@ class SpaceAPI:
         
     def _headers(self):
         """Private method to return the authorization headers."""
-        return {"Authorization": f"Token {self.api_token}"}
+        return {"Authorization": f"Token {self.api_key}"}
     
     def fetch(self, sort='latest', per_page=100, page=1,brief=True):
         """Retrieve information about a set of spaces in the community."""

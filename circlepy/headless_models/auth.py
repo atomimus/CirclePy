@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 
 class Auth:
     def __init__(self, api_key, community_url, auth_base_url, base_url, proxy=None):
@@ -61,8 +61,8 @@ class Auth:
         data = response.json()
         self.access_token = data['access_token']
         self.refresh_token = data['refresh_token']
-        self.access_token_expires_at = datetime.fromisoformat(data['access_token_expires_at'].rstrip('Z'))
-        self.refresh_token_expires_at = datetime.fromisoformat(data['refresh_token_expires_at'].rstrip('Z'))
+        self.access_token_expires_at = datetime.fromisoformat(data['access_token_expires_at'].replace('Z', '+00:00'))
+        self.refresh_token_expires_at = datetime.fromisoformat(data['refresh_token_expires_at'].replace('Z', '+00:00'))
         self.community_member_id = data['community_member_id']
         self.community_id = data['community_id']
 
@@ -70,7 +70,11 @@ class Auth:
         """
         Returns True if the access token exists and hasn't expired.
         """
-        return self.access_token and datetime.now() < self.access_token_expires_at
+        if not self.access_token or self.access_token_expires_at is None:
+            return False
+        if self.access_token_expires_at.tzinfo is None:
+            return datetime.now(timezone.utc).replace(tzinfo=None) < self.access_token_expires_at
+        return datetime.now(self.access_token_expires_at.tzinfo) < self.access_token_expires_at
 
     def refresh_access_token(self):
         """
@@ -96,7 +100,7 @@ class Auth:
             self.access_token = data.get('access_token')
             expires_at_str = data.get('access_token_expires_at')
             if expires_at_str:
-                self.access_token_expires_at = datetime.fromisoformat(expires_at_str.rstrip('Z'))
+                self.access_token_expires_at = datetime.fromisoformat(expires_at_str.replace('Z', '+00:00'))
             return data
         elif response.status_code == 401:
             raise Exception("Unauthorized: The refresh token is expired or invalid. Please generate/get new auth token.")

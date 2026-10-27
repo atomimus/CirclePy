@@ -195,7 +195,7 @@ class PostsAPI(BaseAPIClient):
         return self._request("GET", endpoint)
 
     def list_posts(self, space_id, page=1, per_page=10, sort="latest",
-                   status=None, past_events=None, topics=None):
+                   status=None, past_events=None, topics=None, post_ids=None):
         params = {
             "page": page,
             "per_page": per_page,
@@ -207,6 +207,8 @@ class PostsAPI(BaseAPIClient):
             params["past_events"] = str(past_events).lower()
         if topics:
             params["topics"] = topics
+        if post_ids is not None:
+            params["post_ids"] = post_ids
 
         endpoint = f"/spaces/{space_id}/posts"
         return self._request("GET", endpoint, params=params)
@@ -223,15 +225,19 @@ class PostsAPI(BaseAPIClient):
         endpoint = f"/posts/{post_id}/post_followers/{post_follower_id}"
         return self._request("DELETE", endpoint)
 
-    def like_post(self, post_id):
+    def like_post(self, post_id, reaction_type=None):
         endpoint = f"/posts/{post_id}/user_likes"
-        return self._request("POST", endpoint)
+        if reaction_type is None:
+            return self._request("POST", endpoint)
+        return self._request("POST", endpoint, json={"reaction_type": reaction_type})
 
     def unlike_post(self, post_id):
         endpoint = f"/posts/{post_id}/user_likes"
         return self._request("DELETE", endpoint)
 
-    def list_post_likes(self, post_id, page=1, per_page=10):
+    def list_post_likes(self, post_id, page=1, per_page=10, reaction_type=None):
         endpoint = f"/posts/{post_id}/user_likes"
         params = {"page": page, "per_page": per_page}
+        if reaction_type is not None:
+            params["reaction_type"] = reaction_type
         return self._request("GET", endpoint, params=params)

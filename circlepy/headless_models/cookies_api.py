@@ -8,4 +8,4 @@ class CookiesAPI(BaseAPIClient):
 
     def delete(self):
         endpoint = "/cookies"
-        return self.delete(endpoint)
+        return super().delete(endpoint)

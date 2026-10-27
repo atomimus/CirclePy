@@ -1,0 +1,2 @@
+# Preserve downloaded specification bytes so provenance hashes survive checkout.
+api/specs/* -text

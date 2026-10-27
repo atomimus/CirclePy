@@ -53,8 +53,15 @@ class MemberAPI:
         - space_group_ids (list, optional): IDs of the space groups the member belongs to.
         - skip_invitation (bool, optional): Whether to skip sending an invitation. Defaults to True.
         """
-        url = f"{self.base_url}/community_members/{member_id}?community_id={self.community_id}"
-        response = requests.put(url, headers=self._headers(), data=payload)
+        url = f"{self.base_url}/community_members/{member_id}"
+        params = {"community_id": self.community_id}
+        data = dict(payload)
+        data.setdefault("skip_invitation", skip_invitation)
+        if space_ids is not None:
+            data["space_ids"] = space_ids
+        if space_group_ids is not None:
+            data["space_group_ids"] = space_group_ids
+        response = requests.put(url, headers=self._headers(), params=params, json=data)
         return response.json()
 
     def remove(self, email):

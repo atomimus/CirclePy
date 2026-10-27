@@ -8,7 +8,7 @@ class CommentLikesAPI:
 
     def _headers(self):
         """Returns the authorization headers."""
-        return {"Authorization": f"Token {self.api_token}"}
+        return {"Authorization": f"Token {self.api_key}"}
 
     def fetch(self, comment_id):
         """Retrieves all likes for a given comment."""

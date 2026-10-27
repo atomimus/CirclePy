@@ -9,7 +9,7 @@ class LikesAPI:
 
     def _headers(self):
         """Private method to return the authorization headers."""
-        return {"Authorization": f"Token {self.api_token}"}
+        return {"Authorization": f"Token {self.api_key}"}
 
     def fetch(self, post_id):
         """Retrieve all likes for a given post."""

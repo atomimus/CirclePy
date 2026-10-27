@@ -1,0 +1,852 @@
+{
+  "representation": "operation projection; not a request/response schema",
+  "requests": [
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/me",
+      "tags": [
+        "Me"
+      ],
+      "name": "User Info",
+      "source_pointer": "/item/0/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/communities",
+      "tags": [
+        "Communities"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/1/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/communities/{}",
+      "tags": [
+        "Communities"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/1/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/space_groups",
+      "tags": [
+        "Space Group"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/2/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/space_groups/{}",
+      "tags": [
+        "Space Group"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/2/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/space_groups",
+      "tags": [
+        "Space Group"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/2/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "PUT",
+      "path": "/api/v1/space_groups/{}",
+      "tags": [
+        "Space Group"
+      ],
+      "name": "Update",
+      "source_pointer": "/item/2/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/space_groups/{}",
+      "tags": [
+        "Space Group"
+      ],
+      "name": "Destroy",
+      "source_pointer": "/item/2/item/4",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/space_group_member",
+      "tags": [
+        "Space Group Members"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/3/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/space_group_members",
+      "tags": [
+        "Space Group Members"
+      ],
+      "name": "Add Member to Space Group",
+      "source_pointer": "/item/3/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/space_group_members",
+      "tags": [
+        "Space Group Members"
+      ],
+      "name": "Remove Member from Space Group",
+      "source_pointer": "/item/3/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/spaces",
+      "tags": [
+        "Spaces"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/4/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/spaces/{}",
+      "tags": [
+        "Spaces"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/4/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/spaces",
+      "tags": [
+        "Spaces"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/4/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/spaces/{}",
+      "tags": [
+        "Spaces"
+      ],
+      "name": "Destroy",
+      "source_pointer": "/item/4/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/space_members",
+      "tags": [
+        "Space Members"
+      ],
+      "name": "Add Member to Space",
+      "source_pointer": "/item/5/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/space_members",
+      "tags": [
+        "Space Members"
+      ],
+      "name": "Remove Member from Space",
+      "source_pointer": "/item/5/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/posts",
+      "tags": [
+        "Posts"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/6/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/posts/{}",
+      "tags": [
+        "Posts"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/6/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/posts",
+      "tags": [
+        "Posts"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/6/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "PUT",
+      "path": "/api/v1/posts/{}",
+      "tags": [
+        "Posts"
+      ],
+      "name": "Update",
+      "source_pointer": "/item/6/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/posts/{}",
+      "tags": [
+        "Posts"
+      ],
+      "name": "Destroy",
+      "source_pointer": "/item/6/item/4",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/comments",
+      "tags": [
+        "Comments"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/7/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/comments/{}",
+      "tags": [
+        "Comments"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/7/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/comments",
+      "tags": [
+        "Comments"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/7/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/comments/{}",
+      "tags": [
+        "Comments"
+      ],
+      "name": "Destroy",
+      "source_pointer": "/item/7/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/community_members",
+      "tags": [
+        "Members"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/8/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/community_members/{}",
+      "tags": [
+        "Members"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/8/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/community_members/search",
+      "tags": [
+        "Members"
+      ],
+      "name": "Search Member",
+      "source_pointer": "/item/8/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/community_members",
+      "tags": [
+        "Members"
+      ],
+      "name": "Invite Member",
+      "source_pointer": "/item/8/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "PUT",
+      "path": "/api/v1/community_members/{}",
+      "tags": [
+        "Members"
+      ],
+      "name": "Update",
+      "source_pointer": "/item/8/item/4",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/community_members",
+      "tags": [
+        "Members"
+      ],
+      "name": "Remove Member from Community",
+      "source_pointer": "/item/8/item/5",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/member_tags",
+      "tags": [
+        "Member Tag"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/9/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/member_tags/{}",
+      "tags": [
+        "Member Tag"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/9/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/tagged_members",
+      "tags": [
+        "Tagged Members"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/10/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/tagged_members/{}",
+      "tags": [
+        "Tagged Members"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/10/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/tagged_members",
+      "tags": [
+        "Tagged Members"
+      ],
+      "name": "Tag Member",
+      "source_pointer": "/item/10/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/tagged_members",
+      "tags": [
+        "Tagged Members"
+      ],
+      "name": "Untag Member",
+      "source_pointer": "/item/10/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/messages",
+      "tags": [
+        "Group Messages"
+      ],
+      "name": "Start Group Chat",
+      "source_pointer": "/item/11/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/messages",
+      "tags": [
+        "Direct Messages"
+      ],
+      "name": "Send message",
+      "source_pointer": "/item/12/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/community_member_subscriptions",
+      "tags": [
+        "Member Subscriptions"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/13/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/events",
+      "tags": [
+        "Events"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/14/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "PUT",
+      "path": "/api/v1/events/{}",
+      "tags": [
+        "Events"
+      ],
+      "name": "Update",
+      "source_pointer": "/item/14/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/events",
+      "tags": [
+        "Events"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/14/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/events/{}",
+      "tags": [
+        "Events"
+      ],
+      "name": "Delete",
+      "source_pointer": "/item/14/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/event_attendees",
+      "tags": [
+        "Event Attendees"
+      ],
+      "name": "RSVP Member",
+      "source_pointer": "/item/15/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/event_attendees",
+      "tags": [
+        "Event Attendees"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/15/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/event_attendees",
+      "tags": [
+        "Event Attendees"
+      ],
+      "name": "Un-RSVP Member",
+      "source_pointer": "/item/15/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/community_member_charges",
+      "tags": [
+        "Member Charges"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/16/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/posts/{}/likes",
+      "tags": [
+        "Post Likes"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/17/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/posts/{}/likes",
+      "tags": [
+        "Post Likes"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/17/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/posts/{}/likes",
+      "tags": [
+        "Post Likes"
+      ],
+      "name": "Destroy",
+      "source_pointer": "/item/17/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/comments/{}/likes",
+      "tags": [
+        "Comment Likes"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/18/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/comments/{}/likes",
+      "tags": [
+        "Comment Likes"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/18/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/comments/{}/likes",
+      "tags": [
+        "Comment Likes"
+      ],
+      "name": "Destroy",
+      "source_pointer": "/item/18/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/community_member_spaces",
+      "tags": [
+        "Comunity Member Spaces"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/19/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/page_profile_fields",
+      "tags": [
+        "Profile Fields"
+      ],
+      "name": "Get profile fields",
+      "source_pointer": "/item/20/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/course_sections",
+      "tags": [
+        "Course Sections"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/21/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/course_sections/{}",
+      "tags": [
+        "Course Sections"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/21/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/course_sections",
+      "tags": [
+        "Course Sections"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/21/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "PATCH",
+      "path": "/api/v1/course_sections/{}",
+      "tags": [
+        "Course Sections"
+      ],
+      "name": "Update",
+      "source_pointer": "/item/21/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/course_sections/{}",
+      "tags": [
+        "Course Sections"
+      ],
+      "name": "Destroy",
+      "source_pointer": "/item/21/item/4",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/course_lessons",
+      "tags": [
+        "Course Lessons"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/22/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/course_lessons/{}",
+      "tags": [
+        "Course Lessons"
+      ],
+      "name": "Show",
+      "source_pointer": "/item/22/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/course_lessons",
+      "tags": [
+        "Course Lessons"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/22/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "PATCH",
+      "path": "/api/v1/course_lessons/{}",
+      "tags": [
+        "Course Lessons"
+      ],
+      "name": "Update",
+      "source_pointer": "/item/22/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/course_lessons/{}",
+      "tags": [
+        "Course Lessons"
+      ],
+      "name": "Destroy",
+      "source_pointer": "/item/22/item/4",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "PATCH",
+      "path": "/api/v1/course_lesson_progress",
+      "tags": [
+        "Course Lesson Progress"
+      ],
+      "name": "Update",
+      "source_pointer": "/item/23/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "legacy-public",
+      "method": "GET",
+      "path": "/public/unsubscribe",
+      "tags": [
+        "Notifications"
+      ],
+      "name": "unsubscribe",
+      "source_pointer": "/item/24/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "legacy-public",
+      "method": "GET",
+      "path": "/public/notification_preferences",
+      "tags": [
+        "Notifications"
+      ],
+      "name": "actions - index",
+      "source_pointer": "/item/24/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "legacy-public",
+      "method": "PATCH",
+      "path": "/public/notification_preferences",
+      "tags": [
+        "Notifications"
+      ],
+      "name": "actions - update",
+      "source_pointer": "/item/24/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/topics",
+      "tags": [
+        "Topics"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/25/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/topics",
+      "tags": [
+        "Topics"
+      ],
+      "name": "Create",
+      "source_pointer": "/item/25/item/1",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "PUT",
+      "path": "/api/v1/topics/{}",
+      "tags": [
+        "Topics"
+      ],
+      "name": "Update",
+      "source_pointer": "/item/25/item/2",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "DELETE",
+      "path": "/api/v1/topics/{}",
+      "tags": [
+        "Topics"
+      ],
+      "name": "Destroy",
+      "source_pointer": "/item/25/item/3",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "POST",
+      "path": "/api/v1/contacts",
+      "tags": [
+        "Contacts"
+      ],
+      "name": "Create a contact",
+      "source_pointer": "/item/26/item/0",
+      "query_fields": []
+    },
+    {
+      "family": "admin-v1",
+      "method": "GET",
+      "path": "/api/v1/flagged_contents",
+      "tags": [
+        "Flagged Content"
+      ],
+      "name": "Index",
+      "source_pointer": "/item/27/item/0",
+      "query_fields": []
+    }
+  ]
+}

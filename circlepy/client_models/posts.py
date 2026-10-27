@@ -12,7 +12,7 @@ class PostAPI:
 
     def _headers(self):
         """Private method to return the authorization headers."""
-        return {"Authorization": f"Bearer {self.api_key}"}
+        return {"Authorization": f"Token {self.api_key}"}
 
     def create(
         self,
@@ -40,7 +40,7 @@ class PostAPI:
             "space_id": space_id,
             "status": status,
             "is_comments_enabled": not is_comments_closed,
-            "is_comments_closed": "false",
+            "is_comments_closed": is_comments_closed,
             "is_liking_enabled": True,
             "published_at": published_at,
             "user_email": user_email,
@@ -78,12 +78,14 @@ class PostAPI:
     def update(self, post_id, data=None):
         """Update an existing post."""
         url = f"{self.base_url}/posts/{post_id}"
-        response = requests.patch(url, headers=self._headers(), json=data)
+        params = {"community_id": self.community_id}
+        response = requests.put(url, headers=self._headers(), params=params, json=data)
         return response.json()
 
     def delete(self, post_id):
         """Delete an existing post."""
         url = f"{self.base_url}/posts/{post_id}"
-        response = requests.delete(url, headers=self._headers())
+        params = {"community_id": self.community_id}
+        response = requests.delete(url, headers=self._headers(), params=params)
         return response.status_code
 

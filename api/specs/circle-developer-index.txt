@@ -1,0 +1,40 @@
+# Circle Developers
+
+## Developers
+
+- [Overview](https://api.circle.so/get-started/overview.md): An overview of the Circle Developer platform
+- [Concepts](https://api.circle.so/get-started/concepts.md)
+- [Spaces & space groups](https://api.circle.so/get-started/concepts/spaces-and-space-groups.md): Spaces are a foundational container for discussions, courses, events, chat, and image posts in Circle.
+- [Posts](https://api.circle.so/get-started/concepts/posts.md): An overview of posts on Circle
+- [Messages](https://api.circle.so/get-started/concepts/messages.md): Circle supports messaging via direct messages, group chat rooms, and chat spaces.
+- [TipTap editor](https://api.circle.so/get-started/concepts/tiptap-editor.md)
+- [File uploads](https://api.circle.so/get-started/concepts/file-uploads.md)
+- [Rich Text Body](https://api.circle.so/get-started/concepts/rich-text-body.md)
+- [Websockets (Beta)](https://api.circle.so/get-started/websockets-beta.md)
+- [Security and privacy](https://api.circle.so/get-started/security-and-privacy.md)
+- [Circle MCP](https://api.circle.so/mcp.md): Connect your Circle data (members, posts, and revenue) to AI tools like Claude, Cursor, and ChatGPT. Manage members, create posts, manage workflows, and more — just by asking
+- [Prompt library](https://api.circle.so/mcp/prompt-library.md): Ready-to-use prompts for Circle MCP, from reports and member lookups to content, events, and cross-tool workflows.
+- [Admin API](https://api.circle.so/apis/admin-api.md): The Circle Admin API is designed for community admins to build automations, migration scripts, and administrative integrations.
+- [Quick start](https://api.circle.so/apis/admin-api/quick-start.md): To get started with the Admin API, follow these steps.
+- [Usage and limits](https://api.circle.so/apis/admin-api/usage-and-limits.md)
+- [Optimizing usage](https://api.circle.so/apis/admin-api/usage-and-limits/optimizing-usage.md)
+- [Best Practices](https://api.circle.so/apis/admin-api/usage-and-limits/best-practices.md): Tips to control Admin API usage and avoid unnecessary costs.
+- [Headless](https://api.circle.so/apis/headless.md): Headless lets you build Circle features into your own website or app, like discussions, feeds, courses, events, notifications, and more.
+- [Quick start](https://api.circle.so/apis/headless/quick-start.md): To get started with the Headless APIs, follow these steps.
+- [Member API](https://api.circle.so/apis/headless/member-api.md): The Headless Member API is built for teams with in-house developers who want to build Circle features into their own website or app.
+- [Community Member Search](https://api.circle.so/apis/headless/member-api/community-member-search.md): This documentation describes using the member filters endpoint to search for community members.
+- [Cookies](https://api.circle.so/apis/headless/member-api/cookies.md): Use cookies to solve double authentication in iframes and webviews.
+- [Direct upload](https://api.circle.so/apis/headless/member-api/direct-upload.md)
+- [Auth SDK](https://api.circle.so/apis/headless/auth-sdk.md)
+- [Getting Started](https://api.circle.so/apis/headless/auth-sdk/getting-started.md)
+- [Node.js](https://api.circle.so/apis/headless/auth-sdk/node.js.md)
+- [Methods](https://api.circle.so/apis/headless/auth-sdk/node.js/methods.md)
+- [Ruby](https://api.circle.so/apis/headless/auth-sdk/ruby.md)
+- [Go](https://api.circle.so/apis/headless/auth-sdk/go.md)
+- [Python](https://api.circle.so/apis/headless/auth-sdk/python.md)
+- [Usage and limits](https://api.circle.so/apis/headless/usage-and-limits.md)
+- [Data API](https://api.circle.so/apis/data-api.md)
+- [Circle Plus](https://api.circle.so/apis/circle-plus.md)
+- [Custom Signup API reference](https://api.circle.so/apis/circle-plus/custom-signup-api-reference.md)
+- [Deep Linking Guide](https://api.circle.so/apis/circle-plus/deep-linking-guide.md)
+- [Custom HTML API reference](https://api.circle.so/apis/circle-plus/custom-html-api-reference.md)

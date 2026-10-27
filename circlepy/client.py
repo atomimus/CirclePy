@@ -6,7 +6,7 @@ from .client_models import CommentAPI
 from .client_models import CommentLikesAPI
 from .client_models import MemberAPI
 
-base_url = "https://app.circle.so"
+base_url = "https://app.circle.so/api/v1"
 
 class CircleClient:
     def __init__(self, api_key,community_id=None):

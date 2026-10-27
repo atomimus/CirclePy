@@ -18,21 +18,26 @@ class BaseAPIClient:
 
     def _request(self, method, endpoint, **kwargs):
         url = f"{self.auth.base_url}{endpoint}"
-        headers = self._get_headers()
         kwargs.update(self.auth._request_options())
-        response = requests.request(method, url, headers=headers, **kwargs)
+        for attempt in range(2):
+            headers = self._get_headers()
+            response = requests.request(method, url, headers=headers, **kwargs)
+            if response.status_code != 401:
+                break
+            if attempt == 1:
+                response.raise_for_status()
+            self.auth.refresh_access_token()
         if endpoint == "/cookies" and method == "POST" and response.status_code == 200:
             return {
                 "cookies": response.cookies,
                 "cookies_set": response.cookies.get_dict(),
 
             }
-        if response.status_code == 401:
-            self.auth.refresh_access_token()
-            return self._request(method, endpoint, **kwargs)
-        elif response.status_code not in [200, 201, 204]:
+        if response.status_code not in [200, 201, 204]:
             return response.json()
         response.raise_for_status()            
+        if response.status_code == 204 or not response.content:
+            return None
         return response.json()
 
     def get(self, endpoint, params=None):

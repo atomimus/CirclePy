@@ -62,16 +62,21 @@ class CommentsAPI(BaseAPIClient):
     def delete_comment_reply(self, comment_id, reply_id):
         return self.delete(f"/comments/{comment_id}/replies/{reply_id}")
 
-    def list_comment_likes(self, comment_id, page=None, per_page=None):
+    def list_comment_likes(self, comment_id, page=None, per_page=None, reaction_type=None):
         params = {}
         if page is not None:
             params["page"] = page
         if per_page is not None:
             params["per_page"] = per_page
+        if reaction_type is not None:
+            params["reaction_type"] = reaction_type
         return self.get(f"/comments/{comment_id}/user_likes", params=params or None)
 
-    def like_comment(self, comment_id):
-        return self.post(f"/comments/{comment_id}/user_likes")
+    def like_comment(self, comment_id, reaction_type=None):
+        data = None
+        if reaction_type is not None:
+            data = {"reaction_type": reaction_type}
+        return self.post(f"/comments/{comment_id}/user_likes", data=data)
 
     def unlike_comment(self, comment_id):
         return self.delete(f"/comments/{comment_id}/user_likes")
