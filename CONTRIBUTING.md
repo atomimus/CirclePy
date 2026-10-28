@@ -127,6 +127,9 @@ default. Start with an empty output directory, or choose a new one with
 checks dependencies/imports and runs the explicitly selected smoke or full suite with
 `python -I` outside the checkout. It installs the three constrained pytest tools
 and PyYAML/packaging only after checking the consumer environment and site-packages import location.
+Before installing either artifact, it upgrades pip and the build backend from
+binary wheels to the audited tooling pins; consumer runtime dependencies remain
+unconstrained by the development lock. Reports verify those installer versions.
 It downloads dependencies but never contacts a Circle community. Source tests
 use synthetic responses; they are not live API evidence. The optional baseline
 `--verify-live` only retrieves public documentation to detect schema drift.

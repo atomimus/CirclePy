@@ -62,6 +62,20 @@ def test_inventory_matches_every_pin_and_rejects_stale_version():
         inventory.verify(data)
 
 
+@pytest.mark.parametrize("name,version", [("pip", "24.0"), ("setuptools", "65.5.0"),
+                                         ("setuptools", "79.0.1")])
+def test_old_python_bootstrap_tools_cannot_claim_validated_install(name, version):
+    requirements = distribution.installer_requirements()
+    audited = {item["name"]: item["version"] for item in inventory.requirements()}
+    dependencies = [{"name": req.name, "version": audited[req.name]} for req in requirements]
+    distribution.check_installers(dependencies, requirements)
+    for item in dependencies:
+        if item["name"] == name:
+            item["version"] = version
+    with pytest.raises(ValueError, match="Unaudited bootstrap installer"):
+        distribution.check_installers(dependencies, requirements)
+
+
 def test_generated_secret_is_rejected_in_source_and_archive_without_echo():
     canary = "circlepy-test-secret-" + secrets.token_hex(20)
     for path in ("tests/fixtures/recording.json", "circlepy/private.py", "README.md"):

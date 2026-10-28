@@ -22,6 +22,7 @@ import xml.etree.ElementTree as ET
 import zipfile
 
 from packaging.requirements import Requirement
+from packaging.utils import canonicalize_name
 
 if __package__:
     from .check_security import check_bytes
@@ -149,6 +150,27 @@ def junit_counts(path):
     return counts
 
 
+def installer_requirements():
+    config = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    pip = next(line for line in (ROOT / "constraints-dev.txt").read_text().splitlines()
+               if line.startswith("pip=="))
+    requirements = [Requirement(value) for value in [pip, *config["build-system"]["requires"]]]
+    for requirement in requirements:
+        pins = list(requirement.specifier)
+        require(len(pins) == 1 and pins[0].operator == "==" and "*" not in pins[0].version
+                and not requirement.url and not requirement.marker and not requirement.extras,
+                "Bootstrap tools must use exact audited versions")
+    return requirements
+
+
+def check_installers(dependencies, requirements):
+    versions = {canonicalize_name(item["name"]): item["version"] for item in dependencies}
+    for requirement in requirements:
+        version = versions.get(canonicalize_name(requirement.name))
+        require(version is not None and version in requirement.specifier,
+                f"Unaudited bootstrap installer: {requirement.name}")
+
+
 def check_installs(artifacts, mode):
     require(mode in {"full", "smoke"}, "Unknown installed-test mode")
     results = []
@@ -159,6 +181,12 @@ def check_installs(artifacts, mode):
             environment = work / "env"
             venv.EnvBuilder(with_pip=True).create(environment)
             python = environment / ("Scripts/python.exe" if sys.platform == "win32" else "bin/python")
+            installers = installer_requirements()
+            # Python's ensurepip may bundle vulnerable old installers. Upgrade
+            # only these audited tools from wheels before handling the artifact.
+            # Consumer runtime dependencies still resolve without our dev lock.
+            run([python, "-m", "pip", "install", "--disable-pip-version-check",
+                 "--only-binary=:all:", "--no-deps", *map(str, installers)], work)
             run([python, "-m", "pip", "install", "--disable-pip-version-check", artifact], work)
             run([python, "-m", "pip", "check"], work)
             dependencies = json.loads(subprocess.check_output([str(python), "-I", "-c",
@@ -167,6 +195,7 @@ def check_installs(artifacts, mode):
                 "'license_expression':d.metadata.get('License-Expression'),"
                 "'license':d.metadata.get('License'),'requires_dist':d.requires or []} "
                 "for d in m.distributions()],key=lambda d:d['name'].lower())))"], cwd=work, text=True))
+            check_installers(dependencies, installers)
             run([python, "-I", "-c", "\n".join([
                 "import importlib, importlib.metadata, inspect, pathlib, pkgutil, sys",
                 "import circlepy",
@@ -222,6 +251,7 @@ def check_installs(artifacts, mode):
             counts = junit_counts(report)
             results.append({"artifact": artifact.name, "mode": mode, "results": counts,
                             "consumer_dependencies_before_test_tools": dependencies,
+                            "audited_installer_requirements": list(map(str, installers)),
                             "elapsed_seconds": round(time.monotonic() - started, 3),
                             "whole_library_branch_coverage": False,
                             "complete_fault_matrix": False})

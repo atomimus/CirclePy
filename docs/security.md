@@ -94,6 +94,13 @@ resolved graph. Consumer smoke reports record the actual dependencies resolved
 for each wheel/sdist install before test tools are added. Consumer dependency
 ranges stay bounded; the development constraints are not imposed on consumers.
 
+Python's bundled pip/setuptools versions can have advisories even when the SDK's
+dependencies are current. Clean-install checks first upgrade these installers to
+the audited pip pin and isolated backend pin, using binary wheels only, then
+verify their installed versions. This tooling bootstrap does not constrain the
+SDK's consumer dependency resolution. Keep installer tools current in your own
+environments as well.
+
 ```sh
 python tools/dependency_inventory.py docs/dependency-inventory.json
 python tools/dependency_inventory.py docs/dependency-inventory.json --refresh
