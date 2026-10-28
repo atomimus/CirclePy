@@ -1,8 +1,8 @@
-# HTTP transports during v1 development
+# HTTP transports
 
 CirclePy uses one pooled `requests.Session` for a sync client and native aiohttp
-for its asynchronous transport. This development checkout remains version 0.5.1;
-it has not been published as a replacement for the existing PyPI release.
+for its asynchronous transport. This guide describes candidate `1.0.0rc1`;
+see [release status](release-notes.md) for the separate publication gates.
 
 `CircleClient` and `HeadlessClient` now use the sync transport for API calls.
 The async transport is available through `circlepy.transport.AsyncTransport`.

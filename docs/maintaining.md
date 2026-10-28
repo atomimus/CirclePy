@@ -44,8 +44,8 @@ are never test actions. Actual failed regressions are not waived.
 
 ## Release discipline
 
-`pyproject.toml` is the sole metadata/version source. Development still uses
-0.5.1; never upload it as a new replacement for immutable published 0.5.1 bytes.
+`pyproject.toml` is the sole metadata/version source. The selected candidate is
+`1.0.0rc1`; final `1.0.0` remains unreleased. Never replace immutable version bytes.
 Candidate/final versions, protected trusted publishers, environment approvals,
 source refs and upload gates belong to their dedicated release tasks. The
 [trusted pipeline](publishing.md) requires verified index publishers, protected
@@ -58,7 +58,7 @@ limitations. Validate one artifact set and retain SHA-256/provenance. Upload tho
 same bytes without rebuilding. Reconcile unknown immutable upload outcomes before
 retrying. Never expose credentials or long-lived package tokens.
 
-Update [CHANGELOG](../CHANGELOG.md) and [release draft](release-notes.md) to the
+Update [CHANGELOG](../CHANGELOG.md) and [release status](release-notes.md) to the
 actual final state. Verify remote Git refs and package-index metadata/hashes
 before calling a release published. Keep release evidence distinct from expected
 results. Do not overwrite tags, versions or release artifacts to conceal a failure.

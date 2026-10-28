@@ -1,8 +1,8 @@
 # CirclePy documentation
 
-These guides describe the v1 development line. Metadata is still 0.5.1; the
-published 0.5.1 distribution predates these changes. Target 1.0.0 remains
-unreleased. Consult a versioned Git tag's guides when installing a release.
+These guides describe candidate `1.0.0rc1`. The published PyPI 0.5.1 distribution
+predates these changes; final 1.0.0 remains unreleased. See [release status](release-notes.md)
+and consult the matching versioned Git tag's guides when installing a release.
 
 | Start here | What it covers |
 | --- | --- |
@@ -20,7 +20,7 @@ unreleased. Consult a versioned Git tag's guides when installing a release.
 | [Security boundaries](security.md) | Credentials, content, dependencies and publishing controls |
 | [Attribution](attribution.md) | MIT license, upstream schemas and dependency notices |
 
-[Changelog](../CHANGELOG.md), [release draft](release-notes.md),
+[Changelog](../CHANGELOG.md), [release status and notes](release-notes.md),
 [contributing](../CONTRIBUTING.md), [support](../SUPPORT.md) and
 [maintainer guidance](maintaining.md) and [trusted publishing](publishing.md)
 complete the release/support documentation.

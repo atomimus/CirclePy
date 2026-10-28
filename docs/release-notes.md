@@ -1,8 +1,18 @@
-# CirclePy 1.0.0 release draft
+# CirclePy 1.0.0rc1 candidate and v1 release notes
 
-**Unreleased draft.** This checkout is still version 0.5.1. Complete the candidate,
-trusted publishing and exact-artifact release checks before adding a date,
-installation pin, tag, release URL or claim of package-index availability.
+**Candidate source: 1.0.0rc1. Final 1.0.0 remains unreleased.** This source is
+prepared for the TestPyPI rehearsal, with intended tag `v1.0.0rc1`. Verify
+[the candidate's index files](https://test.pypi.org/project/circlepy/1.0.0rc1/#files)
+and the exact source's CI before treating it as published or validated.
+[Candidate installation](quickstart.md#install-the-testpypi-candidate) keeps
+runtime dependencies on PyPI and selects only CirclePy from TestPyPI.
+
+The prepublication Release profile requires all 15 source cells, 15 installed
+smoke cells and full wheel/sdist suites on Ubuntu/Python 3.11 for one retained
+artifact pair. Trusted Publishing uploads those same bytes after environment
+approval. Index hashes, provenance and fresh installed consumer checks complete
+the rehearsal; a green build alone does not establish index publication.
+See [the publishing procedure](publishing.md) for the exact gates.
 
 CirclePy's v1 line provides explicit synchronous and native asynchronous Python
 clients for Circle's Admin v1, Admin v2, Headless Auth and Member HTTP APIs.

@@ -1,6 +1,6 @@
 # Clients and member token lifecycles
 
-This development checkout remains version 0.5.1 and is not a published release.
+These clients are included in candidate `1.0.0rc1`; see [release status](release-notes.md).
 The public facades are available from `circlepy`:
 
 | API family | Sync | Native async | Credential |

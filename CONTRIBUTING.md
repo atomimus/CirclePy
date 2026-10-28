@@ -2,8 +2,8 @@
 
 ## Runtime support
 
-The v1 development line requires CPython 3.11 or newer. The package version stays
-0.5.1 during implementation; this checkout is not a new published 0.5.1 release.
+The v1 line requires CPython 3.11 or newer. This source prepares candidate
+`1.0.0rc1`; final `1.0.0` remains unreleased. See [release status](docs/release-notes.md).
 Applications on Python 3.7–3.10 must upgrade their interpreter before adopting v1.
 See [migration](docs/migration.md), [compatibility](docs/compatibility.md) and
 [maintainer guidance](docs/maintaining.md).
@@ -304,10 +304,10 @@ implemented; [the resource map](docs/api.md) links every implemented group.
 See [client lifecycles](docs/clients.md). Constructor annotations describe accepted
 inputs; the package does not ship `py.typed` or claim complete type coverage.
 
-Keep 0.5.1 until the assigned candidate task selects a PEP 440 version such as
-`1.0.0rc1`. Subsequent candidates increment the suffix; only the final release
-task selects `1.0.0`. Do not upload development builds under the existing 0.5.1
-version. TestPyPI and production publication belong to Tasks 33 and 34.
+The selected PEP 440 candidate is `1.0.0rc1`. Check the index inventory before
+incrementing its suffix; never overwrite an existing version. Only the final
+release task selects `1.0.0`. TestPyPI and production publication have separate
+authorization and exact-artifact gates in [the publishing guide](docs/publishing.md).
 
 The sdist includes source, license, contributor documentation, synthetic tests,
 and the frozen API specifications and compatibility checks. The wheel includes the package,

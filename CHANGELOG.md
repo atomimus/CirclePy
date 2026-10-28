@@ -2,9 +2,14 @@
 
 ## 1.0.0 — unreleased
 
-This is a release draft for the development line. Metadata remains 0.5.1 until
-the assigned release work selects a new version. No release date or publication
-is claimed. See [migration](docs/migration.md) for application changes.
+The final release is pending the candidate rehearsal and production publication.
+See [migration](docs/migration.md) for application changes.
+
+## 1.0.0rc1 — release candidate
+
+Prepared October 28, 2026 for the TestPyPI rehearsal. Metadata is `1.0.0rc1`;
+index availability and validation are verified separately before final release.
+This entry does not announce production PyPI publication.
 
 - Add explicit Admin v2 resources and native async facades for all three API
   families; retain legacy Admin v1 call shapes, projections and successful results.
@@ -25,8 +30,9 @@ Known limits: all nine representative live workflows in both modes are untested
 under the accepted waiver; financial coverage is synthetic. No actual account
 capability, storage, live parity or cleanup proof exists. CommonMark maintenance
 and upstream schema gaps remain documented in [limitations](docs/limitations.md).
-Trusted publishing, candidate rehearsal and final publication remain separate
-release work. See [the release draft](docs/release-notes.md).
+The guarded pipeline publishes only the exact validated wheel/sdist pair through
+the matching trusted publisher. Candidate rehearsal and final publication have
+separate gates. See [release status and notes](docs/release-notes.md).
 
 ## 0.5.1 — published baseline
 

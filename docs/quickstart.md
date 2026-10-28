@@ -5,7 +5,7 @@ Windows and macOS. CI tests ordinary GIL builds. Python 3.7–3.10, PyPy,
 free-threaded builds and other platforms have no support evidence. See
 [the compatibility policy](compatibility.md) before upgrading a runtime.
 
-## Install this development line
+## Install from source
 
 Clone the repository and use a virtual environment as shown in [README](../README.md).
 `python -m pip install .` installs the SDK without developer tools. For a
@@ -21,10 +21,35 @@ def installation():
     return {"version": version("circlepy"), "module": circlepy.__file__}
 ```
 
-The current metadata says 0.5.1 during preparation; the published 0.5.1 package
-has an older implementation. Do not upload this checkout using that existing
-version. After 1.0.0 is verified on PyPI, applications can pin that release. The
-[release draft](release-notes.md) is not an installation or publication receipt.
+Metadata identifies candidate `1.0.0rc1`; the published PyPI 0.5.1 package has an
+older implementation. Final `1.0.0` remains unreleased. Source installation is
+useful for development; the candidate rehearsal checks fresh installed artifacts
+outside the checkout and verifies the module location and metadata.
+
+## Install the TestPyPI candidate
+
+Check [candidate availability](https://test.pypi.org/project/circlepy/1.0.0rc1/)
+first. Create a fresh virtual environment outside the checkout. Obtain installers
+and runtime dependencies from the primary PyPI index, then select only CirclePy
+from TestPyPI without dependency resolution:
+
+```sh
+python -m venv circlepy-candidate
+# Windows PowerShell: circlepy-candidate\Scripts\Activate.ps1
+# Linux/macOS: source circlepy-candidate/bin/activate
+python -m pip --isolated install --index-url https://pypi.org/simple --only-binary=:all: --no-deps pip==26.2.2 setuptools==84.2.1
+python -m pip --isolated install --index-url https://pypi.org/simple "requests>=2.34.2,<3" "aiohttp>=3.14.5,<4" "pillow>=13.0.0,<14" "commonmark>=0.9.2,<0.10"
+python -m pip --isolated install --index-url https://test.pypi.org/simple --no-deps --only-binary=:all: circlepy==1.0.0rc1
+python -m pip check
+python -I -c "import circlepy; from importlib.metadata import version; print(version('circlepy'), circlepy.__file__)"
+```
+
+The version must be `1.0.0rc1` and the module path must be in this environment's
+site-packages. Do not combine the indexes using `--extra-index-url`: dependencies
+must not be selected from an untrusted alternate index. These commands test the
+wheel; the release rehearsal also tests the same candidate's sdist separately.
+An exact candidate pin explicitly selects the prerelease. TestPyPI availability
+does not announce a production release. See [release status](release-notes.md).
 
 ## All six clients, offline
 

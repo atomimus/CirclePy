@@ -13,8 +13,8 @@ schemas. The client never switches families or falls back to another API.
 Async network methods perform native aiohttp I/O; iterator methods are async
 generators, consumed with `async for`.
 
-This is development code under the unchanged 0.5.1 version, not a published v1
-release. Contracts were checked against the official [v1 Postman reference](https://api-v1.circle.so/)
+This guide describes candidate `1.0.0rc1`; see [release status](release-notes.md).
+Contracts were checked against the official [v1 Postman reference](https://api-v1.circle.so/)
 on October 27, 2026. Its collection bytes still match the frozen source hash in
 [`api/specs/sources.json`](../api/specs/sources.json). The sanitized
 [core operation and field inventory](../api/specs/admin-v1-core-coverage.json)

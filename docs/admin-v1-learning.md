@@ -4,7 +4,7 @@
 and three public notification operations below. All resource methods have matching
 signatures and native async counterparts. Existing [core](admin-v1.md) and
 [organization](admin-v1-organization.md) methods and successful return shapes remain.
-This is development code at version 0.5.1, not a newly published package.
+This guide describes candidate `1.0.0rc1`; see [release status](release-notes.md).
 
 The [official v1 reference](https://api-v1.circle.so/) and saved Postman requests
 were checked on October 27, 2026 and still match the freeze. The

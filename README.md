@@ -4,17 +4,18 @@ Python clients for Circle.so's Admin v1, Admin v2, Headless Auth and Member HTTP
 APIs. Synchronous clients use Requests; asynchronous clients use native aiohttp.
 Resources return ordinary provider dictionaries/lists and preserve unknown fields.
 
-**Development status:** this checkout still carries version **0.5.1** while
-preparing **1.0.0**. The guides describe this development line; installing the
-published 0.5.1 package does not install these new features. No 1.0.0 publication
-is announced here. See the [migration guide](https://github.com/atomimus/CirclePy/blob/main/docs/migration.md)
-and [unreleased changelog](https://github.com/atomimus/CirclePy/blob/main/CHANGELOG.md).
+**Release candidate:** this source prepares **1.0.0rc1** for validation on
+TestPyPI. Final **1.0.0** remains unreleased. The published PyPI 0.5.1 package
+predates these features. Check [candidate availability](https://test.pypi.org/project/circlepy/1.0.0rc1/)
+before following the [isolated TestPyPI install](https://github.com/atomimus/CirclePy/blob/main/docs/quickstart.md#install-the-testpypi-candidate).
+See the [migration guide](https://github.com/atomimus/CirclePy/blob/main/docs/migration.md)
+and [changelog](https://github.com/atomimus/CirclePy/blob/main/CHANGELOG.md).
 
 ## Install
 
 Requires **CPython 3.11–3.15**; CI validates Ubuntu, Windows and macOS. Python
 3.7–3.10, PyPy and free-threaded builds are outside the tested support matrix.
-For the current development features, clone the repository and install locally:
+For a source installation, clone the repository and use a virtual environment:
 
 ```sh
 git clone https://github.com/atomimus/CirclePy.git
