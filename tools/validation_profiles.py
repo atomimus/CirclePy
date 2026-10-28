@@ -23,6 +23,7 @@ WORKFLOW_FILES = {
     "tests/test_sandbox.py", ".gitignore",
     "tools/check_docs.py", ".github/ISSUE_TEMPLATE/bug_report.yml",
     ".github/ISSUE_TEMPLATE/documentation.yml", ".github/ISSUE_TEMPLATE/config.yml",
+    "tests/test_publication.py",
 }
 EXAMPLE_FILES = {"examples/__init__.py", "examples/offline.py", "examples/quickstart.py"}
 

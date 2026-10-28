@@ -47,8 +47,9 @@ are never test actions. Actual failed regressions are not waived.
 `pyproject.toml` is the sole metadata/version source. Development still uses
 0.5.1; never upload it as a new replacement for immutable published 0.5.1 bytes.
 Candidate/final versions, protected trusted publishers, environment approvals,
-source refs and upload gates belong to their dedicated release tasks. Publication
-is currently disabled by the guard; this guide does not enable it.
+source refs and upload gates belong to their dedicated release tasks. The
+[trusted pipeline](publishing.md) requires verified index publishers, protected
+environments and explicit authorization; its validation mode uploads no package.
 
 Before an authorized publication, verify the exact source SHA and selected
 required CI checks, full baseline wheel/sdist rehearsals, supported-platform

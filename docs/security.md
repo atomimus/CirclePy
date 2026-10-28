@@ -116,13 +116,16 @@ Security tests generate canaries at runtime and retain no member recordings.
 
 ## Publishing requirements
 
-Publication is currently disabled by a failing guard. Pushes and validation
-dispatches have read-only repository permissions, no package credentials and no
-publishing authority. See [validation profiles](sdk-validation.md).
+Pushes and CI validation dispatches have read-only repository permissions, no
+package credentials and no publishing authority. The separate
+[trusted release workflow](publishing.md) defaults to nonpublishing validation.
+Its isolated provenance job can attest digests without a package-index environment;
+only its two protected index jobs can request an environment-bound publisher
+identity. See [validation profiles](sdk-validation.md).
 
 Before enabling a publisher, the maintainer must configure distinct protected
 TestPyPI/PyPI environments and trusted publishers bound to this repository,
-workflow and environment. Only the upload job may receive `id-token: write`;
+workflow and environment. Only upload jobs and the isolated provenance job receive `id-token: write`;
 use short-lived OIDC and no long-lived package token. Protect release refs and
 environment approvals, pin actions to immutable revisions, and preserve the
 read-only build/test jobs. Follow
@@ -134,4 +137,5 @@ exact source SHA, every required Release-profile result, the full baseline
 wheel/sdist rehearsals and supported-platform smokes. It must upload the exact
 retained artifact digests, without rebuilding or substituting bytes. A green
 Runtime or smoke-only run is insufficient. Configure and verify these external
-protections in the publishing task before removing the guard.
+protections before declaring a publisher ready. Missing authorization fails closed;
+there is no long-lived package-token fallback and pipeline setup uploads nothing.

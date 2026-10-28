@@ -287,11 +287,12 @@ no Circle/PyPI secrets and no OIDC write permission. Actions are pinned by full
 commit SHA and checkout does not retain Git credentials. Dependency downloads,
 public advisory queries and GitHub artifact uploads happen outside test I/O.
 
-Publication is disabled by a failing release-event guard. The former token-based
-upload path is removed. The dedicated trusted-publishing task must configure
-protected environments, exact-SHA checks, provenance and an upload consuming only
-the already validated artifact bytes. Ordinary pushes and validation dispatches
-have no publishing credentials or permissions. Do not create a release to test it.
+The [trusted release pipeline](docs/publishing.md) has a nonpublishing rehearsal
+and separate protected OIDC jobs for TestPyPI candidates and production 1.0.0.
+Uploads require verified index publishers, environment approval/readiness, an
+intended tag at current main, complete Release CI and the same retained bytes.
+Ordinary pushes and CI validation dispatches have no publishing permissions.
+Pipeline setup authorizes no package upload. Do not create a release to test it.
 
 ## Versioning, typing and distributions
 

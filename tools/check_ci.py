@@ -8,11 +8,72 @@ import subprocess
 import sys
 import tempfile
 import tomllib
+from typing import Any
 
 import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
+ACTION_PINS = {
+    "actions/checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "actions/setup-python": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+    "actions/upload-artifact": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+    "actions/download-artifact": "9000827ccba6bdab643e8b6fd33ac0654aef8333",
+    "actions/attest": "1e69f48acb82d1966a394da916b4c1698aa569d6",
+    "pypa/gh-action-pypi-publish": "7245906fb61fa33a13554f9d5fb856fe61758086",
+}
+
+
+def check_release_workflow(publish: dict[str, Any]) -> None:
+    assert set(publish["on"]) == {"workflow_dispatch"}
+    inputs = publish["on"]["workflow_dispatch"]["inputs"]
+    assert set(inputs) == {"mode", "source_sha", "ci_run_id", "release_tag"}
+    assert inputs["mode"]["options"] == ["validate", "testpypi", "pypi"]
+    assert inputs["mode"]["default"] == "validate"
+    assert publish["concurrency"] == {"group": "circlepy-package-publication", "cancel-in-progress": "false"}
+    assert set(publish["jobs"]) == {"preflight", "provenance", "testpypi", "pypi"}
+    preflight = publish["jobs"]["preflight"]
+    assert preflight["if"] == "github.event_name == 'workflow_dispatch' && github.repository == 'atomimus/CirclePy' && github.ref == 'refs/heads/main'"
+    assert preflight["permissions"] == {"contents": "read", "actions": "read"}
+    assert "python tools/publication_guard.py prepare" in str(preflight)
+    assert "--authorize" not in str(preflight)
+    assert preflight["steps"][-1]["with"]["name"] == "release-evidence-${{ github.run_id }}"
+    provenance = publish["jobs"]["provenance"]
+    assert provenance["needs"] == "preflight"
+    assert "environment" not in provenance
+    assert provenance["permissions"] == {"contents": "read", "actions": "read", "id-token": "write", "attestations": "write"}
+    assert any("verify-transfer" in step.get("run", "") for step in provenance["steps"])
+    transfer = next(step for step in provenance["steps"] if step.get("uses", "").startswith("actions/download-artifact@"))
+    assert transfer["with"]["name"] == "release-evidence-${{ github.run_id }}"
+    attestation = next(step for step in provenance["steps"] if step.get("uses", "").startswith("actions/attest@"))
+    assert attestation["with"]["create-storage-record"] == "false"
+    assert attestation["with"]["push-to-registry"] == "false"
+    for mode, url in (("testpypi", "https://test.pypi.org/legacy/"), ("pypi", "https://upload.pypi.org/legacy/")):
+        job = publish["jobs"][mode]
+        assert job["needs"] == ["preflight", "provenance"]
+        assert job["if"] == f"github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.mode == '{mode}'"
+        assert job["environment"]["name"] == mode
+        assert job["permissions"] == {"contents": "read", "actions": "read", "id-token": "write"}
+        assert job["runs-on"] == "ubuntu-latest"
+        verification = job["steps"][-2]
+        assert verification.get("run") == 'python tools/publication_guard.py prepare .release-publish --authorize'
+        assert verification["env"] == {
+            "GH_TOKEN": "${{ github.token }}", "PUBLISHER_READY": "${{ vars.PUBLISHER_READY }}",
+            "EXPECTED_EVIDENCE": "${{ needs.preflight.outputs.evidence_sha256 }}",
+        }
+        uploader = job["steps"][-1]
+        assert uploader["uses"] == "pypa/gh-action-pypi-publish@" + ACTION_PINS["pypa/gh-action-pypi-publish"]
+        assert uploader["with"] == {
+            "repository-url": url, "packages-dir": ".release-publish/upload/",
+            "attestations": "true", "verify-metadata": "true", "skip-existing": "false",
+            "verbose": "false", "print-hash": "true",
+        }
+        assert not any("-m pip" in step.get("run", "") or "-m build" in step.get("run", "") for step in job["steps"])
+    for job in publish["jobs"].values():
+        for step in job["steps"]:
+            assert "${{ inputs." not in step.get("run", "")
+            if step.get("uses", "").startswith("actions/checkout@"):
+                assert step["with"]["ref"] == "${{ github.sha }}"
 
 
 def check_workflows() -> None:
@@ -38,27 +99,26 @@ def check_workflows() -> None:
     assert ci["jobs"]["focused"]["if"] == "needs.profile.outputs.source_matrix != 'true'"
     assert ci["jobs"]["artifact-smoke"]["strategy"]["matrix"] == "${{ fromJSON(needs.profile.outputs.artifact_matrix) }}"
     assert "secrets." not in (ROOT / ".github/workflows/ci.yml").read_text()
-    for workflow in workflows.values():
+    for filename, workflow in workflows.items():
         assert workflow["permissions"] == {"contents": "read"}
-        for job in workflow["jobs"].values():
-            assert "permissions" not in job
+        for job_id, job in workflow["jobs"].items():
+            if filename == "ci.yml":
+                assert "permissions" not in job
             assert "continue-on-error" not in job
             for step in job["steps"]:
                 assert "continue-on-error" not in step
                 assert "secrets." not in str(step)
-                assert "gh-action-pypi-publish" not in str(step)
+                if not (filename == "python-publish.yml" and job_id in {"testpypi", "pypi"}):
+                    assert "gh-action-pypi-publish" not in str(step)
                 assert "twine upload" not in str(step)
                 assert not ("tools.sandbox" in step.get("run", "") and "--live" in step["run"])
                 if "uses" in step:
                     assert re.fullmatch(r"[^@]+@[0-9a-f]{40}", step["uses"]), step["uses"]
+                    action, revision = step["uses"].split("@")
+                    assert ACTION_PINS.get(action) == revision, step["uses"]
                     if step["uses"].startswith("actions/checkout@"):
                         assert step["with"]["persist-credentials"] == "false"
-    publish = workflows["python-publish.yml"]
-    assert publish["on"] == {"release": {"types": ["published"]}}
-    for job in publish["jobs"].values():
-        assert job["if"] == "github.event_name == 'release' && github.event.action == 'published'"
-    assert set(publish["jobs"]) == {"publication-guard"}
-    assert publish["jobs"]["publication-guard"]["steps"][-1]["run"] == "python tools/publication_guard.py"
+    check_release_workflow(workflows["python-publish.yml"])
     config = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     options = config["tool"]["pytest"]["ini_options"]["addopts"]
     assert "--allow-hosts=127.0.0.1,::1" in options
@@ -73,12 +133,15 @@ def check_workflows() -> None:
     assert "python tools/check_sdk_coverage.py --json > sdk-coverage.json" in commands
     assert not any("check_distribution" in command or "-m build" in command for command in commands)
     artifact_commands = [step.get("run", "") for step in ci["jobs"]["artifact-smoke"]["steps"]]
-    assert "python tools/check_distribution.py dist --mode smoke --hashes dist/artifacts.json --report installed-smoke.json" in artifact_commands
+    assert 'python tools/check_distribution.py "${{ runner.temp }}/circlepy-dist" --mode smoke --hashes "${{ runner.temp }}/circlepy-dist/artifacts.json" --report installed-smoke.json' in artifact_commands
     assert not any("coverage" in command or "check_fault_matrix" in command for command in artifact_commands)
     full_commands = [step.get("run", "") for step in ci["jobs"]["release-artifacts"]["steps"]]
-    assert "python tools/check_distribution.py dist --mode full --hashes dist/artifacts.json --report installed-full.json" in full_commands
+    assert 'python tools/check_distribution.py "${{ runner.temp }}/circlepy-dist" --mode full --hashes "${{ runner.temp }}/circlepy-dist/artifacts.json" --report installed-full.json' in full_commands
     build_commands = [step.get("run", "") for step in ci["jobs"]["build"]["steps"]]
-    assert "python -m build" in build_commands
+    assert 'python -m build --outdir "${{ runner.temp }}/circlepy-dist"' in build_commands
+    assert 'python tools/publication_guard.py init "${{ runner.temp }}/circlepy-dist"' in build_commands
+    assert 'python tools/publication_guard.py record "${{ runner.temp }}/circlepy-dist"' in build_commands
+    assert ci["jobs"]["build"]["steps"][-1]["with"]["path"] == "${{ runner.temp }}/circlepy-dist/"
     assert sum(step.get("run", "").count("python -m build") for job in ci["jobs"].values() for step in job["steps"]) == 1
     assert ci["jobs"]["validation"]["if"] == "always()"
     assert set(ci["jobs"]["validation"]["needs"]) == set(ci["jobs"]) - {"validation"}
@@ -86,6 +149,7 @@ def check_workflows() -> None:
     quality = [step.get("run", "") for step in ci["jobs"]["quality"]["steps"]]
     focused = [step.get("run", "") for step in ci["jobs"]["focused"]["steps"]]
     assert any("-m pytest" in command and "tests/test_sandbox.py" in command for command in focused)
+    assert any("-m pytest" in command and "tests/test_publication.py" in command for command in focused)
     assert "python tools/check_security.py" in quality
     assert "python tools/dependency_inventory.py docs/dependency-inventory.json" in quality
     audit = "\n".join(step.get("run", "") for step in ci["jobs"]["dependencies"]["steps"])
@@ -93,7 +157,7 @@ def check_workflows() -> None:
     assert "--no-deps --disable-pip --strict --format json" in audit
     assert "--format cyclonedx-json" in audit
     assert "--ignore-vuln" not in audit
-    print("Verified fail-closed profiles, 15-cell full source gate, shared artifact smokes, release rehearsal and disabled publication")
+    print("Verified profiles, 15-cell source gate, retained artifact smokes, release rehearsal and protected OIDC publication")
 
 
 def check_negative_fixture() -> None:

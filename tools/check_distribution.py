@@ -44,6 +44,7 @@ DOCUMENTATION_ADDITIONS = (
     "docs/quickstart.md", "docs/migration.md", "docs/compatibility.md",
     "docs/limitations.md", "docs/release-notes.md", "docs/maintaining.md",
     "docs/attribution.md", "docs/sandbox.md", "docs/security.md", "docs/transports.md",
+    "docs/publishing.md",
 )
 
 

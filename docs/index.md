@@ -22,7 +22,8 @@ unreleased. Consult a versioned Git tag's guides when installing a release.
 
 [Changelog](../CHANGELOG.md), [release draft](release-notes.md),
 [contributing](../CONTRIBUTING.md), [support](../SUPPORT.md) and
-[maintainer guidance](maintaining.md) complete the release/support documentation.
+[maintainer guidance](maintaining.md) and [trusted publishing](publishing.md)
+complete the release/support documentation.
 
 Examples use synthetic IDs and responses. A function accepting a configured
 client may perform a mutation when called with real credentials; the test suite

@@ -152,6 +152,7 @@ jobs:
       - run: python tools/check_admin_v2_paywalls_contract.py
       - run: python tools/check_ci.py --negative-fixture
       - run: python -m ruff check --select E4,E7,E9,F tools/validation_profiles.py tools/publication_guard.py tools/check_distribution.py tools/check_security.py tools/dependency_inventory.py tests/test_validation_profiles.py tests/test_security.py
+      - run: python -m ruff check --select E4,E7,E9,F tools/publication_guard.py tests/test_publication.py
       - run: python tools/check_security.py
       - run: python -m ruff check --select E4,E7,E9,F tools/sandbox.py tools/sandbox_workflows.py tests/test_sandbox.py
       - run: python tools/dependency_inventory.py docs/dependency-inventory.json
@@ -207,17 +208,23 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install -c constraints-dev.txt -e ".[dev]"
+      - name: Require a fresh output directory outside the tracked dist folder
+        run: python tools/publication_guard.py init "${{ runner.temp }}/circlepy-dist"
       - name: Build one retained sdist and wheel from sdist
-        run: python -m build
-      - run: python -m twine check dist/*
+        run: python -m build --outdir "${{ runner.temp }}/circlepy-dist"
+      - run: python -m twine check --strict "${{ runner.temp }}/circlepy-dist/"*
       - name: Inspect archives and bind exact bytes
-        run: python tools/check_distribution.py dist --inspect-only --write-hashes dist/artifacts.json
+        run: python tools/check_distribution.py "${{ runner.temp }}/circlepy-dist" --inspect-only --write-hashes "${{ runner.temp }}/circlepy-dist/artifacts.json"
+      - name: Bind the pair to source, version, profile and immutable build run
+        env:
+          VALIDATION_PROFILE: ${{ needs.profile.outputs.profile }}
+        run: python tools/publication_guard.py record "${{ runner.temp }}/circlepy-dist"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: validated-distributions
-          path: dist/
+          path: ${{ runner.temp }}/circlepy-dist/
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 90
 
   artifact-smoke:
     name: artifact-smoke (${{ matrix.os }}, Python ${{ matrix.python }})
@@ -238,9 +245,9 @@ jobs:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: validated-distributions
-          path: dist/
+          path: ${{ runner.temp }}/circlepy-dist/
       - name: Clean installed wheel and sdist smokes
-        run: python tools/check_distribution.py dist --mode smoke --hashes dist/artifacts.json --report installed-smoke.json
+        run: python tools/check_distribution.py "${{ runner.temp }}/circlepy-dist" --mode smoke --hashes "${{ runner.temp }}/circlepy-dist/artifacts.json" --report installed-smoke.json
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
@@ -266,9 +273,9 @@ jobs:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: validated-distributions
-          path: dist/
+          path: ${{ runner.temp }}/circlepy-dist/
       - name: Full baseline wheel and sdist rehearsal before publication
-        run: python tools/check_distribution.py dist --mode full --hashes dist/artifacts.json --report installed-full.json
+        run: python tools/check_distribution.py "${{ runner.temp }}/circlepy-dist" --mode full --hashes "${{ runner.temp }}/circlepy-dist/artifacts.json" --report installed-full.json
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
@@ -292,7 +299,7 @@ jobs:
           python-version: "3.11"
       - run: python -m pip install -c constraints-dev.txt -e ".[dev]"
       - name: Focused guide and validation-tool checks
-        run: python -m pytest -v tests/test_validation_profiles.py tests/test_sandbox.py tests/test_sdk_reports.py tests/*_examples.py --junitxml=focused-tests.xml
+        run: python -m pytest -v tests/test_validation_profiles.py tests/test_publication.py tests/test_sandbox.py tests/test_sdk_reports.py tests/*_examples.py --junitxml=focused-tests.xml
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
