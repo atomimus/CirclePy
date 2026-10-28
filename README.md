@@ -4,9 +4,9 @@ Python clients for Circle.so's Admin v1, Admin v2, Headless Auth and Member HTTP
 APIs. Synchronous clients use Requests; asynchronous clients use native aiohttp.
 Resources return ordinary provider dictionaries/lists and preserve unknown fields.
 
-**Release candidate:** this source prepares **1.0.0rc1** for validation on
+**Release candidate:** this source prepares **1.0.0rc2** for validation on
 TestPyPI. Final **1.0.0** remains unreleased. The published PyPI 0.5.1 package
-predates these features. Check [candidate availability](https://test.pypi.org/project/circlepy/1.0.0rc1/)
+predates these features. Check [candidate availability](https://test.pypi.org/project/circlepy/1.0.0rc2/)
 before following the [isolated TestPyPI install](https://github.com/atomimus/CirclePy/blob/main/docs/quickstart.md#install-the-testpypi-candidate).
 See the [migration guide](https://github.com/atomimus/CirclePy/blob/main/docs/migration.md)
 and [changelog](https://github.com/atomimus/CirclePy/blob/main/CHANGELOG.md).

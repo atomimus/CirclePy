@@ -1,7 +1,7 @@
 # Trusted artifact publishing
 
 The `Trusted release` workflow configures a gated OIDC path. It does not grant
-permission to publish a package. This source prepares candidate `1.0.0rc1`;
+permission to publish a package. This source prepares candidate `1.0.0rc2`;
 final `1.0.0` remains unreleased. Never replace an existing immutable release.
 Candidate and final publication require their separately authorized release work,
 the account setup below and all selected checks. A dry run uploads no package.

@@ -21,14 +21,14 @@ def installation():
     return {"version": version("circlepy"), "module": circlepy.__file__}
 ```
 
-Metadata identifies candidate `1.0.0rc1`; the published PyPI 0.5.1 package has an
+Metadata identifies candidate `1.0.0rc2`; the published PyPI 0.5.1 package has an
 older implementation. Final `1.0.0` remains unreleased. Source installation is
 useful for development; the candidate rehearsal checks fresh installed artifacts
 outside the checkout and verifies the module location and metadata.
 
 ## Install the TestPyPI candidate
 
-Check [candidate availability](https://test.pypi.org/project/circlepy/1.0.0rc1/)
+Check [candidate availability](https://test.pypi.org/project/circlepy/1.0.0rc2/)
 first. Create a fresh virtual environment outside the checkout. Obtain installers
 and runtime dependencies from the primary PyPI index, then select only CirclePy
 from TestPyPI without dependency resolution:
@@ -39,12 +39,12 @@ python -m venv circlepy-candidate
 # Linux/macOS: source circlepy-candidate/bin/activate
 python -m pip --isolated install --index-url https://pypi.org/simple --only-binary=:all: --no-deps pip==26.2.2 setuptools==84.2.1
 python -m pip --isolated install --index-url https://pypi.org/simple "requests>=2.34.2,<3" "aiohttp>=3.14.5,<4" "pillow>=13.0.0,<14" "commonmark>=0.9.2,<0.10"
-python -m pip --isolated install --index-url https://test.pypi.org/simple --no-deps --only-binary=:all: circlepy==1.0.0rc1
+python -m pip --isolated install --index-url https://test.pypi.org/simple --no-deps --only-binary=:all: circlepy==1.0.0rc2
 python -m pip check
 python -I -c "import circlepy; from importlib.metadata import version; print(version('circlepy'), circlepy.__file__)"
 ```
 
-The version must be `1.0.0rc1` and the module path must be in this environment's
+The version must be `1.0.0rc2` and the module path must be in this environment's
 site-packages. Do not combine the indexes using `--extra-index-url`: dependencies
 must not be selected from an untrusted alternate index. These commands test the
 wheel; the release rehearsal also tests the same candidate's sdist separately.

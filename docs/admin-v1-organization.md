@@ -10,7 +10,7 @@ examples were checked on October 27, 2026. The collection still matches the
 freeze. The [field inventory](../api/specs/admin-v1-organization-coverage.json)
 includes fields found only in saved examples. It contains sanitized field names,
 with independent synthetic wire fixtures, rather than provider response schemas.
-This guide describes candidate `1.0.0rc1`; see [release status](release-notes.md).
+This guide describes candidate `1.0.0rc2`; see [release status](release-notes.md).
 
 ## Methods and identifiers
 

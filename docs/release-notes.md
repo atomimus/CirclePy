@@ -1,8 +1,8 @@
-# CirclePy 1.0.0rc1 candidate and v1 release notes
+# CirclePy 1.0.0rc2 candidate and v1 release notes
 
-**Candidate source: 1.0.0rc1. Final 1.0.0 remains unreleased.** This source is
-prepared for the TestPyPI rehearsal, with intended tag `v1.0.0rc1`. Verify
-[the candidate's index files](https://test.pypi.org/project/circlepy/1.0.0rc1/#files)
+**Candidate source: 1.0.0rc2. Final 1.0.0 remains unreleased.** This source is
+prepared for the TestPyPI rehearsal, with intended tag `v1.0.0rc2`. Verify
+[the candidate's index files](https://test.pypi.org/project/circlepy/1.0.0rc2/#files)
 and the exact source's CI before treating it as published or validated.
 [Candidate installation](quickstart.md#install-the-testpypi-candidate) keeps
 runtime dependencies on PyPI and selects only CirclePy from TestPyPI.

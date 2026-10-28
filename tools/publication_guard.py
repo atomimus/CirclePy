@@ -162,9 +162,10 @@ class GitHub:
                 require(not archive, "Expected artifact storage redirect")
                 return json.load(response)
         except HTTPError as error:
-            if not archive or error.code != 302:
-                raise ValueError(f"GitHub evidence request failed ({error.code})") from None
-            location = error.headers.get("Location", "")
+            with error:
+                if not archive or error.code != 302:
+                    raise ValueError(f"GitHub evidence request failed ({error.code})") from None
+                location = error.headers.get("Location", "")
         except (URLError, TimeoutError):
             raise ValueError("GitHub evidence is unavailable") from None
         parsed = urlsplit(location)
@@ -177,7 +178,10 @@ class GitHub:
                 raw = response.read(MAX_ARCHIVE + 1)
             require(len(raw) <= MAX_ARCHIVE, "Artifact exceeds size limit")
             return raw
-        except (HTTPError, URLError, TimeoutError):
+        except HTTPError as error:
+            error.close()
+            raise ValueError("Retained artifact download failed") from None
+        except (URLError, TimeoutError):
             raise ValueError("Retained artifact download failed") from None
 
     def get(self, path):
@@ -255,7 +259,8 @@ def index_available(mode, version):
         with urlopen(f"https://{host}/pypi/circlepy/{version}/json", timeout=30):
             raise ValueError("Immutable index version already exists; reconcile before retrying")
     except HTTPError as error:
-        require(error.code == 404, "Index availability could not be established")
+        with error:
+            require(error.code == 404, "Index availability could not be established")
     except (URLError, TimeoutError):
         raise ValueError("Index availability could not be established") from None
 

@@ -1,6 +1,6 @@
 # CirclePy documentation
 
-These guides describe candidate `1.0.0rc1`. The published PyPI 0.5.1 distribution
+These guides describe candidate `1.0.0rc2`. The published PyPI 0.5.1 distribution
 predates these changes; final 1.0.0 remains unreleased. See [release status](release-notes.md)
 and consult the matching versioned Git tag's guides when installing a release.
 

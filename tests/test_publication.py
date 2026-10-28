@@ -328,18 +328,22 @@ def test_archive_links_and_path_traversal_never_extract(tmp_path):
 
 @pytest.mark.parametrize("code", [401, 403, 429, 500])
 def test_index_errors_are_not_treated_as_unused_versions(monkeypatch, code):
+    response = HTTPError("https://example.invalid/private", code, "blocked", {}, io.BytesIO(b"private"))
     def fail(*args, **kwargs):
-        raise HTTPError("https://example.invalid/private", code, "blocked", {}, None)
+        raise response
     monkeypatch.setattr(gate, "urlopen", fail)
     with pytest.raises(ValueError, match="could not be established"):
         gate.index_available("testpypi", VERSION)
+    assert response.closed
 
 
 def test_index_only_allows_404_and_rejects_existing_or_unknown_outcomes(monkeypatch):
+    response = HTTPError("https://example.invalid/", 404, "absent", {}, io.BytesIO())
     def unused(*args, **kwargs):
-        raise HTTPError("https://example.invalid/", 404, "absent", {}, None)
+        raise response
     monkeypatch.setattr(gate, "urlopen", unused)
     gate.index_available("testpypi", VERSION)
+    assert response.closed
     monkeypatch.setattr(gate, "urlopen", lambda *a, **kw: io.BytesIO(b"{}"))
     with pytest.raises(ValueError, match="already exists"):
         gate.index_available("pypi", "1.0.0")
@@ -352,10 +356,13 @@ def test_index_only_allows_404_and_rejects_existing_or_unknown_outcomes(monkeypa
 
 def test_github_token_never_reaches_signed_artifact_storage(monkeypatch):
     token = "synthetic-private-canary"
+    redirects = []
     class Redirect:
         def open(self, request, **kwargs):
             assert request.headers["Authorization"] == "Bearer " + token
-            raise HTTPError(request.full_url, 302, "redirect", {"Location": "https://example.blob.core.windows.net/archive?sig=private"}, None)
+            response = HTTPError(request.full_url, 302, "redirect", {"Location": "https://example.blob.core.windows.net/archive?sig=private"}, io.BytesIO())
+            redirects.append(response)
+            raise response
     monkeypatch.setattr(gate, "build_opener", lambda *a: Redirect())
     def storage(request, **kwargs):
         assert not request.headers
@@ -368,6 +375,26 @@ def test_github_token_never_reaches_signed_artifact_storage(monkeypatch):
     with pytest.raises(ValueError) as error:
         gate.GitHub(token).archive(dict(id=42))
     assert "private" not in str(error.value) and token not in str(error.value)
+    assert len(redirects) == 2 and all(response.closed for response in redirects)
+
+
+@pytest.mark.parametrize("stage", ["api", "storage"])
+def test_github_http_error_responses_are_closed_and_redacted(monkeypatch, stage):
+    response = HTTPError("https://example.invalid/private", 403, "private", {}, io.BytesIO(b"private"))
+    class Opener:
+        def open(self, request, **kwargs):
+            if stage == "api":
+                raise response
+            raise HTTPError(request.full_url, 302, "redirect", {"Location": "https://example.blob.core.windows.net/archive"}, None)
+    def storage(*args, **kwargs):
+        raise response
+    monkeypatch.setattr(gate, "build_opener", lambda *a: Opener())
+    monkeypatch.setattr(gate, "urlopen", storage)
+    with pytest.raises(ValueError) as error:
+        api = gate.GitHub("synthetic-private-canary")
+        api.get("commits/main") if stage == "api" else api.archive(dict(id=42))
+    assert response.closed
+    assert "private" not in str(error.value)
 
 
 @pytest.mark.parametrize("location", ["http://example.blob.core.windows.net/a", "https://attacker.invalid/a", "https://user:secret@example.blob.core.windows.net/a"])

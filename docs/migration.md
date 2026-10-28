@@ -1,6 +1,6 @@
 # Migrating from published 0.5.1 to 1.0.0
 
-This describes candidate `1.0.0rc1` and the planned v1 release. Final `1.0.0`
+This describes candidate `1.0.0rc2` and the planned v1 release. Final `1.0.0`
 remains unreleased; see [release status](release-notes.md). Rehearse your application's
 calls in an isolated environment with a specific commit or eventual release
 artifact, then follow the [quickstart](quickstart.md) and [limits](limitations.md).

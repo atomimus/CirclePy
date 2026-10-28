@@ -5,12 +5,14 @@
 The final release is pending the candidate rehearsal and production publication.
 See [migration](docs/migration.md) for application changes.
 
-## 1.0.0rc1 — release candidate
+## 1.0.0rc2 — release candidate
 
-Prepared October 28, 2026 for the TestPyPI rehearsal. Metadata is `1.0.0rc1`;
+Prepared October 28, 2026 for the TestPyPI rehearsal. Metadata is `1.0.0rc2`;
 index availability and validation are verified separately before final release.
 This entry does not announce production PyPI publication.
 
+- Close publication preflight HTTP error responses across supported Python
+  versions, preserving strict warnings, status checks and credential isolation.
 - Add explicit Admin v2 resources and native async facades for all three API
   families; retain legacy Admin v1 call shapes, projections and successful results.
 - Cover the 354-operation October 27, 2026 frozen inventory with independent
