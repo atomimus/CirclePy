@@ -1,17 +1,22 @@
-# CirclePy 1.0.0rc2 candidate and v1 release notes
+# CirclePy 1.0.0 release notes
 
-**Candidate source: 1.0.0rc2. Final 1.0.0 remains unreleased.** This source is
-prepared for the TestPyPI rehearsal, with intended tag `v1.0.0rc2`. Verify
-[the candidate's index files](https://test.pypi.org/project/circlepy/1.0.0rc2/#files)
-and the exact source's CI before treating it as published or validated.
-[Candidate installation](quickstart.md#install-the-testpypi-candidate) keeps
-runtime dependencies on PyPI and selects only CirclePy from TestPyPI.
+**Release source: 1.0.0**, dated October 28, 2026, with intended tag `v1.0.0`.
+For public availability and provenance, verify [PyPI's versioned files](https://pypi.org/project/circlepy/1.0.0/#files)
+and the [matching GitHub release](https://github.com/atomimus/CirclePy/releases/tag/v1.0.0).
+Install the exact version using the [quickstart](quickstart.md#install-from-pypi).
+
+The [1.0.0rc2 candidate](https://test.pypi.org/project/circlepy/1.0.0rc2/#files)
+passed its [full Release rehearsal](https://github.com/atomimus/CirclePy/actions/runs/40696888484)
+and [trusted TestPyPI upload](https://github.com/atomimus/CirclePy/actions/runs/40699603491).
+Final metadata and release documentation change; SDK source, dependencies,
+build requirements and behavior tests match the validated candidate. Final
+publication requires a fresh artifact pair and its own exact-source checks.
 
 The prepublication Release profile requires all 15 source cells, 15 installed
 smoke cells and full wheel/sdist suites on Ubuntu/Python 3.11 for one retained
 artifact pair. Trusted Publishing uploads those same bytes after environment
 approval. Index hashes, provenance and fresh installed consumer checks complete
-the rehearsal; a green build alone does not establish index publication.
+release verification; a green build alone does not establish index publication.
 See [the publishing procedure](publishing.md) for the exact gates.
 
 CirclePy's v1 line provides explicit synchronous and native asynchronous Python

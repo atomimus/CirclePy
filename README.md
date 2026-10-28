@@ -4,18 +4,27 @@ Python clients for Circle.so's Admin v1, Admin v2, Headless Auth and Member HTTP
 APIs. Synchronous clients use Requests; asynchronous clients use native aiohttp.
 Resources return ordinary provider dictionaries/lists and preserve unknown fields.
 
-**Release candidate:** this source prepares **1.0.0rc2** for validation on
-TestPyPI. Final **1.0.0** remains unreleased. The published PyPI 0.5.1 package
-predates these features. Check [candidate availability](https://test.pypi.org/project/circlepy/1.0.0rc2/)
-before following the [isolated TestPyPI install](https://github.com/atomimus/CirclePy/blob/main/docs/quickstart.md#install-the-testpypi-candidate).
-See the [migration guide](https://github.com/atomimus/CirclePy/blob/main/docs/migration.md)
+**CirclePy 1.0.0** provides all six sync/async clients and the frozen v1 API
+inventory. See [release notes](https://github.com/atomimus/CirclePy/blob/main/docs/release-notes.md),
+[PyPI files](https://pypi.org/project/circlepy/1.0.0/#files), the
+[migration guide](https://github.com/atomimus/CirclePy/blob/main/docs/migration.md)
 and [changelog](https://github.com/atomimus/CirclePy/blob/main/CHANGELOG.md).
 
 ## Install
 
 Requires **CPython 3.11–3.15**; CI validates Ubuntu, Windows and macOS. Python
 3.7–3.10, PyPy and free-threaded builds are outside the tested support matrix.
-For a source installation, clone the repository and use a virtual environment:
+Install the pinned release in a virtual environment:
+
+```sh
+python -m venv circlepy-env
+# Windows PowerShell: circlepy-env\Scripts\Activate.ps1
+# Linux/macOS: source circlepy-env/bin/activate
+python -m pip --isolated install --index-url https://pypi.org/simple "circlepy==1.0.0"
+python -m pip check
+```
+
+For source development and the offline examples, clone the repository:
 
 ```sh
 git clone https://github.com/atomimus/CirclePy.git

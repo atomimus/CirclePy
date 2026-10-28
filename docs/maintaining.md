@@ -44,8 +44,8 @@ are never test actions. Actual failed regressions are not waived.
 
 ## Release discipline
 
-`pyproject.toml` is the sole metadata/version source. The selected candidate is
-`1.0.0rc2`; final `1.0.0` remains unreleased. Never replace immutable version bytes.
+`pyproject.toml` is the sole metadata/version source. Final version `1.0.0`
+follows the verified `1.0.0rc2` candidate. Never replace immutable version bytes.
 Candidate/final versions, protected trusted publishers, environment approvals,
 source refs and upload gates belong to their dedicated release tasks. The
 [trusted pipeline](publishing.md) requires verified index publishers, protected

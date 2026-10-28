@@ -6,7 +6,7 @@ Their methods return complete provider JSON, including `reaction_summary`,
 return `None`. Async methods use native aiohttp; await the same method names.
 Use [client lifecycles](clients.md) for authentication, strict errors and closure.
 
-This guide describes candidate `1.0.0rc2`. The contracts below were checked against
+This guide describes `1.0.0`. The contracts below were checked against
 Circle's [Member schema](https://api-headless.circle.so/api/headless_client/v1/swagger.yaml),
 [post concepts](https://api.circle.so/get-started/concepts/posts.md) and
 [TipTap blocks](https://api.circle.so/get-started/concepts/tiptap-editor.md) on

@@ -1,15 +1,11 @@
 # Changelog
 
-## 1.0.0 — unreleased
+## 1.0.0 — October 28, 2026
 
-The final release is pending the candidate rehearsal and production publication.
-See [migration](docs/migration.md) for application changes.
-
-## 1.0.0rc2 — release candidate
-
-Prepared October 28, 2026 for the TestPyPI rehearsal. Metadata is `1.0.0rc2`;
-index availability and validation are verified separately before final release.
-This entry does not announce production PyPI publication.
+Final release metadata for the v1 implementation rehearsed as `1.0.0rc2` on
+TestPyPI. SDK code and dependency/build requirements are unchanged from that
+candidate. See [migration](docs/migration.md) for application changes and
+[release notes](docs/release-notes.md) for publication verification.
 
 - Close publication preflight HTTP error responses across supported Python
   versions, preserving strict warnings, status checks and credential isolation.
@@ -35,6 +31,15 @@ and upstream schema gaps remain documented in [limitations](docs/limitations.md)
 The guarded pipeline publishes only the exact validated wheel/sdist pair through
 the matching trusted publisher. Candidate rehearsal and final publication have
 separate gates. See [release status and notes](docs/release-notes.md).
+
+## 1.0.0rc2 — release candidate
+
+The October 28, 2026 TestPyPI rehearsal verified the same SDK implementation
+with candidate metadata. Its full Release CI and installed-artifact checks passed.
+The first candidate was rejected before tagging or uploading after strict
+Python 3.14/3.15 checks exposed a publisher HTTP error response cleanup leak;
+rc2 fixes that leak without weakening checks. Final 1.0.0 uses a fresh artifact
+pair and separate production gates.
 
 ## 0.5.1 — published baseline
 

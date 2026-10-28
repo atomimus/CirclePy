@@ -5,6 +5,23 @@ Windows and macOS. CI tests ordinary GIL builds. Python 3.7–3.10, PyPy,
 free-threaded builds and other platforms have no support evidence. See
 [the compatibility policy](compatibility.md) before upgrading a runtime.
 
+## Install from PyPI
+
+Create and activate a fresh virtual environment, then install the exact release
+from the primary PyPI index:
+
+```sh
+python -m venv circlepy-env
+# Windows PowerShell: circlepy-env\Scripts\Activate.ps1
+# Linux/macOS: source circlepy-env/bin/activate
+python -m pip --isolated install --index-url https://pypi.org/simple "circlepy==1.0.0"
+python -m pip check
+```
+
+Check [the versioned PyPI files](https://pypi.org/project/circlepy/1.0.0/#files)
+and [release notes](release-notes.md). The installed metadata must identify
+`1.0.0`, and imports must resolve inside this environment's site-packages.
+
 ## Install from source
 
 Clone the repository and use a virtual environment as shown in [README](../README.md).
@@ -21,10 +38,10 @@ def installation():
     return {"version": version("circlepy"), "module": circlepy.__file__}
 ```
 
-Metadata identifies candidate `1.0.0rc2`; the published PyPI 0.5.1 package has an
-older implementation. Final `1.0.0` remains unreleased. Source installation is
-useful for development; the candidate rehearsal checks fresh installed artifacts
-outside the checkout and verifies the module location and metadata.
+This source's metadata identifies `1.0.0`; the PyPI 0.5.1 migration baseline has
+an older implementation. Source installation is useful for development. Release
+validation checks fresh installed artifacts outside the checkout and verifies
+the module location and metadata.
 
 ## Install the TestPyPI candidate
 
