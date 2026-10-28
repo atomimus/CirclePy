@@ -48,6 +48,7 @@ def check_workflows() -> None:
                 assert "secrets." not in str(step)
                 assert "gh-action-pypi-publish" not in str(step)
                 assert "twine upload" not in str(step)
+                assert not ("tools.sandbox" in step.get("run", "") and "--live" in step["run"])
                 if "uses" in step:
                     assert re.fullmatch(r"[^@]+@[0-9a-f]{40}", step["uses"]), step["uses"]
                     if step["uses"].startswith("actions/checkout@"):
@@ -83,6 +84,8 @@ def check_workflows() -> None:
     assert set(ci["jobs"]["validation"]["needs"]) == set(ci["jobs"]) - {"validation"}
     assert ci["jobs"]["validation"]["steps"][-1]["run"] == "python tools/validation_profiles.py --selection validation-profile.json --verify-needs"
     quality = [step.get("run", "") for step in ci["jobs"]["quality"]["steps"]]
+    focused = [step.get("run", "") for step in ci["jobs"]["focused"]["steps"]]
+    assert any("-m pytest" in command and "tests/test_sandbox.py" in command for command in focused)
     assert "python tools/check_security.py" in quality
     assert "python tools/dependency_inventory.py docs/dependency-inventory.json" in quality
     audit = "\n".join(step.get("run", "") for step in ci["jobs"]["dependencies"]["steps"])

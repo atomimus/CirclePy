@@ -5,6 +5,8 @@ __pycache__/
 coverage-matrix.md
 # Local release planning files
 v1-release/
+# Local sandbox configuration, redacted live reports and cleanup ledgers
+.circlepy-sandbox/
 # C extensions
 *.so
 *tmp*.py

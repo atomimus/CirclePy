@@ -29,3 +29,5 @@ include docs/admin-v2-operations.md
 include docs/admin-v2-billing.md
 include docs/admin-v2-paywalls.md
 include docs/sdk-validation.md
+include docs/sandbox.md
+prune .circlepy-sandbox

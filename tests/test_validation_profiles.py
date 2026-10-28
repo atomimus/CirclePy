@@ -24,7 +24,7 @@ from tools import dependency_inventory as inventory  # noqa: E402
     (["circlepy/transport.py", "README.md"], "runtime"),
     (["pyproject.toml"], "runtime"), (["constraints-dev.txt"], "runtime"),
     (["tests/test_transport.py"], "runtime"), (["new-unknown-file"], "runtime"),
-    (["tools/validation_profiles.py"], "runtime"), ([], "runtime"),
+    (["tools/validation_profiles.py"], "workflow"), ([], "runtime"),
     (["../README.md"], "runtime"), (["/docs/a.md"], "runtime"),
     (["docs/../circlepy/transport.py"], "runtime"), (["docs\\a.md"], "runtime"),
 ])

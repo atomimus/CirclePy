@@ -17,6 +17,10 @@ WORKFLOW_FILES = {
     "MANIFEST.in", ".github/workflows/ci.yml", ".github/workflows/python-publish.yml",
     "tools/check_distribution.py", "tools/check_ci.py", "tools/publication_guard.py",
     "tests/test_validation_profiles.py",
+    # Reviewed sandbox harness inputs do not change SDK/dependency behavior.
+    # The classifier itself is workflow tooling; mixed SDK inputs still promote.
+    "tools/validation_profiles.py", "tools/sandbox.py", "tools/sandbox_workflows.py",
+    "tests/test_sandbox.py", ".gitignore",
 }
 
 

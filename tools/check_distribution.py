@@ -46,7 +46,7 @@ def require(condition, message):
 
 
 def check_paths(names):
-    forbidden = {".git", ".venv", "venv", "__pycache__", ".pytest_cache", "dist", "build", "v1-release"}
+    forbidden = {".git", ".venv", "venv", "__pycache__", ".pytest_cache", "dist", "build", "v1-release", ".circlepy-sandbox"}
     for name in names:
         path = PurePosixPath(name)
         require(not path.is_absolute() and ".." not in path.parts, f"Unsafe archive path: {name}")
@@ -110,6 +110,7 @@ def inspect_artifacts(directory):
         required.add("docs/admin-v2-billing.md")
         required.add("docs/admin-v2-paywalls.md")
         required.add("docs/sdk-validation.md")
+        required.add("docs/sandbox.md")
         required |= {"SECURITY.md", "docs/security.md", "docs/dependency-inventory.json"}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "tools").glob("*.py")}
         required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}

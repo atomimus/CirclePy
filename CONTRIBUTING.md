@@ -303,3 +303,9 @@ It reconciles every frozen tag/owner with explicit public sync/native async meth
 and independent synthetic contracts. State transitions, JSON payout scopes,
 no-replay behavior and all 34 guide functions run offline and in clean artifact
 installs. See `docs/admin-v2-paywalls.md` for provider limits and exact signatures.
+
+## Dedicated sandbox checks
+
+The optional [sandbox runner](docs/sandbox.md) requires explicit test-community
+and controlled-account configuration. Its live results and cleanup ledger stay
+local; ordinary CI runs only the deterministic harness/fault checks.
