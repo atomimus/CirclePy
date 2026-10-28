@@ -1,0 +1,53 @@
+name: Published consumer verification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUTF8: "1"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+jobs:
+  published:
+    name: published (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.11", "3.12", "3.13", "3.14", "3.15"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install only the constrained verification prerequisite
+        run: |
+          python -m pip --isolated install --index-url https://pypi.org/simple --only-binary=:all: -c constraints-dev.txt packaging
+      - name: Verify production artifacts and clean installed consumers
+        run: python tools/check_published_release.py --output published-check
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: published-${{ matrix.os }}-${{ matrix.python }}
+          path: published-check/
+          if-no-files-found: error
+          retention-days: 90
+
+  published-validation:
+    name: published-validation
+    needs: published
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require all fifteen published consumer cells
+        env:
+          RESULT: ${{ needs.published.result }}
+        run: test "$RESULT" = success

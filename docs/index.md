@@ -16,6 +16,7 @@ and consult the matching versioned Git tag's guides when installing a release.
 | [Provider and evidence limits](limitations.md) | Unsupported guarantees, schema gaps, experimental routes and accepted missing live coverage |
 | [Compatibility and deprecation](compatibility.md) | Public surface, versioning, annotations and runtime policy |
 | [SDK validation](sdk-validation.md) | Offline contracts, coverage, CI profiles and artifact rehearsals |
+| [Published release verification](published-release.md) | Production hashes, provenance, fresh consumer checks and maintenance boundary |
 | [Sandbox runner](sandbox.md) | Explicit live opt-in, controlled accounts, fixture journal and cleanup |
 | [Security boundaries](security.md) | Credentials, content, dependencies and publishing controls |
 | [Attribution](attribution.md) | MIT license, upstream schemas and dependency notices |

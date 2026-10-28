@@ -64,8 +64,10 @@ project. TestPyPI accounts, ownership and trusted publishers are separate from
 production PyPI. Stop if the name belongs to another owner; do not choose a
 different package or upload destination implicitly.
 
-In [GitHub environments](https://github.com/atomimus/CirclePy/settings/environments),
-configure both `testpypi` and `pypi`:
+As the repository owner, open **Settings → Environments** and configure both
+`testpypi` and `pypi`, following [GitHub's public environment setup guide](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments).
+Repository settings require owner/admin access; public readers may see 404 for
+those settings even when the protected environments exist.
 
 | Setting | Required value |
 |---|---|

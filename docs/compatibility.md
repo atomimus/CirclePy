@@ -1,7 +1,7 @@
 # Compatibility, versioning and deprecation
 
-This is the policy for the 1.0.0 line under development. It does not announce a
-published version. Package metadata in `pyproject.toml` is authoritative; use
+This is the policy for the published 1.0.0 line. See the
+[release verification record](published-release.md). Package metadata is authoritative; use
 `importlib.metadata.version("circlepy")` to inspect an installed distribution.
 
 ## Public API

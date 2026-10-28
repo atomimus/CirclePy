@@ -35,6 +35,7 @@ include docs/index.md docs/api.md docs/quickstart.md docs/migration.md
 include docs/compatibility.md docs/limitations.md docs/release-notes.md
 include docs/maintaining.md docs/attribution.md
 include docs/publishing.md
+include docs/published-release.md
 recursive-include examples *.py
 prune docs/_build
 prune .circlepy-sandbox

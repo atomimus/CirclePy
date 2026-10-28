@@ -1,6 +1,6 @@
 # CirclePy 1.0.0 release notes
 
-**Release source: 1.0.0**, dated October 28, 2026, with intended tag `v1.0.0`.
+**Published release: 1.0.0**, dated October 28, 2026, with verified tag `v1.0.0`.
 For public availability and provenance, verify [PyPI's versioned files](https://pypi.org/project/circlepy/1.0.0/#files)
 and the [matching GitHub release](https://github.com/atomimus/CirclePy/releases/tag/v1.0.0).
 Install the exact version using the [quickstart](quickstart.md#install-from-pypi).
@@ -8,9 +8,12 @@ Install the exact version using the [quickstart](quickstart.md#install-from-pypi
 The [1.0.0rc2 candidate](https://test.pypi.org/project/circlepy/1.0.0rc2/#files)
 passed its [full Release rehearsal](https://github.com/atomimus/CirclePy/actions/runs/40696888484)
 and [trusted TestPyPI upload](https://github.com/atomimus/CirclePy/actions/runs/40699603491).
-Final metadata and release documentation change; SDK source, dependencies,
-build requirements and behavior tests match the validated candidate. Final
-publication requires a fresh artifact pair and its own exact-source checks.
+Final metadata and release documentation changed; SDK source, dependencies,
+build requirements and behavior tests match the validated candidate. The
+[final Release CI](https://github.com/atomimus/CirclePy/actions/runs/40703334746)
+and [trusted PyPI upload](https://github.com/atomimus/CirclePy/actions/runs/40706906135)
+passed for the final source. Both public files match the exact validated bytes;
+see [production hashes, provenance and consumer checks](published-release.md).
 
 The prepublication Release profile requires all 15 source cells, 15 installed
 smoke cells and full wheel/sdist suites on Ubuntu/Python 3.11 for one retained

@@ -44,7 +44,7 @@ DOCUMENTATION_ADDITIONS = (
     "docs/quickstart.md", "docs/migration.md", "docs/compatibility.md",
     "docs/limitations.md", "docs/release-notes.md", "docs/maintaining.md",
     "docs/attribution.md", "docs/sandbox.md", "docs/security.md", "docs/transports.md",
-    "docs/publishing.md",
+    "docs/publishing.md", "docs/published-release.md",
 )
 
 
@@ -167,9 +167,9 @@ def junit_counts(path):
     return counts
 
 
-def installer_requirements():
-    config = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
-    pip = next(line for line in (ROOT / "constraints-dev.txt").read_text().splitlines()
+def installer_requirements(root=ROOT):
+    config = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
+    pip = next(line for line in (root / "constraints-dev.txt").read_text().splitlines()
                if line.startswith("pip=="))
     requirements = [Requirement(value) for value in [pip, *config["build-system"]["requires"]]]
     for requirement in requirements:
@@ -188,8 +188,11 @@ def check_installers(dependencies, requirements):
                 f"Unaudited bootstrap installer: {requirement.name}")
 
 
-def check_installs(artifacts, mode):
+def check_installs(artifacts, mode, *, source_root=None, run_command=None, smoke_tests=None):
     require(mode in {"full", "smoke"}, "Unknown installed-test mode")
+    source_root = ROOT if source_root is None else source_root
+    run_command = run if run_command is None else run_command
+    smoke_tests = SMOKE_TESTS if smoke_tests is None else smoke_tests
     results = []
     for artifact in artifacts:
         started = time.monotonic()
@@ -198,14 +201,14 @@ def check_installs(artifacts, mode):
             environment = work / "env"
             venv.EnvBuilder(with_pip=True).create(environment)
             python = environment / ("Scripts/python.exe" if sys.platform == "win32" else "bin/python")
-            installers = installer_requirements()
+            installers = installer_requirements(source_root)
             # Python's ensurepip may bundle vulnerable old installers. Upgrade
             # only these audited tools from wheels before handling the artifact.
             # Consumer runtime dependencies still resolve without our dev lock.
-            run([python, "-m", "pip", "install", "--disable-pip-version-check",
+            run_command([python, "-m", "pip", "install", "--disable-pip-version-check",
                  "--only-binary=:all:", "--no-deps", *map(str, installers)], work)
-            run([python, "-m", "pip", "install", "--disable-pip-version-check", artifact], work)
-            run([python, "-m", "pip", "check"], work)
+            run_command([python, "-m", "pip", "install", "--disable-pip-version-check", artifact], work)
+            run_command([python, "-m", "pip", "check"], work)
             dependencies = json.loads(subprocess.check_output([str(python), "-I", "-c",
                 "import importlib.metadata as m,json; print(json.dumps(sorted(["
                 "{'name':d.metadata['Name'],'version':d.version,"
@@ -213,7 +216,7 @@ def check_installs(artifacts, mode):
                 "'license':d.metadata.get('License'),'requires_dist':d.requires or []} "
                 "for d in m.distributions()],key=lambda d:d['name'].lower())))"], cwd=work, text=True))
             check_installers(dependencies, installers)
-            run([python, "-I", "-c", "\n".join([
+            run_command([python, "-I", "-c", "\n".join([
                 "import importlib, importlib.metadata, inspect, pathlib, pkgutil, sys",
                 "import circlepy",
                 "location = pathlib.Path(circlepy.__file__).resolve()",
@@ -224,52 +227,31 @@ def check_installs(artifacts, mode):
                 "for name in modules: importlib.import_module(name)",
                 "print('Installed', importlib.metadata.version('circlepy'), 'from', location, '; imported', len(modules), 'modules')",
             ])], work)
-            shutil.copytree(ROOT / "tests", work / "tests", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+            shutil.copytree(source_root / "tests", work / "tests", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
             (work / "docs").mkdir()
-            shutil.copy2(ROOT / "docs/clients.md", work / "docs/clients.md")
-            shutil.copy2(ROOT / "docs/media.md", work / "docs/media.md")
-            shutil.copy2(ROOT / "docs/content.md", work / "docs/content.md")
-            shutil.copy2(ROOT / "docs/members.md", work / "docs/members.md")
-            shutil.copy2(ROOT / "docs/messaging.md", work / "docs/messaging.md")
-            shutil.copy2(ROOT / "docs/learning.md", work / "docs/learning.md")
-            shutil.copy2(ROOT / "docs/pagination.md", work / "docs/pagination.md")
-            shutil.copy2(ROOT / "docs/admin-v1.md", work / "docs/admin-v1.md")
-            shutil.copy2(ROOT / "docs/admin-v1-organization.md", work / "docs/admin-v1-organization.md")
-            shutil.copy2(ROOT / "docs/admin-v1-learning.md", work / "docs/admin-v1-learning.md")
-            shutil.copy2(ROOT / "docs/admin-v2-members.md", work / "docs/admin-v2-members.md")
-            shutil.copy2(ROOT / "docs/admin-v2-access.md", work / "docs/admin-v2-access.md")
-            shutil.copy2(ROOT / "docs/admin-v2-content.md", work / "docs/admin-v2-content.md")
-            shutil.copy2(ROOT / "docs/admin-v2-courses.md", work / "docs/admin-v2-courses.md")
-            shutil.copy2(ROOT / "docs/admin-v2-events.md", work / "docs/admin-v2-events.md")
-            shutil.copy2(ROOT / "docs/admin-v2-organization.md", work / "docs/admin-v2-organization.md")
-            shutil.copy2(ROOT / "docs/admin-v2-profiles.md", work / "docs/admin-v2-profiles.md")
-            shutil.copy2(ROOT / "docs/admin-v2-operations.md", work / "docs/admin-v2-operations.md")
-            shutil.copy2(ROOT / "docs/admin-v2-billing.md", work / "docs/admin-v2-billing.md")
-            shutil.copy2(ROOT / "docs/admin-v2-paywalls.md", work / "docs/admin-v2-paywalls.md")
-            shutil.copy2(ROOT / "docs/sdk-validation.md", work / "docs/sdk-validation.md")
-            shutil.copy2(ROOT / "docs/dependency-inventory.json", work / "docs/dependency-inventory.json")
-            for relative in DOCUMENTATION_ADDITIONS:
-                shutil.copy2(ROOT / relative, work / relative)
-            for relative in ("README.md", "CONTRIBUTING.md", "SECURITY.md", "LICENSE"):
-                shutil.copy2(ROOT / relative, work / relative)
-            shutil.copytree(ROOT / "examples", work / "examples", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+            for guide in (source_root / "docs").glob("*.md"):
+                shutil.copy2(guide, work / "docs" / guide.name)
+            shutil.copy2(source_root / "docs/dependency-inventory.json", work / "docs/dependency-inventory.json")
+            for relative in ("README.md", "CONTRIBUTING.md", "SECURITY.md", "LICENSE", "CHANGELOG.md", "SUPPORT.md"):
+                shutil.copy2(source_root / relative, work / relative)
+            shutil.copytree(source_root / "examples", work / "examples", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
             # Audit tooling/tests must inspect the installed SDK, not a copied
             # source package. Only public schemas and tools are copied here.
-            shutil.copytree(ROOT / "api", work / "api")
-            shutil.copytree(ROOT / "tools", work / "tools", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-            shutil.copytree(ROOT / ".github", work / ".github")
+            shutil.copytree(source_root / "api", work / "api")
+            shutil.copytree(source_root / "tools", work / "tools", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+            shutil.copytree(source_root / ".github", work / ".github")
             # Validate consumer dependencies first, then add only the test tools.
             # Copy configuration so the identical offline guard and strict async
             # mode apply outside the checkout, without PYTHONPATH shadowing.
-            shutil.copy2(ROOT / "pyproject.toml", work / "pyproject.toml")
-            shutil.copy2(ROOT / "constraints-dev.txt", work / "constraints-dev.txt")
-            run([python, "-m", "pip", "install", "-c", ROOT / "constraints-dev.txt",
+            shutil.copy2(source_root / "pyproject.toml", work / "pyproject.toml")
+            shutil.copy2(source_root / "constraints-dev.txt", work / "constraints-dev.txt")
+            run_command([python, "-m", "pip", "install", "-c", source_root / "constraints-dev.txt",
                  "pytest", "pytest-asyncio", "pytest-socket", "PyYAML", "packaging", "markdown-it-py"], work)
-            run([python, "-m", "pip", "check"], work)
-            selected = [work / "tests"] if mode == "full" else [work / "tests" / name for name in SMOKE_TESTS]
+            run_command([python, "-m", "pip", "check"], work)
+            selected = [work / "tests"] if mode == "full" else [work / "tests" / name for name in smoke_tests]
             report = work / "installed-tests.xml"
             print(f"Installed {mode} validation: {artifact.name}; selected {len(selected)} test paths", flush=True)
-            run([python, "-I", "-m", "pytest", "-v", f"--junitxml={report}", *selected], work)
+            run_command([python, "-I", "-m", "pytest", "-v", f"--junitxml={report}", *selected], work)
             counts = junit_counts(report)
             results.append({"artifact": artifact.name, "mode": mode, "results": counts,
                             "consumer_dependencies_before_test_tools": dependencies,

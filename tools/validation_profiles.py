@@ -24,6 +24,8 @@ WORKFLOW_FILES = {
     "tools/check_docs.py", ".github/ISSUE_TEMPLATE/bug_report.yml",
     ".github/ISSUE_TEMPLATE/documentation.yml", ".github/ISSUE_TEMPLATE/config.yml",
     "tests/test_publication.py",
+    "tools/check_published_release.py", "tests/test_published_release.py",
+    ".github/workflows/postrelease.yml",
 }
 EXAMPLE_FILES = {"examples/__init__.py", "examples/offline.py", "examples/quickstart.py"}
 
