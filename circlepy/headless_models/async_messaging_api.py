@@ -1,5 +1,6 @@
 """Native async HTTP messaging, notifications and discovery resources."""
 
+from .base_api_client import AsyncBaseAPIClient
 from ..pagination import aiter_records
 from .pagination import async_member_pages
 from contextlib import aclosing
@@ -12,7 +13,7 @@ from .messaging import (room_payload, message_payload, participant_payload,
                         chat_reaction_payload, notification_payload, search_params)
 
 
-class AsyncChatAPI:
+class AsyncChatAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -125,7 +126,7 @@ class AsyncChatAPI:
 
 
 
-class AsyncNotificationsAPI:
+class AsyncNotificationsAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -200,7 +201,7 @@ class AsyncNotificationsAPI:
 
 
 
-class AsyncSearchAPI:
+class AsyncSearchAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -245,7 +246,7 @@ class AsyncSearchAPI:
 
 
 
-class AsyncBookmarksAPI:
+class AsyncBookmarksAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -285,7 +286,7 @@ class AsyncBookmarksAPI:
 
 
 
-class AsyncCookiesAPI:
+class AsyncCookiesAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -298,7 +299,7 @@ class AsyncCookiesAPI:
         return await self._client.request('DELETE', '/cookies')
 
 
-class AsyncCommunityLinksAPI:
+class AsyncCommunityLinksAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -308,7 +309,7 @@ class AsyncCommunityLinksAPI:
         return await self._client.request('GET', '/community_links')
 
 
-class AsyncHomeAPI:
+class AsyncHomeAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth

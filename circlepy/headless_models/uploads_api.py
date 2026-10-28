@@ -2,7 +2,7 @@
 
 from copy import deepcopy
 
-from .base_api_client import BaseAPIClient
+from .base_api_client import AsyncBaseAPIClient, BaseAPIClient
 from ..uploads import upload_file, async_upload_file
 
 
@@ -20,7 +20,7 @@ class UploadsAPI(BaseAPIClient):
                            metadata=metadata, key=key)
 
 
-class AsyncUploadsAPI:
+class AsyncUploadsAPI(AsyncBaseAPIClient):
     def __init__(self, auth):
         self.auth = auth
         self._transport = auth.transport

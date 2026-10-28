@@ -1,5 +1,6 @@
 """Native async Member learning, event, moderation, invitation and live resources."""
 
+from .base_api_client import AsyncBaseAPIClient
 from ..pagination import aiter_records
 from .pagination import async_member_pages
 from contextlib import aclosing
@@ -11,7 +12,7 @@ from .learning import event_params, field_payload, flagged_payload, live_room_pa
 from .members import page_params
 
 
-class AsyncCoursesAPI:
+class AsyncCoursesAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -80,7 +81,7 @@ class AsyncCoursesAPI:
 
 
 
-class AsyncQuizzesAPI:
+class AsyncQuizzesAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -100,7 +101,7 @@ class AsyncQuizzesAPI:
                                           json=field_payload('result', result, payload))
 
 
-class AsyncEventsAPI:
+class AsyncEventsAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -170,7 +171,7 @@ class AsyncEventsAPI:
 
 
 
-class AsyncFlaggedContentsAPI:
+class AsyncFlaggedContentsAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -184,7 +185,7 @@ class AsyncFlaggedContentsAPI:
         return await self._client.request('POST', '/flagged_contents', json=body)
 
 
-class AsyncInvitationLinksAPI:
+class AsyncInvitationLinksAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -194,7 +195,7 @@ class AsyncInvitationLinksAPI:
         return await self._client.request('POST', f'/invitation_links/{segment(token)}/join')
 
 
-class AsyncLiveStreamsAPI:
+class AsyncLiveStreamsAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth

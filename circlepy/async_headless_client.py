@@ -4,7 +4,7 @@ Named member resources are registered explicitly by their owning API tasks.
 """
 
 from .async_auth import AsyncAuth
-from .api_clients import family_path
+from .headless_models.base_api_client import async_member_request
 from .tokens import identity
 from .headless_models.uploads_api import AsyncUploadsAPI
 from .headless_models.async_content_api import AsyncPostsAPI, AsyncCommentsAPI
@@ -79,27 +79,8 @@ class AsyncHeadlessClient:
         return await self._request(method, endpoint, params=params, json=json)
 
     async def _request(self, method, endpoint, *, params=None, json=None, _strict=False):
-        method = method.upper()
-        # Validate before refreshing: a bad target must not trigger auth I/O.
-        self.transport._url(family_path(endpoint))
-        token, generation, refreshed = await self.auth.ensure_token()
-        for attempt in range(2):
-            response = await self.transport.request(method, endpoint, params=params, json=json,
-                                                     headers={'Authorization': f'Bearer {token}'},
-                                                     raise_on_error=False)
-            if response.status_code != 401:
-                break
-            if method != 'GET' or json is not None:
-                break
-            if attempt or refreshed:
-                self.auth.reject_token(token, response)
-                response.raise_for_status()
-            token = await self.auth.refresh_for_request(generation)
-        if _strict or self.transport.raise_on_error:
-            response.raise_for_status()
-        if endpoint.rstrip('/') == '/cookies' and method == 'POST' and response.status_code == 200:
-            return {'cookies': response.cookies, 'cookies_set': response.cookies.get_dict()}
-        return response.json()
+        return await async_member_request(self.auth, method, endpoint, params=params,
+                                          json=json, _strict=_strict)
 
     async def aclose(self):
         await self.auth.aclose()

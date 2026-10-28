@@ -606,7 +606,7 @@ async def test_every_financial_call_stays_single_attempt(
             headers_gate=gate if failure == "timeout" else None,
         )
     )
-    client = client_for(http_server, async_mode, max_retries=2, timeout=0.15)
+    client = client_for(http_server, async_mode, max_retries=2, timeout=0.15 if failure == "timeout" else 30.0)
     try:
         error = (
             APITimeoutError

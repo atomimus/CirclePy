@@ -1,5 +1,6 @@
 """Native async Member profile, directory and space resources."""
 
+from .base_api_client import AsyncBaseAPIClient
 from ..pagination import CursorPages, MemberDirectoryPages, aiter_records
 from .pagination import async_member_pages
 from contextlib import aclosing
@@ -12,7 +13,7 @@ from .members import (filter_spaces, notification_params, page_params,
 from .uploads_api import AsyncUploadsAPI
 
 
-class AsyncCommunityMembersAPI:
+class AsyncCommunityMembersAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -151,7 +152,7 @@ class AsyncCommunityMembersAPI:
 
 
 
-class AsyncSpacesAPI:
+class AsyncSpacesAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -224,7 +225,7 @@ class AsyncSpacesAPI:
 
 
 
-class AsyncSpaceMembersAPI:
+class AsyncSpaceMembersAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -235,7 +236,7 @@ class AsyncSpaceMembersAPI:
         return await self._client.request('POST', f'/space_members/{segment(space_member_id)}/mark_as_read')
 
 
-class AsyncPageProfileFieldsAPI:
+class AsyncPageProfileFieldsAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth

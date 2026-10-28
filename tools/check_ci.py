@@ -51,6 +51,12 @@ def check_workflows() -> None:
     assert "--force-enable-socket" not in options
     assert config["tool"]["coverage"]["run"]["source"] == ["circlepy"]
     assert "omit" not in config["tool"]["coverage"]["run"]
+    assert config["tool"]["coverage"]["report"]["exclude_lines"] == []
+    assert config["tool"]["coverage"]["report"]["exclude_also"] == []
+    commands = [step.get("run") for step in ci["jobs"]["test"]["steps"]]
+    assert "python tools/check_branch_coverage.py coverage.json" in commands
+    assert "python tools/check_fault_matrix.py --junit test-results.xml" in commands
+    assert "python tools/check_sdk_coverage.py --json > sdk-coverage.json" in commands
     print("Verified 15 unique runtime/OS jobs, quality/dependency jobs, pinned actions and release-only publication")
 
 

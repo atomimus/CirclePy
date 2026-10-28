@@ -1,5 +1,6 @@
 """Explicit native async Member content resources borrowing the facade pool."""
 
+from .base_api_client import AsyncBaseAPIClient
 from ..pagination import aiter_records
 from .pagination import async_member_pages
 from contextlib import aclosing
@@ -13,7 +14,7 @@ from .uploads_api import AsyncUploadsAPI
 from ..uploads import _file_io
 
 
-class AsyncPostsAPI:
+class AsyncPostsAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth
@@ -126,7 +127,7 @@ class AsyncPostsAPI:
 
 
 
-class AsyncCommentsAPI:
+class AsyncCommentsAPI(AsyncBaseAPIClient):
     def __init__(self, client):
         self._client = client
         self.auth = client.auth

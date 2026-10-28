@@ -86,6 +86,7 @@ def inspect_artifacts(directory):
         required.add("docs/admin-v2-operations.md")
         required.add("docs/admin-v2-billing.md")
         required.add("docs/admin-v2-paywalls.md")
+        required.add("docs/sdk-validation.md")
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "tools").glob("*.py")}
         required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / ".github").rglob("*.yml")}
@@ -153,12 +154,17 @@ def check_installs(artifacts):
             shutil.copy2(ROOT / "docs/admin-v2-operations.md", work / "docs/admin-v2-operations.md")
             shutil.copy2(ROOT / "docs/admin-v2-billing.md", work / "docs/admin-v2-billing.md")
             shutil.copy2(ROOT / "docs/admin-v2-paywalls.md", work / "docs/admin-v2-paywalls.md")
+            shutil.copy2(ROOT / "docs/sdk-validation.md", work / "docs/sdk-validation.md")
+            # Audit tooling/tests must inspect the installed SDK, not a copied
+            # source package. Only public schemas and tools are copied here.
+            shutil.copytree(ROOT / "api", work / "api")
+            shutil.copytree(ROOT / "tools", work / "tools", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
             # Validate consumer dependencies first, then add only the test tools.
             # Copy configuration so the identical offline guard and strict async
             # mode apply outside the checkout, without PYTHONPATH shadowing.
             shutil.copy2(ROOT / "pyproject.toml", work / "pyproject.toml")
             run([python, "-m", "pip", "install", "-c", ROOT / "constraints-dev.txt",
-                 "pytest", "pytest-asyncio", "pytest-socket"], work)
+                 "pytest", "pytest-asyncio", "pytest-socket", "PyYAML"], work)
             run([python, "-m", "pip", "check"], work)
             run([python, "-I", "-m", "pytest", "-v", work / "tests"], work)
 

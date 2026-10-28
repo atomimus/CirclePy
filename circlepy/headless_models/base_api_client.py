@@ -76,3 +76,46 @@ class BaseAPIClient:
 
     def delete(self, endpoint):
         return self._request('DELETE', endpoint)
+
+
+async def async_member_request(auth, method, endpoint, *, params=None, json=None, _strict=False):
+    """One native member request path for the facade and legacy resource helpers."""
+    from ..api_clients import family_path
+
+    method = method.upper()
+    transport = auth.transport
+    transport._url(family_path(endpoint))
+    token, generation, refreshed = await auth.ensure_token()
+    for attempt in range(2):
+        response = await transport.request(method, endpoint, params=params, json=json,
+                                           headers={'Authorization': f'Bearer {token}'},
+                                           raise_on_error=False)
+        if response.status_code != 401:
+            break
+        if method != 'GET' or json is not None:
+            break
+        if attempt or refreshed:
+            auth.reject_token(token, response)
+            response.raise_for_status()
+        token = await auth.refresh_for_request(generation)
+    if _strict or transport.raise_on_error:
+        response.raise_for_status()
+    if endpoint.rstrip('/') == '/cookies' and method == 'POST' and response.status_code == 200:
+        return {'cookies': response.cookies, 'cookies_set': response.cookies.get_dict()}
+    return response.json()
+
+
+class AsyncBaseAPIClient:
+    """Native counterparts of the published inherited Headless request helpers."""
+
+    async def get(self, endpoint, params=None):
+        return await async_member_request(self.auth, 'GET', endpoint, params=params)
+
+    async def post(self, endpoint, data=None):
+        return await async_member_request(self.auth, 'POST', endpoint, json=data)
+
+    async def put(self, endpoint, data=None):
+        return await async_member_request(self.auth, 'PUT', endpoint, json=data)
+
+    async def delete(self, endpoint):
+        return await async_member_request(self.auth, 'DELETE', endpoint)

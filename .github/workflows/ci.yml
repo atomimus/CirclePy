@@ -15,7 +15,7 @@ jobs:
   test:
     name: test (${{ matrix.os }}, Python ${{ matrix.python }})
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 50
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -35,6 +35,10 @@ jobs:
         run: python -m coverage run -m pytest -v --junitxml=test-results.xml
       - run: python -m coverage report
       - run: python -m coverage xml
+      - run: python -m coverage json -o coverage.json
+      - run: python tools/check_branch_coverage.py coverage.json
+      - run: python tools/check_fault_matrix.py --junit test-results.xml
+      - run: python tools/check_sdk_coverage.py --json > sdk-coverage.json
       - run: python -X utf8 tools/baseline.py
       - run: python -X utf8 tools/published_api.py
       - name: Build sdist and wheel from sdist
@@ -50,6 +54,8 @@ jobs:
           path: |
             test-results.xml
             coverage.xml
+            coverage.json
+            sdk-coverage.json
           if-no-files-found: error
           retention-days: 14
 
@@ -68,6 +74,9 @@ jobs:
       - run: python -m ruff check circlepy tests tools
       - run: python -m ruff check --select E4,E7,E9,F tests/conftest.py tests/http_fixtures.py tests/test_offline_http.py tools/check_ci.py circlepy/transport.py circlepy/errors.py tests/test_transport.py circlepy/tokens.py circlepy/async_auth.py circlepy/async_client.py circlepy/async_resources.py circlepy/api_clients.py circlepy/async_headless_client.py circlepy/headless_models/auth.py tests/test_token_lifecycle.py tests/test_async_admin.py tests/test_client_examples.py
       - run: python -m mypy
+      - run: python -m ruff check --select E4,E7,E9,F tools/check_branch_coverage.py tools/check_sdk_coverage.py tools/compare_specs.py tools/check_fault_matrix.py tests/test_sdk_faults.py tests/test_sdk_surface.py tests/test_sdk_reports.py
+      - run: python tools/check_sdk_coverage.py
+      - run: python tools/check_fault_matrix.py
       - run: python -m ruff check --select E4,E7,E9,F circlepy/uploads.py circlepy/rich_text.py circlepy/headless_models/uploads_api.py circlepy/headless_models/helper/tiptap.py tests/test_uploads.py tests/test_rich_text.py tools/check_media_contract.py
       - run: python tools/check_media_contract.py
       - run: python -m ruff check --select E4,E7,E9,F circlepy/headless_models/content.py circlepy/headless_models/posts_api.py circlepy/headless_models/comments_api.py circlepy/headless_models/async_content_api.py tests/test_headless_content.py tools/check_content_contract.py

@@ -58,6 +58,10 @@ interpreter path shown above.
 python -m coverage run -m pytest -v --junitxml=test-results.xml
 python -m coverage report
 python -m coverage xml
+python -m coverage json -o coverage.json
+python tools/check_branch_coverage.py coverage.json
+python tools/check_fault_matrix.py --junit test-results.xml
+python tools/check_sdk_coverage.py --contracts --json > sdk-coverage.json
 python -X utf8 tools/baseline.py
 python -X utf8 tools/published_api.py
 python -m ruff check circlepy tests tools
@@ -94,7 +98,7 @@ default. Start with an empty output directory, or choose a new one with
 `check_distribution.py` inspects both archives, installs each into a new venv,
 checks dependencies/imports and runs the complete copied pytest suite with
 `python -I` outside the checkout. It installs the three constrained pytest tools
-only after checking the consumer environment and site-packages import location.
+and PyYAML only after checking the consumer environment and site-packages import location.
 It downloads dependencies but never contacts a Circle community. Source tests
 use synthetic responses; they are not live API evidence. The optional baseline
 `--verify-live` only retrieves public documentation to detect schema drift.
@@ -126,9 +130,13 @@ The negative-fixture command runs an intentionally wrong request in a temporary
 test outside the checkout and requires pytest to fail. It commits no broken test.
 Live/sandbox tests remain a separate explicitly opt-in future suite.
 
-Coverage measures branches in every `circlepy` module with no production-module
-exclusions. CI uploads XML and test reports for each matrix cell. Current coverage
-is a baseline report; Task 28 must reach the 90% branch-coverage release gate.
+Coverage measures branches in every `circlepy` module with no production line or
+module exclusions. CI enforces at least 90% actual branch coverage separately
+from coverage's combined statement/branch score, and checks that every critical
+failure selector appears in the passing complete JUnit run. It retains XML,
+JSON, test and endpoint/field/async reports for each matrix cell. See
+[SDK validation](docs/sdk-validation.md) for reproducible report and read-only
+documentation-drift commands and explicit provider schema limits.
 Ruff checks syntax and fatal correctness rules across production/tests/tools;
 new harness, transport/error and media files also receive full F and E4/E7/E9 checks.
 It does not impose a formatting migration. Strict mypy covers the fixture/convention

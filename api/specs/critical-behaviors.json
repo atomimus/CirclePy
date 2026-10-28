@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "evidence": "Offline controlled faults; execute selectors through complete source and installed suites",
+  "scenarios": [
+    {
+      "id": "T01",
+      "category": "transport",
+      "invariant": "Only explicitly safe reads retry within the configured budget; bodies and unsafe verbs never replay",
+      "tests": [
+        "tests/test_transport.py::test_retries_require_explicit_safe_read_and_are_bounded",
+        "tests/test_transport.py::test_unsafe_operations_never_replay",
+        "tests/test_transport.py::test_body_even_on_safe_get_disables_retry"
+      ]
+    },
+    {
+      "id": "T02",
+      "category": "transport",
+      "invariant": "Provider Retry-After is honored; no early retry beyond the cap",
+      "tests": [
+        "tests/test_transport.py::test_retry_after_exceeding_bound_returns_without_early_retry",
+        "tests/test_transport.py::test_retry_after_date_and_invalid_forms",
+        "tests/test_transport.py::test_retry_backoff_and_connection_recovery"
+      ]
+    },
+    {
+      "id": "T03",
+      "category": "transport",
+      "invariant": "Connect/read/header/body timeouts are bounded and release responses",
+      "tests": [
+        "tests/test_transport.py::test_sync_stalled_connect_timeout_and_tls_failure_do_not_leak",
+        "tests/test_transport.py::test_async_stalled_connect_uses_deadline",
+        "tests/test_transport.py::test_stalled_response_timeout_releases_connection"
+      ]
+    },
+    {
+      "id": "T04",
+      "category": "transport",
+      "invariant": "Disconnects, streams and native library retries cannot duplicate writes",
+      "tests": [
+        "tests/test_transport.py::test_sync_rewindable_and_one_shot_streams_never_replay",
+        "tests/test_transport.py::test_async_one_shot_stream_is_sent_once",
+        "tests/test_transport.py::test_disconnect_is_not_replayed_by_underlying_library"
+      ]
+    },
+    {
+      "id": "T05",
+      "category": "transport",
+      "invariant": "Cancellation propagates during response/backoff and leaves the loop/pool usable",
+      "tests": [
+        "tests/test_transport.py::test_native_cancellation_and_event_loop_responsiveness",
+        "tests/test_transport.py::test_cancellation_during_backoff_does_not_send_again"
+      ]
+    },
+    {
+      "id": "T06",
+      "category": "transport",
+      "invariant": "TLS policy, origins and redirects protect scoped credentials",
+      "tests": [
+        "tests/test_transport.py::test_origin_checks_and_redirects_protect_credentials",
+        "tests/test_transport.py::test_borrowed_connector_cannot_disable_certificate_validation",
+        "tests/test_transport.py::test_headless_explicit_auth_and_member_origins_scope_credentials"
+      ]
+    },
+    {
+      "id": "T07",
+      "category": "transport",
+      "invariant": "Borrowed pools survive close; conflicting session settings fail locally",
+      "tests": [
+        "tests/test_transport.py::test_borrowed_sessions_remain_open_and_conflicts_fail",
+        "tests/test_transport.py::test_async_session_closed_or_conflicting_defaults_are_rejected",
+        "tests/test_transport.py::test_sync_injected_adapter_retries_are_rejected"
+      ]
+    },
+    {
+      "id": "T08",
+      "category": "transport",
+      "invariant": "Proxy, environment and netrc choices retain explicit credential precedence",
+      "tests": [
+        "tests/test_transport.py::test_proxy_forwarding_and_environment_precedence",
+        "tests/test_transport.py::test_no_proxy_and_disabled_environment",
+        "tests/test_transport.py::test_netrc_is_opt_in_and_cannot_override_explicit_auth"
+      ]
+    },
+    {
+      "id": "T09",
+      "category": "transport",
+      "invariant": "Malformed/non-JSON statuses and connection causes do not disclose private context by default",
+      "tests": [
+        "tests/test_transport.py::test_invalid_and_non_json_errors_are_safe",
+        "tests/test_transport.py::test_connection_failure_and_sanitized_cause",
+        "tests/test_transport.py::test_strict_status_and_legacy_error_json"
+      ]
+    },
+    {
+      "id": "T10",
+      "category": "transport",
+      "invariant": "Cookies retain domain/path/expiry and reject unrelated domains",
+      "tests": [
+        "tests/test_transport.py::test_cookie_snapshot_preserves_domain_path_expiry_and_jar_methods",
+        "tests/test_transport.py::test_cookie_policy_rejects_expired_or_unrelated_domains"
+      ]
+    },
+    {
+      "id": "A01",
+      "category": "auth",
+      "invariant": "Refresh is bounded once and cannot replay mutation bodies",
+      "tests": [
+        "tests/test_token_lifecycle.py::test_401_refresh_once_and_second_401_raises",
+        "tests/test_token_lifecycle.py::test_no_mutation_or_body_auth_replay",
+        "tests/test_token_lifecycle.py::test_refresh_rejection_is_clear_and_does_not_storm"
+      ]
+    },
+    {
+      "id": "A02",
+      "category": "auth",
+      "invariant": "Concurrent expiry and stale generations coalesce one refresh",
+      "tests": [
+        "tests/test_token_lifecycle.py::test_async_concurrent_expiry_single_refresh",
+        "tests/test_token_lifecycle.py::test_sync_refresh_generation_coalesces_concurrent_401",
+        "tests/test_token_lifecycle.py::test_concurrent_401_single_refresh_and_waiter_cancellation"
+      ]
+    },
+    {
+      "id": "A03",
+      "category": "auth",
+      "invariant": "Cancelled leader releases lock/pool; waiter cancellation does not cancel leader",
+      "tests": [
+        "tests/test_token_lifecycle.py::test_cancel_refresh_leader_releases_lock_and_pool"
+      ]
+    },
+    {
+      "id": "A04",
+      "category": "auth",
+      "invariant": "Real HTTP refresh waiter cancellation leaves leader and pool healthy",
+      "tests": [
+        "tests/test_sdk_faults.py::test_cancelled_refresh_waiter_does_not_cancel_leader_or_share_failure"
+      ]
+    },
+    {
+      "id": "A05",
+      "category": "auth",
+      "invariant": "Malformed replacement data is atomic and cached until explicit recovery",
+      "tests": [
+        "tests/test_sdk_faults.py::test_malformed_refresh_is_atomic_cached_and_requires_explicit_recovery"
+      ]
+    },
+    {
+      "id": "A06",
+      "category": "auth",
+      "invariant": "Revocation is confirmed before state clearing and blocks subsequent writes",
+      "tests": [
+        "tests/test_sdk_faults.py::test_revoked_access_cannot_replay_a_resource_write"
+      ]
+    },
+    {
+      "id": "A07",
+      "category": "auth",
+      "invariant": "Failed factories close owned sessions, preserve borrowed sessions and propagate cancellation",
+      "tests": [
+        "tests/test_token_lifecycle.py::test_factory_failure_and_cancellation_close_owned_session",
+        "tests/test_token_lifecycle.py::test_sync_factory_failure_closes_owned_but_not_borrowed_pool"
+      ]
+    },
+    {
+      "id": "A08",
+      "category": "auth",
+      "invariant": "Invalid restoration/identity/expiry fails before I/O; callback failure retains accepted state",
+      "tests": [
+        "tests/test_token_lifecycle.py::test_invalid_restoration_fails_without_io",
+        "tests/test_token_lifecycle.py::test_factories_validate_exactly_one_identity_before_io",
+        "tests/test_token_lifecycle.py::test_async_callback_is_awaited_and_failure_keeps_received_tokens",
+        "tests/test_token_lifecycle.py::test_short_lived_refresh_avoids_repeated_proactive_refresh"
+      ]
+    },
+    {
+      "id": "P01",
+      "category": "pagination",
+      "invariant": "Repeated cursors/pages, inconsistent metadata and invalid budgets terminate",
+      "tests": [
+        "tests/test_pagination.py::test_repeated_pages_and_cursors_raise_without_extra_fetch",
+        "tests/test_pagination.py::test_malformed_or_inconsistent_pages_fail_before_yield",
+        "tests/test_pagination.py::test_invalid_page_budgets_fail_before_io"
+      ]
+    },
+    {
+      "id": "P02",
+      "category": "pagination",
+      "invariant": "Error JSON/decode failures cannot become pages even under legacy error opt-out",
+      "tests": [
+        "tests/test_pagination.py::test_iteration_never_accepts_error_json_as_a_page",
+        "tests/test_pagination.py::test_decode_or_empty_success_is_not_a_successful_page"
+      ]
+    },
+    {
+      "id": "P03",
+      "category": "pagination",
+      "invariant": "Early exit and cancellation release responses while retaining borrowed pools",
+      "tests": [
+        "tests/test_pagination.py::test_early_break_keeps_borrowed_session_open_and_no_response_stream",
+        "tests/test_pagination.py::test_cancellation_during_next_page_releases_owned_response"
+      ]
+    },
+    {
+      "id": "P04",
+      "category": "pagination",
+      "invariant": "Omitted filters remain omitted and later failures stop native/sync traversal without poisoning pools",
+      "tests": [
+        "tests/test_sdk_faults.py::test_default_filter_traversal_stops_on_later_error_and_reuses_pool"
+      ]
+    },
+    {
+      "id": "P05",
+      "category": "pagination",
+      "invariant": "Cursor omission and empty terminal pages stop; zero budget performs no auth or HTTP",
+      "tests": [
+        "tests/test_pagination.py::test_cursor_without_flag_uses_cursor_omission_as_terminal",
+        "tests/test_pagination.py::test_empty_terminal_pages_are_preserved_and_yield_no_records",
+        "tests/test_pagination.py::test_empty_client_iterators_make_no_authentication_or_member_request"
+      ]
+    },
+    {
+      "id": "U01",
+      "category": "uploads",
+      "invariant": "API/storage errors are strict and single-attempt with borrowed source ownership preserved",
+      "tests": [
+        "tests/test_uploads.py::test_errors_are_strict_single_attempt_and_do_not_log",
+        "tests/test_uploads.py::test_metadata_transport_faults_cleanup",
+        "tests/test_uploads.py::test_storage_transport_faults_cleanup"
+      ]
+    },
+    {
+      "id": "U02",
+      "category": "uploads",
+      "invariant": "Cancelled file preparation and storage reads drain before file cleanup",
+      "tests": [
+        "tests/test_uploads.py::test_async_cancellation_during_file_prepare_is_responsive",
+        "tests/test_uploads.py::test_cancel_during_storage_disk_read_has_no_close_race",
+        "tests/test_uploads.py::test_async_cancellation_during_network"
+      ]
+    },
+    {
+      "id": "U03",
+      "category": "uploads",
+      "invariant": "Only returned storage application headers are sent; no API auth/cookie/netrc leakage",
+      "tests": [
+        "tests/test_uploads.py::test_storage_never_borrows_api_session_or_netrc",
+        "tests/test_uploads.py::test_no_invented_storage_md5_header",
+        "tests/test_uploads.py::test_upload_bytes_headers_result_and_borrowed_stream"
+      ]
+    },
+    {
+      "id": "U04",
+      "category": "uploads",
+      "invariant": "Checksummed snapshots match sent bytes under source changes, chunking and nonseekable streams",
+      "tests": [
+        "tests/test_uploads.py::test_snapshot_bytes_survive_source_change",
+        "tests/test_uploads.py::test_multiple_chunks_and_nonseekable_stream",
+        "tests/test_uploads.py::test_empty_file_wire_contract"
+      ]
+    },
+    {
+      "id": "U05",
+      "category": "uploads",
+      "invariant": "Invalid metadata fails before source reads or HTTP",
+      "tests": [
+        "tests/test_sdk_faults.py::test_invalid_upload_metadata_closes_snapshot_without_reading_or_sending"
+      ]
+    },
+    {
+      "id": "C01",
+      "category": "compatibility",
+      "invariant": "Every Headless public resource method has the matching native call shape and actual I/O",
+      "tests": [
+        "tests/test_sdk_surface.py::test_all_headless_public_resource_methods_have_matching_native_signatures",
+        "tests/test_sdk_surface.py::test_native_legacy_helpers_perform_one_real_request_and_do_not_replay"
+      ]
+    },
+    {
+      "id": "C02",
+      "category": "compatibility",
+      "invariant": "Operation/field/provenance and branch gates reject false completion; drift never overwrites snapshots",
+      "tests": [
+        "tests/test_sdk_reports.py::test_report_rejects_missing_operation_wrong_owner_surface_or_evidence",
+        "tests/test_sdk_reports.py::test_branch_gate_cannot_hide_missing_production_modules_or_lines",
+        "tests/test_sdk_reports.py::test_branch_gate_uses_actual_branches_and_accepts_exactly_ninety",
+        "tests/test_sdk_reports.py::test_drift_never_rewrites_freeze_and_raw_legacy_drift_is_visible"
+      ]
+    },
+    {
+      "id": "F01",
+      "category": "financial",
+      "invariant": "Financial reads/pages/writes never replay after timeout, disconnect, throttling, server error or cancellation",
+      "tests": [
+        "tests/test_admin_v2_billing.py::test_async_cancellation_and_early_close_borrow_pool",
+        "tests/test_admin_v2_billing.py::test_every_financial_call_stays_single_attempt",
+        "tests/test_admin_v2_billing.py::test_financial_cancellation_never_replays_or_closes_borrowed_session"
+      ]
+    },
+    {
+      "id": "F02",
+      "category": "financial",
+      "invariant": "Financial reads/pages/writes never replay after timeout, disconnect, throttling, server error or cancellation",
+      "tests": [
+        "tests/test_admin_v2_paywalls.py::test_async_cancellation_and_early_close_borrow_pool",
+        "tests/test_admin_v2_paywalls.py::test_every_financial_call_stays_single_attempt",
+        "tests/test_admin_v2_paywalls.py::test_financial_cancellation_never_replays_or_closes_borrowed_session"
+      ]
+    },
+    {
+      "id": "T11",
+      "category": "transport",
+      "invariant": "Wrong-loop use fails before HTTP; owned cleanup and borrowed session ownership remain correct",
+      "tests": [
+        "tests/test_sdk_faults.py::test_owned_native_pool_rejects_another_loop_before_http_and_closes_on_owner",
+        "tests/test_sdk_faults.py::test_borrowed_session_wrong_loop_fails_before_http_and_preserves_owner_session"
+      ]
+    }
+  ]
+}
