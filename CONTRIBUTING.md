@@ -8,7 +8,7 @@ Users of Python 3.7–3.10 must keep the previously published 0.5.1 artifacts.
 
 | Runtime/platform | Validation | Evidence |
 |---|---|---|
-| CPython 3.11–3.15 on Ubuntu, Windows and macOS | 15 CI jobs, each with offline tests and clean wheel/sdist installs | Exact pushed commit's CI run |
+| CPython 3.11–3.15 on Ubuntu, Windows and macOS | Runtime: 15 full source jobs plus 15 separate clean wheel/sdist smoke jobs | Exact pushed commit's CI run |
 | Windows x64, CPython 3.11 and 3.13 | Local editable, wheel and sdist validation | Task 02/03 evidence |
 | PyPy and free-threaded CPython | Unverified | No support claim |
 
@@ -50,7 +50,30 @@ runtime/OS matrix. Regenerate with uv 0.12.15 (an optional maintainer tool):
 uv pip compile pyproject.toml --extra dev --universal --python-version 3.11 --output-file constraints-dev.txt
 ```
 
-After activating the environment, the following commands are identical on all
+Choose validation from the actual changed inputs before running broad suites:
+
+```sh
+python tools/validation_profiles.py --base <verified-base-commit-sha> --output validation-profile.json
+```
+
+Unknown files, SDK code, dependencies, schemas and behavior tests select Runtime.
+Recognized documentation/example changes select Fast; packaging/workflow changes
+select Workflow. An explicit profile cannot downgrade the detected requirement.
+Selector changes and empty or unavailable Git history also require Runtime.
+Run focused regressions while editing, finish source/test changes, then run one
+full local minimum-runtime source suite for Runtime changes. CI supplies the
+other supported interpreters; repeat broad tests only for changed inputs,
+failures or a specific concern.
+
+Fast and Workflow use focused guide/tool checks, quality and dependency checks,
+and one clean artifact smoke pair. Runtime keeps all 15 full source cells and
+15 clean artifact smoke pairs. Release adds full wheel/sdist suites once on
+Ubuntu with Python 3.11 before publication, retaining both supported matrices.
+A read-only workflow dispatch accepts Runtime or Release and never publishes.
+Postrelease cannot downgrade changed runtime inputs; published artifact retrieval
+and hash equality with previously validated bytes remain a separate release gate.
+
+After activating the environment, the following Runtime commands are identical on all
 three platforms. Without activation, replace `python` with the environment's
 interpreter path shown above.
 
@@ -67,6 +90,8 @@ python -X utf8 tools/published_api.py
 python -m ruff check circlepy tests tools
 python -m ruff check --select E4,E7,E9,F tests/conftest.py tests/http_fixtures.py tests/test_offline_http.py tools/check_ci.py circlepy/transport.py circlepy/errors.py tests/test_transport.py
 python -m mypy
+python tools/check_security.py
+python tools/dependency_inventory.py docs/dependency-inventory.json
 python tools/check_media_contract.py
 python tools/check_content_contract.py
 python tools/check_members_contract.py
@@ -86,19 +111,22 @@ python tools/check_admin_v2_organization_contract.py
 python tools/check_admin_v2_profiles_contract.py
 python tools/check_admin_v2_operations_contract.py
 python tools/check_ci.py --negative-fixture
-python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
+python tools/dependency_inventory.py docs/dependency-inventory.json --audit-requirements dependency-audit-requirements.txt
+python -m pip_audit -r dependency-audit-requirements.txt --no-deps --disable-pip --strict --format json --output dependency-audit.json
+python -m pip_audit -r dependency-audit-requirements.txt --no-deps --disable-pip --strict --format cyclonedx-json --output dependency-sbom.cdx.json
 python -m build
 python -m twine check dist/*
-python tools/check_distribution.py dist
+python tools/check_distribution.py dist --inspect-only --write-hashes dist/artifacts.json
+python tools/check_distribution.py dist --mode smoke --hashes dist/artifacts.json --report installed-smoke.json
 ```
 
 `build` uses an isolated backend and builds the wheel from the fresh sdist by
 default. Start with an empty output directory, or choose a new one with
 `python -m build --outdir <new-directory>` and pass it to both artifact checks.
 `check_distribution.py` inspects both archives, installs each into a new venv,
-checks dependencies/imports and runs the complete copied pytest suite with
+checks dependencies/imports and runs the explicitly selected smoke or full suite with
 `python -I` outside the checkout. It installs the three constrained pytest tools
-and PyYAML only after checking the consumer environment and site-packages import location.
+and PyYAML/packaging only after checking the consumer environment and site-packages import location.
 It downloads dependencies but never contacts a Circle community. Source tests
 use synthetic responses; they are not live API evidence. The optional baseline
 `--verify-live` only retrieves public documentation to detect schema drift.
@@ -199,19 +227,29 @@ without force. Verify that origin/main contains that SHA and that every CI job
 for the exact commit succeeds before completing a task or starting its successor.
 Resolve a remote advancement safely; never overwrite another writer's changes.
 
-The push workflow's unique check names are `test (<runner>, Python <version>)`
-for each of the 15 matrix cells, `quality` and `dependencies`. These are required
-completion checks under the execution rules; no new branch protection, PR or
-human approval gate is configured. Test jobs receive read-only contents access,
+The retained `validation-profile.json` names required checks and intentionally
+unselected jobs. `profile`, `quality`, `dependencies`, `build` and `validation`
+are always required. Runtime/Release additionally require 15
+`source (<runner>, Python <version>)` jobs and 15 `artifact-smoke (...)` jobs;
+Fast/Workflow require `focused` and the Ubuntu/Python 3.11 artifact smoke.
+Release also requires `release-artifacts`. Verify the latest exact-SHA CI jobs:
+
+```sh
+python tools/validation_profiles.py --selection validation-profile.json --verify-jobs jobs.json
+```
+
+The aggregate `validation` check fails for any failed, cancelled or skipped
+required job. A smoke never claims whole-library branch or complete fault coverage.
+Test jobs receive read-only contents access,
 no Circle/PyPI secrets and no OIDC write permission. Actions are pinned by full
 commit SHA and checkout does not retain Git credentials. Dependency downloads,
 public advisory queries and GitHub artifact uploads happen outside test I/O.
 
-Publication stays in the separate `release: published` workflow with explicit
-release-event conditions. It cannot run on an ordinary main push. Its existing
-PyPI token remains confined to the publish job; redundant OIDC permission was
-removed. Trusted publishing, release provenance and candidate uploads remain
-assigned to Tasks 32–34. Do not create a release to test this workflow.
+Publication is disabled by a failing release-event guard. The former token-based
+upload path is removed. The dedicated trusted-publishing task must configure
+protected environments, exact-SHA checks, provenance and an upload consuming only
+the already validated artifact bytes. Ordinary pushes and validation dispatches
+have no publishing credentials or permissions. Do not create a release to test it.
 
 ## Versioning, typing and distributions
 
@@ -253,8 +291,8 @@ Admin v2 charge, subscription and payment/tax settings operations. Independent
 synthetic wire fixtures cover exact integer subunits, calendar dates, query-only
 export POSTs, error context and sync/native async parity. Every financial call
 stays single-attempt under timeout, disconnect, 429 and 5xx, with billing query
-redaction. The 32 functions in `docs/admin-v2-billing.md` run offline and in clean
-installed-artifact checks. Never exercise real financial effects as a test.
+redaction. The 32 functions in `docs/admin-v2-billing.md` run in full offline suites
+and the Release profile's full installed suites. Never exercise real financial effects as a test.
 
 Task 24 adds `python tools/check_admin_v2_paywalls_contract.py` for all 15 paywall,
 affiliate and payout operations and the complete 172-operation Admin v2 inventory.

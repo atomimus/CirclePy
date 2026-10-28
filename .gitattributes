@@ -1,2 +1,4 @@
+# The same retained artifacts are checked byte-for-byte on every runner OS.
+* text=auto eol=lf
 # Preserve downloaded specification bytes so provenance hashes survive checkout.
 api/specs/* -text

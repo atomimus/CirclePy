@@ -3,6 +3,14 @@ name: CI
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: Read-only validation; never publishes
+        type: choice
+        required: true
+        default: runtime
+        options: [runtime, release]
 
 permissions:
   contents: read
@@ -12,8 +20,39 @@ env:
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
 
 jobs:
-  test:
-    name: test (${{ matrix.os }}, Python ${{ matrix.python }})
+  profile:
+    name: profile
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      profile: ${{ steps.select.outputs.profile }}
+      source_matrix: ${{ steps.select.outputs.source_matrix }}
+      release_artifacts: ${{ steps.select.outputs.release_artifacts }}
+      artifact_matrix: ${{ steps.select.outputs.artifact_matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.11"
+      - id: select
+        name: Select required validation from all changed inputs
+        env:
+          REQUESTED_PROFILE: ${{ inputs.profile || 'auto' }}
+        run: python tools/validation_profiles.py --profile "$REQUESTED_PROFILE" --output validation-profile.json --github-output
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: validation-profile
+          path: validation-profile.json
+          if-no-files-found: error
+          retention-days: 14
+
+  source:
+    name: source (${{ matrix.os }}, Python ${{ matrix.python }})
+    needs: profile
+    if: needs.profile.outputs.source_matrix == 'true'
     runs-on: ${{ matrix.os }}
     timeout-minutes: 60
     strategy:
@@ -41,11 +80,6 @@ jobs:
       - run: python tools/check_sdk_coverage.py --json > sdk-coverage.json
       - run: python -X utf8 tools/baseline.py
       - run: python -X utf8 tools/published_api.py
-      - name: Build sdist and wheel from sdist
-        run: python -m build
-      - run: python -m twine check dist/*
-      - name: Inspect and install each artifact outside checkout
-        run: python tools/check_distribution.py dist
       - name: Retain test and coverage reports
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -117,6 +151,9 @@ jobs:
       - run: python -m ruff check --select E4,E7,E9,F tests/test_admin_v2_paywalls.py tests/test_admin_v2_paywalls_examples.py tools/check_admin_v2_paywalls_contract.py
       - run: python tools/check_admin_v2_paywalls_contract.py
       - run: python tools/check_ci.py --negative-fixture
+      - run: python -m ruff check --select E4,E7,E9,F tools/validation_profiles.py tools/publication_guard.py tools/check_distribution.py tools/check_security.py tools/dependency_inventory.py tests/test_validation_profiles.py tests/test_security.py
+      - run: python tools/check_security.py
+      - run: python tools/dependency_inventory.py docs/dependency-inventory.json
 
   dependencies:
     name: dependencies
@@ -131,12 +168,148 @@ jobs:
           python-version: "3.11"
       - run: python -m pip install -c constraints-dev.txt -e ".[dev]"
       - name: Audit pinned runtime and development dependencies
-        run: python -m pip_audit -r constraints-dev.txt --no-deps --strict --format json --output dependency-audit.json
+        run: |
+          python tools/dependency_inventory.py docs/dependency-inventory.json --audit-requirements dependency-audit-requirements.txt
+          python -m pip_audit -r dependency-audit-requirements.txt --no-deps --disable-pip --strict --format json --output dependency-audit.json
+          python -m pip_audit -r dependency-audit-requirements.txt --no-deps --disable-pip --strict --format cyclonedx-json --output dependency-sbom.cdx.json
       - name: Retain dependency report
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: dependency-audit
-          path: dependency-audit.json
+          path: |
+            dependency-audit.json
+            dependency-sbom.cdx.json
+            dependency-audit-requirements.txt
+            docs/dependency-inventory.json
           if-no-files-found: error
           retention-days: 14
+
+  build:
+    name: build
+    needs: profile
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -c constraints-dev.txt -e ".[dev]"
+      - name: Build one retained sdist and wheel from sdist
+        run: python -m build
+      - run: python -m twine check dist/*
+      - name: Inspect archives and bind exact bytes
+        run: python tools/check_distribution.py dist --inspect-only --write-hashes dist/artifacts.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: validated-distributions
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
+
+  artifact-smoke:
+    name: artifact-smoke (${{ matrix.os }}, Python ${{ matrix.python }})
+    needs: [profile, build]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.profile.outputs.artifact_matrix) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "${{ matrix.python }}"
+      - run: python -m pip install -c constraints-dev.txt packaging
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: validated-distributions
+          path: dist/
+      - name: Clean installed wheel and sdist smokes
+        run: python tools/check_distribution.py dist --mode smoke --hashes dist/artifacts.json --report installed-smoke.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: installed-smoke-${{ matrix.os }}-${{ matrix.python }}
+          path: installed-smoke.json
+          if-no-files-found: error
+          retention-days: 14
+
+  release-artifacts:
+    name: release-artifacts
+    needs: [profile, build]
+    if: needs.profile.outputs.release_artifacts == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -c constraints-dev.txt packaging
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: validated-distributions
+          path: dist/
+      - name: Full baseline wheel and sdist rehearsal before publication
+        run: python tools/check_distribution.py dist --mode full --hashes dist/artifacts.json --report installed-full.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: installed-full
+          path: installed-full.json
+          if-no-files-found: error
+          retention-days: 14
+
+  focused:
+    name: focused
+    needs: profile
+    if: needs.profile.outputs.source_matrix != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -c constraints-dev.txt -e ".[dev]"
+      - name: Focused guide and validation-tool checks
+        run: python -m pytest -v tests/test_validation_profiles.py tests/test_sdk_reports.py tests/*_examples.py --junitxml=focused-tests.xml
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: focused-tests
+          path: focused-tests.xml
+          if-no-files-found: error
+          retention-days: 14
+
+  validation:
+    name: validation
+    needs: [profile, quality, dependencies, build, source, artifact-smoke, release-artifacts, focused]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: validation-profile
+          path: .
+      - name: Require every selected job and account for unselected jobs
+        env:
+          VALIDATION_NEEDS: ${{ toJSON(needs) }}
+        run: python tools/validation_profiles.py --selection validation-profile.json --verify-needs

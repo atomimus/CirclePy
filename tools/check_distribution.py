@@ -1,6 +1,6 @@
 """Inspect and install a fresh wheel/sdist pair, then run offline consumer tests.
 
-Run with the development environment: python tools/check_distribution.py dist
+Run with the development environment: python tools/check_distribution.py dist --mode smoke
 Temporary environments and copied tests live outside the source checkout.
 """
 
@@ -15,14 +15,28 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 import tomllib
 import venv
+import xml.etree.ElementTree as ET
 import zipfile
 
 from packaging.requirements import Requirement
 
+if __package__:
+    from .check_security import check_bytes
+else:
+    from check_security import check_bytes
+
 
 ROOT = Path(__file__).resolve().parents[1]
+SMOKE_TESTS = (
+    "test_offline_http.py", "test_client_examples.py", "test_security.py",
+    "test_admin_v2_members.py::test_every_operation_wire_and_full_response",
+    "test_admin_v1_core.py::test_member_raw_update_omits_unspecified_options",
+    "test_uploads.py::test_upload_bytes_headers_result_and_borrowed_stream",
+    "test_pagination.py::test_generic_iteration_is_lazy_bounded_and_snapshots_filters",
+)
 
 
 def require(condition, message):
@@ -53,8 +67,13 @@ def inspect_artifacts(directory):
     package_sources = {path.relative_to(ROOT).as_posix() for path in (ROOT / "circlepy").rglob("*.py")}
     with zipfile.ZipFile(wheel) as archive:
         names = set(archive.namelist())
+        require(len(names) == len(archive.namelist()), "Duplicate wheel archive member")
         check_paths(names)
+        for name in names:
+            check_bytes(name, archive.read(name))
         require({name for name in names if name.endswith(".py")} == package_sources, "Wheel source files differ")
+        for relative in package_sources:
+            require(archive.read(relative) == (ROOT / relative).read_bytes(), f"Stale wheel file: {relative}")
         require(all(name.startswith(("circlepy/", prefix + ".dist-info/")) for name in names), "Unexpected wheel content")
         metadata = BytesParser().parsebytes(archive.read(prefix + ".dist-info/METADATA"))
         tags = BytesParser().parsebytes(archive.read(prefix + ".dist-info/WHEEL"))
@@ -71,10 +90,13 @@ def inspect_artifacts(directory):
     require(description == (ROOT / "README.md").read_text(encoding="utf-8").strip(), "README content differs")
     with tarfile.open(sdist, "r:gz") as archive:
         members = archive.getmembers()
+        require(len({member.name for member in members}) == len(members), "Duplicate sdist archive member")
         require(all(member.isfile() or member.isdir() for member in members), "Unexpected archive link")
         require(all(member.name.startswith(prefix + "/") or (member.name == prefix and member.isdir()) for member in members), "Unexpected sdist root")
         files = {member.name[len(prefix) + 1:] for member in members if member.isfile()}
         check_paths(files)
+        for relative in files:
+            check_bytes(relative, archive.extractfile(prefix + "/" + relative).read())
         required = package_sources | {"LICENSE", "README.md", "CONTRIBUTING.md", "pyproject.toml", "constraints-dev.txt", "requirements.txt", "docs/transports.md", "docs/clients.md", "docs/media.md", "docs/content.md", "docs/members.md", "docs/messaging.md", "docs/learning.md", "docs/pagination.md", "docs/admin-v1.md", "docs/admin-v1-organization.md", "docs/admin-v1-learning.md"}
         required.add("docs/admin-v2-members.md")
         required.add("docs/admin-v2-access.md")
@@ -87,6 +109,7 @@ def inspect_artifacts(directory):
         required.add("docs/admin-v2-billing.md")
         required.add("docs/admin-v2-paywalls.md")
         required.add("docs/sdk-validation.md")
+        required |= {"SECURITY.md", "docs/security.md", "docs/dependency-inventory.json"}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "tools").glob("*.py")}
         required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / ".github").rglob("*.yml")}
@@ -112,8 +135,25 @@ def run(command, cwd):
     subprocess.run([str(part) for part in command], cwd=cwd, check=True)
 
 
-def check_installs(artifacts):
+def artifact_hashes(artifacts):
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in artifacts}
+
+
+def junit_counts(path):
+    root = ET.parse(path).getroot()
+    counts = {key: sum(int(suite.get(key, 0)) for suite in root.iter("testsuite"))
+              for key in ("tests", "failures", "errors", "skipped")}
+    require(counts["tests"] > 0, "No installed tests executed")
+    require(not any(counts[key] for key in ("failures", "errors", "skipped")),
+            f"Installed suite is incomplete or unsuccessful: {counts}")
+    return counts
+
+
+def check_installs(artifacts, mode):
+    require(mode in {"full", "smoke"}, "Unknown installed-test mode")
+    results = []
     for artifact in artifacts:
+        started = time.monotonic()
         with tempfile.TemporaryDirectory(prefix="circlepy-consumer-") as temporary:
             work = Path(temporary)
             environment = work / "env"
@@ -121,6 +161,12 @@ def check_installs(artifacts):
             python = environment / ("Scripts/python.exe" if sys.platform == "win32" else "bin/python")
             run([python, "-m", "pip", "install", "--disable-pip-version-check", artifact], work)
             run([python, "-m", "pip", "check"], work)
+            dependencies = json.loads(subprocess.check_output([str(python), "-I", "-c",
+                "import importlib.metadata as m,json; print(json.dumps(sorted(["
+                "{'name':d.metadata['Name'],'version':d.version,"
+                "'license_expression':d.metadata.get('License-Expression'),"
+                "'license':d.metadata.get('License'),'requires_dist':d.requires or []} "
+                "for d in m.distributions()],key=lambda d:d['name'].lower())))"], cwd=work, text=True))
             run([python, "-I", "-c", "\n".join([
                 "import importlib, importlib.metadata, inspect, pathlib, pkgutil, sys",
                 "import circlepy",
@@ -155,22 +201,57 @@ def check_installs(artifacts):
             shutil.copy2(ROOT / "docs/admin-v2-billing.md", work / "docs/admin-v2-billing.md")
             shutil.copy2(ROOT / "docs/admin-v2-paywalls.md", work / "docs/admin-v2-paywalls.md")
             shutil.copy2(ROOT / "docs/sdk-validation.md", work / "docs/sdk-validation.md")
+            shutil.copy2(ROOT / "docs/dependency-inventory.json", work / "docs/dependency-inventory.json")
             # Audit tooling/tests must inspect the installed SDK, not a copied
             # source package. Only public schemas and tools are copied here.
             shutil.copytree(ROOT / "api", work / "api")
             shutil.copytree(ROOT / "tools", work / "tools", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+            shutil.copytree(ROOT / ".github", work / ".github")
             # Validate consumer dependencies first, then add only the test tools.
             # Copy configuration so the identical offline guard and strict async
             # mode apply outside the checkout, without PYTHONPATH shadowing.
             shutil.copy2(ROOT / "pyproject.toml", work / "pyproject.toml")
+            shutil.copy2(ROOT / "constraints-dev.txt", work / "constraints-dev.txt")
             run([python, "-m", "pip", "install", "-c", ROOT / "constraints-dev.txt",
-                 "pytest", "pytest-asyncio", "pytest-socket", "PyYAML"], work)
+                 "pytest", "pytest-asyncio", "pytest-socket", "PyYAML", "packaging"], work)
             run([python, "-m", "pip", "check"], work)
-            run([python, "-I", "-m", "pytest", "-v", work / "tests"], work)
+            selected = [work / "tests"] if mode == "full" else [work / "tests" / name for name in SMOKE_TESTS]
+            report = work / "installed-tests.xml"
+            print(f"Installed {mode} validation: {artifact.name}; selected {len(selected)} test paths", flush=True)
+            run([python, "-I", "-m", "pytest", "-v", f"--junitxml={report}", *selected], work)
+            counts = junit_counts(report)
+            results.append({"artifact": artifact.name, "mode": mode, "results": counts,
+                            "consumer_dependencies_before_test_tools": dependencies,
+                            "elapsed_seconds": round(time.monotonic() - started, 3),
+                            "whole_library_branch_coverage": False,
+                            "complete_fault_matrix": False})
+            print(json.dumps(results[-1]), flush=True)
+    return results
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", type=Path)
+    parser.add_argument("--mode", choices=("full", "smoke"))
+    parser.add_argument("--inspect-only", action="store_true")
+    parser.add_argument("--write-hashes", type=Path)
+    parser.add_argument("--hashes", type=Path)
+    parser.add_argument("--report", type=Path)
     args = parser.parse_args()
-    check_installs(inspect_artifacts(args.directory.resolve()))
+    if not args.inspect_only and args.mode is None:
+        parser.error("Choose --mode smoke or --mode full explicitly")
+    if args.inspect_only and args.mode is not None:
+        parser.error("--inspect-only cannot claim an installed-test mode")
+    artifacts = inspect_artifacts(args.directory.resolve())
+    hashes = artifact_hashes(artifacts)
+    if args.hashes:
+        require(hashes == json.loads(args.hashes.read_text(encoding="utf-8")), "Artifact hashes differ")
+    if args.write_hashes:
+        require(not args.write_hashes.exists(), "Never overwrite a retained artifact hash manifest")
+        args.write_hashes.write_text(json.dumps(hashes, indent=2) + "\n", encoding="utf-8")
+    results = [] if args.inspect_only else check_installs(artifacts, args.mode)
+    require(artifact_hashes(artifacts) == hashes, "Artifact bytes changed during validation")
+    if args.report:
+        args.report.write_text(json.dumps({"mode": "inspect" if args.inspect_only else args.mode,
+            "python": sys.version, "platform": sys.platform, "hashes": hashes, "installs": results},
+            indent=2) + "\n", encoding="utf-8")

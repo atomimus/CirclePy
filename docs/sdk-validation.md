@@ -65,8 +65,30 @@ storage isolation and financial ambiguity. Its JUnit check requires all selector
 to be present in a run with no failures, errors or skips. Coverage is an aggregate
 gate and does not replace these invariants.
 
-CI runs source, clean wheel and clean sdist suites on CPython 3.11–3.15 across
-Ubuntu, Windows and macOS. Installed checks run outside the checkout and verify
+Runtime and Release CI run full source suites on CPython 3.11–3.15 across
+Ubuntu, Windows and macOS. One fresh wheel/sdist pair is shared by all installed
+smoke cells, with SHA-256 equality checked before and after validation. Release
+additionally runs full installed suites once on Ubuntu/Python 3.11 before upload.
+Fast/Workflow run focused checks for recognized documentation/packaging changes;
+unknown inputs require Runtime. See [contributing](../CONTRIBUTING.md).
+
+```sh
+python tools/check_distribution.py dist --inspect-only --write-hashes dist/artifacts.json
+python tools/check_distribution.py dist --mode smoke --hashes dist/artifacts.json --report installed-smoke.json
+# Explicit prepublication rehearsal; reuse these exact bytes for the upload:
+python tools/check_distribution.py dist --mode full --hashes dist/artifacts.json --report installed-full.json
+```
+
+Both modes inspect archive contents, source bytes, metadata, licensing, imports
+and dependencies. Smoke runs the named selectors in `SMOKE_TESTS` in
+`tools/check_distribution.py`: offline network isolation, client/token guide,
+Admin v1 optional-field behavior, Admin v2 member contracts, storage uploads,
+pagination and diagnostic privacy. Reports include actual JUnit counts, mode,
+hashes, consumer dependency metadata and elapsed time.
+They do not claim whole-library branch coverage or the complete fault matrix.
+Only full source results are subject to those complete gates.
+
+Installed checks run outside the checkout and verify
 site-packages imports before copying tests/public audit assets. They never copy
 the source package. JSON/XML reports are retained per matrix cell. A real
 connection deadline is tested with a gated loopback response. Status/disconnect

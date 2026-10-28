@@ -7,12 +7,16 @@ alone never authorizes replay. This module does not implement token refresh.
 from __future__ import annotations
 
 import asyncio
+from collections.abc import Iterator
+from contextlib import contextmanager
+from contextvars import ContextVar
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from email.message import Message
 from email.utils import parsedate_to_datetime
 import ipaddress
 import json as jsonlib
+import logging
 import math
 import os
 import ssl
@@ -38,6 +42,39 @@ from .errors import (
 Proxy = str | Mapping[str, str] | None
 UNSET = object()
 RETRY_STATUSES = frozenset({429, 500, 502, 503, 504})
+_HTTP_LOG_SCOPE: ContextVar[bool] = ContextVar("circlepy_http_log_scope", default=False)
+
+
+class _HTTPLogFilter(logging.Filter):
+    """Keep dependency diagnostics from exporting signed URLs or private queries."""
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        if _HTTP_LOG_SCOPE.get():
+            record.msg = "CirclePy HTTP transport detail redacted"
+            record.args = ()
+            record.exc_info = None
+            record.exc_text = None
+            record.stack_info = None
+        return True
+
+
+_HTTP_LOG_FILTER = _HTTPLogFilter()
+
+
+@contextmanager
+def _redacted_http_logs() -> Iterator[None]:
+    # Logger filters run before handlers, including application-owned handlers.
+    # Context-local scope leaves unrelated requests in other threads/tasks alone.
+    for name in ("urllib3.connectionpool", "urllib3.connection", "urllib3.poolmanager",
+                 "urllib3.response", "urllib3.util.retry", "urllib3.contrib.pyopenssl",
+                 "urllib3.http2.connection", "urllib3.contrib.emscripten.response",
+                 "aiohttp.client", "aiohttp.internal"):
+        logging.getLogger(name).addFilter(_HTTP_LOG_FILTER)
+    token = _HTTP_LOG_SCOPE.set(True)
+    try:
+        yield
+    finally:
+        _HTTP_LOG_SCOPE.reset(token)
 
 
 def _number(value: float | None) -> float | None:
@@ -350,7 +387,7 @@ class SyncTransport(_Policy):
         self._netrc(url, headers_copy)
         for attempt in range(budget + 1):
             try:
-                with self._session.request(
+                with _redacted_http_logs(), self._session.request(
                     method, url, params=params, json=json, data=data, headers=headers_copy,
                     timeout=(seconds, seconds) if seconds is not None else None,
                     proxies={"http": selected or "", "https": selected or "", "all": selected or ""},
@@ -496,14 +533,15 @@ class AsyncTransport(_Policy):
                 return result
 
             try:
-                async with session.request(
-                    method, URL(url, encoded=True) if preserve_url else url,
-                    json=json, data=data, headers=headers_copy,
-                    timeout=aiohttp.ClientTimeout(total=seconds, connect=seconds, sock_connect=seconds, sock_read=seconds),
-                    proxy=selected, ssl=tls, allow_redirects=False, raise_for_status=False,
-                    middlewares=(single_send,),
-                ) as raw:
-                    response = HTTPResponse(raw.status, method, await raw.read(), dict(raw.headers), _cookies(raw.headers, url))
+                with _redacted_http_logs():
+                    async with session.request(
+                        method, URL(url, encoded=True) if preserve_url else url,
+                        json=json, data=data, headers=headers_copy,
+                        timeout=aiohttp.ClientTimeout(total=seconds, connect=seconds, sock_connect=seconds, sock_read=seconds),
+                        proxy=selected, ssl=tls, allow_redirects=False, raise_for_status=False,
+                        middlewares=(single_send,),
+                    ) as raw:
+                        response = HTTPResponse(raw.status, method, await raw.read(), dict(raw.headers), _cookies(raw.headers, url))
             except (TimeoutError, aiohttp.ClientConnectionError, APIConnectionError) as cause:
                 error = APITimeoutError() if isinstance(cause, TimeoutError) else APIConnectionError()
                 if attempt == budget or isinstance(cause, (aiohttp.ClientSSLError, aiohttp.InvalidURL)):

@@ -898,7 +898,7 @@ async def test_billing_debug_and_error_representations_redact_private_values(
         ):
             assert private not in visible
         if not async_mode:
-            assert "/community_member_charges/[redacted]" in caplog.text
+            assert "CirclePy HTTP transport detail redacted" in caplog.text
     finally:
         await close(client)
 

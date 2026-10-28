@@ -1,0 +1,1278 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-10-28T01:28:35.431547+00:00",
+  "scope": "All universal development pins plus the build backend; not a consumer lock or legal opinion",
+  "packages": [
+    {
+      "name": "aiohappyeyeballs",
+      "version": "2.7.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/aiohappyeyeballs/2.7.1/json",
+      "source_sha256": "90a6fe95d5083b27fa3cb21b46a78cdf84befd72a03001ea3182747e6794b983",
+      "license_expression": null,
+      "license": "PSF-2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Python Software Foundation License"
+      ],
+      "project_urls": {
+        "Bug Tracker": "https://github.com/aio-libs/aiohappyeyeballs/issues",
+        "Changelog": "https://github.com/aio-libs/aiohappyeyeballs/blob/main/CHANGELOG.md",
+        "Documentation": "https://aiohappyeyeballs.readthedocs.io",
+        "Repository": "https://github.com/aio-libs/aiohappyeyeballs"
+      }
+    },
+    {
+      "name": "aiohttp",
+      "version": "3.14.5",
+      "marker": null,
+      "source": "https://pypi.org/pypi/aiohttp/3.14.5/json",
+      "source_sha256": "7deb2f0d6dc95c63a2b576236bbe3051f3c0b1d402bd5f59e7619c05684f499a",
+      "license_expression": "Apache-2.0 AND MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "CI: GitHub Actions": "https://github.com/aio-libs/aiohttp/actions?query=workflow%3ACI",
+        "Chat: Matrix": "https://matrix.to/#/#aio-libs:matrix.org",
+        "Chat: Matrix Space": "https://matrix.to/#/#aio-libs-space:matrix.org",
+        "Coverage: codecov": "https://codecov.io/github/aio-libs/aiohttp",
+        "Docs: Changelog": "https://docs.aiohttp.org/en/stable/changes.html",
+        "Docs: RTD": "https://docs.aiohttp.org",
+        "GitHub: issues": "https://github.com/aio-libs/aiohttp/issues",
+        "GitHub: repo": "https://github.com/aio-libs/aiohttp",
+        "Homepage": "https://github.com/aio-libs/aiohttp"
+      }
+    },
+    {
+      "name": "aiosignal",
+      "version": "1.4.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/aiosignal/1.4.0/json",
+      "source_sha256": "443bdf542505c93e62117e868b9984b0c5784d50ab5b40ad0ae36d600b2d75ae",
+      "license_expression": null,
+      "license": "Apache 2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "CI: GitHub Actions": "https://github.com/aio-libs/aiosignal/actions",
+        "Chat: Gitter": "https://gitter.im/aio-libs/Lobby",
+        "Coverage: codecov": "https://codecov.io/github/aio-libs/aiosignal",
+        "Docs: RTD": "https://docs.aiosignal.org",
+        "GitHub: issues": "https://github.com/aio-libs/aiosignal/issues",
+        "GitHub: repo": "https://github.com/aio-libs/aiosignal",
+        "Homepage": "https://github.com/aio-libs/aiosignal"
+      }
+    },
+    {
+      "name": "ast-serialize",
+      "version": "0.13.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/ast-serialize/0.13.1/json",
+      "source_sha256": "9b0729d3fb981e4e2b4bb8c95faddafb64aac14fa31568f1b7c373c9a681cc34",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/mypyc/ast_serialize",
+        "Issues": "https://github.com/mypyc/ast_serialize/issues"
+      }
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/attrs/26.1.0/json",
+      "source_sha256": "a882bf941fb4a0bb748d0194df544121cc130f5fb15a710ab6b804c17d2899b7",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://www.attrs.org/en/stable/changelog.html",
+        "Documentation": "https://www.attrs.org/",
+        "Funding": "https://github.com/sponsors/hynek",
+        "GitHub": "https://github.com/python-attrs/attrs",
+        "Tidelift": "https://tidelift.com/subscription/pkg/pypi-attrs?utm_source=pypi-attrs&utm_medium=pypi"
+      }
+    },
+    {
+      "name": "backports-tarfile",
+      "version": "1.2.0",
+      "marker": "python_full_version < \"3.12\" and platform_machine != \"ppc64le\" and platform_machine != \"s390x\"",
+      "source": "https://pypi.org/pypi/backports-tarfile/1.2.0/json",
+      "source_sha256": "7cd517dda79f81cf7c49832a083faf7b5f51ad280d6d4936609e850882f07f70",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Homepage": "https://github.com/jaraco/backports.tarfile"
+      }
+    },
+    {
+      "name": "boolean-py",
+      "version": "5.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/boolean-py/5.0/json",
+      "source_sha256": "592fa1ea048b6e5d71c019df7692387b0bb57c7504676c2809b85ab3dafc1b62",
+      "license_expression": null,
+      "license": "BSD-2-Clause",
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/bastikr/boolean.py"
+      }
+    },
+    {
+      "name": "build",
+      "version": "1.6.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/build/1.6.1/json",
+      "source_sha256": "064e9dcb80e948b5de7a841c3fd9b5644a980eb27bb644fb7f562b7d773b157b",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "changelog": "https://build.pypa.io/en/stable/changelog.html",
+        "homepage": "https://build.pypa.io",
+        "issues": "https://github.com/pypa/build/issues",
+        "source": "https://github.com/pypa/build"
+      }
+    },
+    {
+      "name": "cachecontrol",
+      "version": "0.14.4",
+      "marker": null,
+      "source": "https://pypi.org/pypi/cachecontrol/0.14.4/json",
+      "source_sha256": "03b391e940e2492a8b3e3736975ad77fea36e4df02e22786e8756d572d398a35",
+      "license_expression": "Apache-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://pypi.org/project/CacheControl/",
+        "Issues": "https://github.com/psf/cachecontrol/issues",
+        "Source": "https://github.com/psf/cachecontrol"
+      }
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "marker": null,
+      "source": "https://pypi.org/pypi/certifi/2026.10.23/json",
+      "source_sha256": "546ce90e02c152f5ff565baca6bc2a8f43c355855f637756f49a0143e312bdb2",
+      "license_expression": null,
+      "license": "MPL-2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ],
+      "project_urls": {
+        "Homepage": "https://github.com/certifi/python-certifi",
+        "Source": "https://github.com/certifi/python-certifi"
+      }
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\" and platform_python_implementation != \"PyPy\" and sys_platform == \"linux\"",
+      "source": "https://pypi.org/pypi/cffi/2.1.1/json",
+      "source_sha256": "2255e530e3f80593a354e3d84a29966924d0e10309d1e3a6d50f845ab7d8df66",
+      "license_expression": "MIT-0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://cffi.readthedocs.io/en/latest/whatsnew.html",
+        "Contact": "https://groups.google.com/forum/#!forum/python-cffi",
+        "Documentation": "https://cffi.readthedocs.io/",
+        "Download": "https://github.com/python-cffi/cffi/releases",
+        "Issue Tracker": "https://github.com/python-cffi/cffi/issues",
+        "Source Code": "https://github.com/python-cffi/cffi"
+      }
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "marker": null,
+      "source": "https://pypi.org/pypi/charset-normalizer/3.5.2/json",
+      "source_sha256": "9fda300857ae6a0486b4cd2d2fec7817ed2d45657249a6dfc0c2bbd1a44267b6",
+      "license_expression": null,
+      "license": "MIT",
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://github.com/jawah/charset_normalizer/blob/master/CHANGELOG.md",
+        "Code": "https://github.com/jawah/charset_normalizer",
+        "Documentation": "https://charset-normalizer.readthedocs.io/",
+        "Issue tracker": "https://github.com/jawah/charset_normalizer/issues"
+      }
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "marker": "os_name == \"nt\" or sys_platform == \"win32\"",
+      "source": "https://pypi.org/pypi/colorama/0.4.6/json",
+      "source_sha256": "43fb351344384a44c2b7d7fff1c63496b89ac830aea714301525c1f3718addd1",
+      "license_expression": null,
+      "license": "",
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "project_urls": {
+        "Homepage": "https://github.com/tartley/colorama"
+      }
+    },
+    {
+      "name": "commonmark",
+      "version": "0.9.2",
+      "marker": null,
+      "source": "https://pypi.org/pypi/commonmark/0.9.2/json",
+      "source_sha256": "314d01ca8c137c41b19b547f4573d407616b11a4c92d06bbbd6068330613dd90",
+      "license_expression": null,
+      "license": "BSD-3-Clause",
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "project_urls": {
+        "Homepage": "https://github.com/rtfd/commonmark.py"
+      }
+    },
+    {
+      "name": "coverage",
+      "version": "7.17.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/coverage/7.17.0/json",
+      "source_sha256": "e5575b0b3abc69f9ebb2d64513f69676c8212f9da0672907189791344357cf5b",
+      "license_expression": null,
+      "license": "Apache-2.0",
+      "license_classifiers": [],
+      "project_urls": {
+        "Documentation": "https://coverage.readthedocs.io/en/7.17.0",
+        "Funding": "https://tidelift.com/subscription/pkg/pypi-coverage?utm_source=pypi-coverage&utm_medium=referral&utm_campaign=pypi",
+        "Homepage": "https://github.com/coveragepy/coveragepy",
+        "Issues": "https://github.com/coveragepy/coveragepy/issues",
+        "Mastodon": "https://hachyderm.io/@coveragepy",
+        "Mastodon (nedbat)": "https://hachyderm.io/@nedbat"
+      }
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.2",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\" and sys_platform == \"linux\"",
+      "source": "https://pypi.org/pypi/cryptography/50.0.2/json",
+      "source_sha256": "7423990cc0948676ef47a71ea62a476ece4c76245e6bebd1c3a71f03c4ffc0f4",
+      "license_expression": "Apache-2.0 OR BSD-3-Clause",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "changelog": "https://cryptography.io/en/latest/changelog/",
+        "documentation": "https://cryptography.io/",
+        "homepage": "https://github.com/pyca/cryptography",
+        "issues": "https://github.com/pyca/cryptography/issues",
+        "source": "https://github.com/pyca/cryptography/"
+      }
+    },
+    {
+      "name": "cyclonedx-python-lib",
+      "version": "11.12.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/cyclonedx-python-lib/11.12.0/json",
+      "source_sha256": "83da238d990ceb1570d5c55298f569102c6627f306302855641c1202f96f7f0c",
+      "license_expression": null,
+      "license": "Apache-2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "Bug Tracker": "https://github.com/CycloneDX/cyclonedx-python-lib/issues",
+        "Changelog": "https://github.com/CycloneDX/cyclonedx-python-lib/releases",
+        "Documentation": "https://cyclonedx-python-library.readthedocs.io/",
+        "Funding": "https://owasp.org/donate/?reponame=www-project-cyclonedx&title=OWASP+CycloneDX",
+        "Homepage": "https://github.com/CycloneDX/cyclonedx-python-lib/#readme",
+        "Repository": "https://github.com/CycloneDX/cyclonedx-python-lib"
+      }
+    },
+    {
+      "name": "defusedxml",
+      "version": "0.7.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/defusedxml/0.7.1/json",
+      "source_sha256": "f015c37fa0b87a1d7fad57bea96c5c34856df2cbb29626004dee2122d510136a",
+      "license_expression": null,
+      "license": "PSFL",
+      "license_classifiers": [
+        "License :: OSI Approved :: Python Software Foundation License"
+      ],
+      "project_urls": {
+        "Download": "https://pypi.python.org/pypi/defusedxml",
+        "Homepage": "https://github.com/tiran/defusedxml"
+      }
+    },
+    {
+      "name": "docutils",
+      "version": "0.23",
+      "marker": null,
+      "source": "https://pypi.org/pypi/docutils/0.23/json",
+      "source_sha256": "cd16c0ef6c719c6d965cf2315ce06db69e551b02b58b23adebc6b52f51ba5805",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License",
+        "License :: OSI Approved :: GNU General Public License (GPL)",
+        "License :: Public Domain"
+      ],
+      "project_urls": {
+        "Changelog": "https://docutils.sourceforge.io/HISTORY.html",
+        "Code": "https://sourceforge.net/p/docutils/code/",
+        "Documentation": "https://docutils.sourceforge.io/docs/",
+        "Download": "https://pypi.org/project/docutils/",
+        "Homepage": "https://docutils.sourceforge.io",
+        "Issue tracker": "https://sourceforge.net/p/docutils/bugs/"
+      }
+    },
+    {
+      "name": "filelock",
+      "version": "4.2.4",
+      "marker": null,
+      "source": "https://pypi.org/pypi/filelock/4.2.4/json",
+      "source_sha256": "15f44ff22fbab63cb4a5d2a9e03df833b06e70f11fef3cb3eb2cbaaac8652617",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Documentation": "https://py-filelock.readthedocs.io",
+        "Homepage": "https://github.com/tox-dev/py-filelock",
+        "Source": "https://github.com/tox-dev/py-filelock",
+        "Tracker": "https://github.com/tox-dev/py-filelock/issues"
+      }
+    },
+    {
+      "name": "frozenlist",
+      "version": "1.8.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/frozenlist/1.8.0/json",
+      "source_sha256": "b12a7f8b816bfb2a70f2eb97140890efb08a234ab3b75841b0e89e197effa5ad",
+      "license_expression": null,
+      "license": "Apache-2.0",
+      "license_classifiers": [],
+      "project_urls": {
+        "CI: Github Actions": "https://github.com/aio-libs/frozenlist/actions",
+        "Chat: Matrix": "https://matrix.to/#/#aio-libs:matrix.org",
+        "Chat: Matrix Space": "https://matrix.to/#/#aio-libs-space:matrix.org",
+        "Code of Conduct": "https://github.com/aio-libs/.github/blob/master/CODE_OF_CONDUCT.md",
+        "Coverage: codecov": "https://codecov.io/github/aio-libs/frozenlist",
+        "Docs: Changelog": "https://github.com/aio-libs/frozenlist/blob/master/CHANGES.rst#changelog",
+        "Docs: RTD": "https://frozenlist.aio-libs.org",
+        "GitHub: issues": "https://github.com/aio-libs/frozenlist/issues",
+        "GitHub: repo": "https://github.com/aio-libs/frozenlist",
+        "Homepage": "https://github.com/aio-libs/frozenlist"
+      }
+    },
+    {
+      "name": "id",
+      "version": "1.6.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/id/1.6.1/json",
+      "source_sha256": "3d8c26713f148b982542d953758b0dcd63e46308ca038ba3e0e02154f3c0bc67",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "Homepage": "https://pypi.org/project/id/",
+        "Issues": "https://github.com/di/id/issues",
+        "Source": "https://github.com/di/id"
+      }
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "marker": null,
+      "source": "https://pypi.org/pypi/idna/3.20/json",
+      "source_sha256": "e7cbd26e23ce60f6cb3a151d2adf3b1b087bb8f10ac2d9d6db70fdccbf3bb041",
+      "license_expression": "BSD-3-Clause",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://github.com/kjd/idna/blob/master/HISTORY.md",
+        "Issue tracker": "https://github.com/kjd/idna/issues",
+        "Source": "https://github.com/kjd/idna"
+      }
+    },
+    {
+      "name": "importlib-metadata",
+      "version": "10.1.0",
+      "marker": "python_full_version < \"3.12\" and platform_machine != \"ppc64le\" and platform_machine != \"s390x\"",
+      "source": "https://pypi.org/pypi/importlib-metadata/10.1.0/json",
+      "source_sha256": "43e4adeee46da810ce26fcde7718ed93d09a87f178c4911cba18ff2898ba5d84",
+      "license_expression": "Apache-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Source": "https://github.com/python/importlib_metadata"
+      }
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/iniconfig/2.3.1/json",
+      "source_sha256": "ab4d5df71d2a4f01a0eb418d7809bb22dca3293991a369309f068c07c1471557",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/pytest-dev/iniconfig"
+      }
+    },
+    {
+      "name": "jaraco-classes",
+      "version": "3.4.0",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\"",
+      "source": "https://pypi.org/pypi/jaraco-classes/3.4.0/json",
+      "source_sha256": "d53d49a46a7f31f251e0624b76adb30ef3b90630b7d6b1dd870ea1dc5133b837",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Homepage": "https://github.com/jaraco/jaraco.classes"
+      }
+    },
+    {
+      "name": "jaraco-context",
+      "version": "6.1.2",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\"",
+      "source": "https://pypi.org/pypi/jaraco-context/6.1.2/json",
+      "source_sha256": "8a49e998d60899ee4d37fcad2bd4b2db69744636bfc2bad4498d40557540d744",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Source": "https://github.com/jaraco/jaraco.context"
+      }
+    },
+    {
+      "name": "jaraco-functools",
+      "version": "4.6.0",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\"",
+      "source": "https://pypi.org/pypi/jaraco-functools/4.6.0/json",
+      "source_sha256": "dda934fa7526f77f8b88f201f151bc429dbc4a828c184473aa69328b7d0da563",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Source": "https://github.com/jaraco/jaraco.functools"
+      }
+    },
+    {
+      "name": "jeepney",
+      "version": "0.9.0",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\" and sys_platform == \"linux\"",
+      "source": "https://pypi.org/pypi/jeepney/0.9.0/json",
+      "source_sha256": "3510f98c63dda56b24de87c8bc0019065deeafbf73f09aa1c98ca24941daff50",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Documentation": "https://jeepney.readthedocs.io/en/latest/",
+        "Source": "https://gitlab.com/takluyver/jeepney"
+      }
+    },
+    {
+      "name": "keyring",
+      "version": "25.7.0",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\"",
+      "source": "https://pypi.org/pypi/keyring/25.7.0/json",
+      "source_sha256": "bea557241660bfd985b7506043b3cdc1816a28b2f225feec55215ffba7f633c3",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Source": "https://github.com/jaraco/keyring"
+      }
+    },
+    {
+      "name": "librt",
+      "version": "0.16.0",
+      "marker": "platform_python_implementation != \"PyPy\"",
+      "source": "https://pypi.org/pypi/librt/0.16.0/json",
+      "source_sha256": "15903fc6fea8431c709b032d2dc99d27da1ab61f2f06998a6bb73b07d9e71ef0",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/mypyc/librt",
+        "Issues": "https://github.com/mypyc/mypyc/issues"
+      }
+    },
+    {
+      "name": "license-expression",
+      "version": "30.4.4",
+      "marker": null,
+      "source": "https://pypi.org/pypi/license-expression/30.4.4/json",
+      "source_sha256": "b8f8e4e7ff646d265627f7e8c120f0d5e2e51a1e0fe895012336b6458f4a8777",
+      "license_expression": null,
+      "license": "Apache-2.0",
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/aboutcode-org/license-expression"
+      }
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "4.2.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/markdown-it-py/4.2.0/json",
+      "source_sha256": "62affba459c80b1279b5759735f7da3e9c7d24966086ff81ec0303c94512b966",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Documentation": "https://markdown-it-py.readthedocs.io",
+        "Homepage": "https://github.com/executablebooks/markdown-it-py"
+      }
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2",
+      "marker": null,
+      "source": "https://pypi.org/pypi/mdurl/0.1.2/json",
+      "source_sha256": "c7baac0b363d92cf55f1f3a313f4bb0564bff27343e6a0a4e9d7ff03afc8a6c7",
+      "license_expression": null,
+      "license": "",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Homepage": "https://github.com/executablebooks/mdurl"
+      }
+    },
+    {
+      "name": "more-itertools",
+      "version": "11.2.1",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\"",
+      "source": "https://pypi.org/pypi/more-itertools/11.2.1/json",
+      "source_sha256": "220d4b6d902f81a42289fb7bed119f123cf19c379175060818fb7d73461448af",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Documentation": "https://more-itertools.readthedocs.io/en/stable/",
+        "Homepage": "https://github.com/more-itertools/more-itertools"
+      }
+    },
+    {
+      "name": "msgpack",
+      "version": "1.2.4",
+      "marker": null,
+      "source": "https://pypi.org/pypi/msgpack/1.2.4/json",
+      "source_sha256": "6fb5984e62a21072b8f9a5a5bd2b9d6add981390b5dbed608d840d613f46e348",
+      "license_expression": "Apache-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://github.com/msgpack/msgpack-python/blob/main/CHANGELOG.md",
+        "Documentation": "https://msgpack-python.readthedocs.io/",
+        "Homepage": "https://msgpack.org/",
+        "Repository": "https://github.com/msgpack/msgpack-python/",
+        "Tracker": "https://github.com/msgpack/msgpack-python/issues"
+      }
+    },
+    {
+      "name": "multidict",
+      "version": "7.2.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/multidict/7.2.1/json",
+      "source_sha256": "49fb04bf7bdb872b9fffc930a3e5e5f1a34c2fc35f7304815fadf3f167467a4d",
+      "license_expression": "Apache-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "CI: GitHub": "https://github.com/aio-libs/multidict/actions",
+        "Chat: Matrix": "https://matrix.to/#/#aio-libs:matrix.org",
+        "Chat: Matrix Space": "https://matrix.to/#/#aio-libs-space:matrix.org",
+        "Code of Conduct": "https://github.com/aio-libs/.github/blob/master/CODE_OF_CONDUCT.md",
+        "Coverage: codecov": "https://codecov.io/github/aio-libs/multidict",
+        "Docs: Changelog": "https://multidict.aio-libs.org/en/latest/changes/",
+        "Docs: RTD": "https://multidict.aio-libs.org",
+        "GitHub: issues": "https://github.com/aio-libs/multidict/issues",
+        "GitHub: repo": "https://github.com/aio-libs/multidict",
+        "Homepage": "https://github.com/aio-libs/multidict"
+      }
+    },
+    {
+      "name": "mypy",
+      "version": "2.4.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/mypy/2.4.0/json",
+      "source_sha256": "08b5d152ed0e09cfc7787b5d111bf9cf5a13961984636fee9fdbae6bf7a26087",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://github.com/python/mypy/blob/master/CHANGELOG.md",
+        "Documentation": "https://mypy.readthedocs.io/en/stable/index.html",
+        "Homepage": "https://www.mypy-lang.org/",
+        "Issues": "https://github.com/python/mypy/issues",
+        "Repository": "https://github.com/python/mypy"
+      }
+    },
+    {
+      "name": "mypy-extensions",
+      "version": "1.1.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/mypy-extensions/1.1.0/json",
+      "source_sha256": "1c470d3b03e21974b5ea09a572478f10864174511c3a46864b759409451d3ba8",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/python/mypy_extensions"
+      }
+    },
+    {
+      "name": "nh3",
+      "version": "0.3.7",
+      "marker": null,
+      "source": "https://pypi.org/pypi/nh3/0.3.7/json",
+      "source_sha256": "5f1a97ca8df9cb579425f3b3939d4b4143c7242f30e86bdf0cfff7308b24058a",
+      "license_expression": null,
+      "license": "MIT",
+      "license_classifiers": [],
+      "project_urls": {
+        "Source Code": "https://github.com/messense/nh3"
+      }
+    },
+    {
+      "name": "packageurl-python",
+      "version": "0.17.6",
+      "marker": null,
+      "source": "https://pypi.org/pypi/packageurl-python/0.17.6/json",
+      "source_sha256": "67e19563deb4ead684c458f8870333d842c5c3840e27cfec9bead1c78cd97f4f",
+      "license_expression": null,
+      "license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Homepage": "https://github.com/package-url/packageurl-python"
+      }
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "marker": null,
+      "source": "https://pypi.org/pypi/packaging/26.3/json",
+      "source_sha256": "4f190d2f0b312b3086058cee64ab4333bf3ce67fb78b4c2bdb43899049b29f4d",
+      "license_expression": "Apache-2.0 OR BSD-2-Clause",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Documentation": "https://packaging.pypa.io/",
+        "Source": "https://github.com/pypa/packaging"
+      }
+    },
+    {
+      "name": "pathspec",
+      "version": "1.1.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pathspec/1.1.1/json",
+      "source_sha256": "24f66829a7f40485bdccfcf32294218b0f4260b289ee4806ab644feb6c194766",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ],
+      "project_urls": {
+        "Change Log": "https://python-path-specification.readthedocs.io/en/latest/changes.html",
+        "Documentation": "https://python-path-specification.readthedocs.io/en/latest/index.html",
+        "Issue Tracker": "https://github.com/cpburnz/python-pathspec/issues",
+        "Source Code": "https://github.com/cpburnz/python-pathspec"
+      }
+    },
+    {
+      "name": "pillow",
+      "version": "13.0.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pillow/13.0.0/json",
+      "source_sha256": "183d4151cbc909acf39d4d5d48469d6bc66d5516e7f506854241839d0611b69e",
+      "license_expression": "MIT-CMU",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://github.com/python-pillow/Pillow/releases",
+        "Documentation": "https://pillow.readthedocs.io",
+        "Funding": "https://tidelift.com/lifter/search/pypi/pillow",
+        "Homepage": "https://python-pillow.org",
+        "Mastodon": "https://fosstodon.org/@pillow",
+        "Release notes": "https://pillow.readthedocs.io/en/stable/releasenotes/index.html",
+        "Security": "https://pillow.readthedocs.io/en/stable/handbook/security.html",
+        "Source": "https://github.com/python-pillow/Pillow"
+      }
+    },
+    {
+      "name": "pip",
+      "version": "26.2.2",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pip/26.2.2/json",
+      "source_sha256": "ebd1e77f0bdb480aa8cf26c605ad6856753becb015a3d2006228cadb40465931",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://pip.pypa.io/en/stable/news/",
+        "Documentation": "https://pip.pypa.io",
+        "Homepage": "https://pip.pypa.io/",
+        "Source": "https://github.com/pypa/pip"
+      }
+    },
+    {
+      "name": "pip-api",
+      "version": "0.0.35",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pip-api/0.0.35/json",
+      "source_sha256": "034f9258ae563cf3b74a92815a908b4367bc27afc0fca3e94d2c2de532629000",
+      "license_expression": null,
+      "license": "Apache License\n                                Version 2.0, January 2004\n                             https://www.apache.org/licenses/\n        \n        TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n        \n        1. Definitions.\n        \n           \"License\" shall mean the terms and conditions for use, reproduction,\n           and distribution as defined by Sections 1 through 9 of this document.\n        \n           \"Licensor\" shall mean the copyright owner or entity authorized by\n           the copyright owner that is granting the License.\n        \n           \"Legal Entity\" shall mean the union of the acting entity and all\n           other entities that control, are controlled by, or are under common\n           control with that entity. For the purposes of this definition,\n           \"control\" means (i) the power, direct or indirect, to cause the\n           direction or management of such entity, whether by contract or\n           otherwise, or (ii) ownership of fifty percent (50%) or more of the\n           outstanding shares, or (iii) beneficial ownership of such entity.\n        \n           \"You\" (or \"Your\") shall mean an individual or Legal Entity\n           exercising permissions granted by this License.\n        \n           \"Source\" form shall mean the preferred form for making modifications,\n           including but not limited to software source code, documentation\n           source, and configuration files.\n        \n           \"Object\" form shall mean any form resulting from mechanical\n           transformation or translation of a Source form, including but\n           not limited to compiled object code, generated documentation,\n           and conversions to other media types.\n        \n           \"Work\" shall mean the work of authorship, whether in Source or\n           Object form, made available under the License, as indicated by a\n           copyright notice that is included in or attached to the work\n           (an example is provided in the Appendix below).\n        \n           \"Derivative Works\" shall mean any work, whether in Source or Object\n           form, that is based on (or derived from) the Work and for which the\n           editorial revisions, annotations, elaborations, or other modifications\n           represent, as a whole, an original work of authorship. For the purposes\n           of this License, Derivative Works shall not include works that remain\n           separable from, or merely link (or bind by name) to the interfaces of,\n           the Work and Derivative Works thereof.\n        \n           \"Contribution\" shall mean any work of authorship, including\n           the original version of the Work and any modifications or additions\n           to that Work or Derivative Works thereof, that is intentionally\n           submitted to Licensor for inclusion in the Work by the copyright owner\n           or by an individual or Legal Entity authorized to submit on behalf of\n           the copyright owner. For the purposes of this definition, \"submitted\"\n           means any form of electronic, verbal, or written communication sent\n           to the Licensor or its representatives, including but not limited to\n           communication on electronic mailing lists, source code control systems,\n           and issue tracking systems that are managed by, or on behalf of, the\n           Licensor for the purpose of discussing and improving the Work, but\n           excluding communication that is conspicuously marked or otherwise\n           designated in writing by the copyright owner as \"Not a Contribution.\"\n        \n           \"Contributor\" shall mean Licensor and any individual or Legal Entity\n           on behalf of whom a Contribution has been received by Licensor and\n           subsequently incorporated within the Work.\n        \n        2. Grant of Copyright License. Subject to the terms and conditions of\n           this License, each Contributor hereby grants to You a perpetual,\n           worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n           copyright license to reproduce, prepare Derivative Works of,\n           publicly display, publicly perform, sublicense, and distribute the\n           Work and such Derivative Works in Source or Object form.\n        \n        3. Grant of Patent License. Subject to the terms and conditions of\n           this License, each Contributor hereby grants to You a perpetual,\n           worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n           (except as stated in this section) patent license to make, have made,\n           use, offer to sell, sell, import, and otherwise transfer the Work,\n           where such license applies only to those patent claims licensable\n           by such Contributor that are necessarily infringed by their\n           Contribution(s) alone or by combination of their Contribution(s)\n           with the Work to which such Contribution(s) was submitted. If You\n           institute patent litigation against any entity (including a\n           cross-claim or counterclaim in a lawsuit) alleging that the Work\n           or a Contribution incorporated within the Work constitutes direct\n           or contributory patent infringement, then any patent licenses\n           granted to You under this License for that Work shall terminate\n           as of the date such litigation is filed.\n        \n        4. Redistribution. You may reproduce and distribute copies of the\n           Work or Derivative Works thereof in any medium, with or without\n           modifications, and in Source or Object form, provided that You\n           meet the following conditions:\n        \n           (a) You must give any other recipients of the Work or\n               Derivative Works a copy of this License; and\n        \n           (b) You must cause any modified files to carry prominent notices\n               stating that You changed the files; and\n        \n           (c) You must retain, in the Source form of any Derivative Works\n               that You distribute, all copyright, patent, trademark, and\n               attribution notices from the Source form of the Work,\n               excluding those notices that do not pertain to any part of\n               the Derivative Works; and\n        \n           (d) If the Work includes a \"NOTICE\" text file as part of its\n               distribution, then any Derivative Works that You distribute must\n               include a readable copy of the attribution notices contained\n               within such NOTICE file, excluding those notices that do not\n               pertain to any part of the Derivative Works, in at least one\n               of the following places: within a NOTICE text file distributed\n               as part of the Derivative Works; within the Source form or\n               documentation, if provided along with the Derivative Works; or,\n               within a display generated by the Derivative Works, if and\n               wherever such third-party notices normally appear. The contents\n               of the NOTICE file are for informational purposes only and\n               do not modify the License. You may add Your own attribution\n               notices within Derivative Works that You distribute, alongside\n               or as an addendum to the NOTICE text from the Work, provided\n               that such additional attribution notices cannot be construed\n               as modifying the License.\n        \n           You may add Your own copyright statement to Your modifications and\n           may provide additional or different license terms and conditions\n           for use, reproduction, or distribution of Your modifications, or\n           for any such Derivative Works as a whole, provided Your use,\n           reproduction, and distribution of the Work otherwise complies with\n           the conditions stated in this License.\n        \n        5. Submission of Contributions. Unless You explicitly state otherwise,\n           any Contribution intentionally submitted for inclusion in the Work\n           by You to the Licensor shall be under the terms and conditions of\n           this License, without any additional terms or conditions.\n           Notwithstanding the above, nothing herein shall supersede or modify\n           the terms of any separate license agreement you may have executed\n           with Licensor regarding such Contributions.\n        \n        6. Trademarks. This License does not grant permission to use the trade\n           names, trademarks, service marks, or product names of the Licensor,\n           except as required for reasonable and customary use in describing the\n           origin of the Work and reproducing the content of the NOTICE file.\n        \n        7. Disclaimer of Warranty. Unless required by applicable law or\n           agreed to in writing, Licensor provides the Work (and each\n           Contributor provides its Contributions) on an \"AS IS\" BASIS,\n           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n           implied, including, without limitation, any warranties or conditions\n           of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n           PARTICULAR PURPOSE. You are solely responsible for determining the\n           appropriateness of using or redistributing the Work and assume any\n           risks associated with Your exercise of permissions under this License.\n        \n        8. Limitation of Liability. In no event and under no legal theory,\n           whether in tort (including negligence), contract, or otherwise,\n           unless required by applicable law (such as deliberate and grossly\n           negligent acts) or agreed to in writing, shall any Contributor be\n           liable to You for damages, including any direct, indirect, special,\n           incidental, or consequential damages of any character arising as a\n           result of this License or out of the use or inability to use the\n           Work (including but not limited to damages for loss of goodwill,\n           work stoppage, computer failure or malfunction, or any and all\n           other commercial damages or losses), even if such Contributor\n           has been advised of the possibility of such damages.\n        \n        9. Accepting Warranty or Additional Liability. While redistributing\n           the Work or Derivative Works thereof, You may choose to offer,\n           and charge a fee for, acceptance of support, warranty, indemnity,\n           or other liability obligations and/or rights consistent with this\n           License. However, in accepting such obligations, You may act only\n           on Your own behalf and on Your sole responsibility, not on behalf\n           of any other Contributor, and only if You agree to indemnify,\n           defend, and hold each Contributor harmless for any liability\n           incurred by, or claims asserted against, such Contributor by reason\n           of your accepting any such warranty or additional liability.\n        ",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "Homepage": "https://pypi.org/project/pip-api/",
+        "Issues": "https://github.com/di/pip-api/issues",
+        "Source": "https://github.com/di/pip-api"
+      }
+    },
+    {
+      "name": "pip-audit",
+      "version": "2.10.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pip-audit/2.10.1/json",
+      "source_sha256": "0375a398da843b62fd47ea4926a6220028fad3af7f3d83ed91251b86a1a34309",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "Homepage": "https://pypi.org/project/pip-audit/",
+        "Issues": "https://github.com/pypa/pip-audit/issues",
+        "Source": "https://github.com/pypa/pip-audit"
+      }
+    },
+    {
+      "name": "pip-requirements-parser",
+      "version": "32.0.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pip-requirements-parser/32.0.1/json",
+      "source_sha256": "9feedb8034ac2e03f60dca458a9568bb19c56f29ca9b91cb929305feb48f0e3b",
+      "license_expression": null,
+      "license": "MIT",
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/nexB/pip-requirements-parser"
+      }
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.13.5",
+      "marker": null,
+      "source": "https://pypi.org/pypi/platformdirs/4.13.5/json",
+      "source_sha256": "d827e11debd7b633adf8f0854fe30cf5f40e55d26d6a3ef81d1bd67ccc2a323a",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Changelog": "https://platformdirs.readthedocs.io/en/latest/changelog.html",
+        "Documentation": "https://platformdirs.readthedocs.io",
+        "Homepage": "https://github.com/tox-dev/platformdirs",
+        "Source": "https://github.com/tox-dev/platformdirs",
+        "Tracker": "https://github.com/tox-dev/platformdirs/issues"
+      }
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pluggy/1.7.0/json",
+      "source_sha256": "9e8f441bba8382eabf6febf386a5b9610cfe0c16b60b96e7b4b1831bd6d96361",
+      "license_expression": null,
+      "license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Changelog": "https://pluggy.readthedocs.io/en/latest/changelog.html",
+        "Documentation": "https://pluggy.readthedocs.io/",
+        "Funding": "https://tidelift.com/subscription/pkg/pypi-pluggy",
+        "Homepage": "https://github.com/pytest-dev/pluggy",
+        "Issues": "https://github.com/pytest-dev/pluggy/issues",
+        "Repository": "https://github.com/pytest-dev/pluggy"
+      }
+    },
+    {
+      "name": "propcache",
+      "version": "0.5.4",
+      "marker": null,
+      "source": "https://pypi.org/pypi/propcache/0.5.4/json",
+      "source_sha256": "253a90067f5c44ffec37f3f1081934c91fb60edda0dc1e9bdf805edc8cecf693",
+      "license_expression": null,
+      "license": "Apache-2.0",
+      "license_classifiers": [],
+      "project_urls": {
+        "CI: GitHub Workflows": "https://github.com/aio-libs/propcache/actions?query=branch:master",
+        "Chat: Matrix": "https://matrix.to/#/#aio-libs:matrix.org",
+        "Chat: Matrix Space": "https://matrix.to/#/#aio-libs-space:matrix.org",
+        "Code of Conduct": "https://github.com/aio-libs/.github/blob/master/CODE_OF_CONDUCT.md",
+        "Coverage: codecov": "https://codecov.io/github/aio-libs/propcache",
+        "Docs: Changelog": "https://propcache.readthedocs.io/en/latest/changes/",
+        "Docs: RTD": "https://propcache.readthedocs.io",
+        "GitHub: issues": "https://github.com/aio-libs/propcache/issues",
+        "GitHub: repo": "https://github.com/aio-libs/propcache",
+        "Homepage": "https://github.com/aio-libs/propcache"
+      }
+    },
+    {
+      "name": "py-serializable",
+      "version": "2.1.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/py-serializable/2.1.0/json",
+      "source_sha256": "e1f417456edabbaeff4b7d40d4e1e05017010843f66092bc064bcc301ffe1f63",
+      "license_expression": null,
+      "license": "Apache-2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "Bug Tracker": "https://github.com/madpah/serializable/issues",
+        "Documentation": "https://py-serializable.readthedocs.io/",
+        "Homepage": "https://github.com/madpah/serializable#readme",
+        "Repository": "https://github.com/madpah/serializable"
+      }
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12",
+      "marker": "implementation_name != \"PyPy\" and platform_machine != \"ppc64le\" and platform_machine != \"s390x\" and platform_python_implementation != \"PyPy\" and sys_platform == \"linux\"",
+      "source": "https://pypi.org/pypi/pycparser/3.12/json",
+      "source_sha256": "e919b291615d54a2328a0da6128cd9d95601ad04d27cec48eeb75e0d57c3b6ad",
+      "license_expression": "BSD-3-Clause",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/eliben/pycparser"
+      }
+    },
+    {
+      "name": "pygments",
+      "version": "2.21.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pygments/2.21.0/json",
+      "source_sha256": "330104a10adc8a587e3f98f4e207557125ca0c1d489e129334da5acb2b813a03",
+      "license_expression": "BSD-2-Clause",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Bug Tracker": "https://github.com/pygments/pygments/issues",
+        "Changelog": "https://github.com/pygments/pygments/blob/master/CHANGES",
+        "Documentation": "https://pygments.org/docs",
+        "Homepage": "https://pygments.org",
+        "Source": "https://github.com/pygments/pygments"
+      }
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.3.3",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pyparsing/3.3.3/json",
+      "source_sha256": "b851d5414eca50b38263f56c00a1fbec80383a26a3ad8e41a204b72cdeee5751",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Documentation": "https://pyparsing-docs.readthedocs.io/en/latest/",
+        "Homepage": "https://github.com/pyparsing/pyparsing/",
+        "Source": "https://github.com/pyparsing/pyparsing.git"
+      }
+    },
+    {
+      "name": "pyproject-hooks",
+      "version": "1.3.3",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pyproject-hooks/1.3.3/json",
+      "source_sha256": "ef47170935f8a098c070a3cd65d637d5bbf646158d9559eebac9c465b83d0401",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://pyproject-hooks.readthedocs.io/en/latest/changelog.html",
+        "Documentation": "https://pyproject-hooks.readthedocs.io/",
+        "Source": "https://github.com/pypa/pyproject-hooks"
+      }
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pytest/9.1.1/json",
+      "source_sha256": "707efea7c8046e3aaaaac619aac85bc1e73c310a9fbff8028c53ac229ca02f2c",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://docs.pytest.org/en/stable/changelog.html",
+        "Contact": "https://docs.pytest.org/en/stable/contact.html",
+        "Funding": "https://docs.pytest.org/en/stable/sponsor.html",
+        "Homepage": "https://docs.pytest.org/en/latest/",
+        "Source": "https://github.com/pytest-dev/pytest",
+        "Tracker": "https://github.com/pytest-dev/pytest/issues"
+      }
+    },
+    {
+      "name": "pytest-asyncio",
+      "version": "1.4.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pytest-asyncio/1.4.1/json",
+      "source_sha256": "1d6ee60626cd0f62b11229c2dcacbe01cfc8d38871ad0e824e1212f4b2edfd06",
+      "license_expression": "Apache-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Bug Tracker": "https://github.com/pytest-dev/pytest-asyncio/issues",
+        "Changelog": "https://pytest-asyncio.readthedocs.io/en/stable/reference/changelog.html",
+        "Documentation": "https://pytest-asyncio.readthedocs.io",
+        "Homepage": "https://github.com/pytest-dev/pytest-asyncio",
+        "Source Code": "https://github.com/pytest-dev/pytest-asyncio"
+      }
+    },
+    {
+      "name": "pytest-socket",
+      "version": "0.8.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pytest-socket/0.8.1/json",
+      "source_sha256": "3555923964038ae3a76b4ad7a7c0e18d30389549fdb36a53fa2c5b5e2b4de942",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Bug Tracker": "https://github.com/miketheman/pytest-socket/issues",
+        "Change Log": "https://github.com/miketheman/pytest-socket/blob/main/CHANGELOG.md",
+        "Funding": "https://github.com/sponsors/miketheman",
+        "Homepage": "https://pypi.org/project/pytest-socket/",
+        "Repository": "https://github.com/miketheman/pytest-socket"
+      }
+    },
+    {
+      "name": "pywin32-ctypes",
+      "version": "0.2.3",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\" and sys_platform == \"win32\"",
+      "source": "https://pypi.org/pypi/pywin32-ctypes/0.2.3/json",
+      "source_sha256": "31b3fd15200f74e96940467fd34bb11cab92fbcc8a7f9e0fb0f90599e56e1604",
+      "license_expression": null,
+      "license": "BSD-3-Clause",
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/enthought/pywin32-ctypes"
+      }
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0.3",
+      "marker": null,
+      "source": "https://pypi.org/pypi/pyyaml/6.0.3/json",
+      "source_sha256": "c3f35597bc2f08cc990c2a5fe57bef6687b3a3d7c61d8b0ba4cc067777eb1def",
+      "license_expression": null,
+      "license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Bug Tracker": "https://github.com/yaml/pyyaml/issues",
+        "CI": "https://github.com/yaml/pyyaml/actions",
+        "Documentation": "https://pyyaml.org/wiki/PyYAMLDocumentation",
+        "Download": "https://pypi.org/project/PyYAML/",
+        "Homepage": "https://pyyaml.org/",
+        "Mailing lists": "http://lists.sourceforge.net/lists/listinfo/yaml-core",
+        "Source Code": "https://github.com/yaml/pyyaml"
+      }
+    },
+    {
+      "name": "readme-renderer",
+      "version": "46.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/readme-renderer/46.0/json",
+      "source_sha256": "d13b65c44c8d9095bdc81859380445bae2ceb3a81f290940ee28b14e659c6d01",
+      "license_expression": "Apache-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Homepage": "https://github.com/pypa/readme_renderer"
+      }
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "marker": null,
+      "source": "https://pypi.org/pypi/requests/2.34.2/json",
+      "source_sha256": "8622e50ffd295ed759ec793f2a009172a4ed0204bbc5e948de23111bc3d2aeae",
+      "license_expression": null,
+      "license": "Apache-2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "Documentation": "https://requests.readthedocs.io",
+        "Source": "https://github.com/psf/requests"
+      }
+    },
+    {
+      "name": "requests-toolbelt",
+      "version": "1.0.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/requests-toolbelt/1.0.0/json",
+      "source_sha256": "77572be079b3e272fe239c8a0e1ae3491e90ee3c58eb63614ea4d7e5bcbc2b8e",
+      "license_expression": null,
+      "license": "Apache 2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "Changelog": "https://github.com/requests/toolbelt/blob/master/HISTORY.rst",
+        "Homepage": "https://toolbelt.readthedocs.io/",
+        "Source": "https://github.com/requests/toolbelt"
+      }
+    },
+    {
+      "name": "rfc3986",
+      "version": "2.0.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/rfc3986/2.0.0/json",
+      "source_sha256": "49cbfc503cc7bd100e2ebb33cdc1e725eb8c6cce2eb986bcafb697bf52ee30a3",
+      "license_expression": null,
+      "license": "Apache 2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "Homepage": "http://rfc3986.readthedocs.io"
+      }
+    },
+    {
+      "name": "rich",
+      "version": "15.0.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/rich/15.0.0/json",
+      "source_sha256": "455015cb0b237a24819d91236152ad0e71b2be39a83cbe6afa0e29ea8aafa550",
+      "license_expression": null,
+      "license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Documentation": "https://rich.readthedocs.io/en/latest/",
+        "Homepage": "https://github.com/Textualize/rich"
+      }
+    },
+    {
+      "name": "ruff",
+      "version": "0.17.3",
+      "marker": null,
+      "source": "https://pypi.org/pypi/ruff/0.17.3/json",
+      "source_sha256": "8c7c0d9a4defa3f62bdfeb308d25335720eed0c0960bdc9c64c2b9247b9a7a81",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md",
+        "Documentation": "https://docs.astral.sh/ruff/",
+        "Homepage": "https://docs.astral.sh/ruff",
+        "Repository": "https://github.com/astral-sh/ruff"
+      }
+    },
+    {
+      "name": "secretstorage",
+      "version": "3.5.0",
+      "marker": "platform_machine != \"ppc64le\" and platform_machine != \"s390x\" and sys_platform == \"linux\"",
+      "source": "https://pypi.org/pypi/secretstorage/3.5.0/json",
+      "source_sha256": "523a6e658f96573d5f56c8bf31b312d24494abc223d966827fa5cb29d3837f5f",
+      "license_expression": "BSD-3-Clause",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Documentation": "https://secretstorage.readthedocs.io/en/latest/",
+        "Homepage": "https://github.com/mitya57/secretstorage",
+        "Issue Tracker": "https://github.com/mitya57/secretstorage/issues/"
+      }
+    },
+    {
+      "name": "setuptools",
+      "version": "84.2.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/setuptools/84.2.1/json",
+      "source_sha256": "d75de8ba0d3304a3d74484fb9f340edb87ef02712da4fa02a2ed92e71b0572dd",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://setuptools.pypa.io/en/stable/history.html",
+        "Documentation": "https://setuptools.pypa.io/",
+        "Source": "https://github.com/pypa/setuptools"
+      }
+    },
+    {
+      "name": "sortedcontainers",
+      "version": "2.4.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/sortedcontainers/2.4.0/json",
+      "source_sha256": "4e0cd7bf62c28a94d9236338cdd4d918aef53a344c6765756ebfe054de14930b",
+      "license_expression": null,
+      "license": "Apache 2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": {
+        "Homepage": "http://www.grantjenks.com/docs/sortedcontainers/"
+      }
+    },
+    {
+      "name": "tomli",
+      "version": "2.5.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/tomli/2.5.0/json",
+      "source_sha256": "db3dcc9ba38b7c7fe8021b68b66112b8df90840ca826acfa55b3698f76992eb1",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://github.com/hukkin/tomli/blob/master/CHANGELOG.md",
+        "Homepage": "https://github.com/hukkin/tomli"
+      }
+    },
+    {
+      "name": "tomli-w",
+      "version": "1.2.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/tomli-w/1.2.0/json",
+      "source_sha256": "073cbf95dd8b295cdfb5bd724540b50c04234db7ec20830c7011c7172905e411",
+      "license_expression": null,
+      "license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": {
+        "Changelog": "https://github.com/hukkin/tomli-w/blob/master/CHANGELOG.md",
+        "Homepage": "https://github.com/hukkin/tomli-w"
+      }
+    },
+    {
+      "name": "twine",
+      "version": "7.0.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/twine/7.0.0/json",
+      "source_sha256": "b55160e433b5baac797e89a79a8c38b901fa0cb2b0d46d47724f3c953b386902",
+      "license_expression": "Apache-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Documentation": "https://twine.readthedocs.io/en/latest/",
+        "Homepage": "https://twine.readthedocs.io/",
+        "Packaging tutorial": "https://packaging.python.org/tutorials/packaging-projects/",
+        "Source": "https://github.com/pypa/twine/"
+      }
+    },
+    {
+      "name": "types-pyyaml",
+      "version": "6.0.12.20260906",
+      "marker": null,
+      "source": "https://pypi.org/pypi/types-pyyaml/6.0.12.20260906/json",
+      "source_sha256": "da608cd3a1450d972d4f89e3a2734cfe86038bf4089b806884772508e79dce63",
+      "license_expression": "Apache-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changes": "https://github.com/typeshed-internal/stub_uploader/blob/main/data/changelogs/PyYAML.md",
+        "Chat": "https://gitter.im/python/typing",
+        "GitHub": "https://github.com/python/typeshed",
+        "Homepage": "https://github.com/python/typeshed",
+        "Issue tracker": "https://github.com/python/typeshed/issues"
+      }
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.16.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/typing-extensions/4.16.0/json",
+      "source_sha256": "2140da00d62dde967f52d0be0ae28444f1d6a3fe603f52c83c23988c32122d5a",
+      "license_expression": "PSF-2.0",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Bug Tracker": "https://github.com/python/typing_extensions/issues",
+        "Changes": "https://github.com/python/typing_extensions/blob/main/CHANGELOG.md",
+        "Documentation": "https://typing-extensions.readthedocs.io/",
+        "Home": "https://github.com/python/typing_extensions",
+        "Q & A": "https://github.com/python/typing/discussions",
+        "Repository": "https://github.com/python/typing_extensions"
+      }
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "marker": null,
+      "source": "https://pypi.org/pypi/urllib3/2.8.0/json",
+      "source_sha256": "5315e7401db3cacccd0c2ce5daf81f752a9cc3614b18c37f2b79930b7159ce2f",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Changelog": "https://github.com/urllib3/urllib3/blob/main/CHANGES.rst",
+        "Code": "https://github.com/urllib3/urllib3",
+        "Documentation": "https://urllib3.readthedocs.io",
+        "Issue tracker": "https://github.com/urllib3/urllib3/issues",
+        "Security policy": "https://urllib3.readthedocs.io/en/latest/security.html"
+      }
+    },
+    {
+      "name": "yarl",
+      "version": "1.25.1",
+      "marker": null,
+      "source": "https://pypi.org/pypi/yarl/1.25.1/json",
+      "source_sha256": "a07cf3b564a15e3be66faacf0c81a23497ebfbf1ec849a3a77b494ba4b60cf0f",
+      "license_expression": null,
+      "license": "Apache-2.0",
+      "license_classifiers": [],
+      "project_urls": {
+        "CI: GitHub Workflows": "https://github.com/aio-libs/yarl/actions?query=branch:master",
+        "Chat: Matrix": "https://matrix.to/#/#aio-libs:matrix.org",
+        "Chat: Matrix Space": "https://matrix.to/#/#aio-libs-space:matrix.org",
+        "Code of Conduct": "https://github.com/aio-libs/.github/blob/master/CODE_OF_CONDUCT.md",
+        "Coverage: codecov": "https://codecov.io/github/aio-libs/yarl",
+        "Docs: Changelog": "https://yarl.aio-libs.org/en/latest/changes/",
+        "Docs: RTD": "https://yarl.aio-libs.org",
+        "GitHub: issues": "https://github.com/aio-libs/yarl/issues",
+        "GitHub: repo": "https://github.com/aio-libs/yarl",
+        "Homepage": "https://github.com/aio-libs/yarl"
+      }
+    },
+    {
+      "name": "zipp",
+      "version": "4.1.2",
+      "marker": "python_full_version < \"3.12\" and platform_machine != \"ppc64le\" and platform_machine != \"s390x\"",
+      "source": "https://pypi.org/pypi/zipp/4.1.2/json",
+      "source_sha256": "cde33a7d7caaad103d41e476b7b8e175d77726494f76bae072e70a92f020c3c8",
+      "license_expression": "MIT",
+      "license": null,
+      "license_classifiers": [],
+      "project_urls": {
+        "Source": "https://github.com/jaraco/zipp"
+      }
+    }
+  ]
+}

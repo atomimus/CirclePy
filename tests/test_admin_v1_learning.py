@@ -483,7 +483,7 @@ async def test_public_queries_and_error_traces_are_redacted(
             error.value.body["token"] == case["args"][0]
         )  # Explicit context stays sensitive.
         if not async_mode:
-            assert "?[redacted]" in caplog.text
+            assert "CirclePy HTTP transport detail redacted" in caplog.text
     finally:
         await close(client)
 

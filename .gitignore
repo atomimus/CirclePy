@@ -54,6 +54,12 @@ coverage.xml
 .ruff_cache/
 test-results.xml
 dependency-audit.json
+dependency-audit-requirements.txt
+dependency-sbom.cdx.json
+validation-profile.json
+installed-smoke.json
+installed-full.json
+focused-tests.xml
 cover/
 
 # Translations

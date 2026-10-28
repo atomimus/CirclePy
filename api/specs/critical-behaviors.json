@@ -307,6 +307,18 @@
       ]
     },
     {
+      "id": "T12",
+      "category": "transport",
+      "invariant": "SDK HTTP diagnostics redact signed URLs, private queries, cookie warnings and exception details without leaking context across tasks or threads",
+      "tests": [
+        "tests/test_security.py::test_signed_upload_capability_never_reaches_http_logs",
+        "tests/test_security.py::test_generic_request_private_query_never_reaches_http_logs",
+        "tests/test_security.py::test_rejected_response_cookie_never_reaches_async_logs",
+        "tests/test_security.py::test_diagnostic_errors_are_redacted_and_scope_resets",
+        "tests/test_security.py::test_log_scope_isolated_between_tasks_threads_and_after_cancellation"
+      ]
+    },
+    {
       "id": "T11",
       "category": "transport",
       "invariant": "Wrong-loop use fails before HTTP; owned cleanup and borrowed session ownership remain correct",
