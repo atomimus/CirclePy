@@ -1,0 +1,17 @@
+name: Documentation or feature request
+description: Describe a guide problem or a concrete SDK use case
+body:
+  - type: markdown
+    attributes:
+      value: "Keep credentials, member data and private responses out of this issue. New endpoint requests need an official Circle reference."
+  - type: textarea
+    id: request
+    attributes:
+      label: Problem or use case
+      description: Include the guide URL or public method and the relevant version.
+    validations:
+      required: true
+  - type: textarea
+    id: reference
+    attributes:
+      label: Suggested improvement and official references

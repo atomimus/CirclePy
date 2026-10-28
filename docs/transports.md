@@ -8,7 +8,7 @@ it has not been published as a replacement for the existing PyPI release.
 The async transport is available through `circlepy.transport.AsyncTransport`.
 Public client facades, coordinated token refresh and restoration are now available;
 see [client lifecycles and migration examples](clients.md).
-Resource completeness and upload helpers remain separate implementation work.
+The [resource map](api.md) links the implemented sync/async groups and upload helpers.
 
 ## Sessions and configuration
 
@@ -104,8 +104,10 @@ The default retry budget is **zero**. `max_retries` accepts 0–10 additional
 attempts. A transport request can retry only with `safe_read=True`, method GET or
 HEAD, and no body. Resource authors must verify documented operation semantics;
 a side-effecting GET must never receive that flag. Existing Admin v1 read helpers
-opt in. Headless transport retries stay off until their owning resource tasks
-audit and mark individual reads.
+opt in, as do the audited Admin v2 reads. Headless member requests currently do
+not opt into transient replay. Their permitted one-time authentication refresh/
+GET replay is a separate [token policy](clients.md#refresh-and-revocation).
+Generic facade and historical Headless verb helpers do not enable transient retries.
 
 Eligible failures are connection/timeouts and HTTP 429, 500, 502, 503 and 504.
 Other status codes, decoding errors, invalid URLs and TLS failures are not
@@ -121,8 +123,8 @@ streams, including rewindable ones, are single-attempt. No idempotency header or
 Circle mutation idempotency support is assumed. aiohttp's internal persistent
 connection replay is guarded to keep every send within this policy. The legacy
 Headless blanket 401 replay now applies only to GET; writes return their error or
-raise in strict mode. Explicit mutation reconciliation/refresh policy belongs
-to the token and operation implementation tasks.
+raise in strict mode. Reconcile ambiguous writes before another explicit call;
+see [token refresh policy](clients.md#refresh-and-revocation).
 
 ## Results and exceptions
 
@@ -158,7 +160,7 @@ All exceptions are importable from `circlepy` or `circlepy.errors`:
 | `RateLimitError` | `APIStatusError`; 429 |
 | `ServerError` | `APIStatusError`; 5xx |
 | `ClientClosedError` | `CircleError`; local closed-client use |
-| `PaginationError` | `CircleError`; reserved for pagination implementation |
+| `PaginationError` | `CircleError`; invalid/repeated pagination metadata or safety-budget exhaustion |
 
 Status errors expose `status_code`, `request_id` (X-Request-ID), parsed
 `retry_after`, `headers`, `body` and `response`. Decode errors expose status,

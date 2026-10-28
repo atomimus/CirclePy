@@ -21,7 +21,10 @@ WORKFLOW_FILES = {
     # The classifier itself is workflow tooling; mixed SDK inputs still promote.
     "tools/validation_profiles.py", "tools/sandbox.py", "tools/sandbox_workflows.py",
     "tests/test_sandbox.py", ".gitignore",
+    "tools/check_docs.py", ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/documentation.yml", ".github/ISSUE_TEMPLATE/config.yml",
 }
+EXAMPLE_FILES = {"examples/__init__.py", "examples/offline.py", "examples/quickstart.py"}
 
 
 def classify(paths):
@@ -35,7 +38,7 @@ def classify(paths):
             categories.add("runtime")
         elif value in WORKFLOW_FILES:
             categories.add("workflow")
-        elif value in {"README.md", "CONTRIBUTING.md", "SECURITY.md"} or (
+        elif value in {"README.md", "CONTRIBUTING.md", "SECURITY.md", "SUPPORT.md", "CHANGELOG.md"} or value in EXAMPLE_FILES or (
             value.startswith("docs/") and path.suffix == ".md"
         ) or (value.startswith("tests/test_") and value.endswith("_examples.py")):
             categories.add("fast")

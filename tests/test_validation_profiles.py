@@ -1,6 +1,7 @@
 """Fail-closed controls for validation selection, evidence and publication."""
 
 import json
+from email.parser import BytesParser
 from pathlib import Path
 import secrets
 import shutil
@@ -25,6 +26,11 @@ from tools import dependency_inventory as inventory  # noqa: E402
     (["pyproject.toml"], "runtime"), (["constraints-dev.txt"], "runtime"),
     (["tests/test_transport.py"], "runtime"), (["new-unknown-file"], "runtime"),
     (["tools/validation_profiles.py"], "workflow"), ([], "runtime"),
+    (["tools/check_docs.py"], "workflow"),
+    (["examples/quickstart.py", "CHANGELOG.md", "SUPPORT.md"], "fast"),
+    ([".github/ISSUE_TEMPLATE/bug_report.yml"], "workflow"),
+    (["examples/unknown.py"], "runtime"),
+    (["examples/quickstart.py", "circlepy/client.py"], "runtime"),
     (["../README.md"], "runtime"), (["/docs/a.md"], "runtime"),
     (["docs/../circlepy/transport.py"], "runtime"), (["docs\\a.md"], "runtime"),
 ])
@@ -34,6 +40,13 @@ def test_change_inventory_fails_closed(paths, expected):
 
 def test_actual_workflows_enforce_selected_profiles():
     check_ci.check_workflows()
+
+
+def test_metadata_readme_preserves_utf8_without_mime_charset_headers():
+    text = "# CirclePy\nCPython 3.11–3.15; إعدادات → Tokens\n"
+    metadata = BytesParser().parsebytes(
+        b"Metadata-Version: 2.4\nName: circlepy\nDescription-Content-Type: text/markdown\n\n" + text.encode("utf-8"))
+    assert distribution.metadata_description(metadata) == text
 
 
 @pytest.mark.parametrize("old,new", [

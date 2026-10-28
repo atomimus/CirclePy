@@ -4,7 +4,9 @@
 
 The v1 development line requires CPython 3.11 or newer. The package version stays
 0.5.1 during implementation; this checkout is not a new published 0.5.1 release.
-Users of Python 3.7–3.10 must keep the previously published 0.5.1 artifacts.
+Applications on Python 3.7–3.10 must upgrade their interpreter before adopting v1.
+See [migration](docs/migration.md), [compatibility](docs/compatibility.md) and
+[maintainer guidance](docs/maintaining.md).
 
 | Runtime/platform | Validation | Evidence |
 |---|---|---|
@@ -72,6 +74,42 @@ Ubuntu with Python 3.11 before publication, retaining both supported matrices.
 A read-only workflow dispatch accepts Runtime or Release and never publishes.
 Postrelease cannot downgrade changed runtime inputs; published artifact retrieval
 and hash equality with previously validated bytes remain a separate release gate.
+
+## Documentation and examples
+
+The [documentation index](docs/index.md) and [API resource map](docs/api.md)
+must stay discoverable from README. The constrained development environment
+includes markdown-it-py for rendering tables/code and checking links/imports;
+this adds no SDK runtime dependency. Run affected guide tests and these checks:
+
+```sh
+python tools/check_docs.py --build docs/_build --report docs/_build/verification.json
+python -m examples.quickstart --offline
+python -m pytest -q tests/test_documentation_examples.py tests/test_client_examples.py tests/test_pagination_examples.py
+```
+
+The docs checker compiles all Python fences, verifies their SDK imports and
+checks local links/anchors plus both facades' complete resource maps. Guide tests
+execute examples against independent synthetic fixtures; compilation alone is
+not request-contract or live evidence. `python tools/check_docs.py --links` is
+an explicitly networked check of external documentation links. A throttled or
+unavailable URL must be reported honestly; do not label it verified.
+Build output is ignored/pruned, and CI retains the HTML plus verification JSON.
+
+Each new guide/example needs its MANIFEST entry and distribution required/copy
+checks. Clean installed smokes include the six-client quickstart and the new
+README/migration examples outside the checkout with `python -I`. The wheel
+contains the SDK/README metadata/license; guides/examples ship in the sdist.
+Retain exact hashes and run `twine check --strict` on a fresh pair when packaged
+documentation changes. See [attribution](docs/attribution.md) for notices.
+
+All nine live workflows in both modes remain **waived/not run** under the accepted
+release-preparation decision, with zero Circle requests or fixtures. The raw
+sandbox gate is waived/not selected, never passed. Carry [this limitation](docs/limitations.md)
+into release notes; do not request credentials or run live variants unless the
+user explicitly reopens live validation. Other required checks remain in force.
+
+## Runtime and package checks
 
 After activating the environment, the following Runtime commands are identical on all
 three platforms. Without activation, replace `python` with the environment's
@@ -159,7 +197,8 @@ including Windows Proactor's native ConnectEx path. Do not enable network marker
 or override these guards in unit tests.
 The negative-fixture command runs an intentionally wrong request in a temporary
 test outside the checkout and requires pytest to fail. It commits no broken test.
-Live/sandbox tests remain a separate explicitly opt-in future suite.
+Live/sandbox tests remain a separate explicitly opt-in suite; their current
+missing coverage is recorded in [limitations](docs/limitations.md).
 
 Coverage measures branches in every `circlepy` module with no production line or
 module exclusions. CI enforces at least 90% actual branch coverage separately
@@ -260,7 +299,7 @@ have no publishing credentials or permissions. Do not create a release to test i
 `importlib.metadata.version("circlepy")` for an installed distribution's version.
 The existing three package client exports and positional signatures remain.
 The six public sync/async client facades and native async Admin v1 methods are
-implemented; named resource expansion remains scoped to its owning tasks.
+implemented; [the resource map](docs/api.md) links every implemented group.
 See [client lifecycles](docs/clients.md). Constructor annotations describe accepted
 inputs; the package does not ship `py.typed` or claim complete type coverage.
 

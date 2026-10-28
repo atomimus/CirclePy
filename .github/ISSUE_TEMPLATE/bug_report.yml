@@ -1,44 +1,41 @@
-name: Bug report
-description: Report reproducible CirclePy behavior
+name: SDK bug
+description: Report a reproducible CirclePy problem with synthetic or redacted evidence
+title: "[Bug]: "
 body:
   - type: markdown
     attributes:
-      value: Use synthetic examples. Remove tokens, cookies, signed URLs and member data from all reports.
+      value: "Never include keys, JWTs, cookies, signed URLs, member data or financial details. Report vulnerabilities privately through SECURITY.md."
   - type: input
     id: version
     attributes:
-      label: CirclePy version or commit
-    validations:
-      required: true
-  - type: input
-    id: runtime
-    attributes:
-      label: Python version and operating system
+      label: CirclePy version or commit, Python version and OS
     validations:
       required: true
   - type: dropdown
     id: family
     attributes:
       label: API family
-      options:
-        - Admin v1
-        - Admin v2
-        - Headless Auth
-        - Headless Member
-        - Data
-        - Packaging or tooling
+      options: [Admin v1, Admin v2, Headless Auth, Headless Member, Packaging or documentation]
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence source
+      options: [Offline synthetic fixture, Authorized sandbox, Other redacted reproduction]
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
-      label: Minimal synthetic reproduction
-      description: Include the public method, expected behavior, actual result and sanitized error. Say whether this used offline fixtures or a live sandbox.
-      render: python
+      label: Minimal synthetic reproduction and method
+      description: Include a small example without real credentials or private responses.
     validations:
       required: true
   - type: textarea
-    id: source
+    id: result
     attributes:
-      label: Official documentation and validation
-      description: Link the exact Circle operation if applicable, and include relevant local check results.
+      label: Expected and actual behavior
+      description: Include the status/error class, not raw exception headers or bodies.
+    validations:
+      required: true

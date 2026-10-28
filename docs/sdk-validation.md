@@ -7,6 +7,11 @@ fixtures. Legacy public requests use their own documented credentials and limits
 These are offline support claims. Provider permissions, real state changes and
 sandbox workflows require separate authorized evidence.
 
+For the current preparation, all nine live workflows in both modes are explicitly
+waived/not run. There were zero Circle requests or fixtures; the raw sandbox gate
+is waived/not selected and has no passing report. [Limitations](limitations.md)
+records the accepted missing coverage. Other required checks remain mandatory.
+
 Generate the complete endpoint/field/async compatibility report from a checkout:
 
 ```sh
@@ -82,6 +87,7 @@ python tools/check_distribution.py dist --mode full --hashes dist/artifacts.json
 Both modes inspect archive contents, source bytes, metadata, licensing, imports
 and dependencies. Smoke runs the named selectors in `SMOKE_TESTS` in
 `tools/check_distribution.py`: offline network isolation, client/token guide,
+all six quickstart clients, README/migration examples and documentation rendering,
 Admin v1 optional-field behavior, Admin v2 member contracts, storage uploads,
 pagination and diagnostic privacy. Reports include actual JUnit counts, mode,
 hashes, consumer dependency metadata and elapsed time.

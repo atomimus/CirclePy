@@ -33,16 +33,29 @@ else:
 ROOT = Path(__file__).resolve().parents[1]
 SMOKE_TESTS = (
     "test_offline_http.py", "test_client_examples.py", "test_security.py",
+    "test_documentation_examples.py",
     "test_admin_v2_members.py::test_every_operation_wire_and_full_response",
     "test_admin_v1_core.py::test_member_raw_update_omits_unspecified_options",
     "test_uploads.py::test_upload_bytes_headers_result_and_borrowed_stream",
     "test_pagination.py::test_generic_iteration_is_lazy_bounded_and_snapshots_filters",
+)
+DOCUMENTATION_ADDITIONS = (
+    "CHANGELOG.md", "SUPPORT.md", "docs/index.md", "docs/api.md",
+    "docs/quickstart.md", "docs/migration.md", "docs/compatibility.md",
+    "docs/limitations.md", "docs/release-notes.md", "docs/maintaining.md",
+    "docs/attribution.md", "docs/sandbox.md", "docs/security.md", "docs/transports.md",
 )
 
 
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def metadata_description(metadata):
+    # Core metadata bodies are UTF-8, without MIME charset headers. The email
+    # parser's default string payload can replace non-ASCII bytes with U+FFFD.
+    return metadata.get_payload(decode=True).decode("utf-8")
 
 
 def check_paths(names):
@@ -87,7 +100,7 @@ def inspect_artifacts(directory):
     require({str(req) for req in requirements if not req.marker} == {str(Requirement(value)) for value in project["dependencies"]}, "Consumer dependency metadata differs")
     require(set(metadata.get_all("Provides-Extra", [])) == set(project.get("optional-dependencies", {})), "Extra metadata differs")
     require(metadata["Description-Content-Type"] == "text/markdown", "README metadata missing")
-    description = metadata.get_payload().replace("\r\n", "\n").strip()
+    description = metadata_description(metadata).replace("\r\n", "\n").strip()
     require(description == (ROOT / "README.md").read_text(encoding="utf-8").strip(), "README content differs")
     with tarfile.open(sdist, "r:gz") as archive:
         members = archive.getmembers()
@@ -111,6 +124,8 @@ def inspect_artifacts(directory):
         required.add("docs/admin-v2-paywalls.md")
         required.add("docs/sdk-validation.md")
         required.add("docs/sandbox.md")
+        required.update(DOCUMENTATION_ADDITIONS)
+        required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "examples").glob("*.py")}
         required |= {"SECURITY.md", "docs/security.md", "docs/dependency-inventory.json"}
         required |= {path.relative_to(ROOT).as_posix() for path in (ROOT / "tools").glob("*.py")}
         required |= {path.relative_to(ROOT).as_posix() for folder in ("tests", "api/specs") for path in (ROOT / folder).rglob("*") if path.is_file() and path.suffix in {".py", ".md", ".json", ".yaml", ".txt"}}
@@ -232,6 +247,11 @@ def check_installs(artifacts, mode):
             shutil.copy2(ROOT / "docs/admin-v2-paywalls.md", work / "docs/admin-v2-paywalls.md")
             shutil.copy2(ROOT / "docs/sdk-validation.md", work / "docs/sdk-validation.md")
             shutil.copy2(ROOT / "docs/dependency-inventory.json", work / "docs/dependency-inventory.json")
+            for relative in DOCUMENTATION_ADDITIONS:
+                shutil.copy2(ROOT / relative, work / relative)
+            for relative in ("README.md", "CONTRIBUTING.md", "SECURITY.md", "LICENSE"):
+                shutil.copy2(ROOT / relative, work / relative)
+            shutil.copytree(ROOT / "examples", work / "examples", ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
             # Audit tooling/tests must inspect the installed SDK, not a copied
             # source package. Only public schemas and tools are copied here.
             shutil.copytree(ROOT / "api", work / "api")
@@ -243,7 +263,7 @@ def check_installs(artifacts, mode):
             shutil.copy2(ROOT / "pyproject.toml", work / "pyproject.toml")
             shutil.copy2(ROOT / "constraints-dev.txt", work / "constraints-dev.txt")
             run([python, "-m", "pip", "install", "-c", ROOT / "constraints-dev.txt",
-                 "pytest", "pytest-asyncio", "pytest-socket", "PyYAML", "packaging"], work)
+                 "pytest", "pytest-asyncio", "pytest-socket", "PyYAML", "packaging", "markdown-it-py"], work)
             run([python, "-m", "pip", "check"], work)
             selected = [work / "tests"] if mode == "full" else [work / "tests" / name for name in SMOKE_TESTS]
             report = work / "installed-tests.xml"

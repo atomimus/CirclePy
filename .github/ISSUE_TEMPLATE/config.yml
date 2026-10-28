@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security report
+    url: https://github.com/atomimus/CirclePy/blob/main/SECURITY.md
+    about: Report vulnerabilities privately; do not post exploit details in public issues
+  - name: Support and provider boundaries
+    url: https://github.com/atomimus/CirclePy/blob/main/SUPPORT.md
+    about: Find migration help and distinguish SDK issues from Circle account access

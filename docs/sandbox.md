@@ -1,5 +1,12 @@
 # Dedicated Circle sandbox validation
 
+**Current evidence:** live checks were explicitly waived for release preparation
+on October 28, 2026. All nine workflows in both sync/async modes remain not run;
+zero Circle requests or fixtures exist. The raw gate is waived/not selected,
+never passed. No credentials or live run are required unless that work is
+explicitly reopened. See [the complete accepted limitation](limitations.md).
+The commands below describe the retained opt-in harness, not executed evidence.
+
 The optional integration runner exercises real SDK requests through all six
 client exports. Normal `pytest` and CI remain offline; their synthetic harness
 results do not establish live Circle coverage. Run from a main checkout whose

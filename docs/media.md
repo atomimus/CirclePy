@@ -32,9 +32,9 @@ signed URL escapes. Nothing is logged or persisted automatically. The result
 contains the full sensitive provider response (including signed URLs/IDs) plus
 legacy `file_name`, `file_size`, `mime_type`, `upload_key`, `uploaded_url` aliases.
 `upload_key` retains the requested key; a provider-replaced key remains in `key`.
-Both private post/profile helpers delegate here. Admin v2 registration remains
-with its content task; that family's upload request has no documented metadata
-property and is checked independently.
+Both private post/profile helpers delegate here. [Admin v2 registration](admin-v2-content.md)
+uses its own credential/schema; that family's upload request has no documented
+metadata property and is checked independently.
 
 ```python
 def upload_document(client, path):
@@ -66,7 +66,7 @@ corpus during the release dependency review; these regressions use the pinned pa
 
 These functions use both clients' existing scoped `request` interface. Sync callers
 call them; async callers await the returned coroutines. The caller owns an
-authenticated client. Named resource completion belongs to later tasks.
+authenticated client. The [resource map](api.md) links the equivalent named methods.
 
 ```python
 from circlepy.rich_text import document, markdown_to_tiptap, rich_text_body, mention, embed
@@ -110,4 +110,4 @@ Primary references: [uploads](https://api.circle.so/get-started/concepts/file-up
 [CommonMark](https://spec.commonmark.org/0.31.2/),
 [parser maintenance](https://github.com/readthedocs/commonmark.py).
 Tests are synthetic loopback evidence. Live rendering, storage entitlements and
-SGID validity remain for the dedicated sandbox task.
+SGID validity remain unverified under [the accepted live-check waiver](limitations.md).

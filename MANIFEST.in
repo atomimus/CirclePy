@@ -30,4 +30,10 @@ include docs/admin-v2-billing.md
 include docs/admin-v2-paywalls.md
 include docs/sdk-validation.md
 include docs/sandbox.md
+include CHANGELOG.md SUPPORT.md
+include docs/index.md docs/api.md docs/quickstart.md docs/migration.md
+include docs/compatibility.md docs/limitations.md docs/release-notes.md
+include docs/maintaining.md docs/attribution.md
+recursive-include examples *.py
+prune docs/_build
 prune .circlepy-sandbox

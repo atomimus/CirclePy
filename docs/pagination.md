@@ -147,8 +147,8 @@ They copy initial parameters and each request, retaining nested filters across
 pages. Resource bridges use strict requests without changing shared client flags.
 
 For example, the existing generic Admin v2 request facade can supply the callback.
-Construct that client with `raise_on_error=True` (its default). This example does
-not claim completion of Admin v2's later named resource tasks.
+Construct that client with `raise_on_error=True` (its default). Prefer the
+[named Admin v2 resource iterators](api.md), which use the same policy.
 
 ```python
 from circlepy.pagination import NumberedPages, iter_pages, aiter_pages

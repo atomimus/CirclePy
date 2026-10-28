@@ -285,8 +285,8 @@ async def disable_comment_email_async(client, notification_token):
 
 Circle [recommends Admin v2](https://api.circle.so/apis/admin-api.md) for new work.
 Use a separately authorized v2 client and its own course, event and billing
-schemas; the current generic `request` boundary is available until its named
-resources are implemented. Public notification tokens do not become v2 tokens.
+schemas; the [resource map](api.md) links the implemented named resources.
+Public notification tokens do not become v2 tokens.
 All live permissions, stored progress, RSVP/reminder effects, token validity and
 notification preferences remain dedicated sandbox evidence; no live preferences
 or payments were changed in this task.

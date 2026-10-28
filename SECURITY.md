@@ -13,3 +13,8 @@ new release. Release availability must be checked on the package index.
 
 [Security boundaries and dependency review](docs/security.md) explains the SDK's
 controls, caller responsibilities, current dependency risks and publishing gates.
+
+Support is best effort; there is no guaranteed response time or backport window.
+Main is the active development line, and the unreleased v1 documentation does not
+extend the old 0.5.1 release's runtime support. See [support](SUPPORT.md) and
+[maintainer guidance](docs/maintaining.md) for triage, version and release policies.

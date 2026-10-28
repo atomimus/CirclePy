@@ -155,6 +155,14 @@ jobs:
       - run: python tools/check_security.py
       - run: python -m ruff check --select E4,E7,E9,F tools/sandbox.py tools/sandbox_workflows.py tests/test_sandbox.py
       - run: python tools/dependency_inventory.py docs/dependency-inventory.json
+      - run: python -m ruff check --select E4,E7,E9,F tools/check_docs.py examples tests/test_documentation_examples.py
+      - run: python tools/check_docs.py --build docs/_build --report docs/_build/verification.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: documentation
+          path: docs/_build
+          if-no-files-found: error
+          retention-days: 14
 
   dependencies:
     name: dependencies

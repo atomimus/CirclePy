@@ -1,164 +1,119 @@
 # CirclePy
-Python clients for the Circle.so Admin and Headless APIs.
 
-## API compatibility
+Python clients for Circle.so's Admin v1, Admin v2, Headless Auth and Member HTTP
+APIs. Synchronous clients use Requests; asynchronous clients use native aiohttp.
+Resources return ordinary provider dictionaries/lists and preserve unknown fields.
 
-`CircleClient` uses Circle's Admin v1 API and an Admin v1 token. Its existing
-member, space, post, comment, and like methods keep their public names and return
-formats. Circle continues to support v1, while new admin endpoints are added to
-[Admin v2](https://api.circle.so/apis/admin-api.md).
-Both legacy clients implement all 27 [Admin v1 core operations](docs/admin-v1.md),
-including full member list/get/invite, nested member fields, and raw space/post/comment
-payloads. The guide documents v1's post body-update limitation and preserved helpers.
-Both also implement all 26 [community and organization operations](docs/admin-v1-organization.md),
-including groups, tag assignments, contacts, direct/group messages and read-only
-profile-field and moderation lists.
-Both now cover the remaining [learning, events, read-only billing and public
-notifications](docs/admin-v1-learning.md), completing all 73 Admin v1 and three
-public routes with sync/native async methods. The guide records upstream example
-inconsistencies, GET JSON bodies and notification token isolation.
+**Development status:** this checkout still carries version **0.5.1** while
+preparing **1.0.0**. The guides describe this development line; installing the
+published 0.5.1 package does not install these new features. No 1.0.0 publication
+is announced here. See the [migration guide](https://github.com/atomimus/CirclePy/blob/main/docs/migration.md)
+and [unreleased changelog](https://github.com/atomimus/CirclePy/blob/main/CHANGELOG.md).
 
-`AdminV2Client` and `AsyncAdminV2Client` use a separate Admin V2 token with Bearer
-authentication. Their explicit community, member, lead, contact-note and invitation-link
-resources cover all 19 operations in those tags, including bounded pagination.
-See [Admin v2 methods, complete fields and v1 migration](docs/admin-v2-members.md).
-Both also cover all 31 [space, group and access operations](docs/admin-v2-access.md),
-including separate content/membership management, space settings, AI summaries,
-and bounded pagination with full provider policies and responses.
-Both cover all 19 [content and media operations](docs/admin-v2-content.md),
-including basic-post editing, image galleries/duplication, comments, direct
-uploads, embeds and post summaries. The guide explains the existing-TipTap
-requirement for administrative content updates and the separate v2 credential.
-Both cover all 12 [course administration operations](docs/admin-v2-courses.md),
-including section/lesson construction, full course reordering, media and member
-progress updates, with matching sync/async methods and bounded pagination.
-Both cover all 11 [event, attendee and live transcript operations](docs/admin-v2-events.md),
-including recurrence settings, offset timestamps, event duplication, administrative
-RSVPs and complete raw VTT responses.
-Both cover all 19 [tag, topic and segment operations](docs/admin-v2-organization.md),
-including member tagging/removal, appearance settings, typed segment rules,
-selected-member arrays and segment duplication, with bounded pagination.
-Both cover all 17 [profile, filter, discovery and Circle Connect operations](docs/admin-v2-profiles.md),
-including custom field choices and archive/restore, directory controls, complete
-filter configuration, deep search queries and member interaction settings.
+## Install
 
-Both Admin v2 clients expose `.chat_preferences`, `.chat_room_message_imports`,
-`.messages`, `.flagged_contents`, `.forms`, `.gamification` and `.workflows` for all
-18 [messaging, form, moderation and workflow operations](docs/admin-v2-operations.md).
-These include historical imports, nested form updates and submissions, explicit
-workflow state changes and four bounded iterator pairs. Mutations are single-attempt.
+Requires **CPython 3.11–3.15**; CI validates Ubuntu, Windows and macOS. Python
+3.7–3.10, PyPy and free-threaded builds are outside the tested support matrix.
+For the current development features, clone the repository and install locally:
 
-Both Admin v2 clients expose `.community_member_charges`,
-`.community_member_subscriptions`, `.payment_method_settings` and `.tax_settings`
-for all 11 [billing operations](docs/admin-v2-billing.md). These preserve integer
-currency subunits, calendar billing dates and complete export acknowledgments.
-Both now expose the 15 [paywall, affiliate and payout operations](docs/admin-v2-paywalls.md),
-with explicit state changes, JSON payout scopes and single-attempt financial calls.
-The [complete Admin v2 inventory](api/specs/admin-v2-inventory.json) reconciles
-all 172 frozen operations across every tag and owner with public sync/async methods.
-Refunds, cancellation options, trial changes, tax updates and emailed exports
-require explicit calls; all financial requests remain single-attempt.
+```sh
+git clone https://github.com/atomimus/CirclePy.git
+cd CirclePy
+python -m venv .venv
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+# Linux/macOS: source .venv/bin/activate
+python -m pip install .
+python -m examples.quickstart --offline
+```
 
-`HeadlessClient` uses the Headless Auth and Member APIs. Use a Headless Auth token
-and identify the member with `email`, `community_member_id`, or `sso_user_id`
-(`sso_id` remains a compatibility spelling). See [client lifecycle and token
-restoration examples](docs/clients.md) for all six sync/async facades and the
-current resource coverage.
+The last command exercises all six clients with synthetic loopback HTTP fixtures,
+without Circle credentials. [Installation and quickstarts](https://github.com/atomimus/CirclePy/blob/main/docs/quickstart.md)
+also cover clean environments, token restoration and explicitly opt-in sandbox
+variants. Check a release's version before pinning it in an application.
 
-Both Headless clients expose direct [uploads and rich-text helpers](docs/media.md)
-with bounded file processing, native async I/O and content-preserving Markdown.
+## Choose a client and token
 
-Both also expose complete [member profiles, directory search and spaces](docs/members.md),
-including signup custom fields/timezone and field/choice record preservation.
-Both expose [HTTP messaging, notifications, search, bookmarks and cookies](docs/messaging.md),
-including raw rich-text replies, Unicode reactions, complete filters and shared sessions.
-Both expose [courses, quizzes, event participation, reports, invitations and live rooms](docs/learning.md).
-Use [opt-in pagination](docs/pagination.md) for bounded sync/async page or record
-iteration, cursor search, and unprojected legacy member/space/post arrays.
-All 102 frozen Member and four Auth operations have explicit sync/async entry
-points and independent offline contract coverage; live sandbox checks remain separate.
+| API family | Sync export | Async export | Credential |
+| --- | --- | --- | --- |
+| Admin v1 | `CircleClient` | `AsyncCircleClient` | Admin v1 key (`Token`) |
+| Admin v2 | `AdminV2Client` | `AsyncAdminV2Client` | Separate Admin v2 key (`Bearer`) |
+| Headless Auth + Member | `HeadlessClient` | `AsyncHeadlessClient` | Headless Auth key mints member JWTs; Member requests use that member's access token |
 
-The Headless implementations were checked against Circle's live API specs on
-October 27, 2026. The refreshed specs are saved in `api/specs`, with their source
-URLs recorded in `api/specs/sources.json`.
-
-## Headless reactions
-
-The existing like methods accept an optional `reaction_type`: `like`,
-`celebrate`, `love`, `support`, `insightful`, or `funny`. Omitting it keeps the
-default like behavior. The existing unlike methods remove the current reaction.
+Keep administrative and Auth keys on your server. Member requests act with the
+member's access, and the SDK cannot grant permissions or plan features. Circle
+[recommends Admin v2 for new administrative integrations](https://api.circle.so/apis/admin-api.md).
+Existing Admin v1 names and successful return formats remain available.
 
 ```python
-client.posts.like_post(post_id, reaction_type="celebrate")
-client.posts.list_post_likes(post_id, reaction_type="celebrate")
-client.comments.like_comment(comment_id, reaction_type="love")
-client.comments.list_comment_likes(comment_id, reaction_type="love")
+import os
+from circlepy import AdminV2Client
+
+def community_details():
+    with AdminV2Client(os.environ["CIRCLE_ADMIN_V2_KEY"], timeout=30) as client:
+        return client.communities.get()
 ```
 
-Chat reactions accept Unicode codepoint sequences through `unicode`. Existing
-`emoji` shortcodes and `payload` arguments remain supported.
+Use an async client inside your application's event loop and await its network
+methods. Async constructors perform no authentication; Headless's async
+`create(...)` factory authenticates when awaited.
 
 ```python
-client.chat.create_reaction(chat_room_message_id, unicode="1f923")
-client.chat.delete_reaction(chat_room_message_id, unicode="1f923")
+import os
+from circlepy import AsyncHeadlessClient
+
+async def member_feed():
+    async with await AsyncHeadlessClient.create(
+        os.environ["CIRCLE_HEADLESS_AUTH_KEY"],
+        community_member_id=int(os.environ["CIRCLE_MEMBER_ID"]),
+        raise_on_error=True,
+    ) as client:
+        return await client.home.list_home_posts(page=1, per_page=20)
 ```
 
-## Headless response and search updates
+Sync clients support `with`/`close()`; async clients support `async with`/
+`await aclose()`. Closing releases local connections; it does not revoke tokens.
+See [authentication, persistence and lifecycle](https://github.com/atomimus/CirclePy/blob/main/docs/clients.md).
 
-Responses preserve Circle's JSON fields, including `reaction_summary` on posts
-and comments, `reaction_type` on members returned by like lists, and
-`thumbnail_url` on course lessons. Community event responses now place `sort`
-and `events_directory_layout` inside `meta`.
+## Guides and API reference
 
-`community_members.search_members` retains the `exclude_empty_profiles` argument
-for compatibility but no longer sends it to Circle, which removed the field.
-Member search still supports `filters` and `search_after` cursors. Post lists
-also accept `post_ids`.
+Start with the [documentation index](https://github.com/atomimus/CirclePy/blob/main/docs/index.md)
+and [complete resource map](https://github.com/atomimus/CirclePy/blob/main/docs/api.md).
+The resource guides link methods, parameters, examples and upstream references
+for content, members, spaces/access, messaging, notifications, learning, events,
+HTTP live rooms, workflows, forms, moderation, billing and paywalls.
 
-The existing `flagged_contents.create_flagged_content` method accepts the new
-`Connect::Connection` and `ChatRoomMessage` content types and the `child_safety`
-reason. Requests returning HTTP 204 return `None`.
+- [Pagination](https://github.com/atomimus/CirclePy/blob/main/docs/pagination.md): lazy record/page iterators, opaque cursors and bounded traversal.
+- [Uploads and rich text](https://github.com/atomimus/CirclePy/blob/main/docs/media.md): signed storage uploads, Markdown/TipTap and raw payloads.
+- [Timeouts, retries and errors](https://github.com/atomimus/CirclePy/blob/main/docs/transports.md): zero automatic retries by default; mutations are single-attempt.
+- [Migration and compatibility](https://github.com/atomimus/CirclePy/blob/main/docs/migration.md): preserved legacy calls, strict errors and permission differences.
+- [Provider and validation limits](https://github.com/atomimus/CirclePy/blob/main/docs/limitations.md): experimental routes, schema gaps and missing live coverage.
 
-Circle's current Member API spec does not list an endpoint for updating basic
-posts. `posts.update_post` keeps its existing route for compatibility; that route
-could not be verified against the published spec. The image-post update endpoint
-is documented.
+The frozen October 27, 2026 inventory has **354 documented operations** with
+explicit sync/native async methods and independent offline contracts. This is a
+bounded inventory, not a claim to cover every future Circle endpoint. The retained
+Headless basic-post update route is experimental and excluded from that count.
 
-## Headless client proxy
+**Live validation:** all nine representative sandbox workflows in both modes
+remain **not run**. Their omission was explicitly accepted for this release
+preparation. No actual Circle account permissions, live parity, storage outcomes
+or live cleanup were verified. Financial evidence is synthetic/offline. The
+sandbox gate is waived/not selected, never reported as passed. See
+[the precise boundary](https://github.com/atomimus/CirclePy/blob/main/docs/limitations.md).
 
-`HeadlessClient` accepts an optional proxy. Pass either a proxy URL string or a
-`requests`-style proxies dictionary:
+Upstream references: [developer index](https://api.circle.so/llms.txt),
+[Admin v1](https://api-v1.circle.so/),
+[Admin v2](https://api-headless.circle.so/?urls.primaryName=Admin+API+V2),
+[Member API](https://api-headless.circle.so/?urls.primaryName=Member+APIs),
+[Auth API](https://api-headless.circle.so/?urls.primaryName=Auth+APIs).
 
-```python
-from circlepy import HeadlessClient
+## Contribute and get help
 
-client = HeadlessClient(
-    api_key="your-api-key",
-    email="member@example.com",
-    proxy="http://127.0.0.1:8080",
-)
-```
+[Contributing](https://github.com/atomimus/CirclePy/blob/main/CONTRIBUTING.md)
+explains offline tests, documentation builds, validation profiles and clean
+artifact checks. [Support](https://github.com/atomimus/CirclePy/blob/main/SUPPORT.md)
+and [security reporting](https://github.com/atomimus/CirclePy/blob/main/SECURITY.md)
+describe where to report an issue and what redacted evidence to include.
 
-## Development
-
-This development checkout requires CPython 3.11+. See
-[the contributor guide](CONTRIBUTING.md) for Windows, Linux and macOS setup,
-the support matrix, dependency constraints and clean artifact verification.
-
-Development tasks commit and push directly to main after automated validation.
-
-The current package is still 0.5.1. Sync clients now pool sessions and support
-timeouts, proxies, explicit cleanup and opt-in strict errors. A native async
-transport and public async client facades are implemented, with the current
-named resource coverage described in the guides above.
-See [HTTP transport configuration and migration notes](docs/transports.md).
-
-Run the request and authentication regression tests without calling a community:
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-API references: [Headless Member API](https://api-headless.circle.so/?urls.primaryName=Member+APIs),
-[Headless Auth API](https://api-headless.circle.so/?urls.primaryName=Auth+APIs),
-and [Admin v1](https://api-v1.circle.so/).
+CirclePy is MIT licensed; see [LICENSE](https://github.com/atomimus/CirclePy/blob/main/LICENSE)
+and [attribution](https://github.com/atomimus/CirclePy/blob/main/docs/attribution.md).
+CirclePy is an independent SDK and does not imply endorsement by Circle.
